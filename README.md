@@ -2,7 +2,7 @@
 
 # 🩺 PedsCoffee — Pediatric AI Scribe Toolkit
 
-[![View Site](https://img.shields.io/badge/View_Site-pedscoffee.github.io-blue?logo=github)](https://your-username.github.io/pedscoffee/)
+[![View Site](https://img.shields.io/badge/View_Site-pedscoffee.github.io-blue?logo=github)](https://pedscoffee.github.io/pedscoffee/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Status](https://img.shields.io/badge/Status-Production_v2.3-4caf50)
 ![Language](https://img.shields.io/badge/Format-Plain_Text-blueviolet)
@@ -29,7 +29,6 @@ _Last updated: October 2025_
 ---
 
 ## 🌐 GitHub Pages Site
-Once Pages is enabled in your repository:
 
 🔗 **Visit:**  
 [`https://pedscoffee.github.io/pedscoffee/`](https://pedscoffee.github.io/pedscoffee/)
