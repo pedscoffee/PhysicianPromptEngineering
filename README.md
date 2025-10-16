@@ -44,15 +44,6 @@ Once Pages is enabled in your repository:
 
 ---
 
-## ⚙️ Getting Started (Browser Only)
-1. Create a new repository on GitHub named **pedscoffee** (public).  
-2. Click **Upload files** and drag the contents of this ZIP.  
-3. Commit changes.  
-4. Enable **GitHub Pages** → *Settings → Pages → Source: Main branch / root* → Save.  
-5. Wait 1–2 minutes for your site to appear.
-
----
-
 ## 🌈 Vision
 > The PedsCoffee project explores practical, ethical, and efficient prompt design for pediatric EMR workflows.  
 > The goal is to share repeatable frameworks that improve documentation clarity, coding reliability, and family communication.
