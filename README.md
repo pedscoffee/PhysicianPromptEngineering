@@ -31,7 +31,7 @@ _Last updated: October 2025_
 ## 🌐 GitHub Pages Site
 
 🔗 **Visit:**  
-[`https://pedscoffee.github.io/pedscoffee/`](https://pedscoffee.github.io/pedscoffee/)
+[`https://pedscoffee.github.io/PediatriciansCoffee/`](https://pedscoffee.github.io/PediatriciansCoffee/)
 
 ---
 
