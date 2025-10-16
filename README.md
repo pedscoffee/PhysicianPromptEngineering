@@ -32,7 +32,7 @@ _Last updated: October 2025_
 Once Pages is enabled in your repository:
 
 🔗 **Visit:**  
-[`https://your-username.github.io/pedscoffee/`](https://your-username.github.io/pedscoffee/)
+[`https://pedscoffee.github.io/pedscoffee/`](https://pedscoffee.github.io/pedscoffee/)
 
 ---
 
