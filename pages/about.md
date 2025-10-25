@@ -10,9 +10,7 @@ permalink: /about/
 
 The key innovation shared here is physician use of a large language model as a personalized AI Editor to accelerate and enhance medical documentation.
 
-![Workflow diagram showing: Natural Conversation → AI Scribe → AI Editor → Your Final Note](images/workflow-diagram.png)
-
-**Workflow:** Natural conversation → AI Scribe → AI Editor → Your Final Note
+![Workflow diagram](images/workflow-diagram.png)
 
 **Goal:** Transform AI scribe output into your exact preferences using EMR's internal LLM. Notes should be fully automated to your exact preferences with no editing required.
 
