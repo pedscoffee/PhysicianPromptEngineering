@@ -1,24 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+    <meta name="description" content="Production-ready AI prompts for clinical documentation using AI Scribes and Editor workflows">
+    <meta name="keywords" content="AI, clinical documentation, prompts, healthcare">
+    
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
   </head>
   <body>
-    <header>
-      <div class="header-content">
-        <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
-        <p class="tagline">{{ site.description }}</p>
+    
+    <!-- HEADER with SITE TITLE -->
+    <header class="site-header">
+      <div class="container">
+        <h1 class="site-title">{{ site.title }}</h1>
+        <p class="site-tagline">{{ site.description }}</p>
       </div>
-      {% include navigation.html %}
     </header>
 
-    <main class="container">
-      {{ content }}
+    <!-- NAVIGATION -->
+    <nav>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/pages/introduction/' | relative_url }}">Introduction</a></li>
+        <li><a href="{{ '/pages/all-about-scribes/' | relative_url }}">All About Scribes</a></li>
+        <li><a href="{{ '/pages/prompts/' | relative_url }}">Prompts</a></li>
+        <li><a href="{{ '/pages/quick-start/' | relative_url }}">Quick Start</a></li>
+        <li><a href="{{ '/pages/about/' | relative_url }}">About</a></li>
+        <li><a href="{{ '/pages/faq/' | relative_url }}">FAQ</a></li>
+        <li><a href="https://github.com/pedscoffee/PhysicianPromptEngineering" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="page-content">
+      <div class="container">
+        {{ content }}
+      </div>
     </main>
 
-    {% include footer.html %}
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p><strong>Physician Prompt Engineering</strong></p>
+        <p>AI-powered clinical documentation for better patient care</p>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering">GitHub</a> | 
+          <a href="{{ '/pages/about/' | relative_url }}">About</a> | 
+          <a href="{{ '/pages/faq/' | relative_url }}">FAQ</a> | 
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/issues">Contact</a>
+        </p>
+        <p style="margin-top: 1rem; color: #cbd5e1;">&copy; 2025 PedsCoffee. All rights reserved.</p>
+      </div>
+    </footer>
+
   </body>
 </html>
