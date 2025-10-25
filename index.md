@@ -8,13 +8,29 @@ layout: default
   <p style="color: white; font-size: 1.1em; margin-top: 10px;">AI-Powered Clinical Documentation</p>
 </div>
 
-## 🎯 The Problem We All Know
+---
+
+## The Problem We All Know
 
 For years, clinical documentation has eaten our lives. We spend more time in computers than with patients. It's exhausting.
 
-## ✨ The Solution
+The previous generation's advance of moving from paper charts to computers was a good one. It enabled continuity of care that wasn't possible before. But it had unintended consequences.
 
-Combine **AI Scribes** (that listen to your conversation) with **AI Editor Prompts** (that format your notes perfectly) to reclaim your time.
+Now, when we do our work, we spend most of our effort just trying to get the details of what we're doing into that machine so we can be paid and get our liability covered. We've been sucked into a world where most of our energy during the day gets poured into our computers instead of being spent actually taking care of patients.
+
+It's become the social norm for families when they go to the doctor—they expect us to have our nose in the computer and hardly make eye contact. It steals the joy out of our job, and it's high time for a change.
+
+---
+
+## The Good News
+
+**Things have changed. Things are better.**
+
+There is a new, better way to get your charting done. It is more efficient, it produces better documentation, and it works.
+
+But it is a change. It's different than what we've been doing, and we've been doing things the way we have for a while. Change can be hard, but I encourage you to check out this content and this new way of approaching the same problem. 
+
+**This is not just better documentation. It's a fundamentally different way of working.** You're free to actually engage with patients instead of your screen.
 
 ---
 
@@ -27,8 +43,8 @@ Combine **AI Scribes** (that listen to your conversation) with **AI Editor Promp
   </div>
 
   <div style="flex: 1; min-width: 250px; padding: 20px; background: #f9f9f9; border-radius: 4px; border-left: 4px solid #0066cc;">
-    <h3 style="color: #0066cc; margin-top: 0;">2. Learn About Scribes</h3>
-    <p><a href="{{ site.baseurl }}/all-about-scribes/" class="btn">All About Scribes</a></p>
+    <h3 style="color: #0066cc; margin-top: 0;">2. Watch Videos</h3>
+    <p><a href="{{ site.baseurl }}/videos/" class="btn">View Videos</a></p>
   </div>
 
   <div style="flex: 1; min-width: 250px; padding: 20px; background: #f9f9f9; border-radius: 4px; border-left: 4px solid #0066cc;">
@@ -52,6 +68,7 @@ Combine **AI Scribes** (that listen to your conversation) with **AI Editor Promp
 ## 📚 Quick Links
 
 - **[Quick Start Guide]({{ site.baseurl }}/quick-start/)** - Set up your first prompt in 5 minutes
+- **[All About Scribes]({{ site.baseurl }}/all-about-scribes/)** - Best practices for AI scribes
 - **[Project Overview]({{ site.baseurl }}/about/)** - Deep dive into how this all works
 - **[FAQ]({{ site.baseurl }}/faq/)** - Common questions and disclaimers
 - **[GitHub Repository](https://github.com/pedscoffee/PhysicianPromptEngineering)** - View the code
