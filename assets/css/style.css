@@ -243,15 +243,24 @@ footer p {
   margin: 10px 0;
 }
 
-/* ===== RESPONSIVE VIDEOS (NEW SECTION) ===== */
+/* ===== RESPONSIVE VIDEOS (UPDATED SECTION) ===== */
+.video-container-outer {
+    /* Used for centering the block element below */
+    text-align: center;
+    margin: 30px 0; /* Add back the top/bottom margin */
+}
+
 .video-wrapper {
+  /* This limits the max width of the video to the original desktop size (560px) 
+     and allows margin: auto to center it on large screens. */
+  max-width: 560px;
+  margin: 0 auto;
+  
   /* 16:9 aspect ratio trick: 9 / 16 = 0.5625 = 56.25% */
   position: relative;
   padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
-  max-width: 100%;
-  margin: 30px auto; /* Replaces the inline style on the outer div */
 }
 
 .video-wrapper iframe {
@@ -260,7 +269,7 @@ footer p {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 0; /* Ensures no default border from the iframe itself */
+  border: 0;
 }
 
 /* ===== RESPONSIVE ===== */

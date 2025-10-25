@@ -14,11 +14,13 @@ Watch these videos to understand how physician prompt engineering works in pract
 
 An overview of the scribe + editor workflow and why it's better than smart phrases. Learn the core principles and see how this changes clinical documentation.
 
-<div class="video-wrapper">
-  <iframe
-    src="https://www.youtube.com/embed/KUBCUTD8T_c" 
-    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen></iframe>
+<div class="video-container-outer">
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/KUBCUTD8T_c" 
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen></iframe>
+  </div>
 </div>
 
 **Topics Covered:**
@@ -33,11 +35,13 @@ An overview of the scribe + editor workflow and why it's better than smart phras
 
 A deep dive into prompt engineering principles with detailed walkthroughs of each production prompt. Learn how to customize prompts for your specific specialty and workflow.
 
-<div class="video-wrapper">
-  <iframe
-    src="https://www.youtube.com/embed/CmmU8azT6as" 
-    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen></iframe>
+<div class="video-container-outer">
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/CmmU8azT6as" 
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen></iframe>
+  </div>
 </div>
 
 **Topics Covered:**
