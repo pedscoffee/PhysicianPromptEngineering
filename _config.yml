@@ -1,0 +1,26 @@
+title: Physician Prompt Engineering
+description: An open-source initiative to improve clinical documentation with practical AI
+url: https://pedscoffee.github.io
+baseurl: /PhysicianPromptEngineering
+
+theme: minima
+
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+paginate: 10
+paginate_path: /blog/page:num/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
