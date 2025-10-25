@@ -16,7 +16,7 @@ An overview of the scribe + editor workflow and why it's better than smart phras
 
 <div class="video-container-outer">
   <div class="video-wrapper">
-    <iframe
+    <iframe width="560" height="315"
       src="https://www.youtube.com/embed/KUBCUTD8T_c" 
       frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
       allowfullscreen></iframe>
@@ -37,7 +37,7 @@ A deep dive into prompt engineering principles with detailed walkthroughs of eac
 
 <div class="video-container-outer">
   <div class="video-wrapper">
-    <iframe
+    <iframe width="560" height="315"
       src="https://www.youtube.com/embed/CmmU8azT6as" 
       frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
       allowfullscreen></iframe>
