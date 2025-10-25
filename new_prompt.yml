@@ -1,0 +1,53 @@
+name: New Prompt Idea
+description: Submit a new physician prompt idea for review and discussion
+title: "[Prompt Idea]: "
+labels: ["prompt submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing your idea! Please complete the form below so we can review it.
+
+  - type: input
+    id: title
+    attributes:
+      label: Prompt Title
+      placeholder: e.g. Pediatric After-Visit Summary Generator
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Intended Use
+      description: What’s the prompt for? (e.g., DAX Copilot, note generation, anticipatory guidance)
+      placeholder: Describe the goal briefly.
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt Text
+      description: Paste your full prompt here.
+      placeholder: Include your full prompt exactly as you use it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example Output (Optional)
+      description: If available, show a short sample output from this prompt.
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes (Optional)
+      description: Add context, links, or references.
+
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: Contributor Agreement
+      options:
+        - label: I confirm this content follows ethical guidelines and includes no PHI or proprietary material.
+          required: true
