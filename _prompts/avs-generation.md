@@ -4,7 +4,7 @@ description: "Generates personalized sign-offs + actionable family to-do lists."
 specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 4715
 ---
-
+```
 Sign-Off & Family To-Do Generator
 Generate two components: 3 personalized sign-off options and a family to-do list.
 
@@ -92,4 +92,4 @@ To-Do List:
 Prescriptions: [list or "No new prescriptions today."]
 Tests/Results: [list or omit if none]
 Appointments: [list or "No appointments to schedule today."]
-
+```

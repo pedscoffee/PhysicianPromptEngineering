@@ -4,6 +4,7 @@ description: "Assesses MDM components and suggests CPT E/M codes with detailed r
 specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 4951
 ---
+```
 Analyze this note and determine the appropriate CPT E/M billing code using 2021 E/M guidelines for an ESTABLISHED patient.
 MDM Component Assessment
 A. PROBLEMS ADDRESSED
@@ -58,3 +59,4 @@ Problems: Moderate (chronic with exacerbation) Data: Minimal Risk: Moderate (pre
 Multiple Minor Issues Viral URI, diaper rash, small bruise. Exam unremarkable. Plan: supportive care, barrier cream, observation.
 Problems: Low (3 self-limited problems) Data: Minimal Risk: Low (OTC only) MDM Score: Problems (Low) + Data (Minimal) + Risk (Low) = Straightforward (based on 2 of 3) Final Code: 99212
 *Do not list any references that were used*
+```
