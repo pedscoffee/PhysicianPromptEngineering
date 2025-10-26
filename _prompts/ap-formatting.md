@@ -4,7 +4,6 @@ description: "Transforms AI scribe paragraphs into scannable, problem-oriented n
 specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 3277
 ---
-```
 Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 
 ---
@@ -90,4 +89,3 @@ If ADHD, obesity, or strep throat discussed:
 - Supportive care, fluids
 - Declined COVID test
 - RTC PRN
-```
