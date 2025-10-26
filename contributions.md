@@ -21,6 +21,4 @@ When submitting your prompt, please include the following details so others can 
 
 ### Submit Your Prompt Here
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc-GhyV4Ljqr4g1j_9Pg-OzmfIFJ8tMK8j8GTxWRWepg9VVOQ/viewform?embedded=true" width="640" height="791" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
-Your form will then appear live on this page, and all submissions will be collected in a Google Sheet for you to review.
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScicxuLRUnXqv43QbRZ2zcYWuX47B_HOhJM3ir7dV11IE4Gpw/viewform?embedded=true" width="640" height="863" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
