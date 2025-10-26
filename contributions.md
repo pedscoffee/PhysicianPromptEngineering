@@ -5,8 +5,6 @@ title: Contributions
 
 We are building a community-driven library, and we need your expertise. If you are a physician who has developed your own custom prompts, please share them!
 
-This submission form is designed to be simple, especially for colleagues who may not be comfortable with GitHub.
-
 ### What to Include
 
 When submitting your prompt, please include the following details so others can understand and use it effectively:
