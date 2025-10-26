@@ -67,8 +67,7 @@ The key innovation shared here is physician use of a large language model as a p
 
 ### Workflow diagram
 
-![Workflow diagram](/PhysicianPromptEngineering/images/workflow-diagram.png)
-
+![Workflow diagram](../images/workflow-diagram.png){: style="max-width: 80%; height: auto; display: block; margin: 0 auto;" }
 **Goal:** Transform AI scribe output into your exact preferences using EMR’s internal LLM. Notes should be fully automated to your exact preferences with no editing required.
 
 While it is tempting to take this in all sorts of directions, it’s recommended to start with a goal of creating notes that are indistinguishable from your current handwritten notes but are fully automatic. That way you can start to reap the benefits immediately.
