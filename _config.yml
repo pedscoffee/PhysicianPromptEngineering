@@ -1,26 +1,31 @@
 title: Physician Prompt Engineering
-description: An open-source initiative to improve clinical documentation with practical AI
-url: https://pedscoffee.github.io
-baseurl: /PhysicianPromptEngineering
+author: pedscoffee
+description: >-
+  An open-source initiative to improve clinical documentation with practical AI.
 
-theme: minima
+# Set the theme
+theme: jekyll-theme-minima
 
-markdown: kramdown
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+# Header navigation
+header_pages:
+  - prompt-library.md
+  - best-practices.md
+  - contributions.md
 
-paginate: 10
-paginate_path: /blog/page:num/
+# Minima-specific settings
+minima:
+  skin: classic
 
-defaults:
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
+# Exclude these files from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+# --- New Prompt Collection ---
+# This tells Jekyll to look for a folder named "_prompts"
+# and treat each file inside as a prompt.
+collections:
+  prompts:
+    output: true
+    permalink: /prompts/:path/

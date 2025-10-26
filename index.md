@@ -1,82 +1,111 @@
 ---
-title: Physician Prompt Engineering
-layout: default
+layout: home
 ---
 
-<div class="home-hero">
-  <h1 style="color: white; margin: 0;">Welcome to Dot Phrases 2.0</h1>
-  <p style="color: white; font-size: 1.1em; margin-top: 10px;">AI-Powered Clinical Documentation</p>
+<style>
+  .hero-banner {
+    width: 100%;
+    height: 300px;
+    background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999NI?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin-bottom: 2rem;
+  }
+  .hero-banner h1 {
+    color: white;
+    font-size: 3rem;
+    margin: 0;
+  }
+  .hero-banner p {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-bottom: 1.5rem;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<div class="hero-banner">
+  <h1>Physician Prompt Engineering</h1>
+  <p>An open-source initiative to improve clinical documentation with practical AI.</p>
 </div>
 
----
-
-## The Problem We All Know
-
-For years, clinical documentation has eaten our lives. We spend more time in computers than with patients. It's exhausting.
-
-The previous generation's advance of moving from paper charts to computers was a good one. It enabled continuity of care that wasn't possible before. But it had unintended consequences.
-
-Now, when we do our work, we spend most of our effort just trying to get the details of what we're doing into that machine so we can be paid and get our liability covered. We've been sucked into a world where most of our energy during the day gets poured into our computers instead of being spent actually taking care of patients.
-
-It's become the social norm for families when they go to the doctor—they expect us to have our nose in the computer and hardly make eye contact. It steals the joy out of our job, and it's high time for a change.
-
----
-
-## The Good News
-
-**Things have changed. Things are better.**
-
-There is a new, better way to get your charting done. It is more efficient, it produces better documentation, and it works.
-
-But it is a change. It's different than what we've been doing, and we've been doing things the way we have for a while. Change can be hard, but I encourage you to check out this content and this new way of approaching the same problem. 
-
-**This is not just better documentation. It's a fundamentally different way of working.** You're free to actually engage with patients instead of your screen.
-
----
-
-## 🚀 Get Started in 3 Steps
-
-<div style="display: flex; gap: 20px; margin: 30px 0; flex-wrap: wrap;">
-  <div style="flex: 1; min-width: 250px; padding: 20px; background: #f9f9f9; border-radius: 4px; border-left: 4px solid #0066cc;">
-    <h3 style="color: #0066cc; margin-top: 0;">1. Understand the Workflow</h3>
-    <p><a href="{{ site.baseurl }}/introduction/" class="btn">Read Introduction</a></p>
-  </div>
-
-  <div style="flex: 1; min-width: 250px; padding: 20px; background: #f9f9f9; border-radius: 4px; border-left: 4px solid #0066cc;">
-    <h3 style="color: #0066cc; margin-top: 0;">2. Watch Videos</h3>
-    <p><a href="{{ site.baseurl }}/videos/" class="btn">View Videos</a></p>
-  </div>
-
-  <div style="flex: 1; min-width: 250px; padding: 20px; background: #f9f9f9; border-radius: 4px; border-left: 4px solid #0066cc;">
-    <h3 style="color: #0066cc; margin-top: 0;">3. Get the Prompts</h3>
-    <p><a href="{{ site.baseurl }}/prompts/" class="btn">View All Prompts</a></p>
-  </div>
+<div class="video-container">
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube-nocookie.com/embed/-2ivdNTM7SY?si=ci0EitG8wKOxEp3e" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
 </div>
 
+## A New Way Forward
+
+The key innovation shared here is physician use of a large language model as a personalized AI Editor to accelerate and enhance medical documentation.
+
+### Workflow diagram
+
+![Workflow diagram](/PhysicianPromptEngineering/images/workflow-diagram.png)
+
+**Goal:** Transform AI scribe output into your exact preferences using EMR’s internal LLM. Notes should be fully automated to your exact preferences with no editing required.
+
+While it is tempting to take this in all sorts of directions, it’s recommended to start with a goal of creating notes that are indistinguishable from your current handwritten notes but are fully automatic. That way you can start to reap the benefits immediately.
+
+### Three Production Prompts
+
+* **A/P Formatting** – Transforms paragraphs into concise, problem-oriented notes
+* **Billing Analysis** – Assesses MDM and suggests CPT codes with audit trail
+* **AVS Generation** – Creates personalized sign-offs + family to-do lists
+
+These are available to copy and paste from our [Prompt Library]({{ site.baseurl }}/prompt-library).
+
+### Key Constraint
+
+Epic EMR LLM only accepts plain text (no markdown, no rich formatting). All prompts must be ≤5,000 characters.
+
+These prompts were made to work with Epic’s Generate Text with AI feature. This same workflow could be done with other LLMs and not necessarily inside the EMR (and probably more successfully!), but be sure that whatever you’re using is approved by your IT department and safe for HIPAA.
+
+Get the prompts from the [Prompt Library]({{ site.baseurl }}/prompt-library) or check out the [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/).
+
 ---
 
-## 🔑 The Three Big Insights
+### The Big Three Insights
 
-1. **Few-shot examples are critical** - Show, don't tell. Examples guide output better than instructions.
+For a deeper dive, see our [Prompt Engineering Best Practices]({{ site.baseurl }}/best-practices).
 
-2. **Brevity improves quality** - Shorter bullets = faster scanning and easier approval. Less editing required.
+**1. Few-Shot Examples Are Critical**
+* Most important element for prompt success
+* Show, don’t tell – examples guide output better than instructions
 
-3. **Separate prompts for separate functions** - Each prompt does one thing well. Can be used independently or together.
+**2. Brevity Improves Quality**
+* Shorter bullets = faster scanning, easier approval
+* Less editing required, more human-feeling
 
----
+**3. Separate Prompts for Separate Functions**
+* Each prompt does one thing well
+* Can be used independently or together
+* Easier to refine and iterate
 
-## 📚 Quick Links
-
-- **[Quick Start Guide]({{ site.baseurl }}/quick-start/)** - Set up your first prompt in 5 minutes
-- **[All About Scribes]({{ site.baseurl }}/all-about-scribes/)** - Best practices for AI scribes
-- **[Project Overview]({{ site.baseurl }}/about/)** - Deep dive into how this all works
-- **[FAQ]({{ site.baseurl }}/faq/)** - Common questions and disclaimers
-- **[GitHub Repository](https://github.com/pedscoffee/PhysicianPromptEngineering)** - View the code
-
----
-
-## 💡 Ready to Reclaim Your Time?
-
-This is not just better documentation. It's a fundamentally different way of working. You're free to actually engage with patients instead of your screen.
-
-Let's get started.
+Ready to contribute? [Share your prompts with us.]({{ site.baseurl }}/contributions)
