@@ -12,6 +12,7 @@ layout: home
     max-width: 100%;
     background: #000;
     margin-bottom: 1.5rem;
+    z-index: 1;
   }
   .video-container iframe {
     position: absolute;
@@ -19,6 +20,7 @@ layout: home
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
   }
 </style>
 
