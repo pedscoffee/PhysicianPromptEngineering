@@ -3,29 +3,7 @@ layout: home
 ---
 
 <style>
-  .hero-banner {
-    width: 100%;
-    height: 300px;
-    background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999NI?auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-    margin-bottom: 2rem;
-  }
-  .hero-banner h1 {
-    color: white;
-    font-size: 3rem;
-    margin: 0;
-  }
-  .hero-banner p {
-    font-size: 1.25rem;
-    margin-top: 0.5rem;
-  }
+  
   .video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -43,11 +21,6 @@ layout: home
     height: 100%;
   }
 </style>
-
-<div class="hero-banner">
-  <h1>Physician Prompt Engineering</h1>
-  <p>An open-source initiative to improve clinical documentation with practical AI.</p>
-</div>
 
 <div class="video-container">
   <iframe 
