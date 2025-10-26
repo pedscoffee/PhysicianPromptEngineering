@@ -12,9 +12,16 @@ header_pages:
   - best-practices.md
   - contributions.md
 
+
 # Minima-specific settings
 minima:
   skin: classic
+
+# Exclude these files from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
 
 # --- New Prompt Collection ---
 # This tells Jekyll to look for a folder named "_prompts"
