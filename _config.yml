@@ -4,7 +4,7 @@ description: >-
   An open-source initiative to improve clinical documentation with practical AI.
 
 # Set the theme
-theme: jekyll-theme-minima
+theme: minima
 
 # Header navigation
 header_pages:
