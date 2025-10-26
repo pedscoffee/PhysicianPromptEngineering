@@ -22,6 +22,21 @@ layout: home
     height: 100%;
     z-index: 1;
   }
+  
+/* Ensure site navigation appears above video */
+  .site-header {
+    position: relative;
+    z-index: 100;
+  }
+  
+  .site-nav {
+    z-index: 100;
+  }
+  
+  .site-nav .trigger {
+    z-index: 200;
+  }
+
 </style>
 
 <div class="video-container">
