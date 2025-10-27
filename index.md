@@ -99,3 +99,42 @@ For a deeper dive, see our [Prompt Engineering Best Practices]({{ site.baseurl }
 * Easier to refine and iterate
 
 Ready to contribute? [Share your prompts with us.]({{ site.baseurl }}/contributions)
+
+---
+
+## Frequently Asked Questions (FAQ)
+*1. What is Physician Prompt Engineering and who is it for?*
+
+Physician Prompt Engineering is an open-source initiative dedicated to improving the efficiency and quality of clinical documentation using large language models (LLMs). Our goal is to create, test, and share high-quality prompts that reduce documentation burden for doctors so they can focus more on patient care.
+
+*2. How do I use these prompts?*
+
+You use these prompts within an LLM integrated into your Electronic Medical Record (EMR). The most common example is Epic’s “Generate Text with AI” feature, but they can be adapted for any secure, HIPAA-compliant LLM or AI scribe environment your system provides.
+- Copy the prompt from the website.
+- Paste the prompt into your EMR’s AI text generation prompt window, and run it on the source text (e.g., note, dictation, or encounter summary).
+- Review the output, make any necessary edits, and drop it into your note.
+
+*3. Will these prompts work for other specialties?*
+
+While theses initial prompts are written with specific pediatric “few-shot examples” and boilerplate text, the underlying structure and logic are applicable to any specialty.  If you make them your own, please contribute!  The goal is to create a resource that can benefit the entire medical community.  To start, customize the few-shot examples and boilerplate text (dot phrase insertion) to reflect the common diagnoses and phrasing used in your practice. This will dramatically improve performance for your specialty. The core functionality though of these prompts is very generalizable.
+
+## Important Disclaimers
+- **Only use within HIPAA-compliant EMR environments**
+- **DO NOT use public AI tools** (ChatGPT, Claude, Gemini) with patient data
+- Use your EMR's integrated LLM or approved tools only
+- All prompts assume human in the loop taking responsbility for final accuracy and output.
+
+## Disclaimer and Terms of Use
+### 1. No Medical or Legal Advice
+The content on the Peds Coffee website, including all AI prompts, examples, and discussions, is provided for educational and informational purposes only. It is not intended as a substitute for professional medical, billing, or legal advice.
+
+### 2. Clinical Responsibility and Verification
+All prompts assume human in the loop taking responsbility for final accuracy and output.  The prompts are tools for documentation efficency, not substitutes for clinical judgment. As the practicing clinician, you retain full and final responsibility for the accuracy and completeness of anything related to using these prompts if you decide to use them. Anything here is provided AS IS without any guarantee or promise of any functionality or usefulness. The goal is to give a starting place for you to learn and create from on your own.  Always read and verify the AI-generated output before finalizing anything. Follow terms of service for any AI scribe tools used.  These tools cannot account for every nuance of a patient encounter; you must ensure the final text accurately reflects your judgement.
+
+### 3. HIPAA and Data Security
+These prompts are designed to be used within a secure, HIPAA-compliant environment (e.g., your EMR’s built-in AI tool).  Do not share protected health information (PHI) from your EMR (Epic, Cerner, or others) with public or commercial large language models (LLMs) (e.g., ChatGPT, Gemini, etc.) for use with these prompts.  You must adhere to your organization’s policies regarding the use of AI tools in clinical care.  Ensure IT approval of any AI scribe, large language model, or any other piece of software prior to use.
+
+## License
+This project is open source under the [MIT License](LICENSE).
+
+⭐ **If this project helps your workflow, consider giving it a star on GitHub and sharing with others!**
