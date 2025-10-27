@@ -11,11 +11,11 @@ An open-source initiative to improve clinical documentation with practical AI.
 
 **It's time to stop sprinting—come take the subway.**
 
-Visit our website: [Physician Prompt Engineering](https://physicianpromptengineering.com)
-
 ---
 
 ## What Is This?
+
+Visit our website: [Physician Prompt Engineering](https://physicianpromptengineering.com)
 
 Physician Prompt Engineering provides production-ready AI prompts that transform raw conversation transcripts into perfectly formatted clinical notes in seconds.
 
