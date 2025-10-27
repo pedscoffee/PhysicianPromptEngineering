@@ -39,6 +39,8 @@ image: /images/workflow-diagram.png
 
 </style>
 
+# Physician Prompt Engineering | AI Scribe Large Language Model Editor
+
 <div class="video-container">
   <iframe 
     width="560" 
@@ -50,8 +52,6 @@ image: /images/workflow-diagram.png
     allowfullscreen>
   </iframe>
 </div>
-
-# Physician Prompt Engineering | AI Scribe Large Language Model Editor
 
 ## A New Way Forward
 
