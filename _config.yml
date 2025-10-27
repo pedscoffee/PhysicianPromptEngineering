@@ -16,6 +16,9 @@ header_pages:
 minima:
   skin: classic
 
+plugins:
+  - jekyll-seo-tag
+
 # --- New Prompt Collection ---
 # This tells Jekyll to look for a folder named "_prompts"
 # and treat each file inside as a prompt.
