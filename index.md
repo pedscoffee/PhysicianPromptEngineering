@@ -131,7 +131,7 @@ While theses initial prompts are written with specific pediatric “few-shot exa
 The content on the Peds Coffee website, including all AI prompts, examples, and discussions, is provided for educational and informational purposes only. It is not intended as a substitute for professional medical, billing, or legal advice.
 
 ### 2. Clinical Responsibility and Verification
-All prompts assume human in the loop taking responsbility for final accuracy and output.  The prompts are tools for documentation efficency, not substitutes for clinical judgment. As the practicing clinician, you retain full and final responsibility for the accuracy and completeness of anything related to using these prompts if you decide to use them. Anything here is provided AS IS without any guarantee or promise of any functionality or usefulness. The goal is to give a starting place for you to learn and create from on your own.  Always read and verify the AI-generated output before finalizing anything. Follow terms of service for any AI scribe tools used.  These tools cannot account for every nuance of a patient encounter; you must ensure the final text accurately reflects your judgement.
+All prompts assume human in the loop taking responsbility for final accuracy and output.  The prompts are tools for documentation efficiency, not substitutes for clinical judgment. As the practicing clinician, you retain full and final responsibility for the accuracy and completeness of anything related to using these prompts if you decide to use them. Anything here is provided AS IS without any guarantee or promise of any functionality or usefulness. The goal is to give a starting place for you to learn and create from on your own.  Always read and verify the AI-generated output before finalizing anything. Follow terms of service for any AI scribe tools used.  These tools cannot account for every nuance of a patient encounter; you must ensure the final text accurately reflects your judgement.
 
 ### 3. HIPAA and Data Security
 These prompts are designed to be used within a secure, HIPAA-compliant environment (e.g., your EMR’s built-in AI tool).  Do not share protected health information (PHI) from your EMR (Epic, Cerner, or others) with public or commercial large language models (LLMs) (e.g., ChatGPT, Gemini, etc.) for use with these prompts.  You must adhere to your organization’s policies regarding the use of AI tools in clinical care.  Ensure IT approval of any AI scribe, large language model, or any other piece of software prior to use.
@@ -139,4 +139,4 @@ These prompts are designed to be used within a secure, HIPAA-compliant environme
 ## License
 This project is open source under the [MIT License](LICENSE).
 
-⭐ **If this project helps your workflow, consider giving it a star on GitHub and sharing with others!**
+⭐ **Consider giving us a star on GitHub and sharing with others!**
