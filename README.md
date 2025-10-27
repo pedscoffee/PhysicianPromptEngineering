@@ -2,7 +2,7 @@
 ---
 # Physician Prompt Engineering
 [![View Site](https://img.shields.io/badge/View_Site-physicianpromptengineering.com-blue?logo=github)](https://physicianpromptengineering.com/)
-[![DOI](https://zenodo.org/badge/1077207946.svg)](https://doi.org/10.5281/zenodo.17449352)
+[![DOI](./images/zenodo.17449353.svg)](https://doi.org/10.5281/zenodo.17449352)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Language](https://img.shields.io/badge/Format-Plain_Text-blueviolet)
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
