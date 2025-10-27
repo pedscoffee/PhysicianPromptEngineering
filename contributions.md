@@ -6,6 +6,11 @@ description: "Contribute your own AI prompts to our growing library. Share produ
 
 We are building a community-driven library, and we need your expertise. If you are a physician who has developed your own custom prompts, please share them!
 
+Each prompt is valuable on its own terms, and in addressing different problems we may find new approaches and underlying principles that will make all of our prompts better. The vision is a shared library where any clinician could come and benefit from each other's tools and insights. We shouldn't all invent the wheel separately.  Let's work together. -PedsCoffee☕️🏥☕️
+
+To start, check us out on GitHub! There is a discussions board that is a great place to get started.
+![View Site](https://img.shields.io/badge/View_Site-PhysicianPromptEngineering-blue?logo=github)(https://github.com/pedscoffee/PhysicianPromptEngineering)
+
 ### What to Include
 
 When submitting your prompt, please include the following details so others can understand and use it effectively:
