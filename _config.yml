@@ -23,3 +23,5 @@ collections:
   prompts:
     output: true
     permalink: /prompts/:path/
+
+google_analytics: G-VNYGW8RWMY
