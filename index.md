@@ -1,5 +1,6 @@
 ---
 layout: home
+image: /images/workflow-diagram.png
 ---
 
 <style>
@@ -101,7 +102,7 @@ For a deeper dive, see our [Prompt Engineering Best Practices]({{ site.baseurl }
 Ready to contribute? [Share your prompts with us.]({{ site.baseurl }}/contributions)
 
 ---
-
+ 
 ## Frequently Asked Questions (FAQ)
 *1. What is Physician Prompt Engineering and who is it for?*
 
