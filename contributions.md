@@ -8,8 +8,9 @@ We are building a community-driven library, and we need your expertise. If you a
 
 Each prompt is valuable on its own terms, and in addressing different problems we may find new approaches and underlying principles that will make all of our prompts better. The vision is a shared library where any clinician could come and benefit from each other's tools and insights. We shouldn't all invent the wheel separately.  Let's work together. -PedsCoffee☕️🏥☕️
 
-To start, check us out on GitHub! There is a discussions board that is a great place to get started.
-![View Site](https://img.shields.io/badge/View_Site-PhysicianPromptEngineering-blue?logo=github)(https://github.com/pedscoffee/PhysicianPromptEngineering)
+To start, check us out on GitHub! There is a [Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions) board that is a great place to get started.
+
+Link to full Repo: [GitHub Repository](https://github.com/pedscoffee/PhysicianPromptEngineering/)
 
 ### What to Include
 
