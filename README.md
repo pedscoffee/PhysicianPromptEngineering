@@ -11,6 +11,8 @@ An open-source initiative to improve clinical documentation with practical AI.
 
 **It's time to stop sprinting—come take the subway.**
 
+Visit our website: [Physician Prompt Engineering](https://physicianpromptengineering.com)
+
 ---
 
 ## What Is This?
@@ -34,7 +36,7 @@ Combine:
 
 ## Get Started
 
-Visit our website: [Physician Prompt Engineering](https://physicianpromptengineering.com)
+
 
 ---
 
