@@ -51,7 +51,7 @@ image: /images/workflow-diagram.png
   </iframe>
 </div>
 
-# Physician Prompt Engineering | AI Large Language Model Editor
+# Physician Prompt Engineering | AI Scribe Large Language Model Editor
 
 ## A New Way Forward
 
