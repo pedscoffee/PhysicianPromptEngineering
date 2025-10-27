@@ -15,9 +15,6 @@ header_pages:
 # Minima-specific settings
 minima:
   skin: classic
-   social_links:
-    - { platform: github, user_url: "https://github.com/pedscoffee/PhysicianPromptEngineering" }
-    - { platform: youtube, user_url: "https://www.youtube.com/@pedscoffee }
 
 # --- New Prompt Collection ---
 # This tells Jekyll to look for a folder named "_prompts"
@@ -26,16 +23,3 @@ collections:
   prompts:
     output: true
     permalink: /prompts/:path/
-
-# Plugins
-plugins:
-  - jekyll-seo-tag
-
-# Include favicon and manifest
-defaults:
-  - scope:
-      path: ""
-    values:
-      image: /images/workflow-diagram.png
-      seo:
-        type: "EducationalWebPage"
