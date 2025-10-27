@@ -2,7 +2,6 @@
 layout: home
 image: /images/workflow-diagram.png
 ---
-
 <style>
   
   .video-container {
@@ -51,6 +50,8 @@ image: /images/workflow-diagram.png
     allowfullscreen>
   </iframe>
 </div>
+
+# Physician Prompt Engineering | AI Medical Scribe & LLM Editor
 
 ## A New Way Forward
 
