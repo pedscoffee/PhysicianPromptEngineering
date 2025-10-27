@@ -27,7 +27,7 @@ description: "Learn the three core principles of effective AI prompt engineering
   <iframe 
     width="560" 
     height="315" 
-    src="https://www.youtube-nocookie.com/embed/CmmU8azT6as?si=_cbEoEEsZtTJW-_c" 
+    src="https://www.youtube-nocookie.com/embed/haSZOP6fiFM?si=a7yZiRBuRdaB95Y9" 
     title="YouTube video player" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
