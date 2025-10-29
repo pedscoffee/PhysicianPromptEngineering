@@ -9,72 +9,132 @@ tags: [prompt engineering, large language model, EMR, AI scribe, efficiency]
 excerpt: "Discover how physician-designed prompt engineering can save time and improve accuracy when working with AI scribe tools in your EMR." 
 ---
 
-## The Problem We All Know Too Well
-For a long time, writing our notes has been the worst part of our job. We’ve been sucked into this world where most of our energy during the day gets poured into our computers instead of being spent actually taking care of patients.
+# The Role of AI and Large Language Models in Clinical Documentation: A Practical Guide
 
-Don’t get me wrong—the previous generation’s advance of moving from paper charts to computers was a really good one. It enabled a level of continuity of care that simply was not possible before. That being said, it’s had unintended consequences. Now, when we do our work, we spend most of our effort just trying to get down the details of what we’re doing into that machine so that we can be paid and so that we can get our liability covered.
+-----
 
-It’s a mess. And it’s become the social norm for families when they go to the doctor—they just expect us to have our nose in the computer and hardly even make eye contact sometimes. It steals a lot of the joy out of our job, and it’s high time for a change.
+## The Current State of Clinical Documentation
 
+Clinical documentation has become one of the most time-consuming aspects of modern medical practice. Physicians spend hours a day in front of a computer, contributing significantly to professional burnout and reducing time available for patient interaction.
 
-### The Good News
-The purpose of this project is—I’m super excited to share with you—that things have changed. Things are better. There is a new, better way to get your charting done. It is more efficient, it produces better documentation, and I’m really happy with it.
+While the transition from paper charts to electronic health records has enabled improved care coordination and information accessibility, it has also created substantial administrative burden. Physicians report that documentation requirements often detract from patient-centered care and clinical reasoning—the core activities that define medical practice.
 
-But it is a change. It’s different than what we’ve been doing, and we’ve been doing things the way we have for a while. Change can be hard in itself, but I encourage you to check out this content, this new way of approaching the same problem. I think you’ll be really happy you did.
+## Traditional Documentation Methods
 
+### Template-Based Systems
 
-### The Old Way: Smart Phrases and Their Limitations
-Let me quickly review the older way of doing things just to establish a baseline. Most EMRs—the most popular one being Epic—have a way to do dot phrases, where you save a template, you save some text, and then when you see something you see commonly, you pull up that template. For me as a pediatrician, that might be a well-child check where I have a little blurb that says we talked about shots, we talked about the car seat facing backward, whatever is appropriate. Those are helpful.
+Most EHR systems, including Epic, Cerner, and others, offer template functionality such as:
 
-And then inside those, we often have smart lists—these dropdown menus where you can select things. A lot of people have really nicely tailored templates for most things that they do, though I think almost everyone feels like they could always make them better. Let’s talk about why that feeling never goes away.
+- **Dot phrases/Smart phrases:** Pre-saved text blocks for common scenarios
+- **Smart lists:** Dropdown menus with selectable options
+- **Macros:** Automated text insertion tools
 
+These tools have provided incremental efficiency gains for routine documentation.
 
-### Why Smart Phrases Aren’t Enough
-Here’s the problem, and it’s one that comes up every day in our work: the whole point of smart phrases is you’re taking the things that are common and you’re making them faster, which is good. But the things that are common and usual and mundane and routine about patient care are actually the least helpful things to document.
-Think about it this way: if I was only going to document a small bit for a patient, the thing that’s really helpful is what makes that person unique. What stands out about the case, what you actually had to think about, the actual decision you had to make. And by definition, your smart phrases aren’t going to help you there.
+### Inherent Limitations
 
-So even if you have the best-tailored smart phrases in the world, you still need to add the customized details. Say I’ve got a great template for eczema—I see that as a pediatrician all the time. I talk about using your topical steroids the right way, making sure you’re moisturizing, maybe something about wet wraps, you know, whatever it is. But for that particular kid, I still need to go in there and say, “Yeah, but it’s particularly bad on their face for this baby, and we talked about how the oatmeal baths are helpful.”
-It’s actually those individual details about the patient that are the thing you want to remember next time, or the thing that’s going to change your decision-making. And the more complicated the patient gets or the more involved the social situation is, the more you need to get all that down. Even in the best-case scenarios, you have your template that helps take care of most things, but then you have to go through and add all those customized, unique details yourself.
+Template-based documentation faces a fundamental challenge: it excels at capturing routine, common elements but struggles with patient-specific details. The most clinically valuable information—what makes each patient unique, the nuanced decision-making process, and contextual factors—requires manual entry regardless of template sophistication.
 
-And for the sicker patients in the inpatient settings, this is summed up by your one-liner—that one-liner is the thing that everyone looks for in your note, and everything else is just, you know, whatever. We all know it’s there, and it is important to document what we did for billing and for liability. But what we really want out of the chart is these unique things.
+For complex patients, social circumstances, or atypical presentations, physicians must still manually add substantial narrative detail. This creates a persistent bottleneck where documentation speed is limited by typing or dictation capabilities, typically adding 2-5 minutes per patient encounter.
 
+## Emerging AI-Assisted Documentation Workflow
 
-### The Bottleneck
-So even with the best setup of the current way of doing things, you still need to add manual information for each patient, for each diagnosis, just adding that unique detail that lets you actually make the chart useful. And that’s the rub.
-Right now, the only way you can do that is typing it in yourself or dictating—if you’re into dictation, I am a big fan. But that limits your speed. Depending on how fast you can type, that’s how fast you can get through your day. And that’s eating minutes for every single patient.
+### Technology Overview
 
+Recent advances in natural language processing have enabled AI-powered medical scribes that can transcribe and structure clinical conversations. These tools utilize:
 
-## The New Way: A Better Workflow
-So I’m here to present to you a new workflow, and it takes advantage of recent advances with scribe technology and with large language models. That might sound fancy or new and intimidating, but the real-life version of it is so much easier than these tools you’ve been working to use.
+- **Automatic speech recognition (ASR):** Converts spoken language to text via ambient scribe
+- **Large language models (LLMs):** Process and structure information according to medical documentation standards
 
-Even talking about customizing your smart lists—for most people, especially if you’re not super into computers, that might sound really intimidating, which is part of why a lot of people haven’t maximized it. The whole thing’s so confusing and just takes a lot of work. And honestly, we’re working hard enough just doing our work that we don’t want to add anything else.
+While sophisticated, these technologies represent an evolution of existing transcription and natural language processing capabilities rather than entirely novel approaches.
 
-But this new way of doing things—the way I like to compare it is if our old way was kind of like pedaling a bicycle. Smart phrases are better than walking, better than running for sure. You can go faster, but you’re still working really hard. This new way of doing things is a lot like jumping on the subway.
-Yes, like most things we do in our jobs, it’s important to understand in general how it works, big picture. But like riding the subway, you don’t really need to know how the subway gets through the subway tunnels or exactly what route it takes. You just need to know that you’re on the right train, and then you take that train and go where you want to go.
+### Two-Stage Workflow
 
-And the beautiful thing about riding a subway, if you’ve ever been to a place like New York City or a place with good subways, is you get to do other things while you’re on the train. You can think about other things, you can talk to people, you can read. This new setup is a lot like that because you don’t have to actively take care of most of the work. You just have to review it at the end. You’re free to actually engage with the patient, to think through complex things, to spend your time doing the part of our jobs that we love—the actual conversations with the families and making skilled medical decisions. It’s a real upgrade.
+#### Stage 1: Ambient Recording and Transcription
 
+AI scribe tools (such as Doximity’s free offering, Nuance’s DAX Copilot, or other HIPAA-compliant platforms) record clinical encounters and generate either:
 
-### How It Works
-So what does the workflow look like?
+- Complete transcripts of the conversation
+- Preliminary structured notes in standard formats (SOAP, HPI, etc.)
 
-**Step 1:** Record the conversation with a scribe tool. There’s a lot of these—they’re all competing to win your favor. If you haven’t seen this at all, I’d recommend checking out Doximity’s to start. It is free, and it works well. Obviously, you need something that’s been approved by your IT department for HIPAA compliance, but that really shouldn’t be an issue. I can almost guarantee you can find some other clinicians right now using these tools.
+**Important considerations:**
 
-These are AI scribes. There’s artificial intelligence involved in how this technology works. Don’t let that spook you, though. If you think about it, this is already on your phone, right? If you want to send a text message, you can hit a button and it will record what you say and send it as a text message. If you get a voicemail, you can see the words pop on your screen of what they’re saying before you actually listen to it. That’s the same technology—it’s just been refined and polished for healthcare.
+- Must be approved by institutional IT and compliance departments
+- Requires patient consent
+- Should comply with applicable privacy regulations (HIPAA, etc.)
 
-It’s not rocket science. It’s very fancy dictionary math. And it’s now possible to get good transcripts of conversations written out for you automatically, which is awesome. But it’s not crazy or magical or anything like that. It’s just a really good tool that computers can use now.
+#### Stage 2: Customization Through Prompt Engineering
 
-So you do that, and it gives you a basic output. It’ll either give you a full transcript of what was said, or for a lot of these tools, it’ll actually go ahead and try to write a note for you.
+The second stage involves using custom prompts to refine the initial output. A prompt serves as a set of instructions for an LLM to reformat, reorganize, or enhance the scribe output according to individual preferences, specialty requirements, or institutional standards.
 
-**Step 2:** Run your custom prompt over it. This is where the rubber meets the road. This is the innovation I’m here to present.
+This approach allows physicians to:
 
-A lot of these tools do their best to give you a good version of your note, but the thing is, they’re trying to make one product to make everyone happy. And we all know that we’re all very different. Even inside my group, we have doctors who like to document in all sorts of different ways, and we’re all doing the same job. But then you talk about different specialties—inpatient, outpatient, emergency department, wherever you are—it’s going to look different, what you want to see. And that’s okay.
+- Maintain consistency with their existing documentation style
+- Incorporate specialty-specific terminology and structure
+- Meet local compliance and billing requirements
+- Preserve their clinical voice while reducing manual typing
 
-The best part of this is the second step: you take that raw output, and you run a new prompt over it. A new language model prompt that acts like an editor. It takes the scribe output and churns it into your exact preferences.
-
-
-### The Goal
-The goal should be at first to make notes that look exactly like what you write right now when you type by hand. Later, if you want, this tool, this pathway is actually capable of doing a lot more than that. But a good place to start is just trying to create output that looks indistinguishable from what you currently do, but just much, much faster.
+## Implementation Considerations
 
 ### Getting Started
-So how do you actually do this? Start with the [prompts](https://physicianpromptengineering.com/prompt-library.html) on this site. See how they work, play around with them, and then [modify](https://physicianpromptengineering.com/prompt-generator/) them to make them your own. That’s the beautiful thing about this—once you understand the basics of prompt engineering, you can tailor it exactly to your workflow, your specialty, your preferences. Take some time to [learn about prompt engineering](https://physicianpromptengineering.com/best-practices.html) here and see what else is possible. I think you’ll be surprised at how much these tools can do once you start experimenting with them. But most importantly, I want you to experience the joy of practicing medicine while focusing on what matters most—your patients, your clinical decision-making, the actual practice of medicine. That’s what we signed up for in the first place. And now, finally, we have the tools to get back to it. I think you’re going to love it.
+
+1. **Verify institutional approval:** Confirm that AI scribe tools meet your organization’s security and compliance requirements
+1. **Start with simple cases:** Begin with routine visits to develop comfort with the workflow
+1. **Experiment with prompts:** Use available prompt templates as starting points, then modify based on your needs
+1. **Maintain quality oversight:** Always review and edit AI-generated content before signing
+
+### Limitations and Risks
+
+**Current limitations include:**
+
+- Accuracy depends on audio quality and clear speech
+- May miss non-verbal clinical findings
+- Requires physician review and editing for accuracy
+- Not suitable for all clinical scenarios
+- Variable performance across specialties and clinical settings
+
+**Risk mitigation strategies:**
+
+- Never release documentation without personal review
+- Maintain backup documentation methods
+- Report errors to improve system performance
+- Stay current with evolving best practices
+
+### Regulatory and Ethical Considerations
+
+- Informed consent for recording conversations
+- Data security and patient privacy protection
+- Liability considerations for AI-generated content
+- Documentation integrity and authenticity
+- Compliance with billing and coding regulations
+
+## Evidence and Outcomes
+
+While this technology is relatively new, preliminary experience suggests potential benefits:
+
+- Reduced documentation time per patient encounter
+- Increased proportion of time spent in direct patient interaction
+- Substantial reduction in after-hours charting 
+
+Physicians should remain aware that evidence is still emerging, and outcomes may vary based on practice setting, specialty, and implementation approach.
+
+## Resources for Further Learning
+
+For physicians interested in exploring AI-assisted documentation:
+
+- Review your institution’s approved vendors and tools
+- Consult with colleagues who have implemented these workflows
+- Explore prompt engineering basics and best practices
+- Consider starting with a small pilot before full implementation
+
+The goal is not to replace physician judgment but to automate routine aspects of documentation, allowing more cognitive resources for clinical reasoning and patient care.
+
+-----
+
+## Conclusion
+
+AI-assisted clinical documentation represents a meaningful evolution in addressing documentation burden. While not a complete solution to all EHR challenges, it offers a practical approach to reducing time spent on routine data entry while preserving the clinical detail necessary for quality care.
+
+As with any new clinical tool, implementation should be thoughtful, evidence-informed, and accompanied by appropriate oversight. Physicians who adopt these technologies should maintain high standards for documentation quality while exploring efficiency gains.
+
+-----
