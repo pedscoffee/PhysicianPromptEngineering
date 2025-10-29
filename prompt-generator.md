@@ -460,7 +460,7 @@ Example:
     <div class="support-section">
         <h3>Found this useful?</h3>
         <p>If this tool has helped streamline your clinical workflow, consider supporting the project with a small tip. Your support helps keep this resource free and ad-free for all clinicians.</p>
-        <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/sponsors" target="_blank" class="tip-jar-btn">☕ Support with a Tip</a>
+        <a href="https://donate.stripe.com/14A9ANf3K8VjeAW7pT8bS00" target="_blank" class="tip-jar-btn">☕ Support with a Tip</a>
     </div>
 </div>
 
