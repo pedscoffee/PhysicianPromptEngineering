@@ -355,6 +355,7 @@ permalink: /prompt-generator/
         background: #1e59a8;
     }
 </style>
+![AP Prompt Generator Banner](./images/appromptgeneratorbanner.jpg)
 <div class="container">
     <div class="header">
         <h1>Clinical A/P Prompt Generator</h1>
