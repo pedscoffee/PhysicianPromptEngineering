@@ -1,6 +1,6 @@
 ---
 layout: home # or whatever your site's main page layout is
-title: Physician Prompt Engineering Blog
+title: Blog
 permalink: /blog/
 ---
 
