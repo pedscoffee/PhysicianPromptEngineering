@@ -5,7 +5,7 @@ permalink: /prompt-generator/
 ---
 {% raw %}
 <style>
-    /* The style block must remain inside the {% raw %} block */
+    /* The style block must remain inside the {% raw %} block. This should work now. */
     * {
         margin: 0;
         padding: 0;

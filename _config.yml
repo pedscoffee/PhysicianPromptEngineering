@@ -11,7 +11,7 @@ theme: minima
 header_pages:
   - prompt-library.md
   - best-practices.md
-  - prompt_generator.md
+  - prompt-generator.md
   - contributions.md
 
 # Minima-specific settings
@@ -24,10 +24,12 @@ plugins:
   
 # --- New Prompt Collection ---
 # This tells Jekyll to look for a folder named "_prompts"
-# and treat each file inside as a prompt.
+# and treat each file inside as a prompt. 
 collections:
   prompts:
     output: true
     permalink: /prompts/:path/
 
 google_analytics: G-VNYGW8RWMY
+
+# This should work now
