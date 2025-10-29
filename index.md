@@ -53,7 +53,7 @@ image: /images/workflow-diagram.png
   </iframe>
 </div>
 
-# AI Scribe LLM Editor
+# Physician Scribe Large Language Model Editor
 
 ## A New Way Forward
 
