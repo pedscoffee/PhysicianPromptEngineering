@@ -355,7 +355,6 @@ permalink: /prompt-generator/
         background: #1e59a8;
     }
 </style>
-<div class="container">
     <div class="header">
         <h1>Clinical A/P Prompt Generator</h1>
         <p>Create custom prompts for formatting AI scribe output into structured clinical notes</p>
@@ -463,7 +462,6 @@ Example:
         <p>Students: Don't even think about it. </p>
         <a href="https://donate.stripe.com/14A9ANf3K8VjeAW7pT8bS00" target="_blank" class="tip-jar-btn">☕ Support with a Tip</a>
     </div>
-</div>
 
 <script>
     let boilerplateCount = 0;
