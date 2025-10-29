@@ -45,6 +45,8 @@ description: "Contribute your own AI prompts to our growing library. Share produ
 }
 </style>
 
+![Thank You Banner](./images/thank-you-banner.jpg)
+
 We are building a community-driven library, and we need your expertise. If you are a physician who has developed your own custom prompts, please share them!
 
 Each prompt is valuable on its own terms, and in addressing different problems we may find new approaches and underlying principles that will make all of our prompts better. The vision is a shared library where any clinician could come and benefit from each other's tools and insights. We shouldn't all invent the wheel separately.  Let's work together. -PedsCoffee☕️🏥☕️
