@@ -71,7 +71,7 @@ The single most impactful finding in clinical prompt engineering is that **few-s
 
 LLMs excel at pattern recognition. The most effective approach is to leverage the LLM’s ability to emulate a style, structure, and tone. The **"show, don't tell"** method is superior. This concept can be understood through an analogy:
 
-> "It’s almost like a knitting pattern.  Abstractly describing the type of scarf you want is way more difficult than giving someone a pattern to follow...What’s even better than a pattern is handing them the scarf that you want to see and saying, 'Just make more of these.' "
+*It’s almost like a knitting pattern.  Abstractly describing the type of scarf you want is way more difficult than giving someone a pattern to follow...What’s even better than a pattern is handing them the scarf that you want to see and saying, 'Just make more of these.'*
 
 By providing **three to five perfect examples** of a finished note section (e.g., an Assessment and Plan), you give the model a concrete blueprint. It uses these few-shot examples to infer the implicit rules of your desired output, such as:
 
@@ -126,7 +126,7 @@ The principle is simple: **it is very difficult to ask a Large Language Model to
 
 When an LLM is asked to perform two tasks simultaneously (e.g., write the Assessment and Plan *and* generate the After Visit Summary), the complexity does not simply add; it **multiplies**. The pattern the LLM needs to follow becomes infinitely more complex.
 
-> "You're taking the pattern of the two tasks and you're multiplying them together. You’ll find that making a small change to one of the two tasks might break the other one or it might break the whole thing."
+*"You're taking the pattern of the two tasks and you're multiplying them together. You’ll find that making a small change to one of the two tasks might break the other one or it might break the whole thing."*
 
 While it is *possible* to combine tasks, it can make the output fragile.
 
