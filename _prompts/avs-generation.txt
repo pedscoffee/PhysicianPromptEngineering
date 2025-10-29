@@ -1,7 +1,7 @@
 ---
 title: "After Visit Summary (AVS) Generation - v1.0"
-description: "Generates personalized sign-offs + actionable family to-do lists."
-specialty: "Pediatrics (adaptable to all specialties)"
+description: "Generates personalized sign-offs + actionable family to-do lists. Change few shot examples to match what you see and your voice."
+specialty: "Pediatrics (Easy to change)"
 char_count: 4715
 ---
 
