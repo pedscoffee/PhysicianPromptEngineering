@@ -11,6 +11,7 @@ theme: minima
 header_pages:
   - prompt-library.md
   - best-practices.md
+  - prompt-generator.md
   - contributions.md
 
 # Minima-specific settings
