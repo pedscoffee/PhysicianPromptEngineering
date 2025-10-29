@@ -52,6 +52,7 @@ These are the core principles derived from real-world clinical use that lead to 
 * Prompts can be used independently or chained together.
 * This modular approach makes it much easier to refine, test, and iterate on each function.
 
+---
 
 ## LLM Prompt Engineering Best Practices for EMR Scribes: A Definitive Guide to Using AI for Clinical Documentation   
 
