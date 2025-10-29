@@ -41,8 +41,6 @@ image: /images/workflow-diagram.png
 
 ![AP Prompt Generator Banner](./images/physician_prompt_engineering.jpg)
 
-# AI Scribe LLM Editor
-
 <div class="video-container">
   <iframe 
     width="560" 
@@ -54,6 +52,8 @@ image: /images/workflow-diagram.png
     allowfullscreen>
   </iframe>
 </div>
+
+# AI Scribe LLM Editor
 
 ## A New Way Forward
 
