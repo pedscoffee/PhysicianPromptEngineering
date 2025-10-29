@@ -459,7 +459,6 @@ Example:
 
     <div class="support-section">
         <h3>Found this useful?</h3>
-        <p>This project and this tool could have been a product or a start up like most AI related apps right now.  My goal instead is to create a resource to give back to the medical community.  Use it for free!</p>
         <p> If this tool has helped streamline your clinical workflow, consider supporting the project with a small tip. Your support helps keep this resource free and ad-free for all clinicians.</p> 
         <p>Students: Don't even think about it. </p>
         <a href="https://donate.stripe.com/14A9ANf3K8VjeAW7pT8bS00" target="_blank" class="tip-jar-btn">☕ Support with a Tip</a>
