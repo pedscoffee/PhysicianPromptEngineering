@@ -27,3 +27,9 @@ When submitting your prompt, please include the following details so others can 
 ### Submit Your Prompt Here
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScicxuLRUnXqv43QbRZ2zcYWuX47B_HOhJM3ir7dV11IE4Gpw/viewform?embedded=true" width="640" height="863" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+<div class="support-section">
+    <h3>Found this useful?</h3>
+    <p>If this tool has helped streamline your clinical workflow, consider supporting the project with a small tip. Your support helps keep this resource free and ad-free for all clinicians.</p>
+    <a href="https://donate.stripe.com/14A9ANf3K8VjeAW7pT8bS00" target="_blank" class="tip-jar-btn">☕ Support with a Tip</a>
+</div>
