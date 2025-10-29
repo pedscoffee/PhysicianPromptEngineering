@@ -41,6 +41,8 @@ image: /images/workflow-diagram.png
 
 # Physician Prompt Engineering | AI Scribe Large Language Model Editor
 
+![AP Prompt Generator Banner](./images/physician_prompt_engineering.jpg)
+
 <div class="video-container">
   <iframe 
     width="560" 
