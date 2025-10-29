@@ -3,7 +3,7 @@ layout: page
 title: Prompt Engineering Best Practices
 description: "Learn the three core principles of effective AI prompt engineering for clinical documentation: few-shot examples, brevity, and modular design."
 ---
-
+![AP Prompt Generator Banner](./images/Best_practices.jpg)
 <style>
   .video-container {
     position: relative;
