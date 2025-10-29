@@ -17,7 +17,7 @@ excerpt: "Discover how physician-designed prompt engineering can save time and i
 
 Clinical documentation has become one of the most time-consuming aspects of modern medical practice. Physicians spend hours a day in front of a computer, contributing significantly to professional burnout and reducing time available for patient interaction.
 
-While the transition from paper charts to electronic health records has enabled improved care coordination and information accessibility, it has also created substantial administrative burden. Physicians report that documentation requirements often detract from patient-centered care and clinical reasoning—the core activities that define medical practice.
+While the transition from paper charts to electronic health records has enabled improved care coordination and information accessibility, it has also created substantial administrative burden.  Documentation requirements detract from patient-centered care and clinical reasoning—the core activities that define medical practice.
 
 ## Traditional Documentation Methods
 
@@ -33,20 +33,13 @@ These tools have provided incremental efficiency gains for routine documentation
 
 ### Inherent Limitations
 
-Template-based documentation faces a fundamental challenge: it excels at capturing routine, common elements but struggles with patient-specific details. The most clinically valuable information—what makes each patient unique, the nuanced decision-making process, and contextual factors—requires manual entry regardless of template sophistication.
+Template-based documentation faces a fundamental challenge: it excels at capturing routine, common elements but struggles with patient-specific details.  The most clinically valuable information—what makes each patient unique, the nuanced decision-making process, and contextual factors—requires manual entry regardless of template sophistication.
 
 For complex patients, social circumstances, or atypical presentations, physicians must still manually add substantial narrative detail. This creates a persistent bottleneck where documentation speed is limited by typing or dictation capabilities, typically adding 2-5 minutes per patient encounter.
 
 ## Emerging AI-Assisted Documentation Workflow
 
-### Technology Overview
-
-Recent advances in natural language processing have enabled AI-powered medical scribes that can transcribe and structure clinical conversations. These tools utilize:
-
-- **Automatic speech recognition (ASR):** Converts spoken language to text via ambient scribe
-- **Large language models (LLMs):** Process and structure information according to medical documentation standards
-
-While sophisticated, these technologies represent an evolution of existing transcription and natural language processing capabilities rather than entirely novel approaches.
+In contrast, the key innovation shared here is physician use of a large language model as a personalized AI Editor to accelerate and enhance medical documentation.  Since the foundation of the note is the actual conversation, it naturally brings the unique aspects of the visit to the forefront.  The result is documentation that is more effective and more efficient.
 
 ### Two-Stage Workflow
 
