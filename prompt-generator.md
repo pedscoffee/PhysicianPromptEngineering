@@ -813,7 +813,7 @@ const PatternAnalyzer = {
         const problems = this.parseProblems(text);
         
         if (problems.length === 0) {
-            return { error: 'Could not detect any problems. Please format problems with **Bold**, CAPS, or Capitalized: format.' };
+            return { error: 'Could not detect any problems. Please format problem names using **Bold**, ALL CAPS, or Capitalized: format.' };
         }
         
         // Check for empty problems
@@ -855,8 +855,17 @@ const PatternAnalyzer = {
         // Pattern 1: **Bold**
         let sections = text.split(/\*\*([^*]+)\*\*/);
         if (sections.length > 2) {
+            // Filter out subcategories (words ending with colon that are likely category headers)
+            const subcategoryPattern = /^(Diagnostics|Therapeutics|Medications|Follow-up|Tests|Assessment|Plan|Prescriptions|Referrals|Consults|Next Steps|Patient Education|Discharge|Situational awareness):$/i;
+            
             for (let i = 1; i < sections.length; i += 2) {
                 const problemName = sections[i].trim();
+                
+                // Skip if it's a subcategory header
+                if (subcategoryPattern.test(problemName)) {
+                    continue;
+                }
+                
                 const content = sections[i + 1] || '';
                 problems.push({
                     name: problemName,
@@ -865,10 +874,10 @@ const PatternAnalyzer = {
                     format: 'bold'
                 });
             }
-            return problems;
+            if (problems.length > 0) return problems;
         }
         
-        // Pattern 2: ALL CAPS (with optional colon)
+        // Pattern 2: ALL CAPS (at least 3 chars, mostly uppercase)
         const lines = text.split('\n');
         let currentProblem = null;
         
@@ -876,17 +885,26 @@ const PatternAnalyzer = {
             const line = lines[i];
             const trimmed = line.trim();
             
-            // Check for ALL CAPS problem marker
-            if (/^[A-Z][A-Z\s]{2,}:?$/.test(trimmed)) {
-                if (currentProblem) {
-                    problems.push(currentProblem);
+            // Check for ALL CAPS problem marker (at least 3 chars, 80% uppercase)
+            if (trimmed.length >= 3) {
+                const upperCount = (trimmed.match(/[A-Z]/g) || []).length;
+                const letterCount = (trimmed.match(/[A-Za-z]/g) || []).length;
+                const isAllCaps = letterCount > 0 && (upperCount / letterCount) >= 0.8;
+                
+                if (isAllCaps && /^[A-Z]/.test(trimmed)) {
+                    if (currentProblem) {
+                        problems.push(currentProblem);
+                    }
+                    currentProblem = {
+                        name: trimmed.replace(/:$/, ''),
+                        content: '',
+                        lines: [],
+                        format: 'caps'
+                    };
+                } else if (currentProblem && trimmed) {
+                    currentProblem.content += line + '\n';
+                    currentProblem.lines.push(trimmed);
                 }
-                currentProblem = {
-                    name: trimmed.replace(/:$/, ''),
-                    content: '',
-                    lines: [],
-                    format: 'caps'
-                };
             } else if (currentProblem && trimmed) {
                 currentProblem.content += line + '\n';
                 currentProblem.lines.push(trimmed);
@@ -901,8 +919,8 @@ const PatternAnalyzer = {
             const line = lines[i];
             const trimmed = line.trim();
             
-            // Check for Capitalized Word: pattern
-            if (/^[A-Z][a-zA-Z\s]+:$/.test(trimmed)) {
+            // Check for Capitalized Word: pattern (must have colon at end)
+            if (/^[A-Z][a-zA-Z\s,'-]+:$/.test(trimmed) && trimmed.length >= 4) {
                 if (currentProblem) {
                     problems.push(currentProblem);
                 }
@@ -948,39 +966,27 @@ const PatternAnalyzer = {
         return problems;
     },
 
-    // CATEGORY 1: ASSESSMENT FORMAT DETECTION (5 types)
+    // CATEGORY 1: ASSESSMENT FORMAT DETECTION (4 types - structure-only)
     detectAssessmentFormat(problems) {
         const formats = problems.map(problem => {
-            const content = problem.content;
             const lines = problem.lines;
-            const firstLine = lines[0] || '';
             
-            // 1. Check for narrative (2+ sentences with connecting words)
-            if (this.isNarrative(content)) {
+            // 1. Check for narrative (2+ consecutive non-bullet lines at start)
+            if (this.isNarrativeParagraph(problem)) {
                 return 'narrative';
             }
             
-            // 2. Check for one-liner-separate (line with separator, not a bullet)
-            if (this.isOneLinerSeparate(content, firstLine, lines)) {
-                // Distinguish sentence vs phrase
-                if (this.isCompleteSentence(firstLine)) {
-                    return 'oneliner-sentence';
-                } else {
-                    return 'oneliner-phrase';
-                }
+            // 2. Check for one-liner (exactly 1 non-bullet line + bullets)
+            if (this.hasOneLinerStructure(lines)) {
+                return 'oneliner-phrase';
             }
             
-            // 3. Check for assessment-first-bullet
-            if (this.isAssessmentFirstBullet(lines)) {
+            // 3. Check for assessment-first-bullet (all lines are bullets)
+            if (this.isAssessmentFirstBulletStructure(lines)) {
                 return 'assessment-first-bullet';
             }
             
-            // 4. Check for discrete assessment bullets
-            if (this.hasDiscreteAssessmentBullets(lines)) {
-                return 'discrete-bullets';
-            }
-            
-            // 5. Minimal (just problem name, straight to plan)
+            // 4. Minimal (default - straight to problem name)
             return 'minimal';
         });
         
@@ -992,6 +998,50 @@ const PatternAnalyzer = {
         };
     },
 
+    // Structure-only helper: Detects narrative by counting non-bullet lines at start
+    isNarrativeParagraph(problem) {
+        const lines = problem.lines;
+        
+        // Count leading non-bullet lines (paragraph text before any bullets)
+        let nonBulletCount = 0;
+        for (const line of lines) {
+            if (/^\s*[-*]\s+/.test(line)) break; // Stop at first bullet
+            if (line.trim()) nonBulletCount++;
+        }
+        
+        // Narrative: 2+ non-bullet lines before any bullets
+        return nonBulletCount >= 2;
+    },
+
+    // Structure-only helper: Detects one-liner by counting lines
+    hasOneLinerStructure(lines) {
+        // Exactly 1 non-bullet line + at least 1 bullet
+        const bulletLines = lines.filter(l => /^\s*[-*]\s+/.test(l));
+        const nonBulletLines = lines.filter(l => 
+            !/^\s*[-*]\s+/.test(l) && l.trim()
+        );
+        
+        // One-liner: exactly 1 non-bullet assessment + at least 1 bullet plan
+        return nonBulletLines.length === 1 && bulletLines.length >= 1;
+    },
+
+    // Structure-only helper: Detects when all content is bullets
+    isAssessmentFirstBulletStructure(lines) {
+        // All non-empty lines are bullets (no mixed non-bullet text)
+        
+        // Need at least 2 bullets (assessment + plan)
+        const bulletLines = lines.filter(l => /^\s*[-*]\s+/.test(l));
+        if (bulletLines.length < 2) return false;
+        
+        // ALL non-empty lines must be bullets
+        const allNonEmptyAreBullets = lines.every(l => 
+            /^\s*[-*]\s+/.test(l) || !l.trim()
+        );
+        
+        return allNonEmptyAreBullets;
+    },
+
+    // Legacy function kept for reference (not used in new detection)
     isNarrative(text) {
         // Multiple sentences (2+) with connecting words
         const periodCount = (text.match(/\./g) || []).length;
@@ -1009,97 +1059,6 @@ const PatternAnalyzer = {
         // Narrative has multiple periods (sentences) OR long paragraph with connectors
         return (periodCount >= 2 && isNotBulletList) || 
                (hasConnectors && isNotBulletList && text.length > 100);
-    },
-
-    isOneLinerSeparate(content, firstLine, lines) {
-        // Must have separator character (dash, colon, comma) in first line
-        const hasSeparator = /[-:,]/.test(firstLine);
-        if (!hasSeparator) return false;
-        
-        // First line should NOT be a bullet point
-        const isNotBullet = !/^\s*[-*]\s+/.test(firstLine);
-        if (!isNotBullet) return false;
-        
-        // If multiple lines, rest should be bullets (plan)
-        if (lines.length > 1) {
-            const restAreBullets = lines.slice(1).every(l => /^\s*[-*]\s+/.test(l) || !l.trim());
-            return restAreBullets;
-        }
-        
-        // Single line with separator
-        return true;
-    },
-
-    isCompleteSentence(text) {
-        // Check for subject-verb patterns indicating complete sentence
-        const sentencePatterns = [
-            /\b(patient|pt|he|she|condition|symptoms?)\s+(is|has|had|was|were|presents?|reports?|demonstrates?)/i,
-            /\b(I|we)\s+(recommend|plan|will|started|discussed)/i
-        ];
-        
-        const hasSentencePattern = sentencePatterns.some(pattern => pattern.test(text));
-        
-        // Also check for period at end (if present, likely sentence)
-        const hasPeriod = /\.$/.test(text.trim());
-        
-        // Multiple periods definitely indicates sentence
-        const periodCount = (text.match(/\./g) || []).length;
-        
-        return hasSentencePattern || periodCount >= 2 || (hasPeriod && text.split(/\s+/).length > 5);
-    },
-
-    isAssessmentFirstBullet(lines) {
-        if (lines.length < 2) return false;
-        
-        const firstBullet = lines[0];
-        const secondBullet = lines[1] || '';
-        
-        // First line must be a bullet
-        if (!/^\s*[-*]\s+/.test(firstBullet)) return false;
-        
-        // Extract bullet content
-        const firstContent = firstBullet.replace(/^\s*[-*]\s+/, '').toLowerCase();
-        const secondContent = secondBullet.replace(/^\s*[-*]\s+/, '').toLowerCase();
-        
-        // First bullet should have NO action verbs (assessment/finding)
-        const actionVerbs = ['start', 'begin', 'continue', 'stop', 'discontinue', 'increase', 
-                            'decrease', 'prescribe', 'order', 'refer', 'consult', 'follow',
-                            'recheck', 'monitor', 'assess', 'obtain', 'send', 'schedule'];
-        const firstHasAction = actionVerbs.some(verb => firstContent.includes(verb));
-        
-        // Second bullet should have action verb (plan)
-        const secondHasAction = actionVerbs.some(verb => secondContent.includes(verb));
-        
-        // First bullet should have finding/status words
-        const findingWords = ['elevated', 'increased', 'decreased', 'positive', 'negative',
-                             'noted', 'found', 'present', 'absent', 'fever', 'pain', 'tm',
-                             'crackles', 'wheezing', 'edema', 'erythema', 'swelling'];
-        const firstHasFinding = findingWords.some(word => firstContent.includes(word));
-        
-        return !firstHasAction && (secondHasAction || firstHasFinding);
-    },
-
-    hasDiscreteAssessmentBullets(lines) {
-        if (lines.length < 3) return false;
-        
-        // Need multiple bullets
-        const bulletLines = lines.filter(l => /^\s*[-*]\s+/.test(l));
-        if (bulletLines.length < 3) return false;
-        
-        // Check first few bullets for findings (not actions)
-        const firstThree = bulletLines.slice(0, 3);
-        const actionVerbs = ['start', 'begin', 'continue', 'stop', 'prescribe', 'order', 
-                            'refer', 'follow', 'recheck', 'monitor', 'obtain', 'schedule'];
-        
-        let findingCount = 0;
-        for (const bullet of firstThree) {
-            const content = bullet.replace(/^\s*[-*]\s+/, '').toLowerCase();
-            const hasAction = actionVerbs.some(verb => content.includes(verb));
-            if (!hasAction) findingCount++;
-        }
-        
-        // At least 2 of first 3 bullets should be findings
-        return findingCount >= 2;
     },
 
     // CATEGORY 2: PLAN FORMAT DETECTION
@@ -1163,36 +1122,52 @@ const PatternAnalyzer = {
     },
 
     isPlanNarrative(text) {
+        // Must have future tense indicators
         const futureTenseVerbs = ['will', 'plan to', 'going to', 'intend to'];
         const hasFutureTense = futureTenseVerbs.some(verb => 
             text.toLowerCase().includes(verb)
         );
         
+        // Must have multiple substantial sentences
         const sentences = (text.match(/[.!?]+/g) || []).length;
         const hasParagraphStructure = sentences >= 2;
         
+        // Must have NO bullets (strict requirement)
         const bulletCount = (text.match(/^\s*[-*]\s+/gm) || []).length;
         const noBullets = bulletCount === 0;
         
-        return hasFutureTense && hasParagraphStructure && noBullets;
+        // Must be substantial text (not just a single short line)
+        const wordCount = text.split(/\s+/).length;
+        const isSubstantial = wordCount >= 20;
+        
+        return hasFutureTense && hasParagraphStructure && noBullets && isSubstantial;
     },
 
     isHybridPlan(text) {
         const lines = text.split('\n').filter(l => l.trim());
         
-        let foundSentence = false;
-        let foundBullet = false;
+        // Must have substantial non-bullet sentences (not just fragment)
+        let substantialSentenceCount = 0;
+        let bulletCount = 0;
         
         for (const line of lines) {
-            if (/[.!?]$/.test(line.trim()) && !/^\s*[-*]/.test(line)) {
-                foundSentence = true;
-            }
-            if (/^\s*[-*]\s+/.test(line)) {
-                foundBullet = true;
+            const isBullet = /^\s*[-*]\s+/.test(line);
+            
+            if (isBullet) {
+                bulletCount++;
+            } else {
+                // Check if it's a substantial sentence (has period and multiple words)
+                const hasPeriod = /[.!?]$/.test(line.trim());
+                const wordCount = line.split(/\s+/).length;
+                
+                if (hasPeriod && wordCount >= 5) {
+                    substantialSentenceCount++;
+                }
             }
         }
         
-        return foundSentence && foundBullet;
+        // Hybrid requires at least 1 substantial sentence AND at least 2 bullets
+        return substantialSentenceCount >= 1 && bulletCount >= 2;
     },
 
     // CATEGORY 3: DETAIL MODIFIERS
@@ -1571,13 +1546,9 @@ const PromptGenerator = {
         const templates = {
             'narrative': '\n[Write assessment as a flowing paragraph with complete sentences explaining clinical reasoning]\n\n',
             
-            'oneliner-sentence': ' - [Complete sentence summarizing clinical context and key findings].\n\n',
-            
             'oneliner-phrase': ' - [brief finding, key detail, or status]\n\n',
             
             'assessment-first-bullet': `\n${indent}- [Brief assessment summary with key clinical findings]\n${indent}- [Action item]\n${indent}- [Action item]\n\n`,
-            
-            'discrete-bullets': `\n${indent}- [Clinical finding 1]\n${indent}- [Clinical finding 2]\n${indent}- [Action item]\n${indent}- [Action item]\n\n`,
             
             'minimal': '\n'
         };
@@ -1743,13 +1714,9 @@ const PromptGenerator = {
         const templates = {
             'narrative': "Write the assessment as a flowing narrative paragraph. Use complete sentences that explain clinical reasoning. Connect findings to conclusions using words like 'given,' 'therefore,' and 'likely'",
             
-            'oneliner-sentence': "After each bolded diagnosis, write a single complete sentence summarizing the clinical context and key findings. Use proper punctuation",
-            
             'oneliner-phrase': "After each bolded diagnosis, write a brief phrase summary using commas or dashes to separate key clinical facts (e.g., 'poorly controlled, maximal therapy'). Keep it concise without full sentences",
             
             'assessment-first-bullet': "List the key assessment findings as the first bullet point under each diagnosis. Use brief clinical phrases describing findings, vitals, or exam results. Follow with action items as subsequent bullets",
-            
-            'discrete-bullets': "List all clinical findings, exam results, and relevant history as separate bullet points before listing the plan items. Each finding should be its own bullet. Then list action items as separate bullets",
             
             'minimal': null
         };
