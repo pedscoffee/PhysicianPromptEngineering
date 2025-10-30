@@ -142,7 +142,7 @@ permalink: /prompt-generator/
         min-height: 100px;
     }
 
-    /* Example examples section */
+    /* Example helper */
     .example-helper {
         background: #f9f9f9;
         border: 2px solid #e8e8e8;
@@ -197,8 +197,8 @@ permalink: /prompt-generator/
     .pattern-feedback {
         background: #d4edda;
         border: 2px solid #28a745;
-        border-radius: 6px;
-        padding: 15px;
+        border-radius: 8px;
+        padding: 20px;
         margin-top: 15px;
         display: none;
     }
@@ -207,21 +207,100 @@ permalink: /prompt-generator/
         display: block;
     }
 
+    .pattern-feedback.warning {
+        background: #fff3cd;
+        border-color: #ffc107;
+    }
+
     .pattern-feedback h4 {
         color: #155724;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         display: flex;
         align-items: center;
         gap: 8px;
+        font-size: 1.1em;
     }
 
-    .pattern-feedback ul {
-        margin-left: 20px;
+    .pattern-feedback.warning h4 {
+        color: #856404;
+    }
+
+    .pattern-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .pattern-item {
+        background: white;
+        border: 1px solid #c3e6cb;
+        border-radius: 6px;
+        padding: 12px;
+    }
+
+    .pattern-feedback.warning .pattern-item {
+        border-color: #ffeaa7;
+    }
+
+    .pattern-item strong {
+        display: block;
         color: #155724;
+        margin-bottom: 5px;
+        font-size: 0.9em;
     }
 
-    .pattern-feedback li {
-        margin-bottom: 5px;
+    .pattern-feedback.warning .pattern-item strong {
+        color: #856404;
+    }
+
+    .pattern-value {
+        color: #155724;
+        font-size: 1.05em;
+        font-weight: 600;
+    }
+
+    .pattern-feedback.warning .pattern-value {
+        color: #856404;
+    }
+
+    .consistency-issues {
+        background: white;
+        border: 1px solid #ffeaa7;
+        border-radius: 6px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    .consistency-issues h5 {
+        color: #856404;
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+
+    .consistency-issues ul {
+        margin-left: 20px;
+        color: #856404;
+    }
+
+    .consistency-issues li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+    }
+
+    .pattern-note {
+        margin-top: 15px;
+        padding: 12px;
+        background: white;
+        border-left: 4px solid #28a745;
+        font-size: 0.95em;
+        color: #155724;
+        line-height: 1.6;
+    }
+
+    .pattern-feedback.warning .pattern-note {
+        border-left-color: #ffc107;
+        color: #856404;
     }
 
     /* Boilerplate section */
@@ -513,6 +592,10 @@ permalink: /prompt-generator/
         .download-btn {
             width: 100%;
         }
+
+        .pattern-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
@@ -594,10 +677,9 @@ Example:
             <!-- Pattern Detection Feedback -->
             <div class="pattern-feedback" id="patternFeedback">
                 <h4>✓ Pattern Detection Results</h4>
-                <ul id="patternList"></ul>
-                <p style="margin-top: 10px; font-size: 0.9em; color: #155724;">
-                    The generator will use these patterns. If something looks wrong, adjust your examples above and click "Analyze Examples" again.
-                </p>
+                <div class="pattern-grid" id="patternGrid"></div>
+                <div id="consistencyIssues"></div>
+                <div class="pattern-note" id="patternNote"></div>
             </div>
 
             <button type="button" class="add-boilerplate-btn" onclick="analyzeExamples()" style="margin-top: 15px; background: #2a7ae2; color: white; border: 2px solid #2a7ae2;">
@@ -677,7 +759,7 @@ let boilerplateCount = 0;
 let currentTemplate = 'scratch';
 let detectedPatterns = null;
 
-// Template data (from existing ap-formatting.txt)
+// Template data
 const TEMPLATES = {
     pithy: {
         examples: `**Asthma**
@@ -723,35 +805,725 @@ const TEMPLATES = {
 };
 
 // =============================================================================
+// ENHANCED PATTERN ANALYZER
+// =============================================================================
+const PatternAnalyzer = {
+    analyze(text) {
+        // Parse text into problems
+        const problems = this.parseProblems(text);
+        
+        if (problems.length === 0) {
+            return null;
+        }
+        
+        // Detect all pattern categories
+        const patterns = {
+            assessment: this.detectAssessmentFormat(problems),
+            plan: this.detectPlanFormat(problems),
+            brevity: this.measureBrevity(problems),
+            justification: this.detectJustification(problems),
+            contingency: this.detectContingency(text),
+            structure: {
+                problemFormat: this.detectProblemFormatting(text),
+                bulletStyle: this.detectBulletStyle(text),
+                spacing: this.detectSpacing(text)
+            },
+            voice: this.detectVoice(text),
+            abbreviations: this.measureAbbreviationDensity(text)
+        };
+        
+        // Check consistency
+        const consistency = this.checkConsistency(patterns, problems);
+        patterns.consistency = consistency;
+        
+        return patterns;
+    },
+
+    // Parse problems from text
+    parseProblems(text) {
+        const problems = [];
+        
+        // Split by bold problem markers
+        const sections = text.split(/\*\*([^*]+)\*\*/);
+        
+        for (let i = 1; i < sections.length; i += 2) {
+            const problemName = sections[i].trim();
+            const content = sections[i + 1] || '';
+            
+            if (problemName && content.trim()) {
+                problems.push({
+                    name: problemName,
+                    content: content,
+                    lines: content.split('\n').filter(l => l.trim())
+                });
+            }
+        }
+        
+        return problems;
+    },
+
+    // CATEGORY 1: ASSESSMENT FORMAT DETECTION
+    detectAssessmentFormat(problems) {
+        const formats = problems.map(problem => {
+            const content = problem.content;
+            const firstLine = problem.lines[0] || '';
+            
+            // Check for narrative (multiple sentences with connecting words)
+            if (this.isNarrative(content)) {
+                return 'narrative';
+            }
+            
+            // Check for one-liner (single line with dash/colon)
+            if (this.isOneLiner(content, firstLine)) {
+                return 'oneliner';
+            }
+            
+            // Check for discrete bullets
+            if (this.hasDiscreteBullets(content)) {
+                return 'discrete';
+            }
+            
+            // Minimal (just problem name, very little after)
+            return 'minimal';
+        });
+        
+        return {
+            primary: this.mostCommon(formats),
+            consistency: [...new Set(formats)].length === 1,
+            variations: [...new Set(formats)],
+            distribution: this.countOccurrences(formats)
+        };
+    },
+
+    isNarrative(text) {
+        // Multiple sentences with connecting words
+        const sentences = (text.match(/[.!?]+/g) || []).length;
+        const connectingWords = ['given', 'therefore', 'likely', 'suggests', 
+                                 'because', 'thus', 'however', 'although', 
+                                 'since', 'as', 'due to'];
+        const hasConnectors = connectingWords.some(word => 
+            text.toLowerCase().includes(word)
+        );
+        
+        // Check for paragraph structure (not just bullet points)
+        const bulletCount = (text.match(/^\s*[-*]\s+/gm) || []).length;
+        const isNotBulletList = bulletCount < 2;
+        
+        return sentences >= 2 && hasConnectors && isNotBulletList;
+    },
+
+    isOneLiner(content, firstLine) {
+        const lines = content.split('\n').filter(l => l.trim());
+        
+        // Single line with dash or colon separator
+        if (lines.length === 1) {
+            return /[-:,]/.test(firstLine);
+        }
+        
+        // Or first line is summary, rest are bullets
+        if (lines.length > 1 && /[-:,]/.test(firstLine)) {
+            const restAreBullets = lines.slice(1).every(l => /^\s*[-*]\s+/.test(l));
+            return restAreBullets;
+        }
+        
+        return false;
+    },
+
+    hasDiscreteBullets(text) {
+        const bulletLines = text.split('\n')
+            .filter(l => /^\s*[-*]\s+/.test(l));
+        return bulletLines.length >= 2;
+    },
+
+    // CATEGORY 2: PLAN FORMAT DETECTION
+    detectPlanFormat(problems) {
+        const formats = problems.map(problem => {
+            const content = problem.content;
+            
+            // Check for category subheadings
+            if (this.hasCategorySubheadings(content)) {
+                return 'categorized';
+            }
+            
+            // Check for narrative plan
+            if (this.isPlanNarrative(content)) {
+                return 'narrative';
+            }
+            
+            // Check for hybrid (narrative + bullets)
+            if (this.isHybridPlan(content)) {
+                return 'hybrid';
+            }
+            
+            // Default to simple bullets
+            return 'simple_bullets';
+        });
+        
+        return {
+            primary: this.mostCommon(formats),
+            consistency: [...new Set(formats)].length === 1,
+            variations: [...new Set(formats)],
+            distribution: this.countOccurrences(formats)
+        };
+    },
+
+    hasCategorySubheadings(text) {
+        const subheadingPatterns = [
+            /\*\*Diagnostics:\*\*/i,
+            /\*\*Therapeutics:\*\*/i,
+            /\*\*Medications:\*\*/i,
+            /\*\*Follow-up:\*\*/i,
+            /\*\*Referrals:\*\*/i,
+            /\*\*Consults:\*\*/i,
+            /\*\*Patient Education:\*\*/i,
+            /Diagnostics:/i,
+            /Therapeutics:/i,
+            /Follow-up:/i
+        ];
+        
+        return subheadingPatterns.some(pattern => pattern.test(text));
+    },
+
+    isPlanNarrative(text) {
+        const futureTenseVerbs = ['will', 'plan to', 'going to', 'intend to'];
+        const hasFutureTense = futureTenseVerbs.some(verb => 
+            text.toLowerCase().includes(verb)
+        );
+        
+        const sentences = (text.match(/[.!?]+/g) || []).length;
+        const hasParagraphStructure = sentences >= 2;
+        
+        const bulletCount = (text.match(/^\s*[-*]\s+/gm) || []).length;
+        const noBullets = bulletCount === 0;
+        
+        return hasFutureTense && hasParagraphStructure && noBullets;
+    },
+
+    isHybridPlan(text) {
+        const lines = text.split('\n').filter(l => l.trim());
+        
+        let foundSentence = false;
+        let foundBullet = false;
+        
+        for (const line of lines) {
+            if (/[.!?]$/.test(line.trim()) && !/^\s*[-*]/.test(line)) {
+                foundSentence = true;
+            }
+            if (/^\s*[-*]\s+/.test(line)) {
+                foundBullet = true;
+            }
+        }
+        
+        return foundSentence && foundBullet;
+    },
+
+    // CATEGORY 3: DETAIL MODIFIERS
+    measureBrevity(problems) {
+        const allItems = [];
+        
+        problems.forEach(problem => {
+            const bullets = problem.content
+                .split('\n')
+                .filter(l => /^\s*[-*]\s+/.test(l))
+                .map(l => l.replace(/^\s*[-*]\s+/, '').trim());
+            
+            allItems.push(...bullets);
+        });
+        
+        if (allItems.length === 0) return null;
+        
+        const wordCounts = allItems.map(item => item.split(/\s+/).length);
+        const avg = wordCounts.reduce((a, b) => a + b, 0) / wordCounts.length;
+        const max = Math.max(...wordCounts);
+        const min = Math.min(...wordCounts);
+        
+        let level;
+        if (avg < 6) level = 'terse';
+        else if (avg < 12) level = 'moderate';
+        else level = 'verbose';
+        
+        return {
+            average: Math.round(avg * 10) / 10,
+            max: max,
+            min: min,
+            level: level
+        };
+    },
+
+    detectJustification(problems) {
+        let noneCount = 0;
+        let briefCount = 0;
+        let detailedCount = 0;
+        
+        problems.forEach(problem => {
+            const bullets = problem.content.split('\n')
+                .filter(l => /^\s*[-*]\s+/.test(l));
+            
+            bullets.forEach(bullet => {
+                const rationaleWords = [' for ', ' to ', ' per ', ' given ', ' because '];
+                const hasRationale = rationaleWords.some(word => 
+                    bullet.toLowerCase().includes(word)
+                );
+                
+                if (!hasRationale) {
+                    noneCount++;
+                } else {
+                    const detailedWords = ['guideline', 'target', 'goal', 'standard', 'achieve'];
+                    const isDetailed = detailedWords.some(word => 
+                        bullet.toLowerCase().includes(word)
+                    );
+                    
+                    if (isDetailed) detailedCount++;
+                    else briefCount++;
+                }
+            });
+        });
+        
+        const total = noneCount + briefCount + detailedCount;
+        if (total === 0) return { level: 'unknown' };
+        
+        const percentNone = noneCount / total;
+        const percentDetailed = detailedCount / total;
+        
+        let level;
+        if (percentNone > 0.7) level = 'none';
+        else if (percentDetailed > 0.4) level = 'detailed';
+        else level = 'brief';
+        
+        return { level: level };
+    },
+
+    detectContingency(text) {
+        const contingencyPatterns = [
+            /if\s+(?:no|inadequate|poor)\s+response/i,
+            /if\s+(?:worsening|worsens)/i,
+            /return\s+if/i,
+            /rtc\s+if/i,
+            /escalate\s+to/i,
+            /→/g,
+            /consider\s+adding/i,
+            /if\s+persistent/i
+        ];
+        
+        const matches = contingencyPatterns
+            .filter(pattern => pattern.test(text))
+            .length;
+        
+        let level;
+        if (matches === 0) level = 'none';
+        else if (matches <= 2) level = 'simple';
+        else level = 'detailed';
+        
+        return { level: level, present: matches > 0 };
+    },
+
+    // CATEGORY 4: STRUCTURAL ELEMENTS
+    detectProblemFormatting(text) {
+        if (/\*\*[^*]+\*\*/.test(text)) return 'bold';
+        if (/[A-Z\s]{3,}:/.test(text)) return 'caps';
+        return 'plain';
+    },
+
+    detectBulletStyle(text) {
+        const lines = text.split('\n');
+        
+        const hyphenCount = lines.filter(l => /^\s+-\s+/.test(l)).length;
+        const asteriskCount = lines.filter(l => /^\s*\*\s+/.test(l) && !/\*\*/.test(l)).length;
+        const numberCount = lines.filter(l => /^\s*\d+\.\s+/.test(l)).length;
+        
+        let style, count;
+        if (hyphenCount > asteriskCount && hyphenCount > numberCount) {
+            style = 'hyphen';
+            count = hyphenCount;
+        } else if (asteriskCount > numberCount) {
+            style = 'asterisk';
+            count = asteriskCount;
+        } else if (numberCount > 0) {
+            style = 'number';
+            count = numberCount;
+        } else {
+            return { style: 'none', indent: 0 };
+        }
+        
+        // Measure indentation
+        const bulletLines = lines.filter(l => {
+            if (style === 'hyphen') return /^\s+-\s+/.test(l);
+            if (style === 'asterisk') return /^\s*\*\s+/.test(l) && !/\*\*/.test(l);
+            if (style === 'number') return /^\s*\d+\.\s+/.test(l);
+            return false;
+        });
+        
+        const indent = bulletLines.length > 0 ? bulletLines[0].search(/\S/) : 0;
+        
+        return { style: style, indent: indent, count: count };
+    },
+
+    detectSpacing(text) {
+        const hasBlankLines = /\n\s*\n/.test(text);
+        return { blankLinesBetweenProblems: hasBlankLines };
+    },
+
+    // CATEGORY 5: VOICE & TONE
+    detectVoice(text) {
+        const firstPerson = (text.match(/\b(I will|I recommend|I plan|I started|I discussed)\b/gi) || []).length;
+        const thirdPerson = (text.match(/\b(will|plan to|started|continue|recommend)\b/gi) || []).length - firstPerson;
+        const passive = (text.match(/\b(was|were|will be|to be started|to be continued)\b/gi) || []).length;
+        const patientCentric = (text.match(/\bpatient (will|prefers|wants|agrees|to)\b/gi) || []).length;
+        
+        const total = firstPerson + thirdPerson + passive + patientCentric;
+        
+        if (total === 0) return { voice: 'unknown' };
+        
+        const scores = {
+            first_person: firstPerson,
+            third_person: thirdPerson,
+            passive: passive,
+            patient_centric: patientCentric
+        };
+        
+        const dominant = Object.keys(scores).reduce((a, b) => 
+            scores[a] > scores[b] ? a : b
+        );
+        
+        return { voice: dominant };
+    },
+
+    measureAbbreviationDensity(text) {
+        const commonAbbreviations = [
+            'RTC', 'PRN', 'BID', 'TID', 'QID', 'PO', 'IV', 'IM',
+            'F/U', 'MMM', 'NDNT', 'OTC', 'AVS', 'PCMH', 'HTN',
+            'DM', 'CHF', 'COPD', 'URI', 'UTI', 'SOB', 'CP', 'N/V'
+        ];
+        
+        const found = commonAbbreviations.filter(abbr => 
+            text.includes(abbr)
+        );
+        
+        const words = text.split(/\s+/).length;
+        const density = found.length / words * 100;
+        
+        let level;
+        if (density > 5) level = 'high';
+        else if (density > 2) level = 'moderate';
+        else level = 'low';
+        
+        return {
+            level: level,
+            found: found,
+            count: found.length
+        };
+    },
+
+    // CONSISTENCY CHECKING
+    checkConsistency(patterns, problems) {
+        const issues = [];
+        
+        // Check assessment format consistency
+        if (patterns.assessment.variations.length > 1) {
+            issues.push({
+                category: 'Assessment Format',
+                message: `Mixed formats: ${patterns.assessment.variations.join(', ')}`,
+                suggestion: 'Use consistent format, or vary by problem complexity'
+            });
+        }
+        
+        // Check plan format consistency
+        if (patterns.plan.variations.length > 1) {
+            issues.push({
+                category: 'Plan Format',
+                message: `Mixed formats: ${patterns.plan.variations.join(', ')}`,
+                suggestion: 'Consider narrative for complex, bullets for simple'
+            });
+        }
+        
+        // Check brevity variance
+        if (patterns.brevity && patterns.brevity.max - patterns.brevity.min > 10) {
+            issues.push({
+                category: 'Brevity',
+                message: `Wide range: ${patterns.brevity.min}-${patterns.brevity.max} words per bullet`,
+                suggestion: 'AI will match source content complexity'
+            });
+        }
+        
+        return {
+            isConsistent: issues.length === 0,
+            issues: issues
+        };
+    },
+
+    // UTILITY FUNCTIONS
+    mostCommon(arr) {
+        const counts = {};
+        arr.forEach(item => counts[item] = (counts[item] || 0) + 1);
+        return Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+    },
+
+    countOccurrences(arr) {
+        const counts = {};
+        arr.forEach(item => counts[item] = (counts[item] || 0) + 1);
+        return counts;
+    }
+};
+
+// =============================================================================
+// PROMPT GENERATOR
+// =============================================================================
+const PromptGenerator = {
+    generate(data) {
+        const sections = [];
+        
+        // Task
+        sections.push(this.generateTask());
+        sections.push('\n---\n');
+        
+        // Output structure
+        sections.push(this.generateOutputStructure(data.patterns));
+        sections.push('\n---\n');
+        
+        // Rules
+        sections.push(this.generateRules(data.patterns, data.customRules));
+        sections.push('\n---\n');
+        
+        // Boilerplate
+        if (data.boilerplates.length > 0) {
+            sections.push(this.generateBoilerplate(data.boilerplates));
+            sections.push('\n---\n');
+        }
+        
+        // Few-shot examples
+        sections.push('## Few-Shot Examples\n\n');
+        sections.push(data.examples.trim());
+        
+        return sections.join('');
+    },
+
+    generateTask() {
+        return 'Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.';
+    },
+
+    generateOutputStructure(patterns) {
+        let output = '## Output Structure for Each Problem/Diagnosis\n\n';
+        
+        // Problem header based on formatting
+        if (patterns.structure.problemFormat === 'bold') {
+            output += '**[Problem/Diagnosis Name]**\n';
+        } else {
+            output += '[Problem/Diagnosis Name]\n';
+        }
+        
+        // Assessment structure
+        output += this.generateAssessmentStructure(patterns.assessment);
+        
+        // Plan structure
+        output += this.generatePlanStructure(patterns.plan, patterns.structure.bulletStyle);
+        
+        return output;
+    },
+
+    generateAssessmentStructure(assessment) {
+        const templates = {
+            narrative: '[Write assessment as a flowing paragraph with clinical reasoning]\n\n',
+            oneliner: '[Single-line summary after diagnosis with key clinical facts]\n\n',
+            discrete: '[List assessment findings as separate bullets]\n\n',
+            minimal: ''
+        };
+        
+        return templates[assessment.primary] || '';
+    },
+
+    generatePlanStructure(plan, bulletStyle) {
+        const indent = ' '.repeat(bulletStyle.indent || 8);
+        const bullet = bulletStyle.style === 'hyphen' ? '-' : 
+                      bulletStyle.style === 'asterisk' ? '*' : 
+                      bulletStyle.style === 'number' ? '1.' : '-';
+        
+        const templates = {
+            narrative: '[Write plan as flowing paragraph with future tense verbs]\n',
+            
+            simple_bullets: `${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`,
+            
+            categorized: `**Diagnostics:**\n${indent}${bullet} [Test/study]\n\n**Therapeutics:**\n${indent}${bullet} [Medication/treatment]\n\n**Follow-up:**\n${indent}${bullet} [Follow-up plan]\n`,
+            
+            hybrid: `[Opening narrative sentence explaining plan strategy]\n${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`
+        };
+        
+        return templates[plan.primary] || templates.simple_bullets;
+    },
+
+    generateRules(patterns, customRules) {
+        const rules = [];
+        let num = 1;
+        
+        // Assessment instructions
+        const assessmentInst = this.getAssessmentInstruction(patterns.assessment);
+        if (assessmentInst) {
+            rules.push(`${num}. ${assessmentInst}`);
+            num++;
+        }
+        
+        // Plan instructions
+        const planInst = this.getPlanInstruction(patterns.plan);
+        if (planInst) {
+            rules.push(`${num}. ${planInst}`);
+            num++;
+        }
+        
+        // Problem formatting
+        if (patterns.structure.problemFormat === 'bold') {
+            rules.push(`${num}. Bold all problem/diagnosis names using **Problem** format`);
+            num++;
+        }
+        
+        // Bullet style
+        if (patterns.structure.bulletStyle.style !== 'none') {
+            const bulletChar = patterns.structure.bulletStyle.style === 'hyphen' ? 'hyphen (-)' :
+                             patterns.structure.bulletStyle.style === 'asterisk' ? 'asterisk (*)' :
+                             'numbers';
+            rules.push(`${num}. Use ${bulletChar} for all bullets`);
+            num++;
+            
+            if (patterns.structure.bulletStyle.indent > 0) {
+                rules.push(`${num}. Indent all bullets with ${patterns.structure.bulletStyle.indent} spaces`);
+                num++;
+            }
+        }
+        
+        // Brevity
+        if (patterns.brevity) {
+            if (patterns.brevity.level === 'terse') {
+                rules.push(`${num}. Keep bullets extremely brief (under ${Math.ceil(patterns.brevity.average + 2)} words per bullet)`);
+                num++;
+            } else if (patterns.brevity.level === 'verbose') {
+                rules.push(`${num}. Write detailed bullets with full context (approximately ${Math.ceil(patterns.brevity.average)} words each)`);
+                num++;
+            }
+        }
+        
+        // Justification
+        if (patterns.justification.level === 'none') {
+            rules.push(`${num}. List actions only without explanation or rationale`);
+            num++;
+        } else if (patterns.justification.level === 'detailed') {
+            rules.push(`${num}. Include detailed rationale for each action, referencing guidelines when relevant`);
+            num++;
+        }
+        
+        // Abbreviations
+        if (patterns.abbreviations.level === 'high') {
+            const abbrList = patterns.abbreviations.found.slice(0, 8).join(', ');
+            rules.push(`${num}. Use extensive medical abbreviations (e.g., ${abbrList}, etc.)`);
+            num++;
+        } else if (patterns.abbreviations.level === 'low') {
+            rules.push(`${num}. Minimize abbreviations. Write out most terms in full`);
+            num++;
+        }
+        
+        // Contingency planning
+        if (patterns.contingency.level === 'detailed') {
+            rules.push(`${num}. Include detailed if/then contingency plans for anticipated scenarios`);
+            num++;
+        } else if (patterns.contingency.level === 'simple') {
+            rules.push(`${num}. Include simple return precautions (e.g., "return if symptoms worsen")`);
+            num++;
+        }
+        
+        // Voice
+        if (patterns.voice.voice === 'first_person') {
+            rules.push(`${num}. Use first-person active voice (e.g., "I will start," "I recommend")`);
+            num++;
+        } else if (patterns.voice.voice === 'passive') {
+            rules.push(`${num}. Use passive voice constructions where appropriate`);
+            num++;
+        }
+        
+        // Core rules
+        rules.push(`${num}. Never fabricate or infer information not present in the source text`);
+        num++;
+        
+        if (patterns.structure.spacing.blankLinesBetweenProblems) {
+            rules.push(`${num}. Insert a blank line between different problems`);
+            num++;
+        }
+        
+        rules.push(`${num}. No references`);
+        num++;
+        
+        // Custom rules
+        if (customRules.trim()) {
+            const customList = customRules.split('\n').filter(r => r.trim());
+            customList.forEach(rule => {
+                const clean = rule.replace(/^[\s\-*\d.]+/, '').trim();
+                if (clean) {
+                    rules.push(`${num}. ${clean}`);
+                    num++;
+                }
+            });
+        }
+        
+        return '## Formatting Rules\n\n' + rules.join('\n');
+    },
+
+    getAssessmentInstruction(assessment) {
+        const templates = {
+            narrative: "Write the assessment as a flowing narrative paragraph. Use complete sentences that explain clinical reasoning. Connect findings to conclusions using words like 'given,' 'therefore,' and 'likely'",
+            oneliner: "After each bolded diagnosis, write a single-line summary. Use dashes or commas to separate 2-4 key clinical facts. Keep it to one sentence maximum",
+            discrete: "List key assessment findings as separate bullet points under each diagnosis. Use brief phrases, not complete sentences. Each clinical finding gets its own bullet",
+            minimal: null
+        };
+        
+        return templates[assessment.primary];
+    },
+
+    getPlanInstruction(plan) {
+        const templates = {
+            narrative: "Write the plan as a flowing paragraph using complete sentences. Use future tense ('will start,' 'plan to'). Explain actions in narrative form",
+            simple_bullets: "Format the plan as bullet points. Write brief action phrases. Do not use category subheadings",
+            categorized: "Organize the plan into categories with bold subheadings (Diagnostics:, Therapeutics:, Follow-up:). Under each subheading, list relevant action items as bullet points",
+            hybrid: "Begin with a brief narrative sentence explaining the overall plan strategy. Then list specific action items as bullet points below"
+        };
+        
+        return templates[plan.primary];
+    },
+
+    generateBoilerplate(boilerplates) {
+        let section = '## Conditional Boilerplate Text\n\n';
+        section += '[Insert after the bulleted list when applicable. This text should be italicized.]\n\n';
+        
+        boilerplates.forEach(bp => {
+            section += `If ${bp.hook} discussed:\n`;
+            section += `"${bp.text}"\n\n`;
+        });
+        
+        return section;
+    }
+};
+
+// =============================================================================
 // TEMPLATE MANAGEMENT
 // =============================================================================
 function selectTemplate(templateName) {
     currentTemplate = templateName;
     
-    // Update button states
     document.querySelectorAll('.template-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     event.target.classList.add('active');
     
-    // Clear form
     document.getElementById('examples').value = '';
     document.getElementById('customRules').value = '';
     document.getElementById('boilerplateContainer').innerHTML = '';
     document.getElementById('patternFeedback').classList.remove('show');
     boilerplateCount = 0;
+    detectedPatterns = null;
     
-    // Load template if not scratch
     if (templateName === 'pithy') {
         loadTemplate(TEMPLATES.pithy);
     }
 }
 
 function loadTemplate(template) {
-    // Load examples
     document.getElementById('examples').value = template.examples;
     
-    // Load boilerplates
     template.boilerplates.forEach(bp => {
         addBoilerplate();
         const entries = document.querySelectorAll('.boilerplate-entry');
@@ -760,90 +1532,8 @@ function loadTemplate(template) {
         lastEntry.querySelector('.boilerplate-text').value = bp.text;
     });
     
-    // Auto-analyze
     setTimeout(() => analyzeExamples(), 500);
 }
-
-// =============================================================================
-// PATTERN ANALYZER
-// =============================================================================
-const PatternAnalyzer = {
-    analyze(text) {
-        return {
-            bulletStyle: this.analyzeBulletStyle(text),
-            brevity: this.analyzeBrevity(text),
-            abbreviations: this.findAbbreviations(text),
-            formatting: this.analyzeFormatting(text),
-            structure: this.analyzeStructure(text)
-        };
-    },
-
-    analyzeBulletStyle(text) {
-        const lines = text.split('\n').filter(l => l.trim());
-        
-        // Count hyphen bullets
-        const hyphenCount = lines.filter(l => /^\s*-\s+/.test(l)).length;
-        // Count asterisk bullets (but not bold markers)
-        const asteriskCount = lines.filter(l => /^\s*\*\s+/.test(l) && !/\*\*/.test(l)).length;
-        
-        if (hyphenCount > asteriskCount) {
-            const hyphenLines = lines.filter(l => /^\s*-\s+/.test(l));
-            const indent = hyphenLines.length > 0 ? hyphenLines[0].search(/\S/) : 8;
-            return { style: 'hyphen', indent: indent, count: hyphenCount };
-        } else if (asteriskCount > 0) {
-            const asteriskLines = lines.filter(l => /^\s*\*\s+/.test(l) && !/\*\*/.test(l));
-            const indent = asteriskLines.length > 0 ? asteriskLines[0].search(/\S/) : 0;
-            return { style: 'asterisk', indent: indent, count: asteriskCount };
-        }
-        
-        return { style: 'hyphen', indent: 8, count: 0 };
-    },
-
-    analyzeBrevity(text) {
-        const bullets = text.split('\n')
-            .filter(l => /^\s*[-*]\s+/.test(l))
-            .map(l => l.replace(/^\s*[-*]\s+/, '').trim());
-        
-        if (bullets.length === 0) return null;
-        
-        const wordCounts = bullets.map(b => b.split(/\s+/).length);
-        const avg = wordCounts.reduce((a, b) => a + b, 0) / wordCounts.length;
-        const max = Math.max(...wordCounts);
-        
-        return {
-            average: Math.round(avg),
-            max: max,
-            isVeryBrief: avg <= 10
-        };
-    },
-
-    findAbbreviations(text) {
-        const common = [
-            'RTC', 'PRN', 'BID', 'TID', 'QID', 'PO', 'IM', 'IV', 
-            'F/U', 'MMM', 'NDNT', 'OTC', 'AVS', 'PCMH'
-        ];
-        return common.filter(abbr => text.includes(abbr));
-    },
-
-    analyzeFormatting(text) {
-        return {
-            hasBold: /\*\*[^*]+\*\*/.test(text),
-            problemOriented: /\*\*[^*]+\*\*\s*\n\s*[-*]/.test(text),
-            hasBlankLines: /\n\s*\n/.test(text)
-        };
-    },
-
-    analyzeStructure(text) {
-        const problems = (text.match(/\*\*[^*]+\*\*/g) || []).length;
-        const bullets = (text.match(/^\s*[-*]\s+/gm) || []).length;
-        
-        return {
-            problemCount: problems,
-            bulletCount: bullets,
-            bulletsPerProblem: problems > 0 ? Math.round(bullets / problems) : 0
-        };
-    }
-};
 
 // =============================================================================
 // UI INTERACTIONS
@@ -874,48 +1564,144 @@ function analyzeExamples() {
         return;
     }
     
-    // Analyze patterns
     detectedPatterns = PatternAnalyzer.analyze(examples);
     
-    // Display results
+    if (!detectedPatterns) {
+        alert('Could not detect patterns. Please make sure your examples include problem names in **bold**.');
+        return;
+    }
+    
     displayPatternFeedback(detectedPatterns);
 }
 
 function displayPatternFeedback(patterns) {
     const feedback = document.getElementById('patternFeedback');
-    const list = document.getElementById('patternList');
+    const grid = document.getElementById('patternGrid');
+    const issuesDiv = document.getElementById('consistencyIssues');
+    const noteDiv = document.getElementById('patternNote');
     
-    let items = [];
+    // Build pattern grid
+    let gridHTML = '';
     
-    // Bullet style
-    const bulletChar = patterns.bulletStyle.style === 'hyphen' ? 'Hyphen (-)' : 'Asterisk (*)';
-    items.push(`<strong>Bullet style:</strong> ${bulletChar} with ${patterns.bulletStyle.indent}-space indent`);
+    // Assessment format
+    gridHTML += `
+        <div class="pattern-item">
+            <strong>Assessment Format</strong>
+            <div class="pattern-value">${formatPatternName(patterns.assessment.primary)}</div>
+        </div>
+    `;
     
-    // Problem-oriented
-    if (patterns.formatting.problemOriented) {
-        items.push(`<strong>Structure:</strong> Problem-oriented format with bold problem names`);
-    } else {
-        items.push(`<strong>Structure:</strong> Standard bullet list format`);
-    }
+    // Plan format
+    gridHTML += `
+        <div class="pattern-item">
+            <strong>Plan Format</strong>
+            <div class="pattern-value">${formatPatternName(patterns.plan.primary)}</div>
+        </div>
+    `;
     
     // Brevity
     if (patterns.brevity) {
-        const brevityDesc = patterns.brevity.isVeryBrief ? 'Very brief' : 'Moderate length';
-        items.push(`<strong>Brevity:</strong> ${brevityDesc} (average ${patterns.brevity.average} words per bullet)`);
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Brevity Level</strong>
+                <div class="pattern-value">${capitalize(patterns.brevity.level)} (avg ${patterns.brevity.average} words)</div>
+            </div>
+        `;
+    }
+    
+    // Justification
+    if (patterns.justification.level !== 'unknown') {
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Justification</strong>
+                <div class="pattern-value">${capitalize(patterns.justification.level)}</div>
+            </div>
+        `;
+    }
+    
+    // Bullet style
+    if (patterns.structure.bulletStyle.style !== 'none') {
+        const bulletName = patterns.structure.bulletStyle.style === 'hyphen' ? 'Hyphen (-)' :
+                          patterns.structure.bulletStyle.style === 'asterisk' ? 'Asterisk (*)' :
+                          'Numbered';
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Bullet Style</strong>
+                <div class="pattern-value">${bulletName}, ${patterns.structure.bulletStyle.indent}-space indent</div>
+            </div>
+        `;
+    }
+    
+    // Problem formatting
+    gridHTML += `
+        <div class="pattern-item">
+            <strong>Problem Names</strong>
+            <div class="pattern-value">${capitalize(patterns.structure.problemFormat)}</div>
+        </div>
+    `;
+    
+    // Voice
+    if (patterns.voice.voice !== 'unknown') {
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Voice</strong>
+                <div class="pattern-value">${formatPatternName(patterns.voice.voice)}</div>
+            </div>
+        `;
     }
     
     // Abbreviations
-    if (patterns.abbreviations.length > 0) {
-        items.push(`<strong>Abbreviations detected:</strong> ${patterns.abbreviations.slice(0, 5).join(', ')}${patterns.abbreviations.length > 5 ? '...' : ''}`);
+    gridHTML += `
+        <div class="pattern-item">
+            <strong>Abbreviations</strong>
+            <div class="pattern-value">${capitalize(patterns.abbreviations.level)} density (${patterns.abbreviations.count} found)</div>
+        </div>
+    `;
+    
+    // Contingency
+    if (patterns.contingency.present) {
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Contingency Planning</strong>
+                <div class="pattern-value">${capitalize(patterns.contingency.level)}</div>
+            </div>
+        `;
     }
     
-    // Structure
-    if (patterns.structure.problemCount > 0) {
-        items.push(`<strong>Example structure:</strong> ${patterns.structure.problemCount} problems, averaging ${patterns.structure.bulletsPerProblem} bullets each`);
+    grid.innerHTML = gridHTML;
+    
+    // Handle consistency issues
+    if (!patterns.consistency.isConsistent) {
+        feedback.classList.add('warning');
+        issuesDiv.innerHTML = `
+            <div class="consistency-issues">
+                <h5>⚠️ Inconsistencies Detected</h5>
+                <ul>
+                    ${patterns.consistency.issues.map(issue => `
+                        <li><strong>${issue.category}:</strong> ${issue.message}. ${issue.suggestion}</li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+        
+        noteDiv.textContent = 'The generator will create flexible instructions to handle these variations. The AI will adapt based on content complexity.';
+    } else {
+        feedback.classList.remove('warning');
+        issuesDiv.innerHTML = '';
+        noteDiv.textContent = 'Patterns are consistent! The generator will create precise instructions matching your style.';
     }
     
-    list.innerHTML = items.map(item => `<li>${item}</li>`).join('');
     feedback.classList.add('show');
+}
+
+function formatPatternName(name) {
+    return name.split('_').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+}
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 // =============================================================================
@@ -971,136 +1757,6 @@ function collectBoilerplates() {
 }
 
 // =============================================================================
-// PROMPT GENERATOR
-// =============================================================================
-const PromptGenerator = {
-    generate(data) {
-        const sections = [];
-        
-        // Task
-        sections.push(this.generateTask(data));
-        sections.push('\n---\n');
-        
-        // Output structure
-        sections.push(this.generateOutputStructure(data));
-        sections.push('\n---\n');
-        
-        // Rules
-        sections.push(this.generateRules(data));
-        sections.push('\n---\n');
-        
-        // Boilerplate (if any)
-        if (data.boilerplates.length > 0) {
-            sections.push(this.generateBoilerplate(data));
-            sections.push('\n---\n');
-        }
-        
-        // Few-shot examples
-        sections.push('## Few-Shot Examples\n\n');
-        sections.push(data.examples.trim());
-        
-        return sections.join('');
-    },
-
-    generateTask(data) {
-        return 'Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.';
-    },
-
-    generateOutputStructure(data) {
-        const patterns = data.patterns;
-        let output = '## Output Structure for Each Problem/Diagnosis\n\n';
-        
-        if (patterns.formatting.problemOriented) {
-            output += '**[Problem/Diagnosis Name]**\n';
-        }
-        
-        const indent = ' '.repeat(patterns.bulletStyle.indent);
-        const bullet = patterns.bulletStyle.style === 'hyphen' ? '-' : '*';
-        
-        output += `${indent}${bullet} [A very brief bullet point summarizing a key finding, action, or follow-up plan]\n`;
-        output += `${indent}${bullet} [Each point should be a separate bullet, written as a short clinical shorthand phrase]\n`;
-        
-        return output;
-    },
-
-    generateRules(data) {
-        const patterns = data.patterns;
-        const rules = ['## Formatting Rules\n'];
-        let num = 1;
-        
-        // Bold formatting
-        if (patterns.formatting.problemOriented) {
-            rules.push(`${num}. Bold formatting for problem names\n`);
-            num++;
-        }
-        
-        // Bullet style
-        const bulletChar = patterns.bulletStyle.style === 'hyphen' ? 'hyphen (-)' : 'asterisk (*)';
-        rules.push(`${num}. Use a ${bulletChar} for all bullets\n`);
-        num++;
-        
-        // Indentation
-        if (patterns.bulletStyle.indent > 0) {
-            rules.push(`${num}. Indent all bullets with ${patterns.bulletStyle.indent} spaces\n`);
-            num++;
-        }
-        
-        // Brevity
-        if (patterns.brevity && patterns.brevity.isVeryBrief) {
-            rules.push(`${num}. Write all bullet points in extremely brief, professional shorthand phrases\n`);
-            num++;
-            rules.push(`${num}. Keep bullets concise (ideally under ${Math.max(10, patterns.brevity.max)} words per bullet)\n`);
-            num++;
-        }
-        
-        // Abbreviations
-        if (patterns.abbreviations.length > 0) {
-            const abbrList = patterns.abbreviations.join(', ');
-            rules.push(`${num}. Use standard medical abbreviations (${abbrList}, etc.)\n`);
-            num++;
-        }
-        
-        // Core rules
-        rules.push(`${num}. Never fabricate or infer information not present in the source text\n`);
-        num++;
-        
-        if (patterns.formatting.hasBlankLines) {
-            rules.push(`${num}. Insert a blank line between problems when multiple diagnoses exist\n`);
-            num++;
-        }
-        
-        rules.push(`${num}. No references\n`);
-        num++;
-        
-        // Custom rules
-        if (data.customRules.trim()) {
-            const customList = data.customRules.split('\n').filter(r => r.trim());
-            customList.forEach(rule => {
-                const clean = rule.replace(/^[\s\-*\d.]+/, '').trim();
-                if (clean) {
-                    rules.push(`${num}. ${clean}\n`);
-                    num++;
-                }
-            });
-        }
-        
-        return rules.join('');
-    },
-
-    generateBoilerplate(data) {
-        let section = '## Conditional Boilerplate Text\n\n';
-        section += '[Insert after the bulleted list when applicable. This text should be italicized.]\n\n';
-        
-        data.boilerplates.forEach(bp => {
-            section += `If ${bp.hook} discussed:\n`;
-            section += `"${bp.text}"\n\n`;
-        });
-        
-        return section;
-    }
-};
-
-// =============================================================================
 // FORM SUBMISSION
 // =============================================================================
 document.getElementById('promptForm').addEventListener('submit', function(e) {
@@ -1113,13 +1769,18 @@ document.getElementById('promptForm').addEventListener('submit', function(e) {
         return;
     }
     
-    // Analyze if not already done
     if (!detectedPatterns) {
         detectedPatterns = PatternAnalyzer.analyze(examples);
-        displayPatternFeedback(detectedPatterns);
+        if (detectedPatterns) {
+            displayPatternFeedback(detectedPatterns);
+        }
     }
     
-    // Collect data
+    if (!detectedPatterns) {
+        alert('Could not analyze patterns. Please make sure your examples are properly formatted.');
+        return;
+    }
+    
     const data = {
         examples: examples,
         boilerplates: collectBoilerplates(),
@@ -1127,22 +1788,17 @@ document.getElementById('promptForm').addEventListener('submit', function(e) {
         patterns: detectedPatterns
     };
     
-    // Generate prompt
     const prompt = PromptGenerator.generate(data);
     
-    // Display output
     const output = document.getElementById('output');
     output.textContent = prompt;
     output.classList.remove('empty');
     
-    // Update character count
     updateCharCount(prompt.length);
     
-    // Enable buttons
     document.getElementById('copyBtn').disabled = false;
     document.getElementById('downloadBtn').disabled = false;
     
-    // Scroll to output
     output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
 
