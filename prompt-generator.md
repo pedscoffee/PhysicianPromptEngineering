@@ -805,7 +805,7 @@ const TEMPLATES = {
 };
 
 // =============================================================================
-// ENHANCED PATTERN ANALYZER
+// ENHANCED PATTERN ANALYZER V2
 // =============================================================================
 const PatternAnalyzer = {
     analyze(text) {
@@ -813,7 +813,13 @@ const PatternAnalyzer = {
         const problems = this.parseProblems(text);
         
         if (problems.length === 0) {
-            return null;
+            return { error: 'Could not detect any problems. Please format problems with **Bold**, CAPS, or Capitalized: format.' };
+        }
+        
+        // Check for empty problems
+        const emptyProblems = problems.filter(p => !p.content.trim());
+        if (emptyProblems.length === problems.length) {
+            return { error: 'Examples need content after problem names. Please add assessment and/or plan details.' };
         }
         
         // Detect all pattern categories
@@ -839,51 +845,142 @@ const PatternAnalyzer = {
         return patterns;
     },
 
-    // Parse problems from text
+    // Enhanced problem parser - supports multiple formats
     parseProblems(text) {
         const problems = [];
         
-        // Split by bold problem markers
-        const sections = text.split(/\*\*([^*]+)\*\*/);
+        // Try different problem marker patterns
+        // Priority: Bold > ALL CAPS > Capitalized with colon > Capitalized line
         
-        for (let i = 1; i < sections.length; i += 2) {
-            const problemName = sections[i].trim();
-            const content = sections[i + 1] || '';
-            
-            if (problemName && content.trim()) {
+        // Pattern 1: **Bold**
+        let sections = text.split(/\*\*([^*]+)\*\*/);
+        if (sections.length > 2) {
+            for (let i = 1; i < sections.length; i += 2) {
+                const problemName = sections[i].trim();
+                const content = sections[i + 1] || '';
                 problems.push({
                     name: problemName,
                     content: content,
-                    lines: content.split('\n').filter(l => l.trim())
+                    lines: content.split('\n').filter(l => l.trim()),
+                    format: 'bold'
                 });
             }
+            return problems;
         }
+        
+        // Pattern 2: ALL CAPS (with optional colon)
+        const lines = text.split('\n');
+        let currentProblem = null;
+        
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const trimmed = line.trim();
+            
+            // Check for ALL CAPS problem marker
+            if (/^[A-Z][A-Z\s]{2,}:?$/.test(trimmed)) {
+                if (currentProblem) {
+                    problems.push(currentProblem);
+                }
+                currentProblem = {
+                    name: trimmed.replace(/:$/, ''),
+                    content: '',
+                    lines: [],
+                    format: 'caps'
+                };
+            } else if (currentProblem && trimmed) {
+                currentProblem.content += line + '\n';
+                currentProblem.lines.push(trimmed);
+            }
+        }
+        if (currentProblem) problems.push(currentProblem);
+        if (problems.length > 0) return problems;
+        
+        // Pattern 3: Capitalized Word(s): (with colon)
+        currentProblem = null;
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const trimmed = line.trim();
+            
+            // Check for Capitalized Word: pattern
+            if (/^[A-Z][a-zA-Z\s]+:$/.test(trimmed)) {
+                if (currentProblem) {
+                    problems.push(currentProblem);
+                }
+                currentProblem = {
+                    name: trimmed.replace(/:$/, ''),
+                    content: '',
+                    lines: [],
+                    format: 'capitalized-colon'
+                };
+            } else if (currentProblem && trimmed) {
+                currentProblem.content += line + '\n';
+                currentProblem.lines.push(trimmed);
+            }
+        }
+        if (currentProblem) problems.push(currentProblem);
+        if (problems.length > 0) return problems;
+        
+        // Pattern 4: Capitalized line followed by indented bullets
+        currentProblem = null;
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const trimmed = line.trim();
+            const nextLine = i + 1 < lines.length ? lines[i + 1] : '';
+            
+            // Check for capitalized word followed by indented content
+            if (/^[A-Z][a-zA-Z\s]+$/.test(trimmed) && /^\s+[-*]/.test(nextLine)) {
+                if (currentProblem) {
+                    problems.push(currentProblem);
+                }
+                currentProblem = {
+                    name: trimmed,
+                    content: '',
+                    lines: [],
+                    format: 'capitalized'
+                };
+            } else if (currentProblem && trimmed) {
+                currentProblem.content += line + '\n';
+                currentProblem.lines.push(trimmed);
+            }
+        }
+        if (currentProblem) problems.push(currentProblem);
         
         return problems;
     },
 
-    // CATEGORY 1: ASSESSMENT FORMAT DETECTION
+    // CATEGORY 1: ASSESSMENT FORMAT DETECTION (5 types)
     detectAssessmentFormat(problems) {
         const formats = problems.map(problem => {
             const content = problem.content;
-            const firstLine = problem.lines[0] || '';
+            const lines = problem.lines;
+            const firstLine = lines[0] || '';
             
-            // Check for narrative (multiple sentences with connecting words)
+            // 1. Check for narrative (2+ sentences with connecting words)
             if (this.isNarrative(content)) {
                 return 'narrative';
             }
             
-            // Check for one-liner (single line with dash/colon)
-            if (this.isOneLiner(content, firstLine)) {
-                return 'oneliner';
+            // 2. Check for one-liner-separate (line with separator, not a bullet)
+            if (this.isOneLinerSeparate(content, firstLine, lines)) {
+                // Distinguish sentence vs phrase
+                if (this.isCompleteSentence(firstLine)) {
+                    return 'oneliner-sentence';
+                } else {
+                    return 'oneliner-phrase';
+                }
             }
             
-            // Check for discrete bullets
-            if (this.hasDiscreteBullets(content)) {
-                return 'discrete';
+            // 3. Check for assessment-first-bullet
+            if (this.isAssessmentFirstBullet(lines)) {
+                return 'assessment-first-bullet';
             }
             
-            // Minimal (just problem name, very little after)
+            // 4. Check for discrete assessment bullets
+            if (this.hasDiscreteAssessmentBullets(lines)) {
+                return 'discrete-bullets';
+            }
+            
+            // 5. Minimal (just problem name, straight to plan)
             return 'minimal';
         });
         
@@ -896,43 +993,113 @@ const PatternAnalyzer = {
     },
 
     isNarrative(text) {
-        // Multiple sentences with connecting words
-        const sentences = (text.match(/[.!?]+/g) || []).length;
+        // Multiple sentences (2+) with connecting words
+        const periodCount = (text.match(/\./g) || []).length;
         const connectingWords = ['given', 'therefore', 'likely', 'suggests', 
                                  'because', 'thus', 'however', 'although', 
-                                 'since', 'as', 'due to'];
+                                 'since', 'as', 'due to', 'will', 'plan to'];
         const hasConnectors = connectingWords.some(word => 
             text.toLowerCase().includes(word)
         );
         
-        // Check for paragraph structure (not just bullet points)
+        // Check for paragraph structure (not primarily bullet points)
         const bulletCount = (text.match(/^\s*[-*]\s+/gm) || []).length;
         const isNotBulletList = bulletCount < 2;
         
-        return sentences >= 2 && hasConnectors && isNotBulletList;
+        // Narrative has multiple periods (sentences) OR long paragraph with connectors
+        return (periodCount >= 2 && isNotBulletList) || 
+               (hasConnectors && isNotBulletList && text.length > 100);
     },
 
-    isOneLiner(content, firstLine) {
-        const lines = content.split('\n').filter(l => l.trim());
+    isOneLinerSeparate(content, firstLine, lines) {
+        // Must have separator character (dash, colon, comma) in first line
+        const hasSeparator = /[-:,]/.test(firstLine);
+        if (!hasSeparator) return false;
         
-        // Single line with dash or colon separator
-        if (lines.length === 1) {
-            return /[-:,]/.test(firstLine);
-        }
+        // First line should NOT be a bullet point
+        const isNotBullet = !/^\s*[-*]\s+/.test(firstLine);
+        if (!isNotBullet) return false;
         
-        // Or first line is summary, rest are bullets
-        if (lines.length > 1 && /[-:,]/.test(firstLine)) {
-            const restAreBullets = lines.slice(1).every(l => /^\s*[-*]\s+/.test(l));
+        // If multiple lines, rest should be bullets (plan)
+        if (lines.length > 1) {
+            const restAreBullets = lines.slice(1).every(l => /^\s*[-*]\s+/.test(l) || !l.trim());
             return restAreBullets;
         }
         
-        return false;
+        // Single line with separator
+        return true;
     },
 
-    hasDiscreteBullets(text) {
-        const bulletLines = text.split('\n')
-            .filter(l => /^\s*[-*]\s+/.test(l));
-        return bulletLines.length >= 2;
+    isCompleteSentence(text) {
+        // Check for subject-verb patterns indicating complete sentence
+        const sentencePatterns = [
+            /\b(patient|pt|he|she|condition|symptoms?)\s+(is|has|had|was|were|presents?|reports?|demonstrates?)/i,
+            /\b(I|we)\s+(recommend|plan|will|started|discussed)/i
+        ];
+        
+        const hasSentencePattern = sentencePatterns.some(pattern => pattern.test(text));
+        
+        // Also check for period at end (if present, likely sentence)
+        const hasPeriod = /\.$/.test(text.trim());
+        
+        // Multiple periods definitely indicates sentence
+        const periodCount = (text.match(/\./g) || []).length;
+        
+        return hasSentencePattern || periodCount >= 2 || (hasPeriod && text.split(/\s+/).length > 5);
+    },
+
+    isAssessmentFirstBullet(lines) {
+        if (lines.length < 2) return false;
+        
+        const firstBullet = lines[0];
+        const secondBullet = lines[1] || '';
+        
+        // First line must be a bullet
+        if (!/^\s*[-*]\s+/.test(firstBullet)) return false;
+        
+        // Extract bullet content
+        const firstContent = firstBullet.replace(/^\s*[-*]\s+/, '').toLowerCase();
+        const secondContent = secondBullet.replace(/^\s*[-*]\s+/, '').toLowerCase();
+        
+        // First bullet should have NO action verbs (assessment/finding)
+        const actionVerbs = ['start', 'begin', 'continue', 'stop', 'discontinue', 'increase', 
+                            'decrease', 'prescribe', 'order', 'refer', 'consult', 'follow',
+                            'recheck', 'monitor', 'assess', 'obtain', 'send', 'schedule'];
+        const firstHasAction = actionVerbs.some(verb => firstContent.includes(verb));
+        
+        // Second bullet should have action verb (plan)
+        const secondHasAction = actionVerbs.some(verb => secondContent.includes(verb));
+        
+        // First bullet should have finding/status words
+        const findingWords = ['elevated', 'increased', 'decreased', 'positive', 'negative',
+                             'noted', 'found', 'present', 'absent', 'fever', 'pain', 'tm',
+                             'crackles', 'wheezing', 'edema', 'erythema', 'swelling'];
+        const firstHasFinding = findingWords.some(word => firstContent.includes(word));
+        
+        return !firstHasAction && (secondHasAction || firstHasFinding);
+    },
+
+    hasDiscreteAssessmentBullets(lines) {
+        if (lines.length < 3) return false;
+        
+        // Need multiple bullets
+        const bulletLines = lines.filter(l => /^\s*[-*]\s+/.test(l));
+        if (bulletLines.length < 3) return false;
+        
+        // Check first few bullets for findings (not actions)
+        const firstThree = bulletLines.slice(0, 3);
+        const actionVerbs = ['start', 'begin', 'continue', 'stop', 'prescribe', 'order', 
+                            'refer', 'follow', 'recheck', 'monitor', 'obtain', 'schedule'];
+        
+        let findingCount = 0;
+        for (const bullet of firstThree) {
+            const content = bullet.replace(/^\s*[-*]\s+/, '').toLowerCase();
+            const hasAction = actionVerbs.some(verb => content.includes(verb));
+            if (!hasAction) findingCount++;
+        }
+        
+        // At least 2 of first 3 bullets should be findings
+        return findingCount >= 2;
     },
 
     // CATEGORY 2: PLAN FORMAT DETECTION
@@ -968,7 +1135,8 @@ const PatternAnalyzer = {
     },
 
     hasCategorySubheadings(text) {
-        const subheadingPatterns = [
+        // Check for bold subheadings with common medical categories
+        const boldSubheadingPatterns = [
             /\*\*Diagnostics:\*\*/i,
             /\*\*Therapeutics:\*\*/i,
             /\*\*Medications:\*\*/i,
@@ -976,12 +1144,22 @@ const PatternAnalyzer = {
             /\*\*Referrals:\*\*/i,
             /\*\*Consults:\*\*/i,
             /\*\*Patient Education:\*\*/i,
-            /Diagnostics:/i,
-            /Therapeutics:/i,
-            /Follow-up:/i
+            /\*\*Tests:\*\*/i,
+            /\*\*Assessment:\*\*/i,
+            /\*\*Plan:\*\*/i,
+            /\*\*Next Steps:\*\*/i,
+            /\*\*Prescriptions:\*\*/i,
+            /\*\*Discharge:\*\*/i,
+            /\*\*Situational awareness:\*\*/i
         ];
         
-        return subheadingPatterns.some(pattern => pattern.test(text));
+        // Also check for plain capitalized words with colon (on their own line or same line as bullets)
+        const plainSubheadingPattern = /^[A-Z][a-zA-Z\s]+:/m;
+        
+        const hasBoldSubheading = boldSubheadingPatterns.some(pattern => pattern.test(text));
+        const hasPlainSubheading = plainSubheadingPattern.test(text);
+        
+        return hasBoldSubheading || hasPlainSubheading;
     },
 
     isPlanNarrative(text) {
@@ -1214,25 +1392,30 @@ const PatternAnalyzer = {
         };
     },
 
-    // CONSISTENCY CHECKING
+    // CONSISTENCY CHECKING WITH PATTERN INFERENCE
     checkConsistency(patterns, problems) {
         const issues = [];
         
         // Check assessment format consistency
         if (patterns.assessment.variations.length > 1) {
+            // Try to infer a pattern
+            const inference = this.inferAssessmentPattern(patterns.assessment, problems);
             issues.push({
                 category: 'Assessment Format',
-                message: `Mixed formats: ${patterns.assessment.variations.join(', ')}`,
-                suggestion: 'Use consistent format, or vary by problem complexity'
+                message: `Mixed formats: ${patterns.assessment.variations.map(v => this.formatPatternName(v)).join(', ')}`,
+                suggestion: inference.suggestion,
+                rule: inference.rule
             });
         }
         
         // Check plan format consistency
         if (patterns.plan.variations.length > 1) {
+            const inference = this.inferPlanPattern(patterns.plan, problems);
             issues.push({
                 category: 'Plan Format',
-                message: `Mixed formats: ${patterns.plan.variations.join(', ')}`,
-                suggestion: 'Consider narrative for complex, bullets for simple'
+                message: `Mixed formats: ${patterns.plan.variations.map(v => this.formatPatternName(v)).join(', ')}`,
+                suggestion: inference.suggestion,
+                rule: inference.rule
             });
         }
         
@@ -1241,7 +1424,8 @@ const PatternAnalyzer = {
             issues.push({
                 category: 'Brevity',
                 message: `Wide range: ${patterns.brevity.min}-${patterns.brevity.max} words per bullet`,
-                suggestion: 'AI will match source content complexity'
+                suggestion: 'AI will match source content complexity',
+                rule: null
             });
         }
         
@@ -1249,6 +1433,68 @@ const PatternAnalyzer = {
             isConsistent: issues.length === 0,
             issues: issues
         };
+    },
+
+    inferAssessmentPattern(assessmentData, problems) {
+        // Try to detect if there's a complexity-based pattern
+        const dist = assessmentData.distribution;
+        const variations = assessmentData.variations;
+        
+        // Check if minimal is paired with one-liner
+        if (variations.includes('minimal') && (variations.includes('oneliner-sentence') || variations.includes('oneliner-phrase'))) {
+            return {
+                suggestion: 'Appears to use minimal assessment for straightforward problems, one-liner for problems needing context',
+                rule: 'For straightforward problems with obvious management, state the diagnosis only. For problems requiring clinical context or justification, include a one-line summary after the diagnosis.'
+            };
+        }
+        
+        // Check if assessment-first-bullet is mixed with other styles
+        if (variations.includes('assessment-first-bullet')) {
+            return {
+                suggestion: 'Uses assessment details as first bullet for some problems',
+                rule: 'When clinical findings are important, include them as the first bullet. Otherwise, proceed directly to plan items.'
+            };
+        }
+        
+        // Generic mixed pattern
+        return {
+            suggestion: 'Multiple assessment styles detected - consider using consistent format or varying by problem complexity',
+            rule: 'Adapt assessment detail to match the clinical complexity and decision-making required for each problem.'
+        };
+    },
+
+    inferPlanPattern(planData, problems) {
+        const dist = planData.distribution;
+        const variations = planData.variations;
+        
+        // Check for complexity-based variation
+        if (variations.includes('narrative') && variations.includes('simple_bullets')) {
+            return {
+                suggestion: 'May use narrative for complex plans, bullets for simple plans',
+                rule: 'For complex problems requiring detailed explanation, use narrative format. For straightforward action lists, use bullet points.'
+            };
+        }
+        
+        // Generic mixed
+        return {
+            suggestion: 'Multiple plan formats detected',
+            rule: 'Vary plan format based on complexity: narrative for multi-step reasoning, bullets for action lists.'
+        };
+    },
+
+    formatPatternName(name) {
+        const nameMap = {
+            'narrative': 'Narrative',
+            'oneliner-sentence': 'One-liner (sentence)',
+            'oneliner-phrase': 'One-liner (phrase)',
+            'assessment-first-bullet': 'Assessment as first bullet',
+            'discrete-bullets': 'Discrete bullets',
+            'minimal': 'Minimal',
+            'simple_bullets': 'Simple bullets',
+            'categorized': 'Categorized',
+            'hybrid': 'Hybrid'
+        };
+        return nameMap[name] || name;
     },
 
     // UTILITY FUNCTIONS
@@ -1321,14 +1567,22 @@ const PromptGenerator = {
     },
 
     generateAssessmentStructure(assessment) {
+        const indent = '        ';
         const templates = {
-            narrative: '[Write assessment as a flowing paragraph with clinical reasoning]\n\n',
-            oneliner: '[Single-line summary after diagnosis with key clinical facts]\n\n',
-            discrete: '[List assessment findings as separate bullets]\n\n',
-            minimal: ''
+            'narrative': '\n[Write assessment as a flowing paragraph with complete sentences explaining clinical reasoning]\n\n',
+            
+            'oneliner-sentence': ' - [Complete sentence summarizing clinical context and key findings].\n\n',
+            
+            'oneliner-phrase': ' - [brief finding, key detail, or status]\n\n',
+            
+            'assessment-first-bullet': `\n${indent}- [Brief assessment summary with key clinical findings]\n${indent}- [Action item]\n${indent}- [Action item]\n\n`,
+            
+            'discrete-bullets': `\n${indent}- [Clinical finding 1]\n${indent}- [Clinical finding 2]\n${indent}- [Action item]\n${indent}- [Action item]\n\n`,
+            
+            'minimal': '\n'
         };
         
-        return templates[assessment.primary] || '';
+        return templates[assessment.primary] || '\n';
     },
 
     generatePlanStructure(plan, bulletStyle) {
@@ -1361,6 +1615,15 @@ const PromptGenerator = {
             num++;
         }
         
+        // If mixed assessment with inferred rule, add it
+        if (!patterns.consistency.isConsistent) {
+            const assessmentIssue = patterns.consistency.issues.find(i => i.category === 'Assessment Format');
+            if (assessmentIssue && assessmentIssue.rule) {
+                rules.push(`${num}. ${assessmentIssue.rule}`);
+                num++;
+            }
+        }
+        
         // Plan instructions
         const planInst = this.getPlanInstruction(patterns.plan);
         if (planInst) {
@@ -1368,11 +1631,24 @@ const PromptGenerator = {
             num++;
         }
         
+        // If mixed plan with inferred rule, add it
+        if (!patterns.consistency.isConsistent) {
+            const planIssue = patterns.consistency.issues.find(i => i.category === 'Plan Format');
+            if (planIssue && planIssue.rule) {
+                rules.push(`${num}. ${planIssue.rule}`);
+                num++;
+            }
+        }
+        
         // Problem formatting
         if (patterns.structure.problemFormat === 'bold') {
             rules.push(`${num}. Bold all problem/diagnosis names using **Problem** format`);
             num++;
+        } else if (patterns.structure.problemFormat === 'caps') {
+            rules.push(`${num}. Format all problem/diagnosis names in ALL CAPS`);
+            num++;
         }
+        // Don't add rule for plain format - no instruction needed
         
         // Bullet style
         if (patterns.structure.bulletStyle.style !== 'none') {
@@ -1465,10 +1741,17 @@ const PromptGenerator = {
 
     getAssessmentInstruction(assessment) {
         const templates = {
-            narrative: "Write the assessment as a flowing narrative paragraph. Use complete sentences that explain clinical reasoning. Connect findings to conclusions using words like 'given,' 'therefore,' and 'likely'",
-            oneliner: "After each bolded diagnosis, write a single-line summary. Use dashes or commas to separate 2-4 key clinical facts. Keep it to one sentence maximum",
-            discrete: "List key assessment findings as separate bullet points under each diagnosis. Use brief phrases, not complete sentences. Each clinical finding gets its own bullet",
-            minimal: null
+            'narrative': "Write the assessment as a flowing narrative paragraph. Use complete sentences that explain clinical reasoning. Connect findings to conclusions using words like 'given,' 'therefore,' and 'likely'",
+            
+            'oneliner-sentence': "After each bolded diagnosis, write a single complete sentence summarizing the clinical context and key findings. Use proper punctuation",
+            
+            'oneliner-phrase': "After each bolded diagnosis, write a brief phrase summary using commas or dashes to separate key clinical facts (e.g., 'poorly controlled, maximal therapy'). Keep it concise without full sentences",
+            
+            'assessment-first-bullet': "List the key assessment findings as the first bullet point under each diagnosis. Use brief clinical phrases describing findings, vitals, or exam results. Follow with action items as subsequent bullets",
+            
+            'discrete-bullets': "List all clinical findings, exam results, and relevant history as separate bullet points before listing the plan items. Each finding should be its own bullet. Then list action items as separate bullets",
+            
+            'minimal': null
         };
         
         return templates[assessment.primary];
@@ -1478,7 +1761,7 @@ const PromptGenerator = {
         const templates = {
             narrative: "Write the plan as a flowing paragraph using complete sentences. Use future tense ('will start,' 'plan to'). Explain actions in narrative form",
             simple_bullets: "Format the plan as bullet points. Write brief action phrases. Do not use category subheadings",
-            categorized: "Organize the plan into categories with bold subheadings (Diagnostics:, Therapeutics:, Follow-up:). Under each subheading, list relevant action items as bullet points",
+            categorized: "Organize the plan into categories with subheadings (e.g., Diagnostics:, Therapeutics:, Follow-up:, Tests:, Medications:, etc.). Under each subheading, list relevant action items as bullet points. Use capitalized words followed by colons for subheadings",
             hybrid: "Begin with a brief narrative sentence explaining the overall plan strategy. Then list specific action items as bullet points below"
         };
         
@@ -1566,8 +1849,14 @@ function analyzeExamples() {
     
     detectedPatterns = PatternAnalyzer.analyze(examples);
     
+    // Handle errors from new validation
+    if (detectedPatterns && detectedPatterns.error) {
+        alert(detectedPatterns.error);
+        return;
+    }
+    
     if (!detectedPatterns) {
-        alert('Could not detect patterns. Please make sure your examples include problem names in **bold**.');
+        alert('Could not detect patterns. Please make sure your examples are properly formatted.');
         return;
     }
     
@@ -1695,9 +1984,21 @@ function displayPatternFeedback(patterns) {
 }
 
 function formatPatternName(name) {
-    return name.split('_').map(word => 
-        word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ');
+    const nameMap = {
+        'narrative': 'Narrative',
+        'oneliner-sentence': 'One-liner (sentence)',
+        'oneliner-phrase': 'One-liner (phrase)',
+        'assessment-first-bullet': 'Assessment as first bullet',
+        'discrete-bullets': 'Discrete bullets',
+        'minimal': 'Minimal',
+        'simple_bullets': 'Simple bullets',
+        'categorized': 'Categorized',
+        'hybrid': 'Hybrid',
+        'first_person': 'First person',
+        'passive': 'Passive',
+        'active': 'Active'
+    };
+    return nameMap[name] || capitalize(name.replace(/-/g, ' ').replace(/_/g, ' '));
 }
 
 function capitalize(str) {
