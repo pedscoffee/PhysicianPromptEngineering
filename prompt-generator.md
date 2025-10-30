@@ -605,7 +605,6 @@ permalink: /prompt-generator/
     Designed for physicians new to AI - no technical knowledge required.</p>
 </div>
 
-<!-- Template Selection -->
 <div class="template-section">
     <h3>How would you like to start?</h3>
     <div class="template-buttons">
@@ -621,9 +620,7 @@ permalink: /prompt-generator/
     </div>
 </div>
 
-<!-- Main Form -->
 <form id="promptForm">
-    <!-- Few-Shot Examples Section -->
     <div class="form-section">
         <h3>Your Few-Shot Examples</h3>
         <div class="field">
@@ -645,7 +642,6 @@ Example:
         - F/U 2wk or PRN
         - Return precautions given" required></textarea>
             
-            <!-- Example Helper -->
             <div class="example-helper">
                 <div class="example-helper-header" onclick="toggleExamples()">
                     <h4>💡 Show me good examples</h4>
@@ -674,7 +670,6 @@ Example:
                 </div>
             </div>
 
-            <!-- Pattern Detection Feedback -->
             <div class="pattern-feedback" id="patternFeedback">
                 <h4>✓ Pattern Detection Results</h4>
                 <div class="pattern-grid" id="patternGrid"></div>
@@ -688,7 +683,6 @@ Example:
         </div>
     </div>
 
-    <!-- Boilerplate Phrases Section -->
     <div class="form-section">
         <h3>Boilerplate Phrases (Optional)</h3>
         <p class="help-text" style="margin-bottom: 20px;">
@@ -703,7 +697,6 @@ Example:
         </button>
     </div>
 
-    <!-- Custom Rules Section -->
     <div class="form-section">
         <h3>Formatting Rules</h3>
         <p class="help-text" style="margin-bottom: 15px;">
@@ -727,7 +720,6 @@ Example:
     <button type="submit" class="generate-btn">✨ Generate My Prompt</button>
 </form>
 
-<!-- Output Section -->
 <div class="output-section">
     <div class="output-header">
         <div class="output-title">Your Generated Prompt</div>
@@ -742,7 +734,6 @@ Example:
     </div>
 </div>
 
-<!-- Support Section -->
 <div class="support-section">
     <h3>Found this useful?</h3>
     <p>If this tool has helped streamline your clinical workflow, consider supporting the project with a small tip.<br>
@@ -805,32 +796,43 @@ const TEMPLATES = {
 };
 
 // =============================================================================
-// ENHANCED PATTERN ANALYZER V2
+// ENHANCED PATTERN ANALYZER V3 (FIXED)
 // =============================================================================
 const PatternAnalyzer = {
+    // List of subcategories to filter out from problem parsing
+    subcategoryPattern: /^(Diagnostics|Therapeutics|Medications|Follow-up|Tests|Assessment|Plan|Prescriptions|Referrals|Consults|Next Steps|Patient Education|Discharge|Situational awareness):?$/i,
+
     analyze(text) {
-        // Parse text into problems
+        // 1. Parse text into problems
         const problems = this.parseProblems(text);
         
         if (problems.length === 0) {
             return { error: 'Could not detect any problems. Please format problem names using **Bold**, ALL CAPS, or Capitalized: format.' };
         }
         
-        // Check for empty problems
         const emptyProblems = problems.filter(p => !p.content.trim());
         if (emptyProblems.length === problems.length) {
             return { error: 'Examples need content after problem names. Please add assessment and/or plan details.' };
         }
         
-        // Detect all pattern categories
+        // 2. Detect Assessment format first (as Plan detection depends on it)
+        const assessmentPatterns = this.detectAssessmentFormat(problems);
+        
+        // 3. Detect Plan format (now "assessment-aware")
+        const planPatterns = this.detectPlanFormat(problems, assessmentPatterns);
+        
+        // 4. Detect Problem Format from parsed problems
+        const primaryProblemFormat = this.mostCommon(problems.map(p => p.format)) || 'plain';
+
+        // 5. Detect all other pattern categories
         const patterns = {
-            assessment: this.detectAssessmentFormat(problems),
-            plan: this.detectPlanFormat(problems),
+            assessment: assessmentPatterns,
+            plan: planPatterns,
             brevity: this.measureBrevity(problems),
             justification: this.detectJustification(problems),
             contingency: this.detectContingency(text),
             structure: {
-                problemFormat: this.detectProblemFormatting(text),
+                problemFormat: primaryProblemFormat,
                 bulletStyle: this.detectBulletStyle(text),
                 spacing: this.detectSpacing(text)
             },
@@ -838,31 +840,25 @@ const PatternAnalyzer = {
             abbreviations: this.measureAbbreviationDensity(text)
         };
         
-        // Check consistency
+        // 6. Check consistency
         const consistency = this.checkConsistency(patterns, problems);
         patterns.consistency = consistency;
         
         return patterns;
     },
 
-    // Enhanced problem parser - supports multiple formats
+    // Enhanced problem parser - supports multiple formats and filters subcategories
     parseProblems(text) {
         const problems = [];
-        
-        // Try different problem marker patterns
-        // Priority: Bold > ALL CAPS > Capitalized with colon > Capitalized line
         
         // Pattern 1: **Bold**
         let sections = text.split(/\*\*([^*]+)\*\*/);
         if (sections.length > 2) {
-            // Filter out subcategories (words ending with colon that are likely category headers)
-            const subcategoryPattern = /^(Diagnostics|Therapeutics|Medications|Follow-up|Tests|Assessment|Plan|Prescriptions|Referrals|Consults|Next Steps|Patient Education|Discharge|Situational awareness):$/i;
-            
             for (let i = 1; i < sections.length; i += 2) {
                 const problemName = sections[i].trim();
                 
                 // Skip if it's a subcategory header
-                if (subcategoryPattern.test(problemName)) {
+                if (this.subcategoryPattern.test(problemName)) {
                     continue;
                 }
                 
@@ -892,11 +888,18 @@ const PatternAnalyzer = {
                 const isAllCaps = letterCount > 0 && (upperCount / letterCount) >= 0.8;
                 
                 if (isAllCaps && /^[A-Z]/.test(trimmed)) {
+                    const problemName = trimmed.replace(/:$/, '');
+                    
+                    // Skip if it's a subcategory header
+                    if (this.subcategoryPattern.test(problemName)) {
+                        continue;
+                    }
+                    
                     if (currentProblem) {
                         problems.push(currentProblem);
                     }
                     currentProblem = {
-                        name: trimmed.replace(/:$/, ''),
+                        name: problemName,
                         content: '',
                         lines: [],
                         format: 'caps'
@@ -921,11 +924,18 @@ const PatternAnalyzer = {
             
             // Check for Capitalized Word: pattern (must have colon at end)
             if (/^[A-Z][a-zA-Z\s,'-]+:$/.test(trimmed) && trimmed.length >= 4) {
+                const problemName = trimmed.replace(/:$/, '');
+                
+                // Skip if it's a subcategory header
+                if (this.subcategoryPattern.test(problemName)) {
+                    continue;
+                }
+                
                 if (currentProblem) {
                     problems.push(currentProblem);
                 }
                 currentProblem = {
-                    name: trimmed.replace(/:$/, ''),
+                    name: problemName,
                     content: '',
                     lines: [],
                     format: 'capitalized-colon'
@@ -947,6 +957,12 @@ const PatternAnalyzer = {
             
             // Check for capitalized word followed by indented content
             if (/^[A-Z][a-zA-Z\s]+$/.test(trimmed) && /^\s+[-*]/.test(nextLine)) {
+                
+                // Skip if it's a subcategory header
+                if (this.subcategoryPattern.test(trimmed)) {
+                    continue;
+                }
+                
                 if (currentProblem) {
                     problems.push(currentProblem);
                 }
@@ -966,27 +982,27 @@ const PatternAnalyzer = {
         return problems;
     },
 
-    // CATEGORY 1: ASSESSMENT FORMAT DETECTION (4 types - structure-only)
+    // CATEGORY 1: ASSESSMENT FORMAT DETECTION (FIXED)
+    // Priority: Narrative -> One-Liner -> Minimal
     detectAssessmentFormat(problems) {
         const formats = problems.map(problem => {
-            const lines = problem.lines;
             
-            // 1. Check for narrative (2+ consecutive non-bullet lines at start)
+            // 1. Check for narrative (2+ consecutive non-bullet lines OR 1 line with 2+ sentences)
             if (this.isNarrativeParagraph(problem)) {
                 return 'narrative';
             }
             
             // 2. Check for one-liner (exactly 1 non-bullet line + bullets)
-            if (this.hasOneLinerStructure(lines)) {
+            if (this.hasOneLinerStructure(problem)) {
                 return 'oneliner-phrase';
             }
-            
-            // 3. Check for assessment-first-bullet (all lines are bullets)
-            if (this.isAssessmentFirstBulletStructure(lines)) {
-                return 'assessment-first-bullet';
+
+            // 3. Check for minimal (0 non-bullet lines)
+            if (this.hasZeroNonBulletLines(problem)) {
+                return 'minimal';
             }
             
-            // 4. Minimal (default - straight to problem name)
+            // 4. Fallback (e.g., problem with no bullets)
             return 'minimal';
         });
         
@@ -998,24 +1014,35 @@ const PatternAnalyzer = {
         };
     },
 
-    // Structure-only helper: Detects narrative by counting non-bullet lines at start
+    // Helper: Detects 2+ non-bullet lines OR 1 wrapped line with 2+ sentences
     isNarrativeParagraph(problem) {
         const lines = problem.lines;
-        
-        // Count leading non-bullet lines (paragraph text before any bullets)
         let nonBulletCount = 0;
+        let nonBulletContent = '';
+        
         for (const line of lines) {
             if (/^\s*[-*]\s+/.test(line)) break; // Stop at first bullet
-            if (line.trim()) nonBulletCount++;
+            if (line.trim()) {
+                nonBulletCount++;
+                nonBulletContent += line.trim() + ' ';
+            }
         }
         
         // Narrative: 2+ non-bullet lines before any bullets
-        return nonBulletCount >= 2;
+        if (nonBulletCount >= 2) return true;
+        
+        // Narrative: 1 non-bullet line that contains 2+ sentences (handles wrapped paste)
+        if (nonBulletCount === 1) {
+            const sentences = nonBulletContent.split(/[.!?]\s/).filter(Boolean);
+            if (sentences.length >= 2) return true;
+        }
+        
+        return false;
     },
 
-    // Structure-only helper: Detects one-liner by counting lines
-    hasOneLinerStructure(lines) {
-        // Exactly 1 non-bullet line + at least 1 bullet
+    // Helper: Detects exactly 1 non-bullet line
+    hasOneLinerStructure(problem) {
+        const lines = problem.lines;
         const bulletLines = lines.filter(l => /^\s*[-*]\s+/.test(l));
         const nonBulletLines = lines.filter(l => 
             !/^\s*[-*]\s+/.test(l) && l.trim()
@@ -1024,60 +1051,36 @@ const PatternAnalyzer = {
         // One-liner: exactly 1 non-bullet assessment + at least 1 bullet plan
         return nonBulletLines.length === 1 && bulletLines.length >= 1;
     },
-
-    // Structure-only helper: Detects when all content is bullets
-    isAssessmentFirstBulletStructure(lines) {
-        // All non-empty lines are bullets (no mixed non-bullet text)
-        
-        // Need at least 2 bullets (assessment + plan)
-        const bulletLines = lines.filter(l => /^\s*[-*]\s+/.test(l));
-        if (bulletLines.length < 2) return false;
-        
-        // ALL non-empty lines must be bullets
-        const allNonEmptyAreBullets = lines.every(l => 
-            /^\s*[-*]\s+/.test(l) || !l.trim()
+    
+    // Helper: Detects 0 non-bullet lines
+    hasZeroNonBulletLines(problem) {
+        const lines = problem.lines;
+        const nonBulletLines = lines.filter(l => 
+            !/^\s*[-*]\s+/.test(l) && l.trim()
         );
         
-        return allNonEmptyAreBullets;
+        // Minimal: 0 non-bullet assessment lines (all content is bullets)
+        return nonBulletLines.length === 0;
     },
 
-    // Legacy function kept for reference (not used in new detection)
-    isNarrative(text) {
-        // Multiple sentences (2+) with connecting words
-        const periodCount = (text.match(/\./g) || []).length;
-        const connectingWords = ['given', 'therefore', 'likely', 'suggests', 
-                                 'because', 'thus', 'however', 'although', 
-                                 'since', 'as', 'due to', 'will', 'plan to'];
-        const hasConnectors = connectingWords.some(word => 
-            text.toLowerCase().includes(word)
-        );
-        
-        // Check for paragraph structure (not primarily bullet points)
-        const bulletCount = (text.match(/^\s*[-*]\s+/gm) || []).length;
-        const isNotBulletList = bulletCount < 2;
-        
-        // Narrative has multiple periods (sentences) OR long paragraph with connectors
-        return (periodCount >= 2 && isNotBulletList) || 
-               (hasConnectors && isNotBulletList && text.length > 100);
-    },
-
-    // CATEGORY 2: PLAN FORMAT DETECTION
-    detectPlanFormat(problems) {
-        const formats = problems.map(problem => {
-            const content = problem.content;
+    // CATEGORY 2: PLAN FORMAT DETECTION (FIXED)
+    // Now "assessment-aware"
+    detectPlanFormat(problems, assessmentPatterns) {
+        const formats = problems.map((problem, index) => {
+            // Get the assessment type for *this specific problem*
+            const assessmentType = assessmentPatterns.variations[index] || assessmentPatterns.primary;
             
-            // Check for category subheadings
-            if (this.hasCategorySubheadings(content)) {
+            // Get *only* the plan content
+            const planContent = this.getPlanContent(problem, assessmentType);
+            
+            // Run checks *only* on the plan content
+            if (this.hasCategorySubheadings(planContent)) {
                 return 'categorized';
             }
-            
-            // Check for narrative plan
-            if (this.isPlanNarrative(content)) {
+            if (this.isPlanNarrative(planContent)) {
                 return 'narrative';
             }
-            
-            // Check for hybrid (narrative + bullets)
-            if (this.isHybridPlan(content)) {
+            if (this.isHybridPlan(planContent)) {
                 return 'hybrid';
             }
             
@@ -1093,6 +1096,43 @@ const PatternAnalyzer = {
         };
     },
 
+    // Helper: Isolates plan content based on assessment type
+    getPlanContent(problem, assessmentType) {
+        const lines = problem.content.split('\n');
+        let planLines = [];
+
+        if (assessmentType === 'minimal') {
+            // The whole content is the plan
+            planLines = lines;
+        } else if (assessmentType === 'oneliner-phrase') {
+            // Plan starts *after* the first non-bullet line
+            let foundNonBullet = false;
+            for (const line of lines) {
+                if (!/^\s*[-*]\s+/.test(line) && line.trim() && !foundNonBullet) {
+                    foundNonBullet = true;
+                    continue; // Skip this assessment line
+                }
+                if (foundNonBullet) {
+                    planLines.push(line);
+                }
+            }
+        } else if (assessmentType === 'narrative') {
+            // Plan starts at the *first bullet*
+            let foundFirstBullet = false;
+            for (const line of lines) {
+                if (/^\s*[-*]\s+/.test(line)) {
+                    foundFirstBullet = true;
+                }
+                if (foundFirstBullet) {
+                    planLines.push(line);
+                }
+            }
+        }
+        
+        return planLines.join('\n');
+    },
+
+    // Helper: Checks for subheadings (operates on planContent)
     hasCategorySubheadings(text) {
         // Check for bold subheadings with common medical categories
         const boldSubheadingPatterns = [
@@ -1112,7 +1152,7 @@ const PatternAnalyzer = {
             /\*\*Situational awareness:\*\*/i
         ];
         
-        // Also check for plain capitalized words with colon (on their own line or same line as bullets)
+        // Also check for plain capitalized words with colon (on their own line)
         const plainSubheadingPattern = /^[A-Z][a-zA-Z\s]+:/m;
         
         const hasBoldSubheading = boldSubheadingPatterns.some(pattern => pattern.test(text));
@@ -1121,32 +1161,33 @@ const PatternAnalyzer = {
         return hasBoldSubheading || hasPlainSubheading;
     },
 
+    // Helper: Checks for narrative plan (operates on planContent)
     isPlanNarrative(text) {
+        // Must have NO bullets (strict requirement)
+        const bulletCount = (text.match(/^\s*[-*]\s+/gm) || []).length;
+        if (bulletCount > 0) return false;
+        
+        // Must have multiple substantial sentences
+        const sentences = (text.match(/[.!?]+/g) || []).length;
+        if (sentences < 2) return false;
+        
         // Must have future tense indicators
         const futureTenseVerbs = ['will', 'plan to', 'going to', 'intend to'];
         const hasFutureTense = futureTenseVerbs.some(verb => 
             text.toLowerCase().includes(verb)
         );
+        if (!hasFutureTense) return false;
         
-        // Must have multiple substantial sentences
-        const sentences = (text.match(/[.!?]+/g) || []).length;
-        const hasParagraphStructure = sentences >= 2;
-        
-        // Must have NO bullets (strict requirement)
-        const bulletCount = (text.match(/^\s*[-*]\s+/gm) || []).length;
-        const noBullets = bulletCount === 0;
-        
-        // Must be substantial text (not just a single short line)
+        // Must be substantial text
         const wordCount = text.split(/\s+/).length;
-        const isSubstantial = wordCount >= 20;
+        const isSubstantial = wordCount >= 15;
         
-        return hasFutureTense && hasParagraphStructure && noBullets && isSubstantial;
+        return isSubstantial;
     },
 
+    // Helper: Checks for hybrid plan (operates on planContent)
     isHybridPlan(text) {
         const lines = text.split('\n').filter(l => l.trim());
-        
-        // Must have substantial non-bullet sentences (not just fragment)
         let substantialSentenceCount = 0;
         let bulletCount = 0;
         
@@ -1156,7 +1197,7 @@ const PatternAnalyzer = {
             if (isBullet) {
                 bulletCount++;
             } else {
-                // Check if it's a substantial sentence (has period and multiple words)
+                // Check if it's a substantial sentence
                 const hasPeriod = /[.!?]$/.test(line.trim());
                 const wordCount = line.split(/\s+/).length;
                 
@@ -1270,13 +1311,9 @@ const PatternAnalyzer = {
         return { level: level, present: matches > 0 };
     },
 
-    // CATEGORY 4: STRUCTURAL ELEMENTS
-    detectProblemFormatting(text) {
-        if (/\*\*[^*]+\*\*/.test(text)) return 'bold';
-        if (/[A-Z\s]{3,}:/.test(text)) return 'caps';
-        return 'plain';
-    },
-
+    // CATEGORY 4: STRUCTURAL ELEMENTS (FIXED)
+    // problemFormat is now derived in analyze()
+    
     detectBulletStyle(text) {
         const lines = text.split('\n');
         
@@ -1373,7 +1410,6 @@ const PatternAnalyzer = {
         
         // Check assessment format consistency
         if (patterns.assessment.variations.length > 1) {
-            // Try to infer a pattern
             const inference = this.inferAssessmentPattern(patterns.assessment, problems);
             issues.push({
                 category: 'Assessment Format',
@@ -1411,23 +1447,12 @@ const PatternAnalyzer = {
     },
 
     inferAssessmentPattern(assessmentData, problems) {
-        // Try to detect if there's a complexity-based pattern
-        const dist = assessmentData.distribution;
         const variations = assessmentData.variations;
         
-        // Check if minimal is paired with one-liner
-        if (variations.includes('minimal') && (variations.includes('oneliner-sentence') || variations.includes('oneliner-phrase'))) {
+        if (variations.includes('minimal') && variations.includes('oneliner-phrase')) {
             return {
-                suggestion: 'Appears to use minimal assessment for straightforward problems, one-liner for problems needing context',
-                rule: 'For straightforward problems with obvious management, state the diagnosis only. For problems requiring clinical context or justification, include a one-line summary after the diagnosis.'
-            };
-        }
-        
-        // Check if assessment-first-bullet is mixed with other styles
-        if (variations.includes('assessment-first-bullet')) {
-            return {
-                suggestion: 'Uses assessment details as first bullet for some problems',
-                rule: 'When clinical findings are important, include them as the first bullet. Otherwise, proceed directly to plan items.'
+                suggestion: 'Appears to use minimal assessment for simple problems, one-liner for problems needing context',
+                rule: 'For straightforward problems, state the diagnosis only. For problems requiring clinical context, include a one-line summary.'
             };
         }
         
@@ -1439,18 +1464,15 @@ const PatternAnalyzer = {
     },
 
     inferPlanPattern(planData, problems) {
-        const dist = planData.distribution;
         const variations = planData.variations;
         
-        // Check for complexity-based variation
         if (variations.includes('narrative') && variations.includes('simple_bullets')) {
             return {
                 suggestion: 'May use narrative for complex plans, bullets for simple plans',
-                rule: 'For complex problems requiring detailed explanation, use narrative format. For straightforward action lists, use bullet points.'
+                rule: 'For complex problems, use narrative format. For straightforward action lists, use bullet points.'
             };
         }
         
-        // Generic mixed
         return {
             suggestion: 'Multiple plan formats detected',
             rule: 'Vary plan format based on complexity: narrative for multi-step reasoning, bullets for action lists.'
@@ -1460,20 +1482,30 @@ const PatternAnalyzer = {
     formatPatternName(name) {
         const nameMap = {
             'narrative': 'Narrative',
-            'oneliner-sentence': 'One-liner (sentence)',
             'oneliner-phrase': 'One-liner (phrase)',
-            'assessment-first-bullet': 'Assessment as first bullet',
-            'discrete-bullets': 'Discrete bullets',
-            'minimal': 'Minimal',
+            'minimal': 'Minimal (bullets only)',
             'simple_bullets': 'Simple bullets',
             'categorized': 'Categorized',
-            'hybrid': 'Hybrid'
+            'hybrid': 'Hybrid',
+            'first_person': 'First person',
+            'third_person': 'Third person',
+            'passive': 'Passive',
+            'patient_centric': 'Patient-centric',
+            'caps': 'ALL CAPS',
+            'capitalized-colon': 'Capitalized:',
+            'capitalized': 'Capitalized'
         };
-        return nameMap[name] || name;
+        return nameMap[name] || this.capitalize(name.replace(/-/g, ' ').replace(/_/g, ' '));
+    },
+    
+    capitalize(str) {
+        if (!str) return '';
+        return str.charAt(0).toUpperCase() + str.slice(1);
     },
 
     // UTILITY FUNCTIONS
     mostCommon(arr) {
+        if (arr.length === 0) return null;
         const counts = {};
         arr.forEach(item => counts[item] = (counts[item] || 0) + 1);
         return Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
@@ -1487,31 +1519,26 @@ const PatternAnalyzer = {
 };
 
 // =============================================================================
-// PROMPT GENERATOR
+// PROMPT GENERATOR (FIXED)
 // =============================================================================
 const PromptGenerator = {
     generate(data) {
         const sections = [];
         
-        // Task
         sections.push(this.generateTask());
         sections.push('\n---\n');
         
-        // Output structure
         sections.push(this.generateOutputStructure(data.patterns));
         sections.push('\n---\n');
         
-        // Rules
         sections.push(this.generateRules(data.patterns, data.customRules));
         sections.push('\n---\n');
         
-        // Boilerplate
         if (data.boilerplates.length > 0) {
             sections.push(this.generateBoilerplate(data.boilerplates));
             sections.push('\n---\n');
         }
         
-        // Few-shot examples
         sections.push('## Few-Shot Examples\n\n');
         sections.push(data.examples.trim());
         
@@ -1525,14 +1552,15 @@ const PromptGenerator = {
     generateOutputStructure(patterns) {
         let output = '## Output Structure for Each Problem/Diagnosis\n\n';
         
-        // Problem header based on formatting
         if (patterns.structure.problemFormat === 'bold') {
             output += '**[Problem/Diagnosis Name]**\n';
+        } else if (patterns.structure.problemFormat === 'caps') {
+            output += '[PROBLEM/DIAGNOSIS NAME]\n';
         } else {
             output += '[Problem/Diagnosis Name]\n';
         }
         
-        // Assessment structure
+        // Assessment structure (removed 'assessment-first-bullet')
         output += this.generateAssessmentStructure(patterns.assessment);
         
         // Plan structure
@@ -1542,15 +1570,13 @@ const PromptGenerator = {
     },
 
     generateAssessmentStructure(assessment) {
-        const indent = '        ';
+        const indent = ' '.repeat(assessment.primary === 'oneliner-phrase' ? 1 : 8);
+        const bullet = assessment.primary === 'oneliner-phrase' ? '-' : '*';
+
         const templates = {
             'narrative': '\n[Write assessment as a flowing paragraph with complete sentences explaining clinical reasoning]\n\n',
-            
-            'oneliner-phrase': ' - [brief finding, key detail, or status]\n\n',
-            
-            'assessment-first-bullet': `\n${indent}- [Brief assessment summary with key clinical findings]\n${indent}- [Action item]\n${indent}- [Action item]\n\n`,
-            
-            'minimal': '\n'
+            'oneliner-phrase': `\n${indent}${bullet} [brief finding, key detail, or status]\n\n`,
+            'minimal': '\n' // Minimal means straight to plan bullets
         };
         
         return templates[assessment.primary] || '\n';
@@ -1564,11 +1590,8 @@ const PromptGenerator = {
         
         const templates = {
             narrative: '[Write plan as flowing paragraph with future tense verbs]\n',
-            
             simple_bullets: `${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`,
-            
             categorized: `**Diagnostics:**\n${indent}${bullet} [Test/study]\n\n**Therapeutics:**\n${indent}${bullet} [Medication/treatment]\n\n**Follow-up:**\n${indent}${bullet} [Follow-up plan]\n`,
-            
             hybrid: `[Opening narrative sentence explaining plan strategy]\n${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`
         };
         
@@ -1586,7 +1609,6 @@ const PromptGenerator = {
             num++;
         }
         
-        // If mixed assessment with inferred rule, add it
         if (!patterns.consistency.isConsistent) {
             const assessmentIssue = patterns.consistency.issues.find(i => i.category === 'Assessment Format');
             if (assessmentIssue && assessmentIssue.rule) {
@@ -1602,7 +1624,6 @@ const PromptGenerator = {
             num++;
         }
         
-        // If mixed plan with inferred rule, add it
         if (!patterns.consistency.isConsistent) {
             const planIssue = patterns.consistency.issues.find(i => i.category === 'Plan Format');
             if (planIssue && planIssue.rule) {
@@ -1619,7 +1640,6 @@ const PromptGenerator = {
             rules.push(`${num}. Format all problem/diagnosis names in ALL CAPS`);
             num++;
         }
-        // Don't add rule for plain format - no instruction needed
         
         // Bullet style
         if (patterns.structure.bulletStyle.style !== 'none') {
@@ -1665,7 +1685,7 @@ const PromptGenerator = {
             num++;
         }
         
-        // Contingency planning
+        // Contingency
         if (patterns.contingency.level === 'detailed') {
             rules.push(`${num}. Include detailed if/then contingency plans for anticipated scenarios`);
             num++;
@@ -1713,12 +1733,8 @@ const PromptGenerator = {
     getAssessmentInstruction(assessment) {
         const templates = {
             'narrative': "Write the assessment as a flowing narrative paragraph. Use complete sentences that explain clinical reasoning. Connect findings to conclusions using words like 'given,' 'therefore,' and 'likely'",
-            
-            'oneliner-phrase': "After each bolded diagnosis, write a brief phrase summary using commas or dashes to separate key clinical facts (e.g., 'poorly controlled, maximal therapy'). Keep it concise without full sentences",
-            
-            'assessment-first-bullet': "List the key assessment findings as the first bullet point under each diagnosis. Use brief clinical phrases describing findings, vitals, or exam results. Follow with action items as subsequent bullets",
-            
-            'minimal': null
+            'oneliner-phrase': "After each problem name, write a brief, single-line phrase summarizing key clinical facts. This line should not be a full sentence.",
+            'minimal': "Do not write a separate assessment. Proceed directly from the problem name to the plan (which will be bullet points)."
         };
         
         return templates[assessment.primary];
@@ -1726,10 +1742,10 @@ const PromptGenerator = {
 
     getPlanInstruction(plan) {
         const templates = {
-            narrative: "Write the plan as a flowing paragraph using complete sentences. Use future tense ('will start,' 'plan to'). Explain actions in narrative form",
-            simple_bullets: "Format the plan as bullet points. Write brief action phrases. Do not use category subheadings",
-            categorized: "Organize the plan into categories with subheadings (e.g., Diagnostics:, Therapeutics:, Follow-up:, Tests:, Medications:, etc.). Under each subheading, list relevant action items as bullet points. Use capitalized words followed by colons for subheadings",
-            hybrid: "Begin with a brief narrative sentence explaining the overall plan strategy. Then list specific action items as bullet points below"
+            'narrative': "Write the plan as a flowing paragraph using complete sentences. Use future tense ('will start,' 'plan to'). Explain actions in narrative form",
+            'simple_bullets': "Format the plan as bullet points. Write brief action phrases. Do not use category subheadings",
+            'categorized': "Organize the plan into categories with subheadings (e.g., Diagnostics:, Therapeutics:, Follow-up:, Tests:, Medications:, etc.). Under each subheading, list relevant action items as bullet points. Use capitalized words followed by colons for subheadings",
+            'hybrid': "Begin with a brief narrative sentence explaining the overall plan strategy. Then list specific action items as bullet points below"
         };
         
         return templates[plan.primary];
@@ -1757,7 +1773,15 @@ function selectTemplate(templateName) {
     document.querySelectorAll('.template-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
+    
+    // Find the button that was clicked and add 'active' class
+    // Using event.currentTarget ensures we get the button, even if user clicks on text inside it
+    if (event && event.currentTarget) {
+         event.currentTarget.classList.add('active');
+    } else {
+        // Fallback for programmatic call
+        document.querySelector(`.template-btn[onclick="selectTemplate('${templateName}')"]`).classList.add('active');
+    }
     
     document.getElementById('examples').value = '';
     document.getElementById('customRules').value = '';
@@ -1782,7 +1806,8 @@ function loadTemplate(template) {
         lastEntry.querySelector('.boilerplate-text').value = bp.text;
     });
     
-    setTimeout(() => analyzeExamples(), 500);
+    // Auto-analyze the template
+    setTimeout(analyzeExamples, 100); 
 }
 
 // =============================================================================
@@ -1808,26 +1833,37 @@ function toggleCustomRules() {
 
 function analyzeExamples() {
     const examples = document.getElementById('examples').value;
+    const feedback = document.getElementById('patternFeedback');
     
     if (!examples.trim()) {
         alert('Please paste your examples first!');
+        feedback.classList.remove('show');
         return;
     }
     
-    detectedPatterns = PatternAnalyzer.analyze(examples);
-    
-    // Handle errors from new validation
-    if (detectedPatterns && detectedPatterns.error) {
-        alert(detectedPatterns.error);
-        return;
+    try {
+        detectedPatterns = PatternAnalyzer.analyze(examples);
+        
+        if (detectedPatterns && detectedPatterns.error) {
+            alert(detectedPatterns.error);
+            feedback.classList.remove('show');
+            return;
+        }
+        
+        if (!detectedPatterns || !detectedPatterns.assessment) {
+            alert('Could not detect patterns. Please make sure your examples are properly formatted.');
+            feedback.classList.remove('show');
+            return;
+        }
+        
+        displayPatternFeedback(detectedPatterns);
+
+    } catch (e) {
+        console.error("Pattern analysis failed:", e);
+        alert('An error occurred during analysis. Please check the console (F12) for details.');
+        feedback.classList.remove('show');
+        detectedPatterns = null;
     }
-    
-    if (!detectedPatterns) {
-        alert('Could not detect patterns. Please make sure your examples are properly formatted.');
-        return;
-    }
-    
-    displayPatternFeedback(detectedPatterns);
 }
 
 function displayPatternFeedback(patterns) {
@@ -1836,46 +1872,44 @@ function displayPatternFeedback(patterns) {
     const issuesDiv = document.getElementById('consistencyIssues');
     const noteDiv = document.getElementById('patternNote');
     
-    // Build pattern grid
     let gridHTML = '';
     
-    // Assessment format
-    gridHTML += `
-        <div class="pattern-item">
-            <strong>Assessment Format</strong>
-            <div class="pattern-value">${formatPatternName(patterns.assessment.primary)}</div>
-        </div>
-    `;
+    if (patterns.assessment) {
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Assessment Format</strong>
+                <div class="pattern-value">${PatternAnalyzer.formatPatternName(patterns.assessment.primary)}</div>
+            </div>
+        `;
+    }
     
-    // Plan format
-    gridHTML += `
-        <div class="pattern-item">
-            <strong>Plan Format</strong>
-            <div class="pattern-value">${formatPatternName(patterns.plan.primary)}</div>
-        </div>
-    `;
+    if (patterns.plan) {
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Plan Format</strong>
+                <div class="pattern-value">${PatternAnalyzer.formatPatternName(patterns.plan.primary)}</div>
+            </div>
+        `;
+    }
     
-    // Brevity
     if (patterns.brevity) {
         gridHTML += `
             <div class="pattern-item">
                 <strong>Brevity Level</strong>
-                <div class="pattern-value">${capitalize(patterns.brevity.level)} (avg ${patterns.brevity.average} words)</div>
+                <div class="pattern-value">${PatternAnalyzer.capitalize(patterns.brevity.level)} (avg ${patterns.brevity.average} words)</div>
             </div>
         `;
     }
     
-    // Justification
-    if (patterns.justification.level !== 'unknown') {
+    if (patterns.justification && patterns.justification.level !== 'unknown') {
         gridHTML += `
             <div class="pattern-item">
                 <strong>Justification</strong>
-                <div class="pattern-value">${capitalize(patterns.justification.level)}</div>
+                <div class="pattern-value">${PatternAnalyzer.capitalize(patterns.justification.level)}</div>
             </div>
         `;
     }
     
-    // Bullet style
     if (patterns.structure.bulletStyle.style !== 'none') {
         const bulletName = patterns.structure.bulletStyle.style === 'hyphen' ? 'Hyphen (-)' :
                           patterns.structure.bulletStyle.style === 'asterisk' ? 'Asterisk (*)' :
@@ -1888,46 +1922,45 @@ function displayPatternFeedback(patterns) {
         `;
     }
     
-    // Problem formatting
-    gridHTML += `
-        <div class="pattern-item">
-            <strong>Problem Names</strong>
-            <div class="pattern-value">${capitalize(patterns.structure.problemFormat)}</div>
-        </div>
-    `;
-    
-    // Voice
-    if (patterns.voice.voice !== 'unknown') {
+    if (patterns.structure.problemFormat) {
         gridHTML += `
             <div class="pattern-item">
-                <strong>Voice</strong>
-                <div class="pattern-value">${formatPatternName(patterns.voice.voice)}</div>
+                <strong>Problem Names</strong>
+                <div class="pattern-value">${PatternAnalyzer.formatPatternName(patterns.structure.problemFormat)}</div>
             </div>
         `;
     }
     
-    // Abbreviations
-    gridHTML += `
-        <div class="pattern-item">
-            <strong>Abbreviations</strong>
-            <div class="pattern-value">${capitalize(patterns.abbreviations.level)} density (${patterns.abbreviations.count} found)</div>
-        </div>
-    `;
+    if (patterns.voice && patterns.voice.voice !== 'unknown') {
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Voice</strong>
+                <div class="pattern-value">${PatternAnalyzer.formatPatternName(patterns.voice.voice)}</div>
+            </div>
+        `;
+    }
     
-    // Contingency
-    if (patterns.contingency.present) {
+    if (patterns.abbreviations) {
+        gridHTML += `
+            <div class="pattern-item">
+                <strong>Abbreviations</strong>
+                <div class="pattern-value">${PatternAnalyzer.capitalize(patterns.abbreviations.level)} density (${patterns.abbreviations.count} found)</div>
+            </div>
+        `;
+    }
+    
+    if (patterns.contingency && patterns.contingency.present) {
         gridHTML += `
             <div class="pattern-item">
                 <strong>Contingency Planning</strong>
-                <div class="pattern-value">${capitalize(patterns.contingency.level)}</div>
+                <div class="pattern-value">${PatternAnalyzer.capitalize(patterns.contingency.level)}</div>
             </div>
         `;
     }
     
     grid.innerHTML = gridHTML;
     
-    // Handle consistency issues
-    if (!patterns.consistency.isConsistent) {
+    if (patterns.consistency && !patterns.consistency.isConsistent) {
         feedback.classList.add('warning');
         issuesDiv.innerHTML = `
             <div class="consistency-issues">
@@ -1950,27 +1983,6 @@ function displayPatternFeedback(patterns) {
     feedback.classList.add('show');
 }
 
-function formatPatternName(name) {
-    const nameMap = {
-        'narrative': 'Narrative',
-        'oneliner-sentence': 'One-liner (sentence)',
-        'oneliner-phrase': 'One-liner (phrase)',
-        'assessment-first-bullet': 'Assessment as first bullet',
-        'discrete-bullets': 'Discrete bullets',
-        'minimal': 'Minimal',
-        'simple_bullets': 'Simple bullets',
-        'categorized': 'Categorized',
-        'hybrid': 'Hybrid',
-        'first_person': 'First person',
-        'passive': 'Passive',
-        'active': 'Active'
-    };
-    return nameMap[name] || capitalize(name.replace(/-/g, ' ').replace(/_/g, ' '));
-}
-
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
 
 // =============================================================================
 // BOILERPLATE MANAGEMENT
@@ -2037,15 +2049,18 @@ document.getElementById('promptForm').addEventListener('submit', function(e) {
         return;
     }
     
+    // Re-analyze or use existing analysis
     if (!detectedPatterns) {
-        detectedPatterns = PatternAnalyzer.analyze(examples);
-        if (detectedPatterns) {
-            displayPatternFeedback(detectedPatterns);
+        analyzeExamples(); // Run analysis if it hasn't been run
+        if (!detectedPatterns) { // Check again if analysis failed
+            alert('Could not analyze patterns. Please make sure your examples are properly formatted and click "Analyze Examples" first.');
+            return;
         }
     }
     
-    if (!detectedPatterns) {
-        alert('Could not analyze patterns. Please make sure your examples are properly formatted.');
+    // Check for analysis errors
+    if (detectedPatterns.error) {
+        alert(`Cannot generate prompt. Analysis error: ${detectedPatterns.error}`);
         return;
     }
     
@@ -2056,18 +2071,25 @@ document.getElementById('promptForm').addEventListener('submit', function(e) {
         patterns: detectedPatterns
     };
     
-    const prompt = PromptGenerator.generate(data);
-    
-    const output = document.getElementById('output');
-    output.textContent = prompt;
-    output.classList.remove('empty');
-    
-    updateCharCount(prompt.length);
-    
-    document.getElementById('copyBtn').disabled = false;
-    document.getElementById('downloadBtn').disabled = false;
-    
-    output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    try {
+        const prompt = PromptGenerator.generate(data);
+        
+        const output = document.getElementById('output');
+        output.textContent = prompt;
+        output.classList.remove('empty');
+        
+        updateCharCount(prompt.length);
+        
+        document.getElementById('copyBtn').disabled = false;
+        document.getElementById('downloadBtn').disabled = false;
+        
+        // Scroll to the output section
+        output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    } catch (e) {
+        console.error("Prompt generation failed:", e);
+        alert('An error occurred during prompt generation. Please check the console (F12) for details.');
+    }
 });
 
 // =============================================================================
@@ -2090,6 +2112,11 @@ function updateCharCount(count) {
 document.getElementById('copyBtn').addEventListener('click', async function() {
     const text = document.getElementById('output').textContent;
     
+    if (!navigator.clipboard) {
+        alert('Clipboard API not available. Please copy manually.');
+        return;
+    }
+    
     try {
         await navigator.clipboard.writeText(text);
         this.textContent = '✓ Copied!';
@@ -2100,13 +2127,14 @@ document.getElementById('copyBtn').addEventListener('click', async function() {
             this.classList.remove('copied');
         }, 2000);
     } catch (err) {
+        console.error('Failed to copy text: ', err);
         alert('Failed to copy. Please select and copy manually.');
     }
 });
 
 document.getElementById('downloadBtn').addEventListener('click', function() {
     const text = document.getElementById('output').textContent;
-    const blob = new Blob([text], { type: 'text/plain' });
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     
