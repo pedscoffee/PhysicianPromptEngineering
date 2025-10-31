@@ -31,6 +31,148 @@ permalink: /prompt-generator/
         line-height: 1.6;
     }
 
+    /* Mode selector */
+    .mode-selector {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+
+    .mode-btn {
+        padding: 12px 24px;
+        border: 2px solid #2a7ae2;
+        background: white;
+        color: #2a7ae2;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 1em;
+    }
+
+    .mode-btn.active {
+        background: #2a7ae2;
+        color: white;
+    }
+
+    .mode-btn:hover {
+        background: #2a7ae2;
+        color: white;
+    }
+
+    /* Menu interface */
+    .menu-interface {
+        display: none;
+    }
+
+    .menu-interface.active {
+        display: block;
+    }
+
+    .menu-section {
+        background: white;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+
+    .menu-section h3 {
+        color: #111;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #2a7ae2;
+    }
+
+    .menu-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .menu-option {
+        padding: 15px;
+        border: 2px solid #e8e8e8;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+        font-weight: 500;
+        font-size: 0.95em;
+    }
+
+    .menu-option:hover {
+        border-color: #2a7ae2;
+        background: #f0f7ff;
+    }
+
+    .menu-option.selected {
+        border-color: #2a7ae2;
+        background: #2a7ae2;
+        color: white;
+    }
+
+    .example-showcase {
+        background: #f9f9f9;
+        border: 2px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .example-showcase h4 {
+        color: #2a7ae2;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+    }
+
+    .example-showcase-content {
+        background: white;
+        border: 1px solid #e8e8e8;
+        border-radius: 6px;
+        padding: 15px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.85em;
+        white-space: pre-wrap;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .menu-generate-btn {
+        width: 100%;
+        padding: 16px;
+        background: #2a7ae2;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 30px;
+    }
+
+    .menu-generate-btn:hover {
+        background: #1a5bb8;
+    }
+
+    .menu-generate-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+
+    .analyzer-interface {
+        display: block;
+    }
+
+    .analyzer-interface.hidden {
+        display: none;
+    }
+
     /* Template selector */
     .template-section {
         background: #f0f7ff;
@@ -605,6 +747,99 @@ permalink: /prompt-generator/
     Designed for physicians new to AI - no technical knowledge required.</p>
 </div>
 
+<!-- Mode Selector -->
+<div class="mode-selector">
+    <button class="mode-btn active" onclick="switchMode('analyzer')" id="analyzerModeBtn">📊 Pattern Analyzer (Automatic)</button>
+    <button class="mode-btn" onclick="switchMode('menu')" id="menuModeBtn">🎯 Menu Interface (Manual)</button>
+</div>
+
+<!-- Menu Interface (Hidden by default) -->
+<div class="menu-interface" id="menuInterface">
+    <!-- Assessment Format -->
+    <div class="menu-section">
+        <h3>Assessment Format</h3>
+        <div class="menu-options" id="assessmentOptions">
+            <div class="menu-option" onclick="selectMenuOption('assessment', 'numbered', this)">1. Numbered</div>
+            <div class="menu-option" onclick="selectMenuOption('assessment', 'hyphenated', this)">- Hyphenated</div>
+            <div class="menu-option" onclick="selectMenuOption('assessment', 'prose', this)">Prose</div>
+            <div class="menu-option" onclick="selectMenuOption('assessment', 'grouped', this)">Grouped</div>
+        </div>
+        <div class="example-showcase">
+            <h4>Example:</h4>
+            <div class="example-showcase-content" id="assessmentExample"></div>
+        </div>
+    </div>
+
+    <!-- Plan Format -->
+    <div class="menu-section">
+        <h3>Plan Format</h3>
+        <div class="menu-options" id="planOptions">
+            <div class="menu-option" onclick="selectMenuOption('plan', 'numbered', this)">1. Numbered</div>
+            <div class="menu-option" onclick="selectMenuOption('plan', 'hyphenated', this)">- Hyphenated</div>
+            <div class="menu-option" onclick="selectMenuOption('plan', 'prose', this)">Prose</div>
+            <div class="menu-option" onclick="selectMenuOption('plan', 'grouped', this)">Grouped</div>
+        </div>
+        <div class="example-showcase">
+            <h4>Example:</h4>
+            <div class="example-showcase-content" id="planExample"></div>
+        </div>
+    </div>
+
+    <!-- Brevity Level -->
+    <div class="menu-section">
+        <h3>Brevity Level</h3>
+        <div class="menu-options" id="brevityOptions">
+            <div class="menu-option" onclick="selectMenuOption('brevity', 'brief', this)">Brief</div>
+            <div class="menu-option" onclick="selectMenuOption('brevity', 'moderate', this)">Moderate</div>
+            <div class="menu-option" onclick="selectMenuOption('brevity', 'verbose', this)">Verbose</div>
+        </div>
+        <div class="example-showcase">
+            <h4>Example:</h4>
+            <div class="example-showcase-content" id="brevityExample"></div>
+        </div>
+    </div>
+
+    <!-- Voice/Tone -->
+    <div class="menu-section">
+        <h3>Voice & Tone</h3>
+        <div class="menu-options" id="voiceOptions">
+            <div class="menu-option" onclick="selectMenuOption('voice', 'first_person', this)">First Person</div>
+            <div class="menu-option" onclick="selectMenuOption('voice', 'passive', this)">Passive</div>
+            <div class="menu-option" onclick="selectMenuOption('voice', 'generic', this)">Generic</div>
+        </div>
+        <div class="example-showcase">
+            <h4>Example:</h4>
+            <div class="example-showcase-content" id="voiceExample"></div>
+        </div>
+    </div>
+
+    <!-- Abbreviation Level -->
+    <div class="menu-section">
+        <h3>Abbreviation Density</h3>
+        <div class="menu-options" id="abbreviationOptions">
+            <div class="menu-option" onclick="selectMenuOption('abbreviation', 'minimal', this)">Minimal</div>
+            <div class="menu-option" onclick="selectMenuOption('abbreviation', 'standard', this)">Standard</div>
+            <div class="menu-option" onclick="selectMenuOption('abbreviation', 'high', this)">High Density</div>
+        </div>
+        <div class="example-showcase">
+            <h4>Example:</h4>
+            <div class="example-showcase-content" id="abbreviationExample"></div>
+        </div>
+    </div>
+
+    <!-- Optional Examples for Menu Mode -->
+    <div class="menu-section">
+        <h3>Optional: Provide Few-Shot Examples (Advanced)</h3>
+        <p style="color: #828282; margin-bottom: 15px; font-size: 0.95em;">Add examples to refine the generated prompt further, or leave blank to generate based on your selections above.</p>
+        <textarea id="menuExamples" placeholder="Paste your few-shot examples here (optional)..." style="width: 100%; min-height: 100px; padding: 12px; border: 2px solid #e8e8e8; border-radius: 6px; font-family: 'Monaco', 'Courier New', monospace; font-size: 14px;"></textarea>
+    </div>
+
+    <button class="menu-generate-btn" onclick="generateFromMenu()">Generate Prompt</button>
+</div>
+
+<!-- Analyzer Interface (Original) -->
+<div class="analyzer-interface" id="analyzerInterface">
+
 <div class="template-section">
     <h3>How would you like to start?</h3>
     <div class="template-buttons">
@@ -720,6 +955,8 @@ Example:
     <button type="submit" class="generate-btn">✨ Generate My Prompt</button>
 </form>
 
+</div> <!-- End analyzer-interface -->
+
 <div class="output-section">
     <div class="output-header">
         <div class="output-title">Your Generated Prompt</div>
@@ -749,6 +986,16 @@ Example:
 let boilerplateCount = 0;
 let currentTemplate = 'scratch';
 let detectedPatterns = null;
+
+// Menu mode state
+let currentMode = 'analyzer';
+let menuSelections = {
+    assessment: null,
+    plan: null,
+    brevity: null,
+    voice: null,
+    abbreviation: null
+};
 
 // Template data
 const TEMPLATES = {
@@ -794,6 +1041,203 @@ const TEMPLATES = {
         ]
     }
 };
+
+// =============================================================================
+// MENU MODE FUNCTIONS
+// =============================================================================
+
+// Worked example case used consistently throughout menu examples
+const EXAMPLE_CASE = {
+    assessment_numbered: "1. Viral upper respiratory infection\n2. Fever, unspecified",
+    assessment_hyphenated: "- Viral upper respiratory infection\n- Fever, unspecified",
+    assessment_prose: "Viral upper respiratory infection presenting with fever.",
+    assessment_grouped: "Respiratory: Viral upper respiratory infection\nGeneral: Fever, unspecified",
+    
+    plan_numbered_brief: "1. Supportive care\n2. Tylenol PRN\n3. RTC if worsens",
+    plan_numbered_moderate: "1. Recommended supportive care with fluids and rest\n2. Acetaminophen or ibuprofen as needed for fever and comfort\n3. Return to clinic if symptoms worsen or do not improve in 3-5 days",
+    plan_numbered_verbose: "1. Initiate comprehensive supportive care including adequate hydration, nutritional intake, and appropriate rest to facilitate recovery\n2. Administer acetaminophen (Tylenol) or ibuprofen (Motrin) as needed for fever management and discomfort relief, following age-appropriate dosing guidelines\n3. Schedule return visit to clinic if symptoms worsen, do not improve within 3-5 days, or if new concerning symptoms develop",
+    
+    plan_hyphenated_brief: "- Supportive care\n- Tylenol PRN\n- RTC if worsens",
+    plan_hyphenated_moderate: "- Recommended supportive care with fluids and rest\n- Acetaminophen or ibuprofen as needed for fever and comfort\n- Return to clinic if symptoms worsen or do not improve in 3-5 days",
+    plan_hyphenated_verbose: "- Initiate comprehensive supportive care including adequate hydration, nutritional intake, and appropriate rest to facilitate recovery\n- Administer acetaminophen (Tylenol) or ibuprofen (Motrin) as needed for fever management and discomfort relief\n- Schedule return visit to clinic if symptoms worsen, do not improve within 3-5 days, or if new concerning symptoms develop",
+    
+    plan_prose_brief: "Supportive care recommended. Tylenol PRN for fever. Return if symptoms worsen.",
+    plan_prose_moderate: "Supportive care with fluids and rest recommended. Acetaminophen or ibuprofen as needed for fever and comfort. Return to clinic if symptoms worsen or do not improve in 3-5 days.",
+    plan_prose_verbose: "Comprehensive supportive care including adequate hydration, nutritional intake, and appropriate rest is recommended to facilitate recovery. Acetaminophen (Tylenol) or ibuprofen (Motrin) should be administered as needed for fever management and discomfort relief. Patient should return to clinic if symptoms worsen, do not improve within 3-5 days, or if new concerning symptoms develop.",
+};
+
+const VOICE_EXAMPLES = {
+    first_person: "I discussed with the parent the viral etiology of this infection. I recommended supportive care and advised returning if not improving.",
+    passive: "The patient was counseled on the viral etiology of this infection. Supportive care was recommended and return precautions were discussed.",
+    generic: "Discussed viral etiology. Recommended supportive care. Return precautions given if not improving in 3-5 days."
+};
+
+const ABBREVIATION_EXAMPLES = {
+    minimal: "Patient was evaluated for upper respiratory infection and fever. Examination findings include pharyngeal erythema and rhinorrhea.",
+    standard: "Pt evaluated for URI and fever. Exam findings include pharyngeal erythema and rhinorrhea. Recommended supportive care and Tylenol as needed.",
+    high: "Pt evaluated for URI/fever. Exam: pharyngeal erythema, rhinorrhea. REC'd supportive care + Tylenol PRN. F/U PRN or if worsens in 3-5d. RTC with concerns."
+};
+
+// Map menu selections to pattern object
+function menuSelectionsToPatterns(selections, optionalExamples = '') {
+    const patterns = {
+        assessment: {
+            primary: selections.assessment || 'hyphenated',
+            confidence: 1.0
+        },
+        plan: {
+            primary: selections.plan || 'hyphenated',
+            confidence: 1.0
+        },
+        brevity: {
+            level: selections.brevity || 'moderate',
+            average: selections.brevity === 'brief' ? 15 : selections.brevity === 'verbose' ? 50 : 30
+        },
+        voice: {
+            voice: mapVoiceSelection(selections.voice || 'generic'),
+            confidence: 1.0
+        },
+        abbreviations: {
+            level: selections.abbreviation || 'standard',
+            count: selections.abbreviation === 'minimal' ? 3 : selections.abbreviation === 'high' ? 12 : 7,
+            density: selections.abbreviation === 'minimal' ? 'low' : selections.abbreviation === 'high' ? 'high' : 'medium'
+        },
+        justification: {
+            level: 'unknown'
+        },
+        contingency: {
+            present: false,
+            level: 'unknown'
+        },
+        structure: {
+            problemFormat: 'bold',
+            bulletStyle: {
+                style: selections.assessment === 'numbered' ? 'numbered' : 'hyphen',
+                indent: 8
+            },
+            spacing: {
+                spacingBeforeBullets: 8,
+                spacingBetweenItems: 0
+            }
+        },
+        consistency: {
+            isConsistent: true,
+            issues: []
+        }
+    };
+    
+    return patterns;
+}
+
+// Map voice selection to pattern format
+function mapVoiceSelection(voiceInput) {
+    if (voiceInput === 'first_person') return 'first_person';
+    if (voiceInput === 'passive') return 'passive_voice';
+    return 'generic';
+}
+
+// Update example displays when user makes selections
+function updateExamples() {
+    const assessment = menuSelections.assessment || 'hyphenated';
+    const plan = menuSelections.plan || 'hyphenated';
+    const brevity = menuSelections.brevity || 'moderate';
+    const voice = menuSelections.voice || 'generic';
+    const abbreviation = menuSelections.abbreviation || 'standard';
+    
+    // Update assessment example
+    let assessmentExample = EXAMPLE_CASE[`assessment_${assessment}`];
+    if (voice === 'first_person') {
+        assessmentExample = `I evaluated the patient for:\n${assessmentExample}`;
+    } else if (voice === 'passive') {
+        assessmentExample = `The patient was evaluated for:\n${assessmentExample}`;
+    }
+    document.getElementById('assessmentExample').textContent = assessmentExample;
+    
+    // Update plan example
+    const planKey = `plan_${plan}_${brevity}`;
+    const planExample = EXAMPLE_CASE[planKey];
+    document.getElementById('planExample').textContent = planExample;
+    
+    // Update brevity example (show the range)
+    const briefText = 'Supportive care. Tylenol PRN. RTC in 3-5d.';
+    const moderateText = 'Recommend supportive care with fluids and rest. Acetaminophen or ibuprofen as needed for fever. Return if worsens in 3-5 days.';
+    const verboseText = 'Initiate comprehensive supportive care including adequate hydration, rest, and nutrition. Acetaminophen or ibuprofen for fever management. Return if symptoms worsen, fail to improve in 3-5 days, or new symptoms develop.';
+    const brevityExample = brevity === 'brief' ? briefText : brevity === 'verbose' ? verboseText : moderateText;
+    document.getElementById('brevityExample').textContent = brevityExample;
+    
+    // Update voice example
+    document.getElementById('voiceExample').textContent = VOICE_EXAMPLES[voice];
+    
+    // Update abbreviation example
+    document.getElementById('abbreviationExample').textContent = ABBREVIATION_EXAMPLES[abbreviation];
+}
+
+// Mode switching
+function switchMode(mode) {
+    currentMode = mode;
+    const analyzer = document.getElementById('analyzerInterface');
+    const menu = document.getElementById('menuInterface');
+    const analyzerBtn = document.getElementById('analyzerModeBtn');
+    const menuBtn = document.getElementById('menuModeBtn');
+    
+    if (mode === 'analyzer') {
+        analyzer.classList.remove('hidden');
+        menu.classList.remove('active');
+        analyzerBtn.classList.add('active');
+        menuBtn.classList.remove('active');
+    } else {
+        analyzer.classList.add('hidden');
+        menu.classList.add('active');
+        analyzerBtn.classList.remove('active');
+        menuBtn.classList.add('active');
+        updateExamples(); // Show initial examples
+    }
+}
+
+// Select menu option
+function selectMenuOption(category, value, element) {
+    menuSelections[category] = value;
+    
+    // Update UI
+    const siblings = element.parentElement.querySelectorAll('.menu-option');
+    siblings.forEach(el => el.classList.remove('selected'));
+    element.classList.add('selected');
+    
+    // Update examples
+    updateExamples();
+}
+
+// Generate prompt from menu selections
+function generateFromMenu() {
+    const patterns = menuSelectionsToPatterns(menuSelections);
+    const examples = document.getElementById('menuExamples').value;
+    
+    const data = {
+        examples: examples,
+        boilerplates: [], // Menu mode doesn't use boilerplates for now
+        customRules: '',
+        patterns: patterns
+    };
+    
+    try {
+        const prompt = PromptGenerator.generate(data);
+        
+        const output = document.getElementById('output');
+        output.textContent = prompt;
+        output.classList.remove('empty');
+        
+        updateCharCount(prompt.length);
+        
+        document.getElementById('copyBtn').disabled = false;
+        document.getElementById('downloadBtn').disabled = false;
+        
+        // Scroll to output
+        output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (e) {
+        console.error("Prompt generation failed:", e);
+        alert('An error occurred during prompt generation. Please check the console (F12) for details.');
+    }
+}
 
 // =============================================================================
 // ENHANCED PATTERN ANALYZER V3 (FIXED)
