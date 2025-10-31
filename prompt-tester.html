@@ -1,0 +1,59 @@
+---
+layout: page
+title: Prompt Generator Test Suite
+permalink: /prompt-tester/
+---
+
+<h1>🧪 Prompt Generator Automated Tests</h1>
+<p>This runs the same PatternAnalyzer and PromptGenerator from the live <a href="/prompt-generator/">Prompt Generator</a> page using the YAML test manifest.</p>
+
+<div id="results" style="font-family:monospace; white-space:pre-wrap; background:#f9f9f9; border:1px solid #ddd; border-radius:8px; padding:20px; margin-top:20px;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+<!-- Load the existing generator logic -->
+<script src="/assets/js/prompt-generator.js"></script>
+<!-- ^ If your logic only exists inline in the markdown, extract that <script> section into a standalone JS file first -->
+
+<script>
+async function runTests() {
+  const resultsDiv = document.getElementById('results');
+  const res = await fetch('/prompt-tests.yaml');
+  const yamlText = await res.text();
+  const tests = jsyaml.load(yamlText);
+
+  let passCount = 0;
+  let failCount = 0;
+  const lines = [];
+
+  for (const t of tests) {
+    try {
+      const result = PatternAnalyzer.analyze(t.input);
+      const fails = [];
+
+      for (const [path, expected] of Object.entries(t.expected)) {
+        const actual = path.split('.').reduce((o, i) => o && o[i], result);
+        if (actual !== expected) {
+          fails.push(`❌ ${path}: expected "${expected}", got "${actual}"`);
+        }
+      }
+
+      if (fails.length === 0) {
+        lines.push(`✅ ${t.name}`);
+        passCount++;
+      } else {
+        lines.push(`⚠️ ${t.name}\n${fails.join('\n')}`);
+        failCount++;
+      }
+    } catch (err) {
+      lines.push(`💥 ${t.name} - ERROR: ${err.message}`);
+      failCount++;
+    }
+  }
+
+  lines.push(`\nSummary: ${passCount} passed, ${failCount} failed`);
+  resultsDiv.textContent = lines.join('\n\n');
+}
+
+runTests();
+</script>

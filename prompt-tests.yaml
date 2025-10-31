@@ -1,0 +1,109 @@
+# =========================================================
+# Prompt Generator Verification Suite
+# Author: PhysicianPromptEngineering.com
+# Purpose: Validate PatternAnalyzer + PromptGenerator logic
+# =========================================================
+
+- name: "Bold Problems, Minimal Bullets"
+  description: |
+    Tests **bold problem headers** and minimal bullet-only plans.
+  input: |
+    **Asthma**
+        - Flovent started
+        - RTC 3mo
+
+    **Otitis Media**
+        - Amoxicillin BID x10d
+        - RTC 2wk
+  expected:
+    assessment.primary: minimal
+    plan.primary: simple_bullets
+    structure.problemFormat: bold
+    brevity.level: terse
+    justification.level: none
+    contingency.level: none
+
+- name: "One-Liner Assessment with Bulleted Plan"
+  description: |
+    Confirms detection of one-liner assessment lines preceding bullets.
+  input: |
+    **Asthma**
+    Mild persistent, doing better.
+        - Continue Flovent
+        - Albuterol PRN
+  expected:
+    assessment.primary: oneliner-phrase
+    plan.primary: simple_bullets
+
+- name: "Narrative Assessment + Categorized Plan"
+  description: |
+    Multi-sentence paragraph before subheaded categories.
+  input: |
+    Asthma:
+    Child with poor control despite Flovent.
+    Likely environmental triggers contributing.
+    **Diagnostics:**
+        - PFTs ordered
+    **Therapeutics:**
+        - Step up to Symbicort
+    **Follow-up:**
+        - RTC 1mo
+  expected:
+    assessment.primary: narrative
+    plan.primary: categorized
+    structure.problemFormat: capitalized-colon
+
+- name: "Hybrid Plan (Narrative + Bullets)"
+  input: |
+    **Constipation**
+    Improved on Miralax, but still occasional pain.
+    Plan to continue therapy and add dietary fiber.
+        - Continue Miralax ½ cap daily
+        - Encourage hydration
+  expected:
+    plan.primary: hybrid
+
+- name: "Abbreviation Density High"
+  input: |
+    **Asthma**
+        - Flovent BID
+        - Albuterol PRN
+        - RTC 3mo/PRN
+  expected:
+    abbreviations.level: high
+
+- name: "Contingency Language Detection"
+  input: |
+    **Fever**
+        - Tylenol q4h PRN
+        - Return if not improving or worsening
+  expected:
+    contingency.level: simple
+
+- name: "Voice Detection - First Person"
+  input: |
+    **Asthma**
+        - I started Flovent 44 BID
+        - I plan to reassess in 3mo
+  expected:
+    voice.voice: first_person
+
+- name: "Voice Detection - Passive"
+  input: |
+    **Asthma**
+        - Flovent was started
+        - Will be rechecked in 3mo
+  expected:
+    voice.voice: passive
+
+- name: "Consistency Warning (Mixed Assessment Types)"
+  input: |
+    **Asthma**
+    Mild persistent, stable.
+        - Continue Flovent
+
+    **Eczema**
+        - Moisturizer BID
+        - Topical steroid PRN
+  expected:
+    consistency.isConsistent: false
