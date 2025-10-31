@@ -1,58 +1,79 @@
 ---
 layout: page
-title: Prompt Generator Test Suite
+title: Prompt Generator Full Test Suite
 permalink: /prompt-tester/
 ---
 
-<h1>🧪 Prompt Generator Automated Tests</h1>
-<p>This runs the same PatternAnalyzer and PromptGenerator from the live <a href="/prompt-generator/">Prompt Generator</a> page using the YAML test manifest.</p>
+<h1>🧪 Extended Prompt Generator Tests</h1>
+<p>This suite validates both <strong>pattern detection</strong> and <strong>prompt output</strong>.</p>
 
 <div id="results" style="font-family:monospace; white-space:pre-wrap; background:#f9f9f9; border:1px solid #ddd; border-radius:8px; padding:20px; margin-top:20px;"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-
-<!-- Load the existing generator logic -->
-<script src="/assets/js/prompt-generator.js"></script>
-<!-- ^ If your logic only exists inline in the markdown, extract that <script> section into a standalone JS file first -->
+<script src="{{ '/assets/js/prompt-generator.js' | relative_url }}"></script>
 
 <script>
 async function runTests() {
   const resultsDiv = document.getElementById('results');
-  const res = await fetch('/prompt-tests.yaml');
+  const res = await fetch('/prompt-tests-extended.yaml');
   const yamlText = await res.text();
   const tests = jsyaml.load(yamlText);
 
   let passCount = 0;
   let failCount = 0;
-  const lines = [];
+  const logs = [];
 
   for (const t of tests) {
-    try {
-      const result = PatternAnalyzer.analyze(t.input);
-      const fails = [];
+    const fails = [];
+    let patterns, prompt;
 
-      for (const [path, expected] of Object.entries(t.expected)) {
-        const actual = path.split('.').reduce((o, i) => o && o[i], result);
-        if (actual !== expected) {
-          fails.push(`❌ ${path}: expected "${expected}", got "${actual}"`);
+    try {
+      patterns = PatternAnalyzer.analyze(t.input);
+
+      if (t.expected_error) {
+        if (patterns.error && patterns.error.includes(t.expected_error)) {
+          logs.push(`✅ ${t.name} (expected error matched)`);
+          passCount++;
+          continue;
+        } else {
+          fails.push(`Expected error "${t.expected_error}" but got "${patterns.error || 'no error'}"`);
+        }
+      } else if (t.expected) {
+        for (const [path, expected] of Object.entries(t.expected)) {
+          const actual = path.split('.').reduce((o, i) => o && o[i], patterns);
+          if (actual !== expected) fails.push(`❌ ${path}: expected "${expected}", got "${actual}"`);
+        }
+      }
+
+      // Generate output and validate content
+      if (!patterns.error) {
+        const data = { examples: t.input, boilerplates: [], customRules: '', patterns };
+        prompt = PromptGenerator.generate(data);
+
+        if (t.output_should_contain) {
+          for (const fragment of t.output_should_contain) {
+            if (!prompt.includes(fragment)) {
+              fails.push(`❌ Output missing: "${fragment}"`);
+            }
+          }
         }
       }
 
       if (fails.length === 0) {
-        lines.push(`✅ ${t.name}`);
+        logs.push(`✅ ${t.name}`);
         passCount++;
       } else {
-        lines.push(`⚠️ ${t.name}\n${fails.join('\n')}`);
+        logs.push(`⚠️ ${t.name}\n${fails.join('\n')}`);
         failCount++;
       }
-    } catch (err) {
-      lines.push(`💥 ${t.name} - ERROR: ${err.message}`);
+    } catch (e) {
+      logs.push(`💥 ${t.name} - ${e.message}`);
       failCount++;
     }
   }
 
-  lines.push(`\nSummary: ${passCount} passed, ${failCount} failed`);
-  resultsDiv.textContent = lines.join('\n\n');
+  logs.push(`\nSummary: ${passCount} passed, ${failCount} failed`);
+  resultsDiv.textContent = logs.join('\n\n');
 }
 
 runTests();
