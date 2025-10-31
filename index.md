@@ -2,6 +2,16 @@
 layout: home
 image: /images/workflow-diagram.png
 ---
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1890984');
+</script>
+<!-- End MailerLite Universal -->
+
 <style>
   
   .video-container {
@@ -142,3 +152,5 @@ These prompts are designed to be used within a secure, HIPAA-compliant environme
 This project is open source under the [MIT License](LICENSE).
 
 ⭐ **Consider giving us a star on GitHub and sharing with others!**
+
+<button class="ml-onclick-form" onclick="ml('show', 'vXBilU', true)">Click here to show form</button>
