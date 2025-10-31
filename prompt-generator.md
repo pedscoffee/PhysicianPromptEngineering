@@ -857,12 +857,18 @@ const PatternAnalyzer = {
             for (let i = 1; i < sections.length; i += 2) {
                 const problemName = sections[i].trim();
                 
-                // Skip if it's a subcategory header
+                // Skip if it's a subcategory header (FIX: BUG #2 - check before adding)
                 if (this.subcategoryPattern.test(problemName)) {
                     continue;
                 }
                 
                 const content = sections[i + 1] || '';
+                
+                // Skip if content is empty or only whitespace (FIX: BUG #2 - prevents validation failure)
+                if (!content.trim()) {
+                    continue;
+                }
+                
                 problems.push({
                     name: problemName,
                     content: content,
@@ -1073,18 +1079,18 @@ const PatternAnalyzer = {
             // Get *only* the plan content
             const planContent = this.getPlanContent(problem, assessmentType);
             
-            // Run checks *only* on the plan content
+            // Run checks *only* on the plan content (ordered from most specific to least specific)
             if (this.hasCategorySubheadings(planContent)) {
-                return 'categorized';
-            }
-            if (this.isPlanNarrative(planContent)) {
-                return 'narrative';
+                return 'categorized';  // Most specific: has section headers
             }
             if (this.isHybridPlan(planContent)) {
-                return 'hybrid';
+                return 'hybrid';  // Moderately specific: mix of sentences + bullets (FIX: BUG #4 - check before narrative)
+            }
+            if (this.isPlanNarrative(planContent)) {
+                return 'narrative';  // Broader: just needs future tense sentences
             }
             
-            // Default to simple bullets
+            // Default to simple bullets (least specific fallback)
             return 'simple_bullets';
         });
         
@@ -1117,15 +1123,32 @@ const PatternAnalyzer = {
                 }
             }
         } else if (assessmentType === 'narrative') {
-            // Plan starts at the *first bullet*
+            // Plan starts at the *first bullet* OR all content after assessment sentences (FIX: BUG #1)
             let foundFirstBullet = false;
+            let assessmentLineCount = 0;
+            
             for (const line of lines) {
                 if (/^\s*[-*]\s+/.test(line)) {
                     foundFirstBullet = true;
                 }
                 if (foundFirstBullet) {
                     planLines.push(line);
+                } else if (line.trim() && !/^\s*[-*]\s+/.test(line)) {
+                    // Count non-bullet lines (assessment lines)
+                    assessmentLineCount++;
+                    // After 2+ assessment lines, assume plan starts (skip these lines)
+                    if (assessmentLineCount > 2) {
+                        planLines.push(line);
+                    }
+                } else if (line.trim() === '' && assessmentLineCount > 0) {
+                    // Once we've seen assessment lines, include everything after
+                    planLines.push(line);
                 }
+            }
+            
+            // Fallback: if no bullets found and we have content, take everything after first 2 lines
+            if (planLines.length === 0 && lines.length > 2) {
+                planLines = lines.slice(2);
             }
         }
         
@@ -1152,13 +1175,17 @@ const PatternAnalyzer = {
             /\*\*Situational awareness:\*\*/i
         ];
         
-        // Also check for plain capitalized words with colon (on their own line)
-        const plainSubheadingPattern = /^[A-Z][a-zA-Z\s]+:/m;
+        // Check for bullet-formatted subheadings (e.g., "- Diagnostics:")
+        const bulletSubheadingPattern = /^\s*[-*]\s+(Diagnostics|Therapeutics|Medications|Follow-up|Tests|Prescriptions|Referrals|Consults|Next Steps|Patient Education|Discharge|Assessment|Plan|Situational awareness):/im;
+        
+        // Check for plain capitalized words with colon (on their own line)
+        const plainSubheadingPattern = /^(Diagnostics|Therapeutics|Medications|Follow-up|Tests|Prescriptions|Referrals|Consults|Next Steps|Patient Education|Discharge|Assessment|Plan|Situational awareness):/im;
         
         const hasBoldSubheading = boldSubheadingPatterns.some(pattern => pattern.test(text));
+        const hasBulletSubheading = bulletSubheadingPattern.test(text);
         const hasPlainSubheading = plainSubheadingPattern.test(text);
         
-        return hasBoldSubheading || hasPlainSubheading;
+        return hasBoldSubheading || hasBulletSubheading || hasPlainSubheading;
     },
 
     // Helper: Checks for narrative plan (operates on planContent)
