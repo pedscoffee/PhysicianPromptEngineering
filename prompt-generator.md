@@ -1086,15 +1086,24 @@ const ABBREVIATION_EXAMPLES = {
 function menuSelectionsToPatterns(selections, optionalExamples = '') {
     // Map menu selection to internal format names
     const mapAssessmentFormat = (format) => {
+        // Menu format → internal assessment format
+        // Note: Assessment formats are: narrative, oneliner-phrase, minimal
+        // Menu only shows numbered/hyphenated/prose/grouped, but assessment uses different names
         if (format === 'prose') return 'narrative';
-        if (format === 'grouped') return 'categorized';
-        return format; // 'numbered', 'hyphenated' stay the same
+        if (format === 'grouped') return 'oneliner-phrase';  // grouped becomes oneliner for assessment
+        if (format === 'numbered') return 'minimal';  // numbered assessment has no intro line, just bullets
+        if (format === 'hyphenated') return 'minimal';  // same as numbered for assessment
+        return 'minimal'; // default
     };
     
     const mapPlanFormat = (format) => {
+        // Menu format → internal plan format
+        // Valid internal formats: narrative, simple_bullets, categorized, hybrid
         if (format === 'prose') return 'narrative';
         if (format === 'grouped') return 'categorized';
-        return format; // 'numbered', 'hyphenated' stay the same
+        if (format === 'numbered') return 'simple_bullets';  // numbered is just formatting, use simple bullets
+        if (format === 'hyphenated') return 'simple_bullets';  // same as numbered, just different bullet style
+        return 'simple_bullets'; // default
     };
     
     const bulletStyleMap = (format) => {
@@ -2189,8 +2198,12 @@ const PromptGenerator = {
         
         // Abbreviations
         if (patterns.abbreviations.level === 'high') {
-            const abbrList = patterns.abbreviations.found.slice(0, 8).join(', ');
-            rules.push(`${num}. Use extensive medical abbreviations (e.g., ${abbrList}, etc.)`);
+            if (patterns.abbreviations.found && patterns.abbreviations.found.length > 0) {
+                const abbrList = patterns.abbreviations.found.slice(0, 8).join(', ');
+                rules.push(`${num}. Use extensive medical abbreviations (e.g., ${abbrList}, etc.)`);
+            } else {
+                rules.push(`${num}. Use extensive medical abbreviations throughout (e.g., PE, CVA, SOB, LOC, etc.)`);
+            }
             num++;
         } else if (patterns.abbreviations.level === 'low') {
             rules.push(`${num}. Minimize abbreviations. Write out most terms in full`);
@@ -2210,7 +2223,7 @@ const PromptGenerator = {
         if (patterns.voice.voice === 'first_person') {
             rules.push(`${num}. Use first-person active voice (e.g., "I will start," "I recommend")`);
             num++;
-        } else if (patterns.voice.voice === 'passive') {
+        } else if (patterns.voice.voice === 'passive_voice' || patterns.voice.voice === 'passive') {
             rules.push(`${num}. Use passive voice constructions where appropriate`);
             num++;
         }
