@@ -1064,6 +1064,10 @@ const EXAMPLE_CASE = {
     plan_prose_brief: "Supportive care recommended. Tylenol PRN for fever. Return if symptoms worsen.",
     plan_prose_moderate: "Supportive care with fluids and rest recommended. Acetaminophen or ibuprofen as needed for fever and comfort. Return to clinic if symptoms worsen or do not improve in 3-5 days.",
     plan_prose_verbose: "Comprehensive supportive care including adequate hydration, nutritional intake, and appropriate rest is recommended to facilitate recovery. Acetaminophen (Tylenol) or ibuprofen (Motrin) should be administered as needed for fever management and discomfort relief. Patient should return to clinic if symptoms worsen, do not improve within 3-5 days, or if new concerning symptoms develop.",
+    
+    plan_grouped_brief: "Treatment:\n- Supportive care\n- Tylenol PRN\n\nFollow-up:\n- RTC if worsens",
+    plan_grouped_moderate: "Treatment:\n- Recommended supportive care with fluids and rest\n- Acetaminophen or ibuprofen as needed for fever and comfort\n\nFollow-up:\n- Return to clinic if symptoms worsen or do not improve in 3-5 days",
+    plan_grouped_verbose: "Comprehensive Care:\n- Initiate comprehensive supportive care including adequate hydration, nutritional intake, and appropriate rest to facilitate recovery\n- Administer acetaminophen (Tylenol) or ibuprofen (Motrin) as needed for fever management and discomfort relief\n\nFollow-up:\n- Schedule return visit to clinic if symptoms worsen, do not improve within 3-5 days, or if new concerning symptoms develop",
 };
 
 const VOICE_EXAMPLES = {
@@ -1080,17 +1084,39 @@ const ABBREVIATION_EXAMPLES = {
 
 // Map menu selections to pattern object
 function menuSelectionsToPatterns(selections, optionalExamples = '') {
+    // Map menu selection to internal format names
+    const mapAssessmentFormat = (format) => {
+        if (format === 'prose') return 'narrative';
+        if (format === 'grouped') return 'categorized';
+        return format; // 'numbered', 'hyphenated' stay the same
+    };
+    
+    const mapPlanFormat = (format) => {
+        if (format === 'prose') return 'narrative';
+        if (format === 'grouped') return 'categorized';
+        return format; // 'numbered', 'hyphenated' stay the same
+    };
+    
+    const bulletStyleMap = (format) => {
+        if (format === 'numbered') return 'number';
+        if (format === 'hyphenated') return 'hyphen';
+        return 'hyphen'; // default
+    };
+    
+    const assessmentFormat = selections.assessment || 'hyphenated';
+    const planFormat = selections.plan || 'hyphenated';
+    
     const patterns = {
         assessment: {
-            primary: selections.assessment || 'hyphenated',
+            primary: mapAssessmentFormat(assessmentFormat),
             confidence: 1.0
         },
         plan: {
-            primary: selections.plan || 'hyphenated',
+            primary: mapPlanFormat(planFormat),
             confidence: 1.0
         },
         brevity: {
-            level: selections.brevity || 'moderate',
+            level: selections.brevity === 'brief' ? 'terse' : selections.brevity === 'verbose' ? 'verbose' : 'moderate',
             average: selections.brevity === 'brief' ? 15 : selections.brevity === 'verbose' ? 50 : 30
         },
         voice: {
@@ -1112,7 +1138,7 @@ function menuSelectionsToPatterns(selections, optionalExamples = '') {
         structure: {
             problemFormat: 'bold',
             bulletStyle: {
-                style: selections.assessment === 'numbered' ? 'numbered' : 'hyphen',
+                style: bulletStyleMap(planFormat),
                 indent: 8
             },
             spacing: {
@@ -2055,15 +2081,24 @@ const PromptGenerator = {
 
     generatePlanStructure(plan, bulletStyle) {
         const indent = ' '.repeat(bulletStyle.indent || 8);
+        const isNumbered = bulletStyle.style === 'number';
         const bullet = bulletStyle.style === 'hyphen' ? '-' : 
                       bulletStyle.style === 'asterisk' ? '*' : 
                       bulletStyle.style === 'number' ? '1.' : '-';
         
+        // For numbered lists, show example with incrementing numbers
+        const numberedBullets = `${indent}1. [Action item]\n${indent}2. [Action item]\n${indent}3. [Action item]\n`;
+        const regularBullets = `${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`;
+        const categorizedNumbered = `**Diagnostics:**\n${indent}1. [Test/study]\n${indent}2. [Test/study]\n\n**Therapeutics:**\n${indent}3. [Medication/treatment]\n\n**Follow-up:**\n${indent}4. [Follow-up plan]\n`;
+        const categorizedRegular = `**Diagnostics:**\n${indent}${bullet} [Test/study]\n\n**Therapeutics:**\n${indent}${bullet} [Medication/treatment]\n\n**Follow-up:**\n${indent}${bullet} [Follow-up plan]\n`;
+        const hybridNumbered = `[Opening narrative sentence explaining plan strategy]\n${indent}1. [Action item]\n${indent}2. [Action item]\n${indent}3. [Action item]\n`;
+        const hybridRegular = `[Opening narrative sentence explaining plan strategy]\n${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`;
+        
         const templates = {
             narrative: '[Write plan as flowing paragraph with future tense verbs]\n',
-            simple_bullets: `${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`,
-            categorized: `**Diagnostics:**\n${indent}${bullet} [Test/study]\n\n**Therapeutics:**\n${indent}${bullet} [Medication/treatment]\n\n**Follow-up:**\n${indent}${bullet} [Follow-up plan]\n`,
-            hybrid: `[Opening narrative sentence explaining plan strategy]\n${indent}${bullet} [Action item]\n${indent}${bullet} [Action item]\n`
+            simple_bullets: isNumbered ? numberedBullets : regularBullets,
+            categorized: isNumbered ? categorizedNumbered : categorizedRegular,
+            hybrid: isNumbered ? hybridNumbered : hybridRegular
         };
         
         return templates[plan.primary] || templates.simple_bullets;
@@ -2114,11 +2149,17 @@ const PromptGenerator = {
         
         // Bullet style
         if (patterns.structure.bulletStyle.style !== 'none') {
-            const bulletChar = patterns.structure.bulletStyle.style === 'hyphen' ? 'hyphen (-)' :
+            const bulletInfo = patterns.structure.bulletStyle.style === 'hyphen' ? 'hyphen (-)' :
                              patterns.structure.bulletStyle.style === 'asterisk' ? 'asterisk (*)' :
-                             'numbers';
-            rules.push(`${num}. Use ${bulletChar} for all bullets`);
+                             patterns.structure.bulletStyle.style === 'number' ? 'consecutive numbers (1., 2., 3., etc.)' :
+                             'bullets';
+            rules.push(`${num}. Use ${bulletInfo} for all bullets`);
             num++;
+            
+            if (patterns.structure.bulletStyle.style === 'number') {
+                rules.push(`${num}. For numbered lists, increment numbers sequentially throughout the entire plan (start with 1. and count up; do NOT restart numbering for each diagnosis)`);
+                num++;
+            }
             
             if (patterns.structure.bulletStyle.indent > 0) {
                 rules.push(`${num}. Indent all bullets with ${patterns.structure.bulletStyle.indent} spaces`);
