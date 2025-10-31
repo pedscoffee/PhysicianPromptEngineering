@@ -142,3 +142,5 @@ These prompts are designed to be used within a secure, HIPAA-compliant environme
 This project is open source under the [MIT License](LICENSE).
 
 ⭐ **Consider giving us a star on GitHub and sharing with others!**
+
+<div class="ml-embedded" data-form="ojUp5o"></div>
