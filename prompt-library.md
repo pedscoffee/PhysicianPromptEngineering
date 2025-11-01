@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Prompt Library
-description: "Transform AI scribe output into concise, problem-oriented clinical notes. LLM AI Editor creates Assessment and Plan, Billing, and AVS formatting prompts."
+description: Access a free library of production-ready clinical LLM prompts. Copy and paste prompts for A/P formatting, billing analysis, AVS generation, and more.
 ---
 
 <style>

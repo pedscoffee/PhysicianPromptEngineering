@@ -1,6 +1,7 @@
 ---
 layout: home # or whatever your site's main page layout is
 title: Blog
+description: Explore the latest insights on AI in clinical documentation. Our blog covers large language models, AI scribe tools, and prompt engineering for physicians.
 permalink: /blog/
 ---
 

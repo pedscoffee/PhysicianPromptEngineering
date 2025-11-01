@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Prompting Best Practices
-description: "Learn the three core principles of effective AI prompt engineering for clinical documentation: few-shot examples, brevity, and modular design."
+description: Learn how to write effective medical prompts. Our definitive guide for physicians covers few-shot examples, brevity, and modular prompt design for EMRs.
 ---
 ![AP Prompt Generator Banner](./images/Best_practices.jpg)
 <style>

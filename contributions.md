@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Contributions
-description: "Contribute your own AI prompts to our growing library. Share production-ready prompts tested in real clinical workflows with the physician community."
+description: "Help build our open-source community. We invite physicians to contribute their own custom AI prompts to our shared clinical prompt library via GitHub."
 
 ---
 
