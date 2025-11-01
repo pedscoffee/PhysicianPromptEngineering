@@ -1,7 +1,7 @@
 title: Physician Prompt Engineering
 author: pedscoffee
 description: >-
-  Clinical LLM Prompts
+  Physician Prompt Engineering offers open-source clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems.
 url: https://physicianpromptengineering.com
 
 # Set the theme
@@ -32,12 +32,3 @@ collections:
     permalink: /prompts/:path/
 
 google_analytics: G-VNYGW8RWMY
-
-# Inside _config.yml
-defaults:
-  - scope:
-      path: "" # Target all files
-      type: pages # Target pages and markdown files
-    values:
-      # This description will be used if a page doesn't define its own.
-      description: "Physician Prompt Engineering offers open-source clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems."
