@@ -60,8 +60,6 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
 The key innovation shared here is physician use of a large language model as a personalized AI Editor to accelerate and enhance medical documentation.
 
-### Workflow diagram
-
 ![Workflow diagram](./images/workflow-diagram.png){: style="max-width: 80%; height: auto; display: block; margin: 0 auto;" }
 
 **Goal:** Transform AI scribe output into your exact preferences using EMR’s internal LLM. Notes should be fully automated to your exact preferences with no editing required.
