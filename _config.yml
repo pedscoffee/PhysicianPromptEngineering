@@ -33,4 +33,11 @@ collections:
 
 google_analytics: G-VNYGW8RWMY
 
-# This should work now
+# Inside _config.yml
+defaults:
+  - scope:
+      path: "" # Target all files
+      type: pages # Target pages and markdown files
+    values:
+      # This description will be used if a page doesn't define its own.
+      description: "Physician Prompt Engineering offers open-source clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems."
