@@ -4,9 +4,12 @@ title: A/P Prompt Generator
 description: Build custom AI prompts for your clinical workflow. Use our free A/P Prompt Generator to format AI scribe output to your exact style. Try it now.
 permalink: /prompt-generator/
 ---
-<title>A/P Prompt Generator</title>
 
 <style>
+
+    .wrapper {
+  max-width: 1640px; /* This overrides the theme's narrow wrapper */
+}
         * {
             margin: 0;
             padding: 0;
