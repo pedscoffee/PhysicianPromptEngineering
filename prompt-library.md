@@ -4,8 +4,6 @@ title: Prompt Library
 description: Access a free library of production-ready clinical LLM prompts. Copy and paste prompts for A/P formatting, billing analysis, AVS generation, and more.
 ---
 
-<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
-
 <style>
   .prompt-entry {
     border: 1px solid #e0e0e0;
@@ -55,6 +53,8 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
 Welcome to the Physician Prompt Engineering prompt library. Each prompt is designed for a specific task and tested in real clinical workflows.
 
 To add a new prompt, simply [contribute one]({{ site.baseurl }}/contributions) or add a new file to the `_prompts` folder in the repository.
+
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
 
 ---
 
