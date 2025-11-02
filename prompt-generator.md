@@ -582,7 +582,7 @@ permalink: /prompt-generator/
             
             <div style="margin-bottom: 20px;">
                 <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">1. Add Conditional Boilerplate Text</h3>
-                <p>In the generated prompt, find the "Conditional Boilerplate Text" section. Replace the placeholder with your actual conditional text that Claude should insert. Examples might include:</p>
+                <p>In the generated prompt, find the "Conditional Boilerplate Text" section. Replace the placeholder with your actual conditional text that the LLM Editor should insert. Examples might include:</p>
                 <ul style="margin-left: 20px; margin-top: 10px; color: #666;">
                     <li>Common counseling points for specific conditions</li>
                     <li>Standard follow-up instructions for certain diagnoses</li>
@@ -592,13 +592,13 @@ permalink: /prompt-generator/
 
 <div style="margin-bottom: 20px;">
                 <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">2. Add Few-Shot Examples</h3>
-                <p>Find the "Few-Shot Examples" section in the generated prompt. Add 2-3 of your actual A/P notes that match your desired output format. These examples are crucial—they teach Claude your exact style, tone, clinical reasoning pattern, and formatting preferences far better than any rule can.</p>
-                <p style="margin-top: 10px; color: #666;"><strong>Tip:</strong> Choose examples from different clinical scenarios to show Claude the diversity of your style.</p>
+                <p>Find the "Few-Shot Examples" section in the generated prompt. Add 2-3 of your actual A/P notes that match your desired output format. These examples are crucial—they teach the LLM Editor your exact style, tone, clinical reasoning pattern, and formatting preferences far better than any rule can.</p>
+                <p style="margin-top: 10px; color: #666;"><strong>Tip:</strong> Choose examples from different clinical scenarios to show the LLM the diversity of your style.</p>
             </div>
 
  <div style="margin-bottom: 20px;">
                 <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">3. Test and Refine</h3>
-                <p>Once you've added your boilerplate and examples, test your prompt with Claude. Make adjustments to the formatting rules or custom rules as needed until the output matches your expectations.</p>
+                <p>Once you've added your boilerplate and examples, test your prompt with your LLM. Make adjustments to the formatting rules or custom rules as needed until the output matches your expectations.</p>
             </div>
 
  <div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
