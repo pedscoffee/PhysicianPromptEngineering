@@ -3,19 +3,6 @@ layout: home
 image: /images/workflow-diagram.png
 description: Open-source clinical LLM prompts for physicians. Automate medical documentation, improve AI scribe output, and reduce burnout. Get started with our free prompt library.
 ---
-
-<!-- MailerLite Universal -->
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '1890984');
-</script>
-<!-- End MailerLite Universal -->
-
-<button class="ml-onclick-form" onclick="ml('show', 'vXBilU', true)">Click here to show form</button>
-
 <style>
   
   .video-container {
@@ -53,7 +40,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
 </style>
 
-![Physician Prompt Engineering Banner](./images/physician_prompt_engineering.jpg)
+![AP Prompt Generator Banner](./images/physician_prompt_engineering.jpg)
 
 <div class="video-container">
   <iframe 
