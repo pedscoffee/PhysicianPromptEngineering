@@ -22,7 +22,7 @@ permalink: /prompt-generator/
 
          .wrapper {
             max-width: 1640px;
-            max-width: 80%; 
+            max-width: 90%; 
         }
 
         .container {
