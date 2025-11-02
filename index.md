@@ -141,5 +141,3 @@ These prompts are designed to be used within a secure, HIPAA-compliant environme
 This project is open source under the [MIT License](LICENSE).
 
 ⭐ **Consider giving us a star on GitHub and sharing with others!**
-
-<button class="ml-onclick-form" onclick="ml('show', 'vXBilU', true)">Click here to show form</button>
