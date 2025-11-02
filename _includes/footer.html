@@ -1,0 +1,119 @@
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+
+      <!-- Column 1: Main Pages Link Tree -->
+      <div class="footer-col footer-col-1">
+        <h2 class="footer-heading">Main Pages</h2>
+        <ul class="link-tree-list">
+          <li><a href="{{ site.baseurl }}/">Home</a></li>
+          <li><a href="{{ site.baseurl }}/blog/">Blog</a></li>
+          <li><a href="{{ site.baseurl }}/prompt-library/">Prompt Library</a></li>
+          <li><a href="{{ site.baseurl }}/prompt-generator/">Prompt Generator</a></li>
+          <li><a href="{{ site.baseurl }}/best-practices/">Best Practices</a></li>
+          <li><a href="{{ site.baseurl }}/contributions/">Contributions</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: Site Description and Social Links -->
+      <div class="footer-col footer-col-2">
+        <div class="footer-col-content">
+          <p class="site-description">
+            {{ site.description | escape }}
+          </p>
+          {% include social-links.html %}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright Information -->
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3">
+        <p class="copyright">
+          &copy; {{ site.time | date: "%Y" }} {{ site.title | escape }}. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    /* Basic custom styling to ensure the link list looks clean */
+    .link-tree-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .link-tree-list li {
+      margin-bottom: 5px;
+    }
+
+    .link-tree-list a {
+      color: var(--grey-color-dark); /* Adjust to your Minima theme colors */
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .link-tree-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* Adjusting Minima's default layout for the columns */
+    .site-footer .wrapper {
+      max-width: -webkit-max-content;
+      max-width: -moz-max-content;
+      max-width: max-content;
+      padding: 0 30px; /* Minima's default padding */
+    }
+
+    .site-footer .footer-col-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .site-footer .footer-col {
+      min-width: 200px; /* Ensure columns don't stack too early */
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .site-footer .footer-heading {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .site-footer .copyright {
+      font-size: 14px;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid var(--grey-color-light);
+    }
+
+    /* Mobile adjustments */
+    @media screen and (max-width: 600px) {
+      .site-footer .footer-col {
+        flex: 1 1 100%; /* Stack columns on small screens */
+      }
+    }
+  </style>
+
+  <!-- MailerLite Universal Script (Added for tracking/forms) -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1890984');
+  </script>
+  <!-- End MailerLite Universal -->
+
+</footer>
