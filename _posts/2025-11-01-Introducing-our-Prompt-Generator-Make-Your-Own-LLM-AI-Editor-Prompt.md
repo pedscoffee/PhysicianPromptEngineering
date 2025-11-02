@@ -1,4 +1,3 @@
----
 layout: post
 title: "Introducing our Prompt Generator: Make your own LLM AI Editor Prompts"
 date: 2025-11-01 10:00:00 -0500
@@ -7,10 +6,6 @@ categories: [AI, Documentation, Efficiency, large language models]
 tags: [prompt engineering, large language model, EMR, AI scribe, efficiency]
 # **SEO Optimization:** Use the excerpt for the meta description
 excerpt: "Get started with doctor prompt engineering by using our prompt generator!  AI scribe output LLM Assessment and Plan AI Editor prompt made easy."
-
-
-
------
 
 # Introducing the Prompt Generator!
 
