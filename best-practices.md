@@ -54,6 +54,8 @@ These are the core principles derived from real-world clinical use that lead to 
 
 ---
 
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
+
 ## LLM Prompt Engineering Best Practices for EMR Scribes: A Definitive Guide to Using AI for Clinical Documentation   
 
 The integration of Large Language Models (LLMs) into clinical workflows represents a potential transformative leap in efficiency.  Close to complete automation of notes is now possible. For physicians this technology promises to reclaim countless hours lost to administrative burden. However, the quality of the output is directly proportional to the quality of the prompt.  The current AI scribe products can only get so far.  Each clinician needs to next personalize the outputs to meet the exact needs and standards of their own practice setting to unlock the full benefits of these tools.

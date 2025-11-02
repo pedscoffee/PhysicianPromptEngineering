@@ -23,3 +23,5 @@ permalink: /blog/
     <hr>
   </article>
 {% endfor %}
+
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>

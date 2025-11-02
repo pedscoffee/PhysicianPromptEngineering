@@ -917,6 +917,8 @@ permalink: /prompt-generator/
         });
     </script>
 
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
+
 <div class="support-section">
     <h3>Found this useful?</h3>
     <p>If this tool has helped streamline your clinical workflow, consider supporting the project with a small tip.<br>
