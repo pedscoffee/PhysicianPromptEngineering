@@ -74,6 +74,8 @@ While it is tempting to take this in all sorts of directions, it’s recommended
 
 These are available to copy and paste from our [Prompt Library]({{ site.baseurl }}/prompt-library).
 
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
+
 ### Key Constraint
 
 Epic EMR LLM only accepts plain text (no markdown, no rich formatting). All prompts must be ≤5,000 characters.
