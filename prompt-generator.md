@@ -269,6 +269,8 @@ permalink: /prompt-generator/
             <p>Create customized prompts for formatting clinical assessment and plan documentation.</p>
         </div>
 
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
+
 <div class="main-layout">
             <!-- FORM PANEL -->
             <div class="form-panel">
@@ -916,8 +918,6 @@ permalink: /prompt-generator/
             updateOutput();
         });
     </script>
-
-<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
 
 <div class="support-section">
     <h3>Found this useful?</h3>
