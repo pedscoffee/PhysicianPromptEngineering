@@ -55,6 +55,12 @@ To start, check us out on GitHub! There is a [Discussions](https://github.com/pe
 
 Link to full Repo: [GitHub Repository](https://github.com/pedscoffee/PhysicianPromptEngineering/)
 
+---
+
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
+
+---
+
 ### What to Include
 
 When submitting your prompt, please include the following details so others can understand and use it effectively:
