@@ -7,9 +7,6 @@ permalink: /prompt-generator/
 
 <style>
 
-    .wrapper {
-  max-width: 1640px; /* This overrides the theme's narrow wrapper */
-}
         * {
             margin: 0;
             padding: 0;
@@ -23,8 +20,13 @@ permalink: /prompt-generator/
             line-height: 1.6;
         }
 
+         .wrapper {
+            max-width: 1640px;
+            max-width: 80%; 
+        }
+
         .container {
-            max-width: 1600px;
+            max-width: 100%;
             margin: 0 auto;
             padding: 20px;
         }
@@ -66,8 +68,6 @@ permalink: /prompt-generator/
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-height: 90vh;
-            overflow-y: auto;
         }
 
         .output-panel {
@@ -226,7 +226,6 @@ permalink: /prompt-generator/
             white-space: pre-wrap;
             word-wrap: break-word;
             overflow-y: auto;
-            max-height: 60vh;
         }
 
         #outputContent.empty {
