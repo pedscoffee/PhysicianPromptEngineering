@@ -8,11 +8,9 @@ tags: [prompt engineering, large language model, EMR, AI scribe, efficiency]
 # **SEO Optimization:** Use the excerpt for the meta description
 excerpt: "Get started with doctor prompt engineering by using our prompt generator!  AI scribe output LLM Assessment and Plan AI Editor prompt made easy."
 
-
+# Introducing the Prompt Generator!
 
 -----
-
-# Introducing the Prompt Generator!
 
     Prompt engineering, large language models (LLMs), and AI in general can be intidimating at first.  Part of the goal of this resource is to help make LLMs approachable.  Since Windows 95 and iPhones a lot of us have become accustomed to a cycle of each new wave of technology requiring a lot of time and effort to get used to only for everything to change again.  Thankfully, this dynamic is about to get a lot better.    
 
