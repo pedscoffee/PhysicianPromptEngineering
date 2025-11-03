@@ -70,11 +70,9 @@ The Prompt Generator complements our comprehensive documentation toolkit:
 
 ## Expected Outcomes
 
-Physicians using customized prompts report:
-
-- **Time savings**: 2-5 minutes per routine encounter
+- **Time savings**: Minutes saved on each encounter
 - **Consistency**: Standardized format across all documentation
-- **Reduced cognitive load**: Less mental energy on formatting, more on clinical reasoning
+- **Reduced cognitive load**: Less mental energy on doucmentation, more on clinical reasoning
 - **Billing accuracy**: Improved capture of complexity and medical decision-making
 
 ## Getting Started Today

@@ -64,17 +64,6 @@ Modern AI documentation leverages a dual-stage approach that combines ambient in
 - Specialty-appropriate structure and emphasis
 - Institutional compliance requirements integrated
 
-### Measurable Impact
-
-Early adopters report significant improvements across key metrics:
-
-| Metric | Traditional | AI-Assisted | Improvement |
-|--------|------------|-------------|-------------|
-| Documentation time/patient | 8-12 minutes | 2-4 minutes | 60-70% reduction |
-| After-hours charting | 90-120 min/day | 15-30 min/day | 75% reduction |
-| Same-day note completion | 40% | 85% | 2.1x increase |
-| Physician satisfaction | 4.2/10 | 7.8/10 | 86% improvement |
-
 ## Implementation Roadmap
 
 ### Phase 1: Foundation

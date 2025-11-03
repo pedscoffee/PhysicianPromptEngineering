@@ -1,83 +1,155 @@
-
----
 # Physician Prompt Engineering
-[![View Site](https://img.shields.io/badge/View_Site-physicianpromptengineering.com-blue?logo=github)](https://physicianpromptengineering.com/)
-[![DOI](./images/zenodo.17449353.svg)](https://doi.org/10.5281/zenodo.17449352)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-![Language](https://img.shields.io/badge/Format-Plain_Text-blueviolet)
+
+[![Website](https://img.shields.io/badge/Website-physicianpromptengineering.com-blue?logo=github)](https://physicianpromptengineering.com/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17449352-green)](https://doi.org/10.5281/zenodo.17449352)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
 
-An open-source initiative to improve clinical documentation with practical AI.
+> Open-source clinical documentation prompts that transform AI scribe output into physician-ready notes in seconds.
 
-**It's time to stop sprinting—come take the subway.**
+## 🎯 Overview
 
----
+**Physician Prompt Engineering** provides production-ready prompts that convert raw AI transcripts into perfectly formatted clinical notes matching your exact documentation style—no manual editing required.
 
-## What Is This?
+### The Problem
+AI scribes capture conversations but produce generic, verbose notes requiring extensive editing.
 
-Visit our website: [Physician Prompt Engineering](https://physicianpromptengineering.com)
+### Our Solution
+Precision-engineered prompts that transform raw AI output into concise, personalized documentation using your EMR's built-in AI features.
 
-Physician Prompt Engineering provides production-ready AI prompts that transform raw conversation transcripts into perfectly formatted clinical notes in seconds.
+## ✨ Key Features
 
-Combine:
-- ✓ **AI Scribes** (listen to your patient conversation)
-- ✓ **AI Editor Prompts** (format exactly to your preferences)
-- = **Fully automated, personalized clinical notes**
+- **🏥 EMR-Ready Prompts**: Works with any EMR just need HIPAA safe/IT approved LLM
+- **⏱️ Time Savings**: Minutes saved on each encounter
+- **📋 Specialty Agnostic**: Core framework adaptable to any medical specialty
+- **🔒 HIPAA Compliant**: Designed for use within secure EMR environments
+- **👥 Community-Driven**: Contributed and tested by practicing physicians
 
----
+## 🚀 Quick Start
 
-## The Three Big Insights
+### Prerequisites
+- EMR with integrated AI text generation (e.g., Epic's "Generate Text with AI")
+- Institutional approval for AI documentation tools
+- HIPAA-compliant AI scribe service (optional but recommended)
 
-1. **Few-shot examples are critical** - Show, don't tell
-2. **Brevity improves quality** - Shorter = faster approval
-3. **Separate prompts for separate functions** - Each does one thing well
+### Getting Started
 
----
+1. **Browse Available Prompts**
+   ```
+   Visit: https://physicianpromptengineering.com/prompt-library
+   ```
 
-## Get Started
+2. **Select Your Use Case**
+   - Assessment & Plan formatting
+   - Medical Decision Making & billing
+   - After-Visit Summaries
+   - Custom specialty prompts
 
+3. **Copy & Customize**
+   - Replace example content with your own documentation samples
+   - Test with 5-10 routine encounters
+   - Refine based on results
 
+4. **Scale Up**
+   - Expand to complex cases
+   - Share improvements with the community
 
----
+## 📚 Documentation
 
-## Contributing
+### Core Resources
 
-We welcome contributions! This is an open-source community resource.
+- **[Prompt Library](https://physicianpromptengineering.com/prompt-library)** - Ready-to-use clinical prompts
+- **[Best Practices Guide](https://physicianpromptengineering.com/best-practices)** - Evidence-based prompt engineering principles
+- **[Prompt Generator](https://physicianpromptengineering.com/prompt-generator)** - Interactive tool for creating custom prompts
+- **[Blog](https://physicianpromptengineering.com/blog)** - Latest insights on AI in clinical documentation
+
+### Key Principles
+
+1. **Few-Shot Examples** > Instructions
+2. **Brevity** = Quality
+3. **Modular Prompts** > Multi-function
+
+## 🤝 Contributing
+
+We welcome contributions from the medical community! This project thrives on shared knowledge.
 
 ### How to Contribute
 
-Alternate: Use google form on physicianpromptengineering.com
+#### Option 1: Web Submission (Recommended)
+Use our [submission form](https://physicianpromptengineering.com/contributions) on the website.
 
-1. **Test a prompt** in your practice
-2. **Create a new version** or improvement
-3. **Submit a Pull Request** with:
-   - Your Specialty: (e.g., Pediatrics, Internal Medicine, Surgery)
-   - Prompt Title: A clear, short name for your prompt.
-   - Use Cases: What problem does this prompt solve? (e.g., “Formats hospital discharge summaries,” “Generates patient education handouts”)
-   - How You’ve Tested It: A brief note on how you’ve used this in your workflow.
-   - The Prompt Itself: The full, copy-and-paste-ready text of your prompt.
-4. **Community reviews** and provides feedback
-5. **Merged and published** on the site
+#### Option 2: GitHub Pull Request
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-prompt-name`)
+3. Add your prompt following our template
+4. Include testing notes and use cases
+5. Submit a Pull Request
+
+### What We Need
+- Specialty-specific prompts
+- EMR-specific optimizations
+- International/multilingual adaptations
+- Testing feedback and refinements
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## ⚠️ Important Disclaimers
+
+### Clinical Responsibility
+- All AI-generated content requires physician review before finalizing
+- These tools enhance efficiency, not replace clinical judgment
+- You retain full responsibility for documentation accuracy
+
+### Security Requirements
+- **ONLY** use within HIPAA-compliant EMR environments
+- **NEVER** use public AI tools (ChatGPT, Claude, Gemini) with patient data
+- Follow your institution's AI usage policies
+
+### No Medical Advice
+This project provides educational tools only. It does not constitute medical, legal, or billing advice.
+
+## 📊 Project Status
+
+### Current Focus
+- [ ] Expanding specialty-specific prompt library
+- [ ] EMR integration guides for major systems
+- [ ] Validation studies on time savings
+- [ ] Multi-language support
+
+[Share your story →](https://physicianpromptengineering.com/contributions)
+
+## 📖 Citation
+
+If you use this project in your research or practice, please cite:
+
+```bibtex
+@software{physician_prompt_engineering,
+  author = {Physician Prompt Engineering Contributors},
+  title = {Physician Prompt Engineering: Open-Source Clinical Documentation Prompts},
+  year = {2025},
+  url = {https://physicianpromptengineering.com},
+  doi = {10.5281/zenodo.17449352}
+}
+```
+
+## 📬 Contact & Support
+
+- **Website**: [physicianpromptengineering.com](https://physicianpromptengineering.com)
+- **Discussions**: [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)
+- **Issues**: [GitHub Issues](https://github.com/pedscoffee/PhysicianPromptEngineering/issues)
+- **Email**: Via website contact form
+
+## 📜 License
+
+This project is open source under the [MIT License](LICENSE). Free to use, modify, and share.
 
 ---
 
-## Important Disclaimers
-- **Only use within HIPAA-compliant EMR environments**
-- **DO NOT use public AI tools** (ChatGPT, Claude, Gemini) with patient data
-- Use your EMR's integrated LLM or approved tools only
-- All prompts assume human in the loop taking responsbility for final accuracy and output.
+<p align="center">
+  <strong>⭐ If this project saves you time, please star it and share with colleagues!</strong>
+</p>
 
-## Disclaimer and Terms of Use
-### 1. No Medical or Legal Advice
-The content on the Peds Coffee website, including all AI prompts, examples, and discussions, is provided for educational and informational purposes only. It is not intended as a substitute for professional medical, billing, or legal advice.
-
-### 2. Clinical Responsibility and Verification
-All prompts assume human in the loop taking responsbility for final accuracy and output.  The prompts are tools for documentation efficency, not substitutes for clinical judgment. As the practicing clinician, you retain full and final responsibility for the accuracy and completeness of anything related to using these prompts if you decide to use them. Anything here is provided AS IS without any guarantee or promise of any functionality or usefulness. The goal is to give a starting place for you to learn and create from on your own.  Always read and verify the AI-generated output before finalizing anything. Follow terms of service for any AI scribe tools used.  These tools cannot account for every nuance of a patient encounter; you must ensure the final text accurately reflects your judgement.
-
-### 3. HIPAA and Data Security
-These prompts are designed to be used within a secure, HIPAA-compliant environment (e.g., your EMR’s built-in AI tool).  Do not share protected health information (PHI) from your EMR (Epic, Cerner, or others) with public or commercial large language models (LLMs) (e.g., ChatGPT, Gemini, etc.) for use with these prompts.  You must adhere to your organization’s policies regarding the use of AI tools in clinical care.  Ensure IT approval of any AI scribe, large language model, or any other piece of software prior to use.
-
-## License
-This project is open source under the [MIT License](LICENSE).
-
-⭐ **If this project helps your workflow, consider giving it a star on GitHub and sharing with others!**
+<p align="center">
+  <sub>Built by physicians, for physicians. Because documentation shouldn't dominate medicine.</sub>
+</p>
