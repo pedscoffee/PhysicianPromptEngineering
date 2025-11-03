@@ -6,9 +6,9 @@
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
 
-> Open-source clinical documentation prompts that transform AI scribe output into physician-ready notes in seconds.
-
 ![Community Contributions](./images/thank-you-banner.jpg)
+
+> Open-source clinical documentation prompts that transform AI scribe output into physician-ready notes in seconds.
 
 ## 🎯 Overview
 
