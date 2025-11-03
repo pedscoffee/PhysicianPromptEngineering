@@ -50,13 +50,31 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   }
 </style>
 
-Welcome to the Physician Prompt Engineering prompt library. Each prompt is designed for a specific task and tested in real clinical workflows.
+# Clinical Documentation Prompt Library
 
-To add a new prompt, simply [contribute one]({{ site.baseurl }}/contributions) or add a new file to the `_prompts` folder in the repository.
+## How to Use These Prompts
+
+### Step 1: Select Your Prompt
+Browse the library below to find prompts matching your documentation needs.
+
+### Step 2: Copy to Your EMR
+Click "Copy Prompt" and paste into your EMR's AI text generation feature (e.g., Epic's "Generate Text with AI").
+
+### Step 3: Customize for Your Practice
+Replace the example content with samples from your own documentation style for best results.
+
+### Step 4: Review and Approve
+Always review AI-generated content for accuracy before finalizing.
+
+---
 
 <script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
 
 ---
+
+## Available Prompts
+
+*Note: If no prompts appear below, visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
 
 {% for prompt in site.prompts %}
   <div class="prompt-entry">
@@ -76,6 +94,43 @@ To add a new prompt, simply [contribute one]({{ site.baseurl }}/contributions) o
   </div>
 {% endfor %}
 
+<!-- Sample prompt for demonstration if collection is empty -->
+{% if site.prompts.size == 0 %}
+<div class="prompt-entry">
+  <div class="prompt-header">
+    <h2>Assessment & Plan Formatter (Sample)</h2>
+    <p><strong>Transforms verbose AI scribe output into concise, problem-based documentation</strong></p>
+  </div>
+  <div class="prompt-body">
+    <p><strong>Specialty:</strong> General Medicine</p>
+    <p><strong>Character Count:</strong> 850 / 5,000</p>
+    
+    <div class="prompt-code-wrapper">
+      <button class="copy-button" onclick="copyToClipboard(this)">Copy Prompt</button>
+      <pre><code>Transform the following clinical note into a concise Assessment & Plan format.
+
+Requirements:
+- List each problem as a numbered item with bold heading
+- Include only essential clinical details
+- Use bullet points for plans
+- Maximum 2-3 sentences per problem
+- Preserve all medications and specific instructions
+
+Example format:
+1. **Hypertension** - Controlled on current regimen
+   • Continue lisinopril 10mg daily
+   • Recheck BP in 3 months
+
+2. **Type 2 Diabetes** - A1c 7.2%, at goal
+   • Continue metformin 1000mg BID
+   • Annual eye exam due
+
+[Insert your clinical note here]</code></pre>
+    </div>
+  </div>
+</div>
+{% endif %}
+
 <script>
 function copyToClipboard(button) {
   const pre = button.nextElementSibling;
@@ -93,4 +148,3 @@ function copyToClipboard(button) {
   });
 }
 </script>
-
