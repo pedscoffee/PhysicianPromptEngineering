@@ -74,7 +74,7 @@ Few-shot examples are the foundation of effective clinical prompts. Rather than 
 | **Quantity** | 3-5 examples typically optimal; more risks overfitting |
 | **Ordering** | Place most common scenarios first |
 | **Distribution** | Match your actual case mix (e.g., 60% routine, 40% complex) |
-| **Quality** | Use real (de-identified) examples from your practice |
+| **Quality** | Create examples similar to what you actually see |
 | **Format** | Consistent structure: Input → Output |
 | **Diversity** | Include edge cases you encounter regularly |
 
