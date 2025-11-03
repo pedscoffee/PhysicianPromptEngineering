@@ -32,9 +32,9 @@ Modern EHRs offer three primary efficiency tools:
 
 | Tool Type | Function | Time Saved | Limitation |
 |-----------|----------|------------|------------|
-| **Smart Phrases** | Pre-written text blocks | 30-60 seconds | Generic, lacks personalization |
-| **Dropdown Menus** | Structured data entry | 20-40 seconds | Rigid, misses nuance |
-| **Voice Dictation** | Speech-to-text | 1-2 minutes | Still requires formatting |
+| **Smart Phrases** | Pre-written text blocks | A few minutes | Generic, lacks personalization |
+| **Dropdown Menus** | Structured data entry | 1-2 minutes | Time intensive set up |
+| **Voice Dictation** | Speech-to-text | 1-2 minutes | Often has substantial errors |
 
 ### The Personalization Gap
 
@@ -44,7 +44,7 @@ Templates excel at routine documentation but fail at capturing what matters most
 - Subtle findings and psychosocial factors
 - Individualized treatment considerations
 
-This creates a documentation ceiling where efficiency gains plateau at 20-30% improvement, leaving physicians typing detailed narratives for every unique aspect of care.
+This creates a documentation ceiling where efficiency gains plateau, leaving physicians typing detailed narratives for every unique aspect of care.
 
 ## The AI-Assisted Documentation Revolution
 
@@ -96,13 +96,11 @@ Early adopters report significant improvements across key metrics:
 **Prompt Customization**
 - Develop specialty-specific templates
 - Create few-shot examples from best notes
-- Test billing documentation capture
 - Refine based on review patterns
 
 **Workflow Integration**
 - Establish pre-visit AI activation routine
 - Standardize review and editing process
-- Create backup documentation protocols
 - Train support staff on new workflow
 
 ### Phase 3: Scaling
@@ -110,8 +108,7 @@ Early adopters report significant improvements across key metrics:
 **Expanded Implementation**
 - Increase to 50% of daily encounters
 - Include complex and new patient visits
-- Develop specialized prompts for procedures
-- Create quality assurance checklist
+- Develop specialized prompts for different visit types
 
 **Continuous Improvement**
 - Weekly prompt refinement sessions
@@ -139,7 +136,6 @@ Early adopters report significant improvements across key metrics:
 
 **Documentation Requirements**
 - Maintain audit trail of AI involvement
-- Ensure medical necessity documentation
 - Preserve clinical decision-making narrative
 - Meet billing and coding standards
 
@@ -175,28 +171,6 @@ Early adopters report significant improvements across key metrics:
 | Workflow disruption | Gradual implementation with clear protocols |
 | Staff resistance | Demonstrate time savings, provide training |
 | Technical issues | Establish redundant documentation methods |
-
-## Future Directions
-
-### Near-Term Developments (6-12 months)
-- Real-time clinical decision support integration
-- Automated coding and billing optimization
-- Multi-language documentation capabilities
-- Predictive documentation suggestions
-
-### Long-Term Evolution (2-5 years)
-- Fully autonomous routine documentation
-- Integrated quality measure tracking
-- Personalized patient education generation
-- Seamless inter-system interoperability
-
-## Taking Action
-
-### Immediate Steps
-1. **Assess readiness**: Review institutional policies and technical infrastructure
-2. **Identify champions**: Recruit tech-forward colleagues for pilot program
-3. **Define metrics**: Establish baseline documentation time and quality measures
-4. **Start small**: Begin with low-complexity encounters and iterate
 
 ### Resources for Success
 - [Clinical Prompt Library](https://physicianpromptengineering.com/prompt-library/)
