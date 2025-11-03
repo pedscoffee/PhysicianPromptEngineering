@@ -8,6 +8,8 @@
 
 > Open-source clinical documentation prompts that transform AI scribe output into physician-ready notes in seconds.
 
+![Community Contributions](./images/thank-you-banner.jpg)
+
 ## 🎯 Overview
 
 **Physician Prompt Engineering** provides production-ready prompts that convert raw AI transcripts into perfectly formatted clinical notes matching your exact documentation style—no manual editing required.
