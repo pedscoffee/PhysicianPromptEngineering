@@ -1,0 +1,347 @@
+---
+title: "Context Prompt"
+description: "While not technically a prompt in itself, you can use this file as context to upload to a state of the art model (like Gemini, ChatGPT, or Claude) so that you can help make your own prompts.  Start by giving it this file and then just describe what you're hoping to do. Next ask it to ask you if it has any clarifying questions before you begin and answer those too.  Remember to never give a non-IT approved tool any patient data and follow HIPAA and other applicable guidelines. 
+specialty: "Any"
+char_count: 11744 (N/A)
+order: 7
+---
+================================================================================
+GUIDE: CREATING HIGH-PERFORMANCE CLINICAL FORMATTING PROMPTS
+================================================================================
+
+This guide synthesizes best practices for creating prompts that reformat
+clinical text (like AI scribe output) into structured, physician-ready notes.
+It is based on a "show, don't tell" philosophy.
+
+================================================================================
+CORE PRINCIPLES
+================================================================================
+
+1. EXAMPLES > INSTRUCTIONS (FEW-SHOT LEARNING)
+   This is the most critical principle. Providing 3-5 high-quality examples
+   of your desired output is far more effective than writing explicit
+   instructions. The LLM excels at pattern recognition and will learn your
+   implicit rules, tone, and structure from these examples.
+
+2. BREVITY = QUALITY
+   Concise prompts and concise outputs are better. Shorter notes are faster
+   to scan, easier to edit, and reduce cognitive load.
+
+3. ONE PROMPT, ONE PURPOSE (MODULAR)
+   Specialized prompts outperform multi-function prompts. Trying to make one
+   prompt do two things (e.g., write an A/P AND an after-visit summary)
+   multiplies complexity and makes failure more likely.
+
+================================================================================
+ANATOMY OF A SUCCESSFUL PROMPT
+================================================================================
+
+A high-performance formatting prompt generally has five components, listed
+in order of importance.
+
+--- 1. THE FEW-SHOT EXAMPLES (MOST IMPORTANT) ---
+
+This is the core of the prompt. Provide 3-5 complete examples of your exact
+desired output. This is where the model learns your desired tone (e.g.,
+formal vs. pithy), structure, and clinical shorthand.
+
+--- 2. THE TASK STATEMENT ---
+
+Begin the prompt with a clear, action-oriented instruction. Avoid "role-
+prompting" (e.g., "You are a doctor"), as it adds length without improving
+practical output.
+
+Example: "Reformat the assessment and plan into a structured, problem-
+oriented format."
+
+--- 3. THE OUTPUT STRUCTURE ---
+
+Explicitly show the SHAPE of your desired output. This can be a simple
+bulleted list or a more formal structure with subheadings.
+
+PITHY EXAMPLE:
+**[Problem/Diagnosis Name]**
+- [A very brief bullet point]
+- [Another brief bullet point]
+
+FORMAL EXAMPLE:
+**[Problem/Diagnosis Name]**
+Assessment:
+· [Bullet summarizing diagnostic reasoning]
+Plan:
+· [Bullet for immediate interventions]
+Next Steps:
+· [Bullet for follow-up and return precautions]
+
+--- 4. CONDITIONAL BOILERPLATE TEXT ---
+
+This section automatically inserts your common "dot phrases" based on
+triggers.
+
+How it works: You define a trigger (e.g., "If well child check...") and the
+text to add.
+
+Pro-Tip: If you have trouble getting triggers to fire consistently, use
+ICD-10 codes (e.g., "If diagnosis includes J06.9...") as they are very
+reliable hooks.
+
+Warning: Keep boilerplate text blocks short. Long blocks of text can confuse
+the model and degrade output quality.
+
+--- 5. THE FORMATTING RULES (LEAST IMPORTANT) ---
+
+This section is for minor, explicit rules that the examples don't perfectly
+capture. This is the LAST place you should make edits.
+
+Examples: "Bold formatting for problem names", "Omit unused sections
+entirely", or "Indent all bullets with 8 spaces".
+
+================================================================================
+PROMPT SKELETON 1: "PITHY" STYLE
+================================================================================
+
+TASK:
+Reformat the assessment and plan into a structured, problem-oriented format.
+The output should be extremely concise for rapid scanning.
+
+OUTPUT STRUCTURE FOR EACH PROBLEM/DIAGNOSIS:
+
+**[Problem/Diagnosis Name]**
+- [A very brief bullet point summarizing a key finding, action, or follow-up
+  plan]
+- [Each point should be a separate bullet, written as short clinical
+  shorthand phrase]
+
+CONDITIONAL BOILERPLATE TEXT (Insert after bulleted list when applicable.
+Italicize this text.):
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed
+appropriately. Screening questions, past medical history, past social
+history, medications, and growth chart reviewed. Age-appropriate anticipatory
+guidance reviewed and printed in AVS. Parent questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return
+precautions given including increasing pain, worsening fever, dehydration,
+new symptoms, prolonged symptoms, worsening symptoms, and other concerns.
+Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression,
+elevation, and gradual return to activity as appropriate. Return precautions
+given including increasing pain, swelling, or failure to improve."
+
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing
+loss, and mastoiditis."
+
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar
+abscess. This problem is moderate risk due to pending lab results which may
+necessitate further pharmacologic management."
+
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care
+or admission for IV fluids."
+
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical
+deterioration, which would need emergency room care or hospital admission."
+
+If ADHD, obesity, or strep throat discussed:
+"PCMH Reminder"
+
+FORMATTING RULES:
+
+1. Bold formatting for problem names
+2. Italicized formatting for all boilerplate text
+3. Do NOT use section headers like Assessment or Plan
+4. Use a hyphen (-) for all bullets
+5. Indent all bullets with 8 spaces
+6. Write all bullet points in extremely brief, professional shorthand phrases
+7. Keep bullets concise (ideally under 10 words per bullet)
+8. Use standard medical abbreviations (RTC, PRN, BID, etc.)
+9. Never fabricate or infer information not present in the source text
+10. Insert a blank line between problems when multiple diagnoses exist
+11. No references
+
+FEW-SHOT EXAMPLES:
+
+**Asthma**
+-        Flovent 44mcg 2 puff BID started
+-        Continue albuterol PRN
+-        Use spacer
+-        RTC 3mo/PRN
+
+**Well Child Check**
+-        Growing and developing well
+-        Reviewed anticipatory guidance
+-        RTC 1yr/PRN
+
+**Vomiting, mild dehydration**
+-        NDNT on exam with MMM
+-        Zofran PRN, pedialyte, Tylenol, Motrin
+-        RTC PRN
+
+**ADHD**
+-        Concerta 27mg not effective
+-        Transition to Vyvanse 20mg PO daily
+-        RTC 1mo
+
+**Viral URI**
+-        Supportive care, fluids
+-        Declined COVID test
+-        RTC PRN
+
+================================================================================
+PROMPT SKELETON 2: "FORMAL" STYLE
+================================================================================
+
+TASK:
+Reformat the assessment and plan into a structured, problem-oriented format
+with clear visual hierarchy.
+
+OUTPUT STRUCTURE FOR EACH PROBLEM/DIAGNOSIS:
+
+**[Problem/Diagnosis Name]**
+
+Assessment:
+· [Bullet points summarizing diagnostic reasoning and clinical context using
+  formal medical terminology]
+· [Use "reassuring" rather than "normal" when appropriate]
+· [Avoid speculation beyond stated clinical findings]
+
+Plan:
+· [Immediate interventions, medications, procedures, and orders]
+· [Each action item as separate bullet]
+
+Next Steps:
+· [Conditional planning with scenario-based language: "If [symptom/test],
+  then [action]"]
+· [Follow-up intervals and return precautions]
+· [Monitoring parameters]
+
+CONDITIONAL BOILERPLATE TEXT (Insert after bulleted list when applicable.
+Italicize this text.):
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed
+appropriately. Screening questions, past medical history, past social
+history, medications, and growth chart reviewed. Age-appropriate anticipatory
+guidance reviewed and printed in AVS. Parent questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return
+precautions given including increasing pain, worsening fever, dehydration,
+new symptoms, prolonged symptoms, worsening symptoms, and other concerns.
+Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression,
+elevation, and gradual return to activity as appropriate. Return precautions
+given including increasing pain, swelling, or failure to improve."
+
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing
+loss, and mastoiditis."
+
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar
+abscess. This problem is moderate risk due to pending lab results which may
+necessitate further pharmacologic management."
+
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care
+or admission for IV fluids."
+
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical
+deterioration, which would need emergency room care or hospital admission."
+
+FORMATTING RULES:
+
+1. Bold formatting for problem names and Italicized formatting for section
+   headers and boilerplate text
+2. Indent section headers (Assessment, Plan, Next Steps) with 4 spaces
+3. Indent bullets under each section with 8 spaces
+4. Write all content in clear, short, professional phrases
+5. Include only sections actually discussed; omit unused sections entirely
+6. Never fabricate or infer information not present in the source text
+7. No abbreviations except standard medical ones (BID, mcg, etc.)
+8. Keep bullets concise (ideally under 15 words per bullet)
+9. Insert blank line between problems when multiple diagnoses exist
+10. No references
+
+FEW-SHOT EXAMPLES:
+
+**Asthma**
+
+    Assessment:
+        · Child with history of mild persistent asthma.
+        · Recent exacerbation requiring albuterol use multiple times per week.
+        · Exam reassuring with clear breath sounds today.
+
+    Plan:
+        · Start Flovent 44 mcg, 2 puffs BID with spacer.
+        · Continue albuterol inhaler as rescue.
+        · Provide asthma action plan to family.
+
+    Next Steps:
+        · Follow up in 3 months for asthma control check.
+        · Return sooner for increased rescue use, nighttime symptoms, or
+          respiratory distress.
+        · If control remains poor, consider montelukast or referral to
+          Allergy.
+
+**ADHD**
+
+    Assessment:
+        · Ongoing ADHD with good response to stimulant therapy.
+        · Parent reports new mood instability since starting Adderall XR.
+        · Growth and vitals reassuring today.
+
+    Plan:
+        · Discontinue Adderall XR.
+        · Start trial of Concerta.
+        · Provide teacher Vanderbilt forms for monitoring.
+
+    Next Steps:
+        · Follow up in 1 month for medication response.
+        · Return sooner for significant appetite suppression, sleep
+          disturbance, or mood changes.
+
+**Eczema**
+
+    Assessment:
+        · Atopic dermatitis with mild flare on flexural surfaces.
+        · Skin exam otherwise reassuring.
+
+    Plan:
+        · Start triamcinolone 0.1% ointment BID for 2 weeks.
+        · Continue daily emollient use.
+
+    Next Steps:
+        · Follow up in 3 months, sooner if rash worsens or new infection
+          develops.
+
+ADDITIONAL GUIDANCE FOR COMPLEX CASES:
+
+When multiple related problems exist (e.g., "Upper Respiratory Infection" and
+"Acute Otitis Media"):
+
+- Keep as separate problem headers for billing support
+- Avoid redundant boilerplate; include once at end if applicable to both
+
+================================================================================
+FINAL BEST PRACTICES
+================================================================================
+
+* ITERATE: Use an LLM like Claude, ChatGPT, or Gemini to help you write and
+  refine your prompt. Describe what you want, show it your examples, and let
+  it help you build the first draft.
+
+* SAFETY: Always review 100% of the AI output for clinical accuracy before
+  finalizing it. You are ultimately responsible.
+
+================================================================================
