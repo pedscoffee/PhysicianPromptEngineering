@@ -2,7 +2,6 @@
 layout: post
 title: "AI in Clinical Documentation: A Practical Implementation Guide"
 date: 2025-10-20 10:00:00 -0500
-author: pedscoffee
 categories: [AI, Documentation, Clinical Workflow, Technology]
 tags: [AI scribe, clinical documentation, EMR integration, workflow optimization, LLM]
 excerpt: "Evidence-based guide to implementing AI documentation tools in clinical practice. Learn the two-stage workflow that reduces documentation time by 30-50%."
@@ -32,7 +31,7 @@ Modern EHRs offer three primary efficiency tools:
 
 | Tool Type | Function | Time Saved | Limitation |
 |-----------|----------|------------|------------|
-| **Smart Phrases** | Pre-written text blocks | A few minutes | Generic, lacks personalization |
+| **Dot Phrases** | Pre-written text blocks | A few minutes | Generic, lacks personalization |
 | **Dropdown Menus** | Structured data entry | 1-2 minutes | Time intensive set up |
 | **Voice Dictation** | Speech-to-text | 1-2 minutes | Often has substantial errors |
 
@@ -44,7 +43,7 @@ Templates excel at routine documentation but fail at capturing what matters most
 - Subtle findings and psychosocial factors
 - Individualized treatment considerations
 
-This creates a documentation ceiling where efficiency gains plateau, leaving physicians typing detailed narratives for every unique aspect of care.
+This creates a documentation ceiling where efficiency gains plateau, leaving physicians typing detailed narratives for every unique aspect of care.  No matter how well set up they are even the most efficient physicians must spend hours each day recording the unique details that are the most important part of the chart for each patient.
 
 ## The AI-Assisted Documentation Revolution
 
@@ -64,62 +63,17 @@ Modern AI documentation leverages a dual-stage approach that combines ambient in
 - Specialty-appropriate structure and emphasis
 - Institutional compliance requirements integrated
 
-## Implementation Roadmap
+### The Win: Unique individualized details take center stage
 
-### Phase 1: Foundation
-
-**Technical Setup**
-- Obtain IT department approval for AI tools
-- Verify HIPAA compliance certifications
-- Configure EMR integration points
-- Establish data security protocols
-
-**Initial Testing**
-- Start with 3-5 simple follow-up visits daily
-- Use vendor-provided default prompts
-- Document time savings and quality metrics
-- Identify workflow integration points
-
-### Phase 2: Optimization
-
-**Prompt Customization**
-- Develop specialty-specific templates
-- Create few-shot examples from best notes
-- Refine based on review patterns
-
-**Workflow Integration**
-- Establish pre-visit AI activation routine
-- Standardize review and editing process
-- Train support staff on new workflow
-
-### Phase 3: Scaling
-
-**Expanded Implementation**
-- Increase to 50% of daily encounters
-- Include complex and new patient visits
-- Develop specialized prompts for different visit types
-
-**Continuous Improvement**
-- Weekly prompt refinement sessions
-- Monthly outcome metrics review
-- Quarterly compliance audits
-- Ongoing staff training updates
+Since the details captured are based on the actual conversation with the patient the details that are most important to the discussion are thrust onto center stage.  The result is higher quality notes accomplished more quickly with less effort.  It is a win-win-win.
 
 ## Risk Management and Quality Assurance
 
 ### Clinical Safety Protocols
 
 **Mandatory Review Points**
-- Medication names and dosages
-- Allergy documentation
-- Critical findings and red flags
-- Follow-up instructions and timing
-
-**Error Prevention Strategies**
-- Never auto-sign AI-generated notes
-- Maintain "source of truth" mentality
-- Cross-reference with objective data
-- Verify patient-reported information
+- All AI output must be reviewed closely
+- Physician takes full responsbility for all documentation in the medical record
 
 ### Regulatory Compliance
 
@@ -136,21 +90,6 @@ Modern AI documentation leverages a dual-stage approach that combines ambient in
 
 ## Practical Considerations
 
-### Selecting the Right Tools
-
-**Evaluation Criteria**
-- EMR integration capabilities
-- Specialty-specific training data
-- Customization flexibility
-- Vendor support quality
-- Total cost of ownership
-
-**Recommended Approach**
-1. Request vendor demonstrations with your actual workflows
-2. Pilot with 2-3 physicians for 30 days
-3. Compare quantitative and qualitative outcomes
-4. Select based on measurable improvements
-
 ### Common Pitfalls and Solutions
 
 | Challenge | Solution |
@@ -162,8 +101,8 @@ Modern AI documentation leverages a dual-stage approach that combines ambient in
 | Technical issues | Establish redundant documentation methods |
 
 ### Resources for Success
-- [Clinical Prompt Library](https://physicianpromptengineering.com/prompt-library/)
-- [Implementation Best Practices](https://physicianpromptengineering.com/best-practices/)
+- [Clinical Prompt Library](https://physicianpromptengineering.com/prompt-library.html)
+- [Implementation Best Practices](https://physicianpromptengineering.com/best-practices.html)
 - [Peer Support Community](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)
 
 ## Conclusion
