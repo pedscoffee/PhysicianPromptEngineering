@@ -32,6 +32,9 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
     padding: 1rem;
     white-space: pre-wrap; /* Allow prompt text to wrap */
     word-wrap: break-word; /* Break long words */
+    max-height: 300px;
+    overflow-y: auto;  
+
   }
   .copy-button {
     position: absolute;
@@ -76,7 +79,8 @@ Always review AI-generated content for accuracy before finalizing.
 
 *Visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
 
-{% for prompt in site.prompts %}
+{% assign sorted_prompts = site.prompts | sort: "order" %}
+{% for prompt in sorted_prompts %}
   <div class="prompt-entry">
     <div class="prompt-header">
       <h2>{{ prompt.title }}</h2>
