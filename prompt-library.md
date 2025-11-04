@@ -80,7 +80,7 @@ Always review AI-generated content for accuracy before finalizing.
   <div class="prompt-entry">
     <div class="prompt-header">
       <h2>{{ prompt.title }}</h2>
-      <p><strong>{{ prompt.description }}</strong></p>
+      <p><{{ prompt.description }}</p>
     </div>
     <div class="prompt-body">
       <p><strong>Specialty:</strong> {{ prompt.specialty }}</p>
@@ -99,7 +99,7 @@ Always review AI-generated content for accuracy before finalizing.
 <div class="prompt-entry">
   <div class="prompt-header">
     <h2>Assessment & Plan Formatter (Sample)</h2>
-    <p><strong>Transforms verbose AI scribe output into concise, problem-based documentation</strong></p>
+    <p>Transforms verbose AI scribe output into concise, problem-based documentation</p>
   </div>
   <div class="prompt-body">
     <p><strong>Specialty:</strong> General Medicine</p>
