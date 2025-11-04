@@ -51,6 +51,22 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   .copy-button:hover {
     background-color: #0056b3;
   }
+
+  .download-button {
+    position: absolute;
+    top: 10px;
+    right: 140px;  /* Position it to the left of the copy button */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .download-button:hover {
+    background-color: #218838;
+  }
 </style>
 
 # Clinical Documentation Prompt Library
@@ -84,14 +100,14 @@ Always review AI-generated content for accuracy before finalizing.
   <div class="prompt-entry">
     <div class="prompt-header">
       <h2>{{ prompt.title }}</h2>
-      <p><{{ prompt.description }}</p>
+      <p>{{ prompt.description }}</p>
     </div>
     <div class="prompt-body">
       <p><strong>Specialty:</strong> {{ prompt.specialty }}</p>
       <p><strong>Character Count:</strong> {{ prompt.char_count }} / 5,000</p>
-      
       <div class="prompt-code-wrapper">
         <button class="copy-button" onclick="copyToClipboard(this)">Copy Prompt</button>
+        <button class="download-button" onclick="downloadPrompt(this)">Download .txt</button>
         <pre><code>{{ prompt.content | escape }}</code></pre>
       </div>
     </div>
@@ -150,5 +166,29 @@ function copyToClipboard(button) {
     button.innerText = 'Failed';
     console.error('Could not copy text: ', err);
   });
+}
+
+function downloadPrompt(button) {
+  const pre = button.nextElementSibling.nextElementSibling;  // Skip the copy button
+  const code = pre.querySelector('code');
+  const text = code.innerText;
+  
+  // Get the prompt title from the header
+  const promptEntry = button.closest('.prompt-entry');
+  const title = promptEntry.querySelector('.prompt-header h2').innerText;
+  const filename = title.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.txt';
+  
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  window.URL.revokeObjectURL(url);
+  
+  button.innerText = 'Downloaded!';
+  setTimeout(function() {
+    button.innerText = 'Download .txt';
+  }, 2000);
 }
 </script>
