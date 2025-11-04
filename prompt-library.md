@@ -34,7 +34,6 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
     word-wrap: break-word; /* Break long words */
     max-height: 300px;
     overflow-y: auto;  
-
   }
   .copy-button {
     position: absolute;
@@ -95,9 +94,17 @@ Always review AI-generated content for accuracy before finalizing.
 
 *Visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
 
+### Quick Navigation
 {% assign sorted_prompts = site.prompts | sort: "order" %}
 {% for prompt in sorted_prompts %}
-  <div class="prompt-entry">
+- [{{ prompt.title }}](#{{ prompt.title | slugify }})
+{% endfor %}
+
+---
+
+{% assign sorted_prompts = site.prompts | sort: "order" %}
+{% for prompt in sorted_prompts %}
+  <div class="prompt-entry" id="{{ prompt.title | slugify }}">
     <div class="prompt-header">
       <h2>{{ prompt.title }}</h2>
       <p>{{ prompt.description }}</p>
@@ -106,8 +113,8 @@ Always review AI-generated content for accuracy before finalizing.
       <p><strong>Specialty:</strong> {{ prompt.specialty }}</p>
       <p><strong>Character Count:</strong> {{ prompt.char_count }} / 5,000</p>
       <div class="prompt-code-wrapper">
-        <button class="copy-button" onclick="copyToClipboard(this)">Copy Prompt</button>
         <button class="download-button" onclick="downloadPrompt(this)">Download .txt</button>
+        <button class="copy-button" onclick="copyToClipboard(this)">Copy Prompt</button>
         <pre><code>{{ prompt.content | escape }}</code></pre>
       </div>
     </div>
@@ -126,6 +133,7 @@ Always review AI-generated content for accuracy before finalizing.
     <p><strong>Character Count:</strong> 850 / 5,000</p>
     
     <div class="prompt-code-wrapper">
+      <button class="download-button" onclick="downloadPrompt(this)">Download .txt</button>
       <button class="copy-button" onclick="copyToClipboard(this)">Copy Prompt</button>
       <pre><code>Transform the following clinical note into a concise Assessment & Plan format.
 
@@ -153,7 +161,9 @@ Example format:
 
 <script>
 function copyToClipboard(button) {
-  const pre = button.nextElementSibling;
+  // The <pre><code> is the next element after the button
+  const wrapper = button.parentElement;
+  const pre = wrapper.querySelector('pre');
   const code = pre.querySelector('code');
   const text = code.innerText;
   
@@ -169,7 +179,9 @@ function copyToClipboard(button) {
 }
 
 function downloadPrompt(button) {
-  const pre = button.nextElementSibling.nextElementSibling;  // Skip the copy button
+  // The <pre><code> is in the same wrapper as the button
+  const wrapper = button.parentElement;
+  const pre = wrapper.querySelector('pre');
   const code = pre.querySelector('code');
   const text = code.innerText;
   
