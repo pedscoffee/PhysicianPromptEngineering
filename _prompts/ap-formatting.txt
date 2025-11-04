@@ -3,6 +3,7 @@ title: "A/P Formatting ('Pithy') - v2.0"
 description: "Transforms AI scribe paragraphs into scannable, problem-oriented notes. Very generalizable."
 specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 3277
+order: 1
 ---
 Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 

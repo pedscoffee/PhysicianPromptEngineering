@@ -3,6 +3,7 @@ title: "Billing Analysis - v1.2"
 description: "Assesses MDM components and suggests CPT E/M codes with detailed reasoning. Adapt examples to your common situations and iterate from there."
 specialty: "Pediatrics (adaptable but may need some work)"
 char_count: 4951
+order: 2
 ---
 Analyze this note and determine the appropriate CPT E/M billing code using 2021 E/M guidelines for an ESTABLISHED patient.
 MDM Component Assessment

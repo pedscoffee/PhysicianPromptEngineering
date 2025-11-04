@@ -1,8 +1,9 @@
 ---
-title: "Metaprompt - Assessment and Plan Reformatting Prompt Genreator"
+title: "Metaprompt - Assessment and Plan Reformatting Prompt Generator"
 description: "Use your LLM to help make your own prompts using our own prompts as a starting point. Requires input in form of 1. Few shot examples 2. specific formatting rules 3. any specific boilerplate text you would like to be automatically inserted.  Input these in the form of 1. Few shot examples 2. Specific Rules 3. Boilerplate. 2 and 3 are optional. Consider running this prompt on your few shot examples alone and then after analyzing the output incorporate any rules or boilerplate it may have missed."
 specialty: "Any"
 char_count: 4894
+order: 5
 ---
 # Custom A/P Formatting Prompt Generator
 

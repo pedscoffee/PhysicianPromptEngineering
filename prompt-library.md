@@ -74,7 +74,7 @@ Always review AI-generated content for accuracy before finalizing.
 
 ## Available Prompts
 
-*Note: If no prompts appear below, visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
+*Visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
 
 {% for prompt in site.prompts %}
   <div class="prompt-entry">
