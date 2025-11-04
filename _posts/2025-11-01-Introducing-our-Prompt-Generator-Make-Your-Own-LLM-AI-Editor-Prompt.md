@@ -26,15 +26,14 @@ Our new [Prompt Generator](https://physicianpromptengineering.com/prompt-generat
 
 ### How It Works
 
-1. **Select your parameters** from dropdown menus (specialty, format preferences, documentation style)
+1. **Select your preferences** from the menus
 2. **Preview the generated prompt** with your specifications incorporated
-3. **Copy and implement** directly in your EMR's AI text generation feature
-4. **Refine based on results** using real encounter data
+3. **Make it your own** by adding few shot examples from your speciality and your most common dot phrases as boilerplate text
+4. **Test and refine** by making small changes until you're consistently happy with the results
 
 ### Key Features
 
-- **Pre-configured templates** for common documentation scenarios
-- **Specialty-specific options** covering primary care through subspecialties
+- **Based on proven prompts** for common documentation scenarios
 - **Customizable few-shot examples** that define your output style
 - **Character count optimization** for EMR compatibility (≤5,000 characters)
 
@@ -75,27 +74,19 @@ The Prompt Generator complements our comprehensive documentation toolkit:
 - **Reduced cognitive load**: Less mental energy on doucmentation, more on clinical reasoning
 - **Billing accuracy**: Improved capture of complexity and medical decision-making
 
-## Getting Started Today
-
-1. Visit the [Prompt Generator](https://physicianpromptengineering.com/prompt-generator/)
-2. Select "Assessment & Plan" as your starting template
-3. Choose your specialty and preferences
-4. Generate and test with actual encounter data
-5. Refine based on your specific requirements
-
 ## Support and Resources
 
 Need assistance optimizing your prompts? Multiple support channels available:
 
 - **Technical questions**: Post in our [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)
-- **Share successes**: Submit refined prompts via our [Contributions page](https://physicianpromptengineering.com/contributions/)
-- **Learn techniques**: Review our [Best Practices documentation](https://physicianpromptengineering.com/best-practices/)
+- **Share successes**: Submit refined prompts via our [Contributions page](https://physicianpromptengineering.com/contributions.html)
+- **Learn techniques**: Review our [Best Practices documentation](https://physicianpromptengineering.com/best-practices.html)
 
 ## Moving Forward
 
-The goal isn't perfection on day one—it's continuous improvement toward documentation that requires only review and signature. Start with the Prompt Generator, iterate based on real-world use, and share your insights with the clinical community.
+The goal isn't perfection on day one—it's continuous improvement toward documentation that requires only your review and signature. Start with the Prompt Generator, iterate based on real-world use, and share your insights with the clinical community.
 
-Together, we're building a future where documentation serves clinical care rather than constraining it.
+> Together, we're building a future where documentation serves clinical care rather than constraining it.
 
 -----
 
