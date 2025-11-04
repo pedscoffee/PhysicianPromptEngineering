@@ -13,7 +13,6 @@ header_pages:
   - best-practices.md
   - prompt-generator.md
   - contributions.md
-  - clinical-prompt-generator.md
 
 # Minima-specific settings
 minima:
