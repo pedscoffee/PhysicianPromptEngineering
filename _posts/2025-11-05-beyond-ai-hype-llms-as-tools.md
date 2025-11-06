@@ -7,9 +7,6 @@ categories: [AI, Technology Adoption, Healthcare Innovation, Perspective]
 tags: [LLM adoption, AI hype, physician technology, practical AI, healthcare innovation]
 excerpt: "The AI hype cycle has paradoxically slowed physician adoption of genuinely useful tools. What if we thought of LLMs not as artificial intelligence, but as the next evolution of auto complete?"
 ---
-
-# Beyond the AI Hype: Why Physicians Should Talk More about Large Language Models and less about Artificial Intelligence
-
 The technology industry's obsession with "artificial intelligence" has created an adoption barrier that shouldn't exist. Here's why reframing Large Language Models (LLMs) as tools—not intelligence— could accelerate their clinical utility.
 
 -----
