@@ -1,6 +1,6 @@
 ---
-title: "One-Minute Preceptor Teaching Feedback Prompt"
-description: "Use framework loosely based on the One Minute Preceptor (Neher et al, 1992) to ask questions based on the case.  Neher JO, Gordon KC, Meyer B, Stevens N. A five-step "microskills" model of clinical teaching. J Am Board Fam Pract. 1992;5(4):419-424."
+title: "One Minute Preceptor Teaching Feedback Prompt"
+description: "Use framework loosely based on the One Minute Preceptor (Neher et al, 1992) to ask questions based on the case."
 specialty: "Any"
 char_count: 4894
 order: 9
