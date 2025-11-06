@@ -20,7 +20,7 @@ When ChatGPT launched, the medical community was simultaneously promised everyth
 
 The ironu is that if large language models (LLMs) had been introduced as "Advanced Documentation Assistance" or "Pattern-Based Text Generation"—essentially true descriptions—physicians would likely already be using them as routinely as spell check.  One of the original descriptions of neural networks was **"Software 2.0"** ([Karpathy](https://karpathy.medium.com/software-2-0-a64152b37c35), 2017).  Software 2.0 isn't going to get a bunch of investors interested in your stock nearly as much as saying you've developed ***artificial intelligence***, but it would have fostered a much more open attitude towards trying out these new tools.
 
-> Today's Hot Take:  It is better to call large language models ***"Dictionary Math Discoveries"*** than Artificial Intelligence
+*Today's Hot Take:  It is better to call large language models ***"Dictionary Math Discoveries"*** than Artificial Intelligence*
 
 ### Other Suggested Labels for LLMs
 - Dictionary Math Discoveries
@@ -54,8 +54,6 @@ The AI narrative created impossible expectations. Physicians expected either:
 - Dangerous hallucinations (excessive fear)
 
 Reality sits between: LLMs as powerful but limited tools requiring human oversight—like every other clinical tool we use.  Had LLMs been introduced as just another software update, physicians could have immediately started experimenting, sharing discoveries, and optimizing workflows. Instead, the AI hype triggered a lot of unneccessary apprehension.
-
-
 
 The technology works. It's been working. The barrier isn't technical—it's conceptual.
 
