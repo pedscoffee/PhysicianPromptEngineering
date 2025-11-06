@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Using Large Language Models for Clinical Decision Making Support - Ask questions, Don't Pretend"
+title: "Large Language Models for Clinical Decision Making Support"
 date: 2025-11-06 10:00:00 -0500
 author: pedscoffee
 categories: [AI, Healthcare, Medical Education, Clinical Practice]
