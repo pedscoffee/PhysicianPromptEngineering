@@ -1,5 +1,5 @@
 ---
-title: "Teaching Prompt"
+title: "Socratic Teaching Prompt"
 description: "Extracts clinical pearl and then asks a follow up question to probe a student's understanding further."
 specialty: "All"
 char_count: 394
