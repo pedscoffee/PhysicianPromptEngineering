@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Beyond the AI Hype: Why Physicians Should Talk More about Large Language Models and less about Artificial Intelligence"
+title: "Beyond the AI Hype: Why Physicians Should Talk More about Large Language Models and Less About Artificial Intelligence"
 date: 2025-11-05 10:00:00 -0500
 author: pedscoffee
 categories: [AI, Technology Adoption, Healthcare Innovation, Perspective]
