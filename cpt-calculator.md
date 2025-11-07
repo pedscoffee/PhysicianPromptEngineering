@@ -249,53 +249,61 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 
     .data-category-title {
-        font-weight: 700;
-        color: #006b94;
-        margin-bottom: 6px;
+        font-weight: 600;
+        color: #0088bb;
         font-size: 0.85em;
+        margin-bottom: 6px;
         padding-bottom: 3px;
-        border-bottom: 2px solid #f0f0f0;
+        border-bottom: 2px solid #e8ecef;
     }
 
     .data-item {
         background: #f8f9fa;
-        border: 2px solid #e9ecef;
-        border-radius: 4px;
-        padding: 6px 10px;
-        margin-bottom: 6px;
+        padding: 10px;
+        margin: 4px 0;
+        border-radius: 6px;
         cursor: pointer;
         transition: all 0.3s;
-        user-select: none;
+        border: 2px solid transparent;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
     }
 
     .data-item:hover {
-        background: #e9ecef;
-        border-color: #0088bb;
+        background: #e3f2fd;
+        border-color: #b0e0e6;
+        transform: translateX(3px);
     }
 
     .data-item.selected {
-        background: linear-gradient(135deg, #0088bb 0%, #00a8d8 100%);
-        border-color: #006b94;
-        color: white;
+        background: linear-gradient(135deg, rgba(0, 136, 187, 0.15) 0%, rgba(0, 168, 216, 0.15) 100%);
+        border-color: #0088bb;
     }
 
     .data-item input[type="checkbox"] {
-        display: none;
+        margin-top: 2px;
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
     }
 
     .data-item-label {
-        display: block;
-        font-size: 0.85em;
-        font-weight: 600;
         cursor: pointer;
-        width: 100%;
+        font-size: 0.9em;
+        line-height: 1.4;
+        flex: 1;
     }
 
     .quantity-input-container {
-        margin-top: 8px;
-        padding-top: 8px;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
         display: none;
+        margin-top: 8px;
+        padding: 8px;
+        background: white;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        width: 100%;
     }
 
     .quantity-input-container.show {
@@ -303,75 +311,65 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 
     .quantity-label {
-        font-size: 0.75em;
+        font-size: 0.8em;
+        color: #666;
         margin-bottom: 4px;
-        opacity: 0.9;
     }
 
     .quantity-input {
-        width: 60px;
+        width: 80px;
         padding: 4px 8px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid #ccc;
         border-radius: 4px;
-        font-size: 0.85em;
-        background: rgba(255, 255, 255, 0.9);
-        color: #333;
-    }
-
-    .quantity-input:focus {
-        outline: none;
-        border-color: #006b94;
+        font-size: 0.9em;
     }
 
     .time-based-section {
-        background: linear-gradient(135deg, rgba(0, 136, 187, 0.08) 0%, rgba(0, 107, 148, 0.08) 100%);
+        background: linear-gradient(135deg, rgba(255, 152, 0, 0.08) 0%, rgba(255, 193, 7, 0.08) 100%);
         border-radius: 8px;
         padding: 12px;
         margin-bottom: 15px;
-        border: 2px solid #0088bb;
+        border: 2px solid #ff9800;
     }
 
     .time-based-section h2 {
-        color: #006b94;
+        color: #e65100;
         margin-top: 0;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         font-size: 1.05em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .time-input-container {
         display: flex;
-        align-items: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .time-input-container label {
-        font-size: 0.85em;
-        color: #333;
-        font-weight: 600;
+        font-size: 0.9em;
+        color: #666;
+        font-weight: 500;
     }
 
     .time-input-container input {
-        width: 100px;
         padding: 8px 12px;
-        border: 2px solid #0088bb;
+        border: 2px solid #ffb74d;
         border-radius: 6px;
-        font-size: 0.9em;
-    }
-
-    .time-input-container input:focus {
-        outline: none;
-        border-color: #006b94;
+        font-size: 0.95em;
+        width: 200px;
     }
 
     .time-based-display {
         margin-top: 10px;
         padding: 10px;
         background: white;
-        border: 2px solid #0088bb;
+        border: 2px solid #ff9800;
         border-radius: 6px;
-        font-size: 0.9em;
         font-weight: 600;
-        color: #006b94;
+        color: #e65100;
         display: none;
     }
 
@@ -382,9 +380,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     .output-section {
         background: white;
         border-radius: 8px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        margin-top: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border: 2px solid #0088bb;
         display: none;
     }
 
@@ -397,14 +396,14 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid #e8ecef;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     .output-header h2 {
         color: #006b94;
-        font-size: 1.3em;
         margin: 0;
+        font-size: 1.2em;
     }
 
     .output-actions {
@@ -414,18 +413,17 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     .btn {
         padding: 8px 16px;
-        border: none;
         border-radius: 6px;
+        border: none;
         cursor: pointer;
         font-weight: 600;
-        font-size: 0.85em;
+        font-size: 0.9em;
         transition: all 0.3s;
     }
 
     .btn-primary {
         background: linear-gradient(135deg, #0088bb 0%, #006b94 100%);
         color: white;
-        box-shadow: 0 2px 8px rgba(0, 136, 187, 0.3);
     }
 
     .btn-primary:hover {
@@ -434,19 +432,18 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 
     .btn-secondary {
-        background: white;
-        color: #0088bb;
-        border: 2px solid #0088bb;
+        background: #6c757d;
+        color: white;
     }
 
     .btn-secondary:hover {
-        background: #f8f9fa;
+        background: #5a6268;
         transform: translateY(-2px);
     }
 
     .output-content {
         background: #f8f9fa;
-        border: 2px solid #e9ecef;
+        border: 1px solid #dee2e6;
         border-radius: 6px;
         padding: 15px;
         font-family: 'Monaco', 'Courier New', monospace;
@@ -482,6 +479,22 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     @media (max-width: 1024px) {
         .mdm-grid {
             grid-template-columns: 1fr;
+        }
+        
+        .well-visit-buttons {
+            justify-content: center;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .well-visit-buttons {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+        
+        .well-visit-btn {
+            flex: 1 1 auto;
+            white-space: nowrap;
         }
     }
 
@@ -541,61 +554,77 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     <div class="mdm-grid">
         <!-- Problems Section -->
         <div class="mdm-section">
-            <h3>Problems Addressed</h3>
-            <p>Select all problems addressed during the encounter</p>
+            <h3>Number and Complexity of Problems Addressed</h3>
+            <p>Select all that apply for this encounter</p>
             
             <div class="data-category">
-                <div class="data-category-title">Self-Limited/Minor</div>
-                <div class="data-item" onclick="toggleDataItem(this, 'self_limited_minor')">
-                    <input type="checkbox" id="self_limited_minor">
-                    <label class="data-item-label" for="self_limited_minor">Self-limited or minor problem</label>
+                <div class="data-category-title">Minimal (Straightforward)</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'minimal_problem')">
+                    <input type="checkbox" id="minimal_problem">
+                    <label class="data-item-label" for="minimal_problem">1 self-limited or minor problem</label>
                 </div>
             </div>
 
             <div class="data-category">
-                <div class="data-category-title">Stable Chronic</div>
-                <div class="data-item" onclick="toggleDataItem(this, 'stable_chronic')">
-                    <input type="checkbox" id="stable_chronic">
-                    <label class="data-item-label" for="stable_chronic">Stable chronic illness</label>
+                <div class="data-category-title">Low</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'two_or_more_self_limited')">
+                    <input type="checkbox" id="two_or_more_self_limited">
+                    <label class="data-item-label" for="two_or_more_self_limited">2 or more self-limited or minor problems</label>
                 </div>
-            </div>
-
-            <div class="data-category">
-                <div class="data-category-title">Acute/Chronic</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'stable_chronic_illness')">
+                    <input type="checkbox" id="stable_chronic_illness">
+                    <label class="data-item-label" for="stable_chronic_illness">1 stable chronic illness</label>
+                </div>
                 <div class="data-item" onclick="toggleDataItem(this, 'acute_uncomplicated')">
                     <input type="checkbox" id="acute_uncomplicated">
-                    <label class="data-item-label" for="acute_uncomplicated">Acute uncomplicated illness/injury</label>
-                </div>
-                <div class="data-item" onclick="toggleDataItem(this, 'acute_complicated')">
-                    <input type="checkbox" id="acute_complicated">
-                    <label class="data-item-label" for="acute_complicated">Acute illness with systemic symptoms</label>
-                </div>
-                <div class="data-item" onclick="toggleDataItem(this, 'chronic_inadequate_control')">
-                    <input type="checkbox" id="chronic_inadequate_control">
-                    <label class="data-item-label" for="chronic_inadequate_control">Chronic illness with exacerbation</label>
+                    <label class="data-item-label" for="acute_uncomplicated">1 acute, uncomplicated illness or injury</label>
                 </div>
             </div>
 
             <div class="data-category">
-                <div class="data-category-title">High Severity</div>
+                <div class="data-category-title">Moderate</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'chronic_with_exacerbation')">
+                    <input type="checkbox" id="chronic_with_exacerbation">
+                    <label class="data-item-label" for="chronic_with_exacerbation">1 or more chronic illnesses with exacerbation, progression, or side effects of treatment</label>
+                </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'two_or_more_stable_chronic')">
+                    <input type="checkbox" id="two_or_more_stable_chronic">
+                    <label class="data-item-label" for="two_or_more_stable_chronic">2 or more stable chronic illnesses</label>
+                </div>
                 <div class="data-item" onclick="toggleDataItem(this, 'undiagnosed_new_problem')">
                     <input type="checkbox" id="undiagnosed_new_problem">
-                    <label class="data-item-label" for="undiagnosed_new_problem">Undiagnosed new problem with uncertain prognosis</label>
+                    <label class="data-item-label" for="undiagnosed_new_problem">1 undiagnosed new problem with uncertain prognosis</label>
                 </div>
-                <div class="data-item" onclick="toggleDataItem(this, 'acute_severe')">
-                    <input type="checkbox" id="acute_severe">
-                    <label class="data-item-label" for="acute_severe">Acute or chronic illness posing threat to life/function</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'acute_illness_systemic')">
+                    <input type="checkbox" id="acute_illness_systemic">
+                    <label class="data-item-label" for="acute_illness_systemic">1 acute illness with systemic symptoms</label>
+                </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'acute_complicated_injury')">
+                    <input type="checkbox" id="acute_complicated_injury">
+                    <label class="data-item-label" for="acute_complicated_injury">1 acute complicated injury</label>
+                </div>
+            </div>
+
+            <div class="data-category">
+                <div class="data-category-title">High</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'chronic_severe_exacerbation')">
+                    <input type="checkbox" id="chronic_severe_exacerbation">
+                    <label class="data-item-label" for="chronic_severe_exacerbation">1 or more chronic illnesses with severe exacerbation, progression, or side effects of treatment</label>
+                </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'acute_chronic_threat')">
+                    <input type="checkbox" id="acute_chronic_threat">
+                    <label class="data-item-label" for="acute_chronic_threat">1 acute or chronic illness or injury that poses a threat to life or bodily function</label>
                 </div>
             </div>
         </div>
 
         <!-- Data Section -->
         <div class="mdm-section">
-            <h3>Data Reviewed & Analyzed</h3>
-            <p>Select data reviewed and ordered (Category 1 items require quantity)</p>
+            <h3>Amount and/or Complexity of Data to be Reviewed and Analyzed</h3>
+            <p>Select all that apply (each unique test, order, or document counts as 1)</p>
             
             <div class="data-category">
-                <div class="data-category-title">Minimal</div>
+                <div class="data-category-title">Minimal or None</div>
                 <div class="data-item" onclick="toggleDataItem(this, 'minimal_data')">
                     <input type="checkbox" id="minimal_data">
                     <label class="data-item-label" for="minimal_data">Minimal or none</label>
@@ -603,10 +632,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             </div>
 
             <div class="data-category">
-                <div class="data-category-title">Category 1: Tests/Documents</div>
+                <div class="data-category-title">Category 1: Tests, Documents, or Independent Historian(s)</div>
                 <div class="data-item" onclick="toggleDataItem(this, 'review_external_notes')">
                     <input type="checkbox" id="review_external_notes">
-                    <label class="data-item-label" for="review_external_notes">Review external notes/records</label>
+                    <label class="data-item-label" for="review_external_notes">Review of prior external note(s) from each unique source</label>
                     <div class="quantity-input-container" id="qty_review_external_notes">
                         <div class="quantity-label">Number of unique sources:</div>
                         <input type="number" class="quantity-input" min="0" value="0" 
@@ -616,7 +645,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 </div>
                 <div class="data-item" onclick="toggleDataItem(this, 'review_test_results')">
                     <input type="checkbox" id="review_test_results">
-                    <label class="data-item-label" for="review_test_results">Review test results</label>
+                    <label class="data-item-label" for="review_test_results">Review of the result(s) of each unique test</label>
                     <div class="quantity-input-container" id="qty_review_test_results">
                         <div class="quantity-label">Number of unique tests:</div>
                         <input type="number" class="quantity-input" min="0" value="0" 
@@ -626,7 +655,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 </div>
                 <div class="data-item" onclick="toggleDataItem(this, 'order_test')">
                     <input type="checkbox" id="order_test">
-                    <label class="data-item-label" for="order_test">Order tests</label>
+                    <label class="data-item-label" for="order_test">Ordering of each unique test</label>
                     <div class="quantity-input-container" id="qty_order_test">
                         <div class="quantity-label">Number of unique tests:</div>
                         <input type="number" class="quantity-input" min="0" value="0" 
@@ -636,73 +665,89 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 </div>
                 <div class="data-item" onclick="toggleDataItem(this, 'independent_historian')">
                     <input type="checkbox" id="independent_historian">
-                    <label class="data-item-label" for="independent_historian">Assessment requiring independent historian</label>
+                    <label class="data-item-label" for="independent_historian">Assessment requiring an independent historian(s)</label>
                 </div>
             </div>
 
             <div class="data-category">
-                <div class="data-category-title">Category 2: Independent Interpretation</div>
+                <div class="data-category-title">Category 2: Independent Interpretation of Tests</div>
                 <div class="data-item" onclick="toggleDataItem(this, 'independent_interpretation')">
                     <input type="checkbox" id="independent_interpretation">
-                    <label class="data-item-label" for="independent_interpretation">Independent interpretation of tests</label>
+                    <label class="data-item-label" for="independent_interpretation">Independent interpretation of a test performed by another physician/other qualified health care professional (not separately reported)</label>
                 </div>
+            </div>
+
+            <div class="data-category">
+                <div class="data-category-title">Category 3: Discussion of Management or Test Interpretation</div>
                 <div class="data-item" onclick="toggleDataItem(this, 'discussion_management')">
                     <input type="checkbox" id="discussion_management">
-                    <label class="data-item-label" for="discussion_management">Discussion of management with external provider</label>
+                    <label class="data-item-label" for="discussion_management">Discussion of management or test interpretation with external physician/other qualified health care professional/appropriate source (not separately reported)</label>
                 </div>
             </div>
         </div>
 
         <!-- Risk Section -->
         <div class="mdm-section">
-            <h3>Risk of Complications</h3>
-            <p>Select the highest applicable risk factor</p>
+            <h3>Risk of Complications and/or Morbidity or Mortality of Patient Management</h3>
+            <p>Select the highest applicable risk level</p>
             
             <div class="data-category">
                 <div class="data-category-title">Minimal Risk</div>
                 <div class="data-item" onclick="toggleDataItem(this, 'minimal_risk')">
                     <input type="checkbox" id="minimal_risk">
-                    <label class="data-item-label" for="minimal_risk">Minimal risk of complications</label>
+                    <label class="data-item-label" for="minimal_risk">Minimal risk of morbidity from additional diagnostic testing or treatment</label>
                 </div>
             </div>
 
             <div class="data-category">
                 <div class="data-category-title">Low Risk</div>
-                <div class="data-item" onclick="toggleDataItem(this, 'otc_rx')">
-                    <input type="checkbox" id="otc_rx">
-                    <label class="data-item-label" for="otc_rx">OTC drugs / Minor surgery with no risk factors</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'low_risk')">
+                    <input type="checkbox" id="low_risk">
+                    <label class="data-item-label" for="low_risk">Low risk of morbidity from additional diagnostic testing or treatment</label>
                 </div>
             </div>
 
             <div class="data-category">
                 <div class="data-category-title">Moderate Risk</div>
-                <div class="data-item" onclick="toggleDataItem(this, 'prescription_rx')">
-                    <input type="checkbox" id="prescription_rx">
-                    <label class="data-item-label" for="prescription_rx">Prescription drug management</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'prescription_drug_mgmt')">
+                    <input type="checkbox" id="prescription_drug_mgmt">
+                    <label class="data-item-label" for="prescription_drug_mgmt">Prescription drug management</label>
                 </div>
-                <div class="data-item" onclick="toggleDataItem(this, 'decision_minor_surgery')">
-                    <input type="checkbox" id="decision_minor_surgery">
-                    <label class="data-item-label" for="decision_minor_surgery">Decision for minor surgery with risk factors</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_minor_surgery_risk')">
+                    <input type="checkbox" id="decision_minor_surgery_risk">
+                    <label class="data-item-label" for="decision_minor_surgery_risk">Decision regarding minor surgery with identified patient or procedure risk factors</label>
                 </div>
-                <div class="data-item" onclick="toggleDataItem(this, 'diagnosis_with_treatment')">
-                    <input type="checkbox" id="diagnosis_with_treatment">
-                    <label class="data-item-label" for="diagnosis_with_treatment">Diagnosis/treatment significantly limited by social determinants</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_elective_major_no_risk')">
+                    <input type="checkbox" id="decision_elective_major_no_risk">
+                    <label class="data-item-label" for="decision_elective_major_no_risk">Decision regarding elective major surgery without identified patient or procedure risk factors</label>
+                </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'diagnosis_limited_sdoh')">
+                    <input type="checkbox" id="diagnosis_limited_sdoh">
+                    <label class="data-item-label" for="diagnosis_limited_sdoh">Diagnosis or treatment significantly limited by social determinants of health</label>
                 </div>
             </div>
 
             <div class="data-category">
                 <div class="data-category-title">High Risk</div>
-                <div class="data-item" onclick="toggleDataItem(this, 'drug_therapy_hazard')">
-                    <input type="checkbox" id="drug_therapy_hazard">
-                    <label class="data-item-label" for="drug_therapy_hazard">Drug therapy requiring intensive monitoring</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'drug_therapy_toxicity')">
+                    <input type="checkbox" id="drug_therapy_toxicity">
+                    <label class="data-item-label" for="drug_therapy_toxicity">Drug therapy requiring intensive monitoring for toxicity</label>
+                </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_elective_major_risk')">
+                    <input type="checkbox" id="decision_elective_major_risk">
+                    <label class="data-item-label" for="decision_elective_major_risk">Decision regarding elective major surgery with identified patient or procedure risk factors</label>
                 </div>
                 <div class="data-item" onclick="toggleDataItem(this, 'decision_emergency_surgery')">
                     <input type="checkbox" id="decision_emergency_surgery">
-                    <label class="data-item-label" for="decision_emergency_surgery">Decision for emergency major surgery</label>
+                    <label class="data-item-label" for="decision_emergency_surgery">Decision regarding emergency major surgery</label>
                 </div>
-                <div class="data-item" onclick="toggleDataItem(this, 'decision_not_to_resuscitate')">
-                    <input type="checkbox" id="decision_not_to_resuscitate">
-                    <label class="data-item-label" for="decision_not_to_resuscitate">Decision not to resuscitate due to poor prognosis</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_hospitalization')">
+                    <input type="checkbox" id="decision_hospitalization">
+                    <label class="data-item-label" for="decision_hospitalization">Decision regarding hospitalization</label>
+                </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_dnr_deescalate')">
+                    <input type="checkbox" id="decision_dnr_deescalate">
+                    <label class="data-item-label" for="decision_dnr_deescalate">Decision not to resuscitate or to de-escalate care because of poor prognosis</label>
                 </div>
             </div>
         </div>
@@ -761,48 +806,49 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         }
     };
 
-    // CPT code mappings
+    // CPT code mappings - Straightforward (0), Low (1), Moderate (2), High (3)
     const codeMappings = {
-        'new': {
+        new: {
             0: '99202',      // Straightforward
             1: '99203',      // Low
             2: '99204',      // Moderate
             3: '99205'       // High
         },
-        'established': {
-            0: '99211',      // Minimal (nurse visit)
-            1: '99212',      // Straightforward
-            2: '99213',      // Low
-            3: '99214',      // Moderate
-            4: '99215'       // High
+        established: {
+            0: '99212',      // Straightforward
+            1: '99213',      // Low
+            2: '99214',      // Moderate
+            3: '99215'       // High
         }
     };
 
     // Time-based code ranges
     const timeRanges = {
-        'new': [
+        new: [
             { min: 15, max: 29, code: '99202', range: '15-29 min' },
             { min: 30, max: 44, code: '99203', range: '30-44 min' },
             { min: 45, max: 59, code: '99204', range: '45-59 min' },
-            { min: 60, max: Infinity, code: '99205', range: '60+ min' }
+            { min: 60, max: 74, code: '99205', range: '60-74 min' },
+            { min: 75, max: 999, code: '99205 + prolonged services', range: '75+ min' }
         ],
-        'established': [
+        established: [
             { min: 10, max: 19, code: '99212', range: '10-19 min' },
             { min: 20, max: 29, code: '99213', range: '20-29 min' },
             { min: 30, max: 39, code: '99214', range: '30-39 min' },
-            { min: 40, max: Infinity, code: '99215', range: '40+ min' }
+            { min: 40, max: 54, code: '99215', range: '40-54 min' },
+            { min: 55, max: 999, code: '99215 + prolonged services', range: '55+ min' }
         ]
     };
 
     // Data descriptions for output
     const dataDescriptions = {
-        'minimal_data': 'Minimal or no data',
-        'review_external_notes': 'Review of external notes/records',
-        'review_test_results': 'Review of test results',
-        'order_test': 'Ordering tests',
-        'independent_historian': 'Assessment requiring independent historian',
-        'independent_interpretation': 'Independent interpretation of tests',
-        'discussion_management': 'Discussion with external provider'
+        'minimal_data': 'Minimal or none',
+        'review_external_notes': 'Review of prior external note(s) from each unique source',
+        'review_test_results': 'Review of the result(s) of each unique test',
+        'order_test': 'Ordering of each unique test',
+        'independent_historian': 'Assessment requiring an independent historian(s)',
+        'independent_interpretation': 'Independent interpretation of a test performed by another physician/other qualified health care professional (not separately reported)',
+        'discussion_management': 'Discussion of management or test interpretation with external physician/other qualified health care professional/appropriate source (not separately reported)'
     };
 
     function toggleInstructions() {
@@ -883,8 +929,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         }
         
         // Update state based on section
-        if (['self_limited_minor', 'stable_chronic', 'acute_uncomplicated', 'acute_complicated', 
-             'chronic_inadequate_control', 'undiagnosed_new_problem', 'acute_severe'].includes(itemId)) {
+        if (['minimal_problem', 'two_or_more_self_limited', 'stable_chronic_illness', 'acute_uncomplicated',
+             'chronic_with_exacerbation', 'two_or_more_stable_chronic', 'undiagnosed_new_problem',
+             'acute_illness_systemic', 'acute_complicated_injury', 'chronic_severe_exacerbation',
+             'acute_chronic_threat'].includes(itemId)) {
             // Problems section
             if (checkbox.checked) {
                 if (!state.problems.includes(itemId)) {
@@ -962,33 +1010,30 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     function calculateProblemLevel() {
         if (state.problems.length === 0) return null;
 
-        // Check for high severity problems
-        if (state.problems.includes('undiagnosed_new_problem') || 
-            state.problems.includes('acute_severe')) {
+        // HIGH - Check first for highest severity
+        if (state.problems.includes('chronic_severe_exacerbation') || 
+            state.problems.includes('acute_chronic_threat')) {
             return 3;
         }
 
-        // Check for moderate severity problems
-        if (state.problems.includes('acute_uncomplicated') ||
-            state.problems.includes('acute_complicated') ||
-            state.problems.includes('chronic_inadequate_control')) {
-            
-            // 1 or more moderate = Moderate complexity
+        // MODERATE - Check for moderate complexity problems
+        if (state.problems.includes('chronic_with_exacerbation') ||
+            state.problems.includes('two_or_more_stable_chronic') ||
+            state.problems.includes('undiagnosed_new_problem') ||
+            state.problems.includes('acute_illness_systemic') ||
+            state.problems.includes('acute_complicated_injury')) {
             return 2;
         }
 
-        // Check for stable chronic illness
-        if (state.problems.includes('stable_chronic')) {
-            // 2+ stable chronic OR 1 stable chronic + other = Low complexity
-            if (state.problems.length >= 2) {
-                return 1;
-            }
-            // 1 stable chronic alone = Straightforward
-            return 0;
+        // LOW - Check for low complexity problems
+        if (state.problems.includes('two_or_more_self_limited') ||
+            state.problems.includes('stable_chronic_illness') ||
+            state.problems.includes('acute_uncomplicated')) {
+            return 1;
         }
 
-        // Self-limited or minor
-        if (state.problems.includes('self_limited_minor')) {
+        // STRAIGHTFORWARD/MINIMAL - 1 self-limited or minor
+        if (state.problems.includes('minimal_problem')) {
             return 0;
         }
 
@@ -998,26 +1043,29 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     function calculateRiskLevel() {
         if (state.risk.length === 0) return null;
 
-        // High risk
-        if (state.risk.includes('drug_therapy_hazard') ||
+        // HIGH risk - Check first for highest risk
+        if (state.risk.includes('drug_therapy_toxicity') ||
+            state.risk.includes('decision_elective_major_risk') ||
             state.risk.includes('decision_emergency_surgery') ||
-            state.risk.includes('decision_not_to_resuscitate')) {
+            state.risk.includes('decision_hospitalization') ||
+            state.risk.includes('decision_dnr_deescalate')) {
             return 3;
         }
 
-        // Moderate risk
-        if (state.risk.includes('prescription_rx') ||
-            state.risk.includes('decision_minor_surgery') ||
-            state.risk.includes('diagnosis_with_treatment')) {
+        // MODERATE risk
+        if (state.risk.includes('prescription_drug_mgmt') ||
+            state.risk.includes('decision_minor_surgery_risk') ||
+            state.risk.includes('decision_elective_major_no_risk') ||
+            state.risk.includes('diagnosis_limited_sdoh')) {
             return 2;
         }
 
-        // Low risk
-        if (state.risk.includes('otc_rx')) {
+        // LOW risk
+        if (state.risk.includes('low_risk')) {
             return 1;
         }
 
-        // Minimal risk
+        // MINIMAL risk
         if (state.risk.includes('minimal_risk')) {
             return 0;
         }
@@ -1033,17 +1081,11 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             return 0;
         }
 
-        // Category 2: Independent interpretation OR discussion with external provider
-        const hasCategory2 = state.data.includes('independent_interpretation') || 
-                            state.data.includes('discussion_management');
-
-        // Check for independent historian (special Category 1 item that alone = Moderate)
-        const hasIndependentHistorian = state.data.includes('independent_historian');
-
-        // Category 1: Count unique sources (excluding independent historian for now)
-        const category1Items = ['review_external_notes', 'review_test_results', 'order_test'];
+        // Count Category 1 items (each unique test, order, or document counts)
         let category1Count = 0;
         
+        // Count quantified items
+        const category1Items = ['review_external_notes', 'review_test_results', 'order_test'];
         category1Items.forEach(item => {
             if (state.data.includes(item)) {
                 const qty = state.dataQuantities[item] || 0;
@@ -1051,41 +1093,52 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             }
         });
         
-        // Total Category 1 count including independent historian
-        let totalCategory1 = category1Count;
-        if (hasIndependentHistorian) {
-            totalCategory1 += 1;
+        // Add independent historian as 1 item to Category 1 count
+        if (state.data.includes('independent_historian')) {
+            category1Count += 1;
         }
 
-        // Extensive (High): 3 from Category 1 (including independent historian)
-        if (totalCategory1 >= 3) {
-            return 3;
-        }
+        // Check Category 2 and 3
+        const hasCategory2 = state.data.includes('independent_interpretation');
+        const hasCategory3 = state.data.includes('discussion_management');
+
+        // HIGH/EXTENSIVE: Must meet at least 2 out of 3 categories
+        // Category 1: Any combination of 3 from Category 1 items
+        // Category 2: Independent interpretation
+        // Category 3: Discussion of management
         
-        // Check if both Category 2 items are selected
-        const hasBothCategory2 = state.data.includes('independent_interpretation') && 
-                                state.data.includes('discussion_management');
+        let highCategoriesMet = 0;
+        if (category1Count >= 3) highCategoriesMet++;
+        if (hasCategory2) highCategoriesMet++;
+        if (hasCategory3) highCategoriesMet++;
         
-        // Extensive: 2 from Cat 1 + both from Cat 2
-        if (totalCategory1 >= 2 && hasBothCategory2) {
-            return 3;
+        if (highCategoriesMet >= 2) {
+            return 3; // HIGH/EXTENSIVE
         }
 
-        // Moderate: Independent historian alone OR (2 from Cat 1 + any 1 from Cat 2)
-        if (hasIndependentHistorian) {
-            return 2;
-        }
+        // MODERATE: Must meet at least 1 out of 3 categories
+        // Category 1: Any combination of 3 from Category 1 items
+        // Category 2: Independent interpretation
+        // Category 3: Discussion of management
         
-        if (totalCategory1 >= 2 && hasCategory2) {
-            return 2;
+        let moderateCategoriesMet = 0;
+        if (category1Count >= 3) moderateCategoriesMet++;
+        if (hasCategory2) moderateCategoriesMet++;
+        if (hasCategory3) moderateCategoriesMet++;
+        
+        if (moderateCategoriesMet >= 1) {
+            return 2; // MODERATE
         }
 
-        // Limited (Low): 2 elements from Category 1 alone (without independent historian)
+        // LOW/LIMITED: Must meet requirements of at least 1 of 2 categories
+        // Category 1: Any combination of 2 from Category 1 items
+        // Category 2: Assessment requiring independent historian(s)
+        
         if (category1Count >= 2) {
-            return 1;
+            return 1; // LOW/LIMITED
         }
 
-        // Minimal/Straightforward: 0-1 items from Category 1
+        // If we have less than 2 Category 1 items, it's MINIMAL/STRAIGHTFORWARD
         return 0;
     }
 
@@ -1103,13 +1156,16 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             3: 0
         };
 
-        validLevels.forEach(level => counts[level]++);
+        validLevels.forEach(level => {
+            counts[level]++;
+        });
 
-        // If any level appears 2 or more times, that's the result
-        if (counts[3] >= 2) return 3;
-        if (counts[2] >= 2) return 2;
-        if (counts[1] >= 2) return 1;
-        if (counts[0] >= 2) return 0;
+        // If any level appears 2+ times, use that level
+        for (let level = 3; level >= 0; level--) {
+            if (counts[level] >= 2) {
+                return level;
+            }
+        }
 
         // If all three are different, take the middle value
         const sortedLevels = validLevels.sort((a, b) => a - b);
@@ -1118,7 +1174,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     function getLevelName(level) {
         switch(level) {
-            case 0: return 'Minimal/Straightforward';
+            case 0: return 'Straightforward';
             case 1: return 'Low';
             case 2: return 'Moderate';
             case 3: return 'High';
@@ -1136,6 +1192,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         // Check if we have a well visit OR complete E/M data OR time-based data
         const hasWellVisit = state.wellVisitCode !== null;
         const problemLevel = calculateProblemLevel();
+        const dataLevel = calculateDataLevel();
         const riskLevel = calculateRiskLevel();
         const hasCompleteEMData = problemLevel !== null && riskLevel !== null;
         const hasTimeData = state.totalTime !== null && state.totalTime > 0;
@@ -1159,22 +1216,15 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
         // Add E/M code if we have complete data
         const problemLevel = calculateProblemLevel();
+        const dataLevel = calculateDataLevel();
         const riskLevel = calculateRiskLevel();
         
         if (problemLevel !== null && riskLevel !== null) {
-            const dataLevel = calculateDataLevel();
-
             // Apply 2 of 3 rule
             const levels = [problemLevel, dataLevel, riskLevel];
-            let finalLevel = determine2of3Level(levels);
+            const finalLevel = determine2of3Level(levels);
 
-            // FIXED: Adjust for established patients - they start at 99212 (straightforward), not 99211
-            // 99211 is minimal level without physician MDM, not typically used in this calculator
-            if (state.patientType === 'established' && finalLevel !== null) {
-                finalLevel = finalLevel + 1;  // Shift up one level for established patients
-            }
-
-            // Get CPT code
+            // Get CPT code based on patient type and final MDM level
             const cptCode = codeMappings[state.patientType][finalLevel];
 
             // Add modifier 25 if we have a well visit
@@ -1192,20 +1242,19 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
             // Show selected problems
             if (state.problems.length > 0) {
-                output += `Problems Addressed: ${getLevelName(problemLevel)}\n`;
+                output += `Number and Complexity of Problems Addressed: ${getLevelName(problemLevel)}\n`;
                 state.problems.forEach(problem => {
-                    // Convert problem key to display text
-                    const displayText = problem.split('_').join(' ').replace(/\b\w/g, l => l.toUpperCase());
+                    const displayText = document.querySelector(`label[for="${problem}"]`).textContent;
                     output += `• ${displayText}\n`;
                 });
             } else {
-                output += `Problems Addressed: N/A\n`;
+                output += `Number and Complexity of Problems Addressed: N/A\n`;
             }
             output += `\n`;
 
             // Show selected data
             if (state.data.length > 0) {
-                output += `Data Reviewed & Analyzed: ${getLevelName(dataLevel)}\n`;
+                output += `Amount and/or Complexity of Data to be Reviewed and Analyzed: ${getLevelName(dataLevel)}\n`;
                 state.data.forEach(item => {
                     let displayText = dataDescriptions[item];
                     // Add quantity for Category 1 items
@@ -1218,29 +1267,26 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                     output += `• ${displayText}\n`;
                 });
             } else {
-                output += `Data Reviewed & Analyzed: N/A\n`;
+                output += `Amount and/or Complexity of Data to be Reviewed and Analyzed: N/A\n`;
             }
             output += `\n`;
 
             // Show selected risk
             if (state.risk.length > 0) {
-                output += `Risk Level: ${getLevelName(riskLevel)}\n`;
-                state.risk.forEach(risk => {
-                    // Convert risk key to display text
-                    const displayText = risk.split('_').join(' ').replace(/\b\w/g, l => l.toUpperCase());
+                output += `Risk of Complications and/or Morbidity or Mortality of Patient Management: ${getLevelName(riskLevel)}\n`;
+                state.risk.forEach(riskItem => {
+                    const displayText = document.querySelector(`label[for="${riskItem}"]`).textContent;
                     output += `• ${displayText}\n`;
                 });
             } else {
-                output += `Risk Level: N/A\n`;
+                output += `Risk of Complications and/or Morbidity or Mortality of Patient Management: N/A\n`;
             }
             
             output += `\n`;
             output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
             output += `2 of 3 Rule Applied:\n`;
             output += `Problems: ${getLevelName(problemLevel)} | Data: ${getLevelName(dataLevel)} | Risk: ${getLevelName(riskLevel)}\n`;
-            // Subtract 1 from finalLevel for display since we added 1 for established patients
-            const displayLevel = state.patientType === 'established' ? finalLevel - 1 : finalLevel;
-            output += `Final MDM Level: ${getLevelName(displayLevel)}\n`;
+            output += `Final MDM Level: ${getLevelName(finalLevel)}\n`;
             
             // Add time-based alternative if provided
             if (state.totalTime) {
