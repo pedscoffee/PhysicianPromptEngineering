@@ -12,7 +12,7 @@ header_pages:
   - prompt-library.md
   - best-practices.md
   - prompt-generator.md
-  - personal-prompt-manager.md
+  - snippet-manager.md
   - contributions.md
 
 # Minima-specific settings
