@@ -596,6 +596,19 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <div class="well-visit-code-display" id="wellVisitDisplay"></div>
     </div>
 
+    <!-- Time-Based Coding Section -->
+    <div class="well-visit-section">
+        <h2>Time-Based Coding (Optional Alternative)</h2>
+        <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">You can select CPT code based on total time spent on the date of the encounter (includes non-face-to-face work like documentation, coordination of care, etc.)</p>
+        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 15px;">
+            <div style="flex: 1; min-width: 200px;">
+                <label for="totalTime" style="display: block; font-weight: 600; color: #006b94; margin-bottom: 8px;">Total Time (minutes):</label>
+                <input type="number" id="totalTime" placeholder="Enter total time" min="0" max="200" style="width: 100%; padding: 10px; border: 2px solid #0088bb; border-radius: 6px; font-size: 1em;">
+            </div>
+        </div>
+        <div class="well-visit-code-display" id="timeBasedDisplay"></div>
+    </div>
+
     <!-- MDM Section -->
     <div class="mdm-grid">
         <!-- Problems Section -->
@@ -674,7 +687,8 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <div class="mdm-section">
             <h3>Data Reviewed & Analyzed</h3>
             <div class="data-category">
-                <div class="data-category-title">Category 1: Tests/Documents (any combination of 3)</div>
+                <div class="data-category-title">Category 1: Tests/Documents (any combination)</div>
+                <p style="font-size: 0.85em; color: #666; margin: 0 0 10px 0;">Limited (Low): 2 items | Moderate: 3 items</p>
                 <div class="data-item has-quantity">
                     <label>
                         <input type="checkbox" name="data" value="review_external_notes">
@@ -836,7 +850,8 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             review_test_results: 0,
             order_test: 0
         },
-        risk: []
+        risk: [],
+        totalTime: null
     };
 
     // CPT code mappings for E/M
@@ -891,6 +906,43 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         independent_interpretation: 'Independent interpretation of tests',
         discussion_management: 'Discussion with other provider re: management'
     };
+
+    // Time-based CPT code mappings (in minutes, includes non-face-to-face time)
+    const timeBasedCodes = {
+        new: {
+            // minutes: code
+            '15-29': '99202',
+            '30-44': '99203',
+            '45-59': '99204',
+            '60-74': '99205'
+        },
+        established: {
+            // minutes: code
+            '10-19': '99212',
+            '20-29': '99213',
+            '30-39': '99214',
+            '40-54': '99215'
+        }
+    };
+
+    // Function to determine code from time
+    function getCodeFromTime(minutes, patientType) {
+        const ranges = timeBasedCodes[patientType];
+        const time = parseInt(minutes);
+        
+        if (patientType === 'new') {
+            if (time >= 15 && time <= 29) return { code: '99202', range: '15-29 min' };
+            if (time >= 30 && time <= 44) return { code: '99203', range: '30-44 min' };
+            if (time >= 45 && time <= 59) return { code: '99204', range: '45-59 min' };
+            if (time >= 60 && time <= 74) return { code: '99205', range: '60-74 min' };
+        } else if (patientType === 'established') {
+            if (time >= 10 && time <= 19) return { code: '99212', range: '10-19 min' };
+            if (time >= 20 && time <= 29) return { code: '99213', range: '20-29 min' };
+            if (time >= 30 && time <= 39) return { code: '99214', range: '30-39 min' };
+            if (time >= 40 && time <= 54) return { code: '99215', range: '40-54 min' };
+        }
+        return null;
+    }
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
@@ -950,6 +1002,12 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 state.dataQuantities[field] = parseInt(this.value) || 0;
                 updateOutput();
             });
+        });
+
+        // Time input
+        document.getElementById('totalTime').addEventListener('change', function() {
+            state.totalTime = this.value ? parseInt(this.value) : null;
+            updateOutput();
         });
 
         // Risk checkboxes
@@ -1065,26 +1123,25 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             category1Count += 1; // Independent historian counts as 1
         }
         
-        const hasInterpretation = state.data.includes('independent_interpretation');
-        const hasDiscussion = state.data.includes('discussion_management');
+        const category2Count = (state.data.includes('independent_interpretation') ? 1 : 0) + 
+                               (state.data.includes('discussion_management') ? 1 : 0);
 
-        // High: meets moderate (3+ items OR interpretation OR discussion) AND has interpretation OR discussion
-        if ((category1Count >= 3 || hasInterpretation || hasDiscussion) && 
-            (hasInterpretation || hasDiscussion)) {
+        // Extensive (High): 3+ elements from Category 1 AND both elements from Category 2
+        if (category1Count >= 3 && category2Count >= 2) {
             return 3;
         }
 
-        // Moderate: 3 items from category 1, OR independent interpretation, OR discussion
-        if (category1Count >= 3 || hasInterpretation || hasDiscussion) {
+        // Moderate: 3+ elements from Category 1 OR any element from Category 2
+        if (category1Count >= 3 || category2Count >= 1) {
             return 2;
         }
 
-        // Low: 2 items from category 1, OR independent historian
-        if (category1Count >= 2) {
+        // Limited (Low): 2 elements from Category 1 OR one element from Category 2
+        if (category1Count >= 2 || category2Count >= 1) {
             return 1;
         }
 
-        // Minimal/Straightforward: 0-1 items
+        // Minimal/Straightforward: 0-1 items from Category 1
         return 0;
     }
 
@@ -1231,9 +1288,42 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             output += `2 of 3 Rule Applied:\n`;
             output += `Problems: ${getLevelName(problemLevel)} | Data: ${getLevelName(dataLevel)} | Risk: ${getLevelName(riskLevel)}\n`;
             output += `Final MDM Level: ${getLevelName(finalLevel)}\n`;
+            
+            // Add time-based alternative if provided
+            if (state.totalTime) {
+                const timeCode = getCodeFromTime(state.totalTime, state.patientType);
+                if (timeCode) {
+                    output += `\n`;
+                    output += `TIME-BASED ALTERNATIVE:\n`;
+                    output += `Total Time: ${state.totalTime} minutes\n`;
+                    output += `Code by Time: ${timeCode.code} (${timeCode.range})\n`;
+                    output += `Note: Use the higher of MDM-based or time-based code.\n`;
+                }
+            }
         }
 
         document.getElementById('outputContent').textContent = output;
+        
+        // Update time-based display
+        updateTimeBasedDisplay();
+    }
+
+    function updateTimeBasedDisplay() {
+        const display = document.getElementById('timeBasedDisplay');
+        
+        if (!state.patientType || !state.totalTime) {
+            display.classList.remove('show');
+            return;
+        }
+        
+        const timeCode = getCodeFromTime(state.totalTime, state.patientType);
+        if (timeCode) {
+            display.textContent = `Code by Time: ${timeCode.code} (${timeCode.range})`;
+            display.classList.add('show');
+        } else {
+            display.textContent = 'Time does not meet minimum requirements';
+            display.classList.add('show');
+        }
     }
 
     function resetAll() {
@@ -1243,6 +1333,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         state.problems = [];
         state.data = [];
         state.risk = [];
+        state.totalTime = null;
         state.dataQuantities = {
             review_external_notes: 0,
             review_test_results: 0,
@@ -1252,14 +1343,17 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         // Uncheck all inputs
         document.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = false);
         document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+        document.getElementById('totalTime').value = '';
 
         // Remove active classes
         document.querySelectorAll('.patient-type-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.well-visit-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.data-item').forEach(item => item.classList.remove('selected'));
 
-        // Hide output
+        // Hide output and time display
         document.getElementById('outputSection').classList.remove('show');
+        document.getElementById('timeBasedDisplay').classList.remove('show');
+        document.getElementById('wellVisitDisplay').classList.remove('show');
 
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
