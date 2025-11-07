@@ -113,6 +113,16 @@
   
 }
 
+/* Substack Sign Up Container */
+.embed-container {
+  text-align: center;
+  margin: 1.5rem 0;
+  
+  iframe {
+    max-width: 100%;
+  }
+}
+
 /* Mobile Navigation - Enhanced for dropdowns */
 @media screen and (max-width: 599px) {
   
