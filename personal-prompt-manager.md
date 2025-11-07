@@ -27,7 +27,7 @@ permalink: /prompt-manager/
         margin: 0 auto;
         padding: 20px;
     }
-
+0
     .header {
         background: white;
         padding: 30px;
