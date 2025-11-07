@@ -1037,7 +1037,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         const hasCategory2 = state.data.includes('independent_interpretation') || 
                             state.data.includes('discussion_management');
 
-        // Category 1: Count unique sources
+        // Check for independent historian (special Category 1 item that alone = Moderate)
+        const hasIndependentHistorian = state.data.includes('independent_historian');
+
+        // Category 1: Count unique sources (excluding independent historian for now)
         const category1Items = ['review_external_notes', 'review_test_results', 'order_test'];
         let category1Count = 0;
         
@@ -1048,13 +1051,14 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             }
         });
         
-        // Add independent historian as 1 count if selected
-        if (state.data.includes('independent_historian')) {
-            category1Count += 1;
+        // Total Category 1 count including independent historian
+        let totalCategory1 = category1Count;
+        if (hasIndependentHistorian) {
+            totalCategory1 += 1;
         }
 
-        // Extensive (High): 3 from Category 1 OR (2 from Cat 1 + 2 from Cat 2)
-        if (category1Count >= 3) {
+        // Extensive (High): 3 from Category 1 (including independent historian)
+        if (totalCategory1 >= 3) {
             return 3;
         }
         
@@ -1062,16 +1066,21 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         const hasBothCategory2 = state.data.includes('independent_interpretation') && 
                                 state.data.includes('discussion_management');
         
-        if (category1Count >= 2 && hasBothCategory2) {
+        // Extensive: 2 from Cat 1 + both from Cat 2
+        if (totalCategory1 >= 2 && hasBothCategory2) {
             return 3;
         }
 
-        // Moderate: 2 from Cat 1 + any 1 from Cat 2
-        if (category1Count >= 2 && hasCategory2) {
+        // Moderate: Independent historian alone OR (2 from Cat 1 + any 1 from Cat 2)
+        if (hasIndependentHistorian) {
+            return 2;
+        }
+        
+        if (totalCategory1 >= 2 && hasCategory2) {
             return 2;
         }
 
-        // Limited (Low): 2 elements from Category 1 alone
+        // Limited (Low): 2 elements from Category 1 alone (without independent historian)
         if (category1Count >= 2) {
             return 1;
         }
