@@ -648,6 +648,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                                onclick="event.stopPropagation()">
                     </div>
                 </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'independent_historian')">
+                    <input type="checkbox" id="independent_historian">
+                    <label class="data-item-label" for="independent_historian">Assessment requiring independent historian</label>
+                </div>
             </div>
 
             <div class="data-category">
@@ -656,10 +660,6 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                     <input type="checkbox" id="independent_interpretation">
                     <label class="data-item-label" for="independent_interpretation">Independent interpretation of tests</label>
                 </div>
-            </div>
-
-            <div class="data-category">
-                <div class="data-category-title">Category 3: Discussion</div>
                 <div class="data-item" onclick="toggleDataItem(this, 'discussion_management')">
                     <input type="checkbox" id="discussion_management">
                     <label class="data-item-label" for="discussion_management">Discussion of management with external provider</label>
@@ -800,6 +800,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         'review_external_notes': 'Review of external notes/records',
         'review_test_results': 'Review of test results',
         'order_test': 'Ordering tests',
+        'independent_historian': 'Assessment requiring independent historian',
         'independent_interpretation': 'Independent interpretation of tests',
         'discussion_management': 'Discussion with external provider'
     };
@@ -893,7 +894,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 state.problems = state.problems.filter(p => p !== itemId);
             }
         } else if (['minimal_data', 'review_external_notes', 'review_test_results', 'order_test', 
-                    'independent_interpretation', 'discussion_management'].includes(itemId)) {
+                    'independent_historian', 'independent_interpretation', 'discussion_management'].includes(itemId)) {
             // Data section
             if (checkbox.checked) {
                 if (!state.data.includes(itemId)) {
@@ -1032,11 +1033,9 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             return 0;
         }
 
-        // Category 3: Discussion with external provider
-        const hasCategory3 = state.data.includes('discussion_management');
-
-        // Category 2: Independent interpretation
-        const hasCategory2 = state.data.includes('independent_interpretation');
+        // Category 2: Independent interpretation OR discussion with external provider
+        const hasCategory2 = state.data.includes('independent_interpretation') || 
+                            state.data.includes('discussion_management');
 
         // Category 1: Count unique sources
         const category1Items = ['review_external_notes', 'review_test_results', 'order_test'];
@@ -1048,18 +1047,31 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 category1Count += qty;
             }
         });
+        
+        // Add independent historian as 1 count if selected
+        if (state.data.includes('independent_historian')) {
+            category1Count += 1;
+        }
 
-        // Extensive (High): Category 3 + any from Cat 1 or 2
-        if (hasCategory3 && (hasCategory2 || category1Count >= 1)) {
+        // Extensive (High): 3 from Category 1 OR (2 from Cat 1 + 2 from Cat 2)
+        if (category1Count >= 3) {
+            return 3;
+        }
+        
+        // Check if both Category 2 items are selected
+        const hasBothCategory2 = state.data.includes('independent_interpretation') && 
+                                state.data.includes('discussion_management');
+        
+        if (category1Count >= 2 && hasBothCategory2) {
             return 3;
         }
 
-        // Moderate: 3 elements from Category 1 OR 2 from Cat 1 + any from Cat 2
-        if (category1Count >= 3 || (category1Count >= 2 && hasCategory2)) {
+        // Moderate: 2 from Cat 1 + any 1 from Cat 2
+        if (category1Count >= 2 && hasCategory2) {
             return 2;
         }
 
-        // Limited (Low): 2 elements from Category 1
+        // Limited (Low): 2 elements from Category 1 alone
         if (category1Count >= 2) {
             return 1;
         }
