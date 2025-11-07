@@ -281,6 +281,40 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         accent-color: #0088bb;
     }
 
+    .data-item.has-quantity {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .data-item.has-quantity label {
+        flex: 1;
+        margin: 0;
+    }
+
+    .quantity-input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+    .quantity-input-wrapper label {
+        font-size: 0.85em;
+        color: #666;
+        margin: 0;
+    }
+
+    .quantity-input-wrapper input[type="number"] {
+        width: 50px;
+        padding: 6px 8px;
+        border: 1px solid #0088bb;
+        border-radius: 4px;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
     .risk-example {
         font-size: 0.85em;
         color: #6c757d;
@@ -409,6 +443,8 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         font-family: 'Courier New', monospace;
         line-height: 1.8;
         white-space: pre-wrap;
+        word-break: break-word;
+        overflow-wrap: break-word;
         border: 1px solid #e9ecef;
         color: #2c3e50;
         font-size: 0.95em;
@@ -517,13 +553,13 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
 <div class="calculator-container">
     <div class="page-header">
-        <h1>💙 CPT E/M Code Calculator</h1>
+        <h1>CPT E/M Code Calculator</h1>
         <p class="page-subtitle">Determine appropriate E/M codes with well visit support</p>
     </div>
 
     <div class="instructions-container">
         <div class="instructions-header">
-            <h2>ℹ️ How to Use This Calculator</h2>
+            <h2>How to Use This Calculator</h2>
             <button class="toggle-instructions" id="toggleInstructions">Show Instructions</button>
         </div>
         <div class="instructions-content" id="instructionsContent">
@@ -547,7 +583,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     <!-- Well Visit Section -->
     <div class="well-visit-section">
-        <h2>🏥 Preventive Well Visit (Optional)</h2>
+        <h2>Preventive Well Visit (Optional)</h2>
         <div class="well-visit-buttons">
             <button class="well-visit-btn" data-code="99381">Infant (Under 1 year)</button>
             <button class="well-visit-btn" data-code="99382">Early Childhood (1-4 years)</button>
@@ -638,34 +674,46 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <div class="mdm-section">
             <h3>Data Reviewed & Analyzed</h3>
             <div class="data-category">
-                <div class="data-category-title">Tests/Documents Reviewed</div>
-                <div class="data-item">
+                <div class="data-category-title">Category 1: Tests/Documents (any combination of 3)</div>
+                <div class="data-item has-quantity">
                     <label>
                         <input type="checkbox" name="data" value="review_external_notes">
-                        Review external notes/records
+                        <span>Review external notes/records</span>
                     </label>
+                    <div class="quantity-input-wrapper">
+                        <label for="qty_review_external_notes">Qty:</label>
+                        <input type="number" id="qty_review_external_notes" name="data-qty" value="0" min="0" max="10" data-field="review_external_notes">
+                    </div>
                 </div>
-                <div class="data-item">
+                <div class="data-item has-quantity">
                     <label>
                         <input type="checkbox" name="data" value="review_test_results">
-                        Review prior test results
+                        <span>Review prior test results</span>
                     </label>
+                    <div class="quantity-input-wrapper">
+                        <label for="qty_review_test_results">Qty:</label>
+                        <input type="number" id="qty_review_test_results" name="data-qty" value="0" min="0" max="10" data-field="review_test_results">
+                    </div>
                 </div>
-                <div class="data-item">
+                <div class="data-item has-quantity">
                     <label>
                         <input type="checkbox" name="data" value="order_test">
-                        Order new tests
+                        <span>Order new tests</span>
                     </label>
+                    <div class="quantity-input-wrapper">
+                        <label for="qty_order_test">Qty:</label>
+                        <input type="number" id="qty_order_test" name="data-qty" value="0" min="0" max="10" data-field="order_test">
+                    </div>
                 </div>
                 <div class="data-item">
                     <label>
                         <input type="checkbox" name="data" value="independent_historian">
-                        Independent historian
+                        Independent historian(s)
                     </label>
                 </div>
             </div>
             <div class="data-category">
-                <div class="data-category-title">High Data</div>
+                <div class="data-category-title">Category 2: High Data</div>
                 <div class="data-item">
                     <label>
                         <input type="checkbox" name="data" value="independent_interpretation">
@@ -767,7 +815,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     <!-- Output Section -->
     <div class="output-section" id="outputSection">
         <div class="output-header">
-            <h3>📋 Your CPT Codes</h3>
+            <h3>Your CPT Codes</h3>
             <button class="btn-copy" id="copyBtn">Copy Results</button>
         </div>
         <div class="output-content" id="outputContent"></div>
@@ -783,6 +831,11 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         wellVisitCode: null,
         problems: [],
         data: [],
+        dataQuantities: {
+            review_external_notes: 0,
+            review_test_results: 0,
+            order_test: 0
+        },
         risk: []
     };
 
@@ -890,6 +943,15 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             });
         });
 
+        // Data quantity inputs
+        document.querySelectorAll('input[name="data-qty"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const field = this.getAttribute('data-field');
+                state.dataQuantities[field] = parseInt(this.value) || 0;
+                updateOutput();
+            });
+        });
+
         // Risk checkboxes
         document.querySelectorAll('input[name="risk"]').forEach(input => {
             input.addEventListener('change', function() {
@@ -986,25 +1048,39 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 
     function calculateDataLevel() {
-        const testDocsCount = state.data.filter(item => 
-            ['review_external_notes', 'review_test_results', 'order_test', 'independent_historian'].includes(item)
-        ).length;
+        // Count Category 1 items using quantities and checkboxes
+        let category1Count = 0;
+        
+        // Add quantity counts for each Category 1 item
+        if (state.data.includes('review_external_notes')) {
+            category1Count += state.dataQuantities.review_external_notes;
+        }
+        if (state.data.includes('review_test_results')) {
+            category1Count += state.dataQuantities.review_test_results;
+        }
+        if (state.data.includes('order_test')) {
+            category1Count += state.dataQuantities.order_test;
+        }
+        if (state.data.includes('independent_historian')) {
+            category1Count += 1; // Independent historian counts as 1
+        }
+        
         const hasInterpretation = state.data.includes('independent_interpretation');
         const hasDiscussion = state.data.includes('discussion_management');
 
         // High: meets moderate (3+ items OR interpretation OR discussion) AND has interpretation OR discussion
-        if ((testDocsCount >= 3 || hasInterpretation || hasDiscussion) && 
+        if ((category1Count >= 3 || hasInterpretation || hasDiscussion) && 
             (hasInterpretation || hasDiscussion)) {
             return 3;
         }
 
         // Moderate: 3 items from category 1, OR independent interpretation, OR discussion
-        if (testDocsCount >= 3 || hasInterpretation || hasDiscussion) {
+        if (category1Count >= 3 || hasInterpretation || hasDiscussion) {
             return 2;
         }
 
         // Low: 2 items from category 1, OR independent historian
-        if (testDocsCount === 2 || state.data.includes('independent_historian')) {
+        if (category1Count >= 2) {
             return 1;
         }
 
@@ -1123,7 +1199,15 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             if (state.data.length > 0) {
                 output += `Data Reviewed & Analyzed: ${getLevelName(dataLevel)}\n`;
                 state.data.forEach(item => {
-                    output += `• ${dataDescriptions[item]}\n`;
+                    let displayText = dataDescriptions[item];
+                    // Add quantity for Category 1 items
+                    if (['review_external_notes', 'review_test_results', 'order_test'].includes(item)) {
+                        const qty = state.dataQuantities[item];
+                        if (qty > 0) {
+                            displayText += ` (${qty})`;
+                        }
+                    }
+                    output += `• ${displayText}\n`;
                 });
             } else {
                 output += `Data Reviewed & Analyzed: N/A\n`;
@@ -1159,9 +1243,15 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         state.problems = [];
         state.data = [];
         state.risk = [];
+        state.dataQuantities = {
+            review_external_notes: 0,
+            review_test_results: 0,
+            order_test: 0
+        };
 
         // Uncheck all inputs
         document.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = false);
+        document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
 
         // Remove active classes
         document.querySelectorAll('.patient-type-btn').forEach(btn => btn.classList.remove('active'));
