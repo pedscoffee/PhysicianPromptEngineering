@@ -225,63 +225,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         font-weight: 600;
     }
 
-    .level-option {
-        background: #f8f9fa;
-        border: 2px solid #e9ecef;
-        border-radius: 8px;
-        padding: 15px;
-        margin-bottom: 12px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .level-option:hover {
-        border-color: #0088bb;
-        box-shadow: 0 2px 10px rgba(0, 136, 187, 0.15);
-        transform: translateX(3px);
-    }
-
-    .level-option.selected {
-        border-color: #0088bb;
-        background: linear-gradient(135deg, rgba(0, 136, 187, 0.1) 0%, rgba(0, 168, 216, 0.1) 100%);
-        box-shadow: 0 2px 10px rgba(0, 136, 187, 0.2);
-    }
-
-    .level-option label {
-        display: flex;
-        align-items: flex-start;
-        cursor: pointer;
-        gap: 12px;
-    }
-
-    .level-option input {
-        margin-top: 4px;
-        cursor: pointer;
-        width: 18px;
-        height: 18px;
-        accent-color: #0088bb;
-    }
-
-    .level-title {
-        font-weight: 700;
-        color: #2c3e50;
-        margin-bottom: 6px;
-        font-size: 1.05em;
-    }
-
-    .level-description {
+    .mdm-section > p {
         font-size: 0.9em;
-        color: #495057;
-        line-height: 1.5;
-    }
-
-    .level-description ul {
-        margin: 8px 0 0 20px;
-        padding: 0;
-    }
-
-    .level-description li {
-        margin-bottom: 5px;
+        color: #666;
+        margin-bottom: 15px;
     }
 
     .data-category {
@@ -618,47 +565,72 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <!-- Problems Section -->
         <div class="mdm-section">
             <h3>Problems Addressed</h3>
-            <div class="level-option" data-section="problems">
-                <label>
-                    <input type="radio" name="problems" value="straightforward">
-                    <div>
-                        <div class="level-title">Straightforward</div>
-                        <div class="level-description">One self-limited or minor problem</div>
-                    </div>
-                </label>
+            <p>Select all that apply to determine complexity level</p>
+            <div class="data-category">
+                <div class="data-category-title">Straightforward</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="self_limited_minor">
+                        Self-limited or minor problem
+                    </label>
+                </div>
             </div>
-            <div class="level-option" data-section="problems">
-                <label>
-                    <input type="radio" name="problems" value="low">
-                    <div>
-                        <div class="level-title">Low Complexity</div>
-                        <div class="level-description">
-                            Two or more self-limited problems, OR one stable chronic illness, OR one acute uncomplicated illness
-                        </div>
-                    </div>
-                </label>
+            <div class="data-category">
+                <div class="data-category-title">Low Complexity</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="stable_chronic">
+                        Stable chronic illness
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="acute_uncomplicated">
+                        Acute uncomplicated illness
+                    </label>
+                </div>
             </div>
-            <div class="level-option" data-section="problems">
-                <label>
-                    <input type="radio" name="problems" value="moderate">
-                    <div>
-                        <div class="level-title">Moderate Complexity</div>
-                        <div class="level-description">
-                            One or more chronic illnesses with mild exacerbation, OR multiple stable chronic illnesses, OR newly diagnosed acute illness
-                        </div>
-                    </div>
-                </label>
+            <div class="data-category">
+                <div class="data-category-title">Moderate Complexity</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="chronic_mild_exacerbation">
+                        Chronic illness with mild exacerbation
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="multiple_stable_chronic">
+                        Multiple stable chronic illnesses
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="newly_diagnosed_acute">
+                        Newly diagnosed acute illness
+                    </label>
+                </div>
             </div>
-            <div class="level-option" data-section="problems">
-                <label>
-                    <input type="radio" name="problems" value="high">
-                    <div>
-                        <div class="level-title">High Complexity</div>
-                        <div class="level-description">
-                            Chronic illness with severe exacerbation, OR undiagnosed with workup, OR multiple new problems
-                        </div>
-                    </div>
-                </label>
+            <div class="data-category">
+                <div class="data-category-title">High Complexity</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="chronic_severe_exacerbation">
+                        Chronic illness with severe exacerbation
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="undiagnosed_with_workup">
+                        Undiagnosed with workup
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="problems" value="multiple_new_problems">
+                        Multiple new problems
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -666,7 +638,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <div class="mdm-section">
             <h3>Data Reviewed & Analyzed</h3>
             <div class="data-category">
-                <div class="data-category-title">Tests/Documents Reviewed (pick any)</div>
+                <div class="data-category-title">Tests/Documents Reviewed</div>
                 <div class="data-item">
                     <label>
                         <input type="checkbox" name="data" value="review_external_notes">
@@ -693,7 +665,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 </div>
             </div>
             <div class="data-category">
-                <div class="data-category-title">High Data (pick any)</div>
+                <div class="data-category-title">High Data</div>
                 <div class="data-item">
                     <label>
                         <input type="checkbox" name="data" value="independent_interpretation">
@@ -712,45 +684,78 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <!-- Risk Section -->
         <div class="mdm-section">
             <h3>Risk of Complications/Morbidity/Mortality</h3>
-            <div class="level-option" data-section="risk">
-                <label>
-                    <input type="radio" name="risk" value="straightforward">
-                    <div>
-                        <div class="level-title">Straightforward</div>
-                        <div class="level-description">Self-limited or minor illnesses, minor procedures (e.g., simple laceration repair)</div>
-                        <div class="risk-example">Examples: Cold, flu, minor laceration, uncomplicated UTI</div>
-                    </div>
-                </label>
+            <p>Select all that apply to determine complexity level</p>
+            <div class="data-category">
+                <div class="data-category-title">Straightforward</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="self_limited_illness">
+                        Self-limited or minor illnesses
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="minor_procedure">
+                        Minor procedures
+                    </label>
+                </div>
             </div>
-            <div class="level-option" data-section="risk">
-                <label>
-                    <input type="radio" name="risk" value="low">
-                    <div>
-                        <div class="level-title">Low</div>
-                        <div class="level-description">Minor problems with procedures, medications with minimal side effects, stable chronic illnesses</div>
-                        <div class="risk-example">Examples: Stable hypertension, medication refill, minor rash</div>
-                    </div>
-                </label>
+            <div class="data-category">
+                <div class="data-category-title">Low Risk</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="minor_with_minor_side_effects">
+                        Minor problems/procedures, medications with minimal side effects
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="stable_chronic_risk">
+                        Stable chronic illnesses
+                    </label>
+                </div>
             </div>
-            <div class="level-option" data-section="risk">
-                <label>
-                    <input type="radio" name="risk" value="moderate">
-                    <div>
-                        <div class="level-title">Moderate</div>
-                        <div class="level-description">Moderate problem with procedures, moderate medications, acute illness with systemic effects</div>
-                        <div class="risk-example">Examples: Pneumonia, poorly controlled diabetes, starting new psychotropic</div>
-                    </div>
-                </label>
+            <div class="data-category">
+                <div class="data-category-title">Moderate Risk</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="moderate_problem">
+                        Moderate problems/procedures
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="moderate_medications">
+                        Moderate medications
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="acute_systemic">
+                        Acute illness with systemic effects
+                    </label>
+                </div>
             </div>
-            <div class="level-option" data-section="risk">
-                <label>
-                    <input type="radio" name="risk" value="high">
-                    <div>
-                        <div class="level-title">High</div>
-                        <div class="level-description">High-risk surgical procedure, severe illness, significant medication risks, unstable chronic condition</div>
-                        <div class="risk-example">Examples: Sepsis, acute MI, severe diabetic ketoacidosis</div>
-                    </div>
-                </label>
+            <div class="data-category">
+                <div class="data-category-title">High Risk</div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="high_surgical_risk">
+                        High-risk surgical procedures
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="severe_illness">
+                        Severe illness or significant medication risks
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="unstable_chronic">
+                        Unstable chronic condition
+                    </label>
+                </div>
             </div>
         </div>
     </div>
@@ -776,36 +781,55 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     const state = {
         patientType: null,
         wellVisitCode: null,
-        problems: null,
+        problems: [],
         data: [],
-        risk: null
+        risk: []
     };
 
     // CPT code mappings for E/M
     const codeMappings = {
         new: {
-            straightforward: '99201',
-            low: '99202',
-            moderate: '99203',
-            high: '99204',
+            0: '99201',  // straightforward
+            1: '99202',  // low
+            2: '99203',  // moderate
+            3: '99204',  // high
         },
         established: {
-            straightforward: '99211',
-            low: '99212',
-            moderate: '99213',
-            high: '99214',
+            0: '99212',  // straightforward
+            1: '99213',  // low
+            2: '99214',  // moderate
+            3: '99215',  // high
         }
     };
 
-    // Problem descriptions
-    const problemDescriptions = {
-        straightforward: 'One self-limited or minor problem',
-        low: 'Two or more self-limited problems OR one stable chronic illness OR one acute uncomplicated illness',
-        moderate: 'One or more chronic illnesses with mild exacerbation OR multiple stable chronic illnesses OR newly diagnosed acute illness',
-        high: 'Chronic illness with severe exacerbation OR undiagnosed with workup OR multiple new problems'
+    // Problem level mappings
+    const problemLevelMap = {
+        'self_limited_minor': 0,
+        'stable_chronic': 1,
+        'acute_uncomplicated': 1,
+        'chronic_mild_exacerbation': 2,
+        'multiple_stable_chronic': 2,
+        'newly_diagnosed_acute': 2,
+        'chronic_severe_exacerbation': 3,
+        'undiagnosed_with_workup': 3,
+        'multiple_new_problems': 3
     };
 
-    // Data descriptions
+    // Risk level mappings
+    const riskLevelMap = {
+        'self_limited_illness': 0,
+        'minor_procedure': 0,
+        'minor_with_minor_side_effects': 1,
+        'stable_chronic_risk': 1,
+        'moderate_problem': 2,
+        'moderate_medications': 2,
+        'acute_systemic': 2,
+        'high_surgical_risk': 3,
+        'severe_illness': 3,
+        'unstable_chronic': 3
+    };
+
+    // Data descriptions for output
     const dataDescriptions = {
         review_external_notes: 'Review external notes/records',
         review_test_results: 'Review prior test results',
@@ -813,22 +837,6 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         independent_historian: 'Independent historian',
         independent_interpretation: 'Independent interpretation of tests',
         discussion_management: 'Discussion with other provider re: management'
-    };
-
-    // Risk descriptions
-    const riskDescriptions = {
-        straightforward: 'Self-limited or minor illnesses, minor procedures (e.g., simple laceration repair)',
-        low: 'Minor problems with procedures, medications with minimal side effects, stable chronic illnesses',
-        moderate: 'Moderate problem with procedures, moderate medications, acute illness with systemic effects',
-        high: 'High-risk surgical procedure, severe illness, significant medication risks, unstable chronic condition'
-    };
-
-    // Level to number mapping for 2 of 3 rule
-    const levelMap = {
-        straightforward: 0,
-        low: 1,
-        moderate: 2,
-        high: 3
     };
 
     // Initialize
@@ -856,11 +864,15 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             });
         });
 
-        // Problem radio buttons
+        // Problem checkboxes
         document.querySelectorAll('input[name="problems"]').forEach(input => {
             input.addEventListener('change', function() {
-                state.problems = this.value;
-                updateLevelOptionStyles('problems');
+                if (this.checked) {
+                    state.problems.push(this.value);
+                } else {
+                    state.problems = state.problems.filter(item => item !== this.value);
+                }
+                updateDataItemStyles('problems');
                 updateOutput();
             });
         });
@@ -873,16 +885,20 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 } else {
                     state.data = state.data.filter(item => item !== this.value);
                 }
-                updateDataItemStyles();
+                updateDataItemStyles('data');
                 updateOutput();
             });
         });
 
-        // Risk radio buttons
+        // Risk checkboxes
         document.querySelectorAll('input[name="risk"]').forEach(input => {
             input.addEventListener('change', function() {
-                state.risk = this.value;
-                updateLevelOptionStyles('risk');
+                if (this.checked) {
+                    state.risk.push(this.value);
+                } else {
+                    state.risk = state.risk.filter(item => item !== this.value);
+                }
+                updateDataItemStyles('risk');
                 updateOutput();
             });
         });
@@ -929,18 +945,108 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         updateOutput();
     }
 
-    function updateLevelOptionStyles(section) {
-        document.querySelectorAll(`[data-section="${section}"]`).forEach(option => {
-            const input = option.querySelector('input');
-            option.classList.toggle('selected', input.checked);
+    function updateDataItemStyles(fieldName) {
+        const checkboxes = document.querySelectorAll(`input[name="${fieldName}"]`);
+        checkboxes.forEach(checkbox => {
+            const item = checkbox.closest('.data-item');
+            if (checkbox.checked) {
+                item.classList.add('selected');
+            } else {
+                item.classList.remove('selected');
+            }
         });
     }
 
-    function updateDataItemStyles() {
-        document.querySelectorAll('.data-item').forEach(item => {
-            const input = item.querySelector('input');
-            item.classList.toggle('selected', input.checked);
+    function calculateProblemLevel() {
+        if (state.problems.length === 0) return null;
+        
+        // Get the highest level among selected problems
+        let maxLevel = 0;
+        state.problems.forEach(problem => {
+            const level = problemLevelMap[problem];
+            if (level > maxLevel) {
+                maxLevel = level;
+            }
         });
+        return maxLevel;
+    }
+
+    function calculateRiskLevel() {
+        if (state.risk.length === 0) return null;
+        
+        // Get the highest level among selected risks
+        let maxLevel = 0;
+        state.risk.forEach(risk => {
+            const level = riskLevelMap[risk];
+            if (level > maxLevel) {
+                maxLevel = level;
+            }
+        });
+        return maxLevel;
+    }
+
+    function calculateDataLevel() {
+        const testDocsCount = state.data.filter(item => 
+            ['review_external_notes', 'review_test_results', 'order_test', 'independent_historian'].includes(item)
+        ).length;
+        const hasInterpretation = state.data.includes('independent_interpretation');
+        const hasDiscussion = state.data.includes('discussion_management');
+
+        // High: meets moderate (3+ items OR interpretation OR discussion) AND has interpretation OR discussion
+        if ((testDocsCount >= 3 || hasInterpretation || hasDiscussion) && 
+            (hasInterpretation || hasDiscussion)) {
+            return 3;
+        }
+
+        // Moderate: 3 items from category 1, OR independent interpretation, OR discussion
+        if (testDocsCount >= 3 || hasInterpretation || hasDiscussion) {
+            return 2;
+        }
+
+        // Low: 2 items from category 1, OR independent historian
+        if (testDocsCount === 2 || state.data.includes('independent_historian')) {
+            return 1;
+        }
+
+        // Minimal/Straightforward: 0-1 items
+        return 0;
+    }
+
+    function determine2of3Level(levels) {
+        // Remove null values
+        const validLevels = levels.filter(l => l !== null);
+        
+        if (validLevels.length < 2) return null;
+
+        // Count occurrences of each level
+        const counts = {
+            0: 0,
+            1: 0,
+            2: 0,
+            3: 0
+        };
+
+        validLevels.forEach(level => counts[level]++);
+
+        // If any level appears 2 or more times, that's the result
+        if (counts[3] >= 2) return 3;
+        if (counts[2] >= 2) return 2;
+        if (counts[1] >= 2) return 1;
+        if (counts[0] >= 2) return 0;
+
+        // If all three are different, take the middle value
+        const sortedLevels = validLevels.sort((a, b) => a - b);
+        return sortedLevels[Math.floor(sortedLevels.length / 2)];
+    }
+
+    function getLevelName(level) {
+        switch(level) {
+            case 0: return 'Straightforward';
+            case 1: return 'Low';
+            case 2: return 'Moderate';
+            case 3: return 'High';
+            default: return 'N/A';
+        }
     }
 
     function updateOutput() {
@@ -952,7 +1058,9 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
         // Check if we have a well visit OR complete E/M data
         const hasWellVisit = state.wellVisitCode !== null;
-        const hasCompleteEMData = state.problems !== null && state.risk !== null;
+        const problemLevel = calculateProblemLevel();
+        const riskLevel = calculateRiskLevel();
+        const hasCompleteEMData = problemLevel !== null && riskLevel !== null;
 
         if (!hasWellVisit && !hasCompleteEMData) {
             document.getElementById('outputSection').classList.remove('show');
@@ -972,18 +1080,15 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         }
 
         // Add E/M code if we have complete data
-        if (state.problems !== null && state.risk !== null) {
-            // Calculate data level
+        const problemLevel = calculateProblemLevel();
+        const riskLevel = calculateRiskLevel();
+        
+        if (problemLevel !== null && riskLevel !== null) {
             const dataLevel = calculateDataLevel();
 
             // Apply 2 of 3 rule
-            const problemLevel = levelMap[state.problems];
-            const riskLevel = levelMap[state.risk];
-            const dataLevelNum = levelMap[dataLevel];
-
-            const levels = [problemLevel, dataLevelNum, riskLevel];
-            const finalLevelNum = determine2of3Level(levels);
-            const finalLevel = Object.keys(levelMap).find(key => levelMap[key] === finalLevelNum);
+            const levels = [problemLevel, dataLevel, riskLevel];
+            const finalLevel = determine2of3Level(levels);
 
             // Get CPT code
             const cptCode = codeMappings[state.patientType][finalLevel];
@@ -1002,12 +1107,21 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
             // Show selected problems
-            output += `Problems Addressed: ${capitalizeFirst(state.problems)}\n`;
-            output += `${problemDescriptions[state.problems]}\n\n`;
+            if (state.problems.length > 0) {
+                output += `Problems Addressed: ${getLevelName(problemLevel)}\n`;
+                state.problems.forEach(problem => {
+                    // Convert problem key to display text
+                    const displayText = problem.split('_').join(' ').replace(/\b\w/g, l => l.toUpperCase());
+                    output += `• ${displayText}\n`;
+                });
+            } else {
+                output += `Problems Addressed: N/A\n`;
+            }
+            output += `\n`;
 
             // Show selected data
             if (state.data.length > 0) {
-                output += `Data Reviewed & Analyzed: ${capitalizeFirst(dataLevel)}\n`;
+                output += `Data Reviewed & Analyzed: ${getLevelName(dataLevel)}\n`;
                 state.data.forEach(item => {
                     output += `• ${dataDescriptions[item]}\n`;
                 });
@@ -1017,82 +1131,41 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             output += `\n`;
 
             // Show selected risk
-            output += `Risk Level: ${capitalizeFirst(state.risk)}\n`;
-            output += `${riskDescriptions[state.risk]}\n`;
+            if (state.risk.length > 0) {
+                output += `Risk Level: ${getLevelName(riskLevel)}\n`;
+                state.risk.forEach(risk => {
+                    // Convert risk key to display text
+                    const displayText = risk.split('_').join(' ').replace(/\b\w/g, l => l.toUpperCase());
+                    output += `• ${displayText}\n`;
+                });
+            } else {
+                output += `Risk Level: N/A\n`;
+            }
+            
+            output += `\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+            output += `2 of 3 Rule Applied:\n`;
+            output += `Problems: ${getLevelName(problemLevel)} | Data: ${getLevelName(dataLevel)} | Risk: ${getLevelName(riskLevel)}\n`;
+            output += `Final MDM Level: ${getLevelName(finalLevel)}\n`;
         }
 
         document.getElementById('outputContent').textContent = output;
-    }
-
-    function calculateDataLevel() {
-        const testDocsCount = state.data.filter(item => 
-            ['review_external_notes', 'review_test_results', 'order_test', 'independent_historian'].includes(item)
-        ).length;
-        const hasInterpretation = state.data.includes('independent_interpretation');
-        const hasDiscussion = state.data.includes('discussion_management');
-
-        // High: meets moderate (3+ items OR interpretation OR discussion) AND has interpretation OR discussion
-        if ((testDocsCount >= 3 || hasInterpretation || hasDiscussion) && 
-            (hasInterpretation || hasDiscussion)) {
-            return 'high';
-        }
-
-        // Moderate: 3 items from category 1, OR independent interpretation, OR discussion
-        if (testDocsCount >= 3 || hasInterpretation || hasDiscussion) {
-            return 'moderate';
-        }
-
-        // Low: 2 items from category 1, OR independent historian
-        if (testDocsCount === 2 || state.data.includes('independent_historian')) {
-            return 'low';
-        }
-
-        // Minimal/Straightforward: 0-1 items
-        return 'straightforward';
-    }
-
-    function determine2of3Level(levels) {
-        // Count occurrences of each level
-        const counts = {
-            0: 0,
-            1: 0,
-            2: 0,
-            3: 0
-        };
-
-        levels.forEach(level => counts[level]++);
-
-        // If any level appears 2 or more times, that's the result
-        if (counts[3] >= 2) return 3;
-        if (counts[2] >= 2) return 2;
-        if (counts[1] >= 2) return 1;
-        if (counts[0] >= 2) return 0;
-
-        // If all three are different, take the middle value
-        const sortedLevels = levels.sort((a, b) => a - b);
-        return sortedLevels[1];
-    }
-
-    function capitalizeFirst(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
     function resetAll() {
         // Reset state
         state.patientType = null;
         state.wellVisitCode = null;
-        state.problems = null;
+        state.problems = [];
         state.data = [];
-        state.risk = null;
+        state.risk = [];
 
         // Uncheck all inputs
-        document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
         document.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = false);
 
         // Remove active classes
         document.querySelectorAll('.patient-type-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.well-visit-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.level-option').forEach(option => option.classList.remove('selected'));
         document.querySelectorAll('.data-item').forEach(item => item.classList.remove('selected'));
 
         // Hide output
