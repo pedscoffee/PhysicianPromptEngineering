@@ -595,6 +595,10 @@ permalink: /prompt-generator/
             </div>
         </div>
 
+<div class="embed-container">
+  <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+</div>
+
         <!-- NEXT STEPS SECTION -->
 <div class="header" style="margin-top: 40px;">
             <h2 style="color: #2a7ae2; font-size: 1.5em; margin-bottom: 20px;">Next Steps: Customizing Your Prompt</h2>
@@ -937,5 +941,3 @@ permalink: /prompt-generator/
             updateOutput();
         });
     </script>
-
-<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>

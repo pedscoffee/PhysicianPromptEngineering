@@ -50,7 +50,9 @@ description: Learn how to write effective medical prompts. Our definitive guide 
 
 ---
 
-<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
+<div class="embed-container">
+  <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+</div>
 
 ---
 

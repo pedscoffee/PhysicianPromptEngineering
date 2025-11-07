@@ -116,10 +116,14 @@
 /* Substack Sign Up Container */
 .embed-container {
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
   iframe {
     max-width: 100%;
+    display: inline-block;
   }
 }
 
