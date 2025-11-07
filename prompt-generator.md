@@ -626,7 +626,7 @@ permalink: /prompt-generator/
 
  <div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
                 <h3 style="color: #2a7ae2; font-size: 1.1em; margin-bottom: 10px;">💡 Share Your Prompt</h3>
-                <p>Created a prompt you're really happy with? Consider contributing it to the <a href="https://contributions.page" style="color: #2a7ae2; font-weight: 600;">contributions page</a> so others can benefit from your work. Your prompt can help clinicians streamline their documentation workflow!</p>
+                <p>Created a prompt you're really happy with? Consider contributing it to the <a href="https://physicianpromptengineering.com/contributions" style="color: #2a7ae2; font-weight: 600;">contributions page</a> so others can benefit from your work. Your prompt can help clinicians streamline their documentation workflow!</p>
             </div>
         </div>
     </div>
