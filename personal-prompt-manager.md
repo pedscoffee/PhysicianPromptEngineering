@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Personal Prompt Snippet Manager
-description: Save and manage your favorite AI prompts with our free, privacy-first snippet manager. Store prompts locally in your browser—no account needed, 100% HIPAA-compliant.
+description: Save and manage your favorite AI prompts with our free, privacy-first snippet manager. Store prompts locally in your browser—no account needed
 permalink: /prompt-manager/
 ---
 <style>
@@ -57,6 +57,46 @@ permalink: /prompt-manager/
     .privacy-icon {
         color: #2a7ae2;
         font-size: 1.2em;
+    }
+
+    .read-more-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .read-more-content.expanded {
+        max-height: 500px;
+        transition: max-height 0.4s ease-in;
+    }
+
+    .read-more-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: none;
+        border: none;
+        color: #2a7ae2;
+        cursor: pointer;
+        font-size: 0.95em;
+        font-weight: 500;
+        padding: 4px 8px;
+        margin-left: 8px;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+
+    .read-more-btn:hover {
+        background: #e3f2fd;
+    }
+
+    .read-more-arrow {
+        transition: transform 0.3s;
+        display: inline-block;
+    }
+
+    .read-more-arrow.rotated {
+        transform: rotate(180deg);
     }
 
     .controls-bar {
@@ -191,7 +231,9 @@ permalink: /prompt-manager/
 
     @media (max-width: 1200px) {
         .form-panel {
-            position: static;
+            position: static !important;
+            top: auto !important;
+            z-index: auto !important;
         }
     }
 
@@ -411,9 +453,18 @@ permalink: /prompt-manager/
 <div class="container">
     <div class="header">
         <h1>Personal Prompt Snippet Manager</h1>
-        <p><span class="privacy-icon">🔒</span> Your snippets are stored locally in your browser—100% private and secure</p>
-        <p>If you work with AI prompts regularly, you know how quickly things can get messy. You iterate on a prompt, save it somewhere, then create another version, maybe copy it into a different file, and before long you have dozens of variations scattered across documents, notes apps, and browser tabs. It becomes impossible to remember which version worked best or where you saved that perfect prompt from last week.</p>
-        <p>This tool solves that problem by giving you a single, organized place to store and manage all your AI prompts. Everything is saved locally on your device—no account required, no data sent to servers, and fully HIPAA-compliant. Your prompts stay private on your computer. Need to access your prompts on another device or create a backup? Use the Export button to download all your snippets as a JSON file, then use Import on any other device to load them back in. You can also save exports to your preferred cloud storage or backup location for safekeeping.</p>
+        <p>
+            <span class="privacy-icon">🔒</span> 
+            Your snippets are stored locally in your browser—100% private and secure
+            <button class="read-more-btn" onclick="toggleReadMore()">
+                Read more
+                <span class="read-more-arrow">▼</span>
+            </button>
+        </p>
+        <div id="read-more-content" class="read-more-content">
+            <p>If you work with AI prompts regularly, you know how quickly things can get messy. You iterate on a prompt, save it somewhere, then create another version, maybe copy it into a different file, and before long you have dozens of variations scattered across documents, notes apps, and browser tabs. It becomes impossible to remember which version worked best or where you saved that perfect prompt from last week.</p>
+            <p>This tool solves that problem by giving you a single, organized place to store and manage all your AI prompts. Everything is saved locally on your device—no account required, no data sent to servers. Your prompts stay private on your computer. Need to access your prompts on another device or create a backup? Use the Export button to download all your snippets as a JSON file, then use Import on any other device to load them back in. You can also save exports to your preferred cloud storage or backup location for safekeeping.</p>
+        </div>
     </div>
 
     <div class="controls-bar">
@@ -899,6 +950,21 @@ permalink: /prompt-manager/
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
+    }
+
+    function toggleReadMore() {
+        const content = document.getElementById('read-more-content');
+        const arrow = document.querySelector('.read-more-arrow');
+        const button = document.querySelector('.read-more-btn');
+        
+        content.classList.toggle('expanded');
+        arrow.classList.toggle('rotated');
+        
+        if (content.classList.contains('expanded')) {
+            button.childNodes[0].textContent = 'Read less';
+        } else {
+            button.childNodes[0].textContent = 'Read more';
+        }
     }
 
     // Start the application
