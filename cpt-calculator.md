@@ -1394,10 +1394,6 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             }
         }
         
-        output += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-        output += `Note: Use whichever basis (MDM or Time) yields the higher level code.\n`;
-
-
         document.getElementById('outputContent').textContent = output;
         
         // Update time-based display
