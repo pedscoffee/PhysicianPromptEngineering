@@ -517,13 +517,12 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
 <div class="calculator-container">
     <div class="page-header">
-        <h1>💙 CPT E/M Code Calculator</h1>
+        <h1>CPT E/M Code Calculator</h1>
         <p class="page-subtitle">Determine appropriate E/M codes with well visit support</p>
     </div>
 
     <div class="instructions-container">
         <div class="instructions-header">
-            <h2>ℹ️ How to Use This Calculator</h2>
             <button class="toggle-instructions" id="toggleInstructions">Show Instructions</button>
         </div>
         <div class="instructions-content" id="instructionsContent">
@@ -547,7 +546,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     <!-- Well Visit Section -->
     <div class="well-visit-section">
-        <h2>🏥 Preventive Well Visit (Optional)</h2>
+        <h2>Preventive Well Visit</h2>
         <div class="well-visit-buttons">
             <button class="well-visit-btn" data-code="99381">Infant (Under 1 year)</button>
             <button class="well-visit-btn" data-code="99382">Early Childhood (1-4 years)</button>
