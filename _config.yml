@@ -7,13 +7,13 @@ url: https://physicianpromptengineering.com
 theme: minima
 
 # Header navigation
-header_pages:
-  - blog.md
-  - prompt-library.md
-  - best-practices.md
-  - prompt-generator.md
-  - snippet-manager.md
-  - contributions.md
+# header_pages:
+  #- blog.md
+  #- prompt-library.md
+  #- best-practices.md
+  #- prompt-generator.md
+  #- snippet-manager.md
+  #- contributions.md
 
 # Minima-specific settings
 minima:

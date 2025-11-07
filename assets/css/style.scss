@@ -56,7 +56,18 @@
     padding: 8px 0;
     left: 0;
     top: 100%;
-    margin-top: 5px;
+    margin-top: 0px; /* Removed gap - dropdown connects directly to parent */
+  }
+  
+  /* Create invisible bridge between parent and dropdown to prevent accidental closing */
+  .dropdown::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 10px; /* Invisible 10px gap bridge */
+    z-index: 999;
   }
   
   /* Dropdown links */
@@ -75,9 +86,24 @@
     color: $brand-color;
   }
   
-  /* Show dropdown on hover */
+  /* Show dropdown on hover with delay before closing */
   .dropdown:hover .dropdown-content {
     display: block;
+    animation: fadeIn 0.2s ease-in;
+  }
+  
+  /* Keep dropdown visible when hovering over the dropdown content itself */
+  .dropdown-content:hover {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   
   /* Highlight parent when hovering over dropdown */
