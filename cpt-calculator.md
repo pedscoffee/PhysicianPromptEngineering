@@ -751,7 +751,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     </div>
 
     <div class="time-based-section">
-        <h2>⏱️ Time-Based Coding (Optional Alternative)</h2>
+        <h2> Time-Based Coding (Optional Alternative)</h2>
         <div class="time-input-container">
             <label for="totalTime">Total time on date of encounter (includes non-face-to-face work)</label>
             <input type="number" id="totalTime" placeholder="Minutes" min="0" onchange="updateTime()">
@@ -760,15 +760,15 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     </div>
 
     <div class="well-visit-section">
-        <h2>🏥 Preventive Well Visit (Optional)</h2>
+        <h2> Preventive Well Visit (Optional)</h2>
         <div class="well-visit-buttons">
-            <button class="well-visit-btn" onclick="selectWellVisit('99381', '99391')">Infant (Under 1 year)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99382', '99392')">Early Childhood (1-4 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99383', '99393')">Late Childhood (5-11 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99384', '99394')">Adolescent (12-17 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99385', '99395')">Young Adult (18-39 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99386', '99396')">Middle Age (40-64 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99387', '99397')">Mature Adult (65+ years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99381', '99391')">Under 1 year</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99382', '99392')">1-4 years</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99383', '99393')">5-11 years</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99384', '99394')">12-17 years</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99385', '99395')">18-39 years</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99386', '99396')">40-64 years</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99387', '99397')">65+ years</button>
         </div>
         <div class="well-visit-code-display" id="wellVisitDisplay"></div>
     </div>
