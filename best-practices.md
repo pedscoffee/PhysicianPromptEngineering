@@ -153,12 +153,10 @@ If diagnosis includes J06.9, add: "Supportive care discussed including rest, flu
 4. **Test on 10 encounters** before scaling
 5. **Iterate based** on specific failures
 
-## Additional Resources
+### Additional Resources
+*Questions about setup or best practices? Ask in our [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions) or share your workflow on the [Contributions page](https://physicianpromptengineering.com/contributions.html).*
 
-- [Prompt Library]({{ site.baseurl }}/prompt-library) - Ready-to-use templates
-- [GitHub Repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) - Latest updates and discussions
 ---
-
 *Reference: Adapted from Schulhoff, S. "The Prompt Report: A Systematic Survey of Prompting Techniques" (2024)*
 
 <div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
