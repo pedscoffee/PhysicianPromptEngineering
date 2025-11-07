@@ -259,7 +259,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     .data-item {
         background: #f8f9fa;
-        padding: 10px;
+        padding: 12px;
         margin: 4px 0;
         border-radius: 6px;
         cursor: pointer;
@@ -267,7 +267,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         border: 2px solid transparent;
         display: flex;
         align-items: flex-start;
-        gap: 8px;
+        gap: 10px;
     }
 
     .data-item:hover {
@@ -294,6 +294,8 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         font-size: 0.9em;
         line-height: 1.4;
         flex: 1;
+        margin: 0;
+        padding: 4px 0;
     }
 
     .quantity-input-container {
