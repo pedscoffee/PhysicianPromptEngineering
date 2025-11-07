@@ -939,10 +939,3 @@ permalink: /prompt-generator/
     </script>
 
 <script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
-
-<div class="support-section">
-    <h3>Support Open-Source Clinical Tools</h3>
-    <p>This project remains free and ad-free thanks to community support. If these tools save you time, consider supporting continued development.</p>
-    <p><em>Students and residents: Your contributions of prompts and feedback are support enough!</em></p>
-    <a href="https://donate.stripe.com/14k9ANf3K8VjeAW7ss" target="_blank" class="tip-jar-btn">Support Development</a>
-</div>
