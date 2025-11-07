@@ -69,14 +69,12 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
 </style>
 
 # Clinical Documentation Prompt Library
-
-*Visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
-
-### Quick Navigation
 {% assign sorted_prompts = site.prompts | sort: "order" %}
 {% for prompt in sorted_prompts %}
 - [{{ prompt.title }}](#{{ prompt.title | slugify }})
 {% endfor %}
+
+*Visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
 
 ---
 
