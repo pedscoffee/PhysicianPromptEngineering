@@ -2,7 +2,7 @@
 layout: page
 title: CPT E/M Code Calculator
 permalink: /cpt-calculator/
-description: Calculate appropriate CPT E/M billing codes using 2021 guidelines with automated MDM assessment
+description: Calculate appropriate CPT E/M billing codes with well visit support and automated MDM assessment
 ---
 
 <style>
@@ -30,12 +30,12 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     }
 
     .instructions-container {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #0088bb 0%, #006b94 100%);
         border-radius: 12px;
         padding: 25px;
         margin-bottom: 30px;
         color: white;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 136, 187, 0.3);
     }
 
     .instructions-header {
@@ -99,7 +99,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     }
 
     .instructions-content strong {
-        color: #ffd700;
+        color: #ffeb3b;
     }
 
     .patient-type-selector {
@@ -112,9 +112,9 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
 
     .patient-type-btn {
         padding: 12px 35px;
-        border: 2px solid #667eea;
+        border: 2px solid #0088bb;
         background: white;
-        color: #667eea;
+        color: #0088bb;
         border-radius: 8px;
         cursor: pointer;
         font-size: 1em;
@@ -125,13 +125,79 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
 
     .patient-type-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 136, 187, 0.3);
     }
 
     .patient-type-btn.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #0088bb 0%, #006b94 100%);
         color: white;
-        border-color: #764ba2;
+        border-color: #006b94;
+    }
+
+    .well-visit-section {
+        background: linear-gradient(135deg, rgba(0, 136, 187, 0.08) 0%, rgba(0, 107, 148, 0.08) 100%);
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 30px;
+        border: 2px solid #0088bb;
+    }
+
+    .well-visit-section h2 {
+        color: #006b94;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .well-visit-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .well-visit-btn {
+        padding: 12px 20px;
+        border: 2px solid #b0e0e6;
+        background: white;
+        color: #0088bb;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95em;
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .well-visit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 136, 187, 0.2);
+        border-color: #0088bb;
+    }
+
+    .well-visit-btn.active {
+        background: #0088bb;
+        color: white;
+        border-color: #006b94;
+    }
+
+    .well-visit-code-display {
+        background: white;
+        border: 2px solid #0088bb;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #006b94;
+        display: none;
+    }
+
+    .well-visit-code-display.show {
+        display: block;
     }
 
     .mdm-grid {
@@ -150,7 +216,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     }
 
     .mdm-section h3 {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #0088bb 0%, #00a8d8 100%);
         color: white;
         margin: -25px -25px 20px -25px;
         padding: 15px 25px;
@@ -170,15 +236,15 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     }
 
     .level-option:hover {
-        border-color: #667eea;
-        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.15);
+        border-color: #0088bb;
+        box-shadow: 0 2px 10px rgba(0, 136, 187, 0.15);
         transform: translateX(3px);
     }
 
     .level-option.selected {
-        border-color: #667eea;
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+        border-color: #0088bb;
+        background: linear-gradient(135deg, rgba(0, 136, 187, 0.1) 0%, rgba(0, 168, 216, 0.1) 100%);
+        box-shadow: 0 2px 10px rgba(0, 136, 187, 0.2);
     }
 
     .level-option label {
@@ -193,7 +259,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         cursor: pointer;
         width: 18px;
         height: 18px;
-        accent-color: #667eea;
+        accent-color: #0088bb;
     }
 
     .level-title {
@@ -224,7 +290,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
 
     .data-category-title {
         font-weight: 700;
-        color: #764ba2;
+        color: #006b94;
         margin-bottom: 10px;
         font-size: 0.95em;
         padding-bottom: 5px;
@@ -242,14 +308,14 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     }
 
     .data-item:hover {
-        border-color: #667eea;
-        background: #f0f4ff;
+        border-color: #0088bb;
+        background: #f0f8ff;
         transform: translateX(3px);
     }
 
     .data-item.selected {
-        border-color: #667eea;
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        border-color: #0088bb;
+        background: linear-gradient(135deg, rgba(0, 136, 187, 0.1) 0%, rgba(0, 168, 216, 0.1) 100%);
     }
 
     .data-item label {
@@ -265,7 +331,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         cursor: pointer;
         width: 18px;
         height: 18px;
-        accent-color: #667eea;
+        accent-color: #0088bb;
     }
 
     .risk-example {
@@ -296,26 +362,16 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .btn-calculate {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-    }
-
-    .btn-calculate:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-    }
-
     .btn-reset {
         background: white;
-        color: #667eea;
-        border: 2px solid #667eea;
+        color: #0088bb;
+        border: 2px solid #0088bb;
     }
 
     .btn-reset:hover {
-        background: #f0f4ff;
+        background: #f0f8ff;
         transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
+        box-shadow: 0 6px 20px rgba(0, 136, 187, 0.2);
     }
 
     .validation-alert {
@@ -344,7 +400,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         border-radius: 12px;
         padding: 30px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        border: 2px solid #667eea;
+        border: 2px solid #0088bb;
         display: none;
         margin-top: 30px;
     }
@@ -371,7 +427,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         align-items: center;
         margin-bottom: 20px;
         padding-bottom: 15px;
-        border-bottom: 2px solid #e9ecef;
+        border-bottom: 2px solid #0088bb;
         flex-wrap: wrap;
         gap: 15px;
     }
@@ -383,7 +439,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     }
 
     .btn-copy {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #0088bb 0%, #006b94 100%);
         color: white;
         padding: 12px 30px;
         border: none;
@@ -396,7 +452,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
 
     .btn-copy:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 136, 187, 0.4);
     }
 
     .output-content {
@@ -414,7 +470,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     .code-result {
         font-size: 1.3em;
         font-weight: bold;
-        color: #667eea;
+        color: #0088bb;
     }
 
     .copy-notification {
@@ -469,6 +525,14 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
             width: 100%;
         }
 
+        .well-visit-buttons {
+            grid-template-columns: 1fr;
+        }
+
+        .well-visit-btn {
+            width: 100%;
+        }
+
         .action-buttons {
             flex-direction: column;
         }
@@ -499,101 +563,99 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         .copy-notification {
             right: 10px;
             left: 10px;
+            width: auto;
         }
     }
 </style>
 
 <div class="calculator-container">
     <div class="page-header">
-        <h1>CPT E/M Code Calculator</h1>
-        <p class="page-subtitle">2021 Guidelines - Office or Other Outpatient Services</p>
+        <h1>💙 CPT E/M Code Calculator</h1>
+        <p class="page-subtitle">Determine appropriate E/M codes with well visit support</p>
     </div>
 
     <div class="instructions-container">
         <div class="instructions-header">
-            <h2>📋 How to Use This Tool</h2>
+            <h2>ℹ️ How to Use This Calculator</h2>
             <button class="toggle-instructions" id="toggleInstructions">Show Instructions</button>
         </div>
         <div class="instructions-content" id="instructionsContent">
             <ul>
-                <li>Select whether this is a <strong>New Patient</strong> or <strong>Established Patient</strong> visit</li>
-                <li>Choose <strong>ONE level</strong> for <strong>Problems Addressed</strong> that best describes the complexity</li>
-                <li>Select applicable items in <strong>Data Reviewed/Analyzed</strong> (you can select multiple items across categories)</li>
-                <li>Choose <strong>ONE level</strong> for <strong>Risk of Complications/Morbidity/Mortality</strong></li>
-                <li>Click <strong>Calculate Code</strong> to see your result using the 2 of 3 rule</li>
-                <li>Review the generated documentation and click <strong>Copy to Clipboard</strong> to paste into your note</li>
-                <li>Use the <strong>Reset All</strong> button to start over with a new calculation</li>
+                <li><strong>Step 1:</strong> Select whether this is a New or Established patient visit.</li>
+                <li><strong>Step 2 (Optional):</strong> If this is a preventive well visit, select the appropriate age category to get the well visit code.</li>
+                <li><strong>Step 3:</strong> If adding E/M services to the well visit (or conducting a problem-focused visit), fill out the MDM section. If you select E/M options, a 25 modifier will automatically be added.</li>
+                <li><strong>Step 4:</strong> Your CPT code will automatically update as you make selections. Copy your results when ready.</li>
+                <li><strong>Step 5:</strong> Use the Reset button to start over.</li>
             </ul>
-            <p><strong>Note:</strong> The tool applies the 2021 E/M guidelines using the "2 of 3" rule, which means the final MDM level is determined by meeting at least 2 of the 3 MDM elements (Problems, Data, Risk) at a particular level.</p>
         </div>
-    </div>
-
-    <div class="patient-type-selector">
-        <button class="patient-type-btn active" id="newPatientBtn">New Patient (99202-99205)</button>
-        <button class="patient-type-btn" id="establishedPatientBtn">Established Patient (99212-99215)</button>
     </div>
 
     <div class="validation-alert" id="validationAlert"></div>
 
+    <!-- Patient Type Selection -->
+    <div class="patient-type-selector">
+        <button class="patient-type-btn" id="newPatientBtn">New Patient</button>
+        <button class="patient-type-btn" id="establishedPatientBtn">Established Patient</button>
+    </div>
+
+    <!-- Well Visit Section -->
+    <div class="well-visit-section">
+        <h2>🏥 Preventive Well Visit (Optional)</h2>
+        <div class="well-visit-buttons">
+            <button class="well-visit-btn" data-code="99381">Infant (Under 1 year)</button>
+            <button class="well-visit-btn" data-code="99382">Early Childhood (1-4 years)</button>
+            <button class="well-visit-btn" data-code="99383">Late Childhood (5-11 years)</button>
+            <button class="well-visit-btn" data-code="99384">Adolescent (12-17 years)</button>
+            <button class="well-visit-btn" data-code="99385">Young Adult (18-39 years)</button>
+            <button class="well-visit-btn" data-code="99386">Middle Age (40-64 years)</button>
+            <button class="well-visit-btn" data-code="99387">Mature Adult (65+ years)</button>
+        </div>
+        <div class="well-visit-code-display" id="wellVisitDisplay"></div>
+    </div>
+
+    <!-- MDM Section -->
     <div class="mdm-grid">
         <!-- Problems Section -->
         <div class="mdm-section">
-            <h3>Number and Complexity of Problems Addressed</h3>
-            
-            <div class="level-option" data-section="problems" data-level="minimal">
+            <h3>Problems Addressed</h3>
+            <div class="level-option" data-section="problems">
                 <label>
-                    <input type="radio" name="problems" value="minimal">
+                    <input type="radio" name="problems" value="straightforward">
                     <div>
-                        <div class="level-title">Minimal</div>
-                        <div class="level-description">1 self-limited or minor problem</div>
+                        <div class="level-title">Straightforward</div>
+                        <div class="level-description">One self-limited or minor problem</div>
                     </div>
                 </label>
             </div>
-
-            <div class="level-option" data-section="problems" data-level="low">
+            <div class="level-option" data-section="problems">
                 <label>
                     <input type="radio" name="problems" value="low">
                     <div>
-                        <div class="level-title">Low</div>
+                        <div class="level-title">Low Complexity</div>
                         <div class="level-description">
-                            <ul>
-                                <li>2 or more self-limited or minor problems; OR</li>
-                                <li>1 stable chronic illness; OR</li>
-                                <li>1 acute, uncomplicated illness or injury</li>
-                            </ul>
+                            Two or more self-limited problems, OR one stable chronic illness, OR one acute uncomplicated illness
                         </div>
                     </div>
                 </label>
             </div>
-
-            <div class="level-option" data-section="problems" data-level="moderate">
+            <div class="level-option" data-section="problems">
                 <label>
                     <input type="radio" name="problems" value="moderate">
                     <div>
-                        <div class="level-title">Moderate</div>
+                        <div class="level-title">Moderate Complexity</div>
                         <div class="level-description">
-                            <ul>
-                                <li>1 or more chronic illnesses with exacerbation, progression, or side effects; OR</li>
-                                <li>2 or more stable chronic illnesses; OR</li>
-                                <li>1 undiagnosed new problem with uncertain prognosis; OR</li>
-                                <li>1 acute illness with systemic symptoms; OR</li>
-                                <li>1 acute complicated injury</li>
-                            </ul>
+                            One or more chronic illnesses with mild exacerbation, OR multiple stable chronic illnesses, OR newly diagnosed acute illness
                         </div>
                     </div>
                 </label>
             </div>
-
-            <div class="level-option" data-section="problems" data-level="high">
+            <div class="level-option" data-section="problems">
                 <label>
                     <input type="radio" name="problems" value="high">
                     <div>
-                        <div class="level-title">High</div>
+                        <div class="level-title">High Complexity</div>
                         <div class="level-description">
-                            <ul>
-                                <li>1 or more chronic illnesses with severe exacerbation, progression, or side effects; OR</li>
-                                <li>1 acute or chronic illness or injury that poses a threat to life or bodily function</li>
-                            </ul>
+                            Chronic illness with severe exacerbation, OR undiagnosed with workup, OR multiple new problems
                         </div>
                     </div>
                 </label>
@@ -602,52 +664,46 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
 
         <!-- Data Section -->
         <div class="mdm-section">
-            <h3>Amount and/or Complexity of Data</h3>
-            
+            <h3>Data Reviewed & Analyzed</h3>
             <div class="data-category">
-                <div class="data-category-title">Category 1: Tests and Documents</div>
+                <div class="data-category-title">Tests/Documents Reviewed (pick any)</div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="data" value="review_external_notes" data-category="tests_docs">
-                        Review of prior external note(s) from unique source
+                        <input type="checkbox" name="data" value="review_external_notes">
+                        Review external notes/records
                     </label>
                 </div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="data" value="review_test_results" data-category="tests_docs">
-                        Review of result(s) of unique test
+                        <input type="checkbox" name="data" value="review_test_results">
+                        Review prior test results
                     </label>
                 </div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="data" value="order_test" data-category="tests_docs">
-                        Ordering of unique test
+                        <input type="checkbox" name="data" value="order_test">
+                        Order new tests
                     </label>
                 </div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="data" value="independent_historian" data-category="tests_docs">
-                        Assessment requiring independent historian
+                        <input type="checkbox" name="data" value="independent_historian">
+                        Independent historian
                     </label>
                 </div>
             </div>
-
             <div class="data-category">
-                <div class="data-category-title">Category 2: Independent Interpretation</div>
+                <div class="data-category-title">High Data (pick any)</div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="data" value="independent_interpretation" data-category="interpretation">
-                        Independent interpretation of test (not separately reported)
+                        <input type="checkbox" name="data" value="independent_interpretation">
+                        Independent interpretation of tests
                     </label>
                 </div>
-            </div>
-
-            <div class="data-category">
-                <div class="data-category-title">Category 3: Discussion</div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="data" value="discussion_management" data-category="discussion">
-                        Discussion of management or test interpretation with external provider
+                        <input type="checkbox" name="data" value="discussion_management">
+                        Discussion with other provider re: management
                     </label>
                 </div>
             </div>
@@ -656,49 +712,43 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         <!-- Risk Section -->
         <div class="mdm-section">
             <h3>Risk of Complications/Morbidity/Mortality</h3>
-            
-            <div class="level-option" data-section="risk" data-level="minimal">
+            <div class="level-option" data-section="risk">
                 <label>
-                    <input type="radio" name="risk" value="minimal">
+                    <input type="radio" name="risk" value="straightforward">
                     <div>
-                        <div class="level-title">Minimal Risk</div>
-                        <div class="level-description">Minimal risk from additional diagnostic testing or treatment</div>
+                        <div class="level-title">Straightforward</div>
+                        <div class="level-description">Self-limited or minor illnesses, minor procedures (e.g., simple laceration repair)</div>
+                        <div class="risk-example">Examples: Cold, flu, minor laceration, uncomplicated UTI</div>
                     </div>
                 </label>
             </div>
-
-            <div class="level-option" data-section="risk" data-level="low">
+            <div class="level-option" data-section="risk">
                 <label>
                     <input type="radio" name="risk" value="low">
                     <div>
-                        <div class="level-title">Low Risk</div>
-                        <div class="level-description">Low risk of morbidity from additional diagnostic testing or treatment</div>
+                        <div class="level-title">Low</div>
+                        <div class="level-description">Minor problems with procedures, medications with minimal side effects, stable chronic illnesses</div>
+                        <div class="risk-example">Examples: Stable hypertension, medication refill, minor rash</div>
                     </div>
                 </label>
             </div>
-
-            <div class="level-option" data-section="risk" data-level="moderate">
+            <div class="level-option" data-section="risk">
                 <label>
                     <input type="radio" name="risk" value="moderate">
                     <div>
-                        <div class="level-title">Moderate Risk</div>
-                        <div class="level-description">Moderate risk of morbidity from additional diagnostic testing or treatment</div>
-                        <div class="risk-example">
-                            Examples: Prescription drug management; Decision regarding minor surgery with identified patient/procedure risk factors; Decision regarding elective major surgery without identified patient/procedure risk factors; Diagnosis or treatment significantly limited by social determinants of health
-                        </div>
+                        <div class="level-title">Moderate</div>
+                        <div class="level-description">Moderate problem with procedures, moderate medications, acute illness with systemic effects</div>
+                        <div class="risk-example">Examples: Pneumonia, poorly controlled diabetes, starting new psychotropic</div>
                     </div>
                 </label>
             </div>
-
-            <div class="level-option" data-section="risk" data-level="high">
+            <div class="level-option" data-section="risk">
                 <label>
                     <input type="radio" name="risk" value="high">
                     <div>
-                        <div class="level-title">High Risk</div>
-                        <div class="level-description">High risk of morbidity from additional diagnostic testing or treatment</div>
-                        <div class="risk-example">
-                            Examples: Drug therapy requiring intensive monitoring for toxicity; Decision regarding elective major surgery with identified patient/procedure risk factors; Decision regarding emergency major surgery; Decision regarding hospitalization; Decision not to resuscitate or to de-escalate care
-                        </div>
+                        <div class="level-title">High</div>
+                        <div class="level-description">High-risk surgical procedure, severe illness, significant medication risks, unstable chronic condition</div>
+                        <div class="risk-example">Examples: Sepsis, acute MI, severe diabetic ketoacidosis</div>
                     </div>
                 </label>
             </div>
@@ -706,80 +756,79 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     </div>
 
     <div class="action-buttons">
-        <button class="btn btn-calculate" id="calculateBtn">Calculate Code</button>
-        <button class="btn btn-reset" id="resetBtn">Reset All</button>
+        <button class="btn btn-reset" id="resetBtn">Reset Form</button>
     </div>
 
+    <!-- Output Section -->
     <div class="output-section" id="outputSection">
         <div class="output-header">
-            <h3>📄 Generated Documentation</h3>
-            <button class="btn-copy" id="copyBtn">Copy to Clipboard</button>
+            <h3>📋 Your CPT Codes</h3>
+            <button class="btn-copy" id="copyBtn">Copy Results</button>
         </div>
         <div class="output-content" id="outputContent"></div>
     </div>
-</div>
 
-<div class="copy-notification" id="copyNotification">
-    ✓ Copied to clipboard!
+    <div class="copy-notification" id="copyNotification">✓ Copied to clipboard!</div>
 </div>
 
 <script>
     // State management
-    let state = {
-        patientType: 'new',
+    const state = {
+        patientType: null,
+        wellVisitCode: null,
         problems: null,
         data: [],
         risk: null
     };
 
-    // Code mappings
+    // CPT code mappings for E/M
     const codeMappings = {
         new: {
-            straightforward: '99202',
-            low: '99203',
-            moderate: '99204',
-            high: '99205'
+            straightforward: '99201',
+            low: '99202',
+            moderate: '99203',
+            high: '99204',
         },
         established: {
-            straightforward: '99212',
-            low: '99213',
-            moderate: '99214',
-            high: '99215'
+            straightforward: '99211',
+            low: '99212',
+            moderate: '99213',
+            high: '99214',
         }
-    };
-
-    // Level mappings
-    const levelMap = {
-        minimal: 'straightforward',
-        low: 'low',
-        moderate: 'moderate',
-        high: 'high'
     };
 
     // Problem descriptions
     const problemDescriptions = {
-        minimal: '1 self-limited or minor problem',
-        low: '2 or more self-limited or minor problems, OR 1 stable chronic illness, OR 1 acute uncomplicated illness or injury',
-        moderate: '1 or more chronic illnesses with exacerbation/progression/side effects, OR 2 or more stable chronic illnesses, OR 1 undiagnosed new problem with uncertain prognosis, OR 1 acute illness with systemic symptoms, OR 1 acute complicated injury',
-        high: '1 or more chronic illnesses with severe exacerbation/progression/side effects, OR 1 acute or chronic illness or injury that poses a threat to life or bodily function'
-    };
-
-    // Risk descriptions
-    const riskDescriptions = {
-        minimal: 'Minimal risk from additional diagnostic testing or treatment',
-        low: 'Low risk of morbidity from additional diagnostic testing or treatment',
-        moderate: 'Moderate risk of morbidity from additional diagnostic testing or treatment (Examples: Prescription drug management; minor surgery with risk factors; elective major surgery without risk factors; diagnosis/treatment limited by social determinants)',
-        high: 'High risk of morbidity from additional diagnostic testing or treatment (Examples: Drug therapy requiring intensive monitoring; elective major surgery with risk factors; emergency major surgery; hospitalization decision; DNR/de-escalation decision)'
+        straightforward: 'One self-limited or minor problem',
+        low: 'Two or more self-limited problems OR one stable chronic illness OR one acute uncomplicated illness',
+        moderate: 'One or more chronic illnesses with mild exacerbation OR multiple stable chronic illnesses OR newly diagnosed acute illness',
+        high: 'Chronic illness with severe exacerbation OR undiagnosed with workup OR multiple new problems'
     };
 
     // Data descriptions
     const dataDescriptions = {
-        review_external_notes: 'Review of prior external note(s) from unique source',
-        review_test_results: 'Review of result(s) of unique test',
-        order_test: 'Ordering of unique test',
-        independent_historian: 'Assessment requiring independent historian',
-        independent_interpretation: 'Independent interpretation of test (not separately reported)',
-        discussion_management: 'Discussion of management or test interpretation with external provider'
+        review_external_notes: 'Review external notes/records',
+        review_test_results: 'Review prior test results',
+        order_test: 'Order new tests',
+        independent_historian: 'Independent historian',
+        independent_interpretation: 'Independent interpretation of tests',
+        discussion_management: 'Discussion with other provider re: management'
+    };
+
+    // Risk descriptions
+    const riskDescriptions = {
+        straightforward: 'Self-limited or minor illnesses, minor procedures (e.g., simple laceration repair)',
+        low: 'Minor problems with procedures, medications with minimal side effects, stable chronic illnesses',
+        moderate: 'Moderate problem with procedures, moderate medications, acute illness with systemic effects',
+        high: 'High-risk surgical procedure, severe illness, significant medication risks, unstable chronic condition'
+    };
+
+    // Level to number mapping for 2 of 3 rule
+    const levelMap = {
+        straightforward: 0,
+        low: 1,
+        moderate: 2,
+        high: 3
     };
 
     // Initialize
@@ -788,7 +837,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     });
 
     function initializeEventListeners() {
-        // Toggle instructions
+        // Instructions toggle
         document.getElementById('toggleInstructions').addEventListener('click', toggleInstructions);
 
         // Patient type buttons
@@ -799,11 +848,20 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
             setPatientType('established');
         });
 
+        // Well visit buttons
+        document.querySelectorAll('.well-visit-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                setWellVisit(this.getAttribute('data-code'), this.textContent);
+                updateOutput();
+            });
+        });
+
         // Problem radio buttons
         document.querySelectorAll('input[name="problems"]').forEach(input => {
             input.addEventListener('change', function() {
                 state.problems = this.value;
                 updateLevelOptionStyles('problems');
+                updateOutput();
             });
         });
 
@@ -816,6 +874,7 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
                     state.data = state.data.filter(item => item !== this.value);
                 }
                 updateDataItemStyles();
+                updateOutput();
             });
         });
 
@@ -824,11 +883,9 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
             input.addEventListener('change', function() {
                 state.risk = this.value;
                 updateLevelOptionStyles('risk');
+                updateOutput();
             });
         });
-
-        // Calculate button
-        document.getElementById('calculateBtn').addEventListener('click', calculateCode);
 
         // Reset button
         document.getElementById('resetBtn').addEventListener('click', resetAll);
@@ -854,6 +911,22 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         state.patientType = type;
         document.getElementById('newPatientBtn').classList.toggle('active', type === 'new');
         document.getElementById('establishedPatientBtn').classList.toggle('active', type === 'established');
+        updateOutput();
+    }
+
+    function setWellVisit(code, label) {
+        const buttons = document.querySelectorAll('.well-visit-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        // Find and activate the clicked button
+        buttons.forEach(btn => {
+            if (btn.getAttribute('data-code') === code) {
+                btn.classList.add('active');
+            }
+        });
+
+        state.wellVisitCode = code;
+        updateOutput();
     }
 
     function updateLevelOptionStyles(section) {
@@ -870,37 +943,85 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
         });
     }
 
-    function calculateCode() {
-        // Validate inputs
-        if (!state.problems) {
-            showValidation('Please select a level for Problems Addressed.');
-            return;
-        }
-        if (!state.risk) {
-            showValidation('Please select a Risk level.');
+    function updateOutput() {
+        // Only show output if patient type is selected
+        if (!state.patientType) {
+            document.getElementById('outputSection').classList.remove('show');
             return;
         }
 
-        // Calculate data level
-        const dataLevel = calculateDataLevel();
+        // Check if we have a well visit OR complete E/M data
+        const hasWellVisit = state.wellVisitCode !== null;
+        const hasCompleteEMData = state.problems !== null && state.risk !== null;
 
-        // Apply 2 of 3 rule
-        const problemLevel = levelMap[state.problems];
-        const riskLevel = levelMap[state.risk];
+        if (!hasWellVisit && !hasCompleteEMData) {
+            document.getElementById('outputSection').classList.remove('show');
+            return;
+        }
 
-        const levels = [problemLevel, dataLevel, riskLevel];
-        const finalLevel = determine2of3Level(levels);
-
-        // Get CPT code
-        const cptCode = codeMappings[state.patientType][finalLevel];
-
-        // Generate output
-        generateOutput(problemLevel, dataLevel, riskLevel, finalLevel, cptCode);
-
-        // Hide validation and show output
-        hideValidation();
+        generateOutput();
         document.getElementById('outputSection').classList.add('show');
-        document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function generateOutput() {
+        let output = '';
+
+        // Add well visit code if selected
+        if (state.wellVisitCode) {
+            output += `PREVENTIVE WELL VISIT: ${state.wellVisitCode}\n`;
+        }
+
+        // Add E/M code if we have complete data
+        if (state.problems !== null && state.risk !== null) {
+            // Calculate data level
+            const dataLevel = calculateDataLevel();
+
+            // Apply 2 of 3 rule
+            const problemLevel = levelMap[state.problems];
+            const riskLevel = levelMap[state.risk];
+            const dataLevelNum = levelMap[dataLevel];
+
+            const levels = [problemLevel, dataLevelNum, riskLevel];
+            const finalLevelNum = determine2of3Level(levels);
+            const finalLevel = Object.keys(levelMap).find(key => levelMap[key] === finalLevelNum);
+
+            // Get CPT code
+            const cptCode = codeMappings[state.patientType][finalLevel];
+
+            // Add modifier 25 if we have a well visit
+            const modifiedCode = state.wellVisitCode ? cptCode + ' 25' : cptCode;
+
+            if (state.wellVisitCode) {
+                output += `E/M CODE: ${modifiedCode}\n`;
+            } else {
+                output += `E/M CODE: ${cptCode}\n`;
+            }
+
+            output += `\n`;
+            output += `MEDICAL DECISION MAKING DETAILS\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+            // Show selected problems
+            output += `Problems Addressed: ${capitalizeFirst(state.problems)}\n`;
+            output += `${problemDescriptions[state.problems]}\n\n`;
+
+            // Show selected data
+            if (state.data.length > 0) {
+                output += `Data Reviewed & Analyzed: ${capitalizeFirst(dataLevel)}\n`;
+                state.data.forEach(item => {
+                    output += `• ${dataDescriptions[item]}\n`;
+                });
+            } else {
+                output += `Data Reviewed & Analyzed: N/A\n`;
+            }
+            output += `\n`;
+
+            // Show selected risk
+            output += `Risk Level: ${capitalizeFirst(state.risk)}\n`;
+            output += `${riskDescriptions[state.risk]}\n`;
+        }
+
+        document.getElementById('outputContent').textContent = output;
     }
 
     function calculateDataLevel() {
@@ -933,99 +1054,49 @@ description: Calculate appropriate CPT E/M billing codes using 2021 guidelines w
     function determine2of3Level(levels) {
         // Count occurrences of each level
         const counts = {
-            straightforward: 0,
-            low: 0,
-            moderate: 0,
-            high: 0
+            0: 0,
+            1: 0,
+            2: 0,
+            3: 0
         };
 
         levels.forEach(level => counts[level]++);
 
         // If any level appears 2 or more times, that's the result
-        if (counts.high >= 2) return 'high';
-        if (counts.moderate >= 2) return 'moderate';
-        if (counts.low >= 2) return 'low';
-        if (counts.straightforward >= 2) return 'straightforward';
+        if (counts[3] >= 2) return 3;
+        if (counts[2] >= 2) return 2;
+        if (counts[1] >= 2) return 1;
+        if (counts[0] >= 2) return 0;
 
         // If all three are different, take the middle value
-        const levelOrder = ['straightforward', 'low', 'moderate', 'high'];
-        const sortedLevels = levels.sort((a, b) => 
-            levelOrder.indexOf(a) - levelOrder.indexOf(b)
-        );
+        const sortedLevels = levels.sort((a, b) => a - b);
         return sortedLevels[1];
-    }
-
-    function generateOutput(problemLevel, dataLevel, riskLevel, finalLevel, cptCode) {
-        let output = `CPT E/M Code: ${cptCode}\n\n`;
-        output += `Medical Decision Making Assessment:\n`;
-        output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-
-        // Problems
-        output += `Problems Addressed (${capitalizeFirst(problemLevel)}):\n`;
-        output += `${problemDescriptions[state.problems]}\n\n`;
-
-        // Data
-        output += `Data Reviewed and Analyzed (${capitalizeFirst(dataLevel)}):\n`;
-        if (state.data.length === 0) {
-            output += `Minimal or none\n`;
-        } else {
-            state.data.forEach(item => {
-                output += `• ${dataDescriptions[item]}\n`;
-            });
-        }
-        output += `\n`;
-
-        // Risk
-        output += `Risk of Complications/Morbidity/Mortality (${capitalizeFirst(riskLevel)}):\n`;
-        output += `${riskDescriptions[state.risk]}\n\n`;
-
-        // 2 of 3 rule explanation
-        output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-        output += `MDM Level Determination (2 of 3 Rule):\n`;
-        output += `Problems: ${capitalizeFirst(problemLevel)} | `;
-        output += `Data: ${capitalizeFirst(dataLevel)} | `;
-        output += `Risk: ${capitalizeFirst(riskLevel)}\n\n`;
-        output += `Final MDM Level: ${capitalizeFirst(finalLevel)}\n`;
-        output += `CPT Code: ${cptCode} (${state.patientType === 'new' ? 'New' : 'Established'} Patient)`;
-
-        document.getElementById('outputContent').textContent = output;
     }
 
     function capitalizeFirst(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    function showValidation(message) {
-        const validationEl = document.getElementById('validationAlert');
-        validationEl.textContent = '⚠️ ' + message;
-        validationEl.classList.add('show');
-        validationEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    function hideValidation() {
-        document.getElementById('validationAlert').classList.remove('show');
-    }
-
     function resetAll() {
         // Reset state
-        state = {
-            patientType: state.patientType,
-            problems: null,
-            data: [],
-            risk: null
-        };
+        state.patientType = null;
+        state.wellVisitCode = null;
+        state.problems = null;
+        state.data = [];
+        state.risk = null;
 
         // Uncheck all inputs
         document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
         document.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = false);
 
-        // Remove selected styles
+        // Remove active classes
+        document.querySelectorAll('.patient-type-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.well-visit-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.level-option').forEach(option => option.classList.remove('selected'));
         document.querySelectorAll('.data-item').forEach(item => item.classList.remove('selected'));
 
-        // Hide output and validation
+        // Hide output
         document.getElementById('outputSection').classList.remove('show');
-        hideValidation();
 
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
