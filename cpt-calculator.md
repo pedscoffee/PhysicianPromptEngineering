@@ -535,21 +535,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     <div class="patient-type-selector">
         <button class="patient-type-btn" onclick="selectPatientType('new')">New Patient</button>
-        <button class="patient-type-btn" onclick="selectPatientType('established')">Established Patient</button>
-    </div>
-
-    <div class="well-visit-section">
-        <h2>🏥 Preventive Well Visit (Optional)</h2>
-        <div class="well-visit-buttons">
-            <button class="well-visit-btn" onclick="selectWellVisit('99381', '99391')">Infant (Under 1 year)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99382', '99392')">Early Childhood (1-4 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99383', '99393')">Late Childhood (5-11 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99384', '99394')">Adolescent (12-17 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99385', '99395')">Young Adult (18-39 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99386', '99396')">Middle Age (40-64 years)</button>
-            <button class="well-visit-btn" onclick="selectWellVisit('99387', '99397')">Mature Adult (65+ years)</button>
-        </div>
-        <div class="well-visit-code-display" id="wellVisitDisplay"></div>
+        <button class="patient-type-btn active" onclick="selectPatientType('established')">Established Patient</button>
     </div>
 
     <div class="mdm-grid">
@@ -731,6 +717,20 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <div class="time-based-display" id="timeBasedDisplay"></div>
     </div>
 
+    <div class="well-visit-section">
+        <h2>🏥 Preventive Well Visit (Optional)</h2>
+        <div class="well-visit-buttons">
+            <button class="well-visit-btn" onclick="selectWellVisit('99381', '99391')">Infant (Under 1 year)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99382', '99392')">Early Childhood (1-4 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99383', '99393')">Late Childhood (5-11 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99384', '99394')">Adolescent (12-17 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99385', '99395')">Young Adult (18-39 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99386', '99396')">Middle Age (40-64 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99387', '99397')">Mature Adult (65+ years)</button>
+        </div>
+        <div class="well-visit-code-display" id="wellVisitDisplay"></div>
+    </div>
+
     <div class="output-section" id="outputSection">
         <div class="output-header">
             <h2>📋 Calculated E/M Code</h2>
@@ -748,7 +748,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 <script>
     // State management
     const state = {
-        patientType: null,
+        patientType: 'established',
         wellVisitCode: null,
         problems: [],
         data: [],
@@ -1133,13 +1133,14 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             return;
         }
 
-        // Check if we have a well visit OR complete E/M data
+        // Check if we have a well visit OR complete E/M data OR time-based data
         const hasWellVisit = state.wellVisitCode !== null;
         const problemLevel = calculateProblemLevel();
         const riskLevel = calculateRiskLevel();
         const hasCompleteEMData = problemLevel !== null && riskLevel !== null;
+        const hasTimeData = state.totalTime !== null && state.totalTime > 0;
 
-        if (!hasWellVisit && !hasCompleteEMData) {
+        if (!hasWellVisit && !hasCompleteEMData && !hasTimeData) {
             document.getElementById('outputSection').classList.remove('show');
             return;
         }
@@ -1252,6 +1253,22 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                     output += `Note: Use the higher of MDM-based or time-based code.\n`;
                 }
             }
+        } else if (state.totalTime) {
+            // Time-only output (no MDM data)
+            const timeCode = getCodeFromTime(state.totalTime, state.patientType);
+            if (timeCode) {
+                output += `E/M CODE (TIME-BASED): ${timeCode.code}\n\n`;
+                output += `TIME-BASED CODING\n`;
+                output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                output += `Total Time: ${state.totalTime} minutes\n`;
+                output += `Code by Time: ${timeCode.code} (${timeCode.range})\n\n`;
+                output += `Note: This code is based solely on time spent on the date of encounter.\n`;
+            } else {
+                output += `TIME-BASED CODING\n`;
+                output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                output += `Total Time: ${state.totalTime} minutes\n`;
+                output += `Time does not meet minimum requirements for billing.\n`;
+            }
         }
 
         document.getElementById('outputContent').textContent = output;
@@ -1280,7 +1297,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     function resetAll() {
         // Reset state
-        state.patientType = null;
+        state.patientType = 'established';
         state.wellVisitCode = null;
         state.problems = [];
         state.data = [];
@@ -1297,8 +1314,9 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
         document.getElementById('totalTime').value = '';
 
-        // Remove active classes
+        // Remove active classes and set established as default
         document.querySelectorAll('.patient-type-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.patient-type-btn')[1].classList.add('active'); // Established patient is second button
         document.querySelectorAll('.well-visit-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.data-item').forEach(item => item.classList.remove('selected'));
 
