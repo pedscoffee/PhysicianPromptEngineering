@@ -6,6 +6,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 ---
 
 <style>
+    .wrapper {
+        max-width: 1640px;
+    }
+
     .calculator-container {
         max-width: 100%;
         margin: 0;
@@ -261,218 +265,247 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         margin-bottom: 6px;
         cursor: pointer;
         transition: all 0.3s;
+        user-select: none;
     }
 
     .data-item:hover {
+        background: #e9ecef;
         border-color: #0088bb;
-        background: #f0f8ff;
-        transform: translateX(3px);
     }
 
     .data-item.selected {
-        border-color: #0088bb;
-        background: linear-gradient(135deg, rgba(0, 136, 187, 0.1) 0%, rgba(0, 168, 216, 0.1) 100%);
-        box-shadow: 0 2px 8px rgba(0, 136, 187, 0.2);
+        background: linear-gradient(135deg, #0088bb 0%, #00a8d8 100%);
+        border-color: #006b94;
+        color: white;
     }
 
     .data-item input[type="checkbox"] {
-        margin-right: 8px;
-        cursor: pointer;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
+        display: none;
     }
 
-    .data-item label {
-        cursor: pointer;
-        display: inline-block;
-        vertical-align: middle;
-        line-height: 1.3;
+    .data-item-label {
+        display: block;
         font-size: 0.85em;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
     }
 
     .quantity-input-container {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
         display: none;
-        margin-top: 6px;
-        padding: 6px;
-        background: white;
-        border-radius: 4px;
     }
 
     .quantity-input-container.show {
         display: block;
     }
 
-    .quantity-input-container label {
-        display: block;
+    .quantity-label {
         font-size: 0.75em;
-        color: #666;
         margin-bottom: 4px;
+        opacity: 0.9;
     }
 
-    .quantity-input-container input[type="number"] {
+    .quantity-input {
         width: 60px;
-        padding: 4px;
-        border: 2px solid #0088bb;
+        padding: 4px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 4px;
         font-size: 0.85em;
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+    }
+
+    .quantity-input:focus {
+        outline: none;
+        border-color: #006b94;
+    }
+
+    .time-based-section {
+        background: linear-gradient(135deg, rgba(0, 136, 187, 0.08) 0%, rgba(0, 107, 148, 0.08) 100%);
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 2px solid #0088bb;
+    }
+
+    .time-based-section h2 {
+        color: #006b94;
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 1.05em;
+    }
+
+    .time-input-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .time-input-container label {
+        font-size: 0.85em;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .time-input-container input {
+        width: 100px;
+        padding: 8px 12px;
+        border: 2px solid #0088bb;
+        border-radius: 6px;
+        font-size: 0.9em;
+    }
+
+    .time-input-container input:focus {
+        outline: none;
+        border-color: #006b94;
+    }
+
+    .time-based-display {
+        margin-top: 10px;
+        padding: 10px;
+        background: white;
+        border: 2px solid #0088bb;
+        border-radius: 6px;
+        font-size: 0.9em;
+        font-weight: 600;
+        color: #006b94;
+        display: none;
+    }
+
+    .time-based-display.show {
+        display: block;
     }
 
     .output-section {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        background: white;
         border-radius: 8px;
-        padding: 15px;
-        margin-top: 15px;
-        border: 2px solid #0088bb;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         display: none;
     }
 
     .output-section.show {
         display: block;
-        animation: slideDown 0.3s ease;
     }
 
-    .output-section h2 {
+    .output-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e8ecef;
+    }
+
+    .output-header h2 {
         color: #006b94;
-        margin-top: 0;
-        margin-bottom: 12px;
-        font-size: 1.2em;
-        text-align: center;
-    }
-
-    .output-content {
-        background: white;
-        padding: 15px;
-        border-radius: 6px;
-        font-family: 'Courier New', monospace;
-        font-size: 0.85em;
-        line-height: 1.6;
-        white-space: pre-wrap;
-        color: #2c3e50;
-        border: 1px solid #dee2e6;
-        max-height: 400px;
-        overflow-y: auto;
+        font-size: 1.3em;
+        margin: 0;
     }
 
     .output-actions {
         display: flex;
-        gap: 12px;
-        justify-content: center;
-        margin-top: 12px;
-        flex-wrap: wrap;
+        gap: 10px;
     }
 
-    .action-btn {
-        padding: 10px 25px;
+    .btn {
+        padding: 8px 16px;
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        font-size: 0.95em;
         font-weight: 600;
+        font-size: 0.85em;
         transition: all 0.3s;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .copy-btn {
-        background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    .btn-primary {
+        background: linear-gradient(135deg, #0088bb 0%, #006b94 100%);
         color: white;
+        box-shadow: 0 2px 8px rgba(0, 136, 187, 0.3);
     }
 
-    .copy-btn:hover {
+    .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 136, 187, 0.4);
     }
 
-    .reset-btn {
-        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-        color: white;
+    .btn-secondary {
+        background: white;
+        color: #0088bb;
+        border: 2px solid #0088bb;
     }
 
-    .reset-btn:hover {
+    .btn-secondary:hover {
+        background: #f8f9fa;
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+    }
+
+    .output-content {
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 6px;
+        padding: 15px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+        white-space: pre-wrap;
+        line-height: 1.6;
+        color: #2c3e50;
+        max-height: 600px;
+        overflow-y: auto;
     }
 
     .copy-notification {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
+        top: 20px;
+        right: 20px;
         background: #28a745;
         color: white;
-        padding: 15px 25px;
-        border-radius: 8px;
+        padding: 12px 20px;
+        border-radius: 6px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         font-weight: 600;
-        display: none;
-        animation: slideIn 0.3s ease;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s;
         z-index: 1000;
     }
 
     .copy-notification.show {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    .validation-alert {
-        background: #fff3cd;
-        border: 2px solid #ffc107;
-        border-radius: 8px;
-        padding: 15px;
-        margin-bottom: 20px;
-        color: #856404;
-        display: none;
-    }
-
-    .validation-alert.show {
-        display: block;
-    }
-
-    @media (max-width: 1400px) {
+    @media (max-width: 1024px) {
         .mdm-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-        
-        .data-item label {
-            font-size: 0.8em;
-        }
-    }
-
-    @media (max-width: 1100px) {
-        .mdm-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
         }
     }
 
     @media (max-width: 768px) {
-        .mdm-grid {
-            grid-template-columns: 1fr;
+        .calculator-container {
+            padding: 10px;
         }
-        
-        .patient-type-selector {
+
+        .page-header h1 {
+            font-size: 1.5em;
+        }
+
+        .output-header {
             flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
         }
-        
-        .patient-type-btn {
+
+        .output-actions {
             width: 100%;
         }
 
-        .well-visit-buttons {
-            flex-direction: column;
-        }
-
-        .well-visit-btn {
-            flex: 1 1 auto;
+        .btn {
+            flex: 1;
         }
     }
 </style>
@@ -486,159 +519,150 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     <div class="instructions-container">
         <div class="instructions-header">
             <h2>How to Use This Calculator</h2>
-            <button class="toggle-instructions" id="toggleInstructions">Show Instructions</button>
+            <button class="toggle-instructions" onclick="toggleInstructions()">Show Instructions</button>
         </div>
         <div class="instructions-content" id="instructionsContent">
             <ul>
-                <li><strong>Step 1:</strong> Select whether this is a New or Established patient visit.</li>
-                <li><strong>Step 2 (Optional):</strong> If this is a preventive well visit, select the appropriate age category to get the well visit code.</li>
-                <li><strong>Step 3:</strong> If adding E/M services to the well visit (or conducting a problem-focused visit), fill out the MDM section. If you select E/M options, a 25 modifier will automatically be added.</li>
-                <li><strong>Step 4:</strong> Alternatively, you can use time-based coding by entering total time spent on the date of encounter.</li>
-                <li><strong>Step 5:</strong> Your CPT code will automatically update as you make selections. Copy your results when ready.</li>
-                <li><strong>Step 6:</strong> Use the Reset button to start over.</li>
+                <li><strong>Step 1:</strong> Select patient type (New or Established)</li>
+                <li><strong>Step 2 (Optional):</strong> Select preventive well visit age category if applicable</li>
+                <li><strong>Step 3:</strong> Select problems addressed, data reviewed, and risk factors</li>
+                <li><strong>Step 4 (Optional):</strong> Enter total time if using time-based coding</li>
+                <li><strong>Result:</strong> The calculator automatically determines the appropriate E/M code using the 2 of 3 MDM rule</li>
             </ul>
-            <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.9;">
-                <strong>Note:</strong> This calculator implements the 2025 AMA CPT guidelines. For MDM-based coding, 2 of 3 elements (Problems, Data, Risk) must be met. Code 99201 has been deleted and is no longer used. For established patients, 99211 represents minimal service without physician MDM.
-            </p>
+            <p><strong>Note:</strong> If both a well visit and E/M code are generated, the E/M code should be billed with modifier -25. Time-based coding is shown as an alternative when applicable - use whichever yields the higher level code.</p>
         </div>
     </div>
 
-    <div class="validation-alert" id="validationAlert"></div>
-
-    <!-- Patient Type Selection -->
     <div class="patient-type-selector">
-        <button class="patient-type-btn" id="newPatientBtn">New Patient</button>
-        <button class="patient-type-btn" id="establishedPatientBtn">Established Patient</button>
+        <button class="patient-type-btn" onclick="selectPatientType('new')">New Patient</button>
+        <button class="patient-type-btn" onclick="selectPatientType('established')">Established Patient</button>
     </div>
 
-    <!-- Well Visit Section -->
     <div class="well-visit-section">
-        <h2>Preventive Well Visit (Optional)</h2>
+        <h2>🏥 Preventive Well Visit (Optional)</h2>
         <div class="well-visit-buttons">
-            <button class="well-visit-btn" data-code="99381">Infant (Under 1 year)</button>
-            <button class="well-visit-btn" data-code="99382">Early Childhood (1-4 years)</button>
-            <button class="well-visit-btn" data-code="99383">Late Childhood (5-11 years)</button>
-            <button class="well-visit-btn" data-code="99384">Adolescent (12-17 years)</button>
-            <button class="well-visit-btn" data-code="99385">Young Adult (18-39 years)</button>
-            <button class="well-visit-btn" data-code="99386">Middle Age (40-64 years)</button>
-            <button class="well-visit-btn" data-code="99387">Mature Adult (65+ years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99381', '99391')">Infant (Under 1 year)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99382', '99392')">Early Childhood (1-4 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99383', '99393')">Late Childhood (5-11 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99384', '99394')">Adolescent (12-17 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99385', '99395')">Young Adult (18-39 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99386', '99396')">Middle Age (40-64 years)</button>
+            <button class="well-visit-btn" onclick="selectWellVisit('99387', '99397')">Mature Adult (65+ years)</button>
         </div>
         <div class="well-visit-code-display" id="wellVisitDisplay"></div>
     </div>
 
-    <!-- Time-Based Coding Section -->
-    <div class="well-visit-section">
-        <h2>Time-Based Coding (Optional Alternative)</h2>
-        <p style="font-size: 0.8em; color: #666; margin-bottom: 10px;">Total time on date of encounter (includes non-face-to-face work)</p>
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 10px;">
-            <div style="flex: 1; min-width: 150px;">
-                <label for="totalTime" style="display: block; font-weight: 600; color: #006b94; margin-bottom: 6px; font-size: 0.9em;">Total Time (minutes):</label>
-                <input type="number" id="totalTime" placeholder="Enter time" min="0" max="300" style="width: 100%; padding: 8px; border: 2px solid #0088bb; border-radius: 6px; font-size: 0.95em;">
-            </div>
-        </div>
-        <div class="well-visit-code-display" id="timeBasedDisplay"></div>
-    </div>
-
-    <!-- MDM Section -->
     <div class="mdm-grid">
         <!-- Problems Section -->
         <div class="mdm-section">
             <h3>Problems Addressed</h3>
-            <p>Select all that apply to determine complexity level</p>
+            <p>Select all problems addressed during the encounter</p>
+            
             <div class="data-category">
-                <div class="data-category-title">Minimal/Straightforward</div>
-                <div class="data-item">
-                    <input type="checkbox" id="self_limited_minor" name="problems" value="self_limited_minor">
-                    <label for="self_limited_minor">Self-limited or minor problem</label>
+                <div class="data-category-title">Self-Limited/Minor</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'self_limited_minor')">
+                    <input type="checkbox" id="self_limited_minor">
+                    <label class="data-item-label" for="self_limited_minor">Self-limited or minor problem</label>
                 </div>
             </div>
+
             <div class="data-category">
-                <div class="data-category-title">Low Complexity</div>
-                <div class="data-item">
-                    <input type="checkbox" id="stable_chronic" name="problems" value="stable_chronic">
-                    <label for="stable_chronic">Stable chronic illness (at treatment goal)</label>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="acute_uncomplicated" name="problems" value="acute_uncomplicated">
-                    <label for="acute_uncomplicated">Acute, uncomplicated illness or injury</label>
+                <div class="data-category-title">Stable Chronic</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'stable_chronic')">
+                    <input type="checkbox" id="stable_chronic">
+                    <label class="data-item-label" for="stable_chronic">Stable chronic illness</label>
                 </div>
             </div>
+
             <div class="data-category">
-                <div class="data-category-title">Moderate Complexity</div>
-                <div class="data-item">
-                    <input type="checkbox" id="chronic_mild_exacerbation" name="problems" value="chronic_mild_exacerbation">
-                    <label for="chronic_mild_exacerbation">Chronic illness with mild exacerbation/progression</label>
+                <div class="data-category-title">Acute/Chronic</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'acute_uncomplicated')">
+                    <input type="checkbox" id="acute_uncomplicated">
+                    <label class="data-item-label" for="acute_uncomplicated">Acute uncomplicated illness/injury</label>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="multiple_stable_chronic" name="problems" value="multiple_stable_chronic">
-                    <label for="multiple_stable_chronic">Two or more stable chronic illnesses</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'acute_complicated')">
+                    <input type="checkbox" id="acute_complicated">
+                    <label class="data-item-label" for="acute_complicated">Acute illness with systemic symptoms</label>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="newly_diagnosed_acute" name="problems" value="newly_diagnosed_acute">
-                    <label for="newly_diagnosed_acute">Undiagnosed new problem OR acute illness with systemic symptoms</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'chronic_inadequate_control')">
+                    <input type="checkbox" id="chronic_inadequate_control">
+                    <label class="data-item-label" for="chronic_inadequate_control">Chronic illness with exacerbation</label>
                 </div>
             </div>
+
             <div class="data-category">
-                <div class="data-category-title">High Complexity</div>
-                <div class="data-item">
-                    <input type="checkbox" id="chronic_severe_exacerbation" name="problems" value="chronic_severe_exacerbation">
-                    <label for="chronic_severe_exacerbation">Chronic illness with severe exacerbation/progression</label>
+                <div class="data-category-title">High Severity</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'undiagnosed_new_problem')">
+                    <input type="checkbox" id="undiagnosed_new_problem">
+                    <label class="data-item-label" for="undiagnosed_new_problem">Undiagnosed new problem with uncertain prognosis</label>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="undiagnosed_with_workup" name="problems" value="undiagnosed_with_workup">
-                    <label for="undiagnosed_with_workup">Undiagnosed problem with uncertain prognosis requiring extensive workup</label>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="multiple_new_problems" name="problems" value="multiple_new_problems">
-                    <label for="multiple_new_problems">Acute or chronic illness/injury that poses threat to life or bodily function</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'acute_severe')">
+                    <input type="checkbox" id="acute_severe">
+                    <label class="data-item-label" for="acute_severe">Acute or chronic illness posing threat to life/function</label>
                 </div>
             </div>
         </div>
 
-        <!-- Data Review Section -->
+        <!-- Data Section -->
         <div class="mdm-section">
             <h3>Data Reviewed & Analyzed</h3>
-            <p>Select items reviewed/analyzed during this encounter</p>
+            <p>Select data reviewed and ordered (Category 1 items require quantity)</p>
+            
             <div class="data-category">
-                <div class="data-category-title">Category 1: Tests & Documents</div>
-                <div class="data-item">
-                    <input type="checkbox" id="review_external_notes" name="data" value="review_external_notes">
-                    <label for="review_external_notes">Review external notes/records from unique source</label>
-                    <div class="quantity-input-container" id="review_external_notes_qty">
-                        <label>Number of unique sources:</label>
-                        <input type="number" min="0" max="20" value="0" data-field="review_external_notes">
-                    </div>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="review_test_results" name="data" value="review_test_results">
-                    <label for="review_test_results">Review results of unique test(s)</label>
-                    <div class="quantity-input-container" id="review_test_results_qty">
-                        <label>Number of unique tests:</label>
-                        <input type="number" min="0" max="20" value="0" data-field="review_test_results">
-                    </div>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="order_test" name="data" value="order_test">
-                    <label for="order_test">Order unique test(s)</label>
-                    <div class="quantity-input-container" id="order_test_qty">
-                        <label>Number of unique tests ordered:</label>
-                        <input type="number" min="0" max="20" value="0" data-field="order_test">
-                    </div>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="independent_historian" name="data" value="independent_historian">
-                    <label for="independent_historian">Assessment requiring independent historian</label>
+                <div class="data-category-title">Minimal</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'minimal_data')">
+                    <input type="checkbox" id="minimal_data">
+                    <label class="data-item-label" for="minimal_data">Minimal or none</label>
                 </div>
             </div>
+
             <div class="data-category">
-                <div class="data-category-title">Category 2: Advanced Analysis</div>
-                <div class="data-item">
-                    <input type="checkbox" id="independent_interpretation" name="data" value="independent_interpretation">
-                    <label for="independent_interpretation">Independent interpretation of test (not separately billed)</label>
+                <div class="data-category-title">Category 1: Tests/Documents</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'review_external_notes')">
+                    <input type="checkbox" id="review_external_notes">
+                    <label class="data-item-label" for="review_external_notes">Review external notes/records</label>
+                    <div class="quantity-input-container" id="qty_review_external_notes">
+                        <div class="quantity-label">Number of unique sources:</div>
+                        <input type="number" class="quantity-input" min="0" value="0" 
+                               onchange="updateQuantity('review_external_notes', this.value)"
+                               onclick="event.stopPropagation()">
+                    </div>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="discussion_management" name="data" value="discussion_management">
-                    <label for="discussion_management">Discussion of management/test interpretation with external provider</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'review_test_results')">
+                    <input type="checkbox" id="review_test_results">
+                    <label class="data-item-label" for="review_test_results">Review test results</label>
+                    <div class="quantity-input-container" id="qty_review_test_results">
+                        <div class="quantity-label">Number of unique tests:</div>
+                        <input type="number" class="quantity-input" min="0" value="0" 
+                               onchange="updateQuantity('review_test_results', this.value)"
+                               onclick="event.stopPropagation()">
+                    </div>
+                </div>
+                <div class="data-item" onclick="toggleDataItem(this, 'order_test')">
+                    <input type="checkbox" id="order_test">
+                    <label class="data-item-label" for="order_test">Order tests</label>
+                    <div class="quantity-input-container" id="qty_order_test">
+                        <div class="quantity-label">Number of unique tests:</div>
+                        <input type="number" class="quantity-input" min="0" value="0" 
+                               onchange="updateQuantity('order_test', this.value)"
+                               onclick="event.stopPropagation()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-category">
+                <div class="data-category-title">Category 2: Independent Interpretation</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'independent_interpretation')">
+                    <input type="checkbox" id="independent_interpretation">
+                    <label class="data-item-label" for="independent_interpretation">Independent interpretation of tests</label>
+                </div>
+            </div>
+
+            <div class="data-category">
+                <div class="data-category-title">Category 3: Discussion</div>
+                <div class="data-item" onclick="toggleDataItem(this, 'discussion_management')">
+                    <input type="checkbox" id="discussion_management">
+                    <label class="data-item-label" for="discussion_management">Discussion of management with external provider</label>
                 </div>
             </div>
         </div>
@@ -646,78 +670,76 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <!-- Risk Section -->
         <div class="mdm-section">
             <h3>Risk of Complications</h3>
-            <p>Select all risk factors that apply</p>
+            <p>Select the highest applicable risk factor</p>
+            
             <div class="data-category">
                 <div class="data-category-title">Minimal Risk</div>
-                <div class="data-item">
-                    <input type="checkbox" id="self_limited_illness" name="risk" value="self_limited_illness">
-                    <label for="self_limited_illness">Self-limited illness (e.g., cold, simple rash)</label>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="minor_procedure" name="risk" value="minor_procedure">
-                    <label for="minor_procedure">Minor procedure with no risk factors</label>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="minor_otc_management" name="risk" value="minor_otc_management">
-                    <label for="minor_otc_management">OTC medication management</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'minimal_risk')">
+                    <input type="checkbox" id="minimal_risk">
+                    <label class="data-item-label" for="minimal_risk">Minimal risk of complications</label>
                 </div>
             </div>
+
             <div class="data-category">
                 <div class="data-category-title">Low Risk</div>
-                <div class="data-item">
-                    <input type="checkbox" id="minor_with_minimal_side_effects" name="risk" value="minor_with_minimal_side_effects">
-                    <label for="minor_with_minimal_side_effects">Minor procedure with minimal side effect risk</label>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="stable_chronic_risk" name="risk" value="stable_chronic_risk">
-                    <label for="stable_chronic_risk">Stable chronic condition management</label>
-                </div>
-                <div class="data-item">
-                    <input type="checkbox" id="otc_moderate_symptoms" name="risk" value="otc_moderate_symptoms">
-                    <label for="otc_moderate_symptoms">OTC drugs for moderate symptoms</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'otc_rx')">
+                    <input type="checkbox" id="otc_rx">
+                    <label class="data-item-label" for="otc_rx">OTC drugs / Minor surgery with no risk factors</label>
                 </div>
             </div>
+
             <div class="data-category">
                 <div class="data-category-title">Moderate Risk</div>
-                <div class="data-item">
-                    <input type="checkbox" id="moderate_problem" name="risk" value="moderate_problem">
-                    <label for="moderate_problem">Minor surgery with identified risk factors</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'prescription_rx')">
+                    <input type="checkbox" id="prescription_rx">
+                    <label class="data-item-label" for="prescription_rx">Prescription drug management</label>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="prescription_medication" name="risk" value="prescription_medication">
-                    <label for="prescription_medication">Prescription drug management</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_minor_surgery')">
+                    <input type="checkbox" id="decision_minor_surgery">
+                    <label class="data-item-label" for="decision_minor_surgery">Decision for minor surgery with risk factors</label>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="acute_systemic" name="risk" value="acute_systemic">
-                    <label for="acute_systemic">Diagnosis/treatment limited by social determinants of health</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'diagnosis_with_treatment')">
+                    <input type="checkbox" id="diagnosis_with_treatment">
+                    <label class="data-item-label" for="diagnosis_with_treatment">Diagnosis/treatment significantly limited by social determinants</label>
                 </div>
             </div>
+
             <div class="data-category">
                 <div class="data-category-title">High Risk</div>
-                <div class="data-item">
-                    <input type="checkbox" id="high_surgical_risk" name="risk" value="high_surgical_risk">
-                    <label for="high_surgical_risk">Major surgery or emergency surgery decision</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'drug_therapy_hazard')">
+                    <input type="checkbox" id="drug_therapy_hazard">
+                    <label class="data-item-label" for="drug_therapy_hazard">Drug therapy requiring intensive monitoring</label>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="severe_illness" name="risk" value="severe_illness">
-                    <label for="severe_illness">Drug therapy requiring intensive monitoring for toxicity</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_emergency_surgery')">
+                    <input type="checkbox" id="decision_emergency_surgery">
+                    <label class="data-item-label" for="decision_emergency_surgery">Decision for emergency major surgery</label>
                 </div>
-                <div class="data-item">
-                    <input type="checkbox" id="unstable_chronic" name="risk" value="unstable_chronic">
-                    <label for="unstable_chronic">Decision regarding hospitalization/escalation of care</label>
+                <div class="data-item" onclick="toggleDataItem(this, 'decision_not_to_resuscitate')">
+                    <input type="checkbox" id="decision_not_to_resuscitate">
+                    <label class="data-item-label" for="decision_not_to_resuscitate">Decision not to resuscitate due to poor prognosis</label>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Output Section -->
-    <div class="output-section" id="outputSection">
-        <h2>Your CPT Code Results</h2>
-        <div class="output-content" id="outputContent"></div>
-        <div class="output-actions">
-            <button class="action-btn copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
-            <button class="action-btn reset-btn" onclick="resetAll()">Reset Calculator</button>
+    <div class="time-based-section">
+        <h2>⏱️ Time-Based Coding (Optional Alternative)</h2>
+        <div class="time-input-container">
+            <label for="totalTime">Total time on date of encounter (includes non-face-to-face work)</label>
+            <input type="number" id="totalTime" placeholder="Minutes" min="0" onchange="updateTime()">
         </div>
+        <div class="time-based-display" id="timeBasedDisplay"></div>
+    </div>
+
+    <div class="output-section" id="outputSection">
+        <div class="output-header">
+            <h2>📋 Calculated E/M Code</h2>
+            <div class="output-actions">
+                <button class="btn btn-primary" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+                <button class="btn btn-secondary" onclick="resetAll()">🔄 Reset All</button>
+            </div>
+        </div>
+        <div class="output-content" id="outputContent"></div>
     </div>
 
     <div class="copy-notification" id="copyNotification">✓ Copied to clipboard!</div>
@@ -730,295 +752,310 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         wellVisitCode: null,
         problems: [],
         data: [],
+        risk: [],
+        totalTime: null,
         dataQuantities: {
             review_external_notes: 0,
             review_test_results: 0,
             order_test: 0
-        },
-        risk: [],
-        totalTime: null
-    };
-
-    // FIXED: CPT code mappings for E/M (Updated for 2025 AMA Guidelines)
-    // 99201 was deleted in 2021 and is no longer used
-    const codeMappings = {
-        new: {
-            0: '99202',  // straightforward (MINIMUM for new patients)
-            1: '99203',  // low
-            2: '99204',  // moderate
-            3: '99205',  // high
-        },
-        established: {
-            0: '99211',  // minimal (no physician/QHP MDM required)
-            1: '99212',  // straightforward
-            2: '99213',  // low
-            3: '99214',  // moderate
-            4: '99215',  // high
         }
     };
 
-    // Problem level mappings
-    const problemLevelMap = {
-        'self_limited_minor': 0,
-        'stable_chronic': 1,
-        'acute_uncomplicated': 1,
-        'chronic_mild_exacerbation': 2,
-        'multiple_stable_chronic': 2,
-        'newly_diagnosed_acute': 2,
-        'chronic_severe_exacerbation': 3,
-        'undiagnosed_with_workup': 3,
-        'multiple_new_problems': 3
+    // CPT code mappings
+    const codeMappings = {
+        'new': {
+            0: '99202',      // Straightforward
+            1: '99203',      // Low
+            2: '99204',      // Moderate
+            3: '99205'       // High
+        },
+        'established': {
+            0: '99211',      // Minimal (nurse visit)
+            1: '99212',      // Straightforward
+            2: '99213',      // Low
+            3: '99214',      // Moderate
+            4: '99215'       // High
+        }
     };
 
-    // Risk level mappings
-    const riskLevelMap = {
-        'self_limited_illness': 0,
-        'minor_procedure': 0,
-        'minor_otc_management': 0,
-        'minor_with_minimal_side_effects': 1,
-        'stable_chronic_risk': 1,
-        'otc_moderate_symptoms': 1,
-        'moderate_problem': 2,
-        'prescription_medication': 2,
-        'acute_systemic': 2,
-        'high_surgical_risk': 3,
-        'severe_illness': 3,
-        'unstable_chronic': 3
+    // Time-based code ranges
+    const timeRanges = {
+        'new': [
+            { min: 15, max: 29, code: '99202', range: '15-29 min' },
+            { min: 30, max: 44, code: '99203', range: '30-44 min' },
+            { min: 45, max: 59, code: '99204', range: '45-59 min' },
+            { min: 60, max: Infinity, code: '99205', range: '60+ min' }
+        ],
+        'established': [
+            { min: 10, max: 19, code: '99212', range: '10-19 min' },
+            { min: 20, max: 29, code: '99213', range: '20-29 min' },
+            { min: 30, max: 39, code: '99214', range: '30-39 min' },
+            { min: 40, max: Infinity, code: '99215', range: '40+ min' }
+        ]
     };
 
     // Data descriptions for output
     const dataDescriptions = {
-        review_external_notes: 'Review external notes/records',
-        review_test_results: 'Review prior test results',
-        order_test: 'Order new tests',
-        independent_historian: 'Independent historian',
-        independent_interpretation: 'Independent interpretation of tests',
-        discussion_management: 'Discussion with other provider re: management'
+        'minimal_data': 'Minimal or no data',
+        'review_external_notes': 'Review of external notes/records',
+        'review_test_results': 'Review of test results',
+        'order_test': 'Ordering tests',
+        'independent_interpretation': 'Independent interpretation of tests',
+        'discussion_management': 'Discussion with external provider'
     };
-
-    // FIXED: Time-based CPT code mappings (Updated for 2025 AMA Guidelines)
-    // Removed upper limits - codes apply for stated time and above
-    const timeBasedCodes = {
-        new: {
-            15: '99202',   // 15-29 minutes
-            30: '99203',   // 30-44 minutes
-            45: '99204',   // 45-59 minutes
-            60: '99205'    // 60+ minutes
-        },
-        established: {
-            10: '99212',   // 10-19 minutes
-            20: '99213',   // 20-29 minutes
-            30: '99214',   // 30-39 minutes
-            40: '99215'    // 40+ minutes
-        }
-    };
-
-    // FIXED: Function to determine code from time (Updated for 2025)
-    function getCodeFromTime(minutes, patientType) {
-        const time = parseInt(minutes);
-        
-        if (patientType === 'new') {
-            if (time >= 60) return { code: '99205', range: '60+ min' };
-            if (time >= 45) return { code: '99204', range: '45-59 min' };
-            if (time >= 30) return { code: '99203', range: '30-44 min' };
-            if (time >= 15) return { code: '99202', range: '15-29 min' };
-            return null; // Less than 15 minutes doesn't meet threshold
-        } else if (patientType === 'established') {
-            if (time >= 40) return { code: '99215', range: '40+ min' };
-            if (time >= 30) return { code: '99214', range: '30-39 min' };
-            if (time >= 20) return { code: '99213', range: '20-29 min' };
-            if (time >= 10) return { code: '99212', range: '10-19 min' };
-            // Note: 99211 has no time component (minimal service without physician MDM)
-            return null;
-        }
-        
-        return null;
-    }
-
-    // Event Listeners
-    document.addEventListener('DOMContentLoaded', function() {
-        // Patient type buttons
-        document.getElementById('newPatientBtn').addEventListener('click', () => setPatientType('new'));
-        document.getElementById('establishedPatientBtn').addEventListener('click', () => setPatientType('established'));
-
-        // Toggle instructions
-        document.getElementById('toggleInstructions').addEventListener('click', toggleInstructions);
-
-        // Well visit buttons
-        document.querySelectorAll('.well-visit-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const code = this.getAttribute('data-code');
-                const label = this.textContent;
-                setWellVisit(code, label);
-            });
-        });
-
-        // Total time input
-        document.getElementById('totalTime').addEventListener('input', function() {
-            state.totalTime = this.value ? parseInt(this.value) : null;
-            updateOutput();
-        });
-
-        // Problem checkboxes
-        document.querySelectorAll('input[name="problems"]').forEach(input => {
-            input.addEventListener('change', function() {
-                if (this.checked) {
-                    state.problems.push(this.value);
-                } else {
-                    state.problems = state.problems.filter(p => p !== this.value);
-                }
-                updateDataItemStyles('problems');
-                updateOutput();
-            });
-        });
-
-        // Data checkboxes and quantity inputs
-        document.querySelectorAll('input[name="data"]').forEach(input => {
-            input.addEventListener('change', function() {
-                if (this.checked) {
-                    state.data.push(this.value);
-                    // Show quantity input if applicable
-                    const qtyContainer = document.getElementById(this.id + '_qty');
-                    if (qtyContainer) {
-                        qtyContainer.classList.add('show');
-                    }
-                } else {
-                    state.data = state.data.filter(d => d !== this.value);
-                    // Hide and reset quantity input
-                    const qtyContainer = document.getElementById(this.id + '_qty');
-                    if (qtyContainer) {
-                        qtyContainer.classList.remove('show');
-                        const qtyInput = qtyContainer.querySelector('input[type="number"]');
-                        if (qtyInput) {
-                            qtyInput.value = 0;
-                            state.dataQuantities[this.value] = 0;
-                        }
-                    }
-                }
-                updateDataItemStyles('data');
-                updateOutput();
-            });
-        });
-
-        // Quantity inputs for data
-        document.querySelectorAll('.quantity-input-container input[type="number"]').forEach(input => {
-            input.addEventListener('input', function() {
-                const field = this.getAttribute('data-field');
-                state.dataQuantities[field] = parseInt(this.value) || 0;
-                updateOutput();
-            });
-        });
-
-        // Risk checkboxes
-        document.querySelectorAll('input[name="risk"]').forEach(input => {
-            input.addEventListener('change', function() {
-                if (this.checked) {
-                    state.risk.push(this.value);
-                } else {
-                    state.risk = state.risk.filter(r => r !== this.value);
-                }
-                updateDataItemStyles('risk');
-                updateOutput();
-            });
-        });
-    });
 
     function toggleInstructions() {
         const content = document.getElementById('instructionsContent');
-        const button = document.getElementById('toggleInstructions');
+        const btn = document.querySelector('.toggle-instructions');
         
         if (content.classList.contains('show')) {
             content.classList.remove('show');
-            button.textContent = 'Show Instructions';
+            btn.textContent = 'Show Instructions';
         } else {
             content.classList.add('show');
-            button.textContent = 'Hide Instructions';
+            btn.textContent = 'Hide Instructions';
         }
     }
 
-    function setPatientType(type) {
+    function selectPatientType(type) {
         state.patientType = type;
-        document.getElementById('newPatientBtn').classList.toggle('active', type === 'new');
-        document.getElementById('establishedPatientBtn').classList.toggle('active', type === 'established');
-        updateOutput();
-    }
-
-    function setWellVisit(code, label) {
-        const buttons = document.querySelectorAll('.well-visit-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
         
-        // Find and activate the clicked button
-        buttons.forEach(btn => {
-            if (btn.getAttribute('data-code') === code) {
-                btn.classList.add('active');
-            }
+        // Update button states
+        document.querySelectorAll('.patient-type-btn').forEach(btn => {
+            btn.classList.remove('active');
         });
-
-        state.wellVisitCode = code;
+        event.target.classList.add('active');
+        
+        // Reset well visit code
+        state.wellVisitCode = null;
+        document.querySelectorAll('.well-visit-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById('wellVisitDisplay').classList.remove('show');
+        
         updateOutput();
     }
 
-    function updateDataItemStyles(fieldName) {
-        const checkboxes = document.querySelectorAll(`input[name="${fieldName}"]`);
-        checkboxes.forEach(checkbox => {
-            const item = checkbox.closest('.data-item');
+    function selectWellVisit(newCode, establishedCode) {
+        if (!state.patientType) {
+            alert('Please select patient type first');
+            return;
+        }
+        
+        const code = state.patientType === 'new' ? newCode : establishedCode;
+        
+        // Toggle selection
+        if (state.wellVisitCode === code) {
+            state.wellVisitCode = null;
+            event.target.classList.remove('active');
+            document.getElementById('wellVisitDisplay').classList.remove('show');
+        } else {
+            state.wellVisitCode = code;
+            
+            // Update button states
+            document.querySelectorAll('.well-visit-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show code
+            const display = document.getElementById('wellVisitDisplay');
+            display.textContent = `Selected: ${code}`;
+            display.classList.add('show');
+        }
+        
+        updateOutput();
+    }
+
+    function toggleDataItem(element, itemId) {
+        const checkbox = element.querySelector('input[type="checkbox"]');
+        const wasChecked = checkbox.checked;
+        
+        // Toggle checkbox
+        checkbox.checked = !wasChecked;
+        
+        // Toggle visual state
+        if (checkbox.checked) {
+            element.classList.add('selected');
+        } else {
+            element.classList.remove('selected');
+        }
+        
+        // Update state based on section
+        if (['self_limited_minor', 'stable_chronic', 'acute_uncomplicated', 'acute_complicated', 
+             'chronic_inadequate_control', 'undiagnosed_new_problem', 'acute_severe'].includes(itemId)) {
+            // Problems section
             if (checkbox.checked) {
-                item.classList.add('selected');
+                if (!state.problems.includes(itemId)) {
+                    state.problems.push(itemId);
+                }
             } else {
-                item.classList.remove('selected');
+                state.problems = state.problems.filter(p => p !== itemId);
             }
-        });
+        } else if (['minimal_data', 'review_external_notes', 'review_test_results', 'order_test', 
+                    'independent_interpretation', 'discussion_management'].includes(itemId)) {
+            // Data section
+            if (checkbox.checked) {
+                if (!state.data.includes(itemId)) {
+                    state.data.push(itemId);
+                }
+                
+                // Show quantity input for Category 1 items
+                if (['review_external_notes', 'review_test_results', 'order_test'].includes(itemId)) {
+                    const qtyContainer = document.getElementById(`qty_${itemId}`);
+                    if (qtyContainer) {
+                        qtyContainer.classList.add('show');
+                    }
+                }
+            } else {
+                state.data = state.data.filter(d => d !== itemId);
+                
+                // Hide quantity input and reset
+                if (['review_external_notes', 'review_test_results', 'order_test'].includes(itemId)) {
+                    const qtyContainer = document.getElementById(`qty_${itemId}`);
+                    if (qtyContainer) {
+                        qtyContainer.classList.remove('show');
+                        const input = qtyContainer.querySelector('input');
+                        if (input) input.value = 0;
+                        state.dataQuantities[itemId] = 0;
+                    }
+                }
+            }
+        } else {
+            // Risk section
+            if (checkbox.checked) {
+                if (!state.risk.includes(itemId)) {
+                    state.risk.push(itemId);
+                }
+            } else {
+                state.risk = state.risk.filter(r => r !== itemId);
+            }
+        }
+        
+        updateOutput();
+    }
+
+    function updateQuantity(itemId, value) {
+        state.dataQuantities[itemId] = parseInt(value) || 0;
+        updateOutput();
+    }
+
+    function updateTime() {
+        const timeInput = document.getElementById('totalTime');
+        state.totalTime = parseInt(timeInput.value) || null;
+        updateOutput();
+    }
+
+    function getCodeFromTime(minutes, patientType) {
+        if (!minutes || !patientType) return null;
+        
+        const ranges = timeRanges[patientType];
+        for (const range of ranges) {
+            if (minutes >= range.min && minutes <= range.max) {
+                return range;
+            }
+        }
+        return null;
     }
 
     function calculateProblemLevel() {
         if (state.problems.length === 0) return null;
-        
-        // Get the highest level among selected problems
-        let maxLevel = 0;
-        state.problems.forEach(problem => {
-            const level = problemLevelMap[problem];
-            if (level > maxLevel) {
-                maxLevel = level;
+
+        // Check for high severity problems
+        if (state.problems.includes('undiagnosed_new_problem') || 
+            state.problems.includes('acute_severe')) {
+            return 3;
+        }
+
+        // Check for moderate severity problems
+        if (state.problems.includes('acute_uncomplicated') ||
+            state.problems.includes('acute_complicated') ||
+            state.problems.includes('chronic_inadequate_control')) {
+            
+            // 1 or more moderate = Moderate complexity
+            return 2;
+        }
+
+        // Check for stable chronic illness
+        if (state.problems.includes('stable_chronic')) {
+            // 2+ stable chronic OR 1 stable chronic + other = Low complexity
+            if (state.problems.length >= 2) {
+                return 1;
             }
-        });
-        return maxLevel;
+            // 1 stable chronic alone = Straightforward
+            return 0;
+        }
+
+        // Self-limited or minor
+        if (state.problems.includes('self_limited_minor')) {
+            return 0;
+        }
+
+        return null;
     }
 
     function calculateRiskLevel() {
         if (state.risk.length === 0) return null;
-        
-        // Get the highest level among selected risk factors
-        let maxLevel = 0;
-        state.risk.forEach(risk => {
-            const level = riskLevelMap[risk];
-            if (level > maxLevel) {
-                maxLevel = level;
-            }
-        });
-        return maxLevel;
+
+        // High risk
+        if (state.risk.includes('drug_therapy_hazard') ||
+            state.risk.includes('decision_emergency_surgery') ||
+            state.risk.includes('decision_not_to_resuscitate')) {
+            return 3;
+        }
+
+        // Moderate risk
+        if (state.risk.includes('prescription_rx') ||
+            state.risk.includes('decision_minor_surgery') ||
+            state.risk.includes('diagnosis_with_treatment')) {
+            return 2;
+        }
+
+        // Low risk
+        if (state.risk.includes('otc_rx')) {
+            return 1;
+        }
+
+        // Minimal risk
+        if (state.risk.includes('minimal_risk')) {
+            return 0;
+        }
+
+        return null;
     }
 
     function calculateDataLevel() {
         if (state.data.length === 0) return null;
 
-        // Category 1: External notes, test results, ordered tests (each unique item counts)
-        const category1Count = (state.dataQuantities.review_external_notes || 0) + 
-                               (state.dataQuantities.review_test_results || 0) + 
-                               (state.dataQuantities.order_test || 0);
-        
-        // Category 2: Independent interpretation + discussion with provider
-        const category2Count = (state.data.includes('independent_interpretation') ? 1 : 0) + 
-                               (state.data.includes('discussion_management') ? 1 : 0);
-        
-        const hasIndependentHistorian = state.data.includes('independent_historian');
+        // Check for minimal/none selection
+        if (state.data.includes('minimal_data')) {
+            return 0;
+        }
 
-        // Extensive (High): 3+ elements from Category 1 AND both elements from Category 2
-        if (category1Count >= 3 && category2Count >= 2) {
+        // Category 3: Discussion with external provider
+        const hasCategory3 = state.data.includes('discussion_management');
+
+        // Category 2: Independent interpretation
+        const hasCategory2 = state.data.includes('independent_interpretation');
+
+        // Category 1: Count unique sources
+        const category1Items = ['review_external_notes', 'review_test_results', 'order_test'];
+        let category1Count = 0;
+        
+        category1Items.forEach(item => {
+            if (state.data.includes(item)) {
+                const qty = state.dataQuantities[item] || 0;
+                category1Count += qty;
+            }
+        });
+
+        // Extensive (High): Category 3 + any from Cat 1 or 2
+        if (hasCategory3 && (hasCategory2 || category1Count >= 1)) {
             return 3;
         }
 
-        // Moderate: 3+ elements from Category 1 OR any element from Category 2 OR independent historian
-        if (category1Count >= 3 || category2Count >= 1 || hasIndependentHistorian) {
+        // Moderate: 3 elements from Category 1 OR 2 from Cat 1 + any from Cat 2
+        if (category1Count >= 3 || (category1Count >= 2 && hasCategory2)) {
             return 2;
         }
 
