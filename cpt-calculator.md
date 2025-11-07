@@ -1103,6 +1103,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
             output += `\n`;
             output += `MEDICAL DECISION MAKING DETAILS\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
             // Show selected problems
             if (state.problems.length > 0) {
@@ -1139,7 +1140,9 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             } else {
                 output += `Risk Level: N/A\n`;
             }
-        
+            
+            output += `\n`;
+            output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
             output += `2 of 3 Rule Applied:\n`;
             output += `Problems: ${getLevelName(problemLevel)} | Data: ${getLevelName(dataLevel)} | Risk: ${getLevelName(riskLevel)}\n`;
             output += `Final MDM Level: ${getLevelName(finalLevel)}\n`;
