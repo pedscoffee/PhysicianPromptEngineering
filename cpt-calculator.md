@@ -761,19 +761,31 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                         Minor procedures
                     </label>
                 </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="minor_otc_management">
+                        OTC or minor topical management
+                    </label>
+                </div>
             </div>
             <div class="data-category">
                 <div class="data-category-title">Low Risk</div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="risk" value="minor_with_minor_side_effects">
-                        Minor problems/procedures, medications with minimal side effects
+                        <input type="checkbox" name="risk" value="minor_with_minimal_side_effects">
+                        Minor problems/procedures with minimal side effects
                     </label>
                 </div>
                 <div class="data-item">
                     <label>
                         <input type="checkbox" name="risk" value="stable_chronic_risk">
                         Stable chronic illnesses
+                    </label>
+                </div>
+                <div class="data-item">
+                    <label>
+                        <input type="checkbox" name="risk" value="otc_moderate_symptoms">
+                        OTC management for moderate symptoms
                     </label>
                 </div>
             </div>
@@ -787,8 +799,8 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 </div>
                 <div class="data-item">
                     <label>
-                        <input type="checkbox" name="risk" value="moderate_medications">
-                        Moderate medications
+                        <input type="checkbox" name="risk" value="prescription_medication">
+                        Prescription medication management
                     </label>
                 </div>
                 <div class="data-item">
@@ -887,10 +899,12 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     const riskLevelMap = {
         'self_limited_illness': 0,
         'minor_procedure': 0,
-        'minor_with_minor_side_effects': 1,
+        'minor_otc_management': 0,
+        'minor_with_minimal_side_effects': 1,
         'stable_chronic_risk': 1,
+        'otc_moderate_symptoms': 1,
         'moderate_problem': 2,
-        'moderate_medications': 2,
+        'prescription_medication': 2,
         'acute_systemic': 2,
         'high_surgical_risk': 3,
         'severe_illness': 3,
@@ -1125,14 +1139,16 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         
         const category2Count = (state.data.includes('independent_interpretation') ? 1 : 0) + 
                                (state.data.includes('discussion_management') ? 1 : 0);
+        
+        const hasIndependentHistorian = state.data.includes('independent_historian');
 
         // Extensive (High): 3+ elements from Category 1 AND both elements from Category 2
         if (category1Count >= 3 && category2Count >= 2) {
             return 3;
         }
 
-        // Moderate: 3+ elements from Category 1 OR any element from Category 2
-        if (category1Count >= 3 || category2Count >= 1) {
+        // Moderate: 3+ elements from Category 1 OR any element from Category 2 OR independent historian
+        if (category1Count >= 3 || category2Count >= 1 || hasIndependentHistorian) {
             return 2;
         }
 
