@@ -5,6 +5,27 @@ description: Build custom AI prompts for your clinical workflow. Use our free A/
 permalink: /prompt-generator/
 ---
 <style>
+.support-section {
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.support-section h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.support-section p {
+    color: #828282;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
 
         * {
             margin: 0;
@@ -268,11 +289,6 @@ permalink: /prompt-generator/
             <h1>A/P Prompt Generator</h1>
             <p>Create customized prompts for formatting clinical assessment and plan documentation.</p>
         </div>
-
-<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
-
-
-
 
 <div class="main-layout">
             <!-- FORM PANEL -->
@@ -922,11 +938,11 @@ permalink: /prompt-generator/
         });
     </script>
 
-<div class="support-section">
-    <h3>Found this useful?</h3>
-    <p>If this tool has helped streamline your clinical workflow, consider supporting the project with a small tip.<br>
-    Your support helps keep this resource free and ad-free for all clinicians.</p>
-    <p><strong>Students: Don't even think about it.</strong></p>
-    <a href="https://donate.stripe.com/14A9ANf3K8VjeAW7pT8bS00" target="_blank" class="tip-jar-btn">☕ Support with a Tip</a>
-</div>
+<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js" data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
 
+<div class="support-section">
+    <h3>Support Open-Source Clinical Tools</h3>
+    <p>This project remains free and ad-free thanks to community support. If these tools save you time, consider supporting continued development.</p>
+    <p><em>Students and residents: Your contributions of prompts and feedback are support enough!</em></p>
+    <a href="https://donate.stripe.com/14k9ANf3K8VjeAW7ss" target="_blank" class="tip-jar-btn">Support Development</a>
+</div>
