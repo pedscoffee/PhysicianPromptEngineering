@@ -156,9 +156,12 @@ If diagnosis includes J06.9, add: "Supportive care discussed including rest, flu
 ## Additional Resources
 
 - [Prompt Library]({{ site.baseurl }}/prompt-library) - Ready-to-use templates
-- [Contribution Guide]({{ site.baseurl }}/contributions) - Share your optimized prompts
 - [GitHub Repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) - Latest updates and discussions
-
 ---
 
 *Reference: Adapted from Schulhoff, S. "The Prompt Report: A Systematic Survey of Prompting Techniques" (2024)*
+
+<div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
+    <h3 style="color: #2a7ae2; font-size: 1.1em; margin-bottom: 10px; text-align: center;">Share Your Prompt</h3>
+    <p style="text-align: center;">Refined a prompt that consistently delivers quality output? Consider sharing it on the <a href="https://physicianpromptengineering.com/contributions" style="color: #2a7ae2; font-weight: 600;">contributions page</a>. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.</p>
+</div>
