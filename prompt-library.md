@@ -70,30 +70,6 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
 
 # Clinical Documentation Prompt Library
 
-## How to Use These Prompts
-
-### Step 1: Select Your Prompt
-Browse the library below to find prompts matching your documentation needs.
-
-### Step 2: Copy to Your EMR
-Click "Copy Prompt" and paste into your EMR's AI text generation feature (e.g., Epic's "Generate Text with AI").
-
-### Step 3: Customize for Your Practice
-Replace the example content with samples from your own documentation style for best results.
-
-### Step 4: Review and Approve
-Always review AI-generated content for accuracy before finalizing.
-
----
-
-<div class="embed-container">
-  <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-</div>
-
----
-
-## Available Prompts
-
 *Visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
 
 ### Quick Navigation
@@ -101,6 +77,12 @@ Always review AI-generated content for accuracy before finalizing.
 {% for prompt in sorted_prompts %}
 - [{{ prompt.title }}](#{{ prompt.title | slugify }})
 {% endfor %}
+
+---
+
+<div class="embed-container">
+  <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+</div>
 
 ---
 
