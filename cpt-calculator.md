@@ -552,7 +552,6 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     </div>
 
     <div class="mdm-grid">
-        <!-- Problems Section -->
         <div class="mdm-section">
             <h3>Number and Complexity of Problems Addressed</h3>
             <p>Select all that apply for this encounter</p>
@@ -618,7 +617,6 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             </div>
         </div>
 
-        <!-- Data Section -->
         <div class="mdm-section">
             <h3>Amount and/or Complexity of Data to be Reviewed and Analyzed</h3>
             <p>Select all that apply (each unique test, order, or document counts as 1)</p>
@@ -686,7 +684,6 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             </div>
         </div>
 
-        <!-- Risk Section -->
         <div class="mdm-section">
             <h3>Risk of Complications and/or Morbidity or Mortality of Patient Management</h3>
             <p>Select the highest applicable risk level</p>
@@ -916,11 +913,23 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     function toggleDataItem(element, itemId) {
         const checkbox = element.querySelector('input[type="checkbox"]');
+        // Prevent toggling if event target is the input field in quantity container
+        if (event.target.tagName.toLowerCase() === 'input' && event.target.type === 'number') {
+            return; 
+        }
+
         const wasChecked = checkbox.checked;
         
-        // Toggle checkbox
-        checkbox.checked = !wasChecked;
-        
+        // Toggle checkbox (this is safer than relying on click since the click handler wraps the whole div)
+        if (event.target.tagName.toLowerCase() !== 'input') {
+            checkbox.checked = !wasChecked;
+        } else if (event.target !== checkbox) {
+             // If clicked on label/div, the default click on checkbox would handle it, 
+             // but we'll do it explicitly for clarity against the number input check above.
+             checkbox.checked = !wasChecked;
+        }
+
+
         // Toggle visual state
         if (checkbox.checked) {
             element.classList.add('selected');
@@ -973,9 +982,22 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         } else {
             // Risk section
             if (checkbox.checked) {
+                // Ensure only one risk item is selected for Minimal/Low/Moderate/High groups
+                const categoryTitles = {
+                    'minimal_risk': 0,
+                    'low_risk': 1,
+                    'prescription_drug_mgmt': 2, 'decision_minor_surgery_risk': 2, 'decision_elective_major_no_risk': 2, 'diagnosis_limited_sdoh': 2,
+                    'drug_therapy_toxicity': 3, 'decision_elective_major_risk': 3, 'decision_emergency_surgery': 3, 'decision_hospitalization': 3, 'decision_dnr_deescalate': 3
+                };
+                const currentLevel = categoryTitles[itemId];
+                
+                // Remove all other selected items at the same level (e.g., if selecting a different Moderate risk item)
+                // The risk section is *technically* select the highest applicable risk factor, so we keep them all selected in the state
+                // but the final determination should only be based on the *highest* level achieved.
                 if (!state.risk.includes(itemId)) {
                     state.risk.push(itemId);
                 }
+                
             } else {
                 state.risk = state.risk.filter(r => r !== itemId);
             }
@@ -1093,52 +1115,62 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             }
         });
         
-        // Add independent historian as 1 item to Category 1 count
-        if (state.data.includes('independent_historian')) {
-            category1Count += 1;
-        }
+        // Check for independent historian
+        const hasIndependentHistorian = state.data.includes('independent_historian');
 
         // Check Category 2 and 3
         const hasCategory2 = state.data.includes('independent_interpretation');
         const hasCategory3 = state.data.includes('discussion_management');
 
-        // HIGH/EXTENSIVE: Must meet at least 2 out of 3 categories
-        // Category 1: Any combination of 3 from Category 1 items
-        // Category 2: Independent interpretation
-        // Category 3: Discussion of management
+        // --- HIGH/EXTENSIVE (Level 3) ---
+        // Must meet at least 2 out of 3 categories: 
+        // 1. Cat 1: Any combination of 3 from Category 1 items *including* the independent historian
+        // 2. Cat 2: Independent interpretation
+        // 3. Cat 3: Discussion of management
         
         let highCategoriesMet = 0;
-        if (category1Count >= 3) highCategoriesMet++;
+        // Count for Cat 1 at the High level (3+ items)
+        let cat1HighCount = category1Count;
+        if (hasIndependentHistorian) {
+            cat1HighCount += 1; // Independent Historian counts as 1 for Cat 1
+        }
+        
+        if (cat1HighCount >= 3) highCategoriesMet++;
         if (hasCategory2) highCategoriesMet++;
         if (hasCategory3) highCategoriesMet++;
         
         if (highCategoriesMet >= 2) {
             return 3; // HIGH/EXTENSIVE
         }
-
-        // MODERATE: Must meet at least 1 out of 3 categories
-        // Category 1: Any combination of 3 from Category 1 items
-        // Category 2: Independent interpretation
-        // Category 3: Discussion of management
         
-        let moderateCategoriesMet = 0;
-        if (category1Count >= 3) moderateCategoriesMet++;
-        if (hasCategory2) moderateCategoriesMet++;
-        if (hasCategory3) moderateCategoriesMet++;
-        
-        if (moderateCategoriesMet >= 1) {
+        // --- MODERATE (Level 2) ---
+        // Must meet at least 1 out of 3 categories: (3+ Cat 1 items, Cat 2, Cat 3)
+        // We can reuse the highCategoriesMet calculation but check for 1
+        if (highCategoriesMet >= 1) {
             return 2; // MODERATE
         }
 
-        // LOW/LIMITED: Must meet requirements of at least 1 of 2 categories
-        // Category 1: Any combination of 2 from Category 1 items
-        // Category 2: Assessment requiring independent historian(s)
+        // --- LOW/LIMITED (Level 1) ---
+        // Must meet requirements of at least 1 of 2 categories: 
+        // 1. Cat 1: Any combination of 2 from Category 1 items (excluding independent historian)
+        // 2. Cat 2: Assessment requiring independent historian(s)
         
-        if (category1Count >= 2) {
+        // Note: The logic for Cat 1 (2 from Cat 1 items) should probably use the non-historian count.
+        // Let's use the actual items that meet the Low criteria:
+        // Cat 1 (2 items): review_external_notes, review_test_results, order_test
+        
+        let cat1LowCount = category1Count; // This already has the count of non-historian items
+        
+        if (cat1LowCount >= 2) {
             return 1; // LOW/LIMITED
         }
 
-        // If we have less than 2 Category 1 items, it's MINIMAL/STRAIGHTFORWARD
+        if (hasIndependentHistorian) {
+            return 1; // LOW/LIMITED (Independent historian is also sufficient for low level data)
+        }
+
+
+        // If we haven't met any of the above criteria, it's MINIMAL/STRAIGHTFORWARD
         return 0;
     }
 
@@ -1160,16 +1192,28 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
             counts[level]++;
         });
 
-        // If any level appears 2+ times, use that level
-        for (let level = 3; level >= 0; level--) {
-            if (counts[level] >= 2) {
-                return level;
-            }
+        // The E/M level is based on the lowest two required components 
+        // (Problems, Data, Risk). The lowest level that is met by 2 of the 3 
+        // components determines the final MDM level.
+        
+        // Simplified "2 of 3" rule: If two components are at level X or higher, the MDM is level X.
+        // We find the lowest level (0-3) for which at least two components meet that level.
+        
+        // Sort the valid levels in ascending order
+        const sortedLevels = validLevels.sort((a, b) => a - b);
+        
+        // The middle value in a set of three represents the level that has been met by 
+        // at least two components. (e.g., [1, 2, 3] -> 2. [2, 2, 3] -> 2. [1, 1, 3] -> 1)
+        if (sortedLevels.length === 3) {
+            return sortedLevels[1]; 
+        }
+        
+        // If only two components are valid, the lowest of the two determines the level
+        if (sortedLevels.length === 2) {
+            return sortedLevels[0];
         }
 
-        // If all three are different, take the middle value
-        const sortedLevels = validLevels.sort((a, b) => a - b);
-        return sortedLevels[Math.floor(sortedLevels.length / 2)];
+        return null;
     }
 
     function getLevelName(level) {
@@ -1192,12 +1236,17 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         // Check if we have a well visit OR complete E/M data OR time-based data
         const hasWellVisit = state.wellVisitCode !== null;
         const problemLevel = calculateProblemLevel();
-        const dataLevel = calculateDataLevel();
         const riskLevel = calculateRiskLevel();
+        
+        // We only need 2 of 3 to determine the MDM level, but for a "complete" E/M data set
+        // we require at least Problems and Risk as they are always required if not doing time.
+        // Data can be Minimal/None (Level 0), so we check if problems/risk are selected.
+        const hasSelectedMDM = state.problems.length > 0 || state.data.length > 0 || state.risk.length > 0;
         const hasCompleteEMData = problemLevel !== null && riskLevel !== null;
+
         const hasTimeData = state.totalTime !== null && state.totalTime > 0;
 
-        if (!hasWellVisit && !hasCompleteEMData && !hasTimeData) {
+        if (!hasWellVisit && !hasSelectedMDM && !hasTimeData) {
             document.getElementById('outputSection').classList.remove('show');
             return;
         }
@@ -1209,113 +1258,145 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     function generateOutput() {
         let output = '';
 
-        // Add well visit code if selected
-        if (state.wellVisitCode) {
-            output += `PREVENTIVE WELL VISIT: ${state.wellVisitCode}\n`;
-        }
-
-        // Add E/M code if we have complete data
+        // Calculate MDM levels
         const problemLevel = calculateProblemLevel();
         const dataLevel = calculateDataLevel();
         const riskLevel = calculateRiskLevel();
+
+        // Determine final MDM code
+        let mdmCode = null;
+        let finalLevel = null;
+        if (problemLevel !== null || dataLevel !== null || riskLevel !== null) {
+            const levels = [problemLevel, dataLevel, riskLevel].filter(l => l !== null);
+            if (levels.length >= 2) {
+                finalLevel = determine2of3Level([problemLevel, dataLevel, riskLevel]);
+                mdmCode = codeMappings[state.patientType][finalLevel];
+            } else if (levels.length === 1) {
+                // If only one component is met, the code defaults to the lowest billable code (99202/99212)
+                finalLevel = 0;
+                mdmCode = codeMappings[state.patientType][0];
+            }
+        }
+
+        // Determine time-based code
+        const timeCodeData = getCodeFromTime(state.totalTime, state.patientType);
+        const timeCode = timeCodeData ? timeCodeData.code : null;
+        const timeLevel = timeCode ? Object.keys(codeMappings[state.patientType]).find(key => codeMappings[state.patientType][key] === timeCode.replace('-25','')) : null;
+
+        // Determine the highest code (or use time-based if MDM is incomplete)
+        let finalEMCode = null;
+        let finalCodingBasis = 'Incomplete Data';
+
+        // Convert MDM code to a comparable value (0-3)
+        const mdmLevel = mdmCode ? Object.keys(codeMappings[state.patientType]).find(key => codeMappings[state.patientType][key] === mdmCode) : -1;
         
-        if (problemLevel !== null && riskLevel !== null) {
-            // Apply 2 of 3 rule
-            const levels = [problemLevel, dataLevel, riskLevel];
-            const finalLevel = determine2of3Level(levels);
-
-            // Get CPT code based on patient type and final MDM level
-            const cptCode = codeMappings[state.patientType][finalLevel];
-
-            // Add modifier 25 if we have a well visit
-            const modifiedCode = state.wellVisitCode ? cptCode + '-25' : cptCode;
-
-            if (state.wellVisitCode) {
-                output += `E/M CODE: ${modifiedCode}\n`;
+        // Convert time code to a comparable value (0-3 or 4 for prolonged)
+        let timeLevelValue = -1;
+        if (timeCode) {
+            if (timeCode.includes('prolonged')) {
+                timeLevelValue = 4;
             } else {
-                output += `E/M CODE: ${cptCode}\n`;
+                timeLevelValue = Object.keys(codeMappings[state.patientType]).find(key => codeMappings[state.patientType][key] === timeCode) || -1;
             }
+        }
 
-            output += `\n`;
-            output += `MEDICAL DECISION MAKING DETAILS\n`;
-            output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        if (mdmCode && timeCode) {
+             if (timeLevelValue > mdmLevel) {
+                 finalEMCode = timeCode;
+                 finalCodingBasis = 'Time-Based (Higher Level)';
+             } else {
+                 finalEMCode = mdmCode;
+                 finalCodingBasis = 'MDM-Based (Higher or Equal Level)';
+             }
+        } else if (mdmCode) {
+             finalEMCode = mdmCode;
+             finalCodingBasis = 'MDM-Based';
+        } else if (timeCode) {
+             finalEMCode = timeCode;
+             finalCodingBasis = 'Time-Based (MDM Incomplete)';
+        }
+        
+        // Apply modifier 25 if well visit is also selected and an E/M code was generated
+        if (state.wellVisitCode && finalEMCode && !finalEMCode.includes('-25')) {
+             finalEMCode += '-25';
+        }
 
-            // Show selected problems
-            if (state.problems.length > 0) {
-                output += `Number and Complexity of Problems Addressed: ${getLevelName(problemLevel)}\n`;
-                state.problems.forEach(problem => {
-                    const displayText = document.querySelector(`label[for="${problem}"]`).textContent;
-                    output += `• ${displayText}\n`;
-                });
-            } else {
-                output += `Number and Complexity of Problems Addressed: N/A\n`;
+        // --- Generate Output String ---
+        
+        if (state.wellVisitCode) {
+            output += `PREVENTIVE WELL VISIT: ${state.wellVisitCode}\n`;
+            if (finalEMCode) {
+                 output += `E/M CODE: ${finalEMCode}\n`;
             }
-            output += `\n`;
+        } else if (finalEMCode) {
+            output += `E/M CODE: ${finalEMCode}\n`;
+        } else {
+            // Handle case where no billable code is met (e.g., time too low, or only one MDM component selected)
+            output += `NO BILLABLE E/M CODE GENERATED\n`;
+            output += `Note: Check for minimum time requirements or ensure at least two MDM components are met for MDM-based coding.\n`;
+        }
 
-            // Show selected data
-            if (state.data.length > 0) {
-                output += `Amount and/or Complexity of Data to be Reviewed and Analyzed: ${getLevelName(dataLevel)}\n`;
-                state.data.forEach(item => {
-                    let displayText = dataDescriptions[item];
-                    // Add quantity for Category 1 items
-                    if (['review_external_notes', 'review_test_results', 'order_test'].includes(item)) {
-                        const qty = state.dataQuantities[item];
-                        if (qty > 0) {
-                            displayText += ` (${qty})`;
-                        }
-                    }
-                    output += `• ${displayText}\n`;
-                });
-            } else {
-                output += `Amount and/or Complexity of Data to be Reviewed and Analyzed: N/A\n`;
-            }
-            output += `\n`;
+        output += `\n`;
+        output += `CODING BASIS: ${finalCodingBasis}\n`;
+        output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-            // Show selected risk
-            if (state.risk.length > 0) {
-                output += `Risk of Complications and/or Morbidity or Mortality of Patient Management: ${getLevelName(riskLevel)}\n`;
-                state.risk.forEach(riskItem => {
-                    const displayText = document.querySelector(`label[for="${riskItem}"]`).textContent;
-                    output += `• ${displayText}\n`;
-                });
-            } else {
-                output += `Risk of Complications and/or Morbidity or Mortality of Patient Management: N/A\n`;
-            }
-            
-            output += `\n`;
-            output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-            output += `2 of 3 Rule Applied:\n`;
-            output += `Problems: ${getLevelName(problemLevel)} | Data: ${getLevelName(dataLevel)} | Risk: ${getLevelName(riskLevel)}\n`;
-            output += `Final MDM Level: ${getLevelName(finalLevel)}\n`;
-            
-            // Add time-based alternative if provided
-            if (state.totalTime) {
-                const timeCode = getCodeFromTime(state.totalTime, state.patientType);
-                if (timeCode) {
-                    output += `\n`;
-                    output += `TIME-BASED ALTERNATIVE:\n`;
-                    output += `Total Time: ${state.totalTime} minutes\n`;
-                    output += `Code by Time: ${timeCode.code} (${timeCode.range})\n`;
-                    output += `Note: Use the higher of MDM-based or time-based code.\n`;
+        // MDM Details
+        output += `MEDICAL DECISION MAKING DETAILS\n`;
+        output += `-------------------------------------------------------------\n`;
+
+        // Problems
+        output += `Problems Addressed: ${getLevelName(problemLevel)}\n`;
+        state.problems.forEach(problem => {
+            const displayText = document.querySelector(`label[for="${problem}"]`).textContent;
+            output += `• ${displayText}\n`;
+        });
+        output += `\n`;
+
+        // Data
+        output += `Data Reviewed and Analyzed: ${getLevelName(dataLevel)}\n`;
+        state.data.forEach(item => {
+            let displayText = dataDescriptions[item];
+            // Add quantity for Category 1 items
+            if (['review_external_notes', 'review_test_results', 'order_test'].includes(item)) {
+                const qty = state.dataQuantities[item];
+                if (qty > 0) {
+                    displayText += ` (${qty})`;
                 }
             }
-        } else if (state.totalTime) {
-            // Time-only output (no MDM data)
-            const timeCode = getCodeFromTime(state.totalTime, state.patientType);
-            if (timeCode) {
-                output += `E/M CODE (TIME-BASED): ${timeCode.code}\n\n`;
-                output += `TIME-BASED CODING\n`;
-                output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-                output += `Total Time: ${state.totalTime} minutes\n`;
-                output += `Code by Time: ${timeCode.code} (${timeCode.range})\n\n`;
-                output += `Note: This code is based solely on time spent on the date of encounter.\n`;
+            output += `• ${displayText}\n`;
+        });
+        output += `\n`;
+
+        // Risk
+        output += `Risk of Complications: ${getLevelName(riskLevel)}\n`;
+        state.risk.forEach(riskItem => {
+            const displayText = document.querySelector(`label[for="${riskItem}"]`).textContent;
+            output += `• ${displayText}\n`;
+        });
+        output += `\n`;
+
+        if (finalLevel !== null) {
+            output += `2 of 3 Rule Applied:\n`;
+            output += `Problems: ${getLevelName(problemLevel)} | Data: ${getLevelName(dataLevel)} | Risk: ${getLevelName(riskLevel)}\n`;
+            output += `Final MDM Level: ${getLevelName(finalLevel)} (${codeMappings[state.patientType][finalLevel]})\n`;
+        }
+
+        // Time Details
+        if (state.totalTime !== null) {
+            output += `\n`;
+            output += `TIME-BASED CODING DETAILS\n`;
+            output += `-------------------------------------------------------------\n`;
+            output += `Total Time: ${state.totalTime} minutes\n`;
+            if (timeCodeData) {
+                output += `Code by Time: ${timeCodeData.code} (${timeCodeData.range})\n`;
             } else {
-                output += `TIME-BASED CODING\n`;
-                output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-                output += `Total Time: ${state.totalTime} minutes\n`;
                 output += `Time does not meet minimum requirements for billing.\n`;
             }
         }
+        
+        output += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        output += `Note: Use whichever basis (MDM or Time) yields the higher level code.\n`;
+
 
         document.getElementById('outputContent').textContent = output;
         
