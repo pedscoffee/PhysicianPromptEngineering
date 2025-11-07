@@ -45,6 +45,10 @@ permalink: /prompt-manager/
     .header p {
         color: #666;
         font-size: 1.05em;
+        margin-bottom: 10px;
+    }
+
+    .header p:first-of-type {
         display: flex;
         align-items: center;
         gap: 8px;
@@ -260,11 +264,26 @@ permalink: /prompt-manager/
         border-color: #2a7ae2;
     }
 
+    .snippet-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 10px;
+    }
+
     .snippet-title {
         font-size: 1.1em;
         font-weight: 600;
         color: #333;
-        margin-bottom: 10px;
+    }
+
+    .snippet-version {
+        font-size: 0.85em;
+        color: #666;
+        background: #f0f0f0;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: 500;
     }
 
     .snippet-tags {
@@ -287,87 +306,75 @@ permalink: /prompt-manager/
         color: #666;
         font-size: 0.95em;
         margin-bottom: 15px;
-        line-height: 1.5;
+        font-family: 'Monaco', 'Courier New', monospace;
+        background: #f9f9f9;
+        padding: 12px;
+        border-radius: 4px;
+        border-left: 3px solid #2a7ae2;
     }
 
     .snippet-actions {
         display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-
-    .snippet-actions .btn {
-        font-size: 0.9em;
-        padding: 6px 14px;
-    }
-
-    .empty-state {
-        text-align: center;
-        padding: 60px 30px;
-        background: #fafafa;
-        border: 2px dashed #e8e8e8;
-        border-radius: 8px;
-    }
-
-    .empty-state-icon {
-        font-size: 4em;
-        color: #2a7ae2;
-        margin-bottom: 20px;
-    }
-
-    .empty-state h3 {
-        color: #333;
-        font-size: 1.3em;
-        margin-bottom: 10px;
-    }
-
-    .empty-state p {
-        color: #666;
-        margin-bottom: 8px;
-    }
-
-    .empty-state p:last-child {
-        color: #999;
-        font-size: 0.9em;
+        gap: 10px;
     }
 
     .modal-overlay {
         position: fixed;
-        inset: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: rgba(0, 0, 0, 0.5);
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 1000;
-        padding: 20px;
+        animation: fadeIn 0.2s;
     }
 
-    .modal {
+    .modal-content {
         background: white;
-        border-radius: 8px;
         padding: 30px;
+        border-radius: 8px;
         max-width: 500px;
-        width: 100%;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        animation: fadeIn 0.2s ease-out;
+        width: 90%;
+        animation: slideUp 0.2s;
     }
 
-    .modal h3 {
-        font-size: 1.3em;
-        color: #333;
+    .modal-content h3 {
         margin-bottom: 15px;
+        color: #333;
     }
 
-    .modal p {
+    .modal-content p {
+        margin-bottom: 20px;
         color: #666;
-        margin-bottom: 25px;
-        line-height: 1.6;
     }
 
     .modal-actions {
         display: flex;
         gap: 10px;
         justify-content: flex-end;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+    }
+
+    .empty-state-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .empty-state p {
+        margin-bottom: 10px;
     }
 
     .hidden {
@@ -377,113 +384,112 @@ permalink: /prompt-manager/
     @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(-10px);
         }
         to {
             opacity: 1;
-            transform: translateY(0);
         }
     }
 
-    input[type="file"] {
-        display: none;
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 </style>
 
 <div class="container">
-    <!-- Header -->
-    <header class="header">
-        <h1>Prompt Snippet Manager</h1>
-        <p>
-            <span class="privacy-icon">🔒</span>
-            Your data is saved 100% in your browser. It never leaves this device.
-        </p>
-    </header>
+    <div class="header">
+        <h1>Personal Prompt Snippet Manager</h1>
+        <p><span class="privacy-icon">🔒</span> Your snippets are stored locally in your browser—100% private and secure</p>
+        <p>If you work with AI prompts regularly, you know how quickly things can get messy. You iterate on a prompt, save it somewhere, then create another version, maybe copy it into a different file, and before long you have dozens of variations scattered across documents, notes apps, and browser tabs. It becomes impossible to remember which version worked best or where you saved that perfect prompt from last week.</p>
+        <p>This tool solves that problem by giving you a single, organized place to store and manage all your AI prompts. Everything is saved locally on your device—no account required, no data sent to servers, and fully HIPAA-compliant. Your prompts stay private on your computer. Need to access your prompts on another device or create a backup? Use the Export button to download all your snippets as a JSON file, then use Import on any other device to load them back in. You can also save exports to your preferred cloud storage or backup location for safekeeping.</p>
+    </div>
 
-    <!-- Controls Bar -->
     <div class="controls-bar">
         <div class="controls-group">
-            <label>Sort by:</label>
-            <select id="sort-select">
+            <label for="sort-by">Sort by:</label>
+            <select id="sort-by">
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
-                <option value="alphabetical">Alphabetical (A-Z)</option>
+                <option value="alphabetical">Alphabetical</option>
                 <option value="tag">By Tag</option>
             </select>
-
-            <label>Filter by tag:</label>
+            
+            <label for="tag-filter">Filter by tag:</label>
             <select id="tag-filter">
                 <option value="">All Tags</option>
             </select>
         </div>
 
         <div class="controls-group">
-            <button id="export-btn" class="btn btn-success">
-                <span>⬇</span> Export
-            </button>
-            <button id="import-btn" class="btn btn-primary">
-                <span>⬆</span> Import
-            </button>
-            <input type="file" id="import-file" accept=".json">
+            <button id="export-btn" class="btn btn-primary">📤 Export</button>
+            <label for="import-file" class="btn btn-secondary" style="margin: 0; cursor: pointer;">
+                📥 Import
+                <input type="file" id="import-file" accept=".json" style="display: none;">
+            </label>
         </div>
     </div>
 
-    <!-- Main Layout -->
     <div class="main-layout">
-        <!-- Left: Snippet List -->
-        <div>
-            <div class="panel">
-                <div class="panel-header">
-                    <h2>Saved Snippets</h2>
-                </div>
-                <div id="snippet-list" class="snippet-list">
-                    <!-- Snippets rendered here -->
-                </div>
+        <div class="panel form-panel">
+            <div class="panel-header">
+                <h2 id="form-title">Add New Snippet</h2>
             </div>
+            
+            <form id="snippet-form">
+                <input type="hidden" id="snippet-id">
+                
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required placeholder="Enter a descriptive title">
+                </div>
+
+                <div class="form-group">
+                    <label for="version">Version <span>(optional, e.g., 1.0, 2.1, etc.)</span></label>
+                    <input type="text" id="version" placeholder="1.0">
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tags <span>(comma-separated, optional)</span></label>
+                    <input type="text" id="tags" placeholder="e.g., writing, code, research">
+                </div>
+
+                <div class="form-group">
+                    <label for="prompt">Prompt</label>
+                    <textarea id="prompt" required placeholder="Enter your AI prompt here..."></textarea>
+                    <div class="char-counter"><span id="char-count">0</span> characters</div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="save-btn" class="btn btn-success">Save Snippet</button>
+                    <button type="button" id="cancel-btn" class="btn btn-secondary hidden">Cancel</button>
+                </div>
+            </form>
         </div>
 
-        <!-- Right: Form -->
-        <div>
-            <div class="panel form-panel">
-                <div class="panel-header">
-                    <h2 id="form-title">Add New Snippet</h2>
+        <div class="panel">
+            <div class="panel-header">
+                <h2>Your Snippets</h2>
+            </div>
+            <div id="snippet-list" class="snippet-list">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📝</div>
+                    <h3>No snippets yet!</h3>
+                    <p>Get started by creating your first AI prompt snippet.</p>
+                    <p>Your snippets will be saved securely in your browser.</p>
                 </div>
-
-                <form id="prompt-form">
-                    <input type="hidden" id="snippet-id">
-
-                    <div class="form-group">
-                        <label>Title <span>(max 100 characters)</span></label>
-                        <input type="text" id="snippet-title" maxlength="100" required placeholder="e.g., Patient-Friendly Explainer">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tags <span>(comma-separated)</span></label>
-                        <input type="text" id="snippet-tags" placeholder="e.g., diagnosis, patient-education, clinical">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Prompt Text <span>(max 5000 characters)</span></label>
-                        <textarea id="snippet-prompt" maxlength="5000" required placeholder="Enter your AI prompt here..."></textarea>
-                        <div class="char-counter">
-                            <span id="char-count">0</span> / 5,000 characters
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" id="save-btn" class="btn btn-primary">Save Snippet</button>
-                        <button type="button" id="cancel-btn" class="btn btn-secondary hidden">Cancel</button>
-                        <button type="button" id="clear-btn" class="btn btn-secondary">Clear</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Delete Modal -->
 <div id="delete-modal" class="modal-overlay hidden">
-    <div class="modal">
+    <div class="modal-content">
         <h3>Delete Snippet?</h3>
         <p>Are you sure you want to delete this snippet? This action cannot be undone.</p>
         <div class="modal-actions">
@@ -495,29 +501,32 @@ permalink: /prompt-manager/
 
 <script>
     // =====================================================
-    // STATE & DOM ELEMENTS
+    // STATE & DATA
     // =====================================================
+    const STORAGE_KEY = 'promptSnippets';
     let snippets = [];
-    let deleteTargetId = null;
     let currentSort = 'newest';
     let currentTagFilter = '';
+    let deleteTargetId = null;
 
+    // =====================================================
+    // DOM ELEMENTS
+    // =====================================================
     const elements = {
-        snippetList: document.getElementById('snippet-list'),
-        form: document.getElementById('prompt-form'),
+        form: document.getElementById('snippet-form'),
         snippetId: document.getElementById('snippet-id'),
-        title: document.getElementById('snippet-title'),
-        tags: document.getElementById('snippet-tags'),
-        prompt: document.getElementById('snippet-prompt'),
+        title: document.getElementById('title'),
+        version: document.getElementById('version'),
+        tags: document.getElementById('tags'),
+        prompt: document.getElementById('prompt'),
+        charCount: document.getElementById('char-count'),
         saveBtn: document.getElementById('save-btn'),
         cancelBtn: document.getElementById('cancel-btn'),
-        clearBtn: document.getElementById('clear-btn'),
-        charCount: document.getElementById('char-count'),
         formTitle: document.getElementById('form-title'),
-        sortSelect: document.getElementById('sort-select'),
+        snippetList: document.getElementById('snippet-list'),
+        sortBy: document.getElementById('sort-by'),
         tagFilter: document.getElementById('tag-filter'),
         exportBtn: document.getElementById('export-btn'),
-        importBtn: document.getElementById('import-btn'),
         importFile: document.getElementById('import-file'),
         deleteModal: document.getElementById('delete-modal'),
         confirmDelete: document.getElementById('confirm-delete'),
@@ -529,25 +538,19 @@ permalink: /prompt-manager/
     // =====================================================
     function init() {
         loadSnippets();
+        renderSnippets();
+        updateTagFilter();
         attachEventListeners();
     }
 
     function attachEventListeners() {
         elements.form.addEventListener('submit', handleFormSubmit);
-        elements.clearBtn.addEventListener('click', clearForm);
+        elements.prompt.addEventListener('input', updateCharCount);
         elements.cancelBtn.addEventListener('click', clearForm);
         elements.snippetList.addEventListener('click', handleListClick);
-        elements.prompt.addEventListener('input', updateCharCount);
-        elements.sortSelect.addEventListener('change', (e) => {
-            currentSort = e.target.value;
-            renderSnippets();
-        });
-        elements.tagFilter.addEventListener('change', (e) => {
-            currentTagFilter = e.target.value;
-            renderSnippets();
-        });
+        elements.sortBy.addEventListener('change', handleSortChange);
+        elements.tagFilter.addEventListener('change', handleTagFilterChange);
         elements.exportBtn.addEventListener('click', exportSnippets);
-        elements.importBtn.addEventListener('click', () => elements.importFile.click());
         elements.importFile.addEventListener('change', handleFileImport);
         elements.confirmDelete.addEventListener('click', confirmDelete);
         elements.cancelDelete.addEventListener('click', cancelDelete);
@@ -556,40 +559,50 @@ permalink: /prompt-manager/
         });
     }
 
-    // =====================================================
-    // DATA MANAGEMENT
-    // =====================================================
-    function loadSnippets() {
-        const stored = localStorage.getItem('physicianPromptSnippets');
-        if (stored) {
-            try {
-                snippets = JSON.parse(stored);
-            } catch (e) {
-                console.error('Error parsing snippets:', e);
-                snippets = [];
-            }
-        }
-        updateTagFilter();
+    function handleSortChange(e) {
+        currentSort = e.target.value;
         renderSnippets();
     }
 
-    function saveSnippets() {
-        localStorage.setItem('physicianPromptSnippets', JSON.stringify(snippets));
-        updateTagFilter();
+    function handleTagFilterChange(e) {
+        currentTagFilter = e.target.value.toLowerCase();
+        renderSnippets();
     }
 
-    function getAllTags() {
-        const tagSet = new Set();
+    // =====================================================
+    // STORAGE
+    // =====================================================
+    function loadSnippets() {
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            snippets = stored ? JSON.parse(stored) : [];
+        } catch (err) {
+            console.error('Failed to load snippets:', err);
+            snippets = [];
+        }
+    }
+
+    function saveSnippets() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(snippets));
+            updateTagFilter();
+        } catch (err) {
+            console.error('Failed to save snippets:', err);
+            alert('Failed to save snippets. Your storage might be full.');
+        }
+    }
+
+    // =====================================================
+    // TAG MANAGEMENT
+    // =====================================================
+    function updateTagFilter() {
+        const allTags = new Set();
         snippets.forEach(snippet => {
             if (snippet.tags) {
-                snippet.tags.forEach(tag => tagSet.add(tag.trim().toLowerCase()));
+                snippet.tags.forEach(tag => allTags.add(tag.trim().toLowerCase()));
             }
         });
-        return Array.from(tagSet).sort();
-    }
 
-    function updateTagFilter() {
-        const allTags = getAllTags();
         const currentValue = elements.tagFilter.value;
         
         elements.tagFilter.innerHTML = '<option value="">All Tags</option>';
@@ -673,13 +686,20 @@ permalink: /prompt-manager/
                 ).join('')}</div>`
                 : '';
 
+            const versionHtml = snippet.version 
+                ? `<span class="snippet-version">v${escapeHtml(snippet.version)}</span>`
+                : '';
+
             const preview = snippet.prompt.length > 120 
                 ? snippet.prompt.substring(0, 120) + '...' 
                 : snippet.prompt;
 
             return `
                 <div class="snippet-card" data-id="${snippet.id}">
-                    <div class="snippet-title">${escapeHtml(snippet.title)}</div>
+                    <div class="snippet-header">
+                        <div class="snippet-title">${escapeHtml(snippet.title)}</div>
+                        ${versionHtml}
+                    </div>
                     ${tagsHtml}
                     <div class="snippet-preview">${escapeHtml(preview)}</div>
                     <div class="snippet-actions">
@@ -706,6 +726,7 @@ permalink: /prompt-manager/
         
         const id = elements.snippetId.value;
         const title = elements.title.value.trim();
+        const version = elements.version.value.trim();
         const tagsRaw = elements.tags.value.trim();
         const tags = tagsRaw ? tagsRaw.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
         const prompt = elements.prompt.value.trim();
@@ -716,6 +737,7 @@ permalink: /prompt-manager/
             const snippet = snippets.find(s => s.id == id);
             if (snippet) {
                 snippet.title = title;
+                snippet.version = version;
                 snippet.tags = tags;
                 snippet.prompt = prompt;
             }
@@ -723,6 +745,7 @@ permalink: /prompt-manager/
             snippets.push({
                 id: Date.now(),
                 title,
+                version,
                 tags,
                 prompt
             });
@@ -736,6 +759,7 @@ permalink: /prompt-manager/
     function clearForm() {
         elements.snippetId.value = '';
         elements.title.value = '';
+        elements.version.value = '';
         elements.tags.value = '';
         elements.prompt.value = '';
         elements.charCount.textContent = '0';
@@ -786,6 +810,7 @@ permalink: /prompt-manager/
     function handleEdit(snippet) {
         elements.snippetId.value = snippet.id;
         elements.title.value = snippet.title;
+        elements.version.value = snippet.version || '';
         elements.tags.value = snippet.tags ? snippet.tags.join(', ') : '';
         elements.prompt.value = snippet.prompt;
         elements.charCount.textContent = snippet.prompt.length;
