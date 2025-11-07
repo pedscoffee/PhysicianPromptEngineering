@@ -111,7 +111,12 @@ Dedicated prompts for specific tasks outperform multi-purpose solutions.
 3. Test with routine encounters first
 4. Scale to complex cases as confidence builds
 
-Ready to contribute? [Share your specialty-specific prompts]({{ site.baseurl }}/contributions)
+ <div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
+                <h3 style="color: #2a7ae2; font-size: 1.1em; margin-bottom: 10px;">Share Your Prompt</h3>
+               <p>Refined a prompt that consistently delivers quality output? Consider sharing it on the <a href="https://physicianpromptengineering.com/contributions" style="color: #2a7ae2; font-weight: 600;">contributions page</a>. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.</p>
+    </div>
+
+
 
 ---
 
