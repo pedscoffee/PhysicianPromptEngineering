@@ -7,60 +7,60 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
 <style>
     .calculator-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
+        max-width: 100%;
+        margin: 0;
+        padding: 15px;
     }
 
     .page-header {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
     .page-header h1 {
         color: #2c3e50;
-        font-size: 2.2em;
-        margin-bottom: 10px;
+        font-size: 1.8em;
+        margin-bottom: 5px;
     }
 
     .page-subtitle {
         color: #7f8c8d;
-        font-size: 1.1em;
+        font-size: 0.95em;
         font-weight: 300;
     }
 
     .instructions-container {
         background: linear-gradient(135deg, #0088bb 0%, #006b94 100%);
-        border-radius: 12px;
-        padding: 25px;
-        margin-bottom: 30px;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
         color: white;
-        box-shadow: 0 4px 15px rgba(0, 136, 187, 0.3);
+        box-shadow: 0 2px 10px rgba(0, 136, 187, 0.3);
     }
 
     .instructions-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .instructions-header h2 {
         color: white;
         margin: 0;
-        font-size: 1.4em;
+        font-size: 1.1em;
     }
 
     .toggle-instructions {
         background: rgba(255, 255, 255, 0.2);
         border: 2px solid rgba(255, 255, 255, 0.3);
         color: white;
-        padding: 8px 20px;
+        padding: 6px 16px;
         border-radius: 6px;
         cursor: pointer;
         font-weight: 600;
         transition: all 0.3s;
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
 
     .toggle-instructions:hover {
@@ -89,35 +89,43 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 
     .instructions-content ul {
-        margin: 15px 0;
-        padding-left: 25px;
+        margin: 10px 0;
+        padding-left: 20px;
     }
 
     .instructions-content li {
-        margin-bottom: 10px;
-        line-height: 1.6;
+        margin-bottom: 6px;
+        line-height: 1.4;
+        font-size: 0.9em;
     }
 
     .instructions-content strong {
         color: #ffeb3b;
     }
 
+    .instructions-content p {
+        font-size: 0.85em;
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+        line-height: 1.4;
+    }
+
     .patient-type-selector {
         display: flex;
-        gap: 15px;
+        gap: 12px;
         justify-content: center;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         flex-wrap: wrap;
     }
 
     .patient-type-btn {
-        padding: 12px 35px;
+        padding: 10px 30px;
         border: 2px solid #0088bb;
         background: white;
         color: #0088bb;
         border-radius: 8px;
         cursor: pointer;
-        font-size: 1em;
+        font-size: 0.95em;
         font-weight: 600;
         transition: all 0.3s;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -136,40 +144,41 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     .well-visit-section {
         background: linear-gradient(135deg, rgba(0, 136, 187, 0.08) 0%, rgba(0, 107, 148, 0.08) 100%);
-        border-radius: 12px;
-        padding: 25px;
-        margin-bottom: 30px;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 15px;
         border: 2px solid #0088bb;
     }
 
     .well-visit-section h2 {
         color: #006b94;
         margin-top: 0;
-        margin-bottom: 20px;
-        font-size: 1.3em;
+        margin-bottom: 10px;
+        font-size: 1.05em;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
     }
 
     .well-visit-buttons {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 12px;
-        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 10px;
     }
 
     .well-visit-btn {
-        padding: 12px 20px;
+        padding: 8px 14px;
         border: 2px solid #b0e0e6;
         background: white;
         color: #0088bb;
-        border-radius: 8px;
+        border-radius: 6px;
         cursor: pointer;
-        font-size: 0.95em;
+        font-size: 0.85em;
         font-weight: 600;
         transition: all 0.3s;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        flex: 0 0 auto;
     }
 
     .well-visit-btn:hover {
@@ -202,54 +211,54 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     .mdm-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 25px;
-        margin-bottom: 30px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 15px;
     }
 
     .mdm-section {
         background: white;
-        border-radius: 12px;
-        padding: 25px;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         border: 1px solid #e8ecef;
     }
 
     .mdm-section h3 {
         background: linear-gradient(135deg, #0088bb 0%, #00a8d8 100%);
         color: white;
-        margin: -25px -25px 20px -25px;
-        padding: 15px 25px;
-        border-radius: 12px 12px 0 0;
-        font-size: 1.1em;
+        margin: -12px -12px 12px -12px;
+        padding: 10px 12px;
+        border-radius: 8px 8px 0 0;
+        font-size: 0.95em;
         font-weight: 600;
     }
 
     .mdm-section > p {
-        font-size: 0.9em;
+        font-size: 0.8em;
         color: #666;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .data-category {
-        margin-bottom: 18px;
+        margin-bottom: 12px;
     }
 
     .data-category-title {
         font-weight: 700;
         color: #006b94;
-        margin-bottom: 10px;
-        font-size: 0.95em;
-        padding-bottom: 5px;
+        margin-bottom: 6px;
+        font-size: 0.85em;
+        padding-bottom: 3px;
         border-bottom: 2px solid #f0f0f0;
     }
 
     .data-item {
         background: #f8f9fa;
         border: 2px solid #e9ecef;
-        border-radius: 6px;
-        padding: 10px 14px;
-        margin-bottom: 8px;
+        border-radius: 4px;
+        padding: 6px 10px;
+        margin-bottom: 6px;
         cursor: pointer;
         transition: all 0.3s;
     }
@@ -267,10 +276,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 
     .data-item input[type="checkbox"] {
-        margin-right: 10px;
+        margin-right: 8px;
         cursor: pointer;
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
         vertical-align: middle;
     }
 
@@ -278,14 +287,14 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         cursor: pointer;
         display: inline-block;
         vertical-align: middle;
-        line-height: 1.5;
-        font-size: 0.95em;
+        line-height: 1.3;
+        font-size: 0.85em;
     }
 
     .quantity-input-container {
         display: none;
-        margin-top: 10px;
-        padding: 10px;
+        margin-top: 6px;
+        padding: 6px;
         background: white;
         border-radius: 4px;
     }
@@ -296,24 +305,24 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 
     .quantity-input-container label {
         display: block;
-        font-size: 0.85em;
+        font-size: 0.75em;
         color: #666;
-        margin-bottom: 5px;
+        margin-bottom: 4px;
     }
 
     .quantity-input-container input[type="number"] {
-        width: 80px;
-        padding: 6px;
+        width: 60px;
+        padding: 4px;
         border: 2px solid #0088bb;
         border-radius: 4px;
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
 
     .output-section {
         background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-radius: 12px;
-        padding: 30px;
-        margin-top: 30px;
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 15px;
         border: 2px solid #0088bb;
         display: none;
     }
@@ -326,39 +335,39 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     .output-section h2 {
         color: #006b94;
         margin-top: 0;
-        margin-bottom: 20px;
-        font-size: 1.5em;
+        margin-bottom: 12px;
+        font-size: 1.2em;
         text-align: center;
     }
 
     .output-content {
         background: white;
-        padding: 25px;
-        border-radius: 8px;
+        padding: 15px;
+        border-radius: 6px;
         font-family: 'Courier New', monospace;
-        font-size: 0.95em;
-        line-height: 1.8;
+        font-size: 0.85em;
+        line-height: 1.6;
         white-space: pre-wrap;
         color: #2c3e50;
         border: 1px solid #dee2e6;
-        max-height: 600px;
+        max-height: 400px;
         overflow-y: auto;
     }
 
     .output-actions {
         display: flex;
-        gap: 15px;
+        gap: 12px;
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 12px;
         flex-wrap: wrap;
     }
 
     .action-btn {
-        padding: 12px 30px;
+        padding: 10px 25px;
         border: none;
-        border-radius: 8px;
+        border-radius: 6px;
         cursor: pointer;
-        font-size: 1em;
+        font-size: 0.95em;
         font-weight: 600;
         transition: all 0.3s;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -428,6 +437,23 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         display: block;
     }
 
+    @media (max-width: 1400px) {
+        .mdm-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .data-item label {
+            font-size: 0.8em;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .mdm-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
     @media (max-width: 768px) {
         .mdm-grid {
             grid-template-columns: 1fr;
@@ -439,6 +465,14 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         
         .patient-type-btn {
             width: 100%;
+        }
+
+        .well-visit-buttons {
+            flex-direction: column;
+        }
+
+        .well-visit-btn {
+            flex: 1 1 auto;
         }
     }
 </style>
@@ -495,11 +529,11 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     <!-- Time-Based Coding Section -->
     <div class="well-visit-section">
         <h2>Time-Based Coding (Optional Alternative)</h2>
-        <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">You can select CPT code based on total time spent on the date of the encounter (includes non-face-to-face work like documentation, coordination of care, etc.)</p>
-        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; margin-bottom: 15px;">
-            <div style="flex: 1; min-width: 200px;">
-                <label for="totalTime" style="display: block; font-weight: 600; color: #006b94; margin-bottom: 8px;">Total Time (minutes):</label>
-                <input type="number" id="totalTime" placeholder="Enter total time" min="0" max="300" style="width: 100%; padding: 10px; border: 2px solid #0088bb; border-radius: 6px; font-size: 1em;">
+        <p style="font-size: 0.8em; color: #666; margin-bottom: 10px;">Total time on date of encounter (includes non-face-to-face work)</p>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 10px;">
+            <div style="flex: 1; min-width: 150px;">
+                <label for="totalTime" style="display: block; font-weight: 600; color: #006b94; margin-bottom: 6px; font-size: 0.9em;">Total Time (minutes):</label>
+                <input type="number" id="totalTime" placeholder="Enter time" min="0" max="300" style="width: 100%; padding: 8px; border: 2px solid #0088bb; border-radius: 6px; font-size: 0.95em;">
             </div>
         </div>
         <div class="well-visit-code-display" id="timeBasedDisplay"></div>
