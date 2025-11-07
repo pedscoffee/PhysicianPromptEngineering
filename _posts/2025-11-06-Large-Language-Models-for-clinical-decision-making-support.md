@@ -5,7 +5,7 @@ date: 2025-11-06 10:00:00 -0500
 author: pedscoffee
 categories: [AI, Healthcare, Medical Education, Clinical Practice]
 tags: [LLM, clinical decision support, medical AI, metacognition, socratic questioning, physician workflow, quality improvement, medical education, expert support, clinical reasoning]
-excerpt: "Instead of trying to make LLMs into omniscient AI attendings, physicians should leverage them for what they do best: pattern matching enables asking thoughtful questions that can improve metacognition and clinical reasoning. The real value isn't in prompting deeper reflection."
+excerpt: "Instead of trying to make LLMs into omniscient AI attendings, physicians should leverage them for what they do best: pattern matching enables asking thoughtful questions that can improve metacognition and clinical reasoning. The real value is in prompting deeper reflection."
 ---
 
 Large language models and artificial intelligence should be used to support experts by asking thoughtful questions targeting a physician's metacognition, not by pretending to teach topics they don't actually understand.
