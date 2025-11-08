@@ -1,0 +1,18 @@
+---
+layout: default-new
+---
+
+<article class="page">
+  <div class="container-narrow">
+    <header class="page-header" style="margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 2px solid #e5e7eb;">
+      <h1 class="page-title" style="margin-bottom: 0.5rem;">{{ page.title | escape }}</h1>
+      {% if page.description %}
+        <p class="page-description" style="font-size: 1.25rem; color: #6b7280; margin: 0;">{{ page.description }}</p>
+      {% endif %}
+    </header>
+
+    <div class="page-content">
+      {{ content }}
+    </div>
+  </div>
+</article>
