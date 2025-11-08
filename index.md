@@ -1,153 +1,290 @@
 ---
-layout: home
+layout: default
 image: /images/workflow-diagram.png
 description: Open-source clinical LLM prompts for physicians. Automate medical documentation, improve AI scribe output, and reduce burnout. Get started with our free prompt library.
 ---
-<style>
-  
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-    margin-bottom: 1.5rem;
-    z-index: 1;
-  }
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-  
-/* Ensure site navigation appears above video */
-  .site-header {
-    position: relative;
-    z-index: 100;
-  }
-  
-  .site-nav {
-    z-index: 100;
-  }
-  
-  .site-nav .trigger {
-    z-index: 200;
-  }
 
-</style>
-
-![Clinical AI Documentation Tools](./images/physician_prompt_engineering.jpg)
-
-# Transform Your Clinical Documentation in Minutes
-
-**Save 2-5 minutes per patient encounter** by using physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
-
-## The Problem We Solve
-
-AI scribes capture conversations but produce generic, verbose notes that require extensive editing. Our solution: **precision-engineered prompts** that transform raw AI output into concise, personalized documentation matching your exact preferences.
-
-<div class="video-container">
-  <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube-nocookie.com/embed/-2ivdNTM7SY?si=ci0EitG8wKOxEp3e" 
-    title="Clinical AI Documentation Workflow" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
+<!-- Hero Section -->
+<div class="hero">
+  <div class="container">
+    <h1 class="hero-title">Transform Your Clinical Documentation in Minutes</h1>
+    <p class="hero-subtitle">
+      Save 2-5 minutes per patient encounter with physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
+    </p>
+    <div class="hero-cta">
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Explore Prompt Library</a>
+      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
+    </div>
+  </div>
 </div>
 
-## How It Works
+<!-- Problem & Solution Section -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <h2>The Problem We Solve</h2>
+      <p class="text-lg text-secondary">
+        AI scribes capture conversations but produce generic, verbose notes that require extensive editing. Our solution: <strong class="text-primary">precision-engineered prompts</strong> that transform raw AI output into concise, personalized documentation matching your exact preferences.
+      </p>
+    </div>
 
-![Workflow diagram](./images/workflow-diagram.png){: style="max-width: 80%; height: auto; display: block; margin: 0 auto;" }
+    <!-- Video Demo -->
+    <div style="max-width: 900px; margin: 3rem auto;">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
+        <iframe
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          src="https://www.youtube-nocookie.com/embed/-2ivdNTM7SY?si=ci0EitG8wKOxEp3e"
+          title="Clinical AI Documentation Workflow"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve fully automated, preference-matched documentation.
+<!-- How It Works -->
+<section class="section bg-secondary">
+  <div class="container">
+    <h2 class="text-center mb-8">How It Works</h2>
+    <div style="max-width: 900px; margin: 0 auto;">
+      <img src="./images/workflow-diagram.png" alt="Workflow diagram" style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+      <p class="text-center mt-8 text-lg">
+        Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve fully automated, preference-matched documentation.
+      </p>
+    </div>
+  </div>
+</section>
 
-## Three Essential Clinical Prompts
+<!-- Three Essential Prompts - Card Grid -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center mb-8">Three Essential Clinical Prompts</h2>
+    <div class="grid grid-cols-1 grid-cols-3">
 
-### 1. Assessment & Plan Formatting
-Converts verbose paragraphs into concise, problem-oriented documentation
+      <!-- Card 1: A&P Formatting -->
+      <div class="card">
+        <div class="card-icon card-icon-primary">📋</div>
+        <div class="card-header">
+          <h3 class="card-title">Assessment & Plan Formatting</h3>
+        </div>
+        <div class="card-body">
+          <p>Converts verbose paragraphs into concise, problem-oriented documentation that matches your exact clinical style.</p>
+        </div>
+        <div class="card-footer">
+          <a href="{{ site.baseurl }}/prompt-library#ap-formatting" class="btn btn-sm btn-primary">View Prompt</a>
+        </div>
+      </div>
 
-### 2. Medical Decision Making & Billing
-Analyzes complexity and suggests appropriate CPT codes with supporting documentation
+      <!-- Card 2: Billing Analysis -->
+      <div class="card">
+        <div class="card-icon card-icon-secondary">💰</div>
+        <div class="card-header">
+          <h3 class="card-title">Medical Decision Making & Billing</h3>
+        </div>
+        <div class="card-body">
+          <p>Analyzes clinical complexity and suggests appropriate CPT codes with supporting documentation automatically.</p>
+        </div>
+        <div class="card-footer">
+          <a href="{{ site.baseurl }}/prompt-library#billing-analysis" class="btn btn-sm btn-secondary">View Prompt</a>
+        </div>
+      </div>
 
-### 3. After-Visit Summaries
-Generates patient-friendly instructions and follow-up plans
+      <!-- Card 3: AVS Generation -->
+      <div class="card">
+        <div class="card-icon card-icon-accent">📄</div>
+        <div class="card-header">
+          <h3 class="card-title">After-Visit Summaries</h3>
+        </div>
+        <div class="card-body">
+          <p>Generates patient-friendly instructions and follow-up plans that improve comprehension and compliance.</p>
+        </div>
+        <div class="card-footer">
+          <a href="{{ site.baseurl }}/prompt-library#avs-generation" class="btn btn-sm btn-accent">View Prompt</a>
+        </div>
+      </div>
 
-[Access the Prompt Library →]({{ site.baseurl }}/prompt-library)
+    </div>
 
----
+    <div class="text-center mt-8">
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Access Full Prompt Library →</a>
+    </div>
+  </div>
+</section>
 
-## Core Documentation Principles
+<!-- Core Principles - Card Grid -->
+<section class="section bg-secondary">
+  <div class="container">
+    <h2 class="text-center mb-8">Core Documentation Principles</h2>
+    <div class="grid grid-cols-1 grid-cols-3">
 
-### 1. Examples Drive Quality
-Providing 3-5 examples of your preferred output format produces superior results compared to lengthy instructions.
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">1. Examples Drive Quality</h3>
+        </div>
+        <div class="card-body">
+          <p>Providing 3-5 examples of your preferred output format produces superior results compared to lengthy instructions.</p>
+        </div>
+      </div>
 
-### 2. Conciseness Improves Efficiency  
-Brief, scannable notes reduce review time and minimize editing requirements.
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">2. Conciseness Improves Efficiency</h3>
+        </div>
+        <div class="card-body">
+          <p>Brief, scannable notes reduce review time and minimize editing requirements for busy clinicians.</p>
+        </div>
+      </div>
 
-### 3. Modular Design Ensures Reliability
-Dedicated prompts for specific tasks outperform multi-purpose solutions.
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">3. Modular Design Ensures Reliability</h3>
+        </div>
+        <div class="card-body">
+          <p>Dedicated prompts for specific tasks outperform multi-purpose solutions and reduce errors.</p>
+        </div>
+      </div>
 
-[Learn the Complete Methodology →]({{ site.baseurl }}/best-practices)
+    </div>
 
----
+    <div class="text-center mt-8">
+      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Learn the Complete Methodology →</a>
+    </div>
+  </div>
+</section>
 
-## Getting Started
+<!-- Getting Started Section -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="text-center mb-8">Getting Started</h2>
 
-### Requirements
-- EMR with integrated AI text generation (Epic, Cerner, or equivalent)
-- Institutional approval for AI documentation tools
-- HIPAA-compliant AI scribe service (optional but recommended)
+      <div class="grid grid-cols-1 grid-cols-2" style="margin-bottom: 3rem;">
 
-### Implementation Steps
-1. Copy relevant prompts from our library
-2. Customize examples to match your specialty
-3. Test with routine encounters first
-4. Scale to complex cases as confidence builds
+        <div>
+          <h3>Requirements</h3>
+          <ul>
+            <li>EMR with integrated AI text generation (Epic, Cerner, or equivalent)</li>
+            <li>Institutional approval for AI documentation tools</li>
+            <li>HIPAA-compliant AI scribe service (optional but recommended)</li>
+          </ul>
+        </div>
 
-<div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
-    <h3 style="color: #2a7ae2; font-size: 1.1em; margin-bottom: 10px; text-align: center;">Share Your Prompt</h3>
-    <p style="text-align: center;">Refined a prompt that consistently delivers quality output? Consider sharing it on the <a href="https://physicianpromptengineering.com/contributions" style="color: #2a7ae2; font-weight: 600;">contributions page</a>. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.</p>
-</div>
+        <div>
+          <h3>Implementation Steps</h3>
+          <ol>
+            <li>Copy relevant prompts from our library</li>
+            <li>Customize examples to match your specialty</li>
+            <li>Test with routine encounters first</li>
+            <li>Scale to complex cases as confidence builds</li>
+          </ol>
+        </div>
 
+      </div>
 
+      <!-- Share Your Prompt CTA -->
+      <div style="background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin-top: 2rem;">
+        <h3 style="color: var(--color-primary); font-size: var(--font-size-xl); margin-bottom: var(--space-4); text-align: center;">Share Your Prompt</h3>
+        <p style="text-align: center; margin-bottom: var(--space-4);">
+          Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
+        </p>
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
----
+<!-- Newsletter Signup -->
+<section class="section bg-secondary">
+  <div class="container">
+    <h2 class="text-center mb-6">Stay Updated</h2>
+    <p class="text-center text-secondary mb-6">Get the latest prompts, techniques, and AI documentation strategies.</p>
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+</section>
 
-<div class="embed-container">
-  <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-</div>
+<!-- FAQ Section with Progressive Disclosure -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 class="text-center mb-8">Frequently Asked Questions</h2>
 
----
- 
-## Frequently Asked Questions
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+          <strong>What EMR systems are compatible?</strong>
+        </div>
+        <div class="accordion-content">
+          <p>These prompts work with any EMR featuring AI text generation capabilities. Confirmed compatible systems include Epic's "Generate Text with AI," Cerner, and similar platforms with LLM integration.</p>
+        </div>
+      </div>
 
-**What EMR systems are compatible?**
-These prompts work with any EMR featuring AI text generation capabilities. Confirmed compatible systems include Epic's "Generate Text with AI," Cerner, and similar platforms with LLM integration.
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+          <strong>How much time can I realistically save?</strong>
+        </div>
+        <div class="accordion-content">
+          <p>Physicians report saving 2-5 minutes per routine encounter and up to 15 minutes on complex visits. Results vary by specialty and documentation requirements.</p>
+        </div>
+      </div>
 
-**How much time can I realistically save?**
-Physicians report saving 2-5 minutes per routine encounter and up to 15 minutes on complex visits. Results vary by specialty and documentation requirements.
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+          <strong>Do I need programming experience?</strong>
+        </div>
+        <div class="accordion-content">
+          <p>No technical expertise required. If you can copy and paste text, you can implement these prompts immediately.</p>
+        </div>
+      </div>
 
-**Do I need programming experience?**
-No technical expertise required. If you can copy and paste text, you can implement these prompts immediately.
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+          <strong>Are these prompts specialty-specific?</strong>
+        </div>
+        <div class="accordion-content">
+          <p>The core framework applies to all specialties. The library includes templates you can customize with specialty-specific examples for optimal results.</p>
+        </div>
+      </div>
 
-**Are these prompts specialty-specific?**
-The core framework applies to all specialties. The library includes templates you can customize with specialty-specific examples for optimal results.
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+          <strong>How do I ensure compliance and safety?</strong>
+        </div>
+        <div class="accordion-content">
+          <p>Always use prompts within your institution's approved AI tools. Review all AI-generated content before signing. These prompts enhance efficiency while maintaining your clinical responsibility for accuracy.</p>
+        </div>
+      </div>
 
-**How do I ensure compliance and safety?**
-Always use prompts within your institution's approved AI tools. Review all AI-generated content before signing. These prompts enhance efficiency while maintaining your clinical responsibility for accuracy.
+    </div>
+  </div>
+</section>
 
-## Clinical Responsibility Notice
+<!-- Clinical Responsibility Notice -->
+<section class="section bg-tertiary">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto; padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
+      <h3 style="color: var(--color-warning); margin-bottom: var(--space-4);">⚠️ Clinical Responsibility Notice</h3>
+      <p>
+        These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records. Always verify accuracy, completeness, and compliance with institutional policies.
+      </p>
+    </div>
+  </div>
+</section>
 
-These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records. Always verify accuracy, completeness, and compliance with institutional policies.
-
-## Open Source License
-This project is available under the [MIT License](LICENSE). Free to use, modify, and share.
-
-**Support clinical innovation:** [Star us on GitHub](https://github.com/pedscoffee/PhysicianPromptEngineering/)
+<!-- Footer CTA -->
+<section class="section">
+  <div class="container text-center">
+    <h2 class="mb-6">Ready to Transform Your Documentation?</h2>
+    <div class="hero-cta">
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Get Started with Free Prompts</a>
+      <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn btn-outline btn-lg" target="_blank">Star us on GitHub ⭐</a>
+    </div>
+    <p class="text-sm text-secondary mt-6">
+      Open source under the MIT License. Free to use, modify, and share.
+    </p>
+  </div>
+</section>
