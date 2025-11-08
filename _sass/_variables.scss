@@ -4,25 +4,25 @@
 // ============================================
 
 // ============================================
-// COLOR PALETTE - Verdant Green Theme
+// COLOR PALETTE - Professional Blue Theme
 // ============================================
 
-// Primary Colors (Verdant Green)
-$primary: #047857;                    // Emerald green - medical, trustworthy
-$primary-hover: #065f46;              // Darker emerald
-$primary-light: #10b981;              // Lighter emerald
-$primary-bg: #ecfdf5;                 // Very light green background
+// Primary Colors (Professional Blue)
+$primary: #2563eb;                    // Royal blue - professional, trustworthy
+$primary-hover: #1d4ed8;              // Darker blue
+$primary-light: #3b82f6;              // Lighter blue
+$primary-bg: #eff6ff;                 // Very light blue background
 
 // Secondary Colors
-$secondary: #059669;                  // Emerald accent
-$secondary-hover: #047857;
-$secondary-light: #34d399;
+$secondary: #1e40af;                  // Deep blue accent
+$secondary-hover: #1e3a8a;
+$secondary-light: #60a5fa;
 
 // Semantic Colors
 $success: #10b981;                    // Bright green
 $warning: #f59e0b;                    // Amber
 $error: #ef4444;                      // Red
-$info: #3b82f6;                       // Blue
+$info: #0ea5e9;                       // Sky blue
 
 // Neutral Colors
 $text-primary: #1f2937;               // Dark charcoal (not pure black)
@@ -102,10 +102,10 @@ $shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 $shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
-// Green-tinted shadows for primary elements
-$shadow-primary-sm: 0 1px 2px 0 rgba(4, 120, 87, 0.1);
-$shadow-primary-md: 0 4px 6px -1px rgba(4, 120, 87, 0.2);
-$shadow-primary-lg: 0 10px 15px -3px rgba(4, 120, 87, 0.3);
+// Blue-tinted shadows for primary elements
+$shadow-primary-sm: 0 1px 2px 0 rgba(37, 99, 235, 0.1);
+$shadow-primary-md: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+$shadow-primary-lg: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
 
 // ============================================
 // BORDER RADIUS

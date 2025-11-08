@@ -33,7 +33,12 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
     white-space: pre-wrap; /* Allow prompt text to wrap */
     word-wrap: break-word; /* Break long words */
     max-height: 300px;
-    overflow-y: auto;  
+    overflow-y: auto;
+    color: #1f2937 !important; /* Ensure text is visible on light background */
+  }
+  .prompt-code-wrapper pre code {
+    color: #1f2937 !important; /* Ensure code text is visible */
+    background: transparent !important;
   }
   .copy-button {
     position: absolute;
