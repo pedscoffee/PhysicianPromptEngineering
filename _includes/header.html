@@ -1,0 +1,100 @@
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a class="site-title" href="{{ "/" | relative_url }}">
+      {{ site.title | escape }}
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a class="nav-link" href="{{ '/blog' | relative_url }}">Blog</a>
+      <a class="nav-link" href="{{ '/best-practices' | relative_url }}">Best Practices</a>
+      <a class="nav-link" href="{{ '/prompt-library' | relative_url }}">Prompt Library</a>
+
+      <div class="dropdown">
+        <span class="nav-link page-link">Tools</span>
+        <div class="dropdown-content">
+          <a href="{{ '/prompt-generator' | relative_url }}">A/P Prompt Generator</a>
+          <a href="{{ '/prompt-manager' | relative_url }}">Snippet Manager</a>
+          <a href="{{ '/cpt-calculator' | relative_url }}">E&M Calculator</a>
+        </div>
+      </div>
+
+      <a class="nav-link" href="{{ '/contributions' | relative_url }}">Contributions</a>
+      <a class="nav-link btn-primary btn-sm" href="https://github.com/pedscoffee/PhysicianPromptEngineering/" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+    </nav>
+  </div>
+  <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<script>
+  (function() {
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function toggleNav() {
+      const isActive = siteNav.classList.toggle('active');
+      navToggle.classList.toggle('active');
+      navOverlay.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', isActive);
+
+      // Prevent body scroll when nav is open on mobile
+      if (isActive) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeNav() {
+      siteNav.classList.remove('active');
+      navToggle.classList.remove('active');
+      navOverlay.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    navToggle.addEventListener('click', toggleNav);
+    navOverlay.addEventListener('click', closeNav);
+
+    // Close nav when clicking on a nav link (mobile)
+    const navLinks = siteNav.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth < 1024) {
+          closeNav();
+        }
+      });
+    });
+
+    // Close nav on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && siteNav.classList.contains('active')) {
+        closeNav();
+      }
+    });
+
+    // Add scrolled class to header on scroll
+    let lastScroll = 0;
+    const header = document.querySelector('.site-header');
+
+    window.addEventListener('scroll', function() {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      lastScroll = currentScroll;
+    });
+  })();
+</script>

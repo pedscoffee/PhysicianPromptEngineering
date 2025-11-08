@@ -1,21 +1,63 @@
 ---
-layout: default
+layout: default-new
 ---
-<article class="post-content">
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-      Posted on: <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
-      {% if page.author %}by {{ page.author }}{% endif %}
-    </p>
-  </header>
 
-  <section class="post-body">
-    {{ content }}
-  </section>
+<article class="post">
+  <div class="container-narrow">
+    <header class="post-header" style="margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 2px solid #e5e7eb;">
+      <h1 class="post-title" style="margin-bottom: 1rem;">{{ page.title | escape }}</h1>
 
-  {% comment %}
-  The jekyll-seo-tag and jekyll-sitemap are already configured in your _config.yml,
-  which ensures essential SEO metadata is included for each post.
-  {% endcomment %}
+      <div class="post-meta" style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; color: #6b7280; font-size: 0.875rem;">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+
+        {% if page.author %}
+          <span style="color: #d1d5db;">•</span>
+          <span>By {{ page.author }}</span>
+        {% endif %}
+
+        {% if page.categories.size > 0 %}
+          <span style="color: #d1d5db;">•</span>
+          <div style="display: flex; gap: 0.5rem;">
+            {% for category in page.categories %}
+              <span class="badge badge-primary">{{ category }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if page.excerpt %}
+        <p class="post-excerpt" style="font-size: 1.125rem; color: #374151; margin-top: 1rem; font-style: italic;">
+          {{ page.excerpt | strip_html | truncatewords: 50 }}
+        </p>
+      {% endif %}
+    </header>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    {% if site.posts.size > 1 %}
+      <footer class="post-footer" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+        <div class="post-navigation" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          {% if page.previous.url %}
+            <a href="{{ page.previous.url | relative_url }}" class="btn btn-secondary" style="flex: 1; min-width: 200px;">
+              ← {{ page.previous.title | truncate: 40 }}
+            </a>
+          {% endif %}
+
+          {% if page.next.url %}
+            <a href="{{ page.next.url | relative_url }}" class="btn btn-secondary" style="flex: 1; min-width: 200px; text-align: right;">
+              {{ page.next.title | truncate: 40 }} →
+            </a>
+          {% endif %}
+        </div>
+
+        <div class="back-to-blog" style="text-align: center; margin-top: 2rem;">
+          <a href="{{ '/blog' | relative_url }}" class="btn btn-ghost">← Back to All Articles</a>
+        </div>
+      </footer>
+    {% endif %}
+  </div>
 </article>

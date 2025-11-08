@@ -1,0 +1,539 @@
+// ============================================
+// COMPONENTS
+// Reusable UI components with verdant green theme
+// ============================================
+
+// ============================================
+// BUTTONS
+// ============================================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-1;
+  padding: 0.75rem 1.5rem;
+  font-family: $font-sans;
+  font-size: $text-base;
+  font-weight: $font-semibold;
+  line-height: $leading-normal;
+  text-decoration: none;
+  text-align: center;
+  border-radius: $radius-md;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all $transition-base $ease-in-out;
+  white-space: nowrap;
+
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.btn-primary {
+  background: $primary;
+  color: $text-inverse;
+  border-color: $primary;
+  box-shadow: $shadow-primary-sm;
+
+  &:hover:not(:disabled) {
+    background: $primary-hover;
+    border-color: $primary-hover;
+    box-shadow: $shadow-primary-md;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: $primary;
+  border-color: $primary;
+
+  &:hover:not(:disabled) {
+    background: $primary-bg;
+    border-color: $primary-hover;
+    color: $primary-hover;
+  }
+}
+
+.btn-success {
+  background: $success;
+  color: $text-inverse;
+  border-color: $success;
+
+  &:hover:not(:disabled) {
+    background: darken($success, 10%);
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: $primary;
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background: $primary-bg;
+    color: $primary-hover;
+  }
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: $text-sm;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: $text-lg;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+// ============================================
+// CARDS
+// ============================================
+
+.card {
+  background: $bg-white;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  padding: $space-4;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base $ease-in-out;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.card-header {
+  margin-bottom: $space-3;
+  padding-bottom: $space-2;
+  border-bottom: 2px solid $border;
+
+  h1, h2, h3, h4 {
+    margin: 0;
+    color: $primary;
+  }
+}
+
+.card-body {
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card-footer {
+  margin-top: $space-3;
+  padding-top: $space-2;
+  border-top: 1px solid $border;
+}
+
+.card-feature {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid $border;
+  transition: all $transition-base $ease-in-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, $secondary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-base $ease-in-out;
+  }
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: $shadow-primary-lg;
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-4;
+  margin: $space-6 0;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ============================================
+// BADGES & TAGS
+// ============================================
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  border-radius: $radius-full;
+  white-space: nowrap;
+}
+
+.badge-primary {
+  background: $primary-bg;
+  color: $primary;
+}
+
+.badge-success {
+  background: lighten($success, 45%);
+  color: darken($success, 10%);
+}
+
+.badge-warning {
+  background: lighten($warning, 40%);
+  color: darken($warning, 15%);
+}
+
+.badge-secondary {
+  background: $bg-surface;
+  color: $text-secondary;
+}
+
+// ============================================
+// HERO SECTION
+// ============================================
+
+.hero {
+  position: relative;
+  padding: $space-16 0 $space-12 0;
+  background: linear-gradient(135deg, lighten($primary, 50%) 0%, lighten($primary, 45%) 100%);
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $space-10 0 $space-8 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23047857' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: $content-max-width;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 $space-3;
+}
+
+.hero-title {
+  font-size: $text-5xl;
+  font-weight: $font-extrabold;
+  color: $primary;
+  line-height: $leading-tight;
+  margin-bottom: $space-3;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $text-4xl;
+  }
+}
+
+.hero-subtitle {
+  font-size: $text-xl;
+  color: $text-primary;
+  line-height: $leading-relaxed;
+  margin-bottom: $space-6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $text-lg;
+  }
+}
+
+.hero-cta {
+  display: flex;
+  gap: $space-2;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// ============================================
+// SECTION DIVIDERS
+// ============================================
+
+.section {
+  padding: $space-10 0;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $space-8 0;
+  }
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto $space-8 auto;
+
+  h2 {
+    font-size: $text-4xl;
+    font-weight: $font-bold;
+    color: $primary;
+    margin-bottom: $space-2;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $text-3xl;
+    }
+  }
+
+  p {
+    font-size: $text-lg;
+    color: $text-secondary;
+  }
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $border, transparent);
+  margin: $space-8 0;
+}
+
+// ============================================
+// ALERTS & CALLOUTS
+// ============================================
+
+.alert {
+  padding: $space-3;
+  border-radius: $radius-md;
+  border-left: 4px solid;
+  margin: $space-4 0;
+}
+
+.alert-info {
+  background: lighten($info, 45%);
+  border-color: $info;
+  color: darken($info, 20%);
+}
+
+.alert-success {
+  background: lighten($success, 50%);
+  border-color: $success;
+  color: darken($success, 15%);
+}
+
+.alert-warning {
+  background: lighten($warning, 45%);
+  border-color: $warning;
+  color: darken($warning, 20%);
+}
+
+.alert-primary {
+  background: $primary-bg;
+  border-color: $primary;
+  color: $primary-hover;
+}
+
+// ============================================
+// COPY BUTTON (for code snippets)
+// ============================================
+
+.copy-btn {
+  position: relative;
+
+  &.copied::after {
+    content: 'Copied!';
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: $success;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: $radius-sm;
+    font-size: $text-sm;
+    animation: fadeOut 2s forwards;
+  }
+}
+
+@keyframes fadeOut {
+  0%, 50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// ============================================
+// ACCORDION / FAQ
+// ============================================
+
+.accordion-item {
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  margin-bottom: $space-2;
+  overflow: hidden;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3;
+  background: $bg-white;
+  cursor: pointer;
+  font-weight: $font-semibold;
+  color: $text-primary;
+  transition: background $transition-base $ease-in-out;
+
+  &:hover {
+    background: $bg-light;
+  }
+
+  .icon {
+    transition: transform $transition-base $ease-in-out;
+  }
+}
+
+.accordion-item.active {
+  .accordion-header {
+    color: $primary;
+    border-bottom: 1px solid $border;
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height $transition-slow $ease-in-out;
+
+  .accordion-body {
+    padding: $space-3;
+  }
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 1000px;
+}
+
+// ============================================
+// VIDEO CONTAINER
+// ============================================
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  margin: $space-4 0;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ============================================
+// NEWSLETTER EMBED
+// ============================================
+
+.embed-container {
+  text-align: center;
+  margin: $space-6 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  iframe {
+    max-width: 100%;
+    display: inline-block;
+    border-radius: $radius-md;
+  }
+}
+
+// ============================================
+// CONTRIBUTION CALLOUT
+// ============================================
+
+.contribution-callout {
+  background: $primary-bg;
+  padding: $space-4;
+  border-left: 4px solid $primary;
+  border-radius: $radius-md;
+  margin: $space-6 0;
+  text-align: center;
+
+  h3 {
+    color: $primary;
+    font-size: $text-xl;
+    margin-bottom: $space-2;
+  }
+
+  p {
+    margin-bottom: 0;
+    color: $text-primary;
+  }
+
+  a {
+    color: $primary;
+    font-weight: $font-semibold;
+    text-decoration: underline;
+
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+}

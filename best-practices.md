@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Prompting Best Practices
+title: Best Practices
 description: Learn how to write effective medical prompts. Our definitive guide for physicians covers few-shot examples, brevity, and modular prompt design for EMRs.
 ---
 ![Clinical AI Best Practices](./images/Best_practices.jpg)
