@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Personal Prompt Snippet Manager
-description: Save and manage your favorite AI prompts with our free, privacy-first snippet manager. Store prompts locally in your browser—no account needed, 100% HIPAA-compliant.
+description: Save and manage your favorite AI prompts with our free, privacy-first snippet manager. Store prompts locally in your browser—no account needed.
 permalink: /prompt-manager/
 ---
 <style>
@@ -463,7 +463,7 @@ permalink: /prompt-manager/
         </p>
         <div id="read-more-content" class="read-more-content">
             <p>If you work with AI prompts regularly, you know how quickly things can get messy. You iterate on a prompt, save it somewhere, then create another version, maybe copy it into a different file, and before long you have dozens of variations scattered across documents, notes apps, and browser tabs. It becomes impossible to remember which version worked best or where you saved that perfect prompt from last week.</p>
-            <p>This tool solves that problem by giving you a single, organized place to store and manage all your AI prompts. Everything is saved locally on your device—no account required, no data sent to servers, and fully HIPAA-compliant. Your prompts stay private on your computer. Need to access your prompts on another device or create a backup? Use the Export button to download all your snippets as a JSON file, then use Import on any other device to load them back in. You can also save exports to your preferred cloud storage or backup location for safekeeping.</p>
+            <p>This tool solves that problem by giving you a single, organized place to store and manage all your AI prompts. Everything is saved locally on your device—no account required, no data sent to servers. Your prompts stay private on your computer. Need to access your prompts on another device or create a backup? Use the Export button to download all your snippets as a JSON file, then use Import on any other device to load them back in. You can also save exports to your preferred cloud storage or backup location for safekeeping.</p>
         </div>
     </div>
 
