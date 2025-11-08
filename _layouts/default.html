@@ -19,9 +19,6 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ '/images/favicon.png' | relative_url }}">
 
-  <!-- RSS Feed -->
-  {%- feed_meta -%}
-
   <!-- Google Analytics -->
   {%- if site.google_analytics -%}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
@@ -36,13 +33,13 @@
 
 <body>
 
-  {%- include header-new.html -%}
+  {%- include header.html -%}
 
   <main class="page-content" role="main" aria-label="Content">
     {{ content }}
   </main>
 
-  {%- include footer-new.html -%}
+  {%- include footer.html -%}
 
 </body>
 
