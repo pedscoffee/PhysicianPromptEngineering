@@ -1,5 +1,179 @@
 ---
 ---
 
-// Import new modern design system
-@import "main";
+@import "minima";
+
+/* Custom Dropdown Navigation for Physician Prompt Engineering */
+
+/* Desktop Navigation Styles */
+@media screen and (min-width: 600px) {
+  
+  /* Main navigation container */
+  .site-nav {
+    line-height: 56px;
+  }
+  
+  .site-nav .page-link {
+    color: $text-color;
+    line-height: 1.5;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: 20px;
+  }
+  
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown button styling */
+  .dropdown > .page-link {
+    cursor: pointer;
+    padding-right: 20px;
+    position: relative;
+  }
+  
+  /* Add dropdown arrow indicator */
+  .dropdown > .page-link::after {
+    content: " ▾";
+    font-size: 0.8em;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $background-color;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 4px;
+    padding: 8px 0;
+    left: 0;
+    top: 100%;
+    margin-top: 0px; /* Removed gap - dropdown connects directly to parent */
+  }
+  
+  /* Create invisible bridge between parent and dropdown to prevent accidental closing */
+  .dropdown::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 10px; /* Invisible 10px gap bridge */
+    z-index: 999;
+  }
+  
+  /* Dropdown links */
+  .dropdown-content a {
+    color: $text-color;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    line-height: 1.5;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Change color on hover */
+  .dropdown-content a:hover {
+    background-color: lighten($grey-color-light, 7%);
+    color: $brand-color;
+  }
+  
+  /* Show dropdown on hover with delay before closing */
+  .dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.2s ease-in;
+  }
+  
+  /* Keep dropdown visible when hovering over the dropdown content itself */
+  .dropdown-content:hover {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Highlight parent when hovering over dropdown */
+  .dropdown:hover > .page-link {
+    color: $brand-color;
+  }
+  
+}
+
+/* Substack Sign Up Container */
+.embed-container {
+  text-align: center;
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  iframe {
+    max-width: 100%;
+    display: inline-block;
+  }
+}
+
+/* Mobile Navigation - Enhanced for dropdowns */
+@media screen and (max-width: 599px) {
+  
+  .site-nav .trigger {
+    background-color: $background-color;
+  }
+  
+  /* Mobile dropdown container */
+  .dropdown {
+    display: block;
+  }
+  
+  .dropdown > .page-link {
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Mobile dropdown content styling */
+  .dropdown-content {
+    display: none;
+    background-color: lighten($grey-color-light, 7%);
+    padding-left: 20px;
+    margin-top: 5px;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 8px 10px;
+    color: $text-color;
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:hover {
+    color: $brand-color;
+  }
+  
+  /* Show dropdown content when parent is clicked */
+  .dropdown.active .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+  
+  /* Add arrow indicator on mobile */
+  .dropdown > .page-link::after {
+    content: " ▾";
+    font-size: 0.8em;
+  }
+  
+}

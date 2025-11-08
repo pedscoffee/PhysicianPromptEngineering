@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: home
 title: Blog
 description: Explore the latest insights on AI in clinical documentation. Our blog covers large language models, AI scribe tools, and prompt engineering for physicians.
 permalink: /blog/

@@ -2,6 +2,7 @@
 layout: page
 title: Contributions
 description: "Help build our open-source community. We invite physicians to contribute their own custom AI prompts to our shared clinical prompt library via GitHub."
+
 ---
 
 <style>
