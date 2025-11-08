@@ -65,8 +65,8 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
       <!-- Card 1: A&P Formatting -->
       <div class="card">
-        <div class="card-icon card-icon-primary">📋</div>
         <div class="card-header">
+          <div class="card-icon card-icon-primary">A/P</div>
           <h3 class="card-title">Assessment & Plan Formatting</h3>
         </div>
         <div class="card-body">
@@ -79,8 +79,8 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
       <!-- Card 2: Billing Analysis -->
       <div class="card">
-        <div class="card-icon card-icon-secondary">💰</div>
         <div class="card-header">
+          <div class="card-icon card-icon-secondary">MDM</div>
           <h3 class="card-title">Medical Decision Making & Billing</h3>
         </div>
         <div class="card-body">
@@ -93,8 +93,8 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
       <!-- Card 3: AVS Generation -->
       <div class="card">
-        <div class="card-icon card-icon-accent">📄</div>
         <div class="card-header">
+          <div class="card-icon card-icon-accent">AVS</div>
           <h3 class="card-title">After-Visit Summaries</h3>
         </div>
         <div class="card-body">
@@ -108,7 +108,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     </div>
 
     <div class="text-center mt-8">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Access Full Prompt Library →</a>
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Access Full Prompt Library</a>
     </div>
   </div>
 </section>
@@ -149,7 +149,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     </div>
 
     <div class="text-center mt-8">
-      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Learn the Complete Methodology →</a>
+      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Learn the Complete Methodology</a>
     </div>
   </div>
 </section>
@@ -190,7 +190,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
         </p>
         <div style="text-align: center;">
-          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt →</a>
+          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt</a>
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 <section class="section bg-tertiary">
   <div class="container">
     <div style="max-width: 800px; margin: 0 auto; padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
-      <h3 style="color: var(--color-warning); margin-bottom: var(--space-4);">⚠️ Clinical Responsibility Notice</h3>
+      <h3 style="color: var(--color-warning); margin-bottom: var(--space-4);">Clinical Responsibility Notice</h3>
       <p>
         These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records. Always verify accuracy, completeness, and compliance with institutional policies.
       </p>
@@ -281,7 +281,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     <h2 class="mb-6">Ready to Transform Your Documentation?</h2>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Get Started with Free Prompts</a>
-      <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn btn-outline btn-lg" target="_blank">Star us on GitHub ⭐</a>
+      <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn btn-outline btn-lg" target="_blank">Star us on GitHub</a>
     </div>
     <p class="text-sm text-secondary mt-6">
       Open source under the MIT License. Free to use, modify, and share.

@@ -39,7 +39,6 @@ description: Learn how to write effective medical prompts. Our definitive guide 
     <div class="grid grid-cols-1 grid-cols-3">
 
       <div class="card">
-        <div class="card-icon card-icon-primary">📝</div>
         <div class="card-header">
           <h3 class="card-title">1. Examples > Instructions</h3>
         </div>
@@ -50,7 +49,6 @@ description: Learn how to write effective medical prompts. Our definitive guide 
       </div>
 
       <div class="card">
-        <div class="card-icon card-icon-secondary">⚡</div>
         <div class="card-header">
           <h3 class="card-title">2. Brevity = Quality</h3>
         </div>
@@ -61,7 +59,6 @@ description: Learn how to write effective medical prompts. Our definitive guide 
       </div>
 
       <div class="card">
-        <div class="card-icon card-icon-accent">🎯</div>
         <div class="card-header">
           <h3 class="card-title">3. One Prompt, One Purpose</h3>
         </div>
@@ -216,9 +213,9 @@ description: Learn how to write effective medical prompts. Our definitive guide 
           </div>
           <div class="card-body">
             <p>Begin every prompt with a clear, action-oriented instruction:</p>
-            <p class="mt-4"><span class="badge badge-success">✅ Good</span></p>
+            <p class="mt-4"><span class="badge badge-success">Good</span></p>
             <p class="text-sm">"Convert the following transcript into a problem-based assessment and plan"</p>
-            <p class="mt-4"><span style="background: #fee2e2; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">❌ Avoid</span></p>
+            <p class="mt-4"><span style="background: #fee2e2; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">Avoid</span></p>
             <p class="text-sm">"You are a physician who needs to write notes"</p>
           </div>
         </div>
@@ -259,7 +256,7 @@ symptomatic relief."</code></pre>
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
       <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
-        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">⚠️ Safety and Compliance</h2>
+        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
 
         <h3 class="mb-4">Critical Reminders</h3>
         <ul>
@@ -301,8 +298,8 @@ symptomatic relief."</code></pre>
       </div>
 
       <div class="text-center mt-8">
-        <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Browse Prompt Library →</a>
-        <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator →</a>
+        <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Browse Prompt Library</a>
+        <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
       </div>
 
       <!-- Additional Resources -->
@@ -317,7 +314,7 @@ symptomatic relief."</code></pre>
           Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
         </p>
         <div style="text-align: center;">
-          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt →</a>
+          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt</a>
         </div>
       </div>
 
