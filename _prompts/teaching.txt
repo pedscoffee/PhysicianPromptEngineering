@@ -1,9 +1,0 @@
----
-title: "Socratic Teaching Prompt"
-description: "Extracts clinical pearl and then asks a follow up question to probe a student's understanding further."
-specialty: "All"
-char_count: 394
-order: 8
----
-From this case, extract one brief 'Clinical Pearl' for teaching (<=20 words). Focus on a practical pitfall, tip, or insight-not patient-specific.
-Using that clinical pearl, then take it one step farther and ask the clinician a socratic style follow up question to cause them to think more deeply about this particular patient. Write each on a separate line below bolded header "Clinical Pearl:"
