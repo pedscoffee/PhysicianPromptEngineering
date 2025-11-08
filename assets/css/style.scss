@@ -511,9 +511,24 @@ li {
   transition: color var(--transition-fast);
 }
 
+.site-title img {
+  transition: transform var(--transition-fast);
+}
+
 .site-title:hover {
   color: var(--color-primary);
   text-decoration: none;
+}
+
+.site-title:hover img {
+  transform: scale(1.05);
+}
+
+/* Mobile logo sizing */
+@media screen and (max-width: 599px) {
+  .site-title {
+    font-size: var(--font-size-lg);
+  }
 }
 
 /* Desktop Navigation */
