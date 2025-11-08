@@ -3,8 +3,8 @@ description: >-
   Physician Prompt Engineering offers open-source clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems.
 url: https://physicianpromptengineering.com
 
-# Using custom theme (not minima)
-# theme: minima
+# Using custom theme - explicitly disable GitHub Pages default themes
+theme: null
 
 # SASS configuration for custom design system
 sass:
