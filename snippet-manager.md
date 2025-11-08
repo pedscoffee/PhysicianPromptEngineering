@@ -2,7 +2,7 @@
 layout: page
 title: Personal Prompt Snippet Manager
 description: Save and manage your favorite AI prompts with our free, privacy-first snippet manager. Store prompts locally in your browser—no account needed.
-permalink: /snippet-manager/
+permalink: /prompt-manager/
 ---
 <style>
     * {
