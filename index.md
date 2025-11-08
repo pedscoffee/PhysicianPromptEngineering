@@ -1,5 +1,5 @@
 ---
-layout: home-new
+layout: home
 description: Open-source clinical LLM prompts for physicians. Automate medical documentation, improve AI scribe output, and reduce burnout. Get started with our free prompt library.
 ---
 
