@@ -1,165 +1,329 @@
 ---
-layout: page
+layout: default
 title: Prompting Best Practices
 description: Learn how to write effective medical prompts. Our definitive guide for physicians covers few-shot examples, brevity, and modular prompt design for EMRs.
 ---
-![Clinical AI Best Practices](./images/Best_practices.jpg)
-<style>
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-    margin-bottom: 1.5rem;
-  }
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
 
-# Clinical Prompt Engineering Best Practices
-
-<div class="video-container">
-  <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube-nocookie.com/embed/haSZOP6fiFM?si=a7yZiRBuRdaB95Y9" 
-    title="Prompt Engineering Tutorial" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
+<!-- Hero Section -->
+<div class="hero">
+  <div class="container">
+    <h1 class="hero-title">Clinical Prompt Engineering Best Practices</h1>
+    <p class="hero-subtitle">
+      Master the art of writing effective prompts for AI-powered clinical documentation
+    </p>
+  </div>
 </div>
 
-## Quick Reference: Three Core Principles
+<!-- Video Tutorial -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
+        <iframe
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+          src="https://www.youtube-nocookie.com/embed/haSZOP6fiFM?si=a7yZiRBuRdaB95Y9"
+          title="Prompt Engineering Tutorial"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-### 1. Examples > Instructions
-**Show the AI what you want through 3-5 concrete examples rather than explaining it.**
+<!-- Three Core Principles - Cards -->
+<section class="section bg-secondary">
+  <div class="container">
+    <h2 class="text-center mb-8">Three Core Principles</h2>
+    <div class="grid grid-cols-1 grid-cols-3">
 
-### 2. Brevity = Quality  
-**Concise outputs scan faster, edit easier, and feel more natural.**
+      <div class="card">
+        <div class="card-icon card-icon-primary">📝</div>
+        <div class="card-header">
+          <h3 class="card-title">1. Examples > Instructions</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Show the AI what you want through 3-5 concrete examples rather than explaining it.</strong></p>
+          <p class="text-sm text-secondary">LLMs excel at pattern recognition. Examples allow the model to infer your implicit rules more effectively than explicit instructions.</p>
+        </div>
+      </div>
 
-### 3. One Prompt, One Purpose
-**Specialized prompts outperform multi-function alternatives.**
+      <div class="card">
+        <div class="card-icon card-icon-secondary">⚡</div>
+        <div class="card-header">
+          <h3 class="card-title">2. Brevity = Quality</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Concise outputs scan faster, edit easier, and feel more natural.</strong></p>
+          <p class="text-sm text-secondary">Brief documentation reduces cognitive load, makes error detection easier, and maintains physician-like language.</p>
+        </div>
+      </div>
 
----
+      <div class="card">
+        <div class="card-icon card-icon-accent">🎯</div>
+        <div class="card-header">
+          <h3 class="card-title">3. One Prompt, One Purpose</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Specialized prompts outperform multi-function alternatives.</strong></p>
+          <p class="text-sm text-secondary">Modular design allows independent refinement, easier troubleshooting, and better reliability.</p>
+        </div>
+      </div>
 
-<div class="embed-container">
-  <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-</div>
+    </div>
+  </div>
+</section>
 
----
+<!-- Newsletter -->
+<section class="section">
+  <div class="container">
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+</section>
 
-## Detailed Implementation Guide
+<!-- Detailed Implementation Guide -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="text-center mb-8">Detailed Implementation Guide</h2>
 
-### Principle 1: Few-Shot Learning in Clinical Context
+      <!-- Principle 1 -->
+      <div class="card mb-8">
+        <div class="card-header">
+          <h3 class="card-title">Principle 1: Few-Shot Learning in Clinical Context</h3>
+        </div>
+        <div class="card-body">
+          <p>Few-shot examples are the foundation of effective clinical prompts. Rather than describing your preferred format, demonstrate it.</p>
 
-Few-shot examples are the foundation of effective clinical prompts. Rather than describing your preferred format, demonstrate it.
+          <p><strong>Why it works:</strong> LLMs excel at pattern recognition. Examples allow the model to infer your implicit rules—tone, structure, clinical reasoning—more effectively than explicit instructions.</p>
 
-**Why it works:** LLMs excel at pattern recognition. Examples allow the model to infer your implicit rules—tone, structure, clinical reasoning—more effectively than explicit instructions.
+          <h4 class="mt-6 mb-4">Clinical Application:</h4>
+          <ul>
+            <li>For Assessment & Plan formatting: Provide 3-5 examples of your actual A&P sections</li>
+            <li>For billing documentation: Show examples with correct MDM levels and corresponding documentation</li>
+            <li>For patient instructions: Include samples demonstrating your communication style</li>
+          </ul>
 
-**Clinical application:**
-- For Assessment & Plan formatting: Provide 3-5 examples of your actual A&P sections
-- For billing documentation: Show examples with correct MDM levels and corresponding documentation
-- For patient instructions: Include samples demonstrating your communication style
+          <h4 class="mt-6 mb-4">Optimizing Few-Shot Examples</h4>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; margin-top: var(--space-4);">
+              <thead>
+                <tr style="background-color: var(--color-bg-tertiary);">
+                  <th style="padding: var(--space-3); text-align: left; border: 1px solid var(--color-border);">Variable</th>
+                  <th style="padding: var(--space-3); text-align: left; border: 1px solid var(--color-border);">Clinical Implementation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Quantity</strong></td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">3-5 examples typically optimal; more risks overfitting</td>
+                </tr>
+                <tr>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Ordering</strong></td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Place most common scenarios first</td>
+                </tr>
+                <tr>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Distribution</strong></td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Match your actual case mix (e.g., 60% routine, 40% complex)</td>
+                </tr>
+                <tr>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Quality</strong></td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Create examples similar to what you actually see</td>
+                </tr>
+                <tr>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Format</strong></td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Consistent structure: Input → Output</td>
+                </tr>
+                <tr>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Diversity</strong></td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Include edge cases you encounter regularly</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
-### Optimizing Few-Shot Examples
+      <!-- Principle 2 -->
+      <div class="card mb-8">
+        <div class="card-header">
+          <h3 class="card-title">Principle 2: Documentation Brevity</h3>
+        </div>
+        <div class="card-body">
+          <p>Concise documentation serves both efficiency and safety:</p>
 
-| Variable | Clinical Implementation |
-| :--- | :--- |
-| **Quantity** | 3-5 examples typically optimal; more risks overfitting |
-| **Ordering** | Place most common scenarios first |
-| **Distribution** | Match your actual case mix (e.g., 60% routine, 40% complex) |
-| **Quality** | Create examples similar to what you actually see |
-| **Format** | Consistent structure: Input → Output |
-| **Diversity** | Include edge cases you encounter regularly |
+          <h4 class="mt-6 mb-4">Benefits:</h4>
+          <ul>
+            <li>Faster physician review (30-60 seconds vs 2-3 minutes)</li>
+            <li>Easier identification of errors or hallucinations</li>
+            <li>Reduced cognitive load during busy clinic days</li>
+            <li>More natural, physician-like language</li>
+          </ul>
 
-### Principle 2: Documentation Brevity
+          <h4 class="mt-6 mb-4">Implementation:</h4>
+          <ul>
+            <li>Use bullet points over paragraphs</li>
+            <li>Employ medical abbreviations appropriately</li>
+            <li>Eliminate redundant phrases</li>
+            <li>Focus on clinically relevant details only</li>
+          </ul>
+        </div>
+      </div>
 
-Concise documentation serves both efficiency and safety:
+      <!-- Principle 3 -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Principle 3: Modular Prompt Architecture</h3>
+        </div>
+        <div class="card-body">
+          <p>Complex multi-function prompts fail because they multiply complexity exponentially. Instead, chain specialized prompts:</p>
 
-**Benefits:**
-- Faster physician review (30-60 seconds vs 2-3 minutes)
-- Easier identification of errors or hallucinations
-- Reduced cognitive load during busy clinic days
-- More natural, physician-like language
+          <h4 class="mt-6 mb-4">Workflow Example:</h4>
+          <ol>
+            <li>Prompt 1: Raw transcript → Structured HPI</li>
+            <li>Prompt 2: Examination findings → Formatted physical exam</li>
+            <li>Prompt 3: Combined data → Assessment & Plan</li>
+            <li>Prompt 4: A&P → Billing analysis</li>
+          </ol>
 
-**Implementation:**
-- Use bullet points over paragraphs
-- Employ medical abbreviations appropriately
-- Eliminate redundant phrases
-- Focus on clinically relevant details only
+          <h4 class="mt-6 mb-4">Advantages:</h4>
+          <ul>
+            <li>Each prompt can be refined independently</li>
+            <li>Failures isolate to specific functions</li>
+            <li>Easier troubleshooting and iteration</li>
+            <li>Mix and match based on encounter type</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-### Principle 3: Modular Prompt Architecture
+<!-- Advanced Techniques -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="mb-8">Advanced Techniques</h2>
 
-Complex multi-function prompts fail because they multiply complexity exponentially. Instead, chain specialized prompts:
+      <div class="grid grid-cols-1 grid-cols-2">
 
-**Workflow example:**
-1. Prompt 1: Raw transcript → Structured HPI
-2. Prompt 2: Examination findings → Formatted physical exam
-3. Prompt 3: Combined data → Assessment & Plan
-4. Prompt 4: A&P → Billing analysis
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Task Statement Optimization</h3>
+          </div>
+          <div class="card-body">
+            <p>Begin every prompt with a clear, action-oriented instruction:</p>
+            <p class="mt-4"><span class="badge badge-success">✅ Good</span></p>
+            <p class="text-sm">"Convert the following transcript into a problem-based assessment and plan"</p>
+            <p class="mt-4"><span style="background: #fee2e2; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">❌ Avoid</span></p>
+            <p class="text-sm">"You are a physician who needs to write notes"</p>
+          </div>
+        </div>
 
-**Advantages:**
-- Each prompt can be refined independently
-- Failures isolate to specific functions
-- Easier troubleshooting and iteration
-- Mix and match based on encounter type
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Conditional Logic Implementation</h3>
+          </div>
+          <div class="card-body">
+            <p>Use ICD-10 codes as triggers for boilerplate text:</p>
+            <pre class="mt-4"><code>If diagnosis includes J06.9, add:
+"Supportive care discussed
+including rest, fluids, and
+symptomatic relief."</code></pre>
+          </div>
+        </div>
 
-## Advanced Techniques
+      </div>
 
-### Task Statement Optimization
-Begin every prompt with a clear, action-oriented instruction:
-- ✅ "Convert the following transcript into a problem-based assessment and plan"
-- ❌ "You are a physician who needs to write notes"
+      <div class="card mt-6">
+        <div class="card-header">
+          <h3 class="card-title">Format Rules Hierarchy</h3>
+        </div>
+        <div class="card-body">
+          <ol>
+            <li><strong>Few-shot examples</strong> (highest priority)</li>
+            <li><strong>Task statement</strong></li>
+            <li><strong>Explicit formatting rules</strong> (lowest priority, use sparingly)</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-### Conditional Logic Implementation
-Use ICD-10 codes as triggers for boilerplate text:
-```
-If diagnosis includes J06.9, add: "Supportive care discussed including rest, fluids, and symptomatic relief."
-```
+<!-- Safety and Compliance -->
+<section class="section bg-tertiary">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
+        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">⚠️ Safety and Compliance</h2>
 
-### Format Rules Hierarchy
-1. Few-shot examples (highest priority)
-2. Task statement
-3. Explicit formatting rules (lowest priority, use sparingly)
+        <h3 class="mb-4">Critical Reminders</h3>
+        <ul>
+          <li><strong>Always review</strong> AI output before finalizing</li>
+          <li><strong>Maintain responsibility</strong> for clinical accuracy</li>
+          <li><strong>Document within</strong> approved institutional tools only</li>
+          <li><strong>Expect 90-95% accuracy</strong>, not perfection</li>
+        </ul>
 
-## Safety and Compliance
+        <h3 class="mt-6 mb-4">Quality Assurance Checklist</h3>
+        <ul style="list-style: none; padding-left: 0;">
+          <li>☐ Factual accuracy verified</li>
+          <li>☐ Medications and dosages confirmed</li>
+          <li>☐ Follow-up instructions appropriate</li>
+          <li>☐ Billing documentation sufficient</li>
+          <li>☐ No hallucinated findings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-### Critical Reminders
-- **Always review** AI output before finalizing
-- **Maintain responsibility** for clinical accuracy
-- **Document within** approved institutional tools only
-- **Expect 90-95% accuracy**, not perfection
+<!-- Getting Started -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="text-center mb-8">Getting Started</h2>
 
-### Quality Assurance Checklist
-- [ ] Factual accuracy verified
-- [ ] Medications and dosages confirmed
-- [ ] Follow-up instructions appropriate
-- [ ] Billing documentation sufficient
-- [ ] No hallucinated findings
+      <div class="card">
+        <div class="card-body">
+          <ol style="line-height: var(--line-height-relaxed);">
+            <li><strong>Select one workflow</strong> (e.g., Assessment & Plan only)</li>
+            <li><strong>Gather 5 examples</strong> from your recent notes</li>
+            <li><strong>Create initial prompt</strong> using our template</li>
+            <li><strong>Test on 10 encounters</strong> before scaling</li>
+            <li><strong>Iterate based</strong> on specific failures</li>
+          </ol>
+        </div>
+      </div>
 
-## Getting Started
+      <div class="text-center mt-8">
+        <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Browse Prompt Library →</a>
+        <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator →</a>
+      </div>
 
-1. **Select one workflow** (e.g., Assessment & Plan only)
-2. **Gather 5 examples** from your recent notes
-3. **Create initial prompt** using our template
-4. **Test on 10 encounters** before scaling
-5. **Iterate based** on specific failures
+      <!-- Additional Resources -->
+      <div class="text-center mt-8 text-secondary">
+        <p>Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
+      </div>
 
-### Additional Resources
-*Questions about setup or best practices? Ask in our [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions) or share your workflow on the [Contributions page](https://physicianpromptengineering.com/contributions.html).*
+      <!-- Share Your Prompt CTA -->
+      <div style="background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin-top: 3rem;">
+        <h3 style="color: var(--color-primary); font-size: var(--font-size-xl); margin-bottom: var(--space-4); text-align: center;">Share Your Prompt</h3>
+        <p style="text-align: center; margin-bottom: var(--space-4);">
+          Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
+        </p>
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt →</a>
+        </div>
+      </div>
 
----
-*Reference: Adapted from Schulhoff, S. "The Prompt Report: A Systematic Survey of Prompting Techniques" (2024)*
-
-<div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
-    <h3 style="color: #2a7ae2; font-size: 1.1em; margin-bottom: 10px; text-align: center;">Share Your Prompt</h3>
-    <p style="text-align: center;">Refined a prompt that consistently delivers quality output? Consider sharing it on the <a href="https://physicianpromptengineering.com/contributions" style="color: #2a7ae2; font-weight: 600;">contributions page</a>. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.</p>
-</div>
+      <p class="text-sm text-secondary text-center mt-8">
+        <em>Reference: Adapted from Schulhoff, S. "The Prompt Report: A Systematic Survey of Prompting Techniques" (2024)</em>
+      </p>
+    </div>
+  </div>
+</section>
