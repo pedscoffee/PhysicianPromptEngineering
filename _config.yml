@@ -3,13 +3,8 @@ description: >-
   Physician Prompt Engineering offers open-source clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems.
 url: https://physicianpromptengineering.com
 
-# Using custom theme (not minima)
-# theme: minima
-
-# SASS configuration for custom design system
-sass:
-  sass_dir: _sass
-  style: compressed
+# Set the theme
+theme: minima
 
 # Header navigation
 # header_pages:
@@ -20,17 +15,20 @@ sass:
   #- snippet-manager.md
   #- contributions.md
 
+# Minima-specific settings
+minima:
+  skin: classic
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-
-# --- Prompt Collection ---
+  
+# --- New Prompt Collection ---
 # This tells Jekyll to look for a folder named "_prompts"
-# and treat each file inside as a prompt.
+# and treat each file inside as a prompt. 
 collections:
   prompts:
     output: true
     permalink: /prompts/:path/
 
-# Google Analytics
 google_analytics: G-VNYGW8RWMY
