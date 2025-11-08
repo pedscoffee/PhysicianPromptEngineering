@@ -23,13 +23,14 @@ sass:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-  
-# --- New Prompt Collection ---
+
+# --- Prompt Collection ---
 # This tells Jekyll to look for a folder named "_prompts"
-# and treat each file inside as a prompt. 
+# and treat each file inside as a prompt.
 collections:
   prompts:
     output: true
     permalink: /prompts/:path/
 
+# Google Analytics
 google_analytics: G-VNYGW8RWMY
