@@ -33,7 +33,7 @@ permalink: /blog/
                 <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
               </div>
               <div class="card-footer">
-                <span class="btn btn-sm btn-primary">Read Article →</span>
+                <span class="btn btn-sm btn-primary">Read Article</span>
               </div>
             </article>
           </a>
@@ -76,7 +76,6 @@ permalink: /blog/
     <div class="grid grid-cols-1 grid-cols-3">
 
       <div class="card">
-        <div class="card-icon card-icon-primary">📚</div>
         <div class="card-header">
           <h3 class="card-title">Prompt Library</h3>
         </div>
@@ -84,12 +83,11 @@ permalink: /blog/
           <p>Browse our collection of physician-tested prompts for clinical documentation automation.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library" class="btn btn-sm btn-primary">Explore Library →</a>
+          <a href="{{ site.baseurl }}/prompt-library" class="btn btn-sm btn-primary">Explore Library</a>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-icon card-icon-secondary">🎯</div>
         <div class="card-header">
           <h3 class="card-title">Best Practices</h3>
         </div>
@@ -97,12 +95,11 @@ permalink: /blog/
           <p>Learn the complete methodology for effective clinical prompt engineering.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/best-practices" class="btn btn-sm btn-secondary">Read Guide →</a>
+          <a href="{{ site.baseurl }}/best-practices" class="btn btn-sm btn-secondary">Read Guide</a>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-icon card-icon-accent">🛠️</div>
         <div class="card-header">
           <h3 class="card-title">Prompt Generator</h3>
         </div>
@@ -110,7 +107,7 @@ permalink: /blog/
           <p>Create custom A/P prompts tailored to your specific documentation style.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-sm btn-accent">Try Generator →</a>
+          <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-sm btn-accent">Try Generator</a>
         </div>
       </div>
 

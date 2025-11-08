@@ -1,123 +1,155 @@
 ---
-layout: page
+layout: default
 title: Prompt Library
 description: Access a free library of production-ready clinical LLM prompts. Copy and paste prompts for A/P formatting, billing analysis, AVS generation, and more.
 ---
 
 <style>
-  .prompt-entry {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
-  .prompt-header {
-    background-color: #f9f9f9;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  .prompt-header h2 {
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-  }
-  .prompt-body {
-    padding: 1.5rem;
-  }
   .prompt-code-wrapper {
     position: relative;
+    margin-top: var(--space-4);
   }
   .prompt-code-wrapper pre {
-    background-color: #fdfdfd;
-    border: 1px solid #ddd;
-    padding: 1rem;
-    white-space: pre-wrap; /* Allow prompt text to wrap */
-    word-wrap: break-word; /* Break long words */
-    max-height: 300px;
-    overflow-y: auto;  
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    padding: var(--space-4);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
   }
-  .copy-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.85rem;
+  .prompt-actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
   }
-  .copy-button:hover {
-    background-color: #0056b3;
+  .prompt-meta {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
   }
-
-  .download-button {
-    position: absolute;
-    top: 10px;
-    right: 140px;  /* Position it to the left of the copy button */
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.85rem;
+  .prompt-meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
   }
-  .download-button:hover {
-    background-color: #218838;
+  @media screen and (max-width: 640px) {
+    .prompt-actions {
+      flex-direction: column;
+    }
+    .prompt-actions .btn {
+      width: 100%;
+    }
   }
 </style>
 
-# Clinical Documentation Prompt Library
-{% assign sorted_prompts = site.prompts | sort: "order" %}
-{% for prompt in sorted_prompts %}
-- [{{ prompt.title }}](#{{ prompt.title | slugify }})
-{% endfor %}
-
-*Visit our [GitHub repository](https://github.com/pedscoffee/PhysicianPromptEngineering/) for the complete collection or [contribute your own]({{ site.baseurl }}/contributions).*
-
----
-
-<div class="embed-container">
-  <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+<!-- Hero Section -->
+<div class="hero">
+  <div class="container">
+    <h1 class="hero-title">Clinical Documentation Prompt Library</h1>
+    <p class="hero-subtitle">
+      Production-ready prompts for AI-powered clinical documentation. Copy, customize, and deploy.
+    </p>
+  </div>
 </div>
 
----
-
-{% assign sorted_prompts = site.prompts | sort: "order" %}
-{% for prompt in sorted_prompts %}
-  <div class="prompt-entry" id="{{ prompt.title | slugify }}">
-    <div class="prompt-header">
-      <h2>{{ prompt.title }}</h2>
-      <p>{{ prompt.description }}</p>
-    </div>
-    <div class="prompt-body">
-      <p><strong>Specialty:</strong> {{ prompt.specialty }}</p>
-      <p><strong>Character Count:</strong> {{ prompt.char_count }} / 5,000</p>
-      <div class="prompt-code-wrapper">
-        <button class="download-button" onclick="downloadPrompt(this)">Download .txt</button>
-        <button class="copy-button" onclick="copyToClipboard(this)">Copy Prompt</button>
-        <pre><code>{{ prompt.content | escape }}</code></pre>
+<!-- Quick Navigation -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="text-center mb-6">Browse Prompts</h2>
+      <div style="background: var(--color-bg-primary); padding: var(--space-5); border-radius: var(--radius-lg);">
+        <ul style="columns: 2; column-gap: var(--space-6); list-style: none; padding: 0; margin: 0;">
+          {% assign sorted_prompts = site.prompts | sort: "order" %}
+          {% for prompt in sorted_prompts %}
+          <li style="margin-bottom: var(--space-2); break-inside: avoid;">
+            <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="text-center mt-6">
+        <p class="text-secondary">
+          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/contributions" class="text-primary">contribute your own</a>.
+        </p>
       </div>
     </div>
   </div>
-{% endfor %}
+</section>
 
-<!-- Sample prompt for demonstration if collection is empty -->
-{% if site.prompts.size == 0 %}
-<div class="prompt-entry">
-  <div class="prompt-header">
-    <h2>Assessment & Plan Formatter (Sample)</h2>
-    <p>Transforms verbose AI scribe output into concise, problem-based documentation</p>
+<!-- Newsletter -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center mb-6">Get Notified of New Prompts</h2>
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
   </div>
-  <div class="prompt-body">
-    <p><strong>Specialty:</strong> General Medicine</p>
-    <p><strong>Character Count:</strong> 850 / 5,000</p>
-    
-    <div class="prompt-code-wrapper">
-      <button class="download-button" onclick="downloadPrompt(this)">Download .txt</button>
-      <button class="copy-button" onclick="copyToClipboard(this)">Copy Prompt</button>
-      <pre><code>Transform the following clinical note into a concise Assessment & Plan format.
+</section>
+
+<!-- Prompts -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+
+      {% assign sorted_prompts = site.prompts | sort: "order" %}
+      {% for prompt in sorted_prompts %}
+      <div class="card mb-8" id="{{ prompt.title | slugify }}">
+        <div class="card-header">
+          <h2 class="card-title">{{ prompt.title }}</h2>
+          <p class="card-subtitle">{{ prompt.description }}</p>
+        </div>
+        <div class="card-body">
+          <div class="prompt-meta">
+            <div class="prompt-meta-item">
+              <strong>Specialty:</strong> {{ prompt.specialty }}
+            </div>
+            <div class="prompt-meta-item">
+              <strong>Character Count:</strong> {{ prompt.char_count }} / 5,000
+            </div>
+          </div>
+
+          <div class="prompt-actions">
+            <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
+            <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
+          </div>
+
+          <div class="prompt-code-wrapper">
+            <pre><code>{{ prompt.content | escape }}</code></pre>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Sample prompt for demonstration if collection is empty -->
+      {% if site.prompts.size == 0 %}
+      <div class="card" id="sample-prompt">
+        <div class="card-header">
+          <h2 class="card-title">Assessment & Plan Formatter (Sample)</h2>
+          <p class="card-subtitle">Transforms verbose AI scribe output into concise, problem-based documentation</p>
+        </div>
+        <div class="card-body">
+          <div class="prompt-meta">
+            <div class="prompt-meta-item">
+              <strong>Specialty:</strong> General Medicine
+            </div>
+            <div class="prompt-meta-item">
+              <strong>Character Count:</strong> 850 / 5,000
+            </div>
+          </div>
+
+          <div class="prompt-actions">
+            <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
+            <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
+          </div>
+
+          <div class="prompt-code-wrapper">
+            <pre><code>Transform the following clinical note into a concise Assessment & Plan format.
 
 Requirements:
 - List each problem as a numbered item with bold heading
@@ -136,23 +168,44 @@ Example format:
    • Annual eye exam due
 
 [Insert your clinical note here]</code></pre>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
     </div>
   </div>
-</div>
-{% endif %}
+</section>
+
+<!-- CTA Section -->
+<section class="section">
+  <div class="container text-center">
+    <h2 class="mb-6">Have a Prompt to Share?</h2>
+    <p class="text-lg text-secondary mb-8" style="max-width: 700px; margin-left: auto; margin-right: auto;">
+      Help the community by contributing your tested prompts to our library.
+    </p>
+    <div class="hero-cta">
+      <a href="{{ site.baseurl }}/contributions" class="btn btn-primary btn-lg">Contribute Your Prompt</a>
+      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Learn Best Practices</a>
+    </div>
+  </div>
+</section>
 
 <script>
 function copyToClipboard(button) {
-  // The <pre><code> is the next element after the button
-  const wrapper = button.parentElement;
-  const pre = wrapper.querySelector('pre');
-  const code = pre.querySelector('code');
+  const card = button.closest('.card');
+  const code = card.querySelector('.prompt-code-wrapper code');
   const text = code.innerText;
-  
+
   navigator.clipboard.writeText(text).then(function() {
+    const originalText = button.innerText;
     button.innerText = 'Copied!';
+    button.classList.add('btn-success');
+    button.classList.remove('btn-primary');
     setTimeout(function() {
-      button.innerText = 'Copy Prompt';
+      button.innerText = originalText;
+      button.classList.remove('btn-success');
+      button.classList.add('btn-primary');
     }, 2000);
   }, function(err) {
     button.innerText = 'Failed';
@@ -161,17 +214,13 @@ function copyToClipboard(button) {
 }
 
 function downloadPrompt(button) {
-  // The <pre><code> is in the same wrapper as the button
-  const wrapper = button.parentElement;
-  const pre = wrapper.querySelector('pre');
-  const code = pre.querySelector('code');
+  const card = button.closest('.card');
+  const code = card.querySelector('.prompt-code-wrapper code');
   const text = code.innerText;
-  
-  // Get the prompt title from the header
-  const promptEntry = button.closest('.prompt-entry');
-  const title = promptEntry.querySelector('.prompt-header h2').innerText;
+
+  const title = card.querySelector('.card-title').innerText;
   const filename = title.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.txt';
-  
+
   const blob = new Blob([text], { type: 'text/plain' });
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -179,12 +228,11 @@ function downloadPrompt(button) {
   a.download = filename;
   a.click();
   window.URL.revokeObjectURL(url);
-  
+
+  const originalText = button.innerText;
   button.innerText = 'Downloaded!';
   setTimeout(function() {
-    button.innerText = 'Download .txt';
+    button.innerText = originalText;
   }, 2000);
 }
 </script>
-
-
