@@ -382,17 +382,45 @@ permalink: /dot-phrase-library/
   </div>
 </div>
 
-<div class="info-section">
-  <h3>Welcome to the Dot Phrase Library</h3>
-  <p>This library contains clinical dot phrases (smart phrases) that you can copy directly into your EMR. All formatting is preserved when you copy.</p>
-  <ul>
-    <li>Use the search bar to find phrases by keyword</li>
-    <li>Filter by group or tag to browse specific categories</li>
-    <li>Click "Copy" to copy a phrase with formatting preserved</li>
-    <li>Click "Download" to save individual phrases as HTML files</li>
-    <li>Click "Export Group" to download entire groups or subgroups</li>
-  </ul>
-</div>
+<!-- Three Core Principles - Cards -->
+<section class="section bg-secondary">
+  <div class="container">
+    <h2 class="text-center mb-8">Inbox and A/P Prompt Automation</h2>
+    <div class="grid grid-cols-1 grid-cols-3">
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Inbox Zero meets Real Life</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Use an organized system of dot phrases to for quick responses</strong>></p>
+          <p class="text-sm text-secondary">Don't type the same types of messages over and over.  Use generalizable task focused messages based on general themes.  It requires a bit of an investment to set up but you'll get that time back within a week.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Guide your LLM Editor</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Incorporate your five favorite dot phrases into your LLM editor to further personalize your note automation.</strong></p>
+          <p class="text-sm text-secondary">Remember brevity improves quality.  Don't overbloat your phrases or it will degrade LLM performance.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">How to Use</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Filter by group or tag and use the search bar to find phrases by keyword</strong></p>
+          <p class="text-sm text-secondary">Copy, Download, or Export groups or subgroups.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <div class="search-filter-bar">
   <input 
