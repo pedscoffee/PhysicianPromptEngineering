@@ -48,8 +48,52 @@ permalink: /dot-phrase-library/
     border-color: var(--color-primary);
   }
 
+  .tag-filter-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .tag-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 2px solid transparent;
+  }
+
+  .tag-badge:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .tag-badge.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary-dark);
+  }
+
+  .tags-in-card {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: var(--space-2);
+  }
+
+  .tags-in-card .tag-badge {
+    font-size: var(--font-size-xs);
+    padding: 2px 8px;
+    cursor: default;
+  }
+
   .group-section {
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
   }
 
   .group-header {
@@ -61,7 +105,7 @@ permalink: /dot-phrase-library/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
     transition: all var(--transition-base);
     box-shadow: var(--shadow-md);
   }
@@ -75,6 +119,48 @@ permalink: /dot-phrase-library/
     margin: 0;
     font-size: var(--font-size-2xl);
     color: white;
+  }
+
+  /* Nested group styling */
+  .group-section.level-1 {
+    margin-left: 0;
+  }
+
+  .group-section.level-2 {
+    margin-left: var(--space-6);
+  }
+
+  .group-section.level-3 {
+    margin-left: calc(var(--space-6) * 2);
+  }
+
+  .group-section.level-4 {
+    margin-left: calc(var(--space-6) * 3);
+  }
+
+  .group-header.level-1 {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+
+  .group-header.level-2 {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    font-size: var(--font-size-xl);
+  }
+
+  .group-header.level-3 {
+    background: linear-gradient(135deg, #5da3f0 0%, #4a90e2 100%);
+    font-size: var(--font-size-lg);
+  }
+
+  .group-header.level-4 {
+    background: linear-gradient(135deg, #7eb8f5 0%, #5da3f0 100%);
+    font-size: var(--font-size-base);
+  }
+
+  .group-header.level-2 h2,
+  .group-header.level-3 h2,
+  .group-header.level-4 h2 {
+    font-size: inherit;
   }
 
   .group-count {
@@ -101,7 +187,7 @@ permalink: /dot-phrase-library/
   }
 
   .group-content {
-    max-height: 5000px;
+    max-height: 10000px;
     overflow: hidden;
     transition: max-height var(--transition-slow), opacity var(--transition-slow);
     opacity: 1;
@@ -250,6 +336,12 @@ permalink: /dot-phrase-library/
       flex-direction: column;
       align-items: flex-end;
     }
+
+    .group-section.level-2,
+    .group-section.level-3,
+    .group-section.level-4 {
+      margin-left: var(--space-4);
+    }
   }
 
   .info-section {
@@ -261,358 +353,603 @@ permalink: /dot-phrase-library/
     border-left: 4px solid var(--color-primary);
   }
 
-  .info-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .info-section h3 {
+    margin-top: 0;
+    color: var(--color-primary);
+  }
+
+  .info-section p {
     margin-bottom: 10px;
+    line-height: 1.6;
   }
 
-  .info-header h3 {
-    color: var(--color-primary);
-    margin: 0;
-    font-size: var(--font-size-lg);
+  .info-section ul {
+    margin-left: 20px;
   }
 
-  .read-more-btn {
-    background: none;
-    border: none;
-    color: var(--color-primary);
-    cursor: pointer;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius-md);
-    transition: background var(--transition-fast);
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
+  .info-section li {
+    margin-bottom: 8px;
   }
-
-  .read-more-btn:hover {
-    background: var(--color-primary-light);
-  }
-
-  .read-more-arrow {
-    transition: transform var(--transition-base);
-    display: inline-block;
-  }
-
-  .read-more-arrow.rotated {
-    transform: rotate(180deg);
-  }
-
-  .info-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transition-slow), opacity var(--transition-slow);
-    opacity: 0;
-  }
-
-  .info-content.expanded {
-    max-height: 500px;
-    opacity: 1;
-  }
-
-  .info-content p {
-    margin-bottom: var(--space-3);
-    color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
-  }
-
-  .info-content ul {
-    margin-left: var(--space-5);
-    margin-bottom: var(--space-3);
-    color: var(--color-text-secondary);
-  }
-
-  .info-content li {
-    margin-bottom: var(--space-2);
-  }
-
-  .info-cta {
-    display: flex;
-    gap: var(--space-3);
-    margin-top: var(--space-4);
-    flex-wrap: wrap;
-  }
-
 </style>
 
-<!-- Hero Section -->
-<div class="hero">
-  <div class="container">
-    <h1 class="hero-title">Clinical Dot Phrase Library</h1>
-    <p class="hero-subtitle">
-      Copy formatted dot phrases directly into your EMR. Organized by clinical workflow.
-    </p>
-  </div>
+<div class="info-section">
+  <h3>Welcome to the Dot Phrase Library</h3>
+  <p>This library contains clinical dot phrases (smart phrases) that you can copy directly into your EMR. All formatting is preserved when you copy.</p>
+  <ul>
+    <li>Use the search bar to find phrases by keyword</li>
+    <li>Filter by group or tag to browse specific categories</li>
+    <li>Click "Copy" to copy a phrase with formatting preserved</li>
+    <li>Click "Download" to save individual phrases as HTML files</li>
+    <li>Click "Export Group" to download entire groups or subgroups</li>
+  </ul>
 </div>
 
-<!-- Search and Filter Bar -->
-<section class="section">
-  <div class="container">
-    <div class="search-filter-bar">
-      <input 
-        type="text" 
-        id="searchInput" 
-        class="search-input" 
-        placeholder="🔍 Search dot phrases..."
-      >
-      <select id="groupFilter" class="filter-select">
-        <option value="">All Groups</option>
-      </select>
-      <button id="expandAllBtn" class="btn btn-secondary">Expand All</button>
-      <button id="collapseAllBtn" class="btn btn-secondary">Collapse All</button>
-    </div>
+<div class="search-filter-bar">
+  <input 
+    type="text" 
+    id="searchInput" 
+    class="search-input" 
+    placeholder="Search dot phrases..."
+    onkeyup="renderDotPhrases()"
+  />
+  
+  <select id="groupFilter" class="filter-select" onchange="renderDotPhrases()">
+    <option value="">All Groups</option>
+  </select>
 
-    <!-- Info Section -->
-    <div class="info-section">
-      <div class="info-header">
-        <h3>📋 About the Dot Phrase Library</h3>
-        <button class="read-more-btn" onclick="toggleInfoSection()">
-          Learn More
-          <span class="read-more-arrow">▼</span>
-        </button>
-      </div>
-      <div id="infoContent" class="info-content">
-        <p>
-          The <strong>Dot Phrase Library</strong> provides ready-to-use clinical text snippets with preserved formatting. Perfect for:
-        </p>
-        <ul>
-          <li><strong>Physical Exams:</strong> Standardized normal findings you can copy instantly</li>
-          <li><strong>Patient Communication:</strong> Pre-written responses for common inbox messages</li>
-          <li><strong>Clinical Documentation:</strong> Templates for procedures, assessments, and follow-ups</li>
-        </ul>
-        <p>
-          <strong>How to use:</strong> Browse or search for the dot phrase you need, click "Copy," and paste directly into your EMR. All formatting (bold, italics, bullets) is preserved.
-        </p>
-        <p>
-          <strong>Important:</strong> Always review content before using in patient care. These are templates meant to be customized for each individual patient. See our <a href="#disclaimer" class="text-primary">clinical responsibility disclaimer</a> for more information.
-        </p>
-        <div class="info-cta">
-          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">
-            📤 Contribute Your Dot Phrases
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <select id="tagFilter" class="filter-select" onchange="handleTagFilterChange()">
+    <option value="">All Tags</option>
+  </select>
+</div>
 
-<!-- Dot Phrases by Group -->
-<section class="section bg-secondary">
-  <div class="container">
-    <div id="dotphraseContainer">
-      <!-- Groups will be dynamically inserted here -->
-    </div>
-    <div id="noResults" class="no-results" style="display: none;">
-      <h3>No results found</h3>
-      <p>Try adjusting your search or filter criteria.</p>
-    </div>
-  </div>
-</section>
+<div id="activeTagsContainer" class="tag-filter-container" style="margin-bottom: 20px; display: none;">
+  <span style="font-weight: 600; color: var(--color-text-secondary);">Active filters:</span>
+  <div id="activeTags"></div>
+</div>
 
-<!-- Newsletter -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center mb-6">Get Notified of New Dot Phrases</h2>
-    <div class="embed-container">
-      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-    </div>
-  </div>
-</section>
+<div id="dotphraseContainer"></div>
 
-<!-- Disclaimer Section -->
-<section class="section bg-tertiary" id="disclaimer">
-  <div class="container">
-    <div style="max-width: 800px; margin: 0 auto; padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
-      <h3 style="color: var(--color-warning); margin-bottom: var(--space-4);">Clinical Responsibility Disclaimer</h3>
-      <p>
-        These dot phrases are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all content before finalizing patient records. Always verify accuracy, completeness, and appropriateness for each individual patient's situation.
-      </p>
-      <p style="margin-top: var(--space-4);">
-        <strong>Key Points:</strong>
-      </p>
-      <ul style="margin-left: var(--space-5); line-height: var(--line-height-relaxed);">
-        <li>Review all content before using in patient care</li>
-        <li>Customize templates for each individual patient</li>
-        <li>Verify accuracy and clinical appropriateness</li>
-        <li>Comply with institutional policies and guidelines</li>
-        <li>Maintain responsibility for all documentation</li>
-      </ul>
-    </div>
-  </div>
-</section>
+<div id="noResults" class="no-results" style="display: none;">
+  <h3>No phrases found</h3>
+  <p>Try adjusting your search or filters</p>
+</div>
 
-<!-- CTA Section -->
-<section class="section bg-secondary">
-  <div class="container text-center">
-    <h2 class="mb-6">Have Dot Phrases to Share?</h2>
-    <p class="text-lg text-secondary mb-8" style="max-width: 700px; margin-left: auto; margin-right: auto;">
-      Help the community by contributing your clinical dot phrases to our library.
-    </p>
-    <div class="hero-cta">
-      <a href="{{ site.baseurl }}/contributions" class="btn btn-primary btn-lg">Contribute Dot Phrases</a>
-      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Learn Best Practices</a>
-    </div>
-  </div>
-</section>
-
-<!-- Copy Notification -->
-<div id="copyNotification" class="copy-notification">✓ Copied to clipboard!</div>
+<div id="copyNotification" class="copy-notification">
+  ✓ Copied to clipboard!
+</div>
 
 <script>
 // =====================================================
-// INFO SECTION TOGGLE
-// =====================================================
-function toggleInfoSection() {
-  const content = document.getElementById('infoContent');
-  const arrow = document.querySelector('.read-more-arrow');
-  const button = document.querySelector('.read-more-btn');
-  
-  content.classList.toggle('expanded');
-  arrow.classList.toggle('rotated');
-  
-  if (content.classList.contains('expanded')) {
-    button.childNodes[0].textContent = 'Show Less';
-  } else {
-    button.childNodes[0].textContent = 'Learn More';
-  }
-}
-
-// =====================================================
 // DATA STRUCTURE
 // =====================================================
-// This will be populated by Jekyll
 const dotPhraseData = [
-  {% assign groups = site.dotphrases | group_by: "group" | sort: "name" %}
-  {% for group in groups %}
   {
-    name: "{{ group.name }}",
-    phrases: [
-      {% for phrase in group.items %}
+    name: "Inbox Management System",
+    level: 1,
+    subgroups: [
       {
-        title: "{{ phrase.title | escape }}",
-        shortcut: "{{ phrase.shortcut | escape }}",
-        content: `{{ phrase.content | strip_html | newline_to_br | strip_newlines }}`,
-        contentHtml: `{{ phrase.content }}`
-      }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
+        name: "Lab Results",
+        level: 2,
+        subgroups: [
+          {
+            name: "Normal Results",
+            level: 3,
+            phrases: [
+              {
+                title: "Normal Lab - Routine Follow-up",
+                shortcut: ".labnormal",
+                tags: ["labs", "normal", "follow-up", "routine"],
+                contentHtml: `<p>Lab results are within normal limits. Please call patient to inform them of normal results and schedule routine follow-up per protocol.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Normal Lab - No Action Needed",
+                shortcut: ".labnormalnoaction",
+                tags: ["labs", "normal", "no-action"],
+                contentHtml: `<p>Lab results are within normal limits. No further action needed at this time. Please document in chart and notify patient via portal message.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Normal Lab with Patient Education",
+                shortcut: ".labnormaled",
+                tags: ["labs", "normal", "education"],
+                contentHtml: `<p>Lab results are within normal limits. Please call patient to review results and provide education regarding ***. Schedule follow-up in *** months.</p><p>Thank you.</p>`
+              }
+            ]
+          },
+          {
+            name: "Abnormal Results",
+            level: 3,
+            phrases: [
+              {
+                title: "Abnormal Lab - Requires Callback",
+                shortcut: ".lababnormal",
+                tags: ["labs", "abnormal", "callback", "urgent"],
+                contentHtml: `<p>Lab results show ***. Please call patient within 24 hours to discuss results and arrange for ***. Document all attempts to reach patient.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Abnormal Lab - Repeat Needed",
+                shortcut: ".lababnormalrepeat",
+                tags: ["labs", "abnormal", "repeat"],
+                contentHtml: `<p>Lab results show ***. Please contact patient to schedule repeat labs in *** to confirm findings. Provide fasting instructions if applicable.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Abnormal Lab - Start Medication",
+                shortcut: ".lababnormalmed",
+                tags: ["labs", "abnormal", "medication"],
+                contentHtml: `<p>Lab results indicate need to initiate ***. Please call patient to discuss starting medication, send prescription to pharmacy, and schedule follow-up in ***.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Abnormal Lab - Adjust Medication",
+                shortcut: ".lababnormaladjust",
+                tags: ["labs", "abnormal", "medication", "adjustment"],
+                contentHtml: `<p>Lab results indicate need to adjust ***. Please call patient to discuss medication change, send updated prescription to pharmacy, and arrange follow-up labs in ***.</p><p>Thank you.</p>`
+              }
+            ]
+          },
+          {
+            name: "Critical Results",
+            level: 3,
+            phrases: [
+              {
+                title: "Critical Lab - Immediate Action",
+                shortcut: ".labcritical",
+                tags: ["labs", "critical", "urgent", "immediate"],
+                contentHtml: `<p><strong>CRITICAL VALUE: ***</strong></p><p>Please call patient immediately. If unable to reach patient after 3 attempts, notify provider. Patient may require immediate evaluation in ED. Document all communication attempts with timestamps.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Critical Lab - ED Referral",
+                shortcut: ".labcriticaled",
+                tags: ["labs", "critical", "emergency", "urgent"],
+                contentHtml: `<p><strong>CRITICAL VALUE: ***</strong></p><p>Please call patient immediately and advise to proceed to emergency department. If patient declines or cannot be reached, notify provider immediately. Document communication and patient decision.</p><p>Thank you.</p>`
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Imaging Results",
+        level: 2,
+        subgroups: [
+          {
+            name: "Normal Imaging",
+            level: 3,
+            phrases: [
+              {
+                title: "Normal Imaging - Routine",
+                shortcut: ".imagingnormal",
+                tags: ["imaging", "normal", "routine"],
+                contentHtml: `<p>Imaging results are normal. Please notify patient via portal message or phone call per their preference. No further imaging needed at this time.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Normal Imaging - Continue Current Plan",
+                shortcut: ".imagingnormalcontinue",
+                tags: ["imaging", "normal", "follow-up"],
+                contentHtml: `<p>Imaging results are reassuring and support continuing current management plan. Please call patient to review findings and confirm next follow-up appointment.</p><p>Thank you.</p>`
+              }
+            ]
+          },
+          {
+            name: "Abnormal Imaging",
+            level: 3,
+            phrases: [
+              {
+                title: "Abnormal Imaging - Requires Discussion",
+                shortcut: ".imagingabnormal",
+                tags: ["imaging", "abnormal", "callback"],
+                contentHtml: `<p>Imaging shows ***. Please call patient to schedule appointment for in-person discussion of findings and next steps.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Abnormal Imaging - Specialist Referral",
+                shortcut: ".imagingabnormalreferral",
+                tags: ["imaging", "abnormal", "referral", "specialist"],
+                contentHtml: `<p>Imaging demonstrates *** requiring specialist evaluation. Please call patient to discuss findings, submit referral to ***, and provide patient with specialist contact information.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Abnormal Imaging - Additional Studies",
+                shortcut: ".imagingabnormaladditional",
+                tags: ["imaging", "abnormal", "follow-up"],
+                contentHtml: `<p>Imaging findings of *** require additional workup. Please call patient to arrange for *** and schedule follow-up visit to review all results.</p><p>Thank you.</p>`
+              }
+            ]
+          },
+          {
+            name: "Critical Imaging",
+            level: 3,
+            phrases: [
+              {
+                title: "Critical Imaging - Urgent Action",
+                shortcut: ".imagingcritical",
+                tags: ["imaging", "critical", "urgent", "immediate"],
+                contentHtml: `<p><strong>URGENT IMAGING FINDING: ***</strong></p><p>Please call patient immediately to discuss findings and arrange urgent evaluation. If unable to reach patient, notify provider. Document all communication attempts.</p><p>Thank you.</p>`
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Patient Communications",
+        level: 2,
+        subgroups: [
+          {
+            name: "Medication Questions",
+            level: 3,
+            phrases: [
+              {
+                title: "Medication Side Effects",
+                shortcut: ".medsideeffect",
+                tags: ["medication", "side-effects", "callback"],
+                contentHtml: `<p>Patient reporting *** with ***. Please call to assess symptom severity and timing. Discuss continuing current medication vs. alternatives. Schedule follow-up as appropriate.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Medication Clarification",
+                shortcut: ".medclarify",
+                tags: ["medication", "education", "callback"],
+                contentHtml: `<p>Patient has questions about ***. Please call to clarify dosing instructions, timing, and administration. Confirm patient understanding and address any concerns.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Out of Medication",
+                shortcut: ".medout",
+                tags: ["medication", "refill", "callback"],
+                contentHtml: `<p>Patient reports being out of ***. Please call to verify current dosing, send refill to pharmacy, and review importance of medication adherence and timely refill requests.</p><p>Thank you.</p>`
+              }
+            ]
+          },
+          {
+            name: "General Questions",
+            level: 3,
+            phrases: [
+              {
+                title: "General Medical Question",
+                shortcut: ".questiongeneral",
+                tags: ["question", "education", "callback"],
+                contentHtml: `<p>Patient has questions regarding ***. Please call to address concerns and provide appropriate education. Offer to schedule visit if more detailed discussion needed.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Test Procedure Question",
+                shortcut: ".questionprocedure",
+                tags: ["question", "procedure", "education"],
+                contentHtml: `<p>Patient has questions about upcoming ***. Please call to explain procedure, preparation requirements, and what to expect. Provide written instructions via portal if available.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Portal Message Response",
+                shortcut: ".portalresponse",
+                tags: ["portal", "message", "communication"],
+                contentHtml: `<p>Please respond to patient portal message regarding ***. Provide clear, concise information and advise patient to call if further questions or if appointment needed.</p><p>Thank you.</p>`
+              }
+            ]
+          },
+          {
+            name: "Symptom Reports",
+            level: 3,
+            phrases: [
+              {
+                title: "New Symptom - Routine Triage",
+                shortcut: ".symptomnew",
+                tags: ["symptoms", "triage", "callback"],
+                contentHtml: `<p>Patient reporting ***. Please call to assess symptom onset, severity, and associated factors. Provide appropriate guidance and schedule visit if warranted.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Worsening Symptom",
+                shortcut: ".symptomworse",
+                tags: ["symptoms", "triage", "urgent", "callback"],
+                contentHtml: `<p>Patient reporting worsening ***. Please call within 2 hours to assess current status. Arrange urgent visit or direct to appropriate level of care based on clinical assessment.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Chronic Symptom Check-in",
+                shortcut: ".symptomchronic",
+                tags: ["symptoms", "chronic", "follow-up"],
+                contentHtml: `<p>Patient checking in regarding chronic ***. Please call to assess current symptom control and effectiveness of management plan. Adjust plan as needed and schedule follow-up.</p><p>Thank you.</p>`
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Appointments & Scheduling",
+        level: 2,
+        phrases: [
+          {
+            title: "Schedule Follow-up Visit",
+            shortcut: ".schedulefollow",
+            tags: ["scheduling", "follow-up", "appointment"],
+            contentHtml: `<p>Please call patient to schedule follow-up appointment in ***. Ensure patient has visit reason and any required preparation instructions.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Schedule Urgent Visit",
+            shortcut: ".scheduleurgent",
+            tags: ["scheduling", "urgent", "appointment"],
+            contentHtml: `<p>Please call patient to arrange urgent appointment within *** to address ***. If no urgent slots available, coordinate with provider for appropriate alternative.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Pre-Visit Preparation",
+            shortcut: ".previsitprep",
+            tags: ["scheduling", "appointment", "preparation"],
+            contentHtml: `<p>Patient has upcoming appointment on ***. Please call to confirm appointment and review required preparation including ***. Send written instructions via portal.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Missed Appointment Follow-up",
+            shortcut: ".missedappt",
+            tags: ["scheduling", "missed-appointment", "follow-up"],
+            contentHtml: `<p>Patient missed appointment on ***. Please call to reschedule and assess if patient is experiencing barriers to care. Emphasize importance of follow-up for ***.</p><p>Thank you.</p>`
+          }
+        ]
+      },
+      {
+        name: "Referrals & Coordination",
+        level: 2,
+        phrases: [
+          {
+            title: "Submit Specialist Referral",
+            shortcut: ".referralsubmit",
+            tags: ["referral", "specialist", "coordination"],
+            contentHtml: `<p>Please submit referral to *** for evaluation of ***. Provide specialist with relevant clinical information and recent test results. Give patient specialist contact information and expected timeline.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Referral Status Update",
+            shortcut: ".referralstatus",
+            tags: ["referral", "specialist", "follow-up"],
+            contentHtml: `<p>Please check status of referral to *** submitted on ***. Contact patient with update and assist with scheduling if referral approved. Follow up with insurance if delays.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Specialist Report Follow-up",
+            shortcut: ".specialistreport",
+            tags: ["referral", "specialist", "results", "callback"],
+            contentHtml: `<p>Specialist report received from ***. Please call patient to review findings and recommendations. Coordinate implementation of specialist's treatment plan and schedule appropriate follow-up.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Care Coordination - Multiple Providers",
+            shortcut: ".carecoordination",
+            tags: ["coordination", "specialist", "communication"],
+            contentHtml: `<p>Please coordinate care with *** regarding ***. Ensure all providers have current medication list and test results. Contact patient to review coordinated plan and next steps.</p><p>Thank you.</p>`
+          }
+        ]
+      },
+      {
+        name: "Test Ordering & Tracking",
+        level: 2,
+        phrases: [
+          {
+            title: "Order Labs",
+            shortcut: ".orderlabs",
+            tags: ["labs", "order", "scheduling"],
+            contentHtml: `<p>Please order *** for patient. Call to explain test purpose, any required preparation, and timeframe for completion. Provide lab requisition and instructions.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Order Imaging",
+            shortcut: ".orderimaging",
+            tags: ["imaging", "order", "scheduling"],
+            contentHtml: `<p>Please order *** for evaluation of ***. Call patient to explain test purpose and provide scheduling information. Ensure any required pre-authorization is obtained.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Outstanding Test Reminder",
+            shortcut: ".testreminder",
+            tags: ["labs", "imaging", "follow-up", "reminder"],
+            contentHtml: `<p>Patient has outstanding *** ordered on *** that has not been completed. Please call to remind patient and assist with scheduling if needed. Address any barriers to completion.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Tracking Pending Results",
+            shortcut: ".trackresults",
+            tags: ["results", "tracking", "follow-up"],
+            contentHtml: `<p>Please follow up on pending results for *** completed on ***. Contact facility if results not received. Call patient once results available to review findings.</p><p>Thank you.</p>`
+          }
+        ]
+      },
+      {
+        name: "Administrative Tasks",
+        level: 2,
+        phrases: [
+          {
+            title: "Form Completion Request",
+            shortcut: ".formrequest",
+            tags: ["administrative", "forms", "documentation"],
+            contentHtml: `<p>Patient requesting completion of *** form. Please obtain form from patient, review with provider for completion, and return to patient via ***.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Medical Records Request",
+            shortcut: ".recordsrequest",
+            tags: ["administrative", "records", "documentation"],
+            contentHtml: `<p>Please process medical records request for ***. Verify patient authorization, prepare requested records, and send via *** per patient preference. Notify patient once completed.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Insurance Authorization",
+            shortcut: ".authrequest",
+            tags: ["administrative", "authorization", "insurance"],
+            contentHtml: `<p>Prior authorization required for ***. Please gather required documentation, submit authorization request, and follow up with insurance. Keep patient updated on authorization status.</p><p>Thank you.</p>`
+          },
+          {
+            title: "Prescription Transfer",
+            shortcut: ".rxtransfer",
+            tags: ["medication", "transfer", "pharmacy"],
+            contentHtml: `<p>Patient requesting transfer of *** to *** pharmacy. Please contact current pharmacy to arrange transfer and confirm with new pharmacy that prescription is available for pickup.</p><p>Thank you.</p>`
+          }
+        ]
+      }
     ]
-  }{% unless forloop.last %},{% endunless %}
-  {% endfor %}
+  }
 ];
 
 // =====================================================
-// STATE
+// STATE MANAGEMENT
 // =====================================================
-let searchTerm = '';
-let selectedGroup = '';
 let expandedGroups = new Set();
+let activeTagFilters = new Set();
 
 // =====================================================
 // INITIALIZATION
 // =====================================================
 document.addEventListener('DOMContentLoaded', function() {
-  populateGroupFilter();
+  populateFilters();
   renderDotPhrases();
-  attachEventListeners();
-  
-  // Start with all groups expanded
-  dotPhraseData.forEach(group => expandedGroups.add(group.name));
 });
 
 // =====================================================
-// EVENT LISTENERS
+// FILTER POPULATION
 // =====================================================
-function attachEventListeners() {
-  document.getElementById('searchInput').addEventListener('input', handleSearch);
-  document.getElementById('groupFilter').addEventListener('change', handleGroupFilter);
-  document.getElementById('expandAllBtn').addEventListener('click', expandAll);
-  document.getElementById('collapseAllBtn').addEventListener('click', collapseAll);
+function populateFilters() {
+  const groupFilter = document.getElementById('groupFilter');
+  const tagFilter = document.getElementById('tagFilter');
+  
+  // Collect all groups (including nested)
+  const allGroups = [];
+  function collectGroups(groups, level = 1) {
+    groups.forEach(group => {
+      allGroups.push({ name: group.name, level: level });
+      if (group.subgroups) {
+        collectGroups(group.subgroups, level + 1);
+      }
+    });
+  }
+  collectGroups(dotPhraseData);
+  
+  // Populate group filter
+  allGroups.forEach(group => {
+    const option = document.createElement('option');
+    const indent = '　'.repeat(group.level - 1);
+    option.value = group.name;
+    option.textContent = indent + group.name;
+    groupFilter.appendChild(option);
+  });
+  
+  // Collect all unique tags
+  const allTags = new Set();
+  function collectTags(groups) {
+    groups.forEach(group => {
+      if (group.phrases) {
+        group.phrases.forEach(phrase => {
+          phrase.tags.forEach(tag => allTags.add(tag));
+        });
+      }
+      if (group.subgroups) {
+        collectTags(group.subgroups);
+      }
+    });
+  }
+  collectTags(dotPhraseData);
+  
+  // Populate tag filter
+  Array.from(allTags).sort().forEach(tag => {
+    const option = document.createElement('option');
+    option.value = tag;
+    option.textContent = tag;
+    tagFilter.appendChild(option);
+  });
 }
 
-function handleSearch(e) {
-  searchTerm = e.target.value.toLowerCase();
+// =====================================================
+// TAG FILTER HANDLING
+// =====================================================
+function handleTagFilterChange() {
+  const tagFilter = document.getElementById('tagFilter');
+  const selectedTag = tagFilter.value;
+  
+  if (selectedTag && !activeTagFilters.has(selectedTag)) {
+    activeTagFilters.add(selectedTag);
+    updateActiveTagsDisplay();
+    renderDotPhrases();
+  }
+  
+  // Reset select to "All Tags"
+  tagFilter.value = '';
+}
+
+function removeTagFilter(tag) {
+  activeTagFilters.delete(tag);
+  updateActiveTagsDisplay();
   renderDotPhrases();
 }
 
-function handleGroupFilter(e) {
-  selectedGroup = e.target.value;
-  renderDotPhrases();
+function updateActiveTagsDisplay() {
+  const container = document.getElementById('activeTagsContainer');
+  const activeTags = document.getElementById('activeTags');
+  
+  if (activeTagFilters.size === 0) {
+    container.style.display = 'none';
+    return;
+  }
+  
+  container.style.display = 'flex';
+  activeTags.innerHTML = Array.from(activeTagFilters).map(tag => 
+    `<span class="tag-badge active" onclick="removeTagFilter('${tag}')" style="cursor: pointer;" title="Click to remove">
+      ${escapeHtml(tag)} ✕
+    </span>`
+  ).join('');
 }
 
-function expandAll() {
-  dotPhraseData.forEach(group => expandedGroups.add(group.name));
-  updateGroupStates();
-}
-
-function collapseAll() {
-  expandedGroups.clear();
-  updateGroupStates();
-}
-
+// =====================================================
+// GROUP MANAGEMENT
+// =====================================================
 function toggleGroup(groupName) {
   if (expandedGroups.has(groupName)) {
     expandedGroups.delete(groupName);
   } else {
     expandedGroups.add(groupName);
   }
-  updateGroupStates();
+  renderDotPhrases();
 }
 
-function updateGroupStates() {
-  dotPhraseData.forEach(group => {
-    const header = document.querySelector(`[data-group="${group.name}"]`);
-    const content = document.getElementById(`group-content-${group.name.replace(/\s+/g, '-')}`);
-    
-    if (header && content) {
-      if (expandedGroups.has(group.name)) {
-        header.classList.remove('collapsed');
-        content.classList.remove('collapsed');
-      } else {
-        header.classList.add('collapsed');
-        content.classList.add('collapsed');
+function expandAll() {
+  function collectAllGroups(groups) {
+    groups.forEach(group => {
+      expandedGroups.add(group.name);
+      if (group.subgroups) {
+        collectAllGroups(group.subgroups);
       }
-    }
-  });
+    });
+  }
+  collectAllGroups(dotPhraseData);
+  renderDotPhrases();
+}
+
+function collapseAll() {
+  expandedGroups.clear();
+  renderDotPhrases();
 }
 
 // =====================================================
-// FILTERING
+// FILTERING LOGIC
 // =====================================================
-function populateGroupFilter() {
-  const select = document.getElementById('groupFilter');
-  dotPhraseData.forEach(group => {
-    const option = document.createElement('option');
-    option.value = group.name;
-    option.textContent = `${group.name} (${group.phrases.length})`;
-    select.appendChild(option);
-  });
-}
-
 function filterData() {
-  let filtered = dotPhraseData;
-
-  // Filter by selected group
-  if (selectedGroup) {
-    filtered = filtered.filter(group => group.name === selectedGroup);
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const groupFilter = document.getElementById('groupFilter').value;
+  
+  function filterGroups(groups) {
+    return groups.map(group => {
+      let filteredGroup = { ...group };
+      
+      // Filter phrases
+      if (group.phrases) {
+        filteredGroup.phrases = group.phrases.filter(phrase => {
+          const matchesSearch = !searchTerm || 
+            phrase.title.toLowerCase().includes(searchTerm) ||
+            phrase.shortcut.toLowerCase().includes(searchTerm) ||
+            phrase.contentHtml.toLowerCase().includes(searchTerm) ||
+            phrase.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+          
+          const matchesTags = activeTagFilters.size === 0 ||
+            Array.from(activeTagFilters).every(tag => phrase.tags.includes(tag));
+          
+          return matchesSearch && matchesTags;
+        });
+      }
+      
+      // Filter subgroups recursively
+      if (group.subgroups) {
+        filteredGroup.subgroups = filterGroups(group.subgroups);
+      }
+      
+      return filteredGroup;
+    }).filter(group => {
+      // Only include groups that match the group filter
+      const matchesGroupFilter = !groupFilter || group.name === groupFilter;
+      
+      // Check if group has any content (phrases or subgroups with content)
+      const hasContent = (group.phrases && group.phrases.length > 0) ||
+        (group.subgroups && group.subgroups.length > 0);
+      
+      return matchesGroupFilter && hasContent;
+    });
   }
-
-  // Filter by search term
-  if (searchTerm) {
-    filtered = filtered.map(group => ({
-      ...group,
-      phrases: group.phrases.filter(phrase => 
-        phrase.title.toLowerCase().includes(searchTerm) ||
-        phrase.shortcut.toLowerCase().includes(searchTerm) ||
-        phrase.content.toLowerCase().includes(searchTerm)
-      )
-    })).filter(group => group.phrases.length > 0);
-  }
-
-  return filtered;
+  
+  return filterGroups(dotPhraseData);
 }
 
 // =====================================================
@@ -622,50 +959,83 @@ function renderDotPhrases() {
   const container = document.getElementById('dotphraseContainer');
   const noResults = document.getElementById('noResults');
   const filtered = filterData();
-
-  if (filtered.length === 0 || filtered.every(g => g.phrases.length === 0)) {
+  
+  if (filtered.length === 0) {
     container.innerHTML = '';
     noResults.style.display = 'block';
     return;
   }
-
-  noResults.style.display = 'none';
   
-  container.innerHTML = filtered.map(group => {
-    const groupId = group.name.replace(/\s+/g, '-');
+  noResults.style.display = 'none';
+  container.innerHTML = renderGroups(filtered);
+}
+
+function renderGroups(groups, level = 1) {
+  return groups.map(group => {
     const isExpanded = expandedGroups.has(group.name);
+    const groupId = group.name.replace(/\s+/g, '-');
+    const totalPhrases = countPhrases(group);
+    
+    let content = '';
+    
+    // Render phrases if this group has any
+    if (group.phrases && group.phrases.length > 0) {
+      content += `<div class="dotphrase-grid">
+        ${group.phrases.map((phrase, index) => renderPhraseCard(phrase, group.name, index)).join('')}
+      </div>`;
+    }
+    
+    // Render subgroups if this group has any
+    if (group.subgroups && group.subgroups.length > 0) {
+      content += renderGroups(group.subgroups, level + 1);
+    }
     
     return `
-      <div class="group-section">
-        <div class="group-header ${isExpanded ? '' : 'collapsed'}" 
-             data-group="${group.name}"
+      <div class="group-section level-${level}">
+        <div class="group-header level-${level} ${isExpanded ? '' : 'collapsed'}" 
              onclick="toggleGroup('${group.name}')">
           <h2>${escapeHtml(group.name)}</h2>
           <div class="group-actions">
-            <span class="group-count">${group.phrases.length} phrase${group.phrases.length !== 1 ? 's' : ''}</span>
+            <span class="group-count">${totalPhrases} phrase${totalPhrases !== 1 ? 's' : ''}</span>
             <button class="btn btn-sm btn-secondary" onclick="event.stopPropagation(); exportGroup('${group.name}')">
-              📥 Export Group
+              📥 Export
             </button>
             <span class="expand-icon">▼</span>
           </div>
         </div>
         
         <div id="group-content-${groupId}" class="group-content ${isExpanded ? '' : 'collapsed'}">
-          <div class="dotphrase-grid">
-            ${group.phrases.map((phrase, index) => renderPhraseCard(phrase, group.name, index)).join('')}
-          </div>
+          ${content}
         </div>
       </div>
     `;
   }).join('');
 }
 
+function countPhrases(group) {
+  let count = 0;
+  if (group.phrases) {
+    count += group.phrases.length;
+  }
+  if (group.subgroups) {
+    group.subgroups.forEach(subgroup => {
+      count += countPhrases(subgroup);
+    });
+  }
+  return count;
+}
+
 function renderPhraseCard(phrase, groupName, index) {
+  const tagsHtml = phrase.tags.map(tag => 
+    `<span class="tag-badge">${escapeHtml(tag)}</span>`
+  ).join('');
+  
   return `
     <div class="dotphrase-card">
       <div class="dotphrase-header">
         <div class="dotphrase-title">${escapeHtml(phrase.title)}</div>
         <span class="dotphrase-shortcut">${escapeHtml(phrase.shortcut)}</span>
+        <div class="tags-in-card">${tagsHtml}</div>
       </div>
       
       <div class="dotphrase-content" id="phrase-content-${groupName}-${index}">
@@ -688,18 +1058,12 @@ function renderPhraseCard(phrase, groupName, index) {
 // COPY & EXPORT FUNCTIONS
 // =====================================================
 async function copyPhrase(groupName, index) {
-  const group = dotPhraseData.find(g => g.name === groupName);
-  if (!group) return;
+  const phrase = findPhrase(groupName, index);
+  if (!phrase) return;
   
-  const phrase = group.phrases[index];
   const contentElement = document.getElementById(`phrase-content-${groupName}-${index}`);
   
   try {
-    // Create a temporary element to hold the HTML
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = contentElement.innerHTML;
-    
-    // Copy both HTML and plain text to clipboard
     const blob = new Blob([contentElement.innerHTML], { type: 'text/html' });
     const plainText = contentElement.innerText;
     
@@ -713,7 +1077,6 @@ async function copyPhrase(groupName, index) {
     showCopyNotification();
   } catch (err) {
     console.error('Copy failed:', err);
-    // Fallback to plain text copy
     try {
       await navigator.clipboard.writeText(contentElement.innerText);
       showCopyNotification();
@@ -732,13 +1095,11 @@ function showCopyNotification() {
 }
 
 function downloadPhrase(groupName, index) {
-  const group = dotPhraseData.find(g => g.name === groupName);
-  if (!group) return;
+  const phrase = findPhrase(groupName, index);
+  if (!phrase) return;
   
-  const phrase = group.phrases[index];
   const contentElement = document.getElementById(`phrase-content-${groupName}-${index}`);
   
-  // Create HTML content for download
   const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -793,10 +1154,11 @@ function downloadPhrase(groupName, index) {
 }
 
 function exportGroup(groupName) {
-  const group = dotPhraseData.find(g => g.name === groupName);
+  const group = findGroup(groupName);
   if (!group) return;
   
-  // Create HTML content for the entire group
+  const allPhrases = collectAllPhrases(group);
+  
   const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -832,9 +1194,9 @@ function exportGroup(groupName) {
   </div>
   
   <h1 class="group-title">${escapeHtml(groupName)}</h1>
-  <p><strong>${group.phrases.length}</strong> dot phrase${group.phrases.length !== 1 ? 's' : ''}</p>
+  <p><strong>${allPhrases.length}</strong> dot phrase${allPhrases.length !== 1 ? 's' : ''}</p>
   
-  ${group.phrases.map((phrase, index) => `
+  ${allPhrases.map(phrase => `
     <div class="phrase">
       <div class="phrase-title">${escapeHtml(phrase.title)}</div>
       <div class="shortcut">${escapeHtml(phrase.shortcut)}</div>
@@ -864,8 +1226,47 @@ function exportGroup(groupName) {
 }
 
 // =====================================================
-// UTILITIES
+// HELPER FUNCTIONS
 // =====================================================
+function findGroup(groupName, groups = dotPhraseData) {
+  for (const group of groups) {
+    if (group.name === groupName) {
+      return group;
+    }
+    if (group.subgroups) {
+      const found = findGroup(groupName, group.subgroups);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+function findPhrase(groupName, index, groups = dotPhraseData) {
+  for (const group of groups) {
+    if (group.name === groupName && group.phrases) {
+      return group.phrases[index];
+    }
+    if (group.subgroups) {
+      const found = findPhrase(groupName, index, group.subgroups);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+function collectAllPhrases(group) {
+  let phrases = [];
+  if (group.phrases) {
+    phrases = [...group.phrases];
+  }
+  if (group.subgroups) {
+    group.subgroups.forEach(subgroup => {
+      phrases = phrases.concat(collectAllPhrases(subgroup));
+    });
+  }
+  return phrases;
+}
+
 function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
