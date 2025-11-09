@@ -587,7 +587,7 @@ permalink: /speech-to-text/
         <div class="privacy-banner" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-left: 4px solid #ff9800;">
             <span class="privacy-icon" style="color: #e65100;">⚠️</span>
             <div class="privacy-text">
-                <strong style="color: #e65100;">NOT FOR PATIENT DATA:</strong> This tool uses your device's speech-to-text API, which may send audio to external servers for processing. <strong>Do not use with any patient information or PHI.</strong> This is a demonstration tool for non-clinical content only (presentations, educational materials, personal notes, etc.).<a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a>
+                <strong style="color: #e65100;">NOT FOR PATIENT DATA:</strong> This tool uses your device's speech-to-text API, which may send audio to external servers for processing. <strong>Do not use with any patient information or PHI.</strong> This is a demonstration tool for non-clinical content only (presentations, educational materials, personal notes, etc.)  <a href="https://physicianpromptengineering.com/disclaimer/"> See Disclaimer.</a>
             </div>
         </div>
         

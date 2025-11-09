@@ -259,7 +259,6 @@ symptomatic relief."</code></pre>
         <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
 
         <h3 class="mb-4">Critical Reminders</h3>
-        <em><a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a></em>
         <ul>
           <li><strong>Always review</strong> AI output before finalizing</li>
           <li><strong>Maintain responsibility</strong> for clinical accuracy</li>
@@ -305,7 +304,7 @@ symptomatic relief."</code></pre>
 
       <!-- Additional Resources -->
       <div class="text-center mt-8 text-secondary">
-        <p>Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
+        <p><em><a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a></em>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
       </div>
 
       <!-- Share Your Prompt CTA -->
