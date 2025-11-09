@@ -423,12 +423,12 @@ permalink: /speech-to-text/
 <div class="container">
     <div class="header">
         <h1>Speech-to-Text Transcription Tool</h1>
-        <p>Privacy-first dictation tool for physicians. All processing happens in your browser—no data sent to servers.</p>
+        <p>Privacy-first dictation tool for physicians is the goal. A work in progress.</p>
         
         <div class="privacy-banner">
             <span class="privacy-icon">🔒</span>
             <div class="privacy-text">
-                <strong>100% Private & Secure:</strong> Powered by your Device's Speech to Text API.  NOTE: Like the rest of this site this is currently in BETA.  Do not share any patient or senstive informstion.
+                <strong>100% Still in process</strong> Powered by your Device's Speech to Text API.  NOTE: Like the rest of this site this is currently in BETA.  Do not share any patient or senstive informstion.
             </div>
         </div>
     </div>
