@@ -533,7 +533,7 @@ permalink: /speech-to-text/
             </div>
             <div class="tip-item">
                 <strong>Grant Microphone Permission</strong>
-                <p>Your browser will ask for microphone access. This is only used locally—nothing is recorded or transmitted.</p>
+                <p>Your browser will ask for microphone access.  None of the data is sent to this site but how your device API handles the information is dependnet on your device.  No patient information should be shared.</p>
             </div>
         </div>
     </div>
