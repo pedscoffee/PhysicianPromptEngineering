@@ -269,7 +269,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     <div style="max-width: 800px; margin: 0 auto; padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
       <h3 style="color: var(--color-warning); margin-bottom: var(--space-4);">Clinical Responsibility Notice</h3>
       <p>
-        These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records. Always verify accuracy, completeness, and compliance with institutional policies.
+        These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records. Always verify accuracy, completeness, and compliance with institutional policies.  <a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a>
       </p>
     </div>
   </div>
