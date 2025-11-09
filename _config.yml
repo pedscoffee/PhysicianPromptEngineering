@@ -30,5 +30,8 @@ collections:
   prompts:
     output: true
     permalink: /prompts/:path/
+  dotphrases:
+    output: false
+    permalink: /dotphrases/:path/
 
 google_analytics: G-VNYGW8RWMY
