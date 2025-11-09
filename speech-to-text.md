@@ -664,7 +664,7 @@ permalink: /speech-to-text/
         <textarea id="currentTranscript" placeholder="Speak now... Your transcription will appear here in real-time."></textarea>
         
         <div class="save-current-actions">
-            <input type="text" id="segmentTitle" placeholder="Enter title for this recording (e.g., 'Patient: John Doe')" 
+            <input type="text" id="segmentTitle" placeholder="Enter title for this recording (e.g., 'Thinking through this out loud')" 
                    style="flex: 1; padding: 10px 12px; border: 2px solid #e8e8e8; border-radius: 6px; font-size: 0.95em;">
             <button id="saveSegmentBtn" class="btn btn-success">
                 💾 Save & Start New
