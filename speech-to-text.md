@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Speech-to-Text Transcription Tool
-description: Privacy-first speech-to-text tool for physicians. Dictate notes, presentations, or documentation directly in your browser—100% client-side, no data sent to servers.
+title: Batch Speech-to-Text Transcription
+description: Browser-based batch transcription demonstration tool. For non-clinical use only (presentations, educational content). NOT for patient data or PHI.
 permalink: /speech-to-text/
 ---
 
@@ -298,32 +298,191 @@ permalink: /speech-to-text/
         border-radius: 6px;
     }
 
-    #transcript {
-        width: 100%;
-        min-height: 400px;
+    .current-recording-panel {
+        background: #fff9e6;
+        border: 2px solid #ffc107;
+        border-radius: 8px;
         padding: 20px;
-        border: 2px solid #e8e8e8;
+        margin-bottom: 30px;
+    }
+
+    .current-recording-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .current-recording-header h3 {
+        color: #e65100;
+        font-size: 1.1em;
+        margin: 0;
+    }
+
+    .recording-timer {
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #e65100;
+    }
+
+    #currentTranscript {
+        width: 100%;
+        min-height: 150px;
+        padding: 15px;
+        border: 2px solid #ffc107;
         border-radius: 6px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 1em;
         line-height: 1.8;
         resize: vertical;
         transition: border-color 0.2s;
+        background: white;
     }
 
-    #transcript:focus {
+    #currentTranscript:focus {
         outline: none;
-        border-color: #2a7ae2;
+        border-color: #ff9800;
     }
 
-    #transcript.listening {
+    #currentTranscript.listening {
         border-color: #dc3545;
         box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
     }
 
-    .interim-text {
-        color: #999;
-        font-style: italic;
+    .save-current-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .segments-panel {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .segments-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e8e8e8;
+    }
+
+    .segments-header h2 {
+        color: #2a7ae2;
+        font-size: 1.3em;
+    }
+
+    .segments-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .segment-card {
+        border: 2px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 20px;
+        transition: all 0.2s;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .segment-card:hover {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        border-color: #2a7ae2;
+    }
+
+    .segment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .segment-title {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #333;
+        flex: 1;
+    }
+
+    .segment-title input {
+        width: 100%;
+        border: 1px solid #e8e8e8;
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    .segment-meta {
+        display: flex;
+        gap: 10px;
+        font-size: 0.85em;
+        color: #666;
+        flex-wrap: wrap;
+    }
+
+    .segment-time {
+        background: #f0f0f0;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+
+    .segment-content {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.8;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .segment-content.editing textarea {
+        width: 100%;
+        min-height: 150px;
+        padding: 12px;
+        border: 2px solid #2a7ae2;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 1em;
+        line-height: 1.8;
+        resize: vertical;
+    }
+
+    .segment-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+    }
+
+    .empty-state-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .empty-state p {
+        margin-bottom: 10px;
     }
 
     .tips-panel {
@@ -422,19 +581,26 @@ permalink: /speech-to-text/
 
 <div class="container">
     <div class="header">
-        <h1>Speech-to-Text Transcription Tool</h1>
-        <p>Privacy-first dictation tool for physicians. All processing happens in your browser—no data sent to servers.</p>
+        <h1>Batch Speech-to-Text Transcription</h1>
+        <p>Browser-based batch dictation tool for non-clinical use. Demonstrates speech recognition capabilities for educational content, presentations, or personal notes.</p>
+        
+        <div class="privacy-banner" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-left: 4px solid #ff9800;">
+            <span class="privacy-icon" style="color: #e65100;">⚠️</span>
+            <div class="privacy-text">
+                <strong style="color: #e65100;">NOT FOR PATIENT DATA:</strong> This tool uses your device's speech-to-text API, which may send audio to external servers for processing. <strong>Do not use with any patient information or PHI.</strong> This is a demonstration tool for non-clinical content only (presentations, educational materials, personal notes, etc.).
+            </div>
+        </div>
         
         <div class="privacy-banner">
-            <span class="privacy-icon">🔒</span>
+            <span class="privacy-icon">ℹ️</span>
             <div class="privacy-text">
-                <strong>100% Private & Secure:</strong> Your voice and transcription never leave your device. All speech recognition happens locally in your browser using the Web Speech API. Perfect for HIPAA-compliant clinical documentation.
+                <strong>Why This Tool Exists:</strong> Speech recognition and transcription are discussed extensively elsewhere on this site as part of clinical AI workflows. This tool demonstrates the technical capabilities of browser-based speech-to-text for educational purposes, showing what's already possible with current technology.
             </div>
         </div>
     </div>
 
     <div class="browser-support-warning" id="browserWarning">
-        <strong>⚠️ Browser Compatibility Notice:</strong> This tool works best in Google Chrome, Microsoft Edge, or Safari. Firefox does not currently support the Web Speech API. If you're experiencing issues, please try Chrome or Edge.
+        <strong>⚠️ Browser Compatibility Notice:</strong> This tool works best in Google Chrome, Microsoft Edge, or Safari. Firefox does not currently support the Web Speech API. If you're experiencing issues, please try Chrome or Edge. <strong>Remember: This is a demonstration tool for non-clinical content only. Do not use with patient data.</strong>
     </div>
 
     <div class="controls-panel">
@@ -477,65 +643,101 @@ permalink: /speech-to-text/
 
         <div class="main-controls">
             <button id="startBtn" class="btn btn-primary">
-                🎤 Start Recording
+                🎤 Start New Recording
             </button>
             <button id="pauseBtn" class="btn btn-secondary" disabled>
                 ⏸️ Pause
             </button>
             <button id="stopBtn" class="btn btn-danger" disabled>
-                ⏹️ Stop
+                ⏹️ Stop & Save
             </button>
         </div>
     </div>
 
-    <div class="editor-panel">
-        <div class="editor-header">
-            <h2>Transcript</h2>
+    <!-- Current Recording Panel (only visible when recording) -->
+    <div class="current-recording-panel" id="currentRecordingPanel" style="display: none;">
+        <div class="current-recording-header">
+            <h3>🔴 Recording in Progress</h3>
+            <div class="recording-timer" id="recordingTimer">00:00</div>
+        </div>
+        
+        <textarea id="currentTranscript" placeholder="Speak now... Your transcription will appear here in real-time."></textarea>
+        
+        <div class="save-current-actions">
+            <input type="text" id="segmentTitle" placeholder="Enter title for this recording (e.g., 'Patient: John Doe')" 
+                   style="flex: 1; padding: 10px 12px; border: 2px solid #e8e8e8; border-radius: 6px; font-size: 0.95em;">
+            <button id="saveSegmentBtn" class="btn btn-success">
+                💾 Save & Start New
+            </button>
+        </div>
+    </div>
+
+    <!-- Saved Segments Panel -->
+    <div class="segments-panel">
+        <div class="segments-header">
+            <h2>Saved Transcriptions (<span id="segmentCount">0</span>)</h2>
             <div class="editor-actions">
-                <span class="word-count" id="wordCount">0 words</span>
-                <button id="copyBtn" class="btn btn-success btn-sm">
-                    📋 Copy Text
+                <button id="exportAllBtn" class="btn btn-primary btn-sm">
+                    📤 Export All
                 </button>
-                <button id="downloadBtn" class="btn btn-outline btn-sm">
-                    💾 Download
-                </button>
-                <button id="clearBtn" class="btn btn-secondary btn-sm">
-                    🗑️ Clear
+                <button id="clearAllBtn" class="btn btn-secondary btn-sm">
+                    🗑️ Clear All
                 </button>
             </div>
         </div>
 
-        <textarea id="transcript" placeholder="Your transcription will appear here. Click 'Start Recording' and begin speaking..."></textarea>
+        <div id="segmentsList" class="segments-list">
+            <div class="empty-state">
+                <div class="empty-state-icon">📝</div>
+                <h3>No recordings yet!</h3>
+                <p>Click "Start New Recording" to begin your first transcription.</p>
+                <p><strong>Remember:</strong> This tool is for non-clinical content only (presentations, educational materials, personal notes).</p>
+                <p><strong>Never use with patient data or PHI.</strong></p>
+            </div>
+        </div>
     </div>
 
     <div class="tips-panel">
-        <h3>💡 Tips for Best Results</h3>
+        <h3>💡 Best Practices for Non-Clinical Use</h3>
         <div class="tips-grid">
             <div class="tip-item">
-                <strong>Use a Quality Microphone</strong>
-                <p>External microphones or headsets provide clearer audio than built-in laptop mics.</p>
+                <strong>Appropriate Use Cases</strong>
+                <p>Educational presentations, research notes, personal documentation, meeting minutes, lecture transcripts, or blog post drafts.</p>
             </div>
             <div class="tip-item">
-                <strong>Minimize Background Noise</strong>
-                <p>Find a quiet environment for more accurate transcription results.</p>
+                <strong>NOT for Patient Information</strong>
+                <p>Never use this tool with patient names, medical record numbers, diagnoses, or any protected health information (PHI).</p>
             </div>
             <div class="tip-item">
-                <strong>Speak Clearly & Naturally</strong>
-                <p>Normal speaking pace works best. No need to speak slowly or over-enunciate.</p>
+                <strong>Title Each Recording</strong>
+                <p>Add descriptive titles like "Lecture Notes - Topic" or "Presentation Draft - Section 1" for easy organization.</p>
             </div>
             <div class="tip-item">
-                <strong>Say Punctuation</strong>
-                <p>Say "period," "comma," "question mark," or "new paragraph" to add punctuation.</p>
+                <strong>Edit After Recording</strong>
+                <p>Click the "Edit" button on any saved segment to make corrections or additions to your transcription.</p>
             </div>
             <div class="tip-item">
-                <strong>Edit as You Go</strong>
-                <p>You can edit the text directly in the transcript box while recording continues.</p>
+                <strong>Export Options</strong>
+                <p>Export individual segments or all recordings at once. Each segment includes its title and timestamp.</p>
             </div>
             <div class="tip-item">
-                <strong>Grant Microphone Permission</strong>
-                <p>Your browser will ask for microphone access. This is only used locally—nothing is recorded or transmitted.</p>
+                <strong>Speak Naturally</strong>
+                <p>Normal speaking pace works best. Say "period," "comma," or "new paragraph" to add punctuation.</p>
             </div>
         </div>
+    </div>
+
+    <div style="background: #ffebee; border-left: 4px solid #dc3545; padding: 20px; border-radius: 6px; margin-top: 30px;">
+        <h3 style="color: #c62828; margin-bottom: 15px;">⚠️ Important Disclaimer</h3>
+        <p style="color: #666; margin-bottom: 10px;">
+            <strong>This tool is for demonstration and educational purposes only.</strong> The Web Speech API may transmit audio data to external servers for processing, making it unsuitable for confidential or sensitive information.
+        </p>
+        <p style="color: #666; margin-bottom: 10px;">
+            For HIPAA-compliant clinical documentation, use only IT-approved tools within your EMR system that have proper Business Associate Agreements (BAAs) in place.
+        </p>
+        <p style="color: #666; margin: 0;">
+            This page exists to demonstrate the technical capabilities discussed throughout this site, showing how speech recognition technology works in practice with non-sensitive content.
+        </p>
     </div>
 </div>
 
@@ -549,28 +751,37 @@ permalink: /speech-to-text/
 
 <script>
     // =====================================================
-    // SPEECH RECOGNITION SETUP
+    // SPEECH RECOGNITION & STATE MANAGEMENT
     // =====================================================
     let recognition = null;
     let isRecording = false;
     let isPaused = false;
-    let finalTranscript = '';
+    let currentTranscript = '';
     let interimTranscript = '';
+    let segments = [];
+    let segmentIdCounter = 1;
+    let recordingStartTime = null;
+    let timerInterval = null;
+
+    const STORAGE_KEY = 'speechTranscriptSegments';
 
     // DOM Elements
     const elements = {
-        transcript: document.getElementById('transcript'),
+        currentTranscript: document.getElementById('currentTranscript'),
+        segmentTitle: document.getElementById('segmentTitle'),
         startBtn: document.getElementById('startBtn'),
         pauseBtn: document.getElementById('pauseBtn'),
         stopBtn: document.getElementById('stopBtn'),
-        copyBtn: document.getElementById('copyBtn'),
-        downloadBtn: document.getElementById('downloadBtn'),
-        clearBtn: document.getElementById('clearBtn'),
+        saveSegmentBtn: document.getElementById('saveSegmentBtn'),
+        exportAllBtn: document.getElementById('exportAllBtn'),
+        clearAllBtn: document.getElementById('clearAllBtn'),
         language: document.getElementById('language'),
-        punctuation: document.getElementById('punctuation'),
         statusIndicator: document.getElementById('statusIndicator'),
         statusText: document.getElementById('statusText'),
-        wordCount: document.getElementById('wordCount'),
+        segmentCount: document.getElementById('segmentCount'),
+        segmentsList: document.getElementById('segmentsList'),
+        currentRecordingPanel: document.getElementById('currentRecordingPanel'),
+        recordingTimer: document.getElementById('recordingTimer'),
         notification: document.getElementById('notification'),
         notificationText: document.getElementById('notificationText'),
         browserWarning: document.getElementById('browserWarning')
@@ -581,8 +792,9 @@ permalink: /speech-to-text/
     // =====================================================
     function init() {
         checkBrowserSupport();
+        loadSegments();
+        renderSegments();
         attachEventListeners();
-        updateWordCount();
     }
 
     function checkBrowserSupport() {
@@ -600,7 +812,6 @@ permalink: /speech-to-text/
         recognition.interimResults = true;
         recognition.lang = elements.language.value;
 
-        // Event handlers
         recognition.onstart = handleRecognitionStart;
         recognition.onresult = handleRecognitionResult;
         recognition.onerror = handleRecognitionError;
@@ -612,12 +823,37 @@ permalink: /speech-to-text/
     function attachEventListeners() {
         elements.startBtn.addEventListener('click', startRecording);
         elements.pauseBtn.addEventListener('click', pauseRecording);
-        elements.stopBtn.addEventListener('click', stopRecording);
-        elements.copyBtn.addEventListener('click', copyToClipboard);
-        elements.downloadBtn.addEventListener('click', downloadTranscript);
-        elements.clearBtn.addEventListener('click', clearTranscript);
-        elements.transcript.addEventListener('input', updateWordCount);
+        elements.stopBtn.addEventListener('click', stopAndSaveRecording);
+        elements.saveSegmentBtn.addEventListener('click', saveCurrentAndStartNew);
+        elements.exportAllBtn.addEventListener('click', exportAllSegments);
+        elements.clearAllBtn.addEventListener('click', clearAllSegments);
         elements.language.addEventListener('change', handleLanguageChange);
+        elements.segmentsList.addEventListener('click', handleSegmentAction);
+    }
+
+    // =====================================================
+    // STORAGE
+    // =====================================================
+    function loadSegments() {
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                segments = JSON.parse(stored);
+                segmentIdCounter = Math.max(...segments.map(s => s.id), 0) + 1;
+            }
+        } catch (err) {
+            console.error('Failed to load segments:', err);
+            segments = [];
+        }
+    }
+
+    function saveSegments() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(segments));
+        } catch (err) {
+            console.error('Failed to save segments:', err);
+            showNotification('❌ Failed to save. Storage might be full.');
+        }
     }
 
     // =====================================================
@@ -633,14 +869,22 @@ permalink: /speech-to-text/
             recognition.start();
             isRecording = true;
             isPaused = false;
+            currentTranscript = '';
+            interimTranscript = '';
+            recordingStartTime = Date.now();
+            
+            elements.currentRecordingPanel.style.display = 'block';
+            elements.currentTranscript.value = '';
+            elements.segmentTitle.value = '';
             
             elements.startBtn.disabled = true;
             elements.pauseBtn.disabled = false;
             elements.stopBtn.disabled = false;
             
             updateStatus('listening', 'Recording...');
-            elements.transcript.classList.add('listening');
+            elements.currentTranscript.classList.add('listening');
             
+            startTimer();
             showNotification('🎤 Recording started');
         } catch (error) {
             console.error('Error starting recognition:', error);
@@ -655,39 +899,118 @@ permalink: /speech-to-text/
             recognition.stop();
             isPaused = true;
             
-            elements.startBtn.disabled = false;
             elements.pauseBtn.disabled = true;
+            elements.startBtn.disabled = false;
             elements.startBtn.innerHTML = '▶️ Resume';
             
             updateStatus('paused', 'Paused');
-            elements.transcript.classList.remove('listening');
+            elements.currentTranscript.classList.remove('listening');
             
+            stopTimer();
             showNotification('⏸️ Recording paused');
         } catch (error) {
             console.error('Error pausing recognition:', error);
         }
     }
 
-    function stopRecording() {
+    function stopAndSaveRecording() {
         if (!isRecording && !isPaused) return;
 
-        try {
-            recognition.stop();
-            isRecording = false;
-            isPaused = false;
-            
-            elements.startBtn.disabled = false;
-            elements.pauseBtn.disabled = true;
-            elements.stopBtn.disabled = true;
-            elements.startBtn.innerHTML = '🎤 Start Recording';
-            
-            updateStatus('ready', 'Ready');
-            elements.transcript.classList.remove('listening');
-            
-            showNotification('⏹️ Recording stopped');
-        } catch (error) {
-            console.error('Error stopping recognition:', error);
+        const text = elements.currentTranscript.value.trim();
+        
+        if (!text) {
+            showNotification('⚠️ No transcription to save');
+            resetRecordingState();
+            return;
         }
+
+        saveSegment(text);
+        resetRecordingState();
+    }
+
+    function saveCurrentAndStartNew() {
+        const text = elements.currentTranscript.value.trim();
+        
+        if (!text) {
+            showNotification('⚠️ No transcription to save');
+            return;
+        }
+
+        saveSegment(text);
+        
+        // Reset current recording but stay in recording mode
+        currentTranscript = '';
+        interimTranscript = '';
+        elements.currentTranscript.value = '';
+        elements.segmentTitle.value = '';
+        recordingStartTime = Date.now();
+        
+        showNotification('💾 Segment saved! Continue recording...');
+    }
+
+    function resetRecordingState() {
+        try {
+            if (recognition) recognition.stop();
+        } catch (e) {}
+        
+        isRecording = false;
+        isPaused = false;
+        currentTranscript = '';
+        interimTranscript = '';
+        
+        elements.currentRecordingPanel.style.display = 'none';
+        elements.startBtn.disabled = false;
+        elements.pauseBtn.disabled = true;
+        elements.stopBtn.disabled = true;
+        elements.startBtn.innerHTML = '🎤 Start New Recording';
+        
+        updateStatus('ready', 'Ready');
+        elements.currentTranscript.classList.remove('listening');
+        
+        stopTimer();
+    }
+
+    function saveSegment(text) {
+        const title = elements.segmentTitle.value.trim() || `Recording ${segmentIdCounter}`;
+        const duration = recordingStartTime ? Math.floor((Date.now() - recordingStartTime) / 1000) : 0;
+        
+        const segment = {
+            id: segmentIdCounter++,
+            title: title,
+            text: text,
+            timestamp: new Date().toISOString(),
+            duration: duration,
+            wordCount: text.split(/\s+/).length
+        };
+
+        segments.unshift(segment); // Add to beginning
+        saveSegments();
+        renderSegments();
+        
+        showNotification('✓ Segment saved!');
+    }
+
+    // =====================================================
+    // TIMER
+    // =====================================================
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            if (!recordingStartTime) return;
+            
+            const elapsed = Math.floor((Date.now() - recordingStartTime) / 1000);
+            const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+            const seconds = (elapsed % 60).toString().padStart(2, '0');
+            
+            elements.recordingTimer.textContent = `${minutes}:${seconds}`;
+        }, 1000);
+    }
+
+    function stopTimer() {
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        elements.recordingTimer.textContent = '00:00';
     }
 
     // =====================================================
@@ -699,32 +1022,23 @@ permalink: /speech-to-text/
 
     function handleRecognitionResult(event) {
         interimTranscript = '';
+        let newFinalTranscript = '';
         
         for (let i = event.resultIndex; i < event.results.length; i++) {
             const transcript = event.results[i][0].transcript;
             
             if (event.results[i].isFinal) {
-                finalTranscript += transcript + ' ';
+                newFinalTranscript += transcript + ' ';
             } else {
                 interimTranscript += transcript;
             }
         }
 
-        // Update the textarea with both final and interim results
-        const currentText = elements.transcript.value;
-        const cursorPos = elements.transcript.selectionStart;
-        
-        // If user hasn't manually edited, update with speech results
-        if (currentText === finalTranscript.trim() + interimTranscript || currentText === finalTranscript.trim()) {
-            elements.transcript.value = finalTranscript.trim() + (interimTranscript ? ' ' + interimTranscript : '');
-            updateWordCount();
-        } else {
-            // User has edited, append new speech at cursor position
-            const before = currentText.substring(0, cursorPos);
-            const after = currentText.substring(cursorPos);
-            elements.transcript.value = before + finalTranscript.substring(before.length) + interimTranscript + after;
-            updateWordCount();
+        if (newFinalTranscript) {
+            currentTranscript += newFinalTranscript;
         }
+
+        elements.currentTranscript.value = currentTranscript + interimTranscript;
     }
 
     function handleRecognitionError(event) {
@@ -749,102 +1063,248 @@ permalink: /speech-to-text/
         }
         
         showNotification('❌ ' + message);
-        stopRecording();
+        resetRecordingState();
     }
 
     function handleRecognitionEnd() {
         if (isRecording && !isPaused) {
-            // Automatically restart if we're supposed to be recording
             try {
                 recognition.start();
             } catch (error) {
                 console.error('Error restarting recognition:', error);
-                stopRecording();
+                resetRecordingState();
             }
         }
     }
 
-    // =====================================================
-    // UTILITY FUNCTIONS
-    // =====================================================
     function handleLanguageChange() {
         if (recognition) {
             recognition.lang = elements.language.value;
             if (isRecording) {
                 recognition.stop();
-                setTimeout(() => {
-                    recognition.start();
-                }, 100);
+                setTimeout(() => recognition.start(), 100);
             }
         }
     }
 
-    function updateStatus(type, text) {
-        elements.statusIndicator.className = `status-indicator ${type}`;
-        elements.statusText.textContent = text;
-    }
+    // =====================================================
+    // SEGMENT RENDERING
+    // =====================================================
+    function renderSegments() {
+        elements.segmentCount.textContent = segments.length;
 
-    function updateWordCount() {
-        const text = elements.transcript.value.trim();
-        const words = text ? text.split(/\s+/).length : 0;
-        elements.wordCount.textContent = `${words} word${words !== 1 ? 's' : ''}`;
-    }
-
-    async function copyToClipboard() {
-        const text = elements.transcript.value;
-        
-        if (!text) {
-            showNotification('⚠️ Nothing to copy');
+        if (segments.length === 0) {
+            elements.segmentsList.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">📝</div>
+                    <h3>No recordings yet!</h3>
+                    <p>Click "Start New Recording" to begin your first transcription.</p>
+                    <p><strong>Remember:</strong> This tool is for non-clinical content only (presentations, educational materials, personal notes).</p>
+                    <p><strong>Never use with patient data or PHI.</strong></p>
+                </div>
+            `;
             return;
         }
 
+        elements.segmentsList.innerHTML = segments.map(segment => {
+            const date = new Date(segment.timestamp);
+            const timeStr = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const dateStr = date.toLocaleDateString();
+            const durationStr = formatDuration(segment.duration);
+
+            return `
+                <div class="segment-card" data-id="${segment.id}">
+                    <div class="segment-header">
+                        <div class="segment-title" data-editing="false">
+                            <span class="title-text">${escapeHtml(segment.title)}</span>
+                        </div>
+                        <div class="segment-meta">
+                            <span class="segment-time">${timeStr} • ${dateStr}</span>
+                            <span class="segment-time">${durationStr}</span>
+                            <span class="segment-time">${segment.wordCount} words</span>
+                        </div>
+                    </div>
+                    <div class="segment-content" data-editing="false">
+                        <div class="content-text">${escapeHtml(segment.text)}</div>
+                    </div>
+                    <div class="segment-actions">
+                        <button class="btn btn-success btn-sm copy-segment" data-id="${segment.id}">
+                            📋 Copy
+                        </button>
+                        <button class="btn btn-primary btn-sm edit-segment" data-id="${segment.id}">
+                            ✏️ Edit
+                        </button>
+                        <button class="btn btn-outline btn-sm export-segment" data-id="${segment.id}">
+                            💾 Export
+                        </button>
+                        <button class="btn btn-danger btn-sm delete-segment" data-id="${segment.id}">
+                            🗑️ Delete
+                        </button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function handleSegmentAction(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+
+        const id = parseInt(button.dataset.id);
+        const segment = segments.find(s => s.id === id);
+        if (!segment) return;
+
+        if (button.classList.contains('copy-segment')) {
+            copySegment(segment);
+        } else if (button.classList.contains('edit-segment')) {
+            toggleEditSegment(button, segment);
+        } else if (button.classList.contains('export-segment')) {
+            exportSegment(segment);
+        } else if (button.classList.contains('delete-segment')) {
+            deleteSegment(id);
+        }
+    }
+
+    function toggleEditSegment(button, segment) {
+        const card = button.closest('.segment-card');
+        const titleDiv = card.querySelector('.segment-title');
+        const contentDiv = card.querySelector('.segment-content');
+        
+        const isEditing = contentDiv.dataset.editing === 'true';
+
+        if (isEditing) {
+            // Save changes
+            const titleInput = titleDiv.querySelector('input');
+            const textArea = contentDiv.querySelector('textarea');
+            
+            if (titleInput && textArea) {
+                segment.title = titleInput.value.trim() || segment.title;
+                segment.text = textArea.value.trim();
+                segment.wordCount = segment.text.split(/\s+/).length;
+                
+                saveSegments();
+                renderSegments();
+                showNotification('✓ Changes saved!');
+            }
+        } else {
+            // Enter edit mode
+            titleDiv.dataset.editing = 'true';
+            titleDiv.innerHTML = `<input type="text" value="${escapeHtml(segment.title)}">`;
+            
+            contentDiv.dataset.editing = 'true';
+            contentDiv.classList.add('editing');
+            contentDiv.innerHTML = `<textarea>${escapeHtml(segment.text)}</textarea>`;
+            
+            button.textContent = '💾 Save';
+            
+            // Focus the textarea
+            setTimeout(() => contentDiv.querySelector('textarea').focus(), 50);
+        }
+    }
+
+    async function copySegment(segment) {
         try {
-            await navigator.clipboard.writeText(text);
+            await navigator.clipboard.writeText(segment.text);
             showNotification('✓ Copied to clipboard!');
         } catch (error) {
             console.error('Copy failed:', error);
-            
-            // Fallback method
-            elements.transcript.select();
-            document.execCommand('copy');
-            showNotification('✓ Copied to clipboard!');
+            showNotification('❌ Failed to copy');
         }
     }
 
-    function downloadTranscript() {
-        const text = elements.transcript.value;
+    function exportSegment(segment) {
+        const content = `Title: ${segment.title}\nDate: ${new Date(segment.timestamp).toLocaleString()}\nDuration: ${formatDuration(segment.duration)}\nWord Count: ${segment.wordCount}\n\n${segment.text}`;
         
-        if (!text) {
-            showNotification('⚠️ Nothing to download');
-            return;
-        }
-
-        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+        const filename = segment.title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
         link.href = url;
-        link.download = `transcript_${timestamp}.txt`;
+        link.download = `${filename}.txt`;
         
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
         
-        showNotification('💾 Transcript downloaded');
+        showNotification('💾 Segment exported');
     }
 
-    function clearTranscript() {
-        if (elements.transcript.value && !confirm('Are you sure you want to clear the transcript? This cannot be undone.')) {
+    function deleteSegment(id) {
+        if (!confirm('Are you sure you want to delete this segment? This cannot be undone.')) {
             return;
         }
 
-        elements.transcript.value = '';
-        finalTranscript = '';
-        interimTranscript = '';
-        updateWordCount();
-        showNotification('🗑️ Transcript cleared');
+        segments = segments.filter(s => s.id !== id);
+        saveSegments();
+        renderSegments();
+        showNotification('🗑️ Segment deleted');
+    }
+
+    function exportAllSegments() {
+        if (segments.length === 0) {
+            showNotification('⚠️ No segments to export');
+            return;
+        }
+
+        let content = `Batch Transcription Export\nTotal Segments: ${segments.length}\nExported: ${new Date().toLocaleString()}\n\n`;
+        content += '='.repeat(80) + '\n\n';
+
+        segments.forEach((segment, index) => {
+            content += `[${index + 1}] ${segment.title}\n`;
+            content += `Date: ${new Date(segment.timestamp).toLocaleString()}\n`;
+            content += `Duration: ${formatDuration(segment.duration)} | Words: ${segment.wordCount}\n`;
+            content += '-'.repeat(80) + '\n';
+            content += segment.text + '\n\n';
+            content += '='.repeat(80) + '\n\n';
+        });
+
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+        link.href = url;
+        link.download = `batch_transcription_${timestamp}.txt`;
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        
+        showNotification('💾 All segments exported');
+    }
+
+    function clearAllSegments() {
+        if (!confirm(`Are you sure you want to delete all ${segments.length} segments? This cannot be undone.`)) {
+            return;
+        }
+
+        segments = [];
+        saveSegments();
+        renderSegments();
+        showNotification('🗑️ All segments cleared');
+    }
+
+    // =====================================================
+    // UTILITY FUNCTIONS
+    // =====================================================
+    function updateStatus(type, text) {
+        elements.statusIndicator.className = `status-indicator ${type}`;
+        elements.statusText.textContent = text;
+    }
+
+    function formatDuration(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 
     function showNotification(message) {
