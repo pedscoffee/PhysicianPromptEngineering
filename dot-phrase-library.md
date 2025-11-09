@@ -422,7 +422,6 @@ permalink: /dot-phrase-library/
   </div>
 </section>
 
-</script>
 <!-- Newsletter -->
 <section class="section">
   <div class="container">
