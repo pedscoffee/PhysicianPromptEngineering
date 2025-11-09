@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Batch Speech-to-Text Transcription
+title: Speech-to-Text Transcription
 description: Browser-based batch transcription demonstration tool. For non-clinical use only (presentations, educational content). NOT for patient data or PHI.
 permalink: /speech-to-text/
 ---
@@ -581,7 +581,7 @@ permalink: /speech-to-text/
 
 <div class="container">
     <div class="header">
-        <h1>Speech-to-Text Transcription</h1>
+        <h1>Demonstration: Speech-to-Text Transcription</h1>
         <p>Browser-based batch dictation tool for non-clinical use. Demonstrates speech recognition capabilities for educational content, presentations, or personal notes.</p>
         
         <div class="privacy-banner" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-left: 4px solid #ff9800;">
