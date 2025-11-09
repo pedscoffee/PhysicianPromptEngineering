@@ -393,7 +393,7 @@ permalink: /dot-phrase-library/
           <h3 class="card-title">Inbox Zero meets Real Life</h3>
         </div>
         <div class="card-body">
-          <p><strong>Use an organized system of dot phrases to for quick responses</strong>></p>
+          <p><strong>Use an organized system of dot phrases to for quick responses.</strong></p>
           <p class="text-sm text-secondary">Don't type the same types of messages over and over.  Use generalizable task focused messages based on general themes.  It requires a bit of an investment to set up but you'll get that time back within a week.</p>
         </div>
       </div>
@@ -404,7 +404,7 @@ permalink: /dot-phrase-library/
         </div>
         <div class="card-body">
           <p><strong>Incorporate your five favorite dot phrases into your LLM editor to further personalize your note automation.</strong></p>
-          <p class="text-sm text-secondary">Remember brevity improves quality.  Don't overbloat your phrases or it will degrade LLM performance.</p>
+          <p class="text-sm text-secondary">Remember brevity improves quality.  Don't over bloat your phrases or it will degrade LLM performance.  Not using an LLM Editor workflow yet? Learn more at <a href="https://physicianpromptengineering.com/best-practices">Best Practices</a> </p>
         </div>
       </div>
 
@@ -422,35 +422,39 @@ permalink: /dot-phrase-library/
   </div>
 </section>
 
-<div class="search-filter-bar">
-  <input 
-    type="text" 
-    id="searchInput" 
-    class="search-input" 
-    placeholder="Search dot phrases..."
-    onkeyup="renderDotPhrases()"
-  />
-  
-  <select id="groupFilter" class="filter-select" onchange="renderDotPhrases()">
-    <option value="">All Groups</option>
-  </select>
+<section class="section">
+  <div class="container">
+    <div class="search-filter-bar">
+      <input 
+        type="text" 
+        id="searchInput" 
+        class="search-input" 
+        placeholder="Search dot phrases..."
+        onkeyup="renderDotPhrases()"
+      />
+      
+      <select id="groupFilter" class="filter-select" onchange="renderDotPhrases()">
+        <option value="">All Groups</option>
+      </select>
 
-  <select id="tagFilter" class="filter-select" onchange="handleTagFilterChange()">
-    <option value="">All Tags</option>
-  </select>
-</div>
+      <select id="tagFilter" class="filter-select" onchange="handleTagFilterChange()">
+        <option value="">All Tags</option>
+      </select>
+    </div>
 
-<div id="activeTagsContainer" class="tag-filter-container" style="margin-bottom: 20px; display: none;">
-  <span style="font-weight: 600; color: var(--color-text-secondary);">Active filters:</span>
-  <div id="activeTags"></div>
-</div>
+    <div id="activeTagsContainer" class="tag-filter-container" style="margin-bottom: 20px; display: none;">
+      <span style="font-weight: 600; color: var(--color-text-secondary);">Active filters:</span>
+      <div id="activeTags"></div>
+    </div>
 
-<div id="dotphraseContainer"></div>
+    <div id="dotphraseContainer"></div>
 
-<div id="noResults" class="no-results" style="display: none;">
-  <h3>No phrases found</h3>
-  <p>Try adjusting your search or filters</p>
-</div>
+    <div id="noResults" class="no-results" style="display: none;">
+      <h3>No phrases found</h3>
+      <p>Try adjusting your search or filters</p>
+    </div>
+  </div>
+</section>
 
 <div id="copyNotification" class="copy-notification">
   ✓ Copied to clipboard!
@@ -1311,3 +1315,11 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 </script>
+<!-- Newsletter -->
+<section class="section">
+  <div class="container">
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+</section>
