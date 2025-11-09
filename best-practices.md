@@ -259,6 +259,7 @@ symptomatic relief."</code></pre>
         <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
 
         <h3 class="mb-4">Critical Reminders</h3>
+        <em><a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a></em>
         <ul>
           <li><strong>Always review</strong> AI output before finalizing</li>
           <li><strong>Maintain responsibility</strong> for clinical accuracy</li>

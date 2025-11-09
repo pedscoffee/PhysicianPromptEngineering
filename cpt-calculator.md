@@ -528,7 +528,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 <div class="calculator-container">
     <div class="page-header">
         <h1>CPT E/M Code Calculator</h1>
-        <p class="page-subtitle">Updated for 2025 AMA Guidelines | Supports MDM and Time-Based Coding</p>
+        <p class="page-subtitle">Updated for 2025 AMA Guidelines | Supports MDM and Time-Based Coding | <a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a></p>
     </div>
 
     <div class="instructions-container">

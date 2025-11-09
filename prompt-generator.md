@@ -602,6 +602,7 @@ permalink: /prompt-generator/
         <!-- NEXT STEPS SECTION -->
 <div class="header" style="margin-top: 40px;">
             <h2 style="color: #2a7ae2; font-size: 1.5em; margin-bottom: 20px;">Next Steps: Customizing Your Prompt</h2>
+            <em><a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a></em>
             
             <div style="margin-bottom: 20px;">
                 <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">1. Add Conditional Boilerplate Text</h3>
