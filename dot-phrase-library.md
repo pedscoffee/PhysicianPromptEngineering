@@ -171,6 +171,8 @@ permalink: /dot-phrase-library/
     line-height: var(--line-height-relaxed);
     overflow-wrap: break-word;
     word-wrap: break-word;
+    max-height: 300px;
+    overflow-y: auto;
   }
 
   .dotphrase-content p {
@@ -249,7 +251,132 @@ permalink: /dot-phrase-library/
       align-items: flex-end;
     }
   }
+
+  .info-section {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .info-header h3 {
+    color: var(--color-primary);
+    margin: 0;
+    font-size: var(--font-size-lg);
+  }
+
+  .read-more-btn {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .read-more-btn:hover {
+    background: var(--color-primary-light);
+  }
+
+  .read-more-arrow {
+    transition: transform var(--transition-base);
+    display: inline-block;
+  }
+
+  .read-more-arrow.rotated {
+    transform: rotate(180deg);
+  }
+
+  .info-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow), opacity var(--transition-slow);
+    opacity: 0;
+  }
+
+  .info-content.expanded {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  .info-content p {
+    margin-bottom: var(--space-3);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .info-content ul {
+    margin-left: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-text-secondary);
+  }
+
+  .info-content li {
+    margin-bottom: var(--space-2);
+  }
+
+  .info-cta {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    flex-wrap: wrap;
+  }
+
 </style>
+
+<!-- Info Section -->
+<section class="section">
+  <div class="container">
+    <div class="info-section">
+      <div class="info-header">
+        <h3>📋 About the Dot Phrase Library</h3>
+        <button class="read-more-btn" onclick="toggleInfoSection()">
+          Learn More
+          <span class="read-more-arrow">▼</span>
+        </button>
+      </div>
+      <div id="infoContent" class="info-content">
+        <p>
+          The <strong>Dot Phrase Library</strong> provides ready-to-use clinical text snippets with preserved formatting. Perfect for:
+        </p>
+        <ul>
+          <li><strong>Physical Exams:</strong> Standardized normal findings you can copy instantly</li>
+          <li><strong>Patient Communication:</strong> Pre-written responses for common inbox messages</li>
+          <li><strong>Clinical Documentation:</strong> Templates for procedures, assessments, and follow-ups</li>
+        </ul>
+        <p>
+          <strong>How to use:</strong> Browse or search for the dot phrase you need, click "Copy," and paste directly into your EMR. All formatting (bold, italics, bullets) is preserved.
+        </p>
+        <p>
+          <strong>Important:</strong> Always review content before using in patient care. These are templates meant to be customized for each individual patient. See our <a href="{{ site.baseurl }}/contributions#disclaimer" class="text-primary">clinical responsibility disclaimer</a> for more information.
+        </p>
+        <div class="info-cta">
+          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">
+            📤 Contribute Your Dot Phrases
+          </a>
+          <a href="{{ site.baseurl }}/contributions#disclaimer" class="btn btn-secondary">
+            ⚠️ Read Disclaimer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Hero Section -->
 <div class="hero">
@@ -321,6 +448,24 @@ permalink: /dot-phrase-library/
 <div id="copyNotification" class="copy-notification">✓ Copied to clipboard!</div>
 
 <script>
+// =====================================================
+// INFO SECTION TOGGLE
+// =====================================================
+function toggleInfoSection() {
+  const content = document.getElementById('infoContent');
+  const arrow = document.querySelector('.read-more-arrow');
+  const button = document.querySelector('.read-more-btn');
+  
+  content.classList.toggle('expanded');
+  arrow.classList.toggle('rotated');
+  
+  if (content.classList.contains('expanded')) {
+    button.childNodes[0].textContent = 'Show Less';
+  } else {
+    button.childNodes[0].textContent = 'Learn More';
+  }
+}
+
 // =====================================================
 // DATA STRUCTURE
 // =====================================================
@@ -587,16 +732,36 @@ function downloadPhrase(groupName, index) {
   <title>${phrase.title}</title>
   <style>
     body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
-    h1 { color: #2a7ae2; }
+    .header { text-align: center; border-bottom: 2px solid #2a7ae2; padding-bottom: 20px; margin-bottom: 30px; }
+    .header h1 { color: #2a7ae2; margin-bottom: 5px; font-size: 1.8em; }
+    .header .tagline { color: #666; font-size: 0.9em; margin-bottom: 10px; }
+    .header .link { color: #2a7ae2; text-decoration: none; font-weight: 600; }
+    h2 { color: #2a7ae2; margin-top: 30px; }
     .shortcut { background: #e3f2fd; padding: 5px 10px; border-radius: 4px; font-family: monospace; }
     .content { margin-top: 20px; line-height: 1.6; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e8e8e8; text-align: center; color: #666; font-size: 0.85em; }
+    @media print {
+      .no-print { display: none; }
+    }
   </style>
 </head>
 <body>
-  <h1>${escapeHtml(phrase.title)}</h1>
+  <div class="header">
+    <h1>Physician Prompt Engineering</h1>
+    <p class="tagline">Open-source clinical AI prompts for physicians</p>
+    <a href="https://physicianpromptengineering.com" class="link no-print">physicianpromptengineering.com</a>
+  </div>
+  
+  <h2>${escapeHtml(phrase.title)}</h2>
   <p><strong>Shortcut:</strong> <span class="shortcut">${escapeHtml(phrase.shortcut)}</span></p>
   <div class="content">
     ${contentElement.innerHTML}
+  </div>
+  
+  <div class="footer">
+    <p><strong>Physician Prompt Engineering</strong> | Open-source clinical AI prompts for physicians</p>
+    <p class="no-print">Visit <a href="https://physicianpromptengineering.com">physicianpromptengineering.com</a> for more resources</p>
+    <p><em>Always review content before using in patient care. See disclaimer at physicianpromptengineering.com</em></p>
   </div>
 </body>
 </html>
@@ -624,18 +789,32 @@ function exportGroup(groupName) {
   <title>${groupName} - Dot Phrases</title>
   <style>
     body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; }
-    h1 { color: #2a7ae2; border-bottom: 3px solid #2a7ae2; padding-bottom: 10px; }
+    .site-header { text-align: center; border-bottom: 3px solid #2a7ae2; padding-bottom: 20px; margin-bottom: 40px; }
+    .site-header h1 { color: #2a7ae2; margin-bottom: 5px; font-size: 2em; }
+    .site-header .tagline { color: #666; font-size: 1em; margin-bottom: 10px; }
+    .site-header .link { color: #2a7ae2; text-decoration: none; font-weight: 600; font-size: 1.1em; }
+    .group-title { color: #2a7ae2; border-bottom: 2px solid #2a7ae2; padding-bottom: 10px; margin-top: 30px; }
     .phrase { margin: 30px 0; padding: 20px; border: 2px solid #e8e8e8; border-radius: 8px; }
     .phrase-title { font-size: 1.2em; font-weight: bold; color: #333; margin-bottom: 10px; }
-    .shortcut { background: #e3f2fd; padding: 5px 10px; border-radius: 4px; font-family: monospace; display: inline-block; margin-bottom: 15px; }
+    .shortcut { background: #e3f2fd; padding: 5px 10px; border-radius: 4px; font-family: monospace; display: inline-block; margin-bottom: 15px; color: #2a7ae2; font-weight: 600; }
     .content { line-height: 1.6; }
+    .footer { margin-top: 50px; padding-top: 20px; border-top: 2px solid #e8e8e8; text-align: center; color: #666; }
+    .footer p { margin: 10px 0; }
+    .footer strong { color: #2a7ae2; }
     @media print {
       .phrase { page-break-inside: avoid; }
+      .no-print { display: none; }
     }
   </style>
 </head>
 <body>
-  <h1>${escapeHtml(groupName)}</h1>
+  <div class="site-header">
+    <h1>Physician Prompt Engineering</h1>
+    <p class="tagline">Open-source clinical AI prompts for physicians</p>
+    <a href="https://physicianpromptengineering.com" class="link no-print">physicianpromptengineering.com</a>
+  </div>
+  
+  <h1 class="group-title">${escapeHtml(groupName)}</h1>
   <p><strong>${group.phrases.length}</strong> dot phrase${group.phrases.length !== 1 ? 's' : ''}</p>
   
   ${group.phrases.map((phrase, index) => `
@@ -647,6 +826,13 @@ function exportGroup(groupName) {
       </div>
     </div>
   `).join('')}
+  
+  <div class="footer">
+    <p><strong>Physician Prompt Engineering</strong></p>
+    <p>Open-source clinical AI prompts for physicians</p>
+    <p class="no-print">Visit <a href="https://physicianpromptengineering.com" style="color: #2a7ae2; text-decoration: none; font-weight: 600;">physicianpromptengineering.com</a> for more resources</p>
+    <p style="margin-top: 20px;"><em>Always review content before using in patient care. See disclaimer at physicianpromptengineering.com</em></p>
+  </div>
 </body>
 </html>
   `;
