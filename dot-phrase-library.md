@@ -422,6 +422,16 @@ permalink: /dot-phrase-library/
   </div>
 </section>
 
+</script>
+<!-- Newsletter -->
+<section class="section">
+  <div class="container">
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="search-filter-bar">
@@ -1314,12 +1324,3 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
-</script>
-<!-- Newsletter -->
-<section class="section">
-  <div class="container">
-    <div class="embed-container">
-      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-    </div>
-  </div>
-</section>
