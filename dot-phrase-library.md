@@ -339,45 +339,6 @@ permalink: /dot-phrase-library/
 
 </style>
 
-<!-- Info Section -->
-<section class="section">
-  <div class="container">
-    <div class="info-section">
-      <div class="info-header">
-        <h3>📋 About the Dot Phrase Library</h3>
-        <button class="read-more-btn" onclick="toggleInfoSection()">
-          Learn More
-          <span class="read-more-arrow">▼</span>
-        </button>
-      </div>
-      <div id="infoContent" class="info-content">
-        <p>
-          The <strong>Dot Phrase Library</strong> provides ready-to-use clinical text snippets with preserved formatting. Perfect for:
-        </p>
-        <ul>
-          <li><strong>Physical Exams:</strong> Standardized normal findings you can copy instantly</li>
-          <li><strong>Patient Communication:</strong> Pre-written responses for common inbox messages</li>
-          <li><strong>Clinical Documentation:</strong> Templates for procedures, assessments, and follow-ups</li>
-        </ul>
-        <p>
-          <strong>How to use:</strong> Browse or search for the dot phrase you need, click "Copy," and paste directly into your EMR. All formatting (bold, italics, bullets) is preserved.
-        </p>
-        <p>
-          <strong>Important:</strong> Always review content before using in patient care. These are templates meant to be customized for each individual patient. See our <a href="{{ site.baseurl }}/contributions#disclaimer" class="text-primary">clinical responsibility disclaimer</a> for more information.
-        </p>
-        <div class="info-cta">
-          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">
-            📤 Contribute Your Dot Phrases
-          </a>
-          <a href="{{ site.baseurl }}/contributions#disclaimer" class="btn btn-secondary">
-            ⚠️ Read Disclaimer
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Hero Section -->
 <div class="hero">
   <div class="container">
@@ -404,6 +365,38 @@ permalink: /dot-phrase-library/
       <button id="expandAllBtn" class="btn btn-secondary">Expand All</button>
       <button id="collapseAllBtn" class="btn btn-secondary">Collapse All</button>
     </div>
+
+    <!-- Info Section -->
+    <div class="info-section">
+      <div class="info-header">
+        <h3>📋 About the Dot Phrase Library</h3>
+        <button class="read-more-btn" onclick="toggleInfoSection()">
+          Learn More
+          <span class="read-more-arrow">▼</span>
+        </button>
+      </div>
+      <div id="infoContent" class="info-content">
+        <p>
+          The <strong>Dot Phrase Library</strong> provides ready-to-use clinical text snippets with preserved formatting. Perfect for:
+        </p>
+        <ul>
+          <li><strong>Physical Exams:</strong> Standardized normal findings you can copy instantly</li>
+          <li><strong>Patient Communication:</strong> Pre-written responses for common inbox messages</li>
+          <li><strong>Clinical Documentation:</strong> Templates for procedures, assessments, and follow-ups</li>
+        </ul>
+        <p>
+          <strong>How to use:</strong> Browse or search for the dot phrase you need, click "Copy," and paste directly into your EMR. All formatting (bold, italics, bullets) is preserved.
+        </p>
+        <p>
+          <strong>Important:</strong> Always review content before using in patient care. These are templates meant to be customized for each individual patient. See our <a href="#disclaimer" class="text-primary">clinical responsibility disclaimer</a> for more information.
+        </p>
+        <div class="info-cta">
+          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">
+            📤 Contribute Your Dot Phrases
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -426,6 +419,28 @@ permalink: /dot-phrase-library/
     <h2 class="text-center mb-6">Get Notified of New Dot Phrases</h2>
     <div class="embed-container">
       <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Disclaimer Section -->
+<section class="section bg-tertiary" id="disclaimer">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto; padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
+      <h3 style="color: var(--color-warning); margin-bottom: var(--space-4);">Clinical Responsibility Disclaimer</h3>
+      <p>
+        These dot phrases are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all content before finalizing patient records. Always verify accuracy, completeness, and appropriateness for each individual patient's situation.
+      </p>
+      <p style="margin-top: var(--space-4);">
+        <strong>Key Points:</strong>
+      </p>
+      <ul style="margin-left: var(--space-5); line-height: var(--line-height-relaxed);">
+        <li>Review all content before using in patient care</li>
+        <li>Customize templates for each individual patient</li>
+        <li>Verify accuracy and clinical appropriateness</li>
+        <li>Comply with institutional policies and guidelines</li>
+        <li>Maintain responsibility for all documentation</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -730,6 +745,7 @@ function downloadPhrase(groupName, index) {
 <head>
   <meta charset="UTF-8">
   <title>${phrase.title}</title>
+  <link rel="icon" type="image/png" href="https://physicianpromptengineering.com/favicon.png">
   <style>
     body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
     .header { text-align: center; border-bottom: 2px solid #2a7ae2; padding-bottom: 20px; margin-bottom: 30px; }
@@ -787,6 +803,7 @@ function exportGroup(groupName) {
 <head>
   <meta charset="UTF-8">
   <title>${groupName} - Dot Phrases</title>
+  <link rel="icon" type="image/png" href="https://physicianpromptengineering.com/favicon.png">
   <style>
     body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; }
     .site-header { text-align: center; border-bottom: 3px solid #2a7ae2; padding-bottom: 20px; margin-bottom: 40px; }
