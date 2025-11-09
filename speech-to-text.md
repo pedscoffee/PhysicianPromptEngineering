@@ -428,7 +428,7 @@ permalink: /speech-to-text/
         <div class="privacy-banner">
             <span class="privacy-icon">🔒</span>
             <div class="privacy-text">
-                <strong>100% Private & Secure:</strong> Your voice and transcription never leave your device. All speech recognition happens locally in your browser using the Web Speech API. Perfect for HIPAA-compliant clinical documentation.
+                <strong>100% Private & Secure:</strong> Powered by your Device's Speech to Text API.  NOTE: Like the rest of this site this is currently in BETA.  Do not share any patient or senstive informstion.
             </div>
         </div>
     </div>
