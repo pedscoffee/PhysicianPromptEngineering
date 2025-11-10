@@ -1,8 +1,8 @@
 ---
 title: "Automatic Dot Phrase Creator"
-description: "Creates potential candidate dot phrases from the note that you can save for later.  Great small addition to a A/P prompt if you want to round out your Dot Phrase library."
+description: "Creates potential candidate dot phrases from the note that you can save for later.  Great small addition to an A/P prompt if you want to round out your dot phrase library."
 specialty: "All"
 char_count: 394
-order: 8
+order: 11
 ---
 From the note, extract counseling, anticipatory guidance, and care instructions. Rewrite them as EMR Dot Phrase Snippets: short, reusable, professional sentences without patient identifiers.
