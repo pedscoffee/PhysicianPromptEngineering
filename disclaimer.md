@@ -25,14 +25,14 @@ permalink: /disclaimer/
 
       <h3 style="margin-top: 25px; margin-bottom: 10px;">2. No Medical or Legal Advice</h3>
       <p>The content on this website is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on this website.</p>
-      <p>Similarly, the information provided does not constitute legal, financial, or medical billing advice. This site is not a substitute for consultation with a qualified legal professional or certified medical coder. You are solely responsible for ensuring that your documentation and billing practices comply with all applicable laws, regulations, and payer policies.</p>
+      <p>Similarly, the information provided does not constitute legal, financial, or medical billing advice. This site is not a substitute for consultation with a qualified legal professional or certified medical coder. You are solely responsible for ensuring that your documentation and billing practices comply with all applicable laws, regulations, payer policies, best practices, and the standard of care.</p>
 
       <h3 style="margin-top: 25px; margin-bottom: 10px;">3. User Responsibility & HIPAA Compliance</h3>
       <p>You are solely responsible for your use of the tools, prompts, and information on this site.</p>
       <p style="color: #c62828; font-weight: bold; margin-top: 10px;">
         <strong>Crucial Warning: You must not, under any circumstances, input, upload, or share any Protected Health Information (PHI) or any sensitive patient data with the tools or prompts on this website.</strong>
       </p>
-      <p>This includes, but is not limited to, the Prompt Generator, Personal Prompt Snippet Manager, Speech-to-Text Transcription tool, and CPT E/M Code Calculator. Some tools may store data locally in your browser (e.g., Snippet Manager) and others may use third-party APIs (e.g., Speech-to-Text) that are <strong>NOT</strong> HIPAA-compliant.</p>
+      <p>This includes, but is not limited to, the Prompt Generator, Personal Prompt Snippet Manager, and CPT E/M Code Calculator. Some tools may store data locally in your browser (e.g., Snippet Manager) and others may use third-party APIs (e.g., Speech-to-Text) that are <strong>NOT</strong> HIPAA-compliant.</p>
       <p>It is your exclusive responsibility to ensure that your use of any AI tool, including those discussed or provided here, is fully compliant with the Health Insurance Portability and Accountability Act (HIPAA), all other applicable privacy laws, and your institution's specific policies. Always use these concepts and tools within your institution's approved, secure, and HIPAA-compliant environments.</p>
 
       <h3 style="margin-top: 25px; margin-bottom: 10px;">4. No Warranties & Limitation of Liability</h3>
