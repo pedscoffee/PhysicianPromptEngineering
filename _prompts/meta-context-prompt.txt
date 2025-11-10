@@ -1,5 +1,5 @@
 ---
-title: "Context Prompt"
+title: "Meta-Prompt - Context"
 description: >
   While not technically a prompt in itself, you can use this file as context to upload to a state of the art model (like Gemini, ChatGPT, or Claude) so that you can help make your own prompts. Start by giving it this file and then just describe what you're hoping to do. Next ask it to ask you if it has any clarifying questions before you begin and answer those too. Remember to never give a non-IT approved tool any patient data and follow HIPAA and other applicable guidelines.
 specialty: "Any"

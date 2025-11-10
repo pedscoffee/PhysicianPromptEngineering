@@ -1,5 +1,5 @@
 ---
-title: "One Minute Preceptor Teaching Feedback Prompt"
+title: "Teaching - One Minute Preceptor Style"
 description: "Use framework loosely based on the One Minute Preceptor (Neher et al, 1992) to ask questions based on the case."
 specialty: "Any"
 char_count: 4894
