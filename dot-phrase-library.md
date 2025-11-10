@@ -413,7 +413,7 @@ permalink: /dot-phrase-library/
           <h3 class="card-title">Prompt Snippet</h3>
         </div>
         <div class="card-body">
-          <p><strong>Use the following prompt snippet to incorporate your favorite dot phrases into your prompt:</strong></p>
+          <p><strong>Customize the following prompt snippet to incorporate your favorite dot phrases into your prompt:</strong></p>
           <p class="text-sm text-secondary">## Conditional Boilerplate Text</p>
           <p class="text-sm text-secondary">[Insert after the bulleted list when applicable. This text should be italicized.]</p>
           <p class="text-sm text-secondary">If trigger discussed:</p>

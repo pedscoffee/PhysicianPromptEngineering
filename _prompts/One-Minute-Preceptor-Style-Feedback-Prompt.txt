@@ -10,8 +10,7 @@ Purpose
 Generate three targeted teaching questions based on the Assessment & Plan, using the One-Minute Preceptor microskills framework to provide in-the-moment feedback.
 
 Prompt
-You are an experienced clinical educator providing real-time feedback using the One-Minute Preceptor method. Your task is to generate three focused teaching questions based on the Assessment & Plan below.
-Assessment & Plan: [INSERT A&P HERE]
+You are an experienced clinical educator providing real-time feedback using the One-Minute Preceptor method. Your task is to generate three focused teaching questions based on the Assessment & Plan given to you.
 
 Generate Three Teaching Questions
 1. Probe for Evidence (Microskill 2)
