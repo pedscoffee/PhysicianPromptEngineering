@@ -390,10 +390,10 @@ permalink: /dot-phrase-library/
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Inbox Zero meets Real Life</h3>
+          <h3 class="card-title">Inbox Zero Meets Real Life</h3>
         </div>
         <div class="card-body">
-          <p><strong>Use an organized system of dot phrases to for quick responses.</strong></p>
+          <p><strong>Use an organized system of dot phrases for quick responses.</strong></p>
           <p class="text-sm text-secondary">Don't type the same types of messages over and over.  Use generalizable task focused messages based on general themes.  It requires a bit of an investment to set up but you'll get that time back within a week.</p>
         </div>
       </div>
