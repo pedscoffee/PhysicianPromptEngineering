@@ -56,10 +56,11 @@ permalink: /disclaimer/
         <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
         <h3 class="mb-4">Critical Reminders</h3>
         <ul>
+          <li><strong>You are responsible</strong> for your work and how you use anything on this site</li>
           <li><strong>Always review</strong> AI output before finalizing</li>
           <li><strong>Maintain responsibility</strong> for clinical accuracy</li>
           <li><strong>Document within</strong> approved institutional tools only</li>
-          <li><strong>Expect 90-95% accuracy</strong>, not perfection</li>
+          <li><strong>Expect helpful outputs</strong>, not perfection</li>
         </ul>
         <h3 class="mt-6 mb-4">Quality Assurance Checklist</h3>
         <ul style="list-style: none; padding-left: 0;">
