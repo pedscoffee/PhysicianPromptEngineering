@@ -385,7 +385,7 @@ permalink: /dot-phrase-library/
 <!-- Three Core Principles - Cards -->
 <section class="section bg-secondary">
   <div class="container">
-    <h2 class="text-center mb-8">Inbox and A/P Prompt Automation</h2>
+    <h2 class="text-center mb-8">Your Dot Phrases: Automated | Your Time: Freed</h2>
     <div class="grid grid-cols-1 grid-cols-3">
 
       <div class="card">
