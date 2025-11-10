@@ -412,7 +412,7 @@ description: Compact CPT E/M billing code calculator - fits on half screen
         white-space: pre-wrap;
         line-height: 1.4;
         color: #2c3e50;
-        max-height: 180px;
+        max-height: 300px;
         overflow-y: auto;
     }
 
@@ -760,15 +760,15 @@ description: Compact CPT E/M billing code calculator - fits on half screen
         ]
     };
 
-    // Data descriptions
+    // Data descriptions for output (original verbose versions)
     const dataDescriptions = {
         'minimal_data': 'Minimal or none',
-        'review_external_notes': 'Review external notes',
-        'review_test_results': 'Review test results',
-        'order_test': 'Order test',
-        'independent_historian': 'Independent historian',
-        'independent_interpretation': 'Independent interpretation',
-        'discussion_management': 'Discussion w/ external'
+        'review_external_notes': 'Review of prior external note(s) from each unique source',
+        'review_test_results': 'Review of the result(s) of each unique test',
+        'order_test': 'Ordering of each unique test',
+        'independent_historian': 'Assessment requiring an independent historian(s)',
+        'independent_interpretation': 'Independent interpretation of a test performed by another physician/other qualified health care professional (not separately reported)',
+        'discussion_management': 'Discussion of management or test interpretation with external physician/other qualified health care professional/appropriate source (not separately reported)'
     };
 
     function toggleInstructions() {
@@ -1122,49 +1122,58 @@ description: Compact CPT E/M billing code calculator - fits on half screen
         if (mdmCode && timeCode) {
              if (timeLevelValue > mdmLevel) {
                  finalEMCode = timeCode;
-                 finalCodingBasis = 'Time-Based (Higher)';
+                 finalCodingBasis = 'Time-Based (Higher Level)';
              } else {
                  finalEMCode = mdmCode;
-                 finalCodingBasis = 'MDM-Based';
+                 finalCodingBasis = 'MDM-Based (Higher or Equal Level)';
              }
         } else if (mdmCode) {
              finalEMCode = mdmCode;
              finalCodingBasis = 'MDM-Based';
         } else if (timeCode) {
              finalEMCode = timeCode;
-             finalCodingBasis = 'Time-Based';
+             finalCodingBasis = 'Time-Based (MDM Incomplete)';
         }
         
         if (state.wellVisitCode && finalEMCode && !finalEMCode.includes('-25')) {
              finalEMCode += '-25';
         }
 
+        // --- Generate Output String (Original Verbose Format) ---
+        
         if (state.wellVisitCode) {
-            output += `WELL VISIT: ${state.wellVisitCode}\n`;
+            output += `PREVENTIVE WELL VISIT: ${state.wellVisitCode}\n`;
             if (finalEMCode) {
                  output += `E/M CODE: ${finalEMCode}\n`;
             }
         } else if (finalEMCode) {
             output += `E/M CODE: ${finalEMCode}\n`;
         } else {
-            output += `NO BILLABLE CODE\n`;
+            output += `NO BILLABLE E/M CODE GENERATED\n`;
+            output += `Note: Check for minimum time requirements or ensure at least two MDM components are met for MDM-based coding.\n`;
         }
 
-        output += `\nBASIS: ${finalCodingBasis}\n`;
-        output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        output += `\n`;
+        output += `CODING BASIS: ${finalCodingBasis}\n`;
+        output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
-        output += `MDM DETAILS\n`;
-        output += `─────────────────────────────\n`;
-        output += `Problems: ${getLevelName(problemLevel)}\n`;
+        // MDM Details
+        output += `MEDICAL DECISION MAKING DETAILS\n`;
+        output += `-------------------------------------------------------------\n`;
+
+        // Problems
+        output += `Problems Addressed: ${getLevelName(problemLevel)}\n`;
         state.problems.forEach(problem => {
             const displayText = document.querySelector(`label[for="${problem}"]`).textContent;
             output += `• ${displayText}\n`;
         });
         output += `\n`;
 
-        output += `Data: ${getLevelName(dataLevel)}\n`;
+        // Data
+        output += `Data Reviewed and Analyzed: ${getLevelName(dataLevel)}\n`;
         state.data.forEach(item => {
             let displayText = dataDescriptions[item];
+            // Add quantity for Category 1 items
             if (['review_external_notes', 'review_test_results', 'order_test'].includes(item)) {
                 const qty = state.dataQuantities[item];
                 if (qty > 0) {
@@ -1175,7 +1184,8 @@ description: Compact CPT E/M billing code calculator - fits on half screen
         });
         output += `\n`;
 
-        output += `Risk: ${getLevelName(riskLevel)}\n`;
+        // Risk
+        output += `Risk of Complications: ${getLevelName(riskLevel)}\n`;
         state.risk.forEach(riskItem => {
             const displayText = document.querySelector(`label[for="${riskItem}"]`).textContent;
             output += `• ${displayText}\n`;
@@ -1183,14 +1193,21 @@ description: Compact CPT E/M billing code calculator - fits on half screen
         output += `\n`;
 
         if (finalLevel !== null) {
-            output += `2 of 3: P:${getLevelName(problemLevel)} | D:${getLevelName(dataLevel)} | R:${getLevelName(riskLevel)}\n`;
-            output += `Final: ${getLevelName(finalLevel)} (${codeMappings[state.patientType][finalLevel]})\n`;
+            output += `2 of 3 Rule Applied:\n`;
+            output += `Problems: ${getLevelName(problemLevel)} | Data: ${getLevelName(dataLevel)} | Risk: ${getLevelName(riskLevel)}\n`;
+            output += `Final MDM Level: ${getLevelName(finalLevel)} (${codeMappings[state.patientType][finalLevel]})\n`;
         }
 
+        // Time Details
         if (state.totalTime !== null) {
-            output += `\nTIME: ${state.totalTime} min\n`;
+            output += `\n`;
+            output += `TIME-BASED CODING DETAILS\n`;
+            output += `-------------------------------------------------------------\n`;
+            output += `Total Time: ${state.totalTime} minutes\n`;
             if (timeCodeData) {
-                output += `Code: ${timeCodeData.code}\n`;
+                output += `Code by Time: ${timeCodeData.code} (${timeCodeData.range})\n`;
+            } else {
+                output += `Time does not meet minimum requirements for billing.\n`;
             }
         }
         
