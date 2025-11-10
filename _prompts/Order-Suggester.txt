@@ -3,7 +3,7 @@ title: "Order Suggester"
 description: "Analyzes diagnosis and creates suggestions for possible orders, prescriptions, referrals, and follow-up items that may be easy to forget. Remember: These are documentation efficiency tools, and this is not meant for clinical decision assistance. Do NOT use LLMs for clinical decision making.  Requires expert human in the loop who is fully responsible for all documentation and decision making.  See Disclaimer."
 specialty: "All"
 char_count: 3376
-order: 13
+order: 14
 ---
 Based on the diagnoses in this note, generate a comprehensive checklist of commonly indicated orders, referrals, prescriptions, and follow-up items that may have been overlooked.
 
