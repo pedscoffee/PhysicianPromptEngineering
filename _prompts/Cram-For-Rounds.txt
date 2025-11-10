@@ -1,6 +1,6 @@
 ---
 title: "Cram for Rounds"
-description: "Only input you need for this prompt is "Name of the Diagnosis or Symptom" and this prompt will give you a quick run down before rounds.  Good luck!  You've got this!  Beware hallucinations; make sure you look things up and know what you know before you have to present.  Be aware this is not recommended for actual medical decision making.  Using it for actual clinical decision making would almost certainly amplify anchoring and availability bias. This essentially takes one of the above teaching prompts and asks the LLM to include answers too.
+description: "Only input you need for this prompt is "Name of the Diagnosis or Symptom" and this prompt will give you a quick run down before rounds.  Good luck!  You've got this!  Beware hallucinations; make sure you look things up and know what you know before you have to present.  Be aware this is not recommended for actual medical decision making.  Using it for actual clinical decision making would almost certainly amplify anchoring and availability bias. This essentially takes one of the above teaching prompts and asks the LLM to include answers too."
 specialty: "All"
 char_count: 4321
 order: 15
