@@ -789,6 +789,25 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     <div class="copy-notification" id="copyNotification">✓ Copied to clipboard!</div>
 </div>
 
+<section class="section bg-tertiary">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
+        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
+
+        <h3 class="mb-4">Want a more compact version?</h3>
+        <ul>
+          <li><strong>Check it out: <a href="https://physicianpromptengineering.com/cpt-calculator-compact/">Compact Version</a></p></li>
+          <li><strong>Maintain responsibility</strong> for clinical accuracy</li>
+          <li><strong>Document within</strong> approved institutional tools only</li>
+          <li><strong>Expect 90-95% accuracy</strong>, not perfection</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <script>
     // State management
     const state = {
@@ -1484,3 +1503,4 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         }, 3000);
     }
 </script>
+
