@@ -1,0 +1,69 @@
+---
+title: "Socratic Teaching Prompt"
+description: "Transforms clinical notes into de-identified teaching cases with learning objectives, discussion questions, and teaching points. Do not trust the prompt to fully de-identify patient information.  Ensure HIPAA and fully regulatory compliance through appropriate channels as appropriate.  For these reasons do not recommend exporting outputs from outside the chart.  I recommend using this prompt to tee up in the moment chalk talks and then deleting. This may be my favorite of the entire library so far."
+specialty: "All"
+char_count: 4207
+order: 13
+---
+Convert this clinical note into a structured teaching case. Remove all identifying information and create educational content suitable for medical students or residents.
+
+Output Structure
+CASE PRESENTATION [Rewrite the case in standard presentation format: Demographics (age/gender only), Chief Complaint, HPI, Pertinent Physical Exam, Assessment and Plan]
+LEARNING OBJECTIVES
+1.	[Specific, measurable objective related to diagnosis]
+2.	[Specific, measurable objective related to management]
+3.	[Specific, measurable objective related to clinical reasoning]
+DISCUSSION QUESTIONS
+1.	[Open-ended question about differential diagnosis]
+2.	[Question about diagnostic approach or testing]
+3.	[Question about management decisions]
+4.	[Question about when to escalate or refer]
+KEY TEACHING POINTS
+·	[Clinical pearl #1]
+·	[Clinical pearl #2]
+·	[Clinical pearl #3]
+
+De-identification Rules
+1.	Replace specific ages with age ranges (e.g., "7-year-old" becomes "school-age child")
+2.	Remove all names, use "the patient" or "the child"
+3.	Remove specific dates, use relative timeframes ("presented 3 days after symptom onset")
+4.	Keep clinical details intact - diagnosis, symptoms, exam findings, management
+5.	Preserve medication names, doses, and clinical decision-making
+
+Few-Shot Examples
+Input: 5yo male, fever 102.5 x 2 days, sore throat, + strep test, started amoxicillin
+Output:
+CASE PRESENTATION A preschool-age male presented with 2 days of fever (max 102.5°F) and sore throat. Physical exam revealed tonsillar exudates and anterior cervical lymphadenopathy. Rapid strep test was positive. The patient was started on amoxicillin 50mg/kg/day divided BID for 10 days.
+LEARNING OBJECTIVES
+1.	Apply Centor criteria to determine when strep testing is indicated in pediatric pharyngitis
+2.	Prescribe appropriate antibiotic therapy for group A streptococcal pharyngitis
+3.	Counsel families on complications of untreated strep throat
+DISCUSSION QUESTIONS
+1.	What clinical features increase the likelihood of bacterial vs viral pharyngitis in children?
+2.	When is empiric antibiotic therapy appropriate without testing?
+3.	How would management change if the patient had a penicillin allergy?
+4.	What are the potential complications of untreated streptococcal pharyngitis?
+KEY TEACHING POINTS
+·	Centor criteria have limited utility in children under age 3
+·	Amoxicillin remains first-line therapy due to narrow spectrum and efficacy
+·	Symptoms improve within 48-72 hours but full 10-day course prevents complications
+
+Input: 16yo female with worsening asthma, using albuterol 5-6x/day, nighttime cough, exam with mild expiratory wheeze, not on controller, started Flovent 88mcg BID
+Output:
+CASE PRESENTATION An adolescent female with known asthma presented with worsening symptoms over the past 2 weeks. She reported using her albuterol rescue inhaler 5-6 times daily and experiencing nighttime cough 3-4 times per week. She was not on controller medication. Physical exam revealed mild expiratory wheezing bilaterally. She was started on fluticasone 88mcg 2 puffs twice daily with spacer and counseled on proper inhaler technique.
+LEARNING OBJECTIVES
+1.	Classify asthma severity using NHLBI guidelines
+2.	Recognize indications for initiating controller therapy in asthma
+3.	Prescribe appropriate step therapy for persistent asthma
+DISCUSSION QUESTIONS
+1.	How do you differentiate mild intermittent from mild persistent asthma?
+2.	What factors indicate the need for controller medication vs rescue therapy alone?
+3.	What would prompt escalation to Step 3 or 4 therapy?
+4.	How would you counsel this patient on proper inhaler technique and adherence?
+KEY TEACHING POINTS
+·	Rescue inhaler use >2 days/week indicates inadequate control and need for controller
+·	Nighttime symptoms are a key marker of persistent asthma
+·	Spacers improve medication delivery and reduce oral thrush risk with ICS
+
+Quality Checks
+Before outputting, verify: 1. All identifying information removed 2. Clinical accuracy preserved 3. 3 learning objectives that are specific and measurable 4. 4 discussion questions that promote critical thinking  5. teaching points that are concise and actionable 6. Case written in standard presentation format

@@ -1,0 +1,133 @@
+---
+title: "Order Suggester"
+description: "Analyzes diagnosis and creates suggestions for possible orders, prescriptions, referrals, and follow-up items that may be easy to forget. Remember: These are documentation efficiency tool, and this is not meant for clinical decision assistance. Do NOT use LLMs for clinical decision making.  Requires expert human in the loop who is fully responsible for all documentation and decision making.  See Disclaimer."
+specialty: "All"
+char_count: 3376
+order: 12
+---
+Based on the diagnoses in this note, generate a comprehensive checklist of commonly indicated orders, referrals, prescriptions, and follow-up items that may have been overlooked.
+
+Output Structure
+DIAGNOSIS: [Problem Name]
+Consider ordering:
+
+[Diagnostic test or imaging]
+[Lab work]
+
+Consider prescribing:
+
+[Medication or supply]
+[Durable medical equipment]
+
+Consider referring:
+
+[Specialist] for [specific reason]
+
+Don't forget:
+
+[Patient education materials]
+[Follow-up scheduling]
+[Other action items]
+
+[Repeat for each diagnosis]
+
+Rules
+
+Only suggest items NOT explicitly mentioned in the note
+Group by category: labs/imaging, medications/supplies, referrals, other
+Be specific about indication (e.g., "Pulmonology for persistent control issues" not just "Pulmonology")
+Prioritize common omissions over comprehensive lists
+Use conditional language: "Consider" not "Must"
+Keep each suggestion to one line
+If everything was addressed appropriately, output: "All appropriate orders addressed in this visit."
+
+
+Few-Shot Examples
+Input: New asthma diagnosis, started albuterol
+Output:
+DIAGNOSIS: Asthma
+Consider prescribing:
+
+Spacer/aerochamber with mask (if age <4) or mouthpiece
+Peak flow meter for home monitoring (if age ≥5)
+
+Don't forget:
+
+Asthma action plan (written copy for family)
+Schedule follow-up in 2-4 weeks to assess control
+Consider baseline spirometry if age ≥5 and cooperative
+
+
+Input: ADHD, continued on Concerta 27mg, doing well
+Output:
+DIAGNOSIS: ADHD
+Consider ordering:
+
+Teacher Vanderbilt follow-up rating scale
+Parent Vanderbilt follow-up rating scale
+
+Don't forget:
+
+Height and weight plotted on growth chart
+Heart rate and blood pressure documented
+Screen for mood changes, sleep issues, appetite changes
+Follow-up in 3-6 months or PRN
+
+
+Input: Type 1 diabetes, A1c 8.2%, increased basal insulin
+Output:
+DIAGNOSIS: Type 1 Diabetes
+Consider ordering:
+
+Celiac screen (tissue transglutaminase IgA + total IgA) if not done in past year
+Thyroid screen (TSH) if not done in past year
+Lipid panel if age >10 and not done in past year
+Urine microalbumin if duration >5 years
+
+Consider referring:
+
+Ophthalmology for annual diabetic eye exam (if not seen in past year)
+Endocrinology if not already established
+
+Don't forget:
+
+Review downloaded pump/CGM data
+Assess for sick-day management plan understanding
+Follow-up in 3 months
+
+
+Input: Well child check, 15-month-old, vaccines given, growing well
+Output:
+DIAGNOSIS: 15-Month Well Child Visit
+Consider ordering:
+
+Hemoglobin/hematocrit (anemia screen)
+Lead level (if not done at 12 months)
+
+Don't forget:
+
+Fluoride varnish application
+Dental referral for first dental visit by age 1
+M-CHAT screening tool for autism
+Anticipatory guidance printed in AVS
+Schedule 18-month well visit
+
+
+Input: Strep throat, positive rapid test, started amoxicillin, RTC PRN
+Output:
+DIAGNOSIS: Streptococcal Pharyngitis
+Don't forget:
+
+Return to school after 24 hours of antibiotics
+Emphasize completing full 10-day course even when feeling better
+Replace toothbrush after 24 hours of antibiotics
+Return precautions: worsening symptoms, persistent fever >48h, difficulty swallowing
+
+
+Quality Checks
+Before output:
+✓ Only suggest items NOT already in the note
+✓ Each suggestion is specific and actionable
+✓ Grouped logically by category
+✓ Uses conditional language ("Consider...")
+✓ Focuses on common omissions, not exhaustive lists
