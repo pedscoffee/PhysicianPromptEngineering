@@ -1,0 +1,42 @@
+---
+title: "Concise Sign Out"
+description: "Transforms A/P into concise handoff for sign out.  This prompt is meant more to showcase a framework one could use to customize a similar prompt for your speciality and service.  Each speciality cares about different details being in the forefront, and you can take this prompt and swap out the details for the things you care about.  Remember that the few shot examples are what do most of the heavy lifting.  Taking the time to make the examples exactly what you're hoping to see is what will make this feel like magic."
+specialty: "All"
+char_count: 3405
+order: 14
+---
+Create a concise sign-out for covering providers focusing on patients who may require attention during your absence.
+
+Output Format
+PATIENTS FOR SIGN-OUT
+Patient [#]: [Age range/gender], [Chief diagnosis] Illness severity: [Stable / Close monitoring needed / Concerning]What's pending: [Tests, callbacks, decisions] Call if: [Specific triggers for contacting covering provider] Background:[Minimal context - 1-2 sentences max]
+
+Rules
+1.	Triage by illness severity
+2.	Be explicit about when covering provider should act
+3.	Keep background minimal - just enough context
+4.	Focus on actionable information
+
+Few-Shot Examples
+Input: Strep test pending, empiric amoxicillin started, mild illness, follow up PRN
+Output:
+PATIENTS FOR SIGN-OUT
+Patient 1: School-age child, suspected strep pharyngitis Illness severity: Stable What's pending: Rapid strep test results (expected tomorrow AM) Call if: Test returns positive (confirm family aware patient should complete 10-day course). If negative, call family to stop amoxicillin. Background: Mild pharyngitis, no respiratory distress. Started empiric amoxicillin pending test result.
+
+Input: Asthma exacerbation, albuterol not helping at home, started oral steroid, close follow up
+Output:
+PATIENTS FOR SIGN-OUT
+Patient 1: School-age child, asthma exacerbation Illness severity: Close monitoring needed What's pending: Clinical response to oral prednisone, family to update us tonight or tomorrow AM Call if: Family calls reporting worsening work of breathing, persistent cough despite treatment, or refusing to eat/drink. If so, advise ED evaluation. Background:Inadequate response to albuterol at home. Started prednisone 1mg/kg x 5 days in office. Sent home with strict return precautions. Consider admission if deterioration.
+
+Input: Fever 103, irritable toddler, possible early meningitis, LP considered but deferred, close 12-hour recheck arranged
+Output:
+PATIENTS FOR SIGN-OUT
+Patient 1: Toddler, fever without source - CONCERNING Illness severity: Concerning - requires close monitoringWhat's pending: 12-hour recheck scheduled tomorrow AM Call if: Family calls tonight reporting worsening irritability, lethargy, rash, seizure, poor responsiveness, or persistent inconsolability. If so, send directly to ED for evaluation including LP. Background: High fever, some irritability but consolable in office. Neuro exam reassuring. Urine dip negative. LP discussed but deferred due to clinical improvement in office after Tylenol. Close safety net and recheck arranged.
+
+Input: New Type 1 diabetes, A1c 12%, DKA ruled out, endocrine referral placed
+Output:
+PATIENTS FOR SIGN-OUT
+Patient 1: School-age child, new Type 1 diabetes diagnosis Illness severity: Stable (DKA ruled out) What's pending:Endocrine urgent referral placed - awaiting callback from their office Call if: Endocrine office hasn't called family by tomorrow AM (patient needs urgent subspecialist involvement). If family calls with vomiting, confusion, or difficulty breathing, send to ED for DKA evaluation. Background: New T1DM diagnosis made today. Labs showed glucose 350, pH 7.36 (no DKA). Started on basal-bolus insulin regimen. Family trained on blood sugar checks. Urgent endocrine referral for ongoing management.
+
+Quality Checks
+1. Triaged by urgency 2. Clear escalation triggers 3. Minimal background (only what's needed) 4. Action-oriented 5. Covering provider can act independently
