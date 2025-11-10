@@ -385,7 +385,7 @@ permalink: /dot-phrase-library/
 <!-- Three Core Principles - Cards -->
 <section class="section bg-secondary">
   <div class="container">
-    <h2 class="text-center mb-8">Your Dot Phrases: Automated | Your Time: Freed</h2>
+    <h2 class="text-center mb-8">Your Dot Phrases: Automated</h2>
     <div class="grid grid-cols-1 grid-cols-3">
 
       <div class="card">
@@ -400,24 +400,26 @@ permalink: /dot-phrase-library/
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Guide your LLM Editor</h3>
+          <h3 class="card-title">Guide Your LLM Editor</h3>
         </div>
         <div class="card-body">
-          <p><strong>Incorporate your five favorite dot phrases into your LLM editor to further personalize your note automation.</strong></p>
+          <p><strong>Incorporate your favorite dot phrases into your LLM editor to further personalize your note automation.</strong></p>
           <p class="text-sm text-secondary">Remember brevity improves quality.  Don't over bloat your phrases or it will degrade LLM performance.  Not using an LLM Editor workflow yet? Learn more at <a href="https://physicianpromptengineering.com/best-practices">Best Practices</a> </p>
         </div>
       </div>
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">How to Use</h3>
+          <h3 class="card-title">Prompt Snippet</h3>
         </div>
         <div class="card-body">
-          <p><strong>Filter by group or tag and use the search bar to find phrases by keyword</strong></p>
-          <p class="text-sm text-secondary">Copy, Download, or Export groups or subgroups.</p>
+          <p><strong>Use the following prompt snippet to incorporate your favorite dot phrases into your prompt:</strong></p>
+          <p class="text-sm text-secondary">## Conditional Boilerplate Text</p>
+          <p class="text-sm text-secondary">[Insert after the bulleted list when applicable. This text should be italicized.]</p>
+          <p class="text-sm text-secondary">If trigger discussed:</p>
+          <p class="text-sm text-secondary">"Your dot phrase goes here."</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
