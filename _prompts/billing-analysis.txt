@@ -1,6 +1,6 @@
 ---
-title: "Billing Analysis - v1.2"
-description: "Assesses MDM components and suggests CPT E/M codes with detailed reasoning. Adapt examples to your common situations and iterate from there."
+title: "Billing Analysis"
+description: "Assesses MDM components and suggests CPT E/M codes with detailed reasoning. Adapt examples to your common situations and iterate from there. See our tool also if you'd like an easy way to do this by hand instead. Like all prompts, requires expert human in loop taking full responsibility for use and output.  See disclaimer."
 specialty: "Pediatrics (adaptable but may need some work)"
 char_count: 4951
 order: 4
