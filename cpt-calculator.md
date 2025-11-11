@@ -793,8 +793,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
       <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
-        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Want a more compact version?</h2>
-        <h3 class="mb-4">Check it out: <a href="https://physicianpromptengineering.com/cpt-calculator-compact/">Compact Version</a></h3>
+        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Want a more compact version?</h2><h2 style="color: var(--color-accent-dark); margin-bottom: var(--space-6);"> Click  <a href="https://physicianpromptengineering.com/cpt-calculator-compact/">Here</a></h2>
 </section>
 
 <script>
