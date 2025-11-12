@@ -1155,11 +1155,9 @@ description: Compact CPT E/M billing code calculator - fits on half screen
 
         output += `\n`;
         output += `CODING BASIS: ${finalCodingBasis}\n`;
-        output += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
 
         // MDM Details
         output += `MEDICAL DECISION MAKING DETAILS\n`;
-        output += `-------------------------------------------------------------\n`;
 
         // Problems
         output += `Problems Addressed: ${getLevelName(problemLevel)}\n`;
@@ -1202,7 +1200,6 @@ description: Compact CPT E/M billing code calculator - fits on half screen
         if (state.totalTime !== null) {
             output += `\n`;
             output += `TIME-BASED CODING DETAILS\n`;
-            output += `-------------------------------------------------------------\n`;
             output += `Total Time: ${state.totalTime} minutes\n`;
             if (timeCodeData) {
                 output += `Code by Time: ${timeCodeData.code} (${timeCodeData.range})\n`;
