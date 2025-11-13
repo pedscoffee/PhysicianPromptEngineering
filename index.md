@@ -207,20 +207,20 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   </div>
 </section>
 
-<!-- NEW: PPE AI Tools -->
+<!-- AI Tools -->
 <section class="section">
   <div class="container">
-    <h2 class="text-center mb-8" style="font-size: var(--font-size-4xl); color: var(--color-primary);">PPE AI Tools (BETA)</h2>
+    <h2 class="text-center mb-8" style="font-size: var(--font-size-4xl); color: var(--color-primary);">AI Tools (BETA)</h2>
     <p class="text-center text-lg text-secondary mb-8" style="max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 3rem;">
       Experimental browser-based AI tools demonstrating what's possible with client-side machine learning. <strong>Educational purposes only.</strong> These are prototypes to show technical capabilities, not production clinical tools.
     </p>
 
     <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem;">
 
-      <!-- PPE Scribe -->
+      <!-- Scribe -->
       <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #059669;">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-          <h3 style="color: #047857; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Scribe</h3>
+          <h3 style="color: #047857; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Scribe</h3>
           <p style="color: #065f46; font-weight: 600; font-size: var(--font-size-sm);">Record → Transcribe → Format</p>
         </div>
 
@@ -255,15 +255,15 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-success btn-lg" style="background: #047857; width: 100%;">
-            Try PPE Scribe
+            Try Scribe
           </a>
         </div>
       </div>
 
-      <!-- PPE Prompt Assistant -->
+      <!-- Prompt Assistant -->
       <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid var(--color-primary);">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-          <h3 style="color: var(--color-primary); font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Prompt Assistant</h3>
+          <h3 style="color: var(--color-primary); font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Prompt Assistant</h3>
           <p style="color: #1e40af; font-weight: 600; font-size: var(--font-size-sm);">Describe → Generate → Refine</p>
         </div>
 
@@ -298,15 +298,15 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg" style="width: 100%;">
-            Try PPE Prompt Assistant
+            Try Prompt Assistant
           </a>
         </div>
       </div>
 
-      <!-- PPE Chat -->
+      <!-- Chat -->
       <div style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #be185d;">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-          <h3 style="color: #be185d; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Chat</h3>
+          <h3 style="color: #be185d; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Chat</h3>
           <p style="color: #831843; font-weight: 600; font-size: var(--font-size-sm);">Ask → Learn → Discover</p>
         </div>
 
@@ -341,7 +341,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/ask-ai" class="btn btn-lg" style="background: #be185d; color: white; width: 100%;">
-            Try PPE Chat
+            Try Chat
           </a>
         </div>
       </div>

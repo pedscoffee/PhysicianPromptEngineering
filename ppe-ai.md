@@ -1,13 +1,13 @@
 ---
 layout: default
-title: PPE AI Tools
+title: AI Tools
 description: Browser-based AI tools for clinical documentation - experimental educational demonstrations of what's possible with client-side AI.
 ---
 
 <!-- Hero Section -->
 <div class="hero">
   <div class="container">
-    <h1 class="hero-title">PPE AI Tools</h1>
+    <h1 class="hero-title">AI Tools</h1>
     <p class="hero-subtitle">
       Experimental browser-based AI tools demonstrating the potential of client-side machine learning for clinical workflows. Educational purposes only.
     </p>
@@ -91,10 +91,10 @@ description: Browser-based AI tools for clinical documentation - experimental ed
 
       <div class="grid grid-cols-1" style="gap: 2rem;">
 
-        <!-- PPE Scribe -->
+        <!-- Scribe -->
         <div class="card">
           <div class="card-header" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-bottom: 2px solid #059669;">
-            <h3 class="card-title" style="color: #047857;">PPE Scribe</h3>
+            <h3 class="card-title" style="color: #047857;">Scribe</h3>
             <p class="card-subtitle" style="color: #065f46;">Record → Transcribe → Format → Export</p>
           </div>
           <div class="card-body">
@@ -118,15 +118,15 @@ description: Browser-based AI tools for clinical documentation - experimental ed
             </p>
 
             <div style="text-align: center; margin-top: var(--space-6);">
-              <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-primary btn-lg">Try PPE Scribe</a>
+              <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-primary btn-lg">Try Scribe</a>
             </div>
           </div>
         </div>
 
-        <!-- PPE Prompt Assistant -->
+        <!-- Prompt Assistant -->
         <div class="card">
           <div class="card-header" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-bottom: 2px solid var(--color-primary);">
-            <h3 class="card-title" style="color: var(--color-primary);">PPE Prompt Assistant</h3>
+            <h3 class="card-title" style="color: var(--color-primary);">Prompt Assistant</h3>
             <p class="card-subtitle" style="color: #1e40af;">Describe → Generate → Refine → Deploy</p>
           </div>
           <div class="card-body">
@@ -150,15 +150,15 @@ description: Browser-based AI tools for clinical documentation - experimental ed
             </p>
 
             <div style="text-align: center; margin-top: var(--space-6);">
-              <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg">Try PPE Prompt Assistant</a>
+              <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg">Try Prompt Assistant</a>
             </div>
           </div>
         </div>
 
-        <!-- PPE Chat -->
+        <!-- Chat -->
         <div class="card">
           <div class="card-header" style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); border-bottom: 2px solid #be185d;">
-            <h3 class="card-title" style="color: #be185d;">PPE Chat</h3>
+            <h3 class="card-title" style="color: #be185d;">Chat</h3>
             <p class="card-subtitle" style="color: #831843;">Ask → Learn → Discover → Navigate</p>
           </div>
           <div class="card-body">
@@ -182,7 +182,7 @@ description: Browser-based AI tools for clinical documentation - experimental ed
             </p>
 
             <div style="text-align: center; margin-top: var(--space-6);">
-              <a href="{{ site.baseurl }}/ask-ai" class="btn btn-primary btn-lg" style="background: #be185d;">Try PPE Chat</a>
+              <a href="{{ site.baseurl }}/ask-ai" class="btn btn-primary btn-lg" style="background: #be185d;">Try Chat</a>
             </div>
           </div>
         </div>
@@ -243,9 +243,9 @@ description: Browser-based AI tools for clinical documentation - experimental ed
       Start with any tool below. The first time you use any tool, models will download and cache. After that, all three tools share the same models for instant loading.
     </p>
     <div class="hero-cta">
-      <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-primary btn-lg">PPE Scribe</a>
-      <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg">PPE Prompt Assistant</a>
-      <a href="{{ site.baseurl }}/ask-ai" class="btn btn-primary btn-lg">PPE Chat</a>
+      <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-primary btn-lg">Scribe</a>
+      <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg">Prompt Assistant</a>
+      <a href="{{ site.baseurl }}/ask-ai" class="btn btn-primary btn-lg">Chat</a>
     </div>
     <p class="text-sm text-secondary mt-6">
       All tools are open source and free to use for educational purposes.
