@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PPE Scribe Standalone - Offline AI Medical Scribe">
+    <title>PPE Scribe Standalone</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUFBFIFNjcmliZSIsInNob3J0X25hbWUiOiJQUEUgU2NyaWJlIiwic3RhcnRfdXJsIjoiLiIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiNmNWY1ZjUiLCJ0aGVtZV9jb2xvciI6IiMyYTdhZTIiLCJkZXNjcmlwdGlvbiI6Ik9mZmxpbmUgQUkgTWVkaWNhbCBTY3JpYmUiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhkcFpIUm9QU0l4TWpnaUlHaGxhV2RvZEQwaU1USTRMQ0o+UEhKbFkzUWdlRDBpTUNJZ2VUMGlNQ0lnZDJsa2RHZzlJakV5T0NJZ2FHVnBaMmgwUFNJeE1qZ2lJR1pwYkd3OUlpTXlZVGRoWlRJaUx6NDhMMk55Wno0PSIsInR5cGUiOiJpbWFnZS9zdmcreG1sIiwic2l6ZXMiOiIxMjh4MTI4In1dfQ==">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2a7ae2;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #f59e0b;
+            --bg: #f5f5f5;
+            --card-bg: white;
+            --border: #e8e8e8;
+            --text: #333;
+            --text-secondary: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status-badge.online {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .status-badge.offline {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .warning-box h3 {
+            color: #92400e;
+            margin-bottom: 12px;
+        }
+
+        .warning-box p {
+            color: #78350f;
+            margin-bottom: 8px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .card h3 {
+            color: var(--text);
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #1e5bb8;
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-lg {
+            padding: 14px 28px;
+            font-size: 1.1em;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1em;
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .status-panel {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .status-panel.loading {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        }
+
+        .status-panel.ready {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+
+        .output-box {
+            background: #f9f9f9;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .char-counter {
+            text-align: right;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        .version-item {
+            background: #f9f9f9;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .version-item:hover {
+            background: #e8e8e8;
+            border-color: var(--primary);
+        }
+
+        .version-item.active {
+            background: #dbeafe;
+            border-color: var(--primary);
+        }
+
+        .prompt-library-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .prompt-library-item h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .prompt-library-item .meta {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>PPE Scribe Standalone</h1>
+            <p>Offline AI Medical Scribe - Educational Demonstration Only</p>
+            <span class="status-badge" id="status-badge">Checking status...</span>
+        </div>
+
+        <!-- BETA Warning -->
+        <div class="warning-box">
+            <h3>⚠️ BETA - Educational Demonstration Only</h3>
+            <p><strong>This is an experimental prototype for educational purposes.</strong></p>
+            <p>Do not use with any patient data, protected health information, or sensitive information.</p>
+            <p>This tool is not HIPAA-compliant and is not intended for clinical use.</p>
+        </div>
+
+        <!-- Initialization Panel -->
+        <div class="status-panel" id="init-panel">
+            <div id="init-message">Click "Initialize Models" to download AI models (~2.1GB)</div>
+            <div id="init-details" style="margin: 15px 0; color: #666;"></div>
+            <div class="progress-bar" id="init-progress" style="display: none;">
+                <div class="progress-fill" id="init-progress-fill"></div>
+            </div>
+            <button class="btn btn-primary btn-lg" id="init-btn" onclick="initializeModels()">
+                Initialize Models
+            </button>
+        </div>
+
+        <!-- Main Interface -->
+        <div id="main-interface" class="hidden">
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('record')">Record & Transcribe</button>
+                <button class="tab" onclick="switchTab('format')">Format Note</button>
+                <button class="tab" onclick="switchTab('editor')">Iterative Editor</button>
+                <button class="tab" onclick="switchTab('prompts')">Prompt Library</button>
+                <button class="tab" onclick="switchTab('history')">Version History</button>
+            </div>
+
+            <!-- Tab 1: Record & Transcribe -->
+            <div class="tab-content active" id="tab-record">
+                <div class="grid">
+                    <div class="card">
+                        <h2>Audio Input</h2>
+
+                        <div class="button-group" style="margin-bottom: 20px;">
+                            <button class="btn btn-danger" id="record-btn" onclick="startRecording()">
+                                Start Recording
+                            </button>
+                            <button class="btn btn-secondary" id="stop-btn" onclick="stopRecording()" disabled>
+                                Stop Recording
+                            </button>
+                        </div>
+
+                        <p style="text-align: center; color: var(--text-secondary); margin: 20px 0;">— OR —</p>
+
+                        <input type="file" id="audio-file" accept="audio/*" style="display: none;" onchange="handleAudioFile(event)">
+                        <button class="btn btn-primary" onclick="document.getElementById('audio-file').click()">
+                            Upload Audio File
+                        </button>
+
+                        <div id="audio-status" style="margin-top: 15px; padding: 12px; background: #f9f9f9; border-radius: 6px; display: none;"></div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Transcription</h2>
+                        <button class="btn btn-success" id="transcribe-btn" onclick="transcribeAudio()" disabled>
+                            Transcribe Audio
+                        </button>
+                        <div id="transcription-spinner" class="spinner" style="display: none;"></div>
+                        <textarea id="transcription-text" placeholder="Transcription will appear here..." readonly></textarea>
+                        <div class="char-counter" id="transcription-counter">0 characters</div>
+
+                        <div class="button-group" style="margin-top: 15px;">
+                            <button class="btn btn-secondary" onclick="copyText('transcription-text')">
+                                Copy Transcription
+                            </button>
+                            <button class="btn btn-secondary" onclick="downloadText('transcription-text', 'transcription.txt')">
+                                Download .txt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Format Note -->
+            <div class="tab-content" id="tab-format">
+                <div class="card">
+                    <h2>System Prompt</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                        This prompt controls how the AI initially formats your transcription.
+                    </p>
+
+                    <div class="form-group">
+                        <label>Select Template</label>
+                        <select id="system-prompt-select" onchange="loadSystemPromptTemplate()" style="width: 100%; padding: 10px; border: 2px solid var(--border); border-radius: 6px;">
+                            <option value="">-- Select a template --</option>
+                            <option value="default" selected>APSO Format (Default)</option>
+                            <option value="soap">SOAP Note</option>
+                            <option value="custom">Custom (Write Your Own)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>System Prompt (Editable)</label>
+                        <textarea id="system-prompt" style="min-height: 250px; font-family: 'Monaco', monospace;"></textarea>
+                        <div class="char-counter" id="system-prompt-counter">0 characters</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-success btn-lg" onclick="formatNote()">
+                            Generate Clinical Note
+                        </button>
+                        <button class="btn btn-secondary" onclick="saveSystemPrompt()">
+                            Save to Library
+                        </button>
+                        <button class="btn btn-secondary" onclick="resetSystemPrompt()">
+                            Reset to Default
+                        </button>
+                    </div>
+
+                    <div id="format-spinner" class="spinner" style="display: none;"></div>
+
+                    <h3>Output</h3>
+                    <div class="output-box" id="formatted-output">Your formatted note will appear here...</div>
+                    <div class="char-counter" id="output-counter">0 characters</div>
+
+                    <div class="button-group">
+                        <button class="btn btn-success" onclick="copyText('formatted-output')">
+                            Copy Note
+                        </button>
+                        <button class="btn btn-secondary" onclick="downloadText('formatted-output', 'clinical-note.txt')">
+                            Download .txt
+                        </button>
+                        <button class="btn btn-primary" onclick="saveToHistory()">
+                            Save to History
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Iterative Editor -->
+            <div class="tab-content" id="tab-editor">
+                <div class="card">
+                    <h2>Iterative Editor</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                        Refine your note with additional AI passes. Each pass builds on the previous output.
+                    </p>
+
+                    <div class="form-group">
+                        <label>Current Note</label>
+                        <textarea id="editor-input" placeholder="Your note to refine will appear here..." style="min-height: 200px;"></textarea>
+                        <div class="char-counter" id="editor-input-counter">0 characters</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Editor Prompt</label>
+                        <p style="font-size: 0.9em; color: var(--text-secondary); margin-bottom: 10px;">
+                            Tell the AI how to modify the note (e.g., "Make this more concise", "Add billing justification", "Convert to patient-friendly language")
+                        </p>
+                        <textarea id="editor-prompt" placeholder="Example: Make this note more concise while preserving all clinical details..." style="min-height: 120px;"></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-success btn-lg" onclick="runEditor()">
+                            Refine Note
+                        </button>
+                        <button class="btn btn-secondary" onclick="loadEditorPromptTemplate()">
+                            Load Template
+                        </button>
+                        <button class="btn btn-secondary" onclick="saveEditorPrompt()">
+                            Save Prompt
+                        </button>
+                    </div>
+
+                    <div id="editor-spinner" class="spinner" style="display: none;"></div>
+
+                    <h3>Refined Output</h3>
+                    <div class="output-box" id="editor-output">Refined note will appear here...</div>
+                    <div class="char-counter" id="editor-output-counter">0 characters</div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="useEditorOutput()">
+                            Use as Input for Next Pass
+                        </button>
+                        <button class="btn btn-success" onclick="copyText('editor-output')">
+                            Copy Note
+                        </button>
+                        <button class="btn btn-secondary" onclick="downloadText('editor-output', 'refined-note.txt')">
+                            Download .txt
+                        </button>
+                        <button class="btn btn-primary" onclick="saveToHistory()">
+                            Save to History
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Prompt Library -->
+            <div class="tab-content" id="tab-prompts">
+                <div class="card">
+                    <h2>Prompt Library</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                        Manage your saved prompts. All prompts are saved locally in your browser.
+                    </p>
+
+                    <div class="button-group" style="margin-bottom: 20px;">
+                        <button class="btn btn-primary" onclick="exportPrompts()">
+                            Export All Prompts
+                        </button>
+                        <button class="btn btn-primary" onclick="document.getElementById('import-file').click()">
+                            Import Prompts
+                        </button>
+                        <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importPrompts(event)">
+                    </div>
+
+                    <div id="prompt-library-list">
+                        <p style="text-align: center; color: var(--text-secondary); padding: 40px;">
+                            No saved prompts yet. Save prompts from the Format or Editor tabs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5: Version History -->
+            <div class="tab-content" id="tab-history">
+                <div class="card">
+                    <h2>Version History</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                        All versions of your notes with timestamps. Click to view.
+                    </p>
+
+                    <div class="button-group" style="margin-bottom: 20px;">
+                        <button class="btn btn-danger" onclick="clearHistory()">
+                            Clear All History
+                        </button>
+                    </div>
+
+                    <div id="history-list">
+                        <p style="text-align: center; color: var(--text-secondary); padding: 40px;">
+                            No saved versions yet. Save outputs from the Format or Editor tabs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load External Scripts -->
+    <script type="module">
+        // This will be populated with the full application logic
+        console.log('PPE Scribe Standalone initialized');
+
+        // Check if running as standalone PWA
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        updateStatusBadge();
+    </script>
+
+    <script type="module">
+        // =====================================================
+        // GLOBAL STATE
+        // =====================================================
+        let whisperModel = null;
+        let llmEngine = null;
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let currentAudioBlob = null;
+        let currentTranscription = '';
+        let currentOutput = '';
+
+        const WHISPER_MODEL = "Xenova/whisper-base";
+        const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
+
+        // Default APSO System Prompt
+        const DEFAULT_SYSTEM_PROMPT = `Convert this clinical encounter transcription into APSO format using formal medical terminology.
+
+FORMAT:
+
+ASSESSMENT AND PLAN:
+Format each diagnosis as:
+
+**[Diagnosis Name]**
+[Paragraph with assessment and plan details from the conversation. Use formal medical terminology. Include relevant history, examination findings, and clinical reasoning. Detail the treatment plan, medications with dosing, follow-up instructions, and any patient education provided. Only include information explicitly stated in the transcript.]
+
+Example:
+**Acute Bacterial Sinusitis**
+The patient presents with facial pain, purulent nasal discharge, and nasal congestion for 10 days without improvement. Physical examination reveals tenderness to palpation over the maxillary sinuses bilaterally and mucopurulent drainage visualized in the nasal passages. Given the duration and severity of symptoms, bacterial sinusitis is suspected. Will initiate treatment with amoxicillin-clavulanate 875mg-125mg orally twice daily for 10 days. Advised symptomatic management with saline nasal irrigation and decongestants as needed. Patient instructed to follow up if symptoms worsen or do not improve within 48-72 hours, or if high fever develops.
+
+SUBJECTIVE:
+[Document the patient's chief complaint, history of present illness, review of systems, and relevant past medical history as described by the patient. Use the patient's own words where appropriate but organize coherently.]
+
+OBJECTIVE:
+[Document vital signs, physical examination findings, and any test results mentioned in the encounter. Be specific and thorough.]
+
+CRITICAL INSTRUCTIONS:
+- Use ONLY information from the transcript
+- Do NOT infer, hallucinate, or confabulate any clinical details
+- Do NOT add examination findings not mentioned
+- Do NOT add laboratory values or test results not discussed
+- Use formal medical terminology throughout
+- Be thorough but only include what was actually said`;
+
+        // =====================================================
+        // PWA FUNCTIONALITY
+        // =====================================================
+        function updateStatusBadge() {
+            const badge = document.getElementById('status-badge');
+            const isOnline = navigator.onLine;
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+            if (isStandalone) {
+                badge.className = 'status-badge online';
+                badge.textContent = '✓ Running Offline';
+            } else {
+                badge.className = 'status-badge ' + (isOnline ? 'online' : 'offline');
+                badge.textContent = isOnline ? '● Online' : '● Offline';
+            }
+        }
+
+        // Register Service Worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            // Create service worker dynamically
+            const swCode = `
+                const CACHE_NAME = 'ppe-scribe-v1';
+
+                self.addEventListener('install', (event) => {
+                    console.log('Service Worker installed');
+                    self.skipWaiting();
+                });
+
+                self.addEventListener('activate', (event) => {
+                    console.log('Service Worker activated');
+                    event.waitUntil(self.clients.claim());
+                });
+
+                self.addEventListener('fetch', (event) => {
+                    // Let all fetches go through normally - models handled by IndexedDB
+                    event.respondWith(fetch(event.request));
+                });
+            `;
+
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+
+            navigator.serviceWorker.register(swUrl).then((registration) => {
+                console.log('Service Worker registered:', registration);
+            }).catch((error) => {
+                console.error('Service Worker registration failed:', error);
+            });
+        }
+
+        window.addEventListener('online', updateStatusBadge);
+        window.addEventListener('offline', updateStatusBadge);
+
+        // =====================================================
+        // INITIALIZATION
+        // =====================================================
+        async function initializeModels() {
+            const initPanel = document.getElementById('init-panel');
+            const initMessage = document.getElementById('init-message');
+            const initDetails = document.getElementById('init-details');
+            const initProgress = document.getElementById('init-progress');
+            const initProgressFill = document.getElementById('init-progress-fill');
+            const initBtn = document.getElementById('init-btn');
+
+            initPanel.className = 'status-panel loading';
+            initMessage.textContent = 'Initializing AI models...';
+            initProgress.style.display = 'block';
+            initBtn.disabled = true;
+
+            try {
+                // Dynamically load transformers.js
+                initMessage.textContent = 'Loading Whisper (speech-to-text)...';
+                initDetails.textContent = 'Downloading ~75MB... This may take 2-5 minutes on first run.';
+                initProgressFill.style.width = '10%';
+
+                // Load transformers.js using dynamic import
+                const transformers = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1');
+                const { pipeline } = transformers;
+
+                initProgressFill.style.width = '30%';
+                whisperModel = await pipeline('automatic-speech-recognition', WHISPER_MODEL, {
+                    dtype: 'fp32',
+                    device: 'wasm'
+                });
+
+                initProgressFill.style.width = '50%';
+                initMessage.textContent = 'Whisper loaded! Loading Phi-3.5 (text generation)...';
+                initDetails.textContent = 'Downloading ~2GB... This may take 5-15 minutes on first run.';
+
+                // Load WebLLM using dynamic import
+                const webllm = await import('https://esm.run/@mlc-ai/web-llm');
+                const { CreateMLCEngine } = webllm;
+
+                llmEngine = await CreateMLCEngine(LLM_MODEL, {
+                    initProgressCallback: (progress) => {
+                        const percent = 50 + (progress.progress * 50);
+                        initProgressFill.style.width = `${percent}%`;
+                        initDetails.textContent = `${progress.text} (${(progress.progress * 100).toFixed(1)}%)`;
+                    }
+                });
+
+                initProgressFill.style.width = '100%';
+                initPanel.className = 'status-panel ready';
+                initMessage.textContent = 'All models loaded! Ready to use offline.';
+                initDetails.textContent = 'Models cached in browser - future loads will be instant.';
+
+                // Initialize default system prompt
+                document.getElementById('system-prompt').value = DEFAULT_SYSTEM_PROMPT;
+                updateCharCounter('system-prompt', 'system-prompt-counter');
+
+                // Show main interface after delay
+                setTimeout(() => {
+                    document.getElementById('init-panel').classList.add('hidden');
+                    document.getElementById('main-interface').classList.remove('hidden');
+                    updateStatusBadge();
+                }, 2000);
+
+            } catch (error) {
+                initPanel.className = 'status-panel';
+                initMessage.textContent = 'Failed to initialize models';
+                initDetails.innerHTML = `
+                    <div style="color: #dc3545;">
+                        <strong>Error:</strong> ${error.message}<br><br>
+                        <strong>Troubleshooting:</strong><br>
+                        • Ensure Chrome/Edge 113+ with WebGPU support<br>
+                        • Check internet connection for first-time download<br>
+                        • Ensure ~3GB free disk space<br>
+                        • Try refreshing the page
+                    </div>
+                `;
+                console.error('Initialization error:', error);
+                initBtn.disabled = false;
+                initBtn.textContent = 'Retry';
+            }
+        }
+
+        // =====================================================
+        // TAB MANAGEMENT
+        // =====================================================
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+
+        // =====================================================
+        // RECORDING & TRANSCRIPTION
+        // =====================================================
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    currentAudioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    document.getElementById('audio-status').style.display = 'block';
+                    document.getElementById('audio-status').textContent = '✓ Recording complete. Ready to transcribe.';
+                    document.getElementById('transcribe-btn').disabled = false;
+                };
+
+                mediaRecorder.start();
+                document.getElementById('record-btn').disabled = true;
+                document.getElementById('stop-btn').disabled = false;
+                document.getElementById('audio-status').style.display = 'block';
+                document.getElementById('audio-status').textContent = '🔴 Recording...';
+
+            } catch (error) {
+                alert('Failed to access microphone: ' + error.message);
+            }
+        }
+
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                document.getElementById('record-btn').disabled = false;
+                document.getElementById('stop-btn').disabled = true;
+            }
+        }
+
+        function handleAudioFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                currentAudioBlob = file;
+                document.getElementById('audio-status').style.display = 'block';
+                document.getElementById('audio-status').textContent = `✓ File loaded: ${file.name}`;
+                document.getElementById('transcribe-btn').disabled = false;
+            }
+        }
+
+        async function transcribeAudio() {
+            if (!currentAudioBlob || !whisperModel) return;
+
+            document.getElementById('transcription-spinner').style.display = 'block';
+            document.getElementById('transcribe-btn').disabled = true;
+
+            try {
+                const audioUrl = URL.createObjectURL(currentAudioBlob);
+
+                const result = await whisperModel(audioUrl, {
+                    chunk_length_s: 30,
+                    stride_length_s: 5,
+                    language: 'english',
+                    task: 'transcribe'
+                });
+
+                currentTranscription = result.text;
+                document.getElementById('transcription-text').value = currentTranscription;
+                updateCharCounter('transcription-text', 'transcription-counter');
+
+                URL.revokeObjectURL(audioUrl);
+
+            } catch (error) {
+                alert('Transcription failed: ' + error.message);
+                console.error('Transcription error:', error);
+            } finally {
+                document.getElementById('transcription-spinner').style.display = 'none';
+                document.getElementById('transcribe-btn').disabled = false;
+            }
+        }
+
+        // =====================================================
+        // FORMATTING
+        // =====================================================
+        function loadSystemPromptTemplate() {
+            const select = document.getElementById('system-prompt-select');
+            const textarea = document.getElementById('system-prompt');
+
+            if (select.value === 'default') {
+                textarea.value = DEFAULT_SYSTEM_PROMPT;
+            } else if (select.value === 'soap') {
+                textarea.value = `Convert this clinical encounter transcription into a structured SOAP note using formal medical terminology.
+
+FORMAT:
+
+SUBJECTIVE:
+[Document the patient's chief complaint, history of present illness, and review of systems as described.]
+
+OBJECTIVE:
+[Document vital signs, physical examination findings, and any test results mentioned.]
+
+ASSESSMENT:
+[Clinical impressions and diagnoses based on the encounter.]
+
+PLAN:
+[Treatment plan, medications with dosing, follow-up instructions, and patient education.]
+
+CRITICAL: Use ONLY information from the transcript. Do not infer or fabricate clinical details.`;
+            } else {
+                textarea.value = '';
+            }
+
+            updateCharCounter('system-prompt', 'system-prompt-counter');
+        }
+
+        async function formatNote() {
+            const transcription = document.getElementById('transcription-text').value.trim();
+            const systemPrompt = document.getElementById('system-prompt').value.trim();
+
+            if (!transcription) {
+                alert('Please transcribe audio first or paste a transcription.');
+                return;
+            }
+
+            if (!systemPrompt) {
+                alert('Please enter a system prompt.');
+                return;
+            }
+
+            if (!llmEngine) {
+                alert('AI model not loaded. Please initialize first.');
+                return;
+            }
+
+            document.getElementById('format-spinner').style.display = 'block';
+
+            try {
+                const fullPrompt = systemPrompt + '\n\nTranscription:\n' + transcription;
+
+                const response = await llmEngine.chat.completions.create({
+                    messages: [{ role: 'user', content: fullPrompt }],
+                    temperature: 0.3,
+                    max_tokens: 2000,
+                    stream: false
+                });
+
+                currentOutput = response.choices[0].message.content;
+                document.getElementById('formatted-output').textContent = currentOutput;
+                updateCharCounter('formatted-output', 'output-counter');
+
+                // Also populate editor input
+                document.getElementById('editor-input').value = currentOutput;
+                updateCharCounter('editor-input', 'editor-input-counter');
+
+            } catch (error) {
+                alert('Formatting failed: ' + error.message);
+                console.error('Formatting error:', error);
+            } finally {
+                document.getElementById('format-spinner').style.display = 'none';
+            }
+        }
+
+        function resetSystemPrompt() {
+            document.getElementById('system-prompt').value = DEFAULT_SYSTEM_PROMPT;
+            document.getElementById('system-prompt-select').value = 'default';
+            updateCharCounter('system-prompt', 'system-prompt-counter');
+        }
+
+        // =====================================================
+        // ITERATIVE EDITOR
+        // =====================================================
+        async function runEditor() {
+            const input = document.getElementById('editor-input').value.trim();
+            const editorPrompt = document.getElementById('editor-prompt').value.trim();
+
+            if (!input) {
+                alert('Please provide a note to refine.');
+                return;
+            }
+
+            if (!editorPrompt) {
+                alert('Please provide an editor prompt (how to modify the note).');
+                return;
+            }
+
+            if (!llmEngine) {
+                alert('AI model not loaded. Please initialize first.');
+                return;
+            }
+
+            document.getElementById('editor-spinner').style.display = 'block';
+
+            try {
+                const fullPrompt = `${editorPrompt}\n\nOriginal Note:\n${input}`;
+
+                const response = await llmEngine.chat.completions.create({
+                    messages: [{ role: 'user', content: fullPrompt }],
+                    temperature: 0.3,
+                    max_tokens: 2000,
+                    stream: false
+                });
+
+                const refinedOutput = response.choices[0].message.content;
+                document.getElementById('editor-output').textContent = refinedOutput;
+                updateCharCounter('editor-output', 'editor-output-counter');
+
+            } catch (error) {
+                alert('Editor failed: ' + error.message);
+                console.error('Editor error:', error);
+            } finally {
+                document.getElementById('editor-spinner').style.display = 'none';
+            }
+        }
+
+        function useEditorOutput() {
+            const output = document.getElementById('editor-output').textContent;
+            document.getElementById('editor-input').value = output;
+            updateCharCounter('editor-input', 'editor-input-counter');
+            document.getElementById('editor-prompt').value = '';
+        }
+
+        function loadEditorPromptTemplate() {
+            const templates = [
+                'Make this note more concise while preserving all clinical details.',
+                'Add billing justification and medical decision-making complexity analysis.',
+                'Convert this to patient-friendly language suitable for an after-visit summary.',
+                'Reorganize this note to emphasize the most critical clinical findings first.',
+                'Add more formal medical terminology while keeping the same information.'
+            ];
+
+            const choice = prompt('Choose a template:\n' + templates.map((t, i) => `${i+1}. ${t}`).join('\n') + '\n\nEnter number (1-5):');
+
+            const index = parseInt(choice) - 1;
+            if (index >= 0 && index < templates.length) {
+                document.getElementById('editor-prompt').value = templates[index];
+            }
+        }
+
+        // =====================================================
+        // PROMPT MANAGEMENT
+        // =====================================================
+        function saveSystemPrompt() {
+            const prompt = document.getElementById('system-prompt').value.trim();
+            if (!prompt) {
+                alert('No prompt to save.');
+                return;
+            }
+
+            const name = prompt('Enter a name for this prompt:');
+            if (!name) return;
+
+            const prompts = getStoredPrompts();
+            prompts.push({
+                id: Date.now(),
+                name: name,
+                type: 'system',
+                content: prompt,
+                created: new Date().toISOString(),
+                version: 1
+            });
+
+            localStorage.setItem('ppe-scribe-prompts', JSON.stringify(prompts));
+            alert('Prompt saved!');
+            refreshPromptLibrary();
+        }
+
+        function saveEditorPrompt() {
+            const prompt = document.getElementById('editor-prompt').value.trim();
+            if (!prompt) {
+                alert('No prompt to save.');
+                return;
+            }
+
+            const name = prompt('Enter a name for this editor prompt:');
+            if (!name) return;
+
+            const prompts = getStoredPrompts();
+            prompts.push({
+                id: Date.now(),
+                name: name,
+                type: 'editor',
+                content: prompt,
+                created: new Date().toISOString(),
+                version: 1
+            });
+
+            localStorage.setItem('ppe-scribe-prompts', JSON.stringify(prompts));
+            alert('Editor prompt saved!');
+            refreshPromptLibrary();
+        }
+
+        function getStoredPrompts() {
+            try {
+                return JSON.parse(localStorage.getItem('ppe-scribe-prompts') || '[]');
+            } catch {
+                return [];
+            }
+        }
+
+        function refreshPromptLibrary() {
+            const prompts = getStoredPrompts();
+            const listDiv = document.getElementById('prompt-library-list');
+
+            if (prompts.length === 0) {
+                listDiv.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 40px;">No saved prompts yet.</p>';
+                return;
+            }
+
+            listDiv.innerHTML = prompts.map(p => `
+                <div class="prompt-library-item">
+                    <h4>${p.name}</h4>
+                    <div class="meta">
+                        ${p.type === 'system' ? 'System Prompt' : 'Editor Prompt'} •
+                        ${new Date(p.created).toLocaleDateString()} •
+                        v${p.version}
+                    </div>
+                    <div style="margin: 10px 0; padding: 10px; background: #f9f9f9; border-radius: 4px; font-family: monospace; font-size: 0.85em; max-height: 100px; overflow-y: auto;">
+                        ${p.content.substring(0, 200)}${p.content.length > 200 ? '...' : ''}
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="loadPrompt(${p.id})">Load</button>
+                        <button class="btn btn-secondary" onclick="duplicatePrompt(${p.id})">Duplicate</button>
+                        <button class="btn btn-danger" onclick="deletePrompt(${p.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadPrompt(id) {
+            const prompts = getStoredPrompts();
+            const prompt = prompts.find(p => p.id === id);
+            if (!prompt) return;
+
+            if (prompt.type === 'system') {
+                document.getElementById('system-prompt').value = prompt.content;
+                updateCharCounter('system-prompt', 'system-prompt-counter');
+                switchTab('format');
+                document.querySelectorAll('.tab')[1].click();
+            } else {
+                document.getElementById('editor-prompt').value = prompt.content;
+                switchTab('editor');
+                document.querySelectorAll('.tab')[2].click();
+            }
+        }
+
+        function duplicatePrompt(id) {
+            const prompts = getStoredPrompts();
+            const prompt = prompts.find(p => p.id === id);
+            if (!prompt) return;
+
+            const newName = prompt.name + ' (Copy)';
+            prompts.push({
+                ...prompt,
+                id: Date.now(),
+                name: newName,
+                created: new Date().toISOString(),
+                version: 1
+            });
+
+            localStorage.setItem('ppe-scribe-prompts', JSON.stringify(prompts));
+            refreshPromptLibrary();
+        }
+
+        function deletePrompt(id) {
+            if (!confirm('Delete this prompt?')) return;
+
+            let prompts = getStoredPrompts();
+            prompts = prompts.filter(p => p.id !== id);
+            localStorage.setItem('ppe-scribe-prompts', JSON.stringify(prompts));
+            refreshPromptLibrary();
+        }
+
+        function exportPrompts() {
+            const prompts = getStoredPrompts();
+            const json = JSON.stringify(prompts, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ppe-scribe-prompts.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function importPrompts(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    const existing = getStoredPrompts();
+                    const merged = [...existing, ...imported];
+                    localStorage.setItem('ppe-scribe-prompts', JSON.stringify(merged));
+                    refreshPromptLibrary();
+                    alert(`Imported ${imported.length} prompts!`);
+                } catch (error) {
+                    alert('Failed to import: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // =====================================================
+        // VERSION HISTORY
+        // =====================================================
+        function saveToHistory() {
+            const output = document.getElementById('formatted-output').textContent ||
+                          document.getElementById('editor-output').textContent;
+
+            if (!output || output === 'Your formatted note will appear here...' ||
+                output === 'Refined note will appear here...') {
+                alert('No output to save.');
+                return;
+            }
+
+            const history = getStoredHistory();
+            history.unshift({
+                id: Date.now(),
+                content: output,
+                timestamp: new Date().toISOString(),
+                length: output.length
+            });
+
+            // Keep only last 50 versions
+            if (history.length > 50) history.length = 50;
+
+            localStorage.setItem('ppe-scribe-history', JSON.stringify(history));
+            refreshHistory();
+            alert('Saved to history!');
+        }
+
+        function getStoredHistory() {
+            try {
+                return JSON.parse(localStorage.getItem('ppe-scribe-history') || '[]');
+            } catch {
+                return [];
+            }
+        }
+
+        function refreshHistory() {
+            const history = getStoredHistory();
+            const listDiv = document.getElementById('history-list');
+
+            if (history.length === 0) {
+                listDiv.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 40px;">No saved versions yet.</p>';
+                return;
+            }
+
+            listDiv.innerHTML = history.map(h => `
+                <div class="version-item" onclick="viewHistoryItem(${h.id})">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <strong>${new Date(h.timestamp).toLocaleString()}</strong>
+                        <span style="color: var(--text-secondary);">${h.length} characters</span>
+                    </div>
+                    <div style="font-size: 0.9em; color: var(--text-secondary);">
+                        ${h.content.substring(0, 100)}...
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function viewHistoryItem(id) {
+            const history = getStoredHistory();
+            const item = history.find(h => h.id === id);
+            if (!item) return;
+
+            const view = confirm(`Version from ${new Date(item.timestamp).toLocaleString()}\n\n${item.content.substring(0, 500)}...\n\nLoad this version into editor?`);
+            if (view) {
+                document.getElementById('editor-input').value = item.content;
+                updateCharCounter('editor-input', 'editor-input-counter');
+                switchTab('editor');
+                document.querySelectorAll('.tab')[2].click();
+            }
+        }
+
+        function clearHistory() {
+            if (!confirm('Clear all history? This cannot be undone.')) return;
+            localStorage.setItem('ppe-scribe-history', '[]');
+            refreshHistory();
+        }
+
+        // =====================================================
+        // UTILITIES
+        // =====================================================
+        function updateCharCounter(textareaId, counterId) {
+            const textarea = document.getElementById(textareaId);
+            const counter = document.getElementById(counterId);
+            if (textarea && counter) {
+                const text = textarea.value || textarea.textContent || '';
+                counter.textContent = `${text.length} characters`;
+            }
+        }
+
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.value || element.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => btn.textContent = originalText, 2000);
+            }).catch(err => {
+                alert('Failed to copy: ' + err.message);
+            });
+        }
+
+        function downloadText(elementId, filename) {
+            const element = document.getElementById(elementId);
+            const text = element.value || element.textContent;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Add char counter listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const textareas = ['transcription-text', 'system-prompt', 'editor-input'];
+            textareas.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('input', () => {
+                        updateCharCounter(id, id.replace('text', 'counter').replace('prompt', 'prompt-counter').replace('input', 'input-counter'));
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
