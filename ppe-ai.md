@@ -83,22 +83,6 @@ description: Browser-based AI tools for clinical documentation - experimental ed
   </div>
 </section>
 
-<!-- Standalone Download CTA -->
-<section class="section" style="padding-top: 2rem; padding-bottom: 2rem;">
-  <div class="container">
-    <div style="max-width: 900px; margin: 0 auto; padding: 2rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: var(--radius-lg); border: 2px solid #059669; text-align: center;">
-      <h2 style="color: #047857; margin-top: 0; margin-bottom: var(--space-4);">Want Offline Access?</h2>
-      <p style="color: #065f46; font-size: var(--font-size-lg); margin-bottom: var(--space-6); max-width: 600px; margin-left: auto; margin-right: auto;">
-        Download the standalone PPE Scribe as a Progressive Web App. One-time download (54KB + 2.1GB models), then works completely offline forever.
-      </p>
-      <a href="{{ site.baseurl }}/ppe-scribe-download" class="btn btn-lg" style="background: #059669; color: white; padding: 1rem 2rem; font-size: var(--font-size-lg); border: none;">Download Standalone PPE Scribe</a>
-      <p style="color: #065f46; font-size: var(--font-size-sm); margin-top: var(--space-4); margin-bottom: 0;">
-        Full customization • Iterative editing • Version control • Complete privacy
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- Three Tools -->
 <section class="section">
   <div class="container">
