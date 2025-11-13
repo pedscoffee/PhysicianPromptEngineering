@@ -826,6 +826,81 @@ permalink: /scribe-tool/
         background: #e3f2fd;
         color: #1565c0;
     }
+
+    /* ===== Processing Progress Indicators ===== */
+    .processing-progress {
+        background: white;
+        border: 2px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: none;
+    }
+
+    .processing-progress.active {
+        display: block;
+    }
+
+    .progress-stage {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        background: #f9f9f9;
+        transition: all 0.3s;
+    }
+
+    .progress-stage.active {
+        background: #e3f2fd;
+        border-left: 4px solid #2a7ae2;
+    }
+
+    .progress-stage.completed {
+        background: #d1fae5;
+        border-left: 4px solid #059669;
+    }
+
+    .progress-stage-icon {
+        font-size: 1.2em;
+        min-width: 24px;
+        text-align: center;
+    }
+
+    .progress-stage-label {
+        flex: 1;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .progress-stage-status {
+        font-size: 0.85em;
+        color: #666;
+    }
+
+    .progress-stage.active .progress-stage-status {
+        color: #2a7ae2;
+    }
+
+    .progress-stage.completed .progress-stage-status {
+        color: #059669;
+    }
+
+    @keyframes spin-slow {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .spinner-inline {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border: 2px solid #f3f3f3;
+        border-top: 2px solid #2a7ae2;
+        border-radius: 50%;
+        animation: spin-slow 1s linear infinite;
+    }
 </style>
 
 <!-- Hero Section -->
@@ -981,6 +1056,11 @@ permalink: /scribe-tool/
 
             <div class="spinner" id="output-spinner"></div>
 
+            <!-- Processing progress indicators -->
+            <div class="processing-progress" id="processing-progress">
+                <div id="progress-stages-container"></div>
+            </div>
+
             <!-- Output cards will be dynamically inserted here -->
             <div id="output-cards-container"></div>
 
@@ -988,9 +1068,18 @@ permalink: /scribe-tool/
             <div id="prompt-customization-section" style="margin-top: 40px; display: none;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e8e8e8;">
                     <h3 style="margin: 0; color: #2a7ae2;">⚙️ Customize Prompts</h3>
-                    <button id="toggle-customization-btn" class="btn btn-secondary" onclick="toggleCustomization()" style="font-size: 0.9em;">
-                        Hide Customization
-                    </button>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-primary btn-sm" onclick="exportPromptConfiguration()" style="font-size: 0.9em;">
+                            📤 Export
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="document.getElementById('import-prompts-file').click()" style="font-size: 0.9em;">
+                            📥 Import
+                        </button>
+                        <input type="file" id="import-prompts-file" accept=".json" style="display: none;" onchange="importPromptConfiguration(event)">
+                        <button id="toggle-customization-btn" class="btn btn-secondary" onclick="toggleCustomization()" style="font-size: 0.9em;">
+                            Hide Customization
+                        </button>
+                    </div>
                 </div>
 
                 <div id="customization-content" style="display: none;">
@@ -1693,8 +1782,143 @@ MEDICAL NOTE:`,
     };
 
     // =====================================================
-    // AI PROCESSING - MULTI-STAGE PIPELINE
+    // EXPORT/IMPORT PROMPT CONFIGURATION
     // =====================================================
+
+    window.exportPromptConfiguration = function() {
+        const exportData = {
+            version: '1.0',
+            exportedAt: new Date().toISOString(),
+            prompts: scribePrompts
+        };
+
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `ai-scribe-prompts-${new Date().toISOString().split('T')[0]}.json`;
+        link.click();
+        URL.revokeObjectURL(url);
+
+        alert('✅ Prompt configuration exported successfully!');
+    };
+
+    window.importPromptConfiguration = function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const importData = JSON.parse(e.target.result);
+
+                // Validate the structure
+                if (!importData.prompts) {
+                    throw new Error('Invalid prompt configuration file: missing prompts data');
+                }
+
+                const mode = confirm(
+                    '📥 Import Prompts\n\n' +
+                    'Choose import mode:\n\n' +
+                    'OK = MERGE with existing prompts (adds new, keeps existing)\n' +
+                    'Cancel = REPLACE all prompts (deletes existing)\n\n' +
+                    'Recommended: MERGE to keep your current prompts'
+                );
+
+                if (mode) {
+                    // Merge mode: add imported prompts to existing ones
+                    if (importData.prompts.systemPrompts) {
+                        importData.prompts.systemPrompts.forEach(p => {
+                            // Check if prompt with same ID already exists
+                            const exists = scribePrompts.systemPrompts.find(sp => sp.id === p.id);
+                            if (!exists) {
+                                scribePrompts.systemPrompts.push(p);
+                            }
+                        });
+                    }
+
+                    if (importData.prompts.editorPrompts) {
+                        importData.prompts.editorPrompts.forEach(p => {
+                            const exists = scribePrompts.editorPrompts.find(ep => ep.id === p.id);
+                            if (!exists) {
+                                scribePrompts.editorPrompts.push(p);
+                            }
+                        });
+                    }
+
+                    if (importData.prompts.enhancementPrompts) {
+                        importData.prompts.enhancementPrompts.forEach(p => {
+                            const exists = scribePrompts.enhancementPrompts.find(ep => ep.id === p.id);
+                            if (!exists) {
+                                scribePrompts.enhancementPrompts.push(p);
+                            }
+                        });
+                    }
+
+                    alert('✅ Prompts merged successfully!\n\nNew prompts have been added to your collection.');
+                } else {
+                    // Replace mode: completely replace with imported prompts
+                    scribePrompts = importData.prompts;
+                    alert('✅ Prompts replaced successfully!\n\nAll previous prompts have been replaced with the imported configuration.');
+                }
+
+                // Save and re-render
+                savePromptSystem();
+                renderPromptCustomization();
+
+                // Clear the file input so the same file can be imported again if needed
+                event.target.value = '';
+
+            } catch (error) {
+                alert('❌ Failed to import prompts:\n\n' + error.message);
+                console.error('Import error:', error);
+                event.target.value = '';
+            }
+        };
+
+        reader.readAsText(file);
+    };
+
+    // =====================================================
+    // AI PROCESSING - MULTI-STAGE PIPELINE WITH STREAMING
+    // =====================================================
+
+    function initializeProgressIndicators(stages) {
+        const container = document.getElementById('progress-stages-container');
+        container.innerHTML = stages.map((stage, index) => `
+            <div class="progress-stage" id="progress-stage-${index}">
+                <div class="progress-stage-icon" id="progress-icon-${index}">⏸️</div>
+                <div class="progress-stage-label">${stage.name}</div>
+                <div class="progress-stage-status" id="progress-status-${index}">Waiting...</div>
+            </div>
+        `).join('');
+
+        document.getElementById('processing-progress').classList.add('active');
+    }
+
+    function updateProgressStage(index, status, icon) {
+        const stage = document.getElementById(`progress-stage-${index}`);
+        const iconEl = document.getElementById(`progress-icon-${index}`);
+        const statusEl = document.getElementById(`progress-status-${index}`);
+
+        // Remove previous states
+        stage.classList.remove('active', 'completed');
+
+        if (status === 'processing') {
+            stage.classList.add('active');
+            iconEl.innerHTML = '<div class="spinner-inline"></div>';
+            statusEl.textContent = 'Processing...';
+        } else if (status === 'completed') {
+            stage.classList.add('completed');
+            iconEl.textContent = '✅';
+            statusEl.textContent = 'Complete';
+        } else if (status === 'error') {
+            iconEl.textContent = '❌';
+            statusEl.textContent = 'Error';
+        }
+    }
+
     window.processWithAI = async function() {
         const transcriptionText = document.getElementById('transcription-text').value.trim();
 
@@ -1709,41 +1933,67 @@ MEDICAL NOTE:`,
 
         // Show processing state
         document.getElementById('output-empty').style.display = 'none';
-        document.getElementById('output-spinner').classList.add('active');
+        document.getElementById('output-spinner').style.display = 'none';
         document.getElementById('output-cards-container').innerHTML = '';
         document.getElementById('process-btn').disabled = true;
 
         try {
-            // Stage 1: System Prompt (required)
+            // Determine which stages will run
             const systemPrompt = getActiveSystemPrompt();
             if (!systemPrompt) {
                 throw new Error('No system prompt is active. Please enable a system prompt in the customization section.');
             }
 
-            currentMedicalNote = await runPromptStage('system', systemPrompt, transcriptionText);
+            const editorPrompt = getActiveEditorPrompt();
+            const enhancementPrompts = getActiveEnhancementPrompts();
+
+            // Build stages list for progress indicators
+            const stages = [
+                { name: `System: ${systemPrompt.name}`, type: 'system' }
+            ];
+
+            if (editorPrompt) {
+                stages.push({ name: `Editor: ${editorPrompt.name}`, type: 'editor' });
+            }
+
+            enhancementPrompts.forEach(p => {
+                stages.push({ name: `Enhancement: ${p.name}`, type: 'enhancement' });
+            });
+
+            // Initialize progress indicators
+            initializeProgressIndicators(stages);
+
+            let stageIndex = 0;
+
+            // Stage 1: System Prompt (required)
+            updateProgressStage(stageIndex, 'processing');
+            currentMedicalNote = await runPromptStageStreaming('system', systemPrompt, transcriptionText, stageIndex);
             processingResults.system = {
                 promptName: systemPrompt.name,
                 promptId: systemPrompt.id,
                 output: currentMedicalNote
             };
+            updateProgressStage(stageIndex, 'completed');
+            stageIndex++;
 
             // Stage 2: Editor Prompt (optional)
-            const editorPrompt = getActiveEditorPrompt();
             if (editorPrompt) {
-                const editedNote = await runPromptStage('editor', editorPrompt, currentMedicalNote);
-                currentMedicalNote = editedNote; // Update the main note
+                updateProgressStage(stageIndex, 'processing');
+                const editedNote = await runPromptStageStreaming('editor', editorPrompt, currentMedicalNote, stageIndex);
+                currentMedicalNote = editedNote;
                 processingResults.editor = {
                     promptName: editorPrompt.name,
                     promptId: editorPrompt.id,
                     output: editedNote
                 };
+                updateProgressStage(stageIndex, 'completed');
+                stageIndex++;
             }
 
-            // Stage 3: Enhancement Prompts (optional, run in parallel)
-            const enhancementPrompts = getActiveEnhancementPrompts();
+            // Stage 3: Enhancement Prompts (run in parallel with individual progress tracking)
             if (enhancementPrompts.length > 0) {
-                const enhancementPromises = enhancementPrompts.map(prompt =>
-                    runPromptStageWithErrorHandling('enhancement', prompt, currentMedicalNote)
+                const enhancementPromises = enhancementPrompts.map((prompt, idx) =>
+                    runEnhancementWithProgress(prompt, currentMedicalNote, stageIndex + idx)
                 );
 
                 const enhancementResults = await Promise.all(enhancementPromises);
@@ -1762,13 +2012,15 @@ MEDICAL NOTE:`,
             // Render output cards
             renderOutputCards();
 
-            // Hide spinner
-            document.getElementById('output-spinner').classList.remove('active');
+            // Hide progress after a moment
+            setTimeout(() => {
+                document.getElementById('processing-progress').classList.remove('active');
+            }, 2000);
 
             updateWorkflowStep('done');
 
         } catch (error) {
-            document.getElementById('output-spinner').classList.remove('active');
+            document.getElementById('processing-progress').classList.remove('active');
             document.getElementById('output-empty').style.display = 'block';
             document.getElementById('output-empty').innerHTML = `
                 <div class="empty-state-icon">❌</div>
@@ -1781,22 +2033,32 @@ MEDICAL NOTE:`,
         document.getElementById('process-btn').disabled = false;
     };
 
-    async function runPromptStage(stageName, prompt, inputText) {
+    async function runPromptStageStreaming(stageName, prompt, inputText, stageIndex) {
         const fullPrompt = prompt.prompt + '\n\n' + inputText;
 
         const response = await llmEngine.chat.completions.create({
             messages: [{ role: 'user', content: fullPrompt }],
             temperature: 0.3,
             max_tokens: 2000,
-            stream: false // Non-streaming for cleaner pipeline
+            stream: true // Enable streaming
         });
 
-        return response.choices[0].message.content;
+        let output = '';
+        for await (const chunk of response) {
+            const delta = chunk.choices[0]?.delta?.content || '';
+            output += delta;
+            // Optional: could add real-time preview here
+        }
+
+        return output;
     }
 
-    async function runPromptStageWithErrorHandling(stageName, prompt, inputText) {
+    async function runEnhancementWithProgress(prompt, inputText, stageIndex) {
+        updateProgressStage(stageIndex, 'processing');
+
         try {
-            const output = await runPromptStage(stageName, prompt, inputText);
+            const output = await runPromptStageStreaming('enhancement', prompt, inputText, stageIndex);
+            updateProgressStage(stageIndex, 'completed');
             return {
                 promptName: prompt.name,
                 promptId: prompt.id,
@@ -1804,7 +2066,8 @@ MEDICAL NOTE:`,
                 error: null
             };
         } catch (error) {
-            console.error(`Error in ${stageName} prompt "${prompt.name}":`, error);
+            updateProgressStage(stageIndex, 'error');
+            console.error(`Error in enhancement prompt "${prompt.name}":`, error);
             return {
                 promptName: prompt.name,
                 promptId: prompt.id,
