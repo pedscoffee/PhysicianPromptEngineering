@@ -52,20 +52,6 @@ permalink: /scribe-tool/
         line-height: 1.8;
     }
 
-    .privacy-highlight {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #059669;
-        font-weight: 500;
-        font-size: 1.1em;
-        margin-top: 15px;
-        padding: 15px;
-        background: #d1fae5;
-        border-radius: 6px;
-        border-left: 4px solid #059669;
-    }
-
     .warning-box {
         background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
         border-left: 4px solid #f59e0b;
@@ -102,49 +88,22 @@ permalink: /scribe-tool/
         text-align: center;
     }
 
-    .status-panel.loading {
-        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-    }
-
-    .status-panel.ready {
-        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-    }
-
-    .status-panel.error {
-        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-    }
-
-    #status-message {
-        font-size: 1.1em;
-        margin-bottom: 15px;
-        font-weight: 500;
-    }
-
-    #status-details {
-        font-size: 0.95em;
-        color: #666;
-        margin-top: 10px;
-    }
-
     .progress-bar {
         width: 100%;
-        height: 8px;
-        background: rgba(255,255,255,0.5);
-        border-radius: 4px;
+        height: 30px;
+        background: #e8e8e8;
+        border-radius: 15px;
         overflow: hidden;
-        margin-top: 15px;
+        margin: 20px 0;
         display: none;
-    }
-
-    .progress-bar.active {
-        display: block;
     }
 
     .progress-fill {
         height: 100%;
-        background: #2a7ae2;
-        width: 0%;
+        background: linear-gradient(90deg, #2a7ae2 0%, #4a90e2 100%);
+        border-radius: 15px;
         transition: width 0.3s ease;
+        width: 0%;
     }
 
     .btn {
@@ -155,14 +114,8 @@ permalink: /scribe-tool/
         font-weight: 500;
         cursor: pointer;
         transition: all 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+        display: inline-block;
+        text-align: center;
     }
 
     .btn-primary {
@@ -171,8 +124,9 @@ permalink: /scribe-tool/
     }
 
     .btn-primary:hover:not(:disabled) {
-        background: #1e5bb8;
+        background: #1e5fb8;
         transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(42, 122, 226, 0.3);
     }
 
     .btn-success {
@@ -183,16 +137,7 @@ permalink: /scribe-tool/
     .btn-success:hover:not(:disabled) {
         background: #218838;
         transform: translateY(-1px);
-    }
-
-    .btn-danger {
-        background: #dc3545;
-        color: white;
-    }
-
-    .btn-danger:hover:not(:disabled) {
-        background: #c82333;
-        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
     }
 
     .btn-secondary {
@@ -202,7 +147,20 @@ permalink: /scribe-tool/
 
     .btn-secondary:hover:not(:disabled) {
         background: #5a6268;
-        transform: translateY(-1px);
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-danger:hover:not(:disabled) {
+        background: #c82333;
+    }
+
+    .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
     }
 
     .btn-lg {
@@ -210,122 +168,75 @@ permalink: /scribe-tool/
         font-size: 1.1em;
     }
 
-    .btn.recording {
-        background: #dc3545;
-        animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.7;
-        }
-    }
-
-    .main-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        align-items: start;
-    }
-
-    @media (max-width: 1200px) {
-        .main-layout {
-            grid-template-columns: 1fr;
-        }
-
-        .output-panel {
-            position: static !important;
-            top: auto !important;
-        }
+    .btn-sm {
+        padding: 6px 12px;
+        font-size: 0.9em;
     }
 
     .panel {
         background: white;
         border-radius: 8px;
-        padding: 30px;
+        padding: 25px;
+        margin-bottom: 20px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .panel h2 {
-        color: #2a7ae2;
+        font-size: 1.5em;
         margin-bottom: 20px;
-        font-size: 1.4em;
+        color: #2a7ae2;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e8e8e8;
     }
 
     .panel h3 {
+        font-size: 1.2em;
+        margin: 20px 0 15px 0;
         color: #333;
-        margin-bottom: 15px;
-        margin-top: 25px;
-        font-size: 1.1em;
     }
 
-    .output-panel {
-        position: sticky;
-        top: 20px;
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e8e8e8;
+        border-radius: 6px;
+        font-size: 1em;
+        transition: border-color 0.2s;
+        font-family: inherit;
+    }
+
+    .form-group textarea {
+        min-height: 200px;
+        resize: vertical;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: #2a7ae2;
     }
 
     .recording-controls {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        margin-bottom: 25px;
-        padding: 20px;
-        background: #f9f9f9;
-        border-radius: 8px;
-        border: 2px solid #e8e8e8;
-    }
-
-    .recording-status {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px;
-        background: white;
-        border-radius: 6px;
-        border: 2px solid #e8e8e8;
-    }
-
-    .status-indicator {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        font-size: 1.05em;
-    }
-
-    .status-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #6c757d;
-    }
-
-    .status-dot.recording {
-        background: #dc3545;
-        animation: blink 1s ease-in-out infinite;
-    }
-
-    .status-dot.ready {
-        background: #28a745;
-    }
-
-    @keyframes blink {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.3;
-        }
-    }
-
-    .duration-display {
-        font-family: 'Monaco', 'Courier New', monospace;
-        font-size: 1.2em;
-        font-weight: 600;
-        color: #2a7ae2;
+        margin-bottom: 20px;
     }
 
     .button-group {
@@ -334,122 +245,20 @@ permalink: /scribe-tool/
         flex-wrap: wrap;
     }
 
-    .upload-section {
-        margin-top: 20px;
-        padding: 20px;
-        background: #f0f7ff;
-        border-radius: 8px;
-        border: 2px dashed #2a7ae2;
-        text-align: center;
-    }
-
-    .upload-section h4 {
-        color: #2a7ae2;
-        margin-bottom: 10px;
-    }
-
-    .upload-section p {
-        color: #666;
-        font-size: 0.95em;
-        margin-bottom: 15px;
-    }
-
-    .file-input-wrapper {
-        position: relative;
-        display: inline-block;
-    }
-
-    .file-input-wrapper input[type="file"] {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .transcription-box {
-        background: #f9f9f9;
-        padding: 20px;
-        border-radius: 6px;
-        border-left: 3px solid #2a7ae2;
-        min-height: 200px;
-        margin-bottom: 20px;
-        position: relative;
-    }
-
-    .transcription-box.empty {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #999;
-        font-style: italic;
-    }
-
-    .transcription-box textarea {
-        width: 100%;
-        min-height: 200px;
-        border: none;
-        background: transparent;
-        font-family: inherit;
-        font-size: 1em;
-        resize: vertical;
-        padding: 0;
-        color: #333;
-    }
-
-    .transcription-box textarea:focus {
-        outline: none;
-    }
-
-    .transcription-actions {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 25px;
-    }
-
-    .form-group label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: #333;
-        font-size: 1.05em;
-    }
-
-    .form-group select {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e8e8e8;
-        border-radius: 6px;
-        font-family: inherit;
-        font-size: 1em;
-        transition: border-color 0.2s;
-        background: white;
-    }
-
-    .form-group select:focus {
-        outline: none;
-        border-color: #2a7ae2;
+    #transcription-text {
+        min-height: 300px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.8;
     }
 
     #output-content {
-        background: #f9f9f9;
-        padding: 20px;
-        border-radius: 6px;
-        border-left: 3px solid #059669;
         min-height: 300px;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 6px;
         white-space: pre-wrap;
-        font-family: 'Monaco', 'Courier New', monospace;
-        font-size: 0.95em;
-        color: #333;
-        margin-bottom: 20px;
-        display: none;
-    }
-
-    #output-content.active {
-        display: block;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.8;
     }
 
     .empty-state {
@@ -458,48 +267,15 @@ permalink: /scribe-tool/
         color: #999;
     }
 
-    .empty-state-icon {
-        font-size: 4em;
-        margin-bottom: 15px;
-    }
-
-    .char-counter {
-        text-align: right;
-        font-size: 0.9em;
-        margin-top: 10px;
-        color: #666;
-    }
-
-    .char-counter.warning {
-        color: #f59e0b;
-        font-weight: 600;
-    }
-
-    .char-counter.error {
-        color: #dc2626;
-        font-weight: 600;
-    }
-
-    .output-actions {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-    }
-
     .spinner {
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid #2a7ae2;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin: 20px auto;
         display: none;
-    }
-
-    .spinner.active {
-        display: block;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #2a7ae2;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 40px auto;
     }
 
     @keyframes spin {
@@ -507,120 +283,170 @@ permalink: /scribe-tool/
         100% { transform: rotate(360deg); }
     }
 
-    .info-box {
+    /* Accordion Styles */
+    .accordion {
+        margin-top: 40px;
+    }
+
+    .accordion-item {
+        background: white;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .accordion-header {
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-bottom: 2px solid #dee2e6;
+        transition: background 0.2s;
+    }
+
+    .accordion-header:hover {
+        background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    }
+
+    .accordion-header h3 {
+        margin: 0;
+        font-size: 1.3em;
+        color: #2a7ae2;
+    }
+
+    .accordion-header .accordion-icon {
+        font-size: 1.5em;
+        color: #2a7ae2;
+        transition: transform 0.3s;
+    }
+
+    .accordion-header.active .accordion-icon {
+        transform: rotate(180deg);
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .accordion-content-inner {
+        padding: 25px;
+    }
+
+    .prompt-list {
+        margin-bottom: 20px;
+    }
+
+    .prompt-item {
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 6px;
+        padding: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s;
+    }
+
+    .prompt-item:hover {
+        border-color: #2a7ae2;
         background: #f0f7ff;
+    }
+
+    .prompt-item.active {
+        border-color: #28a745;
+        background: #d1fae5;
+    }
+
+    .prompt-item-name {
+        font-weight: 500;
+        color: #333;
+        flex: 1;
+    }
+
+    .prompt-item-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .char-counter {
+        font-size: 0.9em;
+        color: #999;
+        text-align: right;
+        margin-top: 5px;
+    }
+
+    .info-box {
+        background: #e3f2fd;
         border-left: 4px solid #2a7ae2;
         padding: 15px;
         border-radius: 6px;
-        margin-top: 20px;
+        margin: 20px 0;
     }
 
     .info-box h4 {
-        color: #2a7ae2;
-        margin-bottom: 8px;
-        font-size: 1em;
+        color: #1565c0;
+        margin-bottom: 10px;
     }
 
     .info-box ul {
         margin-left: 20px;
-        color: #555;
-        font-size: 0.95em;
+        color: #1976d2;
     }
 
     .info-box li {
         margin-bottom: 5px;
     }
 
-    .workflow-indicator {
+    .output-tabs {
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 25px;
-        padding: 15px;
-        background: #f9f9f9;
-        border-radius: 6px;
+        gap: 10px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #e8e8e8;
     }
 
-    .workflow-step {
-        flex: 1;
-        text-align: center;
-        position: relative;
-        padding: 10px;
-    }
-
-    .workflow-step:not(:last-child)::after {
-        content: '→';
-        position: absolute;
-        right: -20px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #ccc;
-        font-size: 1.5em;
-    }
-
-    .workflow-step.active {
-        background: #e3f2fd;
-        border-radius: 6px;
-    }
-
-    .workflow-step.completed {
-        background: #d1fae5;
-        border-radius: 6px;
-    }
-
-    .workflow-step-icon {
-        font-size: 1.5em;
-        margin-bottom: 5px;
-    }
-
-    .workflow-step-label {
-        font-size: 0.85em;
-        color: #666;
+    .output-tab {
+        padding: 12px 20px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 1em;
         font-weight: 500;
+        color: #666;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
     }
 
-    .audio-visualizer {
-        width: 100%;
-        height: 60px;
-        background: #1a1a1a;
-        border-radius: 6px;
-        margin-top: 10px;
+    .output-tab:hover {
+        color: #2a7ae2;
+        background: #f8f9fa;
+    }
+
+    .output-tab.active {
+        color: #2a7ae2;
+        border-bottom-color: #2a7ae2;
+    }
+
+    .output-tab-content {
         display: none;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
     }
 
-    .audio-visualizer.active {
-        display: flex;
+    .output-tab-content.active {
+        display: block;
     }
 
-    .audio-bars {
-        display: flex;
-        gap: 3px;
-        align-items: center;
-        height: 100%;
-        padding: 10px;
-    }
-
-    .audio-bar {
-        width: 4px;
-        background: #2a7ae2;
-        border-radius: 2px;
-        animation: audioWave 0.8s ease-in-out infinite;
-    }
-
-    .audio-bar:nth-child(1) { animation-delay: 0s; }
-    .audio-bar:nth-child(2) { animation-delay: 0.1s; }
-    .audio-bar:nth-child(3) { animation-delay: 0.2s; }
-    .audio-bar:nth-child(4) { animation-delay: 0.3s; }
-    .audio-bar:nth-child(5) { animation-delay: 0.4s; }
-
-    @keyframes audioWave {
-        0%, 100% {
-            height: 20%;
+    @media (max-width: 768px) {
+        .button-group {
+            flex-direction: column;
         }
-        50% {
-            height: 80%;
+
+        .btn {
+            width: 100%;
         }
     }
 </style>
@@ -636,9 +462,9 @@ permalink: /scribe-tool/
 </div>
 
 <div class="container">
-    <div class="warning-box" style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
-        <h3 style="color: #78350f; margin-bottom: 12px; font-size: 1.1em;">BETA - Educational Demonstration Only</h3>
-        <p style="color: #78350f; margin-bottom: 10px;">
+    <div class="warning-box">
+        <h3>BETA - Educational Demonstration Only</h3>
+        <p>
             <strong>This is an experimental prototype for educational purposes.</strong> Do not use with any patient data, protected health information, or sensitive information. This tool is not HIPAA-compliant and is not intended for clinical use.
         </p>
     </div>
@@ -654,8 +480,9 @@ permalink: /scribe-tool/
         </ul>
     </div>
 
+    <!-- Initialization Panel -->
     <div class="status-panel" id="status-panel">
-        <div id="status-message">Click "Initialize AI Scribe" to download models and start</div>
+        <div id="status-message">Click "Initialize PPE Scribe" to download models and start</div>
         <div id="status-details"></div>
         <div class="progress-bar" id="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -665,89 +492,34 @@ permalink: /scribe-tool/
         </button>
     </div>
 
-    <div class="workflow-indicator" id="workflow-indicator" style="display: none;">
-        <div class="workflow-step" id="step-record">
-            <div class="workflow-step-icon">1</div>
-            <div class="workflow-step-label">Record</div>
-        </div>
-        <div class="workflow-step" id="step-transcribe">
-            <div class="workflow-step-icon">2</div>
-            <div class="workflow-step-label">Transcribe</div>
-        </div>
-        <div class="workflow-step" id="step-process">
-            <div class="workflow-step-icon">3</div>
-            <div class="workflow-step-label">Format</div>
-        </div>
-        <div class="workflow-step" id="step-done">
-            <div class="workflow-step-icon">4</div>
-            <div class="workflow-step-label">Done</div>
-        </div>
-    </div>
+    <!-- Main Interface (hidden until initialized) -->
+    <div id="main-interface" style="display: none;">
 
-    <div class="main-layout" id="main-interface" style="display: none;">
+        <!-- Recording & Transcription Panel -->
         <div class="panel">
-            <h2>Recording & Transcription</h2>
+            <h2>Step 1: Record & Transcribe</h2>
 
             <div class="recording-controls">
-                <div class="recording-status">
-                    <div class="status-indicator">
-                        <span class="status-dot" id="status-dot"></span>
-                        <span id="recording-status-text">Ready</span>
-                    </div>
-                    <div class="duration-display" id="duration-display">0:00</div>
-                </div>
-
                 <div class="button-group">
-                    <button id="start-btn" class="btn btn-danger btn-lg" onclick="startRecording()">
+                    <button id="record-btn" class="btn btn-primary" onclick="startRecording()">
                         Start Recording
                     </button>
-                    <button id="stop-btn" class="btn btn-secondary" onclick="stopRecording()" disabled>
-                        Stop & Transcribe
+                    <button id="stop-btn" class="btn btn-danger" onclick="stopRecording()" disabled>
+                        Stop Recording
                     </button>
-                    <button id="clear-btn" class="btn btn-secondary" onclick="clearAll()">
-                        Clear All
-                    </button>
-                </div>
-
-                <div class="audio-visualizer" id="audio-visualizer">
-                    <div class="audio-bars">
-                        <div class="audio-bar"></div>
-                        <div class="audio-bar"></div>
-                        <div class="audio-bar"></div>
-                        <div class="audio-bar"></div>
-                        <div class="audio-bar"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="upload-section">
-                <h4>Or Upload Audio File</h4>
-                <p>Already have a recording? Upload it here (.wav, .mp3, .m4a, .webm)</p>
-                <div class="file-input-wrapper">
-                    <label for="audio-file" class="btn btn-primary">
-                        Choose Audio File
+                    <label class="btn btn-secondary" style="cursor: pointer;">
+                        Upload Audio
+                        <input type="file" id="audio-upload" accept="audio/*" onchange="handleAudioUpload(event)" style="display: none;">
                     </label>
-                    <input type="file" id="audio-file" accept="audio/*" onchange="handleFileUpload(event)">
                 </div>
             </div>
 
-            <h3 style="margin-top: 30px;">Transcription</h3>
-            <div class="spinner" id="transcription-spinner"></div>
-            <div class="transcription-box" id="transcription-box">
-                <div class="empty-state" id="transcription-empty">
-                    <div class="empty-state-icon"></div>
-                    <p>Your transcription will appear here after recording</p>
-                </div>
-                <textarea id="transcription-text" style="display: none;" placeholder="Transcription will appear here. You can edit it before processing..."></textarea>
-            </div>
+            <div id="transcription-status" style="margin: 15px 0; color: #666;"></div>
 
-            <div class="transcription-actions" id="transcription-actions" style="display: none;">
-                <button class="btn btn-success" onclick="copyTranscription(event)">
-                    Copy Transcription
-                </button>
-                <button class="btn btn-secondary" onclick="downloadTranscription()">
-                    Download .txt
-                </button>
+            <div class="form-group">
+                <label for="transcription-text">Transcription</label>
+                <textarea id="transcription-text" placeholder="Transcribed text will appear here, or type/paste your clinical encounter notes..."></textarea>
+                <div class="char-counter" id="transcription-counter">0 characters</div>
             </div>
 
             <div class="info-box">
@@ -756,866 +528,976 @@ permalink: /scribe-tool/
                     <li><strong>Quiet environment:</strong> Minimize background noise</li>
                     <li><strong>Clear speech:</strong> Speak clearly, especially medical terms</li>
                     <li><strong>Brief pauses:</strong> Brief pauses between sentences improve accuracy</li>
-                    <li><strong>Review transcription:</strong> Always review and edit before processing</li>
-                    <li><strong>Medical terminology:</strong> AI will correct common medical terms during formatting</li>
+                    <li><strong>Review transcription:</strong> Always review and edit before formatting</li>
                 </ul>
             </div>
         </div>
 
-        <div class="output-panel">
-            <h2>Clinical Note</h2>
+        <!-- Clinical Note Generation Panel -->
+        <div class="panel">
+            <h2>Step 2: Generate Clinical Note</h2>
 
-            <button id="process-btn" class="btn btn-success btn-lg" onclick="processWithAI()" disabled style="display: none; width: 100%; margin-bottom: 20px;">
+            <p style="color: #666; margin-bottom: 20px;">
+                Current system prompt: <strong id="active-system-prompt-name">Default APSO Format</strong>
+                <button class="btn btn-sm btn-secondary" onclick="scrollToPromptManagement()" style="margin-left: 10px;">
+                    Customize Prompts
+                </button>
+            </p>
+
+            <button id="generate-btn" class="btn btn-success btn-lg" onclick="generateNote()" style="width: 100%;">
                 Generate Clinical Note
             </button>
 
-            <div class="empty-state" id="output-empty">
-                <div class="empty-state-icon"></div>
-                <p>Your formatted clinical note will appear here</p>
+            <div class="spinner" id="generation-spinner"></div>
+
+            <!-- Output Tabs -->
+            <div id="output-section" style="display: none; margin-top: 30px;">
+                <div class="output-tabs">
+                    <button class="output-tab active" data-tab="medical-note" onclick="switchOutputTab('medical-note')">
+                        Medical Note
+                    </button>
+                </div>
+
+                <div class="output-tab-content active" id="tab-medical-note">
+                    <div id="medical-note-content"></div>
+                    <div class="button-group" style="margin-top: 20px;">
+                        <button class="btn btn-success" onclick="copyToClipboard('medical-note-content')">
+                            Copy to Clipboard
+                        </button>
+                        <button class="btn btn-secondary" onclick="downloadOutput('medical-note')">
+                            Download .txt
+                        </button>
+                    </div>
+
+                    <h3>Apply Editor Prompts (Optional)</h3>
+                    <p style="color: #666;">Select editor prompts to refine the medical note:</p>
+                    <div id="editor-prompts-list"></div>
+
+                    <h3>Generate Additional Outputs (Optional)</h3>
+                    <p style="color: #666;">Select enhancement prompts to create additional documentation:</p>
+                    <div id="enhancement-prompts-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prompt Management Section -->
+        <div class="accordion" id="prompt-management">
+            <h2 style="font-size: 2em; margin-bottom: 30px; color: #2a7ae2;">Prompt Management</h2>
+
+            <p style="color: #666; margin-bottom: 30px; line-height: 1.8;">
+                Customize how PPE Scribe processes your clinical encounters. The tool uses a three-stage approach:
+                <strong>System Prompts</strong> convert transcripts into medical notes,
+                <strong>Editor Prompts</strong> refine those notes to your specifications, and
+                <strong>Enhancement Prompts</strong> generate additional outputs like billing notes or patient summaries.
+            </p>
+
+            <!-- System Prompts -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion('system')">
+                    <h3>System Prompts</h3>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-system">
+                    <div class="accordion-content-inner">
+                        <div class="info-box">
+                            <h4>What are System Prompts?</h4>
+                            <p>System prompts convert your raw transcription into a structured medical note. They filter out non-medical conversation and organize clinical information into your preferred format (APSO, SOAP, etc.). One system prompt is required and runs first.</p>
+                        </div>
+
+                        <div id="system-prompts-list" class="prompt-list"></div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" onclick="showPromptEditor('system', 'new')">
+                                Add New System Prompt
+                            </button>
+                            <button class="btn btn-secondary" onclick="importPrompts('system')">
+                                Import Prompts
+                            </button>
+                            <button class="btn btn-secondary" onclick="exportPrompts('system')">
+                                Export Prompts
+                            </button>
+                        </div>
+
+                        <div id="system-prompt-editor" style="display: none;">
+                            <h3>Edit System Prompt</h3>
+                            <div class="form-group">
+                                <label for="system-prompt-name">Prompt Name</label>
+                                <input type="text" id="system-prompt-name" placeholder="e.g., APSO Format">
+                            </div>
+                            <div class="form-group">
+                                <label for="system-prompt-text">Prompt Template</label>
+                                <textarea id="system-prompt-text" placeholder="Enter your system prompt..."></textarea>
+                                <div class="char-counter" id="system-prompt-counter">0 characters</div>
+                            </div>
+                            <div class="button-group">
+                                <button class="btn btn-success" onclick="savePrompt('system')">
+                                    Save Prompt
+                                </button>
+                                <button class="btn btn-secondary" onclick="cancelPromptEdit('system')">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="spinner" id="output-spinner"></div>
+            <!-- Editor Prompts -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion('editor')">
+                    <h3>Editor Prompts</h3>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-editor">
+                    <div class="accordion-content-inner">
+                        <div class="info-box">
+                            <h4>What are Editor Prompts?</h4>
+                            <p>Editor prompts refine your medical note to match your personal style and specifications. They work on the output from the system prompt, allowing you to make it more concise, more detailed, or reformat it to your exact preferences. Editor prompts are optional.</p>
+                        </div>
 
-            <div id="output-content"></div>
+                        <div id="editor-prompts-list-manager" class="prompt-list"></div>
 
-            <div class="char-counter" id="output-char-counter" style="display: none;"></div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" onclick="showPromptEditor('editor', 'new')">
+                                Add New Editor Prompt
+                            </button>
+                            <button class="btn btn-secondary" onclick="importPrompts('editor')">
+                                Import Prompts
+                            </button>
+                            <button class="btn btn-secondary" onclick="exportPrompts('editor')">
+                                Export Prompts
+                            </button>
+                        </div>
 
-            <div class="output-actions" id="output-actions" style="display: none;">
-                <button class="btn btn-success" onclick="copyOutput(event)">
-                    Copy to Clipboard
-                </button>
-                <button class="btn btn-primary" onclick="saveNoteToSnippetManager()">
-                    Save Note
-                </button>
-                <button class="btn btn-secondary" onclick="downloadOutput()">
-                    Download .txt
-                </button>
+                        <div id="editor-prompt-editor" style="display: none;">
+                            <h3>Edit Editor Prompt</h3>
+                            <div class="form-group">
+                                <label for="editor-prompt-name">Prompt Name</label>
+                                <input type="text" id="editor-prompt-name" placeholder="e.g., Make More Concise">
+                            </div>
+                            <div class="form-group">
+                                <label for="editor-prompt-text">Prompt Template</label>
+                                <textarea id="editor-prompt-text" placeholder="Enter your editor prompt..."></textarea>
+                                <div class="char-counter" id="editor-prompt-counter">0 characters</div>
+                            </div>
+                            <div class="button-group">
+                                <button class="btn btn-success" onclick="savePrompt('editor')">
+                                    Save Prompt
+                                </button>
+                                <button class="btn btn-secondary" onclick="cancelPromptEdit('editor')">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <h3 style="margin-top: 30px; display: none;" id="prompt-section-header">Customize Prompt</h3>
+            <!-- Enhancement Prompts -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion('enhancement')">
+                    <h3>Enhancement Prompts</h3>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" id="accordion-enhancement">
+                    <div class="accordion-content-inner">
+                        <div class="info-box">
+                            <h4>What are Enhancement Prompts?</h4>
+                            <p>Enhancement prompts create additional documentation from your medical note - such as billing summaries, after-visit summaries for patients, sign-out notes, or other specialized formats. They run in parallel and create separate outputs. Enhancement prompts are optional.</p>
+                        </div>
 
-            <div class="form-group" id="prompt-selection" style="display: none;">
-                <label for="clinical-prompt">
-                    Select Prompt Template
-                </label>
-                <select id="clinical-prompt" onchange="loadPromptTemplate()">
-                    <option value="">-- Choose a prompt template --</option>
-                    <optgroup label="Default Templates" id="default-prompts">
-                        <option value="apso">APSO Format (Assessment, Plan, Subjective, Objective)</option>
-                        <option value="ap-pithy">A/P Formatting (Pithy)</option>
-                        <option value="ap-formal">A/P Formatting (Formal)</option>
-                        <option value="billing">Billing & Medical Decision Making</option>
-                        <option value="avs">After-Visit Summary (Patient-Friendly)</option>
-                        <option value="signout">Concise Sign-Out</option>
-                        <option value="soap">SOAP Note</option>
-                        <option value="custom">Custom Processing (Basic Format)</option>
-                    </optgroup>
-                    <optgroup label="Your Saved Prompts" id="saved-prompts">
-                    </optgroup>
-                </select>
-            </div>
+                        <div id="enhancement-prompts-list-manager" class="prompt-list"></div>
 
-            <div class="form-group" id="prompt-editor" style="display: none;">
-                <label for="prompt-text">
-                    Prompt (Editable)
-                    <span style="color: #999; font-size: 0.9em;">Modify the prompt below to customize AI behavior</span>
-                </label>
-                <textarea
-                    id="prompt-text"
-                    style="font-family: 'Monaco', 'Courier New', monospace; min-height: 300px; resize: vertical;"
-                    placeholder="Select a prompt template above to begin editing, or write your own custom prompt..."></textarea>
-                <div class="char-counter" id="prompt-char-counter" style="display: block; margin-top: 10px;">0 characters</div>
-            </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" onclick="showPromptEditor('enhancement', 'new')">
+                                Add New Enhancement Prompt
+                            </button>
+                            <button class="btn btn-secondary" onclick="importPrompts('enhancement')">
+                                Import Prompts
+                            </button>
+                            <button class="btn btn-secondary" onclick="exportPrompts('enhancement')">
+                                Export Prompts
+                            </button>
+                        </div>
 
-            <div class="button-group" id="prompt-actions" style="display: none; margin-top: 15px;">
-                <button class="btn btn-primary" onclick="savePromptToSnippetManager()">
-                    Save This Prompt
-                </button>
-                <button class="btn btn-secondary" onclick="resetToDefaultPrompt()">
-                    Reset to Default
-                </button>
-            </div>
-
-            <div class="info-box" style="margin-top: 20px;">
-                <h4>Next Steps</h4>
-                <ul>
-                    <li><strong>Review:</strong> Always review AI-generated notes for accuracy</li>
-                    <li><strong>Edit:</strong> Make any necessary corrections</li>
-                    <li><strong>Copy:</strong> Paste into your EMR</li>
-                    <li><strong>Save:</strong> Store successful prompts in Snippet Manager</li>
-                    <li><strong>Iterate:</strong> Refine your workflow over time</li>
-                </ul>
+                        <div id="enhancement-prompt-editor" style="display: none;">
+                            <h3>Edit Enhancement Prompt</h3>
+                            <div class="form-group">
+                                <label for="enhancement-prompt-name">Prompt Name</label>
+                                <input type="text" id="enhancement-prompt-name" placeholder="e.g., Billing Summary">
+                            </div>
+                            <div class="form-group">
+                                <label for="enhancement-prompt-text">Prompt Template</label>
+                                <textarea id="enhancement-prompt-text" placeholder="Enter your enhancement prompt..."></textarea>
+                                <div class="char-counter" id="enhancement-prompt-counter">0 characters</div>
+                            </div>
+                            <div class="button-group">
+                                <button class="btn btn-success" onclick="savePrompt('enhancement')">
+                                    Save Prompt
+                                </button>
+                                <button class="btn btn-secondary" onclick="cancelPromptEdit('enhancement')">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script type="module">
-    import { pipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.1.2";
-    import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
+<script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.46/lib/index.min.js"></script>
 
-    // =====================================================
-    // STATE
-    // =====================================================
-    let whisperModel = null;
-    let llmEngine = null;
-    let mediaRecorder = null;
-    let audioChunks = [];
-    let recordingStartTime = null;
-    let durationInterval = null;
-    let currentTranscription = '';
-    let currentOutput = '';
-    let currentDefaultPromptId = ''; // Track which default template is selected
-    let savedPrompts = []; // Cache of saved prompts from snippet manager
+<script>
+// =====================================================
+// GLOBAL STATE
+// =====================================================
+let whisperModel = null;
+let llmEngine = null;
+let mediaRecorder = null;
+let audioChunks = [];
+let currentTranscription = '';
+let medicalNoteOutput = '';
+let editingPromptId = null;
 
-    const WHISPER_MODEL = "Xenova/whisper-base";
-    const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
+const WHISPER_MODEL = "Xenova/whisper-base";
+const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
 
-    // =====================================================
-    // CLINICAL PROMPT TEMPLATES
-    // =====================================================
-    // These prompts are used to format transcribed audio into clinical notes.
-    // The system prompt defines the AI's behavior and output format.
-    // You can edit these prompts to customize the output style.
-    // =====================================================
-
-    const CLINICAL_PROMPTS = {
-        // =====================================================
-        // APSO FORMAT (Assessment, Plan, Subjective, Objective)
-        // =====================================================
-        // This is the default scribe format. It converts raw transcription
-        // into a structured clinical note using formal medical terminology.
-        //
-        // KEY INSTRUCTIONS:
-        // - Only include information explicitly stated in the transcript
-        // - Do not infer, add, or embellish clinical details
-        // - Use formal medical terminology
-        // - Preserve all clinical information mentioned
-        // - Format and organize but do not fabricate
-        // =====================================================
-        'apso': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a structured APSO (Assessment, Plan, Subjective, Objective) format.
-
-CRITICAL RULES:
-- Use ONLY information explicitly stated in the transcription
-- Do NOT infer or add clinical reasoning beyond what is spoken
-- Do NOT fabricate any clinical details, measurements, or observations
-- Preserve ALL clinical details mentioned in the transcript
-- Use formal medical terminology and standard abbreviations
-- Organize and format the information clearly
+// Default APSO System Prompt (paragraph-based like standalone version)
+const DEFAULT_SYSTEM_PROMPT = {
+    name: "Default APSO Format",
+    prompt: `Convert this clinical encounter transcription into APSO format using formal medical terminology.
 
 FORMAT:
 
-**Assessment:**
-[Clinical impression and diagnoses based on the encounter]
+ASSESSMENT AND PLAN:
+Format each diagnosis as:
 
-**Plan:**
-[Treatment plan, medications, follow-up instructions]
-- Use bullet points for clarity
-- Include all medications with dosing if mentioned
-- Document follow-up timing and instructions
+**[Diagnosis Name]**
+[Paragraph with assessment and plan details from the conversation. Use formal medical terminology. Include relevant history, examination findings, and clinical reasoning. Detail the treatment plan, medications with dosing, follow-up instructions, and any patient education provided. Only include information explicitly stated in the transcript.]
 
-**Subjective:**
-[Patient's chief complaint, history of present illness, review of systems]
-- Patient's description of symptoms
-- Relevant medical history mentioned
-- Timeline of symptoms
+Example:
+**Acute Bacterial Sinusitis**
+The patient presents with facial pain, purulent nasal discharge, and nasal congestion for 10 days without improvement. Physical examination reveals tenderness to palpation over the maxillary sinuses bilaterally and mucopurulent drainage visualized in the nasal passages. Given the duration and severity of symptoms, bacterial sinusitis is suspected. Will initiate treatment with amoxicillin-clavulanate 875mg-125mg orally twice daily for 10 days. Advised symptomatic management with saline nasal irrigation and decongestants as needed. Patient instructed to follow up if symptoms worsen or do not improve within 48-72 hours, or if high fever develops.
 
-**Objective:**
-[Physical exam findings, vital signs, test results if mentioned]
-- Document all examination findings stated
-- Include any vital signs or measurements mentioned
-- Note test results or lab values if discussed
+SUBJECTIVE:
+[Document the patient's chief complaint, history of present illness, review of systems, and relevant past medical history as described by the patient. Use the patient's own words where appropriate but organize coherently.]
 
-Transcription:`,
+OBJECTIVE:
+[Document vital signs, physical examination findings, and any test results mentioned in the encounter. Be specific and thorough.]
 
-        // =====================================================
-        // End of APSO System Prompt
-        // =====================================================
-
-        'ap-pithy': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a concise, scannable Assessment & Plan format.
-
-Rules:
-- Each problem as a BOLD header
-- Plan items as bullet points (use "-")
-- Be pithy and scannable
-- Use standard medical abbreviations
-- Remove conversational filler
-- Include only clinically relevant information
-
-Format each problem like this:
-**[Problem Name]**
-- [Plan item 1]
-- [Plan item 2]
-
-Transcription:`,
-
-        'ap-formal': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a formal, detailed Assessment & Plan format.
-
-Rules:
-- Each problem as a BOLD header
-- Full sentences for assessment
-- Detailed plan with bullet points
-- Professional medical language
-- Include medical decision-making rationale
-- Use standard medical abbreviations appropriately
-
-Format each problem like this:
-**[Problem Name]**
-Assessment: [Brief clinical assessment]
-Plan:
-- [Detailed plan item 1]
-- [Detailed plan item 2]
-
-Transcription:`,
-
-        'billing': `You are a medical billing documentation assistant. Analyze the following clinical encounter and generate Medical Decision Making (MDM) documentation for billing purposes.
-
-Include:
-1. Complexity level (straightforward/low/moderate/high)
-2. Number and complexity of problems addressed
-3. Amount/complexity of data reviewed
-4. Risk of complications/morbidity/mortality
-5. Time spent (if mentioned)
-
-Be specific and support the billing level with clinical details.
-
-Transcription:`,
-
-        'avs': `You are a patient education assistant. Convert the following clinical encounter into a patient-friendly After-Visit Summary.
-
-Requirements:
-- 6th-8th grade reading level
-- Explain diagnoses in plain language
-- Clear medication instructions
-- Specific follow-up plan
-- When to seek urgent care (return precautions)
-
-Format:
-**What We Found:**
-[Plain language diagnosis]
-
-**Your Medications:**
-[Simple medication instructions]
-
-**What You Should Do:**
-[Clear action items]
-
-**When to Call or Come Back:**
-[Return precautions]
-
-Transcription:`,
-
-        'signout': `You are a medical handoff assistant. Create a concise patient sign-out from this clinical encounter.
-
-Format:
-- One-liner patient summary
-- Key overnight tasks
-- If/then contingency plans
-- Critical values to monitor
-- Code status (if mentioned)
-
-Be extremely concise. Each patient should be 2-4 lines maximum.
-
-Transcription:`,
-
-        'soap': `You are a medical documentation assistant. Convert the following clinical encounter into a structured SOAP note.
-
-Format:
-**Subjective:**
-[Patient's chief complaint and history]
-
-**Objective:**
-[Physical exam findings, vital signs, test results]
-
-**Assessment:**
-[Clinical impression/diagnosis]
-
-**Plan:**
-[Treatment plan and follow-up]
-
-Transcription:`,
-
-        'custom': `You are a medical documentation assistant. Format the following clinical transcription into a clear, organized clinical note. Use appropriate medical terminology, organize by problem when applicable, and present information in a scannable format.
+CRITICAL INSTRUCTIONS:
+- Use ONLY information from the transcript
+- Do NOT infer, hallucinate, or confabulate any clinical details
+- Do NOT add examination findings not mentioned
+- Do NOT add laboratory values or test results not discussed
+- Use formal medical terminology throughout
+- Be thorough but only include what was actually said
 
 Transcription:`
-    };
+};
 
-    // =====================================================
-    // INITIALIZATION
-    // =====================================================
-    window.initializeModels = async function() {
-        const statusPanel = document.getElementById('status-panel');
-        const statusMessage = document.getElementById('status-message');
-        const statusDetails = document.getElementById('status-details');
-        const progressBar = document.getElementById('progress-bar');
-        const progressFill = document.getElementById('progress-fill');
-        const initBtn = document.getElementById('init-btn');
-
-        statusPanel.className = 'status-panel loading';
-        statusMessage.textContent = 'Initializing AI models...';
-        progressBar.classList.add('active');
-        initBtn.disabled = true;
-
-        try {
-            // Step 1: Load Whisper
-            statusMessage.textContent = 'Loading Whisper (speech-to-text model)...';
-            statusDetails.textContent = 'Downloading ~75MB... This may take 2-5 minutes.';
-            progressFill.style.width = '25%';
-
-            whisperModel = await pipeline(
-                'automatic-speech-recognition',
-                WHISPER_MODEL,
-                {
-                    dtype: 'fp32',
-                    device: 'webgpu'
-                }
-            );
-
-            progressFill.style.width = '50%';
-            statusMessage.textContent = 'Whisper loaded!';
-
-            // Step 2: Load LLM
-            statusMessage.textContent = 'Loading Phi-3.5 (clinical formatting model)...';
-            statusDetails.textContent = 'Downloading ~2GB... This may take 5-15 minutes.';
-
-            llmEngine = await CreateMLCEngine(
-                LLM_MODEL,
-                {
-                    initProgressCallback: (progress) => {
-                        const percent = 50 + (progress.progress * 50);
-                        progressFill.style.width = `${percent.toFixed(1)}%`;
-                        statusDetails.textContent = `${progress.text} (${(progress.progress * 100).toFixed(1)}%)`;
-                    }
-                }
-            );
-
-            progressFill.style.width = '100%';
-            statusPanel.className = 'status-panel ready';
-            statusMessage.textContent = 'PPE Scribe Ready!';
-            statusDetails.textContent = 'All models loaded. You can now record or upload audio. This setup was one-time—next visit will load in seconds.';
-
-            // Hide init panel, show main interface
-            setTimeout(() => {
-                document.getElementById('status-panel').style.display = 'none';
-                document.getElementById('workflow-indicator').style.display = 'flex';
-                document.getElementById('main-interface').style.display = 'grid';
-                updateWorkflowStep('record');
-            }, 2000);
-
-        } catch (error) {
-            statusPanel.className = 'status-panel error';
-            statusMessage.textContent = 'Failed to initialize models';
-            statusDetails.innerHTML = `
-                Error: ${error.message}
-                <br><br>
-                <strong>Troubleshooting:</strong><br>
-                • Check internet connection<br>
-                • Ensure ~3GB free disk space<br>
-                • Try refreshing the page<br>
-                • Use Chrome/Edge 113+ on desktop
-            `;
-            console.error('Initialization error:', error);
-            initBtn.disabled = false;
-            initBtn.textContent = 'Retry';
-        }
-    };
-
-    // =====================================================
-    // AUDIO RECORDING
-    // =====================================================
-    window.startRecording = async function() {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-            audioChunks = [];
-            mediaRecorder = new MediaRecorder(stream);
-
-            mediaRecorder.ondataavailable = (event) => {
-                audioChunks.push(event.data);
-            };
-
-            mediaRecorder.onstop = handleRecordingStop;
-
-            mediaRecorder.start();
-            recordingStartTime = Date.now();
-
-            // Update UI
-            document.getElementById('start-btn').disabled = true;
-            document.getElementById('stop-btn').disabled = false;
-            document.getElementById('status-dot').classList.add('recording');
-            document.getElementById('recording-status-text').textContent = 'Recording...';
-            document.getElementById('audio-visualizer').classList.add('active');
-
-            // Start duration timer
-            durationInterval = setInterval(updateDuration, 1000);
-            updateWorkflowStep('record');
-
-        } catch (error) {
-            alert('Microphone access denied or unavailable. Please allow microphone access or upload an audio file instead.');
-            console.error('Recording error:', error);
-        }
-    };
-
-    window.stopRecording = function() {
-        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-            mediaRecorder.stop();
-            mediaRecorder.stream.getTracks().forEach(track => track.stop());
-
-            clearInterval(durationInterval);
-
-            // Update UI
-            document.getElementById('start-btn').disabled = false;
-            document.getElementById('stop-btn').disabled = true;
-            document.getElementById('status-dot').classList.remove('recording');
-            document.getElementById('status-dot').classList.add('ready');
-            document.getElementById('recording-status-text').textContent = 'Processing...';
-            document.getElementById('audio-visualizer').classList.remove('active');
-        }
-    };
-
-    function handleRecordingStop() {
-        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-        transcribeAudio(audioBlob);
+// =====================================================
+// LOCALSTORAGE PROMPT MANAGEMENT
+// =====================================================
+function getPrompts() {
+    const stored = localStorage.getItem('scribePrompts');
+    if (stored) {
+        return JSON.parse(stored);
     }
 
-    function updateDuration() {
-        const elapsed = Date.now() - recordingStartTime;
-        const minutes = Math.floor(elapsed / 60000);
-        const seconds = Math.floor((elapsed % 60000) / 1000);
-        document.getElementById('duration-display').textContent =
-            `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    }
+    // Initialize with defaults
+    const defaults = {
+        system: [
+            { id: 'default-apso', name: DEFAULT_SYSTEM_PROMPT.name, prompt: DEFAULT_SYSTEM_PROMPT.prompt, isActive: true }
+        ],
+        editor: [
+            {
+                id: 'editor-concise',
+                name: 'Make More Concise',
+                prompt: `Rewrite the following medical note to be more concise while preserving all essential clinical information.
 
-    // =====================================================
-    // FILE UPLOAD
-    // =====================================================
-    window.handleFileUpload = function(event) {
-        const file = event.target.files[0];
-        if (!file) return;
+Instructions:
+- Remove redundant phrases and unnecessary descriptors
+- Use medical abbreviations appropriately
+- Combine related information into single, well-structured sentences
+- Maintain formal medical terminology
+- Keep all diagnoses, medications, dosages, and follow-up plans intact
 
-        document.getElementById('recording-status-text').textContent = 'File uploaded, processing...';
-        transcribeAudio(file);
-    };
+Medical Note:`,
+                isActive: false
+            },
+            {
+                id: 'editor-detailed',
+                name: 'Add More Detail',
+                prompt: `Expand the following medical note to be more detailed and comprehensive.
 
-    // =====================================================
-    // TRANSCRIPTION
-    // =====================================================
-    async function transcribeAudio(audioBlob) {
-        updateWorkflowStep('transcribe');
+Instructions:
+- Elaborate on assessment and clinical reasoning
+- Add standard medical context where appropriate
+- Ensure thorough documentation of the clinical decision-making process
+- Maintain formal medical terminology
+- Do NOT add information not implied by the original note
 
-        document.getElementById('transcription-spinner').classList.add('active');
-        document.getElementById('transcription-empty').style.display = 'none';
-
-        try {
-            // Convert blob to URL for Whisper
-            const audioUrl = URL.createObjectURL(audioBlob);
-
-            // Transcribe
-            const result = await whisperModel(audioUrl, {
-                chunk_length_s: 30,
-                stride_length_s: 5,
-                language: 'english',
-                task: 'transcribe'
-            });
-
-            currentTranscription = result.text;
-
-            // Display transcription
-            document.getElementById('transcription-spinner').classList.remove('active');
-            document.getElementById('transcription-text').style.display = 'block';
-            document.getElementById('transcription-text').value = currentTranscription;
-            document.getElementById('transcription-actions').style.display = 'flex';
-
-            // Show prompt customization section
-            document.getElementById('prompt-section-header').style.display = 'block';
-            document.getElementById('prompt-selection').style.display = 'block';
-            document.getElementById('process-btn').style.display = 'block';
-            document.getElementById('process-btn').disabled = true; // Disabled until prompt is selected
-            document.getElementById('recording-status-text').textContent = 'Transcription complete';
-
-            // Load saved prompts into dropdown
-            loadSavedPrompts();
-
-            // Clean up
-            URL.revokeObjectURL(audioUrl);
-
-            updateWorkflowStep('process');
-
-        } catch (error) {
-            document.getElementById('transcription-spinner').classList.remove('active');
-            document.getElementById('transcription-empty').style.display = 'block';
-            document.getElementById('transcription-empty').innerHTML = `
-                <div class="empty-state-icon">❌</div>
-                <p>Transcription failed: ${error.message}</p>
-                <p>Please try recording again or upload a different file.</p>
-            `;
-            console.error('Transcription error:', error);
-        }
-    }
-
-    // =====================================================
-    // PROMPT MANAGEMENT
-    // =====================================================
-    function loadSavedPrompts() {
-        try {
-            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
-            // Filter for prompts tagged as clinical prompts (or all prompts)
-            savedPrompts = snippets.filter(s =>
-                s.tags && (s.tags.includes('clinical-prompt') || s.tags.includes('scribe-prompt'))
-            );
-
-            // Populate dropdown with saved prompts
-            const savedPromptsGroup = document.getElementById('saved-prompts');
-            savedPromptsGroup.innerHTML = '';
-
-            savedPrompts.forEach(snippet => {
-                const option = document.createElement('option');
-                option.value = `saved-${snippet.id}`;
-                option.textContent = snippet.title;
-                savedPromptsGroup.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Error loading saved prompts:', error);
-        }
-    }
-
-    window.loadPromptTemplate = function() {
-        const selectedValue = document.getElementById('clinical-prompt').value;
-        const promptTextarea = document.getElementById('prompt-text');
-
-        if (!selectedValue) {
-            promptTextarea.value = '';
-            document.getElementById('prompt-editor').style.display = 'none';
-            document.getElementById('prompt-actions').style.display = 'none';
-            document.getElementById('process-btn').disabled = true;
-            return;
-        }
-
-        // Check if it's a default prompt or saved prompt
-        if (selectedValue.startsWith('saved-')) {
-            const snippetId = parseInt(selectedValue.replace('saved-', ''));
-            const snippet = savedPrompts.find(s => s.id === snippetId);
-            if (snippet) {
-                promptTextarea.value = snippet.prompt;
-                currentDefaultPromptId = ''; // Not a default template
+Medical Note:`,
+                isActive: false
             }
-        } else {
-            // Load from default templates
-            const promptTemplate = CLINICAL_PROMPTS[selectedValue];
-            if (promptTemplate) {
-                promptTextarea.value = promptTemplate;
-                currentDefaultPromptId = selectedValue;
+        ],
+        enhancement: [
+            {
+                id: 'enhancement-billing',
+                name: 'Billing Summary',
+                prompt: `Based on the following medical note, create a billing-focused summary highlighting the complexity of medical decision-making for E&M coding.
+
+Instructions:
+- Identify number and complexity of problems addressed
+- Highlight data reviewed (labs, imaging, etc.)
+- Document risk level of complications or management decisions
+- Note time spent if mentioned
+- Suggest appropriate E&M code level if enough information present
+
+Medical Note:`,
+                isActive: false
+            },
+            {
+                id: 'enhancement-avs',
+                name: 'After-Visit Summary (Patient)',
+                prompt: `Create a patient-friendly after-visit summary based on the following medical note.
+
+Instructions:
+- Use plain language, avoiding complex medical jargon
+- Clearly explain the diagnosis in terms patients can understand
+- List medications with simple instructions
+- Explain the treatment plan and why it's important
+- Include clear follow-up instructions
+- Add return precautions if appropriate
+
+Medical Note:`,
+                isActive: false
+            },
+            {
+                id: 'enhancement-signout',
+                name: 'Concise Sign-Out',
+                prompt: `Create a concise sign-out note for handoff based on the following medical note.
+
+Instructions:
+- Lead with one-line summary (age, gender, chief complaint)
+- Key active issues with current status
+- Pending items or follow-up needed
+- Anticipatory guidance for covering provider
+- Keep it brief but complete - focus on what the next provider needs to know
+
+Medical Note:`,
+                isActive: false
             }
-        }
-
-        // Show editor and actions
-        document.getElementById('prompt-editor').style.display = 'block';
-        document.getElementById('prompt-actions').style.display = 'flex';
-        document.getElementById('process-btn').disabled = false;
-        updatePromptCharCount();
+        ]
     };
+    savePromptsToStorage(defaults);
+    return defaults;
+}
 
-    window.resetToDefaultPrompt = function() {
-        if (!currentDefaultPromptId) {
-            alert('No default template selected. Please select a default template from the dropdown first.');
-            return;
-        }
+function savePromptsToStorage(prompts) {
+    localStorage.setItem('scribePrompts', JSON.stringify(prompts));
+}
 
-        const promptTemplate = CLINICAL_PROMPTS[currentDefaultPromptId];
-        if (promptTemplate) {
-            document.getElementById('prompt-text').value = promptTemplate;
-            updatePromptCharCount();
-        }
-    };
+function generateId() {
+    return 'prompt-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+}
 
-    window.savePromptToSnippetManager = function() {
-        const promptText = document.getElementById('prompt-text').value.trim();
+// =====================================================
+// INITIALIZATION
+// =====================================================
+async function initializeModels() {
+    const statusPanel = document.getElementById('status-panel');
+    const statusMessage = document.getElementById('status-message');
+    const statusDetails = document.getElementById('status-details');
+    const progressBar = document.getElementById('progress-bar');
+    const progressFill = document.getElementById('progress-fill');
+    const initBtn = document.getElementById('init-btn');
 
-        if (!promptText) {
-            alert('No prompt to save. Please enter a prompt first.');
-            return;
-        }
+    statusMessage.textContent = 'Initializing AI models...';
+    progressBar.style.display = 'block';
+    initBtn.disabled = true;
 
-        try {
-            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
-            const title = prompt('Enter a title for this prompt:', 'Custom Clinical Prompt');
-            if (!title) return;
+    try {
+        // Load Whisper
+        statusMessage.textContent = 'Loading Whisper (speech-to-text)...';
+        statusDetails.textContent = 'Downloading ~75MB... This may take 2-5 minutes on first run.';
+        progressFill.style.width = '10%';
 
-            snippets.push({
-                id: Date.now(),
-                title: title,
-                version: '1.0',
-                tags: ['clinical-prompt', 'scribe-prompt'],
-                prompt: promptText
-            });
+        const { pipeline } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1');
 
-            localStorage.setItem('promptSnippets', JSON.stringify(snippets));
+        progressFill.style.width = '30%';
+        whisperModel = await pipeline('automatic-speech-recognition', WHISPER_MODEL, {
+            dtype: 'fp32',
+            device: 'wasm'
+        });
 
-            alert('✅ Prompt saved successfully!');
+        progressFill.style.width = '50%';
+        statusMessage.textContent = 'Whisper loaded! Loading Phi-3.5 (text generation)...';
+        statusDetails.textContent = 'Downloading ~2GB... This may take 5-15 minutes on first run.';
 
-            // Reload saved prompts in dropdown
-            loadSavedPrompts();
+        // Load WebLLM
+        const webllm = await import('https://esm.run/@mlc-ai/web-llm');
+        const { CreateMLCEngine } = webllm;
 
-        } catch (error) {
-            alert('Failed to save prompt. Storage might be full.');
-            console.error('Save error:', error);
-        }
-    };
-
-    function updatePromptCharCount() {
-        const promptText = document.getElementById('prompt-text').value;
-        const count = promptText.length;
-        const counter = document.getElementById('prompt-char-counter');
-
-        let className = 'char-counter';
-        let message = `${count.toLocaleString()} characters`;
-
-        if (count > 5000) {
-            className += ' error';
-            message += ' ⚠️ Very long prompt';
-        } else if (count > 3000) {
-            className += ' warning';
-            message += ' ⚠️ Long prompt';
-        }
-
-        counter.className = className;
-        counter.textContent = message;
-    }
-
-    // Add input listener for prompt textarea
-    document.addEventListener('DOMContentLoaded', () => {
-        const promptTextarea = document.getElementById('prompt-text');
-        if (promptTextarea) {
-            promptTextarea.addEventListener('input', updatePromptCharCount);
-        }
-    });
-
-    // =====================================================
-    // AI PROCESSING
-    // =====================================================
-    window.processWithAI = async function() {
-        const transcriptionText = document.getElementById('transcription-text').value.trim();
-        const promptText = document.getElementById('prompt-text').value.trim();
-
-        if (!transcriptionText) {
-            alert('No transcription to process. Please record or upload audio first.');
-            return;
-        }
-
-        if (!promptText) {
-            alert('Please select a prompt template or enter a custom prompt.');
-            return;
-        }
-
-        // Show processing state
-        document.getElementById('output-empty').style.display = 'none';
-        document.getElementById('output-spinner').classList.add('active');
-        document.getElementById('output-content').classList.remove('active');
-        document.getElementById('output-actions').style.display = 'none';
-        document.getElementById('process-btn').disabled = true;
-
-        try {
-            const fullPrompt = promptText + '\n\n' + transcriptionText;
-
-            // Generate with LLM
-            const response = await llmEngine.chat.completions.create({
-                messages: [
-                    { role: 'user', content: fullPrompt }
-                ],
-                temperature: 0.3, // Lower temperature for more consistent medical documentation
-                max_tokens: 2000,
-                stream: true
-            });
-
-            currentOutput = '';
-            const outputDiv = document.getElementById('output-content');
-            outputDiv.textContent = '';
-            outputDiv.classList.add('active');
-            document.getElementById('output-spinner').classList.remove('active');
-
-            // Stream response
-            for await (const chunk of response) {
-                const delta = chunk.choices[0]?.delta?.content || '';
-                currentOutput += delta;
-                outputDiv.textContent = currentOutput;
-                updateOutputCharCount(currentOutput.length);
-            }
-
-            // Show actions
-            document.getElementById('output-actions').style.display = 'flex';
-            document.getElementById('output-char-counter').style.display = 'block';
-            updateWorkflowStep('done');
-
-        } catch (error) {
-            document.getElementById('output-content').textContent = `Error processing: ${error.message}\n\nPlease try again.`;
-            document.getElementById('output-content').classList.add('active');
-            document.getElementById('output-spinner').classList.remove('active');
-            console.error('Processing error:', error);
-        }
-
-        document.getElementById('process-btn').disabled = false;
-    };
-
-    // =====================================================
-    // OUTPUT ACTIONS
-    // =====================================================
-    window.copyTranscription = async function(event) {
-        const text = document.getElementById('transcription-text').value;
-        try {
-            await navigator.clipboard.writeText(text);
-            const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = '✅ Copied!';
-            setTimeout(() => btn.textContent = originalText, 2000);
-        } catch (error) {
-            alert('Failed to copy. Please select and copy manually.');
-        }
-    };
-
-    window.downloadTranscription = function() {
-        const text = document.getElementById('transcription-text').value;
-        const blob = new Blob([text], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `transcription-${new Date().toISOString().split('T')[0]}.txt`;
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-
-    window.copyOutput = async function(event) {
-        try {
-            await navigator.clipboard.writeText(currentOutput);
-            const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = '✅ Copied!';
-            setTimeout(() => btn.textContent = originalText, 2000);
-        } catch (error) {
-            alert('Failed to copy. Please select and copy manually.');
-            console.error('Copy error:', error);
-        }
-    };
-
-    window.downloadOutput = function() {
-        const blob = new Blob([currentOutput], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `clinical-note-${new Date().toISOString().split('T')[0]}.txt`;
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-
-    window.saveNoteToSnippetManager = function() {
-        try {
-            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
-            const title = prompt('Enter a title for this clinical note:', 'AI Scribe Note');
-            if (!title) return;
-
-            snippets.push({
-                id: Date.now(),
-                title: title,
-                version: '1.0',
-                tags: ['ai-scribe', 'clinical-note'],
-                prompt: currentOutput
-            });
-
-            localStorage.setItem('promptSnippets', JSON.stringify(snippets));
-
-            if (confirm('✅ Saved to Snippet Manager!\n\nOpen Snippet Manager now?')) {
-                window.location.href = '/snippet-manager';
-            }
-        } catch (error) {
-            alert('Failed to save. Storage might be full.');
-            console.error('Save error:', error);
-        }
-    };
-
-    // =====================================================
-    // UTILITIES
-    // =====================================================
-    window.clearAll = function() {
-        if (confirm('Clear all recordings and transcriptions?')) {
-            // Reset recording
-            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-                stopRecording();
-            }
-            audioChunks = [];
-            currentTranscription = '';
-            currentOutput = '';
-            currentDefaultPromptId = '';
-
-            // Reset UI
-            document.getElementById('transcription-text').value = '';
-            document.getElementById('transcription-text').style.display = 'none';
-            document.getElementById('transcription-empty').style.display = 'block';
-            document.getElementById('transcription-empty').innerHTML = `
-                <div class="empty-state-icon">🎯</div>
-                <p>Your transcription will appear here after recording</p>
-            `;
-            document.getElementById('transcription-actions').style.display = 'none';
-            document.getElementById('output-content').classList.remove('active');
-            document.getElementById('output-empty').style.display = 'block';
-            document.getElementById('output-actions').style.display = 'none';
-            document.getElementById('prompt-selection').style.display = 'none';
-            document.getElementById('prompt-section-header').style.display = 'none';
-            document.getElementById('prompt-editor').style.display = 'none';
-            document.getElementById('prompt-actions').style.display = 'none';
-            document.getElementById('process-btn').style.display = 'none';
-            document.getElementById('clinical-prompt').value = '';
-            document.getElementById('prompt-text').value = '';
-            document.getElementById('duration-display').textContent = '0:00';
-            document.getElementById('recording-status-text').textContent = 'Ready';
-            document.getElementById('status-dot').classList.remove('recording', 'ready');
-
-            updateWorkflowStep('record');
-        }
-    };
-
-    function updateWorkflowStep(step) {
-        const steps = ['record', 'transcribe', 'process', 'done'];
-        const currentIndex = steps.indexOf(step);
-
-        steps.forEach((s, index) => {
-            const element = document.getElementById(`step-${s}`);
-            element.classList.remove('active', 'completed');
-
-            if (index < currentIndex) {
-                element.classList.add('completed');
-            } else if (index === currentIndex) {
-                element.classList.add('active');
+        llmEngine = await CreateMLCEngine(LLM_MODEL, {
+            initProgressCallback: (progress) => {
+                const percent = 50 + (progress.progress * 50);
+                progressFill.style.width = `${percent}%`;
+                statusDetails.textContent = `${progress.text} (${(progress.progress * 100).toFixed(1)}%)`;
             }
         });
+
+        progressFill.style.width = '100%';
+        statusMessage.textContent = 'All models loaded! Ready to use.';
+        statusDetails.textContent = 'Models cached in browser - future loads will be instant.';
+
+        // Show main interface after delay
+        setTimeout(() => {
+            statusPanel.style.display = 'none';
+            document.getElementById('main-interface').style.display = 'block';
+            loadAllPrompts();
+        }, 1500);
+
+    } catch (error) {
+        statusMessage.textContent = 'Failed to initialize models';
+        statusDetails.innerHTML = `
+            <div style="color: #dc3545;">
+                <strong>Error:</strong> ${error.message}<br><br>
+                <strong>Troubleshooting:</strong><br>
+                • Ensure Chrome/Edge 113+ with WebGPU support<br>
+                • Check internet connection for first-time download<br>
+                • Ensure ~3GB free disk space<br>
+                • Try refreshing the page
+            </div>
+        `;
+        console.error('Initialization error:', error);
+        initBtn.disabled = false;
+        initBtn.textContent = 'Retry';
+    }
+}
+
+// =====================================================
+// RECORDING & TRANSCRIPTION
+// =====================================================
+async function startRecording() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable = (event) => {
+            audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = async () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+            await transcribeAudio(audioBlob);
+        };
+
+        mediaRecorder.start();
+        document.getElementById('record-btn').disabled = true;
+        document.getElementById('stop-btn').disabled = false;
+        document.getElementById('transcription-status').textContent = 'Recording...';
+
+    } catch (error) {
+        alert('Failed to access microphone: ' + error.message);
+    }
+}
+
+function stopRecording() {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+        mediaRecorder.stop();
+        mediaRecorder.stream.getTracks().forEach(track => track.stop());
+        document.getElementById('record-btn').disabled = false;
+        document.getElementById('stop-btn').disabled = true;
+        document.getElementById('transcription-status').textContent = 'Processing audio...';
+    }
+}
+
+async function handleAudioUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    document.getElementById('transcription-status').textContent = 'Transcribing uploaded audio...';
+    await transcribeAudio(file);
+}
+
+async function transcribeAudio(audioBlob) {
+    try {
+        const audioData = await audioBlob.arrayBuffer();
+        const result = await whisperModel(audioData);
+
+        currentTranscription = result.text;
+        document.getElementById('transcription-text').value = currentTranscription;
+        updateCharCounter('transcription-text', 'transcription-counter');
+        document.getElementById('transcription-status').textContent = 'Transcription complete!';
+
+    } catch (error) {
+        document.getElementById('transcription-status').textContent = 'Transcription failed: ' + error.message;
+        console.error('Transcription error:', error);
+    }
+}
+
+// =====================================================
+// NOTE GENERATION
+// =====================================================
+async function generateNote() {
+    const transcription = document.getElementById('transcription-text').value.trim();
+    if (!transcription) {
+        alert('Please record or enter a transcription first.');
+        return;
     }
 
-    function updateOutputCharCount(count) {
-        const counter = document.getElementById('output-char-counter');
-        let className = 'char-counter';
-        let message = `${count.toLocaleString()} characters`;
+    // Get active system prompt
+    const prompts = getPrompts();
+    const activeSystemPrompt = prompts.system.find(p => p.isActive);
+    if (!activeSystemPrompt) {
+        alert('Please select an active system prompt in Prompt Management.');
+        return;
+    }
 
-        if (count > 5000) {
-            className += ' error';
-            message += ' ⚠️ Very long note';
-        } else if (count > 3000) {
-            className += ' warning';
-            message += ' ⚠️ Long note';
-        } else {
-            message += ' ✅';
+    const generateBtn = document.getElementById('generate-btn');
+    const spinner = document.getElementById('generation-spinner');
+    const outputSection = document.getElementById('output-section');
+
+    generateBtn.disabled = true;
+    spinner.style.display = 'block';
+    outputSection.style.display = 'none';
+
+    try {
+        const fullPrompt = activeSystemPrompt.prompt + '\n\n' + transcription;
+
+        const response = await llmEngine.chat.completions.create({
+            messages: [{ role: 'user', content: fullPrompt }],
+            temperature: 0.7,
+            max_tokens: 2000
+        });
+
+        medicalNoteOutput = response.choices[0].message.content;
+        document.getElementById('medical-note-content').textContent = medicalNoteOutput;
+
+        // Show output section and update lists
+        outputSection.style.display = 'block';
+        updateEditorPromptsList();
+        updateEnhancementPromptsList();
+
+    } catch (error) {
+        alert('Failed to generate note: ' + error.message);
+        console.error('Generation error:', error);
+    } finally {
+        generateBtn.disabled = false;
+        spinner.style.display = 'none';
+    }
+}
+
+async function applyEditorPrompt(promptId) {
+    const prompts = getPrompts();
+    const prompt = prompts.editor.find(p => p.id === promptId);
+    if (!prompt || !medicalNoteOutput) return;
+
+    const fullPrompt = prompt.prompt + '\n\n' + medicalNoteOutput;
+
+    try {
+        const response = await llmEngine.chat.completions.create({
+            messages: [{ role: 'user', content: fullPrompt }],
+            temperature: 0.7,
+            max_tokens: 2000
+        });
+
+        medicalNoteOutput = response.choices[0].message.content;
+        document.getElementById('medical-note-content').textContent = medicalNoteOutput;
+
+    } catch (error) {
+        alert('Failed to apply editor prompt: ' + error.message);
+        console.error('Editor error:', error);
+    }
+}
+
+async function applyEnhancementPrompt(promptId) {
+    const prompts = getPrompts();
+    const prompt = prompts.enhancement.find(p => p.id === promptId);
+    if (!prompt || !medicalNoteOutput) return;
+
+    const fullPrompt = prompt.prompt + '\n\n' + medicalNoteOutput;
+
+    // Create new tab for this enhancement
+    const tabId = 'tab-' + promptId;
+
+    // Add tab button if it doesn't exist
+    const tabsContainer = document.querySelector('.output-tabs');
+    if (!document.querySelector(`[data-tab="${promptId}"]`)) {
+        const tabBtn = document.createElement('button');
+        tabBtn.className = 'output-tab';
+        tabBtn.setAttribute('data-tab', promptId);
+        tabBtn.textContent = prompt.name;
+        tabBtn.onclick = () => switchOutputTab(promptId);
+        tabsContainer.appendChild(tabBtn);
+    }
+
+    // Add tab content if it doesn't exist
+    let tabContent = document.getElementById(tabId);
+    if (!tabContent) {
+        tabContent = document.createElement('div');
+        tabContent.id = tabId;
+        tabContent.className = 'output-tab-content';
+        tabContent.innerHTML = `
+            <div id="${tabId}-content"></div>
+            <div class="button-group" style="margin-top: 20px;">
+                <button class="btn btn-success" onclick="copyToClipboard('${tabId}-content')">
+                    Copy to Clipboard
+                </button>
+                <button class="btn btn-secondary" onclick="downloadOutput('${promptId}')">
+                    Download .txt
+                </button>
+            </div>
+        `;
+        document.getElementById('tab-medical-note').parentElement.appendChild(tabContent);
+    }
+
+    // Generate enhancement
+    try {
+        const response = await llmEngine.chat.completions.create({
+            messages: [{ role: 'user', content: fullPrompt }],
+            temperature: 0.7,
+            max_tokens: 2000
+        });
+
+        document.getElementById(`${tabId}-content`).textContent = response.choices[0].message.content;
+        switchOutputTab(promptId);
+
+    } catch (error) {
+        alert('Failed to apply enhancement prompt: ' + error.message);
+        console.error('Enhancement error:', error);
+    }
+}
+
+function updateEditorPromptsList() {
+    const prompts = getPrompts();
+    const container = document.getElementById('editor-prompts-list');
+
+    if (prompts.editor.length === 0) {
+        container.innerHTML = '<p style="color: #999;">No editor prompts available. Create one in Prompt Management below.</p>';
+        return;
+    }
+
+    container.innerHTML = prompts.editor.map(prompt => `
+        <button class="btn btn-primary" onclick="applyEditorPrompt('${prompt.id}')" style="margin: 5px;">
+            Apply: ${prompt.name}
+        </button>
+    `).join('');
+}
+
+function updateEnhancementPromptsList() {
+    const prompts = getPrompts();
+    const container = document.getElementById('enhancement-prompts-list');
+
+    if (prompts.enhancement.length === 0) {
+        container.innerHTML = '<p style="color: #999;">No enhancement prompts available. Create one in Prompt Management below.</p>';
+        return;
+    }
+
+    container.innerHTML = prompts.enhancement.map(prompt => `
+        <button class="btn btn-primary" onclick="applyEnhancementPrompt('${prompt.id}')" style="margin: 5px;">
+            Generate: ${prompt.name}
+        </button>
+    `).join('');
+}
+
+function switchOutputTab(tabId) {
+    document.querySelectorAll('.output-tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.output-tab-content').forEach(content => content.classList.remove('active'));
+
+    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
+}
+
+// =====================================================
+// PROMPT MANAGEMENT UI
+// =====================================================
+function loadAllPrompts() {
+    loadPromptsList('system');
+    loadPromptsList('editor');
+    loadPromptsList('enhancement');
+    updateActiveSystemPromptDisplay();
+}
+
+function loadPromptsList(category) {
+    const prompts = getPrompts();
+    const container = document.getElementById(`${category}-prompts-list` + (category === 'system' ? '' : '-manager'));
+
+    if (prompts[category].length === 0) {
+        container.innerHTML = '<p style="color: #999;">No prompts yet. Click "Add New" to create one.</p>';
+        return;
+    }
+
+    container.innerHTML = prompts[category].map(prompt => `
+        <div class="prompt-item ${prompt.isActive && category === 'system' ? 'active' : ''}">
+            <div class="prompt-item-name">${prompt.name}</div>
+            <div class="prompt-item-actions">
+                ${category === 'system' ? `
+                    <button class="btn btn-sm ${prompt.isActive ? 'btn-success' : 'btn-secondary'}"
+                            onclick="setActiveSystemPrompt('${prompt.id}')">
+                        ${prompt.isActive ? 'Active' : 'Set Active'}
+                    </button>
+                ` : ''}
+                <button class="btn btn-sm btn-secondary" onclick="editPrompt('${category}', '${prompt.id}')">
+                    Edit
+                </button>
+                <button class="btn btn-sm btn-danger" onclick="deletePrompt('${category}', '${prompt.id}')">
+                    Delete
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function setActiveSystemPrompt(promptId) {
+    const prompts = getPrompts();
+    prompts.system.forEach(p => p.isActive = (p.id === promptId));
+    savePromptsToStorage(prompts);
+    loadPromptsList('system');
+    updateActiveSystemPromptDisplay();
+}
+
+function updateActiveSystemPromptDisplay() {
+    const prompts = getPrompts();
+    const active = prompts.system.find(p => p.isActive);
+    const displayElem = document.getElementById('active-system-prompt-name');
+    if (displayElem && active) {
+        displayElem.textContent = active.name;
+    }
+}
+
+function showPromptEditor(category, promptId) {
+    const editor = document.getElementById(`${category}-prompt-editor`);
+    const nameInput = document.getElementById(`${category}-prompt-name`);
+    const textArea = document.getElementById(`${category}-prompt-text`);
+
+    if (promptId === 'new') {
+        editingPromptId = null;
+        nameInput.value = '';
+        textArea.value = '';
+    } else {
+        const prompts = getPrompts();
+        const prompt = prompts[category].find(p => p.id === promptId);
+        if (prompt) {
+            editingPromptId = promptId;
+            nameInput.value = prompt.name;
+            textArea.value = prompt.prompt;
+        }
+    }
+
+    updateCharCounter(`${category}-prompt-text`, `${category}-prompt-counter`);
+    editor.style.display = 'block';
+    textArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function editPrompt(category, promptId) {
+    showPromptEditor(category, promptId);
+}
+
+function cancelPromptEdit(category) {
+    document.getElementById(`${category}-prompt-editor`).style.display = 'none';
+    editingPromptId = null;
+}
+
+function savePrompt(category) {
+    const nameInput = document.getElementById(`${category}-prompt-name`);
+    const textArea = document.getElementById(`${category}-prompt-text`);
+
+    const name = nameInput.value.trim();
+    const prompt = textArea.value.trim();
+
+    if (!name || !prompt) {
+        alert('Please provide both a name and prompt text.');
+        return;
+    }
+
+    const prompts = getPrompts();
+
+    if (editingPromptId) {
+        // Edit existing
+        const existing = prompts[category].find(p => p.id === editingPromptId);
+        if (existing) {
+            existing.name = name;
+            existing.prompt = prompt;
+        }
+    } else {
+        // Create new
+        const newPrompt = {
+            id: generateId(),
+            name: name,
+            prompt: prompt,
+            isActive: category === 'system' && prompts.system.length === 0
+        };
+        prompts[category].push(newPrompt);
+    }
+
+    savePromptsToStorage(prompts);
+    loadPromptsList(category);
+    cancelPromptEdit(category);
+
+    if (category === 'system') {
+        updateActiveSystemPromptDisplay();
+    }
+}
+
+function deletePrompt(category, promptId) {
+    if (!confirm('Are you sure you want to delete this prompt?')) return;
+
+    const prompts = getPrompts();
+    const index = prompts[category].findIndex(p => p.id === promptId);
+
+    if (index !== -1) {
+        const wasActive = prompts[category][index].isActive;
+        prompts[category].splice(index, 1);
+
+        // If we deleted the active system prompt, make first one active
+        if (category === 'system' && wasActive && prompts.system.length > 0) {
+            prompts.system[0].isActive = true;
         }
 
-        counter.className = className;
-        counter.textContent = message;
+        savePromptsToStorage(prompts);
+        loadPromptsList(category);
+
+        if (category === 'system') {
+            updateActiveSystemPromptDisplay();
+        }
     }
+}
+
+function exportPrompts(category) {
+    const prompts = getPrompts();
+    const dataStr = JSON.stringify(prompts[category], null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `ppe-scribe-${category}-prompts.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+function importPrompts(category) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const imported = JSON.parse(event.target.result);
+                if (!Array.isArray(imported)) throw new Error('Invalid format');
+
+                const prompts = getPrompts();
+
+                // Add imported prompts
+                imported.forEach(p => {
+                    if (p.name && p.prompt) {
+                        prompts[category].push({
+                            id: generateId(),
+                            name: p.name,
+                            prompt: p.prompt,
+                            isActive: false
+                        });
+                    }
+                });
+
+                savePromptsToStorage(prompts);
+                loadPromptsList(category);
+                alert(`Imported ${imported.length} prompts successfully!`);
+
+            } catch (error) {
+                alert('Failed to import prompts. Please check the file format.');
+                console.error('Import error:', error);
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
+
+// =====================================================
+// ACCORDION
+// =====================================================
+function toggleAccordion(category) {
+    const header = event.currentTarget;
+    const content = document.getElementById(`accordion-${category}`);
+    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+    if (isOpen) {
+        content.style.maxHeight = '0px';
+        header.classList.remove('active');
+    } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        header.classList.add('active');
+    }
+}
+
+function scrollToPromptManagement() {
+    document.getElementById('prompt-management').scrollIntoView({ behavior: 'smooth' });
+}
+
+// =====================================================
+// UTILITIES
+// =====================================================
+function updateCharCounter(textareaId, counterId) {
+    const textarea = document.getElementById(textareaId);
+    const counter = document.getElementById(counterId);
+    if (textarea && counter) {
+        counter.textContent = `${textarea.value.length} characters`;
+    }
+}
+
+function copyToClipboard(contentId) {
+    const content = document.getElementById(contentId).textContent;
+    navigator.clipboard.writeText(content).then(() => {
+        alert('Copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
+}
+
+function downloadOutput(type) {
+    let content, filename;
+
+    if (type === 'medical-note') {
+        content = medicalNoteOutput;
+        filename = 'medical-note.txt';
+    } else {
+        content = document.getElementById(`tab-${type}-content`).textContent;
+        const prompts = getPrompts();
+        const prompt = prompts.enhancement.find(p => p.id === type);
+        filename = (prompt ? prompt.name : 'output') + '.txt';
+    }
+
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+// Add event listeners for char counters
+document.addEventListener('DOMContentLoaded', () => {
+    const textareas = ['transcription-text', 'system-prompt-text', 'editor-prompt-text', 'enhancement-prompt-text'];
+    textareas.forEach(id => {
+        const elem = document.getElementById(id);
+        if (elem) {
+            elem.addEventListener('input', () => {
+                const counterId = id.replace('-text', '-counter');
+                updateCharCounter(id, counterId);
+            });
+        }
+    });
+});
 </script>
-
-<div class="embed-container" style="text-align: center; margin: 30px auto;">
-    <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-</div>
-
-<div style="background: #e3f2fd; padding: 20px; border-left: 4px solid #2a7ae2; border-radius: 6px; margin-top: 30px;">
-    <h3 style="color: #2a7ae2; font-size: 1.2em; margin-bottom: 12px; text-align: center;">💡 How It Works</h3>
-    <p style="margin-bottom: 15px; text-align: center;">This tool combines OpenAI's Whisper (speech-to-text) with Phi-3.5 (clinical formatting) to create a complete AI scribe that runs entirely in your browser.</p>
-    <p style="text-align: center;"><strong>Workflow:</strong> Record encounter → Whisper transcribes → Select format → AI generates note → Copy to EMR</p>
-    <p style="text-align: center;"><strong>Privacy:</strong> Audio never leaves your device. All processing happens locally. HIPAA-compliant by design.</p>
-    <p style="text-align: center;"><strong>Cost:</strong> $0/month forever. Compare to $300-700/month for commercial scribes like Nuance DAX or Suki.</p>
-</div>
