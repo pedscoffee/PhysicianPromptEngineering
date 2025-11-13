@@ -1288,20 +1288,23 @@ MEDICAL NOTE:`,
         let prompts;
         if (category === 'system') {
             prompts = scribePrompts.systemPrompts;
-            // For system prompts, disable all others (only one can be active)
-            prompts.forEach(p => p.enabled = false);
         } else if (category === 'editor') {
             prompts = scribePrompts.editorPrompts;
-            // For editor prompts, disable all others (only one can be active)
-            prompts.forEach(p => p.enabled = false);
         } else if (category === 'enhancement') {
             prompts = scribePrompts.enhancementPrompts;
-            // Enhancement prompts can have multiple enabled
         }
 
         const prompt = prompts.find(p => p.id == id); // Use == for type coercion
         if (prompt) {
-            prompt.enabled = !prompt.enabled;
+            const newState = !prompt.enabled;
+
+            // For system and editor prompts, only one can be active at a time
+            // If enabling this prompt, disable all others in the category
+            if ((category === 'system' || category === 'editor') && newState === true) {
+                prompts.forEach(p => p.enabled = false);
+            }
+
+            prompt.enabled = newState;
             savePromptSystem();
             renderPromptCustomization(); // Re-render to show updated state
         }
