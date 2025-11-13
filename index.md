@@ -154,6 +154,70 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   </div>
 </section>
 
+<!-- NEW: AI Prompt Assistant Feature -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%); padding: 3rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); border: 2px solid var(--color-primary);">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">🤖</div>
+        <h2 style="color: var(--color-primary); font-size: var(--font-size-3xl); margin-bottom: 1rem;">New: AI Prompt Assistant</h2>
+        <p style="font-size: var(--font-size-xl); color: var(--color-text-secondary); max-width: 700px; margin: 0 auto;">
+          Can't find the perfect prompt in our library? Let AI create one for you—running entirely in your browser with complete privacy.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 2rem;">
+        <div>
+          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🔒</span> Privacy-First Design
+          </h4>
+          <p style="color: var(--color-text-secondary);">
+            AI model downloads once (~2GB) and runs 100% locally. No APIs, no servers, no data transmission. Works offline after initial setup.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>✨</span> Custom Prompt Generation
+          </h4>
+          <p style="color: var(--color-text-secondary);">
+            Describe your documentation needs in plain English. AI generates production-ready prompts tailored to your specialty and workflow.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🔄</span> Iterative Refinement
+          </h4>
+          <p style="color: var(--color-text-secondary);">
+            Not perfect on the first try? Refine your requirements and regenerate until you get exactly what you need.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>💾</span> Integrated Workflow
+          </h4>
+          <p style="color: var(--color-text-secondary);">
+            Save generated prompts directly to Snippet Manager, export as text files, or copy to clipboard with one click.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg" style="margin-right: 1rem;">Try AI Prompt Assistant</a>
+        <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Or Use Traditional Generator</a>
+      </div>
+
+      <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.6); border-radius: var(--radius-md); text-align: center;">
+        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin: 0;">
+          <strong>Requirements:</strong> Chrome/Edge 113+ with WebGPU support • ~3GB free disk space • Modern CPU/GPU recommended
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Getting Started Section -->
 <section class="section">
   <div class="container">
