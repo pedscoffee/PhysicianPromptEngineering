@@ -1,7 +1,7 @@
 ---
 layout: page
-title: AI Prompt Assistant
-description: Free AI-powered prompt generator running entirely in your browser. Create custom clinical documentation prompts with privacy-first, offline AI. No APIs, no servers.
+title: PPE Prompt Assistant
+description: Experimental browser-based prompt generator demonstrating AI-powered meta-prompting capabilities. Educational purposes only.
 permalink: /prompt-assistant/
 ---
 <style>
@@ -479,20 +479,31 @@ permalink: /prompt-assistant/
     }
 </style>
 
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1 class="hero-title">PPE Prompt Assistant</h1>
+        <p class="hero-subtitle">
+            Experimental meta-prompting tool demonstrating AI-powered prompt generation. Educational purposes only.
+        </p>
+    </div>
+</div>
+
 <div class="container">
-    <div class="header">
-        <h1>🤖 AI Prompt Assistant</h1>
-        <p>Generate custom clinical documentation prompts using AI that runs <strong>100% in your browser</strong>. Describe what you need, and the AI will create a production-ready prompt tailored to your workflow.</p>
-        <p class="privacy-highlight">🔒 Complete Privacy: All processing happens locally on your device. No data leaves your browser.</p>
+    <div class="warning-box" style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
+        <h3 style="color: #78350f; margin-bottom: 12px; font-size: 1.1em;">BETA - Educational Demonstration Only</h3>
+        <p style="color: #78350f; margin-bottom: 10px;">
+            <strong>This is an experimental prototype for educational purposes.</strong> Do not use with any patient data, protected health information, or sensitive information. This tool is not intended for clinical use.
+        </p>
     </div>
 
     <div class="warning-box" id="browser-warning">
-        <h3>⚠️ Browser Requirements</h3>
+        <h3>Browser Requirements</h3>
         <ul>
             <li><strong>Recommended:</strong> Chrome or Edge version 113+ (with WebGPU support)</li>
             <li><strong>First-time setup:</strong> Downloads ~2GB AI model (cached for future use)</li>
             <li><strong>Hardware:</strong> Works best with GPU; functional on CPU but slower</li>
-            <li><strong>Privacy benefit:</strong> After initial download, works completely offline</li>
+            <li><strong>Offline capable:</strong> After initial download, works without internet connection</li>
         </ul>
     </div>
 
@@ -503,30 +514,36 @@ permalink: /prompt-assistant/
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <button id="init-btn" class="btn btn-primary btn-lg" onclick="initializeEngine()">
-            🚀 Start AI Assistant
+            Initialize PPE Prompt Assistant
         </button>
     </div>
 
     <div class="main-layout">
         <div class="panel">
-            <h2>📝 Describe Your Prompt Need</h2>
+            <h2>Describe Your Prompt Need</h2>
 
             <h3>Quick Start Templates</h3>
             <div class="template-buttons">
+                <button class="template-btn" onclick="loadTemplate('meta-generator')">
+                    Meta-Prompt Generator
+                </button>
+                <button class="template-btn" onclick="loadTemplate('meta-refiner')">
+                    Meta-Prompt Refiner
+                </button>
                 <button class="template-btn" onclick="loadTemplate('ap-formatting')">
-                    📋 A/P Formatting
+                    A/P Formatting
                 </button>
                 <button class="template-btn" onclick="loadTemplate('billing')">
-                    💰 Billing Documentation
+                    Billing Documentation
                 </button>
                 <button class="template-btn" onclick="loadTemplate('avs')">
-                    📄 After-Visit Summary
+                    After-Visit Summary
                 </button>
                 <button class="template-btn" onclick="loadTemplate('signout')">
-                    🔄 Patient Sign-Out
+                    Patient Sign-Out
                 </button>
                 <button class="template-btn" onclick="loadTemplate('custom')">
-                    ✨ Start from Scratch
+                    Start from Scratch
                 </button>
             </div>
 
@@ -543,13 +560,13 @@ permalink: /prompt-assistant/
 
             <div style="display: flex; gap: 10px; margin-bottom: 20px;">
                 <button id="generate-btn" class="btn btn-success btn-lg" onclick="generatePrompt()" disabled>
-                    ✨ Generate Prompt
+                    Generate Prompt
                 </button>
                 <button id="refine-btn" class="btn btn-primary" onclick="refinePrompt()" disabled style="display: none;">
-                    🔄 Refine Further
+                    Refine Further
                 </button>
                 <button id="clear-btn" class="btn" style="background: #6b7280; color: white;" onclick="clearConversation()">
-                    🗑️ Clear
+                    Clear
                 </button>
             </div>
 
@@ -568,10 +585,10 @@ permalink: /prompt-assistant/
         </div>
 
         <div class="output-panel">
-            <h2>📤 Generated Prompt</h2>
+            <h2>Generated Prompt</h2>
 
             <div id="output-empty" class="empty-state">
-                <div class="empty-state-icon">🎯</div>
+                <div class="empty-state-icon"></div>
                 <p>Your AI-generated prompt will appear here</p>
             </div>
 
@@ -583,18 +600,18 @@ permalink: /prompt-assistant/
 
             <div class="output-actions" id="output-actions" style="display: none;">
                 <button class="btn btn-success" onclick="copyPrompt()">
-                    📋 Copy to Clipboard
+                    Copy to Clipboard
                 </button>
                 <button class="btn btn-primary" onclick="saveToSnippetManager()">
-                    💾 Save to Snippet Manager
+                    Save to Snippet Manager
                 </button>
                 <button class="btn" style="background: #6b7280; color: white;" onclick="downloadPrompt()">
-                    ⬇️ Download as .txt
+                    Download as .txt
                 </button>
             </div>
 
             <div class="tips-section" style="margin-top: 25px;">
-                <h4>📚 Next Steps</h4>
+                <h4>Next Steps</h4>
                 <ul>
                     <li><strong>Add examples:</strong> Include 2-3 real before/after examples in your prompt</li>
                     <li><strong>Test it:</strong> Try the prompt in your AI scribe and iterate</li>
@@ -644,6 +661,50 @@ Generate production-ready prompts that physicians can immediately deploy in thei
     // TEMPLATES
     // =====================================================
     const templates = {
+        'meta-generator': `I want to create a custom A/P formatting prompt using the Meta-Prompt Generator methodology.
+
+Please help me generate a complete, production-ready prompt based on my examples and preferences.
+
+What I'll provide:
+1. FEW-SHOT EXAMPLES (3-5 examples of my ideal A/P output - these are critical!)
+   [Paste your 3-5 examples of ideal output here]
+
+2. EXPLICIT FORMATTING RULES (optional - any specific requirements I know I want)
+   [List any specific formatting rules here, such as:
+   - Use bullets vs prose
+   - Brevity requirements
+   - Abbreviation preferences
+   - etc.]
+
+3. BOILERPLATE PHRASES (optional - standard text for common scenarios)
+   [List any boilerplate text you want automatically inserted, such as:
+   - Standard illness return precautions
+   - Well visit counseling
+   - etc.]
+
+Please analyze my examples, extract implicit patterns, and create a complete prompt that matches my style exactly. Keep it under 5,000 characters for EMR compatibility.`,
+
+        'meta-refiner': `I have an existing A/P formatting prompt that needs improvement. Please help me refine it using gap analysis.
+
+What I'll provide:
+1. CURRENT PROMPT
+   [Paste your current A/P formatting prompt here]
+
+2. IDEAL OUTPUT (2-5 examples of what I want)
+   [Paste 2-5 examples of your desired output here]
+
+3. CURRENT OUTPUT (2-5 examples of what I'm actually getting)
+   [Paste 2-5 examples of what your current prompt produces]
+
+Please:
+1. Identify the top 3-5 gaps between current and ideal output
+2. Explain the root cause of each gap
+3. Provide specific fixes with rationale
+4. Generate a refined version of my prompt with [UPDATED] markers
+5. Suggest priority tests and potential issues to watch for
+
+Focus on few-shot examples as the most powerful fix. Keep the refined prompt under 5,000 characters.`,
+
         'ap-formatting': `I need a prompt that formats my clinical notes into a structured Assessment and Plan section.
 
 Requirements:
@@ -779,7 +840,7 @@ My practice setting: [Hospital/clinic/specialty]`,
             `;
             console.error('Engine initialization error:', error);
             initBtn.disabled = false;
-            initBtn.textContent = '🔄 Retry';
+            initBtn.textContent = 'Retry';
         }
 
         isLoading = false;
