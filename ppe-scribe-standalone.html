@@ -620,7 +620,7 @@
         updateStatusBadge();
     </script>
 
-    <script type="module">
+    <script>
         // =====================================================
         // GLOBAL STATE
         // =====================================================
@@ -738,23 +738,25 @@ CRITICAL INSTRUCTIONS:
                 initDetails.textContent = 'Downloading ~75MB... This may take 2-5 minutes on first run.';
                 initProgressFill.style.width = '10%';
 
-                // Load transformers.js using dynamic import
-                const transformers = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1');
-                const { pipeline } = transformers;
+                // Load transformers.js from CDN
+                await loadScript('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1');
+
+                const { pipeline } = window.Transformers;
 
                 initProgressFill.style.width = '30%';
                 whisperModel = await pipeline('automatic-speech-recognition', WHISPER_MODEL, {
                     dtype: 'fp32',
-                    device: 'wasm'
+                    device: 'webgpu'
                 });
 
                 initProgressFill.style.width = '50%';
                 initMessage.textContent = 'Whisper loaded! Loading Phi-3.5 (text generation)...';
                 initDetails.textContent = 'Downloading ~2GB... This may take 5-15 minutes on first run.';
 
-                // Load WebLLM using dynamic import
-                const webllm = await import('https://esm.run/@mlc-ai/web-llm');
-                const { CreateMLCEngine } = webllm;
+                // Load WebLLM
+                await loadScript('https://esm.run/@mlc-ai/web-llm');
+
+                const { CreateMLCEngine } = window.webllm;
 
                 llmEngine = await CreateMLCEngine(LLM_MODEL, {
                     initProgressCallback: (progress) => {
@@ -797,6 +799,21 @@ CRITICAL INSTRUCTIONS:
                 initBtn.disabled = false;
                 initBtn.textContent = 'Retry';
             }
+        }
+
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                if (src.includes('transformers')) {
+                    script.type = 'module';
+                    script.textContent = `import { pipeline, env } from '${src}'; window.Transformers = { pipeline, env };`;
+                } else {
+                    script.src = src;
+                }
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
         }
 
         // =====================================================
