@@ -1221,6 +1221,19 @@ button:disabled,
    INTERACTIVE COURSE SYSTEM STYLES
    ============================================================================ */
 
+/* Course Container - Add padding to all course pages */
+.course-container,
+.course-module-page {
+  max-width: var(--max-width-xl);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-6);
+}
+
+.module-content {
+  max-width: var(--max-width-lg);
+  margin: 0 auto;
+}
+
 /* Course Landing & Overview */
 .course-hero {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
