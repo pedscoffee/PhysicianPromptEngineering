@@ -1,0 +1,432 @@
+# Sample Clinical Transcripts for Course Exercises
+# Each transcript is a de-identified, realistic patient encounter
+
+outpatient_hypertension_followup:
+  title: "Routine Follow-up - Hypertension"
+  specialty: "Family Medicine"
+  difficulty: "beginner"
+  transcript: |
+    Chief Complaint: Blood pressure check
+
+    HPI: 58-year-old male with history of hypertension on lisinopril 10mg daily. Reports good medication compliance. Denies headaches, chest pain, or shortness of breath. Home BP readings averaging 128/80. No side effects from medication. Diet and exercise could be improved.
+
+    PMH: Hypertension (diagnosed 2020), Type 2 Diabetes (well-controlled on metformin)
+    Medications: Lisinopril 10mg daily, Metformin 500mg BID
+    Allergies: NKDA
+    Social: Non-smoker, occasional alcohol use, sedentary lifestyle
+    Family History: Father had MI at age 65, mother with hypertension
+
+    Vitals: BP 132/78, HR 72, Temp 98.6°F, Weight 195 lbs (BMI 28.5)
+
+    Physical Exam:
+    General: Well-appearing, no acute distress
+    Cardiovascular: Regular rate and rhythm, no murmurs
+    Respiratory: Lungs clear to auscultation bilaterally
+    Extremities: No peripheral edema, pulses intact
+
+    Assessment: Hypertension, adequately controlled on current regimen
+    Plan: Continue lisinopril 10mg daily. Discussed lifestyle modifications including diet and exercise. Recheck BP in 6 months. Labs ordered: BMP, lipid panel, HgA1c. Patient verbalized understanding.
+
+outpatient_diabetes_new:
+  title: "New Diagnosis - Type 2 Diabetes"
+  specialty: "Family Medicine"
+  difficulty: "beginner"
+  transcript: |
+    Chief Complaint: Follow-up on lab results
+
+    HPI: 52-year-old female presents for discussion of recent lab work showing elevated glucose. Patient reports increased thirst and urination over past 3 months. No vision changes, no numbness or tingling in extremities. Family history significant for diabetes. Random glucose last week was 245 mg/dL, fasting today 156 mg/dL, HgA1c 8.2%.
+
+    PMH: Obesity, hyperlipidemia
+    Medications: Atorvastatin 20mg daily
+    Allergies: Sulfa drugs (rash)
+    Social: Non-smoker, denies alcohol, works as accountant (desk job)
+    Family History: Mother and sister with Type 2 DM
+
+    Vitals: BP 138/84, HR 78, Temp 98.4°F, Weight 185 lbs, Height 5'4" (BMI 31.7)
+
+    Physical Exam:
+    General: Obese female, appears stated age
+    HEENT: Fundoscopic exam normal, no retinopathy noted
+    Cardiovascular: RRR, no murmurs
+    Extremities: No foot ulcers, monofilament testing intact bilaterally, pedal pulses 2+
+
+    Assessment: Type 2 Diabetes Mellitus, newly diagnosed
+    Plan:
+    1. Start Metformin 500mg BID with meals, titrate up as tolerated
+    2. Diabetes education referral scheduled
+    3. Dietary counseling - discussed carbohydrate counting
+    4. Home glucose monitoring - ordered glucometer and supplies
+    5. Ophthalmology referral for diabetic eye exam
+    6. Foot care education provided
+    7. Labs: repeat HgA1c in 3 months, comprehensive metabolic panel, urine microalbumin
+    8. Follow-up in 2 weeks to assess medication tolerance
+    Patient expressed understanding and agreement with plan.
+
+urgent_care_ankle_sprain:
+  title: "Urgent Care - Ankle Injury"
+  specialty: "Urgent Care"
+  difficulty: "beginner"
+  transcript: |
+    Chief Complaint: Right ankle pain after twisting injury
+
+    HPI: 28-year-old male presents with right ankle pain. Injured while playing basketball 2 hours ago, inverted ankle when landing from jump. Immediate pain and swelling. Able to bear weight but with significant pain. Applied ice at home. No previous ankle injuries. Denies hearing a pop or snap.
+
+    PMH: None
+    Medications: None
+    Allergies: NKDA
+    Social: Active lifestyle, plays recreational sports
+
+    Vitals: BP 122/76, HR 68, Temp 98.6°F
+
+    Physical Exam:
+    Right Ankle: Swelling and ecchymosis over lateral malleolus. Tenderness to palpation over ATFL. No bony tenderness over malleoli or 5th metatarsal base. Negative Ottawa ankle rules (able to bear weight, no posterior malleolar tenderness). ROM limited by pain. Neurovascularly intact distally.
+
+    Imaging: X-ray right ankle - 3 views. No fracture or dislocation identified. Soft tissue swelling noted.
+
+    Assessment: Right lateral ankle sprain, grade 2
+    Plan:
+    1. RICE protocol - rest, ice, compression, elevation
+    2. Aircast ankle brace provided
+    3. Crutches for comfort, weight bearing as tolerated
+    4. Ibuprofen 600mg TID with food for pain and inflammation
+    5. Physical therapy referral for ankle strengthening when acute pain subsides
+    6. Return if worsening pain, numbness, or unable to bear weight
+    7. Follow-up with PCP in 1 week if not improving
+    Patient instructed on injury care and follow-up precautions.
+
+er_chest_pain_gerd:
+  title: "Emergency Department - Chest Pain"
+  specialty: "Emergency Medicine"
+  difficulty: "intermediate"
+  transcript: |
+    Chief Complaint: Chest pain
+
+    HPI: 45-year-old male presents with substernal chest discomfort for past 3 hours. Describes burning sensation, worse after eating spicy meal. No radiation to arms or jaw. No shortness of breath, diaphoresis, or nausea. Similar episodes in past, usually relieved with antacids. Pain 5/10, non-radiating. No exertional component. Has had mild heartburn for years, never formally evaluated.
+
+    PMH: None
+    Medications: Occasional Tums
+    Allergies: NKDA
+    Social: Non-smoker, social drinker, no illicit drugs. Works in IT.
+    Family History: Father with CAD, had CABG at age 68
+
+    Vitals: BP 128/82, HR 76, Temp 98.4°F, RR 16, SpO2 99% on RA
+
+    Physical Exam:
+    General: Comfortable, no distress
+    Cardiovascular: RRR, no murmurs, rubs, or gallops. No JVD
+    Respiratory: Clear to auscultation bilaterally
+    Abdomen: Soft, mild epigastric tenderness, no rebound or guarding
+
+    Diagnostics:
+    EKG: Normal sinus rhythm, no ST changes, no prior EKG for comparison
+    Troponin: <0.01 (negative)
+    Basic metabolic panel: Within normal limits
+
+    Assessment: Chest pain, likely GERD. Low risk for ACS by HEART score (score 2).
+    Plan:
+    1. GI cocktail given in ED with good relief of symptoms
+    2. Start PPI - omeprazole 20mg daily
+    3. Lifestyle modifications discussed (avoid trigger foods, elevate head of bed, no eating before bedtime)
+    4. Outpatient GI referral for possible endoscopy given chronic symptoms
+    5. Return precautions for worsening chest pain, SOB, diaphoresis
+    6. Follow-up with PCP within 1 week
+    Patient's pain resolved, stable for discharge. Discharge instructions provided and understood.
+
+pediatric_asthma_exacerbation:
+  title: "Pediatric - Asthma Exacerbation"
+  specialty: "Pediatrics"
+  difficulty: "intermediate"
+  transcript: |
+    Chief Complaint: Cough and wheezing
+
+    HPI: 8-year-old male with history of asthma presents with worsening cough and wheezing for 2 days. Mother reports patient had URI symptoms 4 days ago. Now having nocturnal cough, wheezing with activity, using albuterol every 3-4 hours with minimal relief. No fever. Mild decrease in appetite. No chest pain. Breathing seems harder. Last asthma exacerbation 6 months ago. Usually well-controlled on daily Flovent.
+
+    PMH: Asthma (diagnosed age 5), seasonal allergies
+    Medications: Fluticasone 44mcg 2 puffs BID, Albuterol PRN
+    Allergies: NKDA
+    Social: Lives with parents and 2 siblings. No smokers in home. Has cat at home.
+    Immunizations: Up to date
+
+    Vitals: Temp 98.8°F, HR 98, RR 28, SpO2 94% on RA, Weight 55 lbs
+
+    Physical Exam:
+    General: Alert, mild respiratory distress, speaking in full sentences
+    HEENT: Nasal congestion, no nasal flaring
+    Respiratory: Diffuse expiratory wheezing bilaterally, mild intercostal retractions, prolonged expiratory phase, fair air movement
+    Cardiovascular: Tachycardic, regular rhythm
+
+    Peak Flow: 160 L/min (personal best 240 L/min) - 67% of personal best
+
+    Treatment in office: Albuterol nebulizer given x2, post-treatment SpO2 98%, RR 22, improved wheezing
+
+    Assessment: Asthma exacerbation, moderate, post-viral trigger
+    Plan:
+    1. Prednisolone 30mg (1mg/kg) daily x 5 days
+    2. Increase albuterol to q4h around the clock for 48 hours, then PRN
+    3. Continue Flovent 44mcg 2 puffs BID with spacer
+    4. Add Zyrtec 10mg daily for allergies
+    5. Asthma action plan reviewed with mother
+    6. Return precautions: worsening breathing, not responding to albuterol, retractions, lethargy
+    7. Follow-up in 3-5 days or sooner if not improving
+    Mother verbalized understanding of treatment plan and warning signs.
+
+ob_prenatal_visit:
+  title: "OB - Routine Prenatal Visit"
+  specialty: "Obstetrics"
+  difficulty: "intermediate"
+  transcript: |
+    Chief Complaint: Routine prenatal visit
+
+    HPI: 29-year-old G2P1001 at 28 weeks gestation by LMP and consistent with dating ultrasound. Patient reports feeling well overall. Fetal movement reassuring, counts 10 movements in less than 2 hours. No contractions, vaginal bleeding, or leakage of fluid. Some mild heartburn and back pain, managed with Tums and Tylenol. No headaches, vision changes, or right upper quadrant pain.
+
+    OB History: Previous uncomplicated pregnancy, spontaneous vaginal delivery at 39 weeks, healthy female infant now 3 years old. No complications during or after delivery.
+    GYN History: Regular menses prior to pregnancy, no history of abnormal Paps
+
+    PMH: None
+    Medications: Prenatal vitamin daily
+    Allergies: NKDA
+    Social: Married, lives with husband and daughter. Works as teacher. No tobacco, alcohol, or drug use. Supportive home environment.
+
+    Vitals: BP 118/72, HR 82, Temp 98.6°F, Weight 148 lbs (pre-pregnancy 135 lbs, gained 13 lbs total)
+
+    Physical Exam:
+    General: Well-appearing, no distress
+    Cardiovascular: RRR, no murmurs
+    Respiratory: Clear bilaterally
+    Abdomen: Gravid, fundal height 28 cm, fetal heart tones 145 bpm, vertex presentation by Leopold maneuvers
+    Extremities: Trace ankle edema bilaterally, no calf tenderness
+
+    Labs today: Glucose challenge test 118 mg/dL (normal, <140), Hemoglobin 11.8 g/dL
+
+    Assessment: Intrauterine pregnancy at 28 weeks, normal progression
+    Plan:
+    1. Glucose screening normal - no GDM
+    2. Hemoglobin mildly low - continue prenatal vitamin, add additional iron supplement 325mg daily
+    3. Tdap vaccine administered today
+    4. RhoGAM to be given at next visit (patient is Rh negative)
+    5. Continue current activity and diet
+    6. Discussed signs of preterm labor and when to call
+    7. Next appointment in 4 weeks
+    8. Will schedule growth ultrasound at 32 weeks
+    Patient has no questions at this time, plan discussed and agreed upon.
+
+complex_multisystem:
+  title: "Complex Multi-System Case"
+  specialty: "Internal Medicine"
+  difficulty: "advanced"
+  transcript: |
+    Chief Complaint: Shortness of breath and fatigue
+
+    HPI: 68-year-old female with multiple comorbidities presents with progressive dyspnea on exertion and fatigue over past 3 weeks. Now short of breath with minimal activity, orthopnea requiring 3 pillows, no PND. Bilateral lower extremity swelling. Denies chest pain. Weight gain of 8 lbs in 2 weeks. Compliant with medications but admits dietary indiscretion at recent family gatherings. Last echo 6 months ago showed EF 35%.
+
+    PMH:
+    - CHF with reduced EF (EF 35% 6 months ago)
+    - CAD s/p MI 2018, s/p PCI with stents to LAD and RCA
+    - Type 2 DM
+    - CKD stage 3 (baseline Cr 1.4)
+    - Atrial fibrillation on anticoagulation
+    - Hypertension
+    - Hyperlipidemia
+
+    Medications: Carvedilol 25mg BID, Lisinopril 40mg daily, Furosemide 40mg daily, Spironolactone 25mg daily, Atorvastatin 80mg qHS, Apixaban 5mg BID, Metformin 1000mg BID, Aspirin 81mg daily
+
+    Allergies: PCN (hives)
+    Social: Retired teacher, lives with husband, no tobacco (quit 20 years ago), no alcohol
+    Family History: Extensive CAD in family
+
+    Vitals: BP 148/88, HR 92 irregularly irregular, Temp 98.4°F, RR 22, SpO2 91% on RA, Weight 168 lbs (up from 160 lbs)
+
+    Physical Exam:
+    General: Elderly female, mild respiratory distress
+    HEENT: JVP elevated to 10 cm
+    Cardiovascular: Irregularly irregular rhythm, S3 gallop present, 2/6 systolic murmur at apex
+    Respiratory: Bibasilar crackles 1/3 up, decreased breath sounds at bases
+    Abdomen: Soft, mild hepatomegaly, no ascites
+    Extremities: 2+ pitting edema to knees bilaterally
+
+    Diagnostics:
+    BNP: 1850 pg/mL (elevated)
+    BMP: Na 134, K 4.2, Cl 100, CO2 26, BUN 32, Cr 1.7 (elevated from baseline), Glucose 156
+    CBC: WBC 8.2, Hgb 11.2, Plt 245
+    Chest X-ray: Cardiomegaly, pulmonary vascular congestion, small bilateral pleural effusions
+    EKG: Atrial fibrillation with RVR at 98 bpm, no acute ST changes
+
+    Assessment:
+    1. Acute on chronic systolic heart failure exacerbation, volume overloaded
+    2. Atrial fibrillation with inadequate rate control
+    3. Acute kidney injury on CKD (likely prerenal vs. cardiorenal)
+    4. Type 2 diabetes with suboptimal control
+
+    Plan:
+    1. Admit to telemetry for diuresis and monitoring
+    2. Increase furosemide to 80mg IV BID, monitor ins/outs, daily weights
+    3. Strict I/O monitoring, 1.5L fluid restriction
+    4. 2g sodium diet
+    5. Increase carvedilol to 37.5mg BID for rate control
+    6. Continue home medications except hold furosemide (using IV)
+    7. Monitor renal function daily, may need gentle diuresis given AKI
+    8. Repeat echo to assess current EF
+    9. Consult cardiology for possible adjustment of heart failure regimen
+    10. Nutrition consult for CHF diet education
+    11. PT/OT evaluation
+    Patient and family agree with admission and treatment plan. Advanced directives on file.
+
+procedure_colonoscopy:
+  title: "Procedure Note - Screening Colonoscopy"
+  specialty: "Gastroenterology"
+  difficulty: "advanced"
+  transcript: |
+    Procedure: Screening colonoscopy
+
+    Patient: 52-year-old male presenting for routine screening colonoscopy. No GI symptoms. No personal history of polyps. Family history notable for colon cancer in father at age 65. Patient completed bowel prep with MoviPrep, reports good prep quality.
+
+    PMH: Hypertension, hyperlipidemia
+    Medications: Lisinopril 20mg daily, Atorvastatin 40mg daily
+    Allergies: NKDA
+
+    Pre-procedure:
+    - Informed consent obtained, risks/benefits discussed including bleeding, perforation, missed lesions, sedation risks
+    - ASA class II
+    - Vitals stable, NPO since midnight
+
+    Sedation: Propofol administered by anesthesia, patient tolerated well, monitored throughout
+
+    Procedure Details:
+    - Colonoscope advanced to cecum, cecal landmarks identified (ileocecal valve, appendiceal orifice)
+    - Withdrawal time: 9 minutes
+    - Boston Bowel Prep Scale: Right 3, Transverse 3, Left 3 (excellent prep)
+    - Careful inspection of entire colonic mucosa during withdrawal
+
+    Findings:
+    1. Cecum/Ascending: Normal mucosa
+    2. Hepatic flexure: Normal
+    3. Transverse: Normal mucosa
+    4. Splenic flexure: Normal
+    5. Descending: 6mm sessile polyp at 45cm, removed with cold forceps, retrieved, sent for pathology
+    6. Sigmoid: 8mm pedunculated polyp at 25cm, removed with hot snare, retrieved, sent for pathology. Cautery site inspected, no bleeding.
+    7. Rectum: Small internal hemorrhoid, no other findings
+
+    Polypectomy details:
+    - Polyp 1 (descending): 6mm sessile, cold forceps, complete excision, specimen to path bottle A
+    - Polyp 2 (sigmoid): 8mm pedunculated, hot snare, complete excision with visible stalk, excellent hemostasis, specimen to path bottle B
+
+    Complications: None
+    Estimated blood loss: Minimal
+    Tissue specimens: 2 (labeled A and B)
+
+    Post-procedure:
+    - Patient recovered well from sedation
+    - Vitals stable
+    - Tolerating liquids
+    - Discharge instructions provided
+    - Discussed findings with patient and wife
+
+    Assessment: Screening colonoscopy with polypectomy x2, otherwise normal exam
+
+    Plan:
+    1. Pathology pending - will contact patient with results in 1 week
+    2. Anticipate benign adenomatous polyps based on appearance
+    3. Follow-up colonoscopy in 3-5 years depending on pathology results (per USMSTF guidelines)
+    4. Resume regular diet as tolerated
+    5. No driving for 24 hours due to sedation
+    6. Call for any severe abdominal pain, bleeding, fever
+    7. Results letter and pathology report will be mailed
+    Patient discharged home in stable condition with responsible adult.
+
+psych_depression_followup:
+  title: "Psychiatry - Depression Follow-up"
+  specialty: "Psychiatry"
+  difficulty: "intermediate"
+  transcript: |
+    Chief Complaint: Depression medication follow-up
+
+    HPI: 34-year-old female returns for follow-up of major depressive disorder. Started sertraline 50mg 6 weeks ago. Reports mood has improved somewhat - less crying, better energy in mornings. Still struggling with motivation and concentration at work. Sleep improved from 4-5 hours to 6-7 hours per night. Appetite slightly better. Denies suicidal ideation, plan, or intent. No homicidal ideation. Some mild nausea first week of medication but resolved. Participating in therapy weekly with good rapport with therapist.
+
+    PMH: Major depressive disorder (first episode, diagnosed 2 months ago), hypothyroidism (stable on levothyroxine)
+    Medications: Sertraline 50mg daily, Levothyroxine 75mcg daily
+    Allergies: NKDA
+    Social: Works as graphic designer, single, lives alone. Supportive family nearby. No tobacco, occasional alcohol (1-2 drinks per month), no illicit drugs. Seeing therapist weekly.
+    Family History: Mother with depression and anxiety
+
+    Mental Status Exam:
+    Appearance: Casually dressed, good hygiene
+    Behavior: Cooperative, fair eye contact
+    Speech: Normal rate and volume
+    Mood: "Better but not great" (patient's words)
+    Affect: Mood-congruent, restricted range
+    Thought process: Linear and goal-directed
+    Thought content: No SI/HI, no delusions
+    Perception: No hallucinations
+    Cognition: Alert and oriented x3, concentration somewhat impaired
+    Insight: Good - recognizes illness and need for treatment
+    Judgment: Good - making appropriate decisions
+
+    PHQ-9 today: 12 (down from 19 at initial visit - moderate depression, improved from severe)
+
+    Assessment: Major depressive disorder, single episode, moderate, improving on current regimen
+
+    Plan:
+    1. Increase sertraline to 100mg daily - discussed that may take another 4-6 weeks for full effect
+    2. Continue weekly psychotherapy
+    3. Sleep hygiene education reviewed
+    4. Exercise recommendation - start with 20-30 min walks 3x per week
+    5. Reviewed signs of worsening depression and when to call
+    6. Suicide risk assessment: Low risk - no SI, good support system, engaged in treatment
+    7. Follow-up in 4 weeks to assess response to dose increase
+    8. TSH level ordered to ensure thyroid stable (due for annual check)
+    Patient agrees with plan, expresses cautious optimism about improvement. Crisis line number provided.
+
+well_child_exam:
+  title: "Well Child Exam - 4 Year Old"
+  specialty: "Pediatrics"
+  difficulty: "beginner"
+  transcript: |
+    Chief Complaint: 4-year well child check
+
+    HPI: 4-year-old male here for routine well child exam. Mother reports child is doing well overall. Attending preschool, adjusting well socially. Speaking in complete sentences, knows colors and can count to 20. No behavioral concerns. Toilet trained during day, occasional nighttime accidents. Eating well, varied diet. Sleeping 10-11 hours per night. No injuries or illnesses since last visit. Development appropriate per parent.
+
+    Birth History: Full term, uncomplicated vaginal delivery, birth weight 7 lbs 8 oz
+    PMH: None
+    Medications: None
+    Allergies: NKDA
+    Immunizations: Up to date per CDC schedule
+    Social: Lives with both parents and 6-year-old sister. No smokers in home. Attends preschool 5 days per week.
+    Family History: Non-contributory
+
+    Vitals: Temp 98.6°F, HR 95, RR 22, BP 95/60, Weight 38 lbs (50th percentile), Height 40 inches (50th percentile), BMI 16 (healthy weight)
+
+    Physical Exam:
+    General: Well-appearing, interactive, playful
+    HEENT: Normocephalic, PERRL, TMs clear bilaterally, pharynx normal, good dentition
+    Neck: Supple, no lymphadenopathy
+    Cardiovascular: RRR, no murmurs
+    Respiratory: Clear to auscultation bilaterally
+    Abdomen: Soft, non-tender, no organomegaly
+    GU: Tanner stage 1, normal male genitalia, both testes descended
+    Musculoskeletal: Full ROM all extremities, normal gait
+    Neurological: Alert, CN II-XII intact, normal tone and strength
+    Skin: No rashes or lesions
+
+    Development (per PEDS tool):
+    - Gross motor: Age appropriate (can hop on one foot, climb well)
+    - Fine motor: Age appropriate (can copy circle, uses scissors)
+    - Language: Age appropriate (speaks in sentences, tells stories)
+    - Social-emotional: Age appropriate (plays with other children, separates from parents easily)
+
+    Vision screening: Passed bilateral (20/30)
+    Hearing screening: Passed bilateral
+
+    Assessment: Healthy 4-year-old male, development on track
+
+    Plan:
+    1. Anticipatory guidance provided:
+       - Safety: car seat use, helmet for bikes, water safety
+       - Nutrition: healthy eating habits, limit juice and sugary drinks
+       - Dental care: brush twice daily, see dentist every 6 months
+       - Screen time: limit to 1 hour per day, no screens during meals
+       - Sleep: maintain consistent bedtime routine
+    2. Immunizations given today: DTaP, IPV, MMR, Varicella (documented in chart)
+    3. Discussed normal preschool behavior and discipline strategies
+    4. No concerns at this time
+    5. Return for 5-year well child visit
+    Mother had no additional questions. Post-vaccine instructions provided.
