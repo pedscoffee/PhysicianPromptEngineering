@@ -154,6 +154,59 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   </div>
 </section>
 
+<!-- Interactive Course Feature -->
+<section class="section" style="background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%); color: white;">
+  <div class="container">
+    <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+      <h2 style="color: white; font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">🎓 Learn Prompt Engineering Through Practice</h2>
+      <p style="font-size: var(--font-size-xl); opacity: 0.95; margin-bottom: var(--space-8);">
+        Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, get instant feedback from AI, and build skills through hands-on practice.
+      </p>
+
+      <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem; text-align: left;">
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
+          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
+          <p style="opacity: 0.9; font-size: 0.95rem;">14 interactive exercises with real clinical scenarios. Write prompts, see outputs, iterate until you master each concept.</p>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤖</div>
+          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">AI-Powered Feedback</h3>
+          <p style="opacity: 0.9; font-size: 0.95rem;">Get instant, specific feedback on your work. AI evaluates your prompts and suggests concrete improvements.</p>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏥</div>
+          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Real Clinical Cases</h3>
+          <p style="opacity: 0.9; font-size: 0.95rem;">Practice with de-identified patient scenarios across multiple specialties. Learn safety, quality, and best practices.</p>
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.15); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem; backdrop-filter: blur(10px);">
+        <h3 style="color: white; margin-bottom: 1rem; font-size: var(--font-size-xl);">Course Includes:</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
+          <div>✅ 5 comprehensive modules (6 hours total)</div>
+          <div>✅ Beginner to advanced techniques</div>
+          <div>✅ 10 clinical scenarios across specialties</div>
+          <div>✅ Build your personal prompt library</div>
+          <div>✅ Privacy-first (runs in your browser)</div>
+          <div>✅ Progress tracking & scoring</div>
+        </div>
+      </div>
+
+      <div>
+        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-lg" style="background: white; color: #2563eb; font-size: var(--font-size-lg); padding: 1rem 3rem; font-weight: 700; box-shadow: 0 4px 14px rgba(0,0,0,0.2);">
+          Start Free Interactive Course →
+        </a>
+        <p style="margin-top: 1rem; opacity: 0.9; font-size: var(--font-size-sm);">
+          No signup required • Complete at your own pace • Certificate upon completion
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- NEW: PPE AI Tools -->
 <section class="section">
   <div class="container">
