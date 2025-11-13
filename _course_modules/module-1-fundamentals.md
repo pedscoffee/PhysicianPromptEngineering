@@ -73,6 +73,80 @@ Use standard medical abbreviations. Keep it concise and professional.
 
 ---
 
+## Before You Start: Initialize the AI
+
+The exercises use a browser-based AI model that needs to be loaded first. Click the button below to initialize (first time: ~2GB download, then instant from cache).
+
+<div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0;">
+  <h4 style="margin-top: 0; color: #92400e;">System Requirements</h4>
+  <p style="color: #78350f; margin-bottom: 0.5rem;">• Chrome or Edge version 113+ with WebGPU support</p>
+  <p style="color: #78350f; margin-bottom: 0.5rem;">• First load: ~2GB download (cached for future use)</p>
+  <p style="color: #78350f; margin: 0;">• All processing happens in your browser (privacy-first)</p>
+</div>
+
+<div style="max-width: 600px; margin: 2rem auto; text-align: center;">
+  <button class="btn-init-ai" onclick="initializeAllExercises()">Initialize AI for Exercises</button>
+  <div id="global-init-status" class="llm-status" style="margin-top: 1rem; display: none;"></div>
+</div>
+
+<script>
+  let globalLLM = null;
+  let globalInitialized = false;
+
+  async function initializeAllExercises() {
+    const btn = document.querySelector('.btn-init-ai');
+    const status = document.getElementById('global-init-status');
+
+    if (globalInitialized) {
+      alert('AI already initialized!');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Initializing...';
+    status.style.display = 'block';
+    status.textContent = 'Loading AI model...';
+    status.className = 'llm-status status-loading';
+
+    try {
+      // Check WebGPU
+      if (!navigator.gpu) {
+        throw new Error('WebGPU not supported. Please use Chrome/Edge 113+');
+      }
+
+      // Import and initialize
+      const { CreateMLCEngine } = await import('https://esm.run/@mlc-ai/web-llm');
+
+      globalLLM = await CreateMLCEngine("Llama-3.1-8B-Instruct-q4f32_1-MLC", {
+        initProgressCallback: (progress) => {
+          const percent = Math.round(progress.progress * 100);
+          status.textContent = `Loading: ${percent}% (${progress.text || 'downloading...'})`;
+          console.log(`Progress: ${percent}%`);
+        }
+      });
+
+      globalInitialized = true;
+
+      // Share with all exercises on the page
+      window.sharedLLM = globalLLM;
+
+      status.textContent = 'AI Ready! ✓ You can now run exercises below.';
+      status.className = 'llm-status status-ready';
+      btn.style.display = 'none';
+
+      console.log('Global LLM initialized successfully!');
+    } catch (error) {
+      console.error('Initialization error:', error);
+      status.textContent = `Error: ${error.message}`;
+      status.className = 'llm-status status-error';
+      btn.disabled = false;
+      btn.textContent = 'Retry Initialization';
+    }
+  }
+</script>
+
+---
+
 ## Exercise 1.1: Your First SOAP Note Prompt
 
 Let's put this into practice! For this exercise, you'll write a prompt that generates a basic SOAP note.

@@ -1354,19 +1354,6 @@ button:disabled,
   transform: scaleX(1);
 }
 
-.module-card.module-locked {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.module-card.module-locked::after {
-  content: '🔒';
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  font-size: var(--font-size-2xl);
-}
-
 .module-number {
   font-size: var(--font-size-sm);
   color: var(--color-primary);
@@ -1618,7 +1605,8 @@ button:disabled,
 .btn-retry,
 .btn-view-example,
 .btn-hint,
-.btn-next-exercise {
+.btn-next-exercise,
+.btn-init-ai {
   padding: var(--space-3) var(--space-6);
   border: none;
   border-radius: var(--radius-md);
@@ -1626,6 +1614,24 @@ button:disabled,
   cursor: pointer;
   transition: all var(--transition-fast);
   font-size: var(--font-size-base);
+}
+
+.btn-init-ai {
+  background: var(--color-success);
+  color: white;
+  margin-bottom: var(--space-4);
+  width: 100%;
+  font-size: var(--font-size-lg);
+}
+
+.btn-init-ai:hover:not(:disabled) {
+  background: #047857;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-init-ai:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .btn-run-exercise {

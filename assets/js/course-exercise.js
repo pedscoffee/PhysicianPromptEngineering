@@ -46,30 +46,75 @@ class CourseExercise {
     if (hintButton) {
       hintButton.addEventListener('click', () => this.showHint());
     }
+
+    // Add Initialize AI button handler
+    const initButton = this.container.querySelector('.btn-init-ai');
+    if (initButton) {
+      initButton.addEventListener('click', async () => {
+        initButton.disabled = true;
+        initButton.textContent = 'Initializing...';
+        const success = await this.initializeLLM();
+        if (success) {
+          initButton.style.display = 'none';
+          this.updateStatus('AI Ready - You can now run exercises!', 'ready');
+        } else {
+          initButton.disabled = false;
+          initButton.textContent = 'Initialize AI (Required)';
+        }
+      });
+    }
   }
 
   async initializeLLM() {
     if (this.isInitialized) return true;
 
+    // Check if there's a globally initialized LLM we can use
+    if (window.sharedLLM) {
+      console.log('Using shared LLM instance');
+      this.llm = window.sharedLLM;
+      this.isInitialized = true;
+      this.updateStatus('AI Ready ✓', 'ready');
+      return true;
+    }
+
     try {
-      this.updateStatus('Initializing AI model...', 'loading');
+      this.updateStatus('Initializing AI model (first time: ~2GB download)...', 'loading');
+
+      // Check for WebGPU support
+      if (!navigator.gpu) {
+        this.updateStatus('Error: WebGPU not supported. Use Chrome/Edge 113+', 'error');
+        this.showError('Your browser does not support WebGPU. Please use Chrome or Edge version 113 or later.');
+        return false;
+      }
+
+      console.log('Loading MLC Web LLM...');
 
       // Import MLC Web LLM
       const { CreateMLCEngine } = await import('https://esm.run/@mlc-ai/web-llm');
 
+      console.log('Creating LLM engine...');
+
       // Initialize engine with smaller model for faster loading
       this.llm = await CreateMLCEngine("Llama-3.1-8B-Instruct-q4f32_1-MLC", {
         initProgressCallback: (progress) => {
-          this.updateStatus(`Loading model: ${Math.round(progress.progress * 100)}%`, 'loading');
+          const percent = Math.round(progress.progress * 100);
+          this.updateStatus(`Loading AI model: ${percent}% (${progress.text || 'downloading...'})`, 'loading');
+          console.log(`Loading progress: ${percent}%`, progress);
         }
       });
 
+      console.log('LLM initialized successfully!');
       this.isInitialized = true;
-      this.updateStatus('AI Ready', 'ready');
+      this.updateStatus('AI Ready ✓', 'ready');
+
+      // Share this instance globally for other exercises
+      window.sharedLLM = this.llm;
+
       return true;
     } catch (error) {
       console.error('LLM initialization error:', error);
-      this.updateStatus('Error loading AI model. Please refresh and try again.', 'error');
+      this.updateStatus('Error loading AI model', 'error');
+      this.showError(`Failed to load AI: ${error.message}. Please refresh and try again. Make sure you're using Chrome/Edge 113+ with WebGPU enabled.`);
       return false;
     }
   }
@@ -595,20 +640,8 @@ document.addEventListener('DOMContentLoaded', () => {
     exportButton.addEventListener('click', () => CourseProgress.exportProgress());
   }
 
-  // Check for locked modules
-  document.querySelectorAll('.module-card[data-module-number]').forEach(card => {
-    const moduleNumber = parseInt(card.dataset.moduleNumber);
-    if (!CourseProgress.isModuleUnlocked(moduleNumber)) {
-      card.classList.add('module-locked');
-      const link = card.querySelector('a');
-      if (link) {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          alert(`Complete Module ${moduleNumber - 1} first to unlock this module.`);
-        });
-      }
-    }
-  });
+  // Note: Module locking removed - users can explore at their own pace
+  // Progress tracking and gamification remain active
 });
 
 // Export for use in other scripts
