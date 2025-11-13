@@ -1095,6 +1095,31 @@ permalink: /scribe-tool/
 
                     <!-- Enhancement Prompts Section -->
                     <div id="enhancement-prompts-section" class="prompt-category-section"></div>
+
+                    <!-- Medical Dictionary Section -->
+                    <div class="prompt-category-section" style="margin-top: 30px;">
+                        <div class="prompt-category-header">
+                            <div class="prompt-category-title">
+                                📖 Medical Dictionary
+                                <span class="badge badge-default" id="dictionary-count">0 terms</span>
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-primary btn-sm" onclick="addMedicalTerms()">
+                                    + Add Terms
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="resetMedicalDictionary()">
+                                    Reset to Default
+                                </button>
+                            </div>
+                        </div>
+                        <div class="prompt-category-description">
+                            These terms help Whisper recognize medical terminology during transcription. Add medications, diagnoses, and terms specific to your specialty for better accuracy.
+                        </div>
+                        <div style="background: white; border: 1px solid #ddd; border-radius: 6px; padding: 15px; max-height: 200px; overflow-y: auto;">
+                            <div id="medical-dictionary-display" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1133,6 +1158,63 @@ permalink: /scribe-tool/
     const WHISPER_MODEL = "Xenova/whisper-base";
     const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
     const SCRIBE_PROMPTS_STORAGE_KEY = 'aiScribePrompts';
+    const MEDICAL_DICTIONARY_STORAGE_KEY = 'medicalDictionary';
+
+    // =====================================================
+    // MEDICAL DICTIONARY FOR TRANSCRIPTION
+    // =====================================================
+    // This helps Whisper recognize medical terminology accurately
+    // Users can customize this list for their specialty
+
+    const DEFAULT_MEDICAL_TERMS = [
+        // Common medications
+        'amoxicillin', 'ibuprofen', 'acetaminophen', 'albuterol', 'prednisone', 'azithromycin',
+        'cephalexin', 'metformin', 'lisinopril', 'atorvastatin', 'omeprazole', 'levothyroxine',
+
+        // Common diagnoses
+        'otitis media', 'pharyngitis', 'bronchiolitis', 'pneumonia', 'gastroenteritis',
+        'urinary tract infection', 'UTI', 'upper respiratory infection', 'URI',
+        'asthma', 'diabetes', 'hypertension', 'GERD', 'cellulitis',
+
+        // Anatomy
+        'tympanic membrane', 'pharynx', 'tonsils', 'lymphadenopathy', 'abdomen',
+        'auscultation', 'palpation', 'percussion', 'extremities',
+
+        // Symptoms
+        'rhinorrhea', 'dyspnea', 'tachypnea', 'tachycardia', 'fever', 'cough',
+        'wheezing', 'rales', 'rhonchi', 'erythema', 'edema', 'cyanosis',
+
+        // Procedures/tests
+        'CBC', 'CMP', 'chest x-ray', 'urinalysis', 'strep test', 'rapid antigen',
+
+        // Common abbreviations
+        'BID', 'TID', 'QID', 'PRN', 'PO', 'IM', 'IV', 'q4h', 'q6h'
+    ];
+
+    let medicalDictionary = [...DEFAULT_MEDICAL_TERMS];
+
+    function loadMedicalDictionary() {
+        const stored = localStorage.getItem(MEDICAL_DICTIONARY_STORAGE_KEY);
+        if (stored) {
+            try {
+                medicalDictionary = JSON.parse(stored);
+            } catch (e) {
+                console.error('Error loading medical dictionary:', e);
+                medicalDictionary = [...DEFAULT_MEDICAL_TERMS];
+            }
+        }
+    }
+
+    function saveMedicalDictionary() {
+        localStorage.setItem(MEDICAL_DICTIONARY_STORAGE_KEY, JSON.stringify(medicalDictionary));
+    }
+
+    function buildWhisperPrompt() {
+        // Create a natural sentence using medical terms to guide Whisper
+        // This helps it recognize medical terminology in context
+        const sampleTerms = medicalDictionary.slice(0, 30).join(', ');
+        return `This is a medical consultation discussing: ${sampleTerms}.`;
+    }
 
     // =====================================================
     // PROMPT MANAGEMENT SYSTEM
@@ -1416,8 +1498,9 @@ MEDICAL NOTE:`,
         initBtn.disabled = true;
 
         try {
-            // Step 0: Initialize prompt system
+            // Step 0: Initialize prompt system and medical dictionary
             initializePromptSystem();
+            loadMedicalDictionary();
 
             // Step 1: Load Whisper
             statusMessage.textContent = 'Loading Whisper (speech-to-text model)...';
@@ -1573,12 +1656,13 @@ MEDICAL NOTE:`,
             // Convert blob to URL for Whisper
             const audioUrl = URL.createObjectURL(audioBlob);
 
-            // Transcribe
+            // Transcribe with medical terminology guidance
             const result = await whisperModel(audioUrl, {
                 chunk_length_s: 30,
                 stride_length_s: 5,
                 language: 'english',
-                task: 'transcribe'
+                task: 'transcribe',
+                initial_prompt: buildWhisperPrompt() // Guide Whisper with medical terms
             });
 
             currentTranscription = result.text;
@@ -1632,7 +1716,67 @@ MEDICAL NOTE:`,
         renderSystemPromptsSection();
         renderEditorPromptsSection();
         renderEnhancementPromptsSection();
+        renderMedicalDictionary();
     }
+
+    function renderMedicalDictionary() {
+        const container = document.getElementById('medical-dictionary-display');
+        const countBadge = document.getElementById('dictionary-count');
+
+        countBadge.textContent = `${medicalDictionary.length} term${medicalDictionary.length !== 1 ? 's' : ''}`;
+
+        container.innerHTML = medicalDictionary.map((term, index) => `
+            <span style="display: inline-flex; align-items: center; gap: 4px; background: #e3f2fd; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">
+                ${term}
+                <button onclick="removeMedicalTerm(${index})" style="background: none; border: none; color: #666; cursor: pointer; padding: 0; font-size: 1.1em; line-height: 1;" title="Remove term">
+                    ×
+                </button>
+            </span>
+        `).join('');
+    }
+
+    window.addMedicalTerms = function() {
+        const input = prompt(
+            'Enter medical terms to add (comma-separated):\n\n' +
+            'Examples: metoprolol, chronic kidney disease, hyperglycemia'
+        );
+
+        if (!input) return;
+
+        const newTerms = input.split(',')
+            .map(term => term.trim())
+            .filter(term => term.length > 0 && !medicalDictionary.includes(term));
+
+        if (newTerms.length === 0) {
+            alert('No new terms to add (they may already exist).');
+            return;
+        }
+
+        medicalDictionary.push(...newTerms);
+        saveMedicalDictionary();
+        renderMedicalDictionary();
+
+        alert(`✅ Added ${newTerms.length} term${newTerms.length !== 1 ? 's' : ''} to dictionary!`);
+    };
+
+    window.removeMedicalTerm = function(index) {
+        const term = medicalDictionary[index];
+        if (!confirm(`Remove "${term}" from dictionary?`)) return;
+
+        medicalDictionary.splice(index, 1);
+        saveMedicalDictionary();
+        renderMedicalDictionary();
+    };
+
+    window.resetMedicalDictionary = function() {
+        if (!confirm('Reset medical dictionary to default terms? This will remove any custom terms you\'ve added.')) return;
+
+        medicalDictionary = [...DEFAULT_MEDICAL_TERMS];
+        saveMedicalDictionary();
+        renderMedicalDictionary();
+
+        alert('✅ Medical dictionary reset to defaults!');
+    };
 
     function renderSystemPromptsSection() {
         const container = document.getElementById('system-prompts-section');
@@ -1789,7 +1933,8 @@ MEDICAL NOTE:`,
         const exportData = {
             version: '1.0',
             exportedAt: new Date().toISOString(),
-            prompts: scribePrompts
+            prompts: scribePrompts,
+            medicalDictionary: medicalDictionary
         };
 
         const dataStr = JSON.stringify(exportData, null, 2);
@@ -1797,11 +1942,11 @@ MEDICAL NOTE:`,
         const url = URL.createObjectURL(dataBlob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `ai-scribe-prompts-${new Date().toISOString().split('T')[0]}.json`;
+        link.download = `ai-scribe-config-${new Date().toISOString().split('T')[0]}.json`;
         link.click();
         URL.revokeObjectURL(url);
 
-        alert('✅ Prompt configuration exported successfully!');
+        alert('✅ Configuration exported successfully!\n\nIncludes: prompts and medical dictionary');
     };
 
     window.importPromptConfiguration = function(event) {
@@ -1856,15 +2001,28 @@ MEDICAL NOTE:`,
                         });
                     }
 
-                    alert('✅ Prompts merged successfully!\n\nNew prompts have been added to your collection.');
+                    // Merge medical dictionary
+                    if (importData.medicalDictionary) {
+                        importData.medicalDictionary.forEach(term => {
+                            if (!medicalDictionary.includes(term)) {
+                                medicalDictionary.push(term);
+                            }
+                        });
+                    }
+
+                    alert('✅ Configuration merged successfully!\n\nNew prompts and medical terms have been added.');
                 } else {
-                    // Replace mode: completely replace with imported prompts
+                    // Replace mode: completely replace with imported configuration
                     scribePrompts = importData.prompts;
-                    alert('✅ Prompts replaced successfully!\n\nAll previous prompts have been replaced with the imported configuration.');
+                    if (importData.medicalDictionary) {
+                        medicalDictionary = importData.medicalDictionary;
+                    }
+                    alert('✅ Configuration replaced successfully!\n\nAll previous settings have been replaced with the imported configuration.');
                 }
 
                 // Save and re-render
                 savePromptSystem();
+                saveMedicalDictionary();
                 renderPromptCustomization();
 
                 // Clear the file input so the same file can be imported again if needed
