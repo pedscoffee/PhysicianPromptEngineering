@@ -1028,7 +1028,24 @@ async function handleAudioUpload(event) {
 
 async function transcribeAudio(audioBlob) {
     try {
-        const audioData = await audioBlob.arrayBuffer();
+        // Convert audio blob to array buffer
+        const arrayBuffer = await audioBlob.arrayBuffer();
+
+        // Decode audio using Web Audio API
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)({
+            sampleRate: 16000
+        });
+        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+        // Get audio data as Float32Array (Whisper expects mono audio at 16kHz)
+        let audioData = audioBuffer.getChannelData(0);
+
+        // If audio is not 16kHz, we need to resample
+        if (audioBuffer.sampleRate !== 16000) {
+            audioData = await resampleAudio(audioBuffer, 16000);
+        }
+
+        // Process with Whisper
         const result = await whisperModel(audioData);
 
         currentTranscription = result.text;
@@ -1040,6 +1057,25 @@ async function transcribeAudio(audioBlob) {
         document.getElementById('transcription-status').textContent = 'Transcription failed: ' + error.message;
         console.error('Transcription error:', error);
     }
+}
+
+async function resampleAudio(audioBuffer, targetSampleRate) {
+    // Create offline context for resampling
+    const offlineContext = new OfflineAudioContext(
+        1, // mono
+        audioBuffer.duration * targetSampleRate,
+        targetSampleRate
+    );
+
+    // Create buffer source
+    const source = offlineContext.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(offlineContext.destination);
+    source.start(0);
+
+    // Render and return resampled audio
+    const resampledBuffer = await offlineContext.startRendering();
+    return resampledBuffer.getChannelData(0);
 }
 
 // =====================================================
