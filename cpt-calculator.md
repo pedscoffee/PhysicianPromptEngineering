@@ -344,6 +344,129 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         gap: 8px;
     }
 
+    .time-content-wrapper {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .stopwatch-container {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .stopwatch-display {
+        background: white;
+        border: 2px solid #ff9800;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .stopwatch-time {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #e65100;
+        font-family: 'Courier New', monospace;
+        letter-spacing: 2px;
+    }
+
+    .stopwatch-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 8px;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .status-indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #4caf50;
+    }
+
+    .status-indicator.running {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .status-indicator.paused {
+        background: #ff9800;
+        animation: none;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.6;
+            transform: scale(1.2);
+        }
+    }
+
+    .stopwatch-controls {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .stopwatch-btn {
+        padding: 10px 20px;
+        border: 2px solid #ff9800;
+        background: white;
+        color: #e65100;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s;
+        flex: 1;
+    }
+
+    .stopwatch-btn:hover {
+        background: #fff3e0;
+        transform: translateY(-2px);
+    }
+
+    .stopwatch-btn.primary {
+        background: #ff9800;
+        color: white;
+    }
+
+    .stopwatch-btn.primary:hover {
+        background: #f57c00;
+    }
+
+    .use-time-btn {
+        width: 100%;
+        padding: 10px 20px;
+        border: 2px solid #4caf50;
+        background: #4caf50;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        font-weight: 600;
+        transition: all 0.3s;
+        margin-top: 8px;
+    }
+
+    .use-time-btn:hover {
+        background: #45a049;
+        transform: translateY(-2px);
+    }
+
+    .manual-time-container {
+        flex: 1;
+        min-width: 250px;
+    }
+
     .time-input-container {
         display: flex;
         flex-direction: column;
@@ -361,7 +484,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         border: 2px solid #ffb74d;
         border-radius: 6px;
         font-size: 0.95em;
-        width: 200px;
+        width: 100%;
     }
 
     .time-based-display {
@@ -486,6 +609,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         .well-visit-buttons {
             justify-content: center;
         }
+
+        .time-content-wrapper {
+            flex-direction: column;
+        }
     }
 
     @media (min-width: 1025px) {
@@ -522,6 +649,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         .btn {
             flex: 1;
         }
+
+        .stopwatch-time {
+            font-size: 2em;
+        }
     }
 </style>
 
@@ -541,10 +672,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 <li><strong>Step 1:</strong> Select patient type (New or Established)</li>
                 <li><strong>Step 2 (Optional):</strong> Select preventive well visit age category if applicable</li>
                 <li><strong>Step 3:</strong> Select problems addressed, data reviewed, and risk factors</li>
-                <li><strong>Step 4 (Optional):</strong> Enter total time if using time-based coding</li>
+                <li><strong>Step 4 (Optional):</strong> Use the auto-running stopwatch to track encounter time, or manually enter time. Click "Use Stopwatch Time" to transfer stopwatch time to the manual input field.</li>
                 <li><strong>Result:</strong> The calculator automatically determines the appropriate E/M code using the 2 of 3 MDM rule</li>
             </ul>
-            <p><strong>Note:</strong> If both a well visit and E/M code are generated, the E/M code should be billed with modifier -25. Time-based coding is shown as an alternative when applicable - use whichever yields the higher level code.</p>
+            <p><strong>Note:</strong> If both a well visit and E/M code are generated, the E/M code should be billed with modifier -25. Time-based coding is shown as an alternative when applicable - use whichever yields the higher level code. The stopwatch automatically starts when you load the page and continues running until paused.</p>
         </div>
     </div>
 
@@ -753,16 +884,35 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     </div>
 
     <div class="time-based-section">
-        <h2> Time-Based Coding (Optional Alternative)</h2>
-        <div class="time-input-container">
-            <label for="totalTime">Total time on date of encounter (includes non-face-to-face work)</label>
-            <input type="number" id="totalTime" placeholder="Minutes" min="0" onchange="updateTime()">
+        <h2>⏱ Time-Based Coding (Optional Alternative)</h2>
+        <div class="time-content-wrapper">
+            <div class="stopwatch-container">
+                <div class="stopwatch-display">
+                    <div class="stopwatch-time" id="stopwatchDisplay">00:00</div>
+                    <div class="stopwatch-status">
+                        <span class="status-indicator running" id="statusIndicator"></span>
+                        <span id="statusText">Running</span>
+                    </div>
+                </div>
+                <div class="stopwatch-controls">
+                    <button class="stopwatch-btn primary" id="startPauseBtn" onclick="toggleStopwatch()">Pause</button>
+                    <button class="stopwatch-btn" onclick="resetStopwatch()">Reset</button>
+                </div>
+                <button class="use-time-btn" onclick="useStopwatchTime()">✓ Use Stopwatch Time</button>
+            </div>
+            
+            <div class="manual-time-container">
+                <div class="time-input-container">
+                    <label for="totalTime">Manual Time Entry (minutes)</label>
+                    <input type="number" id="totalTime" placeholder="Enter minutes manually" min="0" onchange="updateTime()">
+                </div>
+                <div class="time-based-display" id="timeBasedDisplay"></div>
+            </div>
         </div>
-        <div class="time-based-display" id="timeBasedDisplay"></div>
     </div>
 
     <div class="well-visit-section">
-        <h2> Preventive Well Visit (Optional)</h2>
+        <h2>🏥 Preventive Well Visit (Optional)</h2>
         <div class="well-visit-buttons">
             <button class="well-visit-btn" onclick="selectWellVisit('99381', '99391')">Under 1 year</button>
             <button class="well-visit-btn" onclick="selectWellVisit('99382', '99392')">1-4 years</button>
@@ -796,6 +946,11 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Want a more compact version? <a href="https://physicianpromptengineering.com/cpt-calculator-compact/">     Click Here</a></h2>
 
 <script>
+    // Stopwatch state
+    let stopwatchInterval = null;
+    let elapsedSeconds = 0;
+    let isRunning = true;
+
     // State management
     const state = {
         patientType: 'established',
@@ -855,6 +1010,92 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         'independent_interpretation': 'Independent interpretation of a test performed by another physician/other qualified health care professional (not separately reported)',
         'discussion_management': 'Discussion of management or test interpretation with external physician/other qualified health care professional/appropriate source (not separately reported)'
     };
+
+    // Initialize stopwatch on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        startStopwatch();
+    });
+
+    function startStopwatch() {
+        if (!stopwatchInterval) {
+            stopwatchInterval = setInterval(updateStopwatchDisplay, 1000);
+            isRunning = true;
+            updateStopwatchUI();
+        }
+    }
+
+    function pauseStopwatch() {
+        if (stopwatchInterval) {
+            clearInterval(stopwatchInterval);
+            stopwatchInterval = null;
+            isRunning = false;
+            updateStopwatchUI();
+        }
+    }
+
+    function toggleStopwatch() {
+        if (isRunning) {
+            pauseStopwatch();
+        } else {
+            startStopwatch();
+        }
+    }
+
+    function resetStopwatch() {
+        pauseStopwatch();
+        elapsedSeconds = 0;
+        updateStopwatchDisplay();
+        // Optionally restart after reset
+        startStopwatch();
+    }
+
+    function updateStopwatchDisplay() {
+        if (isRunning) {
+            elapsedSeconds++;
+        }
+        
+        const minutes = Math.floor(elapsedSeconds / 60);
+        const seconds = elapsedSeconds % 60;
+        
+        const display = document.getElementById('stopwatchDisplay');
+        display.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function updateStopwatchUI() {
+        const indicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+        const btn = document.getElementById('startPauseBtn');
+        
+        if (isRunning) {
+            indicator.classList.add('running');
+            indicator.classList.remove('paused');
+            statusText.textContent = 'Running';
+            btn.textContent = 'Pause';
+        } else {
+            indicator.classList.remove('running');
+            indicator.classList.add('paused');
+            statusText.textContent = 'Paused';
+            btn.textContent = 'Start';
+        }
+    }
+
+    function useStopwatchTime() {
+        const minutes = Math.floor(elapsedSeconds / 60);
+        const timeInput = document.getElementById('totalTime');
+        timeInput.value = minutes;
+        state.totalTime = minutes;
+        updateOutput();
+        
+        // Show a brief visual feedback
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Time Applied!';
+        btn.style.background = '#45a049';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+        }, 1500);
+    }
 
     function toggleInstructions() {
         const content = document.getElementById('instructionsContent');
@@ -1458,6 +1699,13 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         document.getElementById('timeBasedDisplay').classList.remove('show');
         document.getElementById('wellVisitDisplay').classList.remove('show');
 
+        // Reset stopwatch but keep it running
+        elapsedSeconds = 0;
+        updateStopwatchDisplay();
+        if (!isRunning) {
+            startStopwatch();
+        }
+
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1487,4 +1735,3 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
         }, 3000);
     }
 </script>
-
