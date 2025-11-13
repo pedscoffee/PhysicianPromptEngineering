@@ -159,10 +159,10 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   <div class="container">
     <h2 class="text-center mb-8" style="font-size: var(--font-size-4xl); color: var(--color-primary);">🤖 AI-Powered Clinical Tools</h2>
     <p class="text-center text-lg text-secondary mb-8" style="max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 3rem;">
-      We've built two groundbreaking AI tools that run <strong>100% in your browser</strong>—no cloud, no costs, complete privacy. Both use cutting-edge AI models (Whisper + Phi-3.5) that download once and work offline forever.
+      We've built three groundbreaking AI tools that run <strong>100% in your browser</strong>—no cloud, no costs, complete privacy. All use cutting-edge AI models (Whisper + Phi-3.5) that download once and work offline forever.
     </p>
 
-    <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 3rem;">
+    <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem;">
 
       <!-- AI Medical Scribe -->
       <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #059669;">
@@ -248,6 +248,50 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg" style="width: 100%;">
             ✨ Try Prompt Assistant
+          </a>
+        </div>
+      </div>
+
+      <!-- AI Chatbot Assistant -->
+      <div style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #be185d;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">💬</div>
+          <h3 style="color: #be185d; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Ask AI Assistant</h3>
+          <p style="color: #831843; font-weight: 600; font-size: var(--font-size-sm);">Ask → Learn → Discover → Navigate</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🧠</span> Complete Site Knowledge
+            </h4>
+            <p style="color: #831843; font-size: 0.95rem;">
+              Ask questions about any tool, prompt, or workflow. AI assistant knows every detail about the 15+ prompts, 6 tools, and best practices.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>💡</span> Interactive Learning
+            </h4>
+            <p style="color: #831843; font-size: 0.95rem;">
+              Get step-by-step guidance, compare tools, understand workflows, and find the right prompt for your specific use case.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📚</span> Export Conversations
+            </h4>
+            <p style="color: #831843; font-size: 0.95rem;">
+              Save helpful conversations as markdown for reference or share with colleagues to accelerate their learning.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/ask-ai" class="btn btn-lg" style="background: #be185d; color: white; width: 100%;">
+            💬 Ask Questions
           </a>
         </div>
       </div>
