@@ -154,66 +154,133 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   </div>
 </section>
 
-<!-- NEW: AI Prompt Assistant Feature -->
+<!-- NEW: AI-Powered Tools -->
 <section class="section">
   <div class="container">
-    <div style="max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%); padding: 3rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); border: 2px solid var(--color-primary);">
-      <div style="text-align: center; margin-bottom: 2rem;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">🤖</div>
-        <h2 style="color: var(--color-primary); font-size: var(--font-size-3xl); margin-bottom: 1rem;">New: AI Prompt Assistant</h2>
-        <p style="font-size: var(--font-size-xl); color: var(--color-text-secondary); max-width: 700px; margin: 0 auto;">
-          Can't find the perfect prompt in our library? Let AI create one for you—running entirely in your browser with complete privacy.
-        </p>
-      </div>
+    <h2 class="text-center mb-8" style="font-size: var(--font-size-4xl); color: var(--color-primary);">🤖 AI-Powered Clinical Tools</h2>
+    <p class="text-center text-lg text-secondary mb-8" style="max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 3rem;">
+      We've built two groundbreaking AI tools that run <strong>100% in your browser</strong>—no cloud, no costs, complete privacy. Both use cutting-edge AI models (Whisper + Phi-3.5) that download once and work offline forever.
+    </p>
 
-      <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 2rem;">
-        <div>
-          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span>🔒</span> Privacy-First Design
-          </h4>
-          <p style="color: var(--color-text-secondary);">
-            AI model downloads once (~2GB) and runs 100% locally. No APIs, no servers, no data transmission. Works offline after initial setup.
-          </p>
+    <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 3rem;">
+
+      <!-- AI Medical Scribe -->
+      <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #059669;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🎤</div>
+          <h3 style="color: #047857; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">AI Medical Scribe</h3>
+          <p style="color: #065f46; font-weight: 600; font-size: var(--font-size-sm);">Record → Transcribe → Format → Copy to EMR</p>
         </div>
 
-        <div>
-          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span>✨</span> Custom Prompt Generation
-          </h4>
-          <p style="color: var(--color-text-secondary);">
-            Describe your documentation needs in plain English. AI generates production-ready prompts tailored to your specialty and workflow.
-          </p>
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🎙️</span> Whisper-Powered Transcription
+            </h4>
+            <p style="color: #065f46; font-size: 0.95rem;">
+              Record patient encounters with your microphone or upload audio files. OpenAI's Whisper model transcribes with medical-grade accuracy.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>✨</span> AI Clinical Formatting
+            </h4>
+            <p style="color: #065f46; font-size: 0.95rem;">
+              Choose from 6 clinical formats (A/P, SOAP, Billing, AVS, Sign-out). AI instantly formats your transcription into EMR-ready notes.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>💰</span> Save $3,600-8,400/Year
+            </h4>
+            <p style="color: #065f46; font-size: 0.95rem;">
+              Commercial AI scribes cost $300-700/month. This tool is free forever with better privacy.
+            </p>
+          </div>
         </div>
 
-        <div>
-          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span>🔄</span> Iterative Refinement
-          </h4>
-          <p style="color: var(--color-text-secondary);">
-            Not perfect on the first try? Refine your requirements and regenerate until you get exactly what you need.
-          </p>
-        </div>
-
-        <div>
-          <h4 style="color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span>💾</span> Integrated Workflow
-          </h4>
-          <p style="color: var(--color-text-secondary);">
-            Save generated prompts directly to Snippet Manager, export as text files, or copy to clipboard with one click.
-          </p>
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-success btn-lg" style="background: #047857; width: 100%;">
+            🚀 Try AI Scribe
+          </a>
         </div>
       </div>
 
-      <div style="text-align: center;">
-        <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg" style="margin-right: 1rem;">Try AI Prompt Assistant</a>
-        <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Or Use Traditional Generator</a>
+      <!-- AI Prompt Assistant -->
+      <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid var(--color-primary);">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🤖</div>
+          <h3 style="color: var(--color-primary); font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">AI Prompt Assistant</h3>
+          <p style="color: #1e40af; font-weight: 600; font-size: var(--font-size-sm);">Describe → Generate → Refine → Deploy</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>💡</span> Custom Prompt Generation
+            </h4>
+            <p style="color: #1e40af; font-size: 0.95rem;">
+              Describe your documentation needs in plain English. AI generates production-ready prompts tailored to your specialty and workflow.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🔄</span> Iterative Refinement
+            </h4>
+            <p style="color: #1e40af; font-size: 0.95rem;">
+              Not perfect on the first try? Refine your requirements and regenerate until you get exactly what you need.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>💾</span> Integrated Workflow
+            </h4>
+            <p style="color: #1e40af; font-size: 0.95rem;">
+              Save generated prompts to Snippet Manager, export as text, or copy to clipboard with one click.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg" style="width: 100%;">
+            ✨ Try Prompt Assistant
+          </a>
+        </div>
       </div>
 
-      <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.6); border-radius: var(--radius-md); text-align: center;">
-        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin: 0;">
-          <strong>Requirements:</strong> Chrome/Edge 113+ with WebGPU support • ~3GB free disk space • Modern CPU/GPU recommended
-        </p>
+    </div>
+
+    <!-- Shared Benefits -->
+    <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border-left: 4px solid var(--color-accent);">
+      <h3 style="color: var(--color-accent); text-align: center; margin-bottom: 1.5rem; font-size: var(--font-size-xl);">🔒 Why This Changes Everything</h3>
+      <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem;">
+        <div style="text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔐</div>
+          <h4 style="color: #333; margin-bottom: 0.5rem; font-size: 1rem;">100% Privacy</h4>
+          <p style="color: #666; font-size: 0.9rem;">Audio, transcriptions, and AI processing never leave your device. HIPAA-compliant by design.</p>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💵</div>
+          <h4 style="color: #333; margin-bottom: 0.5rem; font-size: 1rem;">Zero Cost</h4>
+          <p style="color: #666; font-size: 0.9rem;">No API fees, no subscriptions, no per-encounter charges. Free forever after one-time setup.</p>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✈️</div>
+          <h4 style="color: #333; margin-bottom: 0.5rem; font-size: 1rem;">Works Offline</h4>
+          <p style="color: #666; font-size: 0.9rem;">After initial model download, no internet required. Perfect for clinics with unreliable connectivity.</p>
+        </div>
       </div>
+    </div>
+
+    <!-- Requirements -->
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #fef3c7; border-radius: var(--radius-md); text-align: center; border-left: 4px solid #f59e0b;">
+      <p style="color: #78350f; font-size: var(--font-size-sm); margin: 0;">
+        <strong>System Requirements:</strong> Chrome/Edge 113+ with WebGPU • ~2.1GB one-time download (Whisper 75MB + Phi-3.5 2GB) • Modern CPU/GPU recommended • 5-15 min initial setup, then instant loading
+      </p>
     </div>
   </div>
 </section>
