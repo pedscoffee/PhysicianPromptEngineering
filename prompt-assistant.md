@@ -1,6 +1,6 @@
 ---
 layout: page
-title: PPE Prompt Assistant
+title: Prompt Assistant
 description: Experimental browser-based prompt generator demonstrating AI-powered meta-prompting capabilities. Educational purposes only.
 permalink: /prompt-assistant/
 ---
@@ -482,7 +482,7 @@ permalink: /prompt-assistant/
 <!-- Hero Section -->
 <div class="hero">
     <div class="container">
-        <h1 class="hero-title">PPE Prompt Assistant</h1>
+        <h1 class="hero-title">Prompt Assistant</h1>
         <p class="hero-subtitle">
             Experimental meta-prompting tool demonstrating AI-powered prompt generation. Educational purposes only.
         </p>
@@ -514,7 +514,7 @@ permalink: /prompt-assistant/
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <button id="init-btn" class="btn btn-primary btn-lg" onclick="initializeEngine()">
-            Initialize PPE Prompt Assistant
+            Initialize Prompt Assistant
         </button>
     </div>
 
