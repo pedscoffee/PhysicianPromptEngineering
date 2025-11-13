@@ -733,7 +733,7 @@ permalink: /scribe-tool/
             </div>
 
             <div class="transcription-actions" id="transcription-actions" style="display: none;">
-                <button class="btn btn-success" onclick="copyTranscription()">
+                <button class="btn btn-success" onclick="copyTranscription(event)">
                     📋 Copy Transcription
                 </button>
                 <button class="btn btn-secondary" onclick="downloadTranscription()">
@@ -756,22 +756,6 @@ permalink: /scribe-tool/
         <div class="output-panel">
             <h2>✨ Clinical Note</h2>
 
-            <div class="form-group" id="prompt-selection" style="display: none;">
-                <label for="clinical-prompt">
-                    Select Clinical Format
-                </label>
-                <select id="clinical-prompt">
-                    <option value="">-- Choose a prompt --</option>
-                    <option value="ap-pithy">A/P Formatting (Pithy)</option>
-                    <option value="ap-formal">A/P Formatting (Formal)</option>
-                    <option value="billing">Billing & Medical Decision Making</option>
-                    <option value="avs">After-Visit Summary (Patient-Friendly)</option>
-                    <option value="signout">Concise Sign-Out</option>
-                    <option value="soap">SOAP Note</option>
-                    <option value="custom">Custom Processing (Basic Format)</option>
-                </select>
-            </div>
-
             <button id="process-btn" class="btn btn-success btn-lg" onclick="processWithAI()" disabled style="display: none; width: 100%; margin-bottom: 20px;">
                 ✨ Generate Clinical Note
             </button>
@@ -785,17 +769,60 @@ permalink: /scribe-tool/
 
             <div id="output-content"></div>
 
-            <div class="char-counter" id="char-counter" style="display: none;"></div>
+            <div class="char-counter" id="output-char-counter" style="display: none;"></div>
 
             <div class="output-actions" id="output-actions" style="display: none;">
-                <button class="btn btn-success" onclick="copyOutput()">
+                <button class="btn btn-success" onclick="copyOutput(event)">
                     📋 Copy to EMR
                 </button>
-                <button class="btn btn-primary" onclick="saveToSnippetManager()">
-                    💾 Save to Snippets
+                <button class="btn btn-primary" onclick="saveNoteToSnippetManager()">
+                    💾 Save Note
                 </button>
                 <button class="btn btn-secondary" onclick="downloadOutput()">
                     ⬇️ Download .txt
+                </button>
+            </div>
+
+            <h3 style="margin-top: 30px; display: none;" id="prompt-section-header">🔧 Customize Prompt</h3>
+
+            <div class="form-group" id="prompt-selection" style="display: none;">
+                <label for="clinical-prompt">
+                    Select Prompt Template
+                </label>
+                <select id="clinical-prompt" onchange="loadPromptTemplate()">
+                    <option value="">-- Choose a prompt template --</option>
+                    <optgroup label="Default Templates" id="default-prompts">
+                        <option value="ap-pithy">A/P Formatting (Pithy)</option>
+                        <option value="ap-formal">A/P Formatting (Formal)</option>
+                        <option value="billing">Billing & Medical Decision Making</option>
+                        <option value="avs">After-Visit Summary (Patient-Friendly)</option>
+                        <option value="signout">Concise Sign-Out</option>
+                        <option value="soap">SOAP Note</option>
+                        <option value="custom">Custom Processing (Basic Format)</option>
+                    </optgroup>
+                    <optgroup label="Your Saved Prompts" id="saved-prompts">
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="form-group" id="prompt-editor" style="display: none;">
+                <label for="prompt-text">
+                    Prompt (Editable)
+                    <span style="color: #999; font-size: 0.9em;">Modify the prompt below to customize AI behavior</span>
+                </label>
+                <textarea
+                    id="prompt-text"
+                    style="font-family: 'Monaco', 'Courier New', monospace; min-height: 300px; resize: vertical;"
+                    placeholder="Select a prompt template above to begin editing, or write your own custom prompt..."></textarea>
+                <div class="char-counter" id="prompt-char-counter" style="display: block; margin-top: 10px;">0 characters</div>
+            </div>
+
+            <div class="button-group" id="prompt-actions" style="display: none; margin-top: 15px;">
+                <button class="btn btn-primary" onclick="savePromptToSnippetManager()">
+                    💾 Save This Prompt
+                </button>
+                <button class="btn btn-secondary" onclick="resetToDefaultPrompt()">
+                    🔄 Reset to Default
                 </button>
             </div>
 
@@ -828,6 +855,8 @@ permalink: /scribe-tool/
     let durationInterval = null;
     let currentTranscription = '';
     let currentOutput = '';
+    let currentDefaultPromptId = ''; // Track which default template is selected
+    let savedPrompts = []; // Cache of saved prompts from snippet manager
 
     const WHISPER_MODEL = "Xenova/whisper-base";
     const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
@@ -1127,10 +1156,16 @@ Transcription:`
             document.getElementById('transcription-text').style.display = 'block';
             document.getElementById('transcription-text').value = currentTranscription;
             document.getElementById('transcription-actions').style.display = 'flex';
+
+            // Show prompt customization section
+            document.getElementById('prompt-section-header').style.display = 'block';
             document.getElementById('prompt-selection').style.display = 'block';
             document.getElementById('process-btn').style.display = 'block';
-            document.getElementById('process-btn').disabled = false;
+            document.getElementById('process-btn').disabled = true; // Disabled until prompt is selected
             document.getElementById('recording-status-text').textContent = 'Transcription complete';
+
+            // Load saved prompts into dropdown
+            loadSavedPrompts();
 
             // Clean up
             URL.revokeObjectURL(audioUrl);
@@ -1150,19 +1185,156 @@ Transcription:`
     }
 
     // =====================================================
+    // PROMPT MANAGEMENT
+    // =====================================================
+    function loadSavedPrompts() {
+        try {
+            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
+            // Filter for prompts tagged as clinical prompts (or all prompts)
+            savedPrompts = snippets.filter(s =>
+                s.tags && (s.tags.includes('clinical-prompt') || s.tags.includes('scribe-prompt'))
+            );
+
+            // Populate dropdown with saved prompts
+            const savedPromptsGroup = document.getElementById('saved-prompts');
+            savedPromptsGroup.innerHTML = '';
+
+            savedPrompts.forEach(snippet => {
+                const option = document.createElement('option');
+                option.value = `saved-${snippet.id}`;
+                option.textContent = snippet.title;
+                savedPromptsGroup.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Error loading saved prompts:', error);
+        }
+    }
+
+    window.loadPromptTemplate = function() {
+        const selectedValue = document.getElementById('clinical-prompt').value;
+        const promptTextarea = document.getElementById('prompt-text');
+
+        if (!selectedValue) {
+            promptTextarea.value = '';
+            document.getElementById('prompt-editor').style.display = 'none';
+            document.getElementById('prompt-actions').style.display = 'none';
+            document.getElementById('process-btn').disabled = true;
+            return;
+        }
+
+        // Check if it's a default prompt or saved prompt
+        if (selectedValue.startsWith('saved-')) {
+            const snippetId = parseInt(selectedValue.replace('saved-', ''));
+            const snippet = savedPrompts.find(s => s.id === snippetId);
+            if (snippet) {
+                promptTextarea.value = snippet.prompt;
+                currentDefaultPromptId = ''; // Not a default template
+            }
+        } else {
+            // Load from default templates
+            const promptTemplate = CLINICAL_PROMPTS[selectedValue];
+            if (promptTemplate) {
+                promptTextarea.value = promptTemplate;
+                currentDefaultPromptId = selectedValue;
+            }
+        }
+
+        // Show editor and actions
+        document.getElementById('prompt-editor').style.display = 'block';
+        document.getElementById('prompt-actions').style.display = 'flex';
+        document.getElementById('process-btn').disabled = false;
+        updatePromptCharCount();
+    };
+
+    window.resetToDefaultPrompt = function() {
+        if (!currentDefaultPromptId) {
+            alert('No default template selected. Please select a default template from the dropdown first.');
+            return;
+        }
+
+        const promptTemplate = CLINICAL_PROMPTS[currentDefaultPromptId];
+        if (promptTemplate) {
+            document.getElementById('prompt-text').value = promptTemplate;
+            updatePromptCharCount();
+        }
+    };
+
+    window.savePromptToSnippetManager = function() {
+        const promptText = document.getElementById('prompt-text').value.trim();
+
+        if (!promptText) {
+            alert('No prompt to save. Please enter a prompt first.');
+            return;
+        }
+
+        try {
+            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
+            const title = prompt('Enter a title for this prompt:', 'Custom Clinical Prompt');
+            if (!title) return;
+
+            snippets.push({
+                id: Date.now(),
+                title: title,
+                version: '1.0',
+                tags: ['clinical-prompt', 'scribe-prompt'],
+                prompt: promptText
+            });
+
+            localStorage.setItem('promptSnippets', JSON.stringify(snippets));
+
+            alert('✅ Prompt saved successfully!');
+
+            // Reload saved prompts in dropdown
+            loadSavedPrompts();
+
+        } catch (error) {
+            alert('Failed to save prompt. Storage might be full.');
+            console.error('Save error:', error);
+        }
+    };
+
+    function updatePromptCharCount() {
+        const promptText = document.getElementById('prompt-text').value;
+        const count = promptText.length;
+        const counter = document.getElementById('prompt-char-counter');
+
+        let className = 'char-counter';
+        let message = `${count.toLocaleString()} characters`;
+
+        if (count > 5000) {
+            className += ' error';
+            message += ' ⚠️ Very long prompt';
+        } else if (count > 3000) {
+            className += ' warning';
+            message += ' ⚠️ Long prompt';
+        }
+
+        counter.className = className;
+        counter.textContent = message;
+    }
+
+    // Add input listener for prompt textarea
+    document.addEventListener('DOMContentLoaded', () => {
+        const promptTextarea = document.getElementById('prompt-text');
+        if (promptTextarea) {
+            promptTextarea.addEventListener('input', updatePromptCharCount);
+        }
+    });
+
+    // =====================================================
     // AI PROCESSING
     // =====================================================
     window.processWithAI = async function() {
         const transcriptionText = document.getElementById('transcription-text').value.trim();
-        const selectedPrompt = document.getElementById('clinical-prompt').value;
+        const promptText = document.getElementById('prompt-text').value.trim();
 
         if (!transcriptionText) {
             alert('No transcription to process. Please record or upload audio first.');
             return;
         }
 
-        if (!selectedPrompt) {
-            alert('Please select a clinical format from the dropdown.');
+        if (!promptText) {
+            alert('Please select a prompt template or enter a custom prompt.');
             return;
         }
 
@@ -1174,8 +1346,7 @@ Transcription:`
         document.getElementById('process-btn').disabled = true;
 
         try {
-            const promptTemplate = CLINICAL_PROMPTS[selectedPrompt];
-            const fullPrompt = promptTemplate + '\n\n' + transcriptionText;
+            const fullPrompt = promptText + '\n\n' + transcriptionText;
 
             // Generate with LLM
             const response = await llmEngine.chat.completions.create({
@@ -1198,12 +1369,12 @@ Transcription:`
                 const delta = chunk.choices[0]?.delta?.content || '';
                 currentOutput += delta;
                 outputDiv.textContent = currentOutput;
-                updateCharCount(currentOutput.length);
+                updateOutputCharCount(currentOutput.length);
             }
 
             // Show actions
             document.getElementById('output-actions').style.display = 'flex';
-            document.getElementById('char-counter').style.display = 'block';
+            document.getElementById('output-char-counter').style.display = 'block';
             updateWorkflowStep('done');
 
         } catch (error) {
@@ -1219,7 +1390,7 @@ Transcription:`
     // =====================================================
     // OUTPUT ACTIONS
     // =====================================================
-    window.copyTranscription = async function() {
+    window.copyTranscription = async function(event) {
         const text = document.getElementById('transcription-text').value;
         try {
             await navigator.clipboard.writeText(text);
@@ -1243,7 +1414,7 @@ Transcription:`
         URL.revokeObjectURL(url);
     };
 
-    window.copyOutput = async function() {
+    window.copyOutput = async function(event) {
         try {
             await navigator.clipboard.writeText(currentOutput);
             const btn = event.target;
@@ -1252,6 +1423,7 @@ Transcription:`
             setTimeout(() => btn.textContent = originalText, 2000);
         } catch (error) {
             alert('Failed to copy. Please select and copy manually.');
+            console.error('Copy error:', error);
         }
     };
 
@@ -1265,7 +1437,7 @@ Transcription:`
         URL.revokeObjectURL(url);
     };
 
-    window.saveToSnippetManager = function() {
+    window.saveNoteToSnippetManager = function() {
         try {
             const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
             const title = prompt('Enter a title for this clinical note:', 'AI Scribe Note');
@@ -1302,6 +1474,7 @@ Transcription:`
             audioChunks = [];
             currentTranscription = '';
             currentOutput = '';
+            currentDefaultPromptId = '';
 
             // Reset UI
             document.getElementById('transcription-text').value = '';
@@ -1316,7 +1489,12 @@ Transcription:`
             document.getElementById('output-empty').style.display = 'block';
             document.getElementById('output-actions').style.display = 'none';
             document.getElementById('prompt-selection').style.display = 'none';
+            document.getElementById('prompt-section-header').style.display = 'none';
+            document.getElementById('prompt-editor').style.display = 'none';
+            document.getElementById('prompt-actions').style.display = 'none';
             document.getElementById('process-btn').style.display = 'none';
+            document.getElementById('clinical-prompt').value = '';
+            document.getElementById('prompt-text').value = '';
             document.getElementById('duration-display').textContent = '0:00';
             document.getElementById('recording-status-text').textContent = 'Ready';
             document.getElementById('status-dot').classList.remove('recording', 'ready');
@@ -1341,8 +1519,8 @@ Transcription:`
         });
     }
 
-    function updateCharCount(count) {
-        const counter = document.getElementById('char-counter');
+    function updateOutputCharCount(count) {
+        const counter = document.getElementById('output-char-counter');
         let className = 'char-counter';
         let message = `${count.toLocaleString()} characters`;
 
