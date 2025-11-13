@@ -154,169 +154,157 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   </div>
 </section>
 
-<!-- NEW: AI-Powered Tools -->
+<!-- NEW: PPE AI Tools -->
 <section class="section">
   <div class="container">
-    <h2 class="text-center mb-8" style="font-size: var(--font-size-4xl); color: var(--color-primary);">🤖 AI-Powered Clinical Tools</h2>
+    <h2 class="text-center mb-8" style="font-size: var(--font-size-4xl); color: var(--color-primary);">PPE AI Tools (BETA)</h2>
     <p class="text-center text-lg text-secondary mb-8" style="max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 3rem;">
-      We've built three groundbreaking AI tools that run <strong>100% in your browser</strong>—no cloud, no costs, complete privacy. All use cutting-edge AI models (Whisper + Phi-3.5) that download once and work offline forever.
+      Experimental browser-based AI tools demonstrating what's possible with client-side machine learning. <strong>Educational purposes only.</strong> These are prototypes to show technical capabilities, not production clinical tools.
     </p>
 
     <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem;">
 
-      <!-- AI Medical Scribe -->
+      <!-- PPE Scribe -->
       <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #059669;">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-          <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🎤</div>
-          <h3 style="color: #047857; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">AI Medical Scribe</h3>
-          <p style="color: #065f46; font-weight: 600; font-size: var(--font-size-sm);">Record → Transcribe → Format → Copy to EMR</p>
+          <h3 style="color: #047857; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Scribe</h3>
+          <p style="color: #065f46; font-weight: 600; font-size: var(--font-size-sm);">Record → Transcribe → Format</p>
         </div>
 
         <div style="margin-bottom: 1.5rem;">
           <div style="margin-bottom: 1rem;">
-            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>🎙️</span> Whisper-Powered Transcription
+            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem;">
+              Speech-to-Text Demo
             </h4>
             <p style="color: #065f46; font-size: 0.95rem;">
-              Record patient encounters with your microphone or upload audio files. OpenAI's Whisper model transcribes with medical-grade accuracy.
+              Demonstrates browser-based audio transcription using OpenAI's Whisper model. Educational example of client-side speech processing.
             </p>
           </div>
 
           <div style="margin-bottom: 1rem;">
-            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>✨</span> AI Clinical Formatting
+            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem;">
+              Clinical Formatting Templates
             </h4>
             <p style="color: #065f46; font-size: 0.95rem;">
-              Choose from 6 clinical formats (A/P, SOAP, Billing, AVS, Sign-out). AI instantly formats your transcription into EMR-ready notes.
+              Explore AI formatting with APSO, SOAP, billing, and other clinical templates. All prompts are visible and editable for learning.
             </p>
           </div>
 
           <div>
-            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>💰</span> Save $3,600-8,400/Year
+            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem;">
+              Educational Focus
             </h4>
             <p style="color: #065f46; font-size: 0.95rem;">
-              Commercial AI scribes cost $300-700/month. This tool is free forever with better privacy.
+              Learn prompt engineering principles through hands-on experimentation. Not for clinical use.
             </p>
           </div>
         </div>
 
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-success btn-lg" style="background: #047857; width: 100%;">
-            🚀 Try AI Scribe
+            Try PPE Scribe
           </a>
         </div>
       </div>
 
-      <!-- AI Prompt Assistant -->
+      <!-- PPE Prompt Assistant -->
       <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid var(--color-primary);">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-          <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🤖</div>
-          <h3 style="color: var(--color-primary); font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">AI Prompt Assistant</h3>
-          <p style="color: #1e40af; font-weight: 600; font-size: var(--font-size-sm);">Describe → Generate → Refine → Deploy</p>
+          <h3 style="color: var(--color-primary); font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Prompt Assistant</h3>
+          <p style="color: #1e40af; font-weight: 600; font-size: var(--font-size-sm);">Describe → Generate → Refine</p>
         </div>
 
         <div style="margin-bottom: 1.5rem;">
           <div style="margin-bottom: 1rem;">
-            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>💡</span> Custom Prompt Generation
+            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem;">
+              Meta-Prompting Demo
             </h4>
             <p style="color: #1e40af; font-size: 0.95rem;">
-              Describe your documentation needs in plain English. AI generates production-ready prompts tailored to your specialty and workflow.
+              Demonstrates using AI to create prompts for AI. Explores meta-prompting concepts from our prompt library.
             </p>
           </div>
 
           <div style="margin-bottom: 1rem;">
-            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>🔄</span> Iterative Refinement
+            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem;">
+              Iterative Refinement
             </h4>
             <p style="color: #1e40af; font-size: 0.95rem;">
-              Not perfect on the first try? Refine your requirements and regenerate until you get exactly what you need.
+              Learn how conversation history enables iterative prompt development and refinement.
             </p>
           </div>
 
           <div>
-            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>💾</span> Integrated Workflow
+            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem;">
+              Template Library
             </h4>
             <p style="color: #1e40af; font-size: 0.95rem;">
-              Save generated prompts to Snippet Manager, export as text, or copy to clipboard with one click.
+              Includes Meta-Prompt Generator and Refiner templates from our prompt library. Educational tool for learning prompt engineering.
             </p>
           </div>
         </div>
 
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg" style="width: 100%;">
-            ✨ Try Prompt Assistant
+            Try PPE Prompt Assistant
           </a>
         </div>
       </div>
 
-      <!-- AI Chatbot Assistant -->
+      <!-- PPE Chat -->
       <div style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #be185d;">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-          <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">💬</div>
-          <h3 style="color: #be185d; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Ask AI Assistant</h3>
-          <p style="color: #831843; font-weight: 600; font-size: var(--font-size-sm);">Ask → Learn → Discover → Navigate</p>
+          <h3 style="color: #be185d; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Chat</h3>
+          <p style="color: #831843; font-weight: 600; font-size: var(--font-size-sm);">Ask → Learn → Discover</p>
         </div>
 
         <div style="margin-bottom: 1.5rem;">
           <div style="margin-bottom: 1rem;">
-            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>🧠</span> Complete Site Knowledge
+            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem;">
+              Contextual AI Demo
             </h4>
             <p style="color: #831843; font-size: 0.95rem;">
-              Ask questions about any tool, prompt, or workflow. AI assistant knows every detail about the 15+ prompts, 6 tools, and best practices.
+              Demonstrates conversational AI with embedded knowledge. Ask questions about site content and get contextual answers.
             </p>
           </div>
 
           <div style="margin-bottom: 1rem;">
-            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>💡</span> Interactive Learning
+            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem;">
+              Knowledge Integration
             </h4>
             <p style="color: #831843; font-size: 0.95rem;">
-              Get step-by-step guidance, compare tools, understand workflows, and find the right prompt for your specific use case.
+              Shows how to build specialized AI assistants with focused domain knowledge rather than general chatbots.
             </p>
           </div>
 
           <div>
-            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-              <span>📚</span> Export Conversations
+            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem;">
+              Markdown Support
             </h4>
             <p style="color: #831843; font-size: 0.95rem;">
-              Save helpful conversations as markdown for reference or share with colleagues to accelerate their learning.
+              Demonstrates formatted responses with markdown rendering for better readability. Educational exploration of chat interfaces.
             </p>
           </div>
         </div>
 
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/ask-ai" class="btn btn-lg" style="background: #be185d; color: white; width: 100%;">
-            💬 Ask Questions
+            Try PPE Chat
           </a>
         </div>
       </div>
 
     </div>
 
-    <!-- Shared Benefits -->
-    <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border-left: 4px solid var(--color-accent);">
-      <h3 style="color: var(--color-accent); text-align: center; margin-bottom: 1.5rem; font-size: var(--font-size-xl);">🔒 Why This Changes Everything</h3>
-      <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem;">
-        <div style="text-align: center;">
-          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔐</div>
-          <h4 style="color: #333; margin-bottom: 0.5rem; font-size: 1rem;">100% Privacy</h4>
-          <p style="color: #666; font-size: 0.9rem;">Audio, transcriptions, and AI processing never leave your device. HIPAA-compliant by design.</p>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💵</div>
-          <h4 style="color: #333; margin-bottom: 0.5rem; font-size: 1rem;">Zero Cost</h4>
-          <p style="color: #666; font-size: 0.9rem;">No API fees, no subscriptions, no per-encounter charges. Free forever after one-time setup.</p>
-        </div>
-        <div style="text-align: center;">
-          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✈️</div>
-          <h4 style="color: #333; margin-bottom: 0.5rem; font-size: 1rem;">Works Offline</h4>
-          <p style="color: #666; font-size: 0.9rem;">After initial model download, no internet required. Perfect for clinics with unreliable connectivity.</p>
-        </div>
+    <!-- Educational Focus -->
+    <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border-left: 4px solid #f59e0b;">
+      <h3 style="color: #f59e0b; text-align: center; margin-bottom: 1.5rem; font-size: var(--font-size-xl);">BETA - Educational Demonstrations</h3>
+      <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+        <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">
+          These tools are <strong>experimental prototypes</strong> designed to demonstrate what's possible with browser-based AI. They are <strong>not intended for clinical use</strong> with real patient data.
+        </p>
+        <p style="color: #666; font-size: 0.95rem;">
+          Use them to explore prompt engineering concepts, understand client-side AI architecture, and learn about speech-to-text and language model capabilities. <strong>Do not</strong> use with protected health information or sensitive data.
+        </p>
       </div>
     </div>
 

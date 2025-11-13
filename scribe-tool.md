@@ -1,7 +1,7 @@
 ---
 layout: page
-title: AI Medical Scribe
-description: Privacy-first AI medical scribe running entirely in your browser. Record patient encounters, transcribe with Whisper, and format with AI—all offline. No cloud, no costs.
+title: PPE Scribe
+description: Experimental browser-based clinical documentation tool. Educational demonstration of speech-to-text and AI formatting capabilities.
 permalink: /scribe-tool/
 ---
 <style>
@@ -625,17 +625,26 @@ permalink: /scribe-tool/
     }
 </style>
 
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1 class="hero-title">PPE Scribe</h1>
+        <p class="hero-subtitle">
+            Experimental browser-based scribe demonstrating speech-to-text and AI-powered clinical note formatting. Educational purposes only.
+        </p>
+    </div>
+</div>
+
 <div class="container">
-    <div class="header">
-        <h1>🎤 AI Medical Scribe</h1>
-        <p>Record patient encounters and generate clinical documentation with AI—entirely in your browser. Whisper-powered transcription plus LLM formatting means <strong>zero-cost, 100% private</strong> medical scribing.</p>
-        <div class="privacy-highlight">
-            🔒 Complete Privacy: Audio recording, transcription, and AI processing all happen locally on your device. Nothing is uploaded to any server.
-        </div>
+    <div class="warning-box" style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
+        <h3 style="color: #78350f; margin-bottom: 12px; font-size: 1.1em;">BETA - Educational Demonstration Only</h3>
+        <p style="color: #78350f; margin-bottom: 10px;">
+            <strong>This is an experimental prototype for educational purposes.</strong> Do not use with any patient data, protected health information, or sensitive information. This tool is not HIPAA-compliant and is not intended for clinical use.
+        </p>
     </div>
 
     <div class="warning-box" id="browser-warning">
-        <h3>⚠️ System Requirements</h3>
+        <h3>System Requirements</h3>
         <ul>
             <li><strong>Browser:</strong> Chrome or Edge version 113+ (with WebGPU support)</li>
             <li><strong>First-time setup:</strong> Downloads ~2.1GB (Whisper 75MB + Phi-3.5 2GB), cached permanently</li>
@@ -652,32 +661,32 @@ permalink: /scribe-tool/
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <button id="init-btn" class="btn btn-primary btn-lg" onclick="initializeModels()">
-            🚀 Initialize AI Scribe
+            Initialize PPE Scribe
         </button>
     </div>
 
     <div class="workflow-indicator" id="workflow-indicator" style="display: none;">
         <div class="workflow-step" id="step-record">
-            <div class="workflow-step-icon">🎤</div>
+            <div class="workflow-step-icon">1</div>
             <div class="workflow-step-label">Record</div>
         </div>
         <div class="workflow-step" id="step-transcribe">
-            <div class="workflow-step-icon">📝</div>
+            <div class="workflow-step-icon">2</div>
             <div class="workflow-step-label">Transcribe</div>
         </div>
         <div class="workflow-step" id="step-process">
-            <div class="workflow-step-icon">✨</div>
+            <div class="workflow-step-icon">3</div>
             <div class="workflow-step-label">Format</div>
         </div>
         <div class="workflow-step" id="step-done">
-            <div class="workflow-step-icon">✅</div>
+            <div class="workflow-step-icon">4</div>
             <div class="workflow-step-label">Done</div>
         </div>
     </div>
 
     <div class="main-layout" id="main-interface" style="display: none;">
         <div class="panel">
-            <h2>📹 Recording & Transcription</h2>
+            <h2>Recording & Transcription</h2>
 
             <div class="recording-controls">
                 <div class="recording-status">
@@ -690,13 +699,13 @@ permalink: /scribe-tool/
 
                 <div class="button-group">
                     <button id="start-btn" class="btn btn-danger btn-lg" onclick="startRecording()">
-                        🔴 Start Recording
+                        Start Recording
                     </button>
                     <button id="stop-btn" class="btn btn-secondary" onclick="stopRecording()" disabled>
-                        ⏹️ Stop & Transcribe
+                        Stop & Transcribe
                     </button>
                     <button id="clear-btn" class="btn btn-secondary" onclick="clearAll()">
-                        🗑️ Clear All
+                        Clear All
                     </button>
                 </div>
 
@@ -712,21 +721,21 @@ permalink: /scribe-tool/
             </div>
 
             <div class="upload-section">
-                <h4>📁 Or Upload Audio File</h4>
+                <h4>Or Upload Audio File</h4>
                 <p>Already have a recording? Upload it here (.wav, .mp3, .m4a, .webm)</p>
                 <div class="file-input-wrapper">
                     <label for="audio-file" class="btn btn-primary">
-                        📤 Choose Audio File
+                        Choose Audio File
                     </label>
                     <input type="file" id="audio-file" accept="audio/*" onchange="handleFileUpload(event)">
                 </div>
             </div>
 
-            <h3 style="margin-top: 30px;">📄 Transcription</h3>
+            <h3 style="margin-top: 30px;">Transcription</h3>
             <div class="spinner" id="transcription-spinner"></div>
             <div class="transcription-box" id="transcription-box">
                 <div class="empty-state" id="transcription-empty">
-                    <div class="empty-state-icon">🎯</div>
+                    <div class="empty-state-icon"></div>
                     <p>Your transcription will appear here after recording</p>
                 </div>
                 <textarea id="transcription-text" style="display: none;" placeholder="Transcription will appear here. You can edit it before processing..."></textarea>
@@ -734,15 +743,15 @@ permalink: /scribe-tool/
 
             <div class="transcription-actions" id="transcription-actions" style="display: none;">
                 <button class="btn btn-success" onclick="copyTranscription(event)">
-                    📋 Copy Transcription
+                    Copy Transcription
                 </button>
                 <button class="btn btn-secondary" onclick="downloadTranscription()">
-                    ⬇️ Download .txt
+                    Download .txt
                 </button>
             </div>
 
             <div class="info-box">
-                <h4>💡 Tips for Best Results</h4>
+                <h4>Tips for Best Results</h4>
                 <ul>
                     <li><strong>Quiet environment:</strong> Minimize background noise</li>
                     <li><strong>Clear speech:</strong> Speak clearly, especially medical terms</li>
@@ -754,14 +763,14 @@ permalink: /scribe-tool/
         </div>
 
         <div class="output-panel">
-            <h2>✨ Clinical Note</h2>
+            <h2>Clinical Note</h2>
 
             <button id="process-btn" class="btn btn-success btn-lg" onclick="processWithAI()" disabled style="display: none; width: 100%; margin-bottom: 20px;">
-                ✨ Generate Clinical Note
+                Generate Clinical Note
             </button>
 
             <div class="empty-state" id="output-empty">
-                <div class="empty-state-icon">📋</div>
+                <div class="empty-state-icon"></div>
                 <p>Your formatted clinical note will appear here</p>
             </div>
 
@@ -773,17 +782,17 @@ permalink: /scribe-tool/
 
             <div class="output-actions" id="output-actions" style="display: none;">
                 <button class="btn btn-success" onclick="copyOutput(event)">
-                    📋 Copy to EMR
+                    Copy to Clipboard
                 </button>
                 <button class="btn btn-primary" onclick="saveNoteToSnippetManager()">
-                    💾 Save Note
+                    Save Note
                 </button>
                 <button class="btn btn-secondary" onclick="downloadOutput()">
-                    ⬇️ Download .txt
+                    Download .txt
                 </button>
             </div>
 
-            <h3 style="margin-top: 30px; display: none;" id="prompt-section-header">🔧 Customize Prompt</h3>
+            <h3 style="margin-top: 30px; display: none;" id="prompt-section-header">Customize Prompt</h3>
 
             <div class="form-group" id="prompt-selection" style="display: none;">
                 <label for="clinical-prompt">
@@ -792,6 +801,7 @@ permalink: /scribe-tool/
                 <select id="clinical-prompt" onchange="loadPromptTemplate()">
                     <option value="">-- Choose a prompt template --</option>
                     <optgroup label="Default Templates" id="default-prompts">
+                        <option value="apso">APSO Format (Assessment, Plan, Subjective, Objective)</option>
                         <option value="ap-pithy">A/P Formatting (Pithy)</option>
                         <option value="ap-formal">A/P Formatting (Formal)</option>
                         <option value="billing">Billing & Medical Decision Making</option>
@@ -819,15 +829,15 @@ permalink: /scribe-tool/
 
             <div class="button-group" id="prompt-actions" style="display: none; margin-top: 15px;">
                 <button class="btn btn-primary" onclick="savePromptToSnippetManager()">
-                    💾 Save This Prompt
+                    Save This Prompt
                 </button>
                 <button class="btn btn-secondary" onclick="resetToDefaultPrompt()">
-                    🔄 Reset to Default
+                    Reset to Default
                 </button>
             </div>
 
             <div class="info-box" style="margin-top: 20px;">
-                <h4>📚 Next Steps</h4>
+                <h4>Next Steps</h4>
                 <ul>
                     <li><strong>Review:</strong> Always review AI-generated notes for accuracy</li>
                     <li><strong>Edit:</strong> Make any necessary corrections</li>
@@ -861,8 +871,67 @@ permalink: /scribe-tool/
     const WHISPER_MODEL = "Xenova/whisper-base";
     const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
 
-    // Clinical prompt templates
+    // =====================================================
+    // CLINICAL PROMPT TEMPLATES
+    // =====================================================
+    // These prompts are used to format transcribed audio into clinical notes.
+    // The system prompt defines the AI's behavior and output format.
+    // You can edit these prompts to customize the output style.
+    // =====================================================
+
     const CLINICAL_PROMPTS = {
+        // =====================================================
+        // APSO FORMAT (Assessment, Plan, Subjective, Objective)
+        // =====================================================
+        // This is the default scribe format. It converts raw transcription
+        // into a structured clinical note using formal medical terminology.
+        //
+        // KEY INSTRUCTIONS:
+        // - Only include information explicitly stated in the transcript
+        // - Do not infer, add, or embellish clinical details
+        // - Use formal medical terminology
+        // - Preserve all clinical information mentioned
+        // - Format and organize but do not fabricate
+        // =====================================================
+        'apso': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a structured APSO (Assessment, Plan, Subjective, Objective) format.
+
+CRITICAL RULES:
+- Use ONLY information explicitly stated in the transcription
+- Do NOT infer or add clinical reasoning beyond what is spoken
+- Do NOT fabricate any clinical details, measurements, or observations
+- Preserve ALL clinical details mentioned in the transcript
+- Use formal medical terminology and standard abbreviations
+- Organize and format the information clearly
+
+FORMAT:
+
+**Assessment:**
+[Clinical impression and diagnoses based on the encounter]
+
+**Plan:**
+[Treatment plan, medications, follow-up instructions]
+- Use bullet points for clarity
+- Include all medications with dosing if mentioned
+- Document follow-up timing and instructions
+
+**Subjective:**
+[Patient's chief complaint, history of present illness, review of systems]
+- Patient's description of symptoms
+- Relevant medical history mentioned
+- Timeline of symptoms
+
+**Objective:**
+[Physical exam findings, vital signs, test results if mentioned]
+- Document all examination findings stated
+- Include any vital signs or measurements mentioned
+- Note test results or lab values if discussed
+
+Transcription:`,
+
+        // =====================================================
+        // End of APSO System Prompt
+        // =====================================================
+
         'ap-pithy': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a concise, scannable Assessment & Plan format.
 
 Rules:
@@ -983,13 +1052,13 @@ Transcription:`
         const initBtn = document.getElementById('init-btn');
 
         statusPanel.className = 'status-panel loading';
-        statusMessage.textContent = '⏳ Initializing AI models...';
+        statusMessage.textContent = 'Initializing AI models...';
         progressBar.classList.add('active');
         initBtn.disabled = true;
 
         try {
             // Step 1: Load Whisper
-            statusMessage.textContent = '⏳ Loading Whisper (speech-to-text model)...';
+            statusMessage.textContent = 'Loading Whisper (speech-to-text model)...';
             statusDetails.textContent = 'Downloading ~75MB... This may take 2-5 minutes.';
             progressFill.style.width = '25%';
 
@@ -1003,10 +1072,10 @@ Transcription:`
             );
 
             progressFill.style.width = '50%';
-            statusMessage.textContent = '✅ Whisper loaded!';
+            statusMessage.textContent = 'Whisper loaded!';
 
             // Step 2: Load LLM
-            statusMessage.textContent = '⏳ Loading Phi-3.5 (clinical formatting model)...';
+            statusMessage.textContent = 'Loading Phi-3.5 (clinical formatting model)...';
             statusDetails.textContent = 'Downloading ~2GB... This may take 5-15 minutes.';
 
             llmEngine = await CreateMLCEngine(
@@ -1022,7 +1091,7 @@ Transcription:`
 
             progressFill.style.width = '100%';
             statusPanel.className = 'status-panel ready';
-            statusMessage.textContent = '✅ AI Scribe Ready!';
+            statusMessage.textContent = 'PPE Scribe Ready!';
             statusDetails.textContent = 'All models loaded. You can now record or upload audio. This setup was one-time—next visit will load in seconds.';
 
             // Hide init panel, show main interface
@@ -1035,7 +1104,7 @@ Transcription:`
 
         } catch (error) {
             statusPanel.className = 'status-panel error';
-            statusMessage.textContent = '❌ Failed to initialize models';
+            statusMessage.textContent = 'Failed to initialize models';
             statusDetails.innerHTML = `
                 Error: ${error.message}
                 <br><br>
@@ -1047,7 +1116,7 @@ Transcription:`
             `;
             console.error('Initialization error:', error);
             initBtn.disabled = false;
-            initBtn.textContent = '🔄 Retry';
+            initBtn.textContent = 'Retry';
         }
     };
 
