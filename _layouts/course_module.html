@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<article class="course-module-page">
+  <header class="module-header">
+    <p class="module-number">Module {{ page.module_number }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="module-description">{{ page.description }}</p>
+    {% endif %}
+
+    <div class="module-meta">
+      {% if page.duration %}
+      <span>⏱ {{ page.duration }}</span>
+      {% endif %}
+      {% if page.difficulty %}
+      <span class="difficulty-{{ page.difficulty }}">{{ page.difficulty | capitalize }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="course-progress-bar">
+    <div class="progress-fill" style="width: 0%"></div>
+    <div class="progress-text">Loading progress...</div>
+  </div>
+
+  <!-- Module Content -->
+  <div class="module-content">
+    {{ content }}
+  </div>
+
+  <!-- Navigation -->
+  <nav class="module-navigation">
+    {% if page.previous_module %}
+    <a href="{{ page.previous_module }}" class="btn-secondary">← Previous Module</a>
+    {% endif %}
+
+    {% if page.next_module %}
+    <a href="{{ page.next_module }}" class="btn-primary">Next Module →</a>
+    {% endif %}
+  </nav>
+</article>
+
+<!-- Load Course Exercise System -->
+<script src="/assets/js/course-exercise.js"></script>
+
+<!-- Load Transcript Data -->
+<script>
+  // Make transcript data available to exercises
+  window.courseTranscripts = {{ site.data.course_transcripts | jsonify }};
+  window.courseExercises = {{ site.data.course_exercises | jsonify }};
+</script>
