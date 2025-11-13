@@ -925,7 +925,7 @@ permalink: /scribe-tool/
         <h3>System Requirements</h3>
         <ul>
             <li><strong>Browser:</strong> Chrome or Edge version 113+ (with WebGPU support)</li>
-            <li><strong>First-time setup:</strong> Downloads ~2.1GB (Whisper 75MB + Phi-3.5 2GB), cached permanently</li>
+            <li><strong>First-time setup:</strong> Downloads ~2.3GB (Whisper Small 240MB + Phi-3.5 2GB), cached permanently</li>
             <li><strong>Microphone:</strong> Required for recording; browser will request permission</li>
             <li><strong>Processing time:</strong> Typical 5-min encounter = ~2-3 minutes total processing</li>
             <li><strong>Works offline:</strong> After initial setup, no internet required</li>
@@ -1155,7 +1155,7 @@ permalink: /scribe-tool/
     let processingResults = {}; // Store all outputs: { system, editor, enhancements: [] }
     let scribePrompts = null; // Prompt management system
 
-    const WHISPER_MODEL = "Xenova/whisper-base";
+    const WHISPER_MODEL = "Xenova/whisper-small"; // Upgraded from base for better accuracy
     const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
     const SCRIBE_PROMPTS_STORAGE_KEY = 'aiScribePrompts';
     const MEDICAL_DICTIONARY_STORAGE_KEY = 'medicalDictionary';
@@ -1503,8 +1503,8 @@ MEDICAL NOTE:`,
             loadMedicalDictionary();
 
             // Step 1: Load Whisper
-            statusMessage.textContent = 'Loading Whisper (speech-to-text model)...';
-            statusDetails.textContent = 'Downloading ~75MB... This may take 2-5 minutes.';
+            statusMessage.textContent = 'Loading Whisper Small (speech-to-text model)...';
+            statusDetails.textContent = 'Downloading ~240MB... This may take 3-8 minutes (one-time download).';
             progressFill.style.width = '25%';
 
             whisperModel = await pipeline(
