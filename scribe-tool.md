@@ -1284,7 +1284,7 @@ MEDICAL NOTE:`,
         savePromptSystem();
     }
 
-    function togglePromptEnabled(category, id) {
+    window.togglePromptEnabled = function(category, id) {
         let prompts;
         if (category === 'system') {
             prompts = scribePrompts.systemPrompts;
@@ -1299,12 +1299,13 @@ MEDICAL NOTE:`,
             // Enhancement prompts can have multiple enabled
         }
 
-        const prompt = prompts.find(p => p.id === id);
+        const prompt = prompts.find(p => p.id == id); // Use == for type coercion
         if (prompt) {
             prompt.enabled = !prompt.enabled;
             savePromptSystem();
+            renderPromptCustomization(); // Re-render to show updated state
         }
-    }
+    };
 
     // =====================================================
     // INITIALIZATION
@@ -1625,7 +1626,7 @@ MEDICAL NOTE:`,
                     </div>
                     <div class="prompt-item-actions">
                         <button class="btn btn-sm ${prompt.enabled ? 'btn-secondary' : 'btn-success'}"
-                                onclick="togglePromptEnabled('${category}', '${prompt.id}'); renderPromptCustomization();">
+                                onclick="togglePromptEnabled('${category}', '${prompt.id}')">
                             ${prompt.enabled ? 'Disable' : 'Enable'}
                         </button>
                         <button class="btn btn-sm btn-primary" onclick="togglePromptExpand('${category}', '${prompt.id}')">
