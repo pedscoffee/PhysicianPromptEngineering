@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Ask AI - Site Assistant
-description: Get instant answers about our clinical AI tools, prompts, and best practices. Powered by AI running entirely in your browser with complete privacy.
+title: PPE Chat
+description: Experimental conversational AI assistant with site knowledge. Educational demonstration of contextual AI chat capabilities.
 permalink: /ask-ai/
 ---
 <style>
@@ -453,15 +453,26 @@ permalink: /ask-ai/
     }
 </style>
 
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1 class="hero-title">PPE Chat</h1>
+        <p class="hero-subtitle">
+            Experimental conversational AI assistant with site knowledge. Educational demonstration of contextual chat capabilities.
+        </p>
+    </div>
+</div>
+
 <div class="container">
-    <div class="header">
-        <h1>💬 Ask AI About This Site</h1>
-        <p>Have questions about our tools, prompts, or best practices? This AI assistant knows everything about Physician Prompt Engineering and can help you find exactly what you need.</p>
-        <p class="privacy-highlight">🔒 Complete Privacy: All conversations happen locally in your browser. Your questions never leave your device.</p>
+    <div class="warning-box" style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
+        <h3 style="color: #78350f; margin-bottom: 12px; font-size: 1.1em;">BETA - Educational Demonstration Only</h3>
+        <p style="color: #78350f; margin-bottom: 10px;">
+            <strong>This is an experimental prototype for educational purposes.</strong> Do not use with any patient data, protected health information, or sensitive information. This tool is not intended for clinical use.
+        </p>
     </div>
 
     <div class="warning-box" id="browser-warning">
-        <h3>⚠️ Browser Requirements</h3>
+        <h3>Browser Requirements</h3>
         <ul>
             <li><strong>Recommended:</strong> Chrome or Edge version 113+ (with WebGPU support)</li>
             <li><strong>First-time setup:</strong> Downloads ~2GB AI model (shared with other tools if already downloaded)</li>
@@ -476,13 +487,13 @@ permalink: /ask-ai/
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <button id="init-btn" class="btn btn-primary btn-lg" onclick="initializeAI()">
-            🚀 Start AI Assistant
+            Initialize PPE Chat
         </button>
     </div>
 
     <div class="chat-container" id="chat-container">
         <div class="quick-questions">
-            <h3>💡 Quick Questions</h3>
+            <h3>Quick Questions</h3>
             <div class="quick-questions-grid">
                 <button class="quick-question-btn" onclick="askQuickQuestion('What tools are available on this site?')">
                     What tools are available?
@@ -806,6 +817,44 @@ If asked about something not on the site, be honest and suggest alternatives or 
     };
 
     // =====================================================
+    // MARKDOWN RENDERING
+    // =====================================================
+    function renderMarkdown(text) {
+        // Simple markdown to HTML converter
+        let html = text;
+
+        // Code blocks (```code```)
+        html = html.replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>');
+
+        // Inline code (`code`)
+        html = html.replace(/`([^`]+)`/g, '<code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-family: monospace;">$1</code>');
+
+        // Bold (**text**)
+        html = html.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+
+        // Italic (*text*)
+        html = html.replace(/\*([^\*]+)\*/g, '<em>$1</em>');
+
+        // Headers (## Header)
+        html = html.replace(/^### (.+)$/gm, '<h4 style="margin: 10px 0 5px 0;">$1</h4>');
+        html = html.replace(/^## (.+)$/gm, '<h3 style="margin: 12px 0 6px 0;">$1</h3>');
+        html = html.replace(/^# (.+)$/gm, '<h2 style="margin: 14px 0 7px 0;">$1</h2>');
+
+        // Bullet lists (- item or * item)
+        html = html.replace(/^[\-\*] (.+)$/gm, '<li style="margin-left: 20px;">$1</li>');
+        html = html.replace(/(<li[^>]*>.*<\/li>\n?)+/g, '<ul style="margin: 8px 0;">$&</ul>');
+
+        // Numbered lists (1. item)
+        html = html.replace(/^\d+\. (.+)$/gm, '<li style="margin-left: 20px;">$1</li>');
+
+        // Line breaks
+        html = html.replace(/\n\n/g, '<br><br>');
+        html = html.replace(/\n/g, '<br>');
+
+        return html;
+    }
+
+    // =====================================================
     // CHAT FUNCTIONS
     // =====================================================
     window.sendMessage = async function() {
@@ -864,7 +913,7 @@ If asked about something not on the site, be honest and suggest alternatives or 
             for await (const chunk of response) {
                 const delta = chunk.choices[0]?.delta?.content || '';
                 fullResponse += delta;
-                streamingBubble.textContent = fullResponse;
+                streamingBubble.innerHTML = renderMarkdown(fullResponse);
                 scrollToBottom();
             }
 
@@ -903,10 +952,11 @@ If asked about something not on the site, be honest and suggest alternatives or 
         messageDiv.className = `message message-${role}`;
 
         const label = role === 'user' ? 'You' : 'AI Assistant';
+        const formattedContent = role === 'assistant' ? renderMarkdown(content) : escapeHtml(content);
 
         messageDiv.innerHTML = `
             <div class="message-label">${label}</div>
-            <div class="message-bubble">${escapeHtml(content)}</div>
+            <div class="message-bubble">${formattedContent}</div>
         `;
 
         messagesDiv.appendChild(messageDiv);
