@@ -104,7 +104,7 @@ permalink: /blog/
           <h3 class="card-title">Prompt Generator</h3>
         </div>
         <div class="card-body">
-          <p>Create custom A/P prompts tailored to your specific documentation style.</p>
+          <p>Create custom A&P prompts tailored to your specific documentation style.</p>
         </div>
         <div class="card-footer">
           <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-sm btn-accent">Try Generator</a>

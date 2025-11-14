@@ -659,7 +659,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 <div class="calculator-container">
     <div class="page-header">
         <h1>CPT E/M Code Calculator</h1>
-        <p class="page-subtitle">For Personal Use | Based on AMA Guidelines | Supports MDM and Time-Based Coding | <a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer</a></p>
+        <p class="page-subtitle">For Personal Use | Based on AMA Guidelines | Supports MDM and Time-Based Coding | <a href="{{ site.baseurl }}/disclaimer">Review our disclaimer</a></p>
     </div>
 
     <div class="instructions-container">

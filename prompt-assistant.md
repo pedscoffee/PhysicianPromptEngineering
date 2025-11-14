@@ -531,7 +531,7 @@ permalink: /prompt-assistant/
                     Meta-Prompt Refiner
                 </button>
                 <button class="template-btn" onclick="loadTemplate('ap-formatting')">
-                    A/P Formatting
+                    A&P Formatting
                 </button>
                 <button class="template-btn" onclick="loadTemplate('billing')">
                     Billing Documentation
@@ -666,12 +666,12 @@ Generate production-ready prompts that physicians can immediately deploy in thei
     // TEMPLATES
     // =====================================================
     const templates = {
-        'meta-generator': `I want to create a custom A/P formatting prompt using the Meta-Prompt Generator methodology.
+        'meta-generator': `I want to create a custom A&P formatting prompt using the Meta-Prompt Generator methodology.
 
 Please help me generate a complete, production-ready prompt based on my examples and preferences.
 
 What I'll provide:
-1. FEW-SHOT EXAMPLES (3-5 examples of my ideal A/P output - these are critical!)
+1. FEW-SHOT EXAMPLES (3-5 examples of my ideal A&P output - these are critical!)
    [Paste your 3-5 examples of ideal output here]
 
 2. EXPLICIT FORMATTING RULES (optional - any specific requirements I know I want)
@@ -689,11 +689,11 @@ What I'll provide:
 
 Please analyze my examples, extract implicit patterns, and create a complete prompt that matches my style exactly. Keep it under 5,000 characters for EMR compatibility.`,
 
-        'meta-refiner': `I have an existing A/P formatting prompt that needs improvement. Please help me refine it using gap analysis.
+        'meta-refiner': `I have an existing A&P formatting prompt that needs improvement. Please help me refine it using gap analysis.
 
 What I'll provide:
 1. CURRENT PROMPT
-   [Paste your current A/P formatting prompt here]
+   [Paste your current A&P formatting prompt here]
 
 2. IDEAL OUTPUT (2-5 examples of what I want)
    [Paste 2-5 examples of your desired output here]
