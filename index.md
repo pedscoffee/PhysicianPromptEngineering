@@ -11,6 +11,9 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     <p class="hero-subtitle">
       Save 2-5 minutes per patient encounter with physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
     </p>
+     <p class="hero-subtitle">
+     Welcome to the beta version of our site. We're glad you're here!  We are preparing for public launch soon.  Feel free to look around, but know that all tools and information presented are still being built and likely will continue to be updated and tested.  If you find any bugs please tell us on the contributions site. Do not assume any of the tools, information, or recommendations here are ready for real world use in this present form or is actually working correctly.  Absolutely do not share any sensitive information or use any of this in its present form for patient care.  We are learning and building as we go.  Happy Prompting!  - PedsCoffee
+    </p>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Explore Prompt Library</a>
       <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
