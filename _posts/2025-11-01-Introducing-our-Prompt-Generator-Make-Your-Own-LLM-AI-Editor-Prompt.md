@@ -2,7 +2,7 @@
 layout: post
 title: "Prompt Generator Tool: Streamline Your Clinical AI Documentation"
 date: 2025-11-01 10:00:00 -0500
-author: pedscoffee
+author: PedsCoffee
 categories: [AI, Documentation, Tools, Efficiency]
 tags: [prompt generator, prompt engineering, EMR integration, AI documentation, clinical tools]
 excerpt: "New interactive tool helps physicians create customized AI documentation prompts in minutes. Build Assessment & Plan templates tailored to your practice style."
@@ -71,7 +71,7 @@ The Prompt Generator complements our comprehensive documentation toolkit:
 
 - **Time savings**: Minutes saved on each encounter
 - **Consistency**: Standardized format across all documentation
-- **Reduced cognitive load**: Less mental energy on doucmentation, more on clinical reasoning
+- **Reduced cognitive load**: Less mental energy on documentation, more on clinical reasoning
 - **Billing accuracy**: Improved capture of complexity and medical decision-making
 
 ## Support and Resources
@@ -79,8 +79,8 @@ The Prompt Generator complements our comprehensive documentation toolkit:
 Need assistance optimizing your prompts? Multiple support channels available:
 
 - **Technical questions**: Post in our [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)
-- **Share successes**: Submit refined prompts via our [Contributions page](https://physicianpromptengineering.com/contributions.html)
-- **Learn techniques**: Review our [Best Practices documentation](https://physicianpromptengineering.com/best-practices.html)
+- **Share successes**: Submit refined prompts via our [Contributions page](https://physicianpromptengineering.com/contributions)
+- **Learn techniques**: Review our [Best Practices documentation](https://physicianpromptengineering.com/best-practices)
 
 ## Moving Forward
 

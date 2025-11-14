@@ -404,7 +404,7 @@ permalink: /dot-phrase-library/
         </div>
         <div class="card-body">
           <p><strong>Incorporate your favorite dot phrases into your LLM editor to further personalize your note automation.</strong></p>
-          <p class="text-sm text-secondary">Remember brevity improves quality.  Don't over bloat your phrases or it will degrade LLM performance.  Not using an LLM Editor workflow yet? Learn more at <a href="https://physicianpromptengineering.com/best-practices">Best Practices</a> </p>
+          <p class="text-sm text-secondary">Remember brevity improves quality.  Don't over bloat your phrases or it will degrade LLM performance.  Not using an LLM Editor workflow yet? Learn more at <a href="{{ site.baseurl }}/best-practices">Best Practices</a> </p>
         </div>
       </div>
 

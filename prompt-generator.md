@@ -1,7 +1,7 @@
 ---
 layout: page
-title: A/P Prompt Generator
-description: Build custom AI prompts for your clinical workflow. Use our free A/P Prompt Generator to format AI scribe output to your exact style. Try it now.
+title: A&P Prompt Generator
+description: Build custom AI prompts for your clinical workflow. Use our free A&P Prompt Generator to format AI scribe output to your exact style. Try it now.
 permalink: /prompt-generator/
 ---
 <style>
@@ -286,7 +286,7 @@ permalink: /prompt-generator/
 
 <div class="container">
         <div class="header">
-            <h1>A/P Prompt Generator</h1>
+            <h1>A&P Prompt Generator</h1>
             <p>Create customized prompts for formatting clinical assessment and plan documentation.</p>
         </div>
 
@@ -612,7 +612,7 @@ permalink: /prompt-generator/
         <!-- NEXT STEPS SECTION -->
 <div class="header" style="margin-top: 40px;">
             <h2 style="color: #2a7ae2; font-size: 1.5em; margin-bottom: 20px;">Next Steps: Customizing Your Prompt</h2>
-            *<a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a>
+            *<a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>
             
             <div style="margin-bottom: 20px;">
                 <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">1. Add Conditional Boilerplate Text</h3>
@@ -626,7 +626,7 @@ permalink: /prompt-generator/
 
 <div style="margin-bottom: 20px;">
                 <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">2. Add Few-Shot Examples</h3>
-                <p>Find the "Few-Shot Examples" section in the generated prompt. Add 2-3 of your actual A/P notes that match your desired output format. These examples are crucial—they teach the LLM Editor your exact style, tone, clinical reasoning pattern, and formatting preferences far better than any rule can.</p>
+                <p>Find the "Few-Shot Examples" section in the generated prompt. Add 2-3 of your actual A&P notes that match your desired output format. These examples are crucial—they teach the LLM Editor your exact style, tone, clinical reasoning pattern, and formatting preferences far better than any rule can.</p>
                 <p style="margin-top: 10px; color: #666;"><strong>Tip:</strong> Choose examples from different clinical scenarios to show the LLM the diversity of your style.</p>
             </div>
 
@@ -864,7 +864,7 @@ permalink: /prompt-generator/
 
             // FEW-SHOT EXAMPLES
             prompt.push('## Few-Shot Examples\n\n');
-            prompt.push('[⚠️ USER ACTION REQUIRED: Add 2-3 of your actual A/P examples here. These are essential for teaching the AI your exact style and format.]');
+            prompt.push('[⚠️ USER ACTION REQUIRED: Add 2-3 of your actual A&P examples here. These are essential for teaching the AI your exact style and format.]');
 
             return prompt.join('');
         }
