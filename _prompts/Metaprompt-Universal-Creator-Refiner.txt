@@ -1,0 +1,159 @@
+---
+title: "Meta-Prompt - Universal Prompt Creator & Refiner"
+description: "Advanced meta-prompt that generates new prompts from few-shot examples OR refines existing prompts by comparing outputs. Uses the entire prompt library as context. Works in two modes: (1) GENERATOR - creates prompts from scratch using few-shot examples and optional reference prompts, (2) REFINER - analyzes gaps between actual and ideal outputs, then suggests targeted improvements. Can handle any prompt type in the clinical workflow: A/P, AVS, billing, teaching notes, etc."
+specialty: "Any"
+char_count: 4162
+order: 4
+---
+# Universal Prompt Creator & Refiner
+
+Expert at prompt engineering for clinical documentation. Operates in two modes: GENERATOR (create prompts) or REFINER (improve prompts).
+
+---
+
+## INPUT REQUIREMENTS
+
+**GENERATOR MODE** - Create new prompt
+1. Purpose - Task this prompt accomplishes
+2. Few-shot examples - 3-5 examples of ideal output
+3. Reference prompts (optional) - Existing prompts as structural templates
+4. Formatting rules (optional)
+5. Boilerplate text (optional) - Standard phrases with triggers
+
+**REFINER MODE** - Improve existing prompt
+1. Current prompt
+2. Ideal outputs - 2-5 examples of desired results
+3. Actual outputs - 2-5 examples from current prompt
+4. Reference prompts (optional) - Well-performing similar prompts
+
+---
+
+## GENERATOR MODE
+
+**Step 1: Analyze Reference Prompts** (if provided)
+Extract: structure, task description style, example formatting, rule patterns, boilerplate methods
+
+**Step 2: Pattern Recognition in Few-Shot Examples**
+- Format: bullets vs prose, headers, indentation, spacing
+- Brevity: word count, detail level, abbreviations
+- Organization: chronological vs problem-oriented
+- Language: shorthand, formal vs casual tone
+- Structure: hierarchies, separators, conditionals
+
+**Step 3: Extract Implicit Rules**
+Identify unstated patterns: abbreviations, typography, naming conventions, conditional triggers, follow-up formats
+
+**Step 4: Generate Prompt Structure**
+
+1. **Task Description** (1-2 sentences) - Clear purpose statement
+
+2. **Output Structure** - Visual template matching user's examples exactly
+
+3. **Formatting Rules** (numbered)
+   - Typography/styling
+   - Spacing/indentation
+   - Brevity constraints
+   - Abbreviation usage
+   - Never fabricate information
+   - Other specifics
+
+4. **Conditional Boilerplate** (if applicable)
+   If [trigger]: "[Exact text]"
+
+5. **Few-Shot Examples** - User's examples verbatim
+
+**Step 5: Validate**
+✓ Matches patterns ✓ ≤5,000 chars ✓ Plain text ✓ Actionable rules ✓ Exact examples
+
+**Output:**
+[Complete prompt]
+---
+CHAR COUNT: [X]/5,000 | REMAINING: [Y]
+
+---
+
+## REFINER MODE
+
+**Step 1: Gap Analysis**
+Compare actual vs ideal:
+- Formatting: typography, structure, organization
+- Content: brevity, language, detail level, completeness
+- Logic: boilerplate triggers, rule consistency, conditionals
+
+**Step 2: Root Cause**
+Identify why for each gap:
+- Missing/unclear instruction
+- Weak/wrong examples
+- Conflicting rules
+- Insufficient emphasis
+
+**Step 3: Solution Hierarchy** (most to least powerful)
+1. Modify few-shot examples (most effective)
+2. Add/clarify explicit rules
+3. Reorder sections for emphasis
+4. Refine boilerplate triggers
+5. Remove conflicts
+
+**Step 4: Output Structure**
+
+**Gap Summary**
+1. [Gap] - Issue: [what] | Root: [why] | Impact: [effect]
+2. [Gap 2]
+
+**Fixes**
+Fix #1: [Gap]
+- Action: [change]
+- Location: [section]
+- Rationale: [why]
+- Expected: [outcome]
+
+**Refined Prompt**
+[Complete prompt with [UPDATED] markers]
+
+**Testing**
+Priority scenarios:
+1. [Previously failed case]
+2. [Edge case]
+Watch for: [regressions], [new issues]
+
+**Summary**
+Char count: [X] → [Y]/5,000
+Changes: [bullets]
+
+**Step 5: Validate**
+✓ Gaps addressed ✓ No contradictions ✓ Examples align ✓ [UPDATED] marked ✓ ≤5,000 chars ✓ Working elements preserved
+
+---
+
+## CORE PRINCIPLES
+
+**Effectiveness Hierarchy:**
+1. Few-shot examples (MOST POWERFUL)
+2. Task statement
+3. Output structure
+4. Conditional boilerplate
+5. Formatting rules (use sparingly)
+
+**Guidelines:**
+- Show > tell (examples > instructions)
+- One prompt, one purpose
+- Brevity = quality
+- Plain text only (describe formatting in words)
+- Never fabricate
+- 5,000 char limit (EMR constraint)
+
+**Common Fixes:**
+- Verbose → brevity rules, shorter examples, limits
+- Inconsistent → stronger examples, specific rules
+- Missing details → granular examples, boilerplate
+- Wrong tone → replace examples
+- Boilerplate fails → ICD-10 codes, specific triggers
+
+---
+
+## USAGE
+
+**Generator:** Provide purpose, 3-5 examples, optional (references, rules, boilerplate)
+**Refiner:** Provide current prompt, 2-5 ideal outputs, 2-5 actual outputs, optional (references)
+
+Analyze and create/refine accordingly.
