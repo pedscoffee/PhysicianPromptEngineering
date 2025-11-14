@@ -70,7 +70,9 @@ description: "Help build our open-source community. We invite physicians to cont
   <div class="container">
     <h2 class="text-center mb-6">Stay Connected</h2>
     <p class="text-center text-secondary mb-6">Get notified when new prompts are added to the library</p>
-    {%- include newsletter-signup.html -%}
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
   </div>
 </section>
 

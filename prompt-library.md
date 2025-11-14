@@ -75,7 +75,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
       </div>
       <div class="text-center mt-6">
         <p class="text-secondary">
-          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/contributions" class="text-primary">contribute your own</a>.  See <a href="{{ site.baseurl }}/disclaimer">Disclaimer.</a>
+          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/contributions" class="text-primary">contribute your own</a>.  See <a href="https://physicianpromptengineering.com/disclaimer/">Disclaimer.</a>
         </p>
       </div>
     </div>
@@ -86,7 +86,9 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
 <section class="section">
   <div class="container">
     <h2 class="text-center mb-6">Get Notified of New Prompts</h2>
-    {%- include newsletter-signup.html -%}
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
   </div>
 </section>
 

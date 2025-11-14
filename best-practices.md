@@ -17,11 +17,13 @@ description: Learn how to write effective medical prompts. Our definitive guide 
 <!-- Video Tutorial -->
 <section class="section">
   <div class="container">
-    <div class="content-centered-large">
-      <div class="video-wrapper">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
         <iframe
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
           src="https://www.youtube-nocookie.com/embed/haSZOP6fiFM?si=a7yZiRBuRdaB95Y9"
           title="Prompt Engineering Tutorial"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
@@ -73,14 +75,16 @@ description: Learn how to write effective medical prompts. Our definitive guide 
 <!-- Newsletter -->
 <section class="section">
   <div class="container">
-    {%- include newsletter-signup.html -%}
+    <div class="embed-container">
+      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
   </div>
 </section>
 
 <!-- Detailed Implementation Guide -->
 <section class="section bg-secondary">
   <div class="container">
-    <div class="content-centered-large">
+    <div style="max-width: 900px; margin: 0 auto;">
       <h2 class="text-center mb-8">Detailed Implementation Guide</h2>
 
       <!-- Principle 1 -->
@@ -250,9 +254,9 @@ symptomatic relief."</code></pre>
 <!-- Safety and Compliance -->
 <section class="section bg-tertiary">
   <div class="container">
-    <div class="content-centered-large">
-      <div class="notice-box">
-        <h2 class="notice-box-title">Safety and Compliance</h2>
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
+        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
 
         <h3 class="mb-4">Critical Reminders</h3>
         <ul>
@@ -278,7 +282,7 @@ symptomatic relief."</code></pre>
 <!-- Getting Started -->
 <section class="section">
   <div class="container">
-    <div class="content-centered-large">
+    <div style="max-width: 900px; margin: 0 auto;">
       <h2 class="text-center mb-8">Getting Started</h2>
 
       <div class="card">
@@ -300,16 +304,16 @@ symptomatic relief."</code></pre>
 
       <!-- Additional Resources -->
       <div class="text-center mt-8 text-secondary">
-        <p><a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
+        <p><a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
       </div>
 
       <!-- Share Your Prompt CTA -->
-      <div class="cta-box cta-box-large">
-        <h3 class="cta-box-title">Share Your Prompt</h3>
-        <p class="cta-box-content">
+      <div style="background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin-top: 3rem;">
+        <h3 style="color: var(--color-primary); font-size: var(--font-size-xl); margin-bottom: var(--space-4); text-align: center;">Share Your Prompt</h3>
+        <p style="text-align: center; margin-bottom: var(--space-4);">
           Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
         </p>
-        <div class="cta-box-actions">
+        <div style="text-align: center;">
           <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt</a>
         </div>
       </div>
