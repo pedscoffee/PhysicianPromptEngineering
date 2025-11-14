@@ -79,15 +79,11 @@ permalink: /about/
 
       <div style="background: var(--color-bg-primary); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
         <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
-          <em>[This section is intentionally left for you to personalize. Consider sharing:]</em>
+          <em>Coming soon</em>
         </p>
 
         <ul style="margin-left: 2rem; line-height: 1.8;">
-          <li>Your background as a pediatrician</li>
-          <li>Your motivation for creating this resource</li>
-          <li>How free online medical education resources impacted your training</li>
-          <li>Your vision for reducing documentation burden in healthcare</li>
-          <li>Gratitude for mentors and educators who inspired you to give back</li>
+          <li>Coming soon</li> 
         </ul>
 
         <p style="font-style: italic; margin-top: 2rem; text-align: right; color: var(--color-text-secondary);">
@@ -202,7 +198,7 @@ permalink: /about/
       <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
         <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="btn btn-primary" target="_blank">Start a Discussion on GitHub</a>
         <p class="text-sm text-secondary">
-          We typically respond within 24-48 hours
+          This project is still in beta.  We appreciate your feedback!
         </p>
       </div>
     </div>
