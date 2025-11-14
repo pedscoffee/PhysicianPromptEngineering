@@ -11,6 +11,9 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     <p class="hero-subtitle">
       Save 2-5 minutes per patient encounter with physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
     </p>
+     <p class="hero-subtitle">
+     Welcome to the beta version of our site. We're glad you're here!  We are preparing for public launch soon.  Feel free to look around, but know that all tools and information presented are still being built and likely will continue to be updated and tested.  If you find any bugs please tell us on the contributions site. Do not assume any of the tools, information, or recommendations here are ready for real world use in this present form or are actually working correctly.  Absolutely do not share any sensitive information or use any of this in its present form for any purpose other than education and especially not actual patient care.  We are learning and building as we go.  Happy Prompting!  - PedsCoffee
+    </p>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Explore Prompt Library</a>
       <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
@@ -152,7 +155,60 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   </div>
 </section>
 
-<!-- NEW: PPE AI Tools -->
+<!-- Interactive Course Feature -->
+<section class="section" style="background: linear-gradient(135deg, #2563eb 0%, #0891b2 100%); color: white;">
+  <div class="container">
+    <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+      <h2 style="color: white; font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">🎓 Learn Prompt Engineering Through Practice</h2>
+      <p style="font-size: var(--font-size-xl); opacity: 0.95; margin-bottom: var(--space-8);">
+        Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, get instant feedback from AI, and build skills through hands-on practice.
+      </p>
+
+      <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem; text-align: left;">
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
+          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
+          <p style="opacity: 0.9; font-size: 0.95rem;">14 interactive exercises with real clinical scenarios. Write prompts, see outputs, iterate until you master each concept.</p>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤖</div>
+          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">AI-Powered Feedback</h3>
+          <p style="opacity: 0.9; font-size: 0.95rem;">Get instant, specific feedback on your work. AI evaluates your prompts and suggests concrete improvements.</p>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏥</div>
+          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Real Clinical Cases</h3>
+          <p style="opacity: 0.9; font-size: 0.95rem;">Practice with de-identified patient scenarios across multiple specialties. Learn safety, quality, and best practices.</p>
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.15); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem; backdrop-filter: blur(10px);">
+        <h3 style="color: white; margin-bottom: 1rem; font-size: var(--font-size-xl);">Course Includes:</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
+          <div>✅ 5 comprehensive modules (6 hours total)</div>
+          <div>✅ Beginner to advanced techniques</div>
+          <div>✅ 10 clinical scenarios across specialties</div>
+          <div>✅ Build your personal prompt library</div>
+          <div>✅ Privacy-first (runs in your browser)</div>
+          <div>✅ Progress tracking & scoring</div>
+        </div>
+      </div>
+
+      <div>
+        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-lg" style="background: white; color: #2563eb; font-size: var(--font-size-lg); padding: 1rem 3rem; font-weight: 700; box-shadow: 0 4px 14px rgba(0,0,0,0.2);">
+          Start Free Interactive Course →
+        </a>
+        <p style="margin-top: 1rem; opacity: 0.9; font-size: var(--font-size-sm);">
+          No signup required • Complete at your own pace • Certificate upon completion
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Tools -->
 <section class="section">
   <div class="container">
     <h2 class="text-center mb-8 feature-section-title">PPE AI Tools (BETA)</h2>
@@ -173,6 +229,28 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           <div class="feature-item feature-item-green">
             <h4>Speech-to-Text Demo</h4>
             <p>Demonstrates browser-based audio transcription using OpenAI's Whisper model. Educational example of client-side speech processing.</p>
+    <h2 class="text-center mb-8" style="font-size: var(--font-size-4xl); color: var(--color-primary);">AI Tools (BETA)</h2>
+    <p class="text-center text-lg text-secondary mb-8" style="max-width: 800px; margin-left: auto; margin-right: auto; margin-bottom: 3rem;">
+      Experimental browser-based AI tools demonstrating what's possible with client-side machine learning. <strong>Educational purposes only.</strong> These are prototypes to show technical capabilities, not production clinical tools.
+    </p>
+
+    <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 3rem;">
+
+      <!-- Scribe -->
+      <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #059669;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h3 style="color: #047857; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Scribe</h3>
+          <p style="color: #065f46; font-weight: 600; font-size: var(--font-size-sm);">Record → Transcribe → Format</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #047857; margin-bottom: 0.5rem; font-size: 1rem;">
+              Speech-to-Text Demo
+            </h4>
+            <p style="color: #065f46; font-size: 0.95rem;">
+              Demonstrates browser-based audio transcription using OpenAI's Whisper model. Educational example of client-side speech processing.
+            </p>
           </div>
 
           <div class="feature-item feature-item-green">
@@ -189,6 +267,9 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
         <div class="cta-box-actions">
           <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-success btn-lg btn-full-width">
             Try PPE Scribe
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/scribe-tool" class="btn btn-success btn-lg" style="background: #047857; width: 100%;">
+            Try Scribe
           </a>
         </div>
       </div>
@@ -204,6 +285,21 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           <div class="feature-item feature-item-blue">
             <h4>Meta-Prompting Demo</h4>
             <p>Demonstrates using AI to create prompts for AI. Explores meta-prompting concepts from our prompt library.</p>
+      <!-- Prompt Assistant -->
+      <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid var(--color-primary);">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h3 style="color: var(--color-primary); font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Prompt Assistant</h3>
+          <p style="color: #1e40af; font-weight: 600; font-size: var(--font-size-sm);">Describe → Generate → Refine</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: var(--color-primary); margin-bottom: 0.5rem; font-size: 1rem;">
+              Meta-Prompting Demo
+            </h4>
+            <p style="color: #1e40af; font-size: 0.95rem;">
+              Demonstrates using AI to create prompts for AI. Explores meta-prompting concepts from our prompt library.
+            </p>
           </div>
 
           <div class="feature-item feature-item-blue">
@@ -220,6 +316,9 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
         <div class="cta-box-actions">
           <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg btn-full-width">
             Try PPE Prompt Assistant
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-primary btn-lg" style="width: 100%;">
+            Try Prompt Assistant
           </a>
         </div>
       </div>
@@ -235,6 +334,21 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           <div class="feature-item feature-item-pink">
             <h4>Contextual AI Demo</h4>
             <p>Demonstrates conversational AI with embedded knowledge. Ask questions about site content and get contextual answers.</p>
+      <!-- Chat -->
+      <div style="background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #be185d;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h3 style="color: #be185d; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">Chat</h3>
+          <p style="color: #831843; font-weight: 600; font-size: var(--font-size-sm);">Ask → Learn → Discover</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #be185d; margin-bottom: 0.5rem; font-size: 1rem;">
+              Contextual AI Demo
+            </h4>
+            <p style="color: #831843; font-size: 0.95rem;">
+              Demonstrates conversational AI with embedded knowledge. Ask questions about site content and get contextual answers.
+            </p>
           </div>
 
           <div class="feature-item feature-item-pink">
@@ -251,6 +365,52 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
         <div class="cta-box-actions">
           <a href="{{ site.baseurl }}/ask-ai" class="btn btn-lg btn-full-width" style="background: #be185d; color: white;">
             Try PPE Chat
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/ask-ai" class="btn btn-lg" style="background: #be185d; color: white; width: 100%;">
+            Try Chat
+          </a>
+        </div>
+      </div>
+
+      <!-- PPE Dot Phrase Generator -->
+      <div style="background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #ea580c;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h3 style="color: #c2410c; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Dot Phrase Generator</h3>
+          <p style="color: #9a3412; font-weight: 600; font-size: var(--font-size-sm);">Input → Generate → Save</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #c2410c; margin-bottom: 0.5rem; font-size: 1rem;">
+              AI-Powered Dot Phrases
+            </h4>
+            <p style="color: #9a3412; font-size: 0.95rem;">
+              Generate reusable EMR dot phrases for clinical documentation. Creates 3 suggestions with wildcards and smart lists.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #c2410c; margin-bottom: 0.5rem; font-size: 1rem;">
+              Clinical Focus
+            </h4>
+            <p style="color: #9a3412; font-size: 0.95rem;">
+              Specialized in counseling, anticipatory guidance, care instructions, and clinical formatting templates.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="color: #c2410c; margin-bottom: 0.5rem; font-size: 1rem;">
+              Quick Templates
+            </h4>
+            <p style="color: #9a3412; font-size: 0.95rem;">
+              Includes examples for diabetes, UTI, well-child visits, asthma, and more. Save to snippet manager for reuse.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/dot-phrase-generator" class="btn btn-lg" style="background: #ea580c; color: white; width: 100%;">
+            Try Dot Phrase Generator
           </a>
         </div>
       </div>

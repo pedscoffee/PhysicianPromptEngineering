@@ -1,6 +1,6 @@
 ---
 layout: page
-title: PPE Scribe
+title: Scribe
 description: Experimental browser-based clinical documentation tool. Educational demonstration of speech-to-text and AI formatting capabilities.
 permalink: /scribe-tool/
 ---
@@ -623,12 +623,290 @@ permalink: /scribe-tool/
             height: 80%;
         }
     }
+
+    /* ===== Output Cards ===== */
+    .output-card {
+        background: white;
+        border: 2px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: box-shadow 0.2s;
+    }
+
+    .output-card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .output-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .output-card-title {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #2a7ae2;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .output-card-badge {
+        font-size: 0.75em;
+        padding: 3px 8px;
+        border-radius: 4px;
+        background: #e3f2fd;
+        color: #1565c0;
+        font-weight: 500;
+    }
+
+    .output-card-content {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 6px;
+        min-height: 150px;
+        white-space: pre-wrap;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+        color: #333;
+        line-height: 1.6;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .output-card-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .output-card.processing {
+        opacity: 0.6;
+    }
+
+    .output-card.error {
+        border-color: #dc3545;
+        background: #fff5f5;
+    }
+
+    .output-card.error .output-card-title {
+        color: #dc3545;
+    }
+
+    /* Copy all button */
+    .copy-all-container {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f0f7ff;
+        border-radius: 6px;
+        text-align: center;
+    }
+
+    /* ===== Prompt Category Sections ===== */
+    .prompt-category-section {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        border: 2px solid #e8e8e8;
+    }
+
+    .prompt-category-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .prompt-category-title {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .prompt-category-description {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    .prompt-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .prompt-item {
+        background: white;
+        border: 2px solid #e8e8e8;
+        border-radius: 6px;
+        padding: 15px;
+        transition: all 0.2s;
+    }
+
+    .prompt-item.enabled {
+        border-color: #28a745;
+        background: #f0fff4;
+    }
+
+    .prompt-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .prompt-item-title {
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .prompt-item-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .prompt-item-content {
+        display: none;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #e8e8e8;
+    }
+
+    .prompt-item-content.expanded {
+        display: block;
+    }
+
+    .prompt-item textarea {
+        width: 100%;
+        min-height: 200px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.85em;
+        resize: vertical;
+    }
+
+    .btn-sm {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    .badge {
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 0.75em;
+        font-weight: 500;
+    }
+
+    .badge-success {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .badge-secondary {
+        background: #e2e3e5;
+        color: #383d41;
+    }
+
+    .badge-default {
+        background: #e3f2fd;
+        color: #1565c0;
+    }
+
+    /* ===== Processing Progress Indicators ===== */
+    .processing-progress {
+        background: white;
+        border: 2px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: none;
+    }
+
+    .processing-progress.active {
+        display: block;
+    }
+
+    .progress-stage {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        background: #f9f9f9;
+        transition: all 0.3s;
+    }
+
+    .progress-stage.active {
+        background: #e3f2fd;
+        border-left: 4px solid #2a7ae2;
+    }
+
+    .progress-stage.completed {
+        background: #d1fae5;
+        border-left: 4px solid #059669;
+    }
+
+    .progress-stage-icon {
+        font-size: 1.2em;
+        min-width: 24px;
+        text-align: center;
+    }
+
+    .progress-stage-label {
+        flex: 1;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .progress-stage-status {
+        font-size: 0.85em;
+        color: #666;
+    }
+
+    .progress-stage.active .progress-stage-status {
+        color: #2a7ae2;
+    }
+
+    .progress-stage.completed .progress-stage-status {
+        color: #059669;
+    }
+
+    @keyframes spin-slow {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .spinner-inline {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border: 2px solid #f3f3f3;
+        border-top: 2px solid #2a7ae2;
+        border-radius: 50%;
+        animation: spin-slow 1s linear infinite;
+    }
 </style>
 
 <!-- Hero Section -->
 <div class="hero">
     <div class="container">
-        <h1 class="hero-title">PPE Scribe</h1>
+        <h1 class="hero-title">Scribe</h1>
         <p class="hero-subtitle">
             Experimental browser-based scribe demonstrating speech-to-text and AI-powered clinical note formatting. Educational purposes only.
         </p>
@@ -647,9 +925,9 @@ permalink: /scribe-tool/
         <h3>System Requirements</h3>
         <ul>
             <li><strong>Browser:</strong> Chrome or Edge version 113+ (with WebGPU support)</li>
-            <li><strong>First-time setup:</strong> Downloads ~2.1GB (Whisper 75MB + Phi-3.5 2GB), cached permanently</li>
+            <li><strong>First-time setup:</strong> Downloads ~3.5GB (Whisper Medium 1.5GB + Phi-3.5 2GB), cached permanently</li>
             <li><strong>Microphone:</strong> Required for recording; browser will request permission</li>
-            <li><strong>Processing time:</strong> Typical 5-min encounter = ~2-3 minutes total processing</li>
+            <li><strong>Processing time:</strong> Typical 5-min encounter = ~2-4 minutes total processing</li>
             <li><strong>Works offline:</strong> After initial setup, no internet required</li>
         </ul>
     </div>
@@ -661,7 +939,7 @@ permalink: /scribe-tool/
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <button id="init-btn" class="btn btn-primary btn-lg" onclick="initializeModels()">
-            Initialize PPE Scribe
+            Initialize Scribe
         </button>
     </div>
 
@@ -763,86 +1041,95 @@ permalink: /scribe-tool/
         </div>
 
         <div class="output-panel">
-            <h2>Clinical Note</h2>
+            <h2>Process & Generate</h2>
 
-            <button id="process-btn" class="btn btn-success btn-lg" onclick="processWithAI()" disabled style="display: none; width: 100%; margin-bottom: 20px;">
-                Generate Clinical Note
+            <!-- Simple workflow section -->
+            <button id="process-btn" class="btn btn-success btn-lg" onclick="processWithAI()" disabled style="width: 100%; margin-bottom: 20px;">
+                🎯 Generate Clinical Note
             </button>
 
+            <!-- Output containers -->
             <div class="empty-state" id="output-empty">
-                <div class="empty-state-icon"></div>
-                <p>Your formatted clinical note will appear here</p>
+                <div class="empty-state-icon">📋</div>
+                <p>Your formatted clinical notes will appear here after processing</p>
             </div>
 
             <div class="spinner" id="output-spinner"></div>
 
-            <div id="output-content"></div>
-
-            <div class="char-counter" id="output-char-counter" style="display: none;"></div>
-
-            <div class="output-actions" id="output-actions" style="display: none;">
-                <button class="btn btn-success" onclick="copyOutput(event)">
-                    Copy to Clipboard
-                </button>
-                <button class="btn btn-primary" onclick="saveNoteToSnippetManager()">
-                    Save Note
-                </button>
-                <button class="btn btn-secondary" onclick="downloadOutput()">
-                    Download .txt
-                </button>
+            <!-- Processing progress indicators -->
+            <div class="processing-progress" id="processing-progress">
+                <div id="progress-stages-container"></div>
             </div>
 
-            <h3 style="margin-top: 30px; display: none;" id="prompt-section-header">Customize Prompt</h3>
+            <!-- Output cards will be dynamically inserted here -->
+            <div id="output-cards-container"></div>
 
-            <div class="form-group" id="prompt-selection" style="display: none;">
-                <label for="clinical-prompt">
-                    Select Prompt Template
-                </label>
-                <select id="clinical-prompt" onchange="loadPromptTemplate()">
-                    <option value="">-- Choose a prompt template --</option>
-                    <optgroup label="Default Templates" id="default-prompts">
-                        <option value="apso">APSO Format (Assessment, Plan, Subjective, Objective)</option>
-                        <option value="ap-pithy">A/P Formatting (Pithy)</option>
-                        <option value="ap-formal">A/P Formatting (Formal)</option>
-                        <option value="billing">Billing & Medical Decision Making</option>
-                        <option value="avs">After-Visit Summary (Patient-Friendly)</option>
-                        <option value="signout">Concise Sign-Out</option>
-                        <option value="soap">SOAP Note</option>
-                        <option value="custom">Custom Processing (Basic Format)</option>
-                    </optgroup>
-                    <optgroup label="Your Saved Prompts" id="saved-prompts">
-                    </optgroup>
-                </select>
-            </div>
+            <!-- Prompt customization section -->
+            <div id="prompt-customization-section" style="margin-top: 40px; display: none;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e8e8e8;">
+                    <h3 style="margin: 0; color: #2a7ae2;">⚙️ Customize Prompts</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-primary btn-sm" onclick="exportPromptConfiguration()" style="font-size: 0.9em;">
+                            📤 Export
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="document.getElementById('import-prompts-file').click()" style="font-size: 0.9em;">
+                            📥 Import
+                        </button>
+                        <input type="file" id="import-prompts-file" accept=".json" style="display: none;" onchange="importPromptConfiguration(event)">
+                        <button id="toggle-customization-btn" class="btn btn-secondary" onclick="toggleCustomization()" style="font-size: 0.9em;">
+                            Hide Customization
+                        </button>
+                    </div>
+                </div>
 
-            <div class="form-group" id="prompt-editor" style="display: none;">
-                <label for="prompt-text">
-                    Prompt (Editable)
-                    <span style="color: #999; font-size: 0.9em;">Modify the prompt below to customize AI behavior</span>
-                </label>
-                <textarea
-                    id="prompt-text"
-                    style="font-family: 'Monaco', 'Courier New', monospace; min-height: 300px; resize: vertical;"
-                    placeholder="Select a prompt template above to begin editing, or write your own custom prompt..."></textarea>
-                <div class="char-counter" id="prompt-char-counter" style="display: block; margin-top: 10px;">0 characters</div>
-            </div>
+                <div id="customization-content" style="display: none;">
+                    <p style="color: #666; margin-bottom: 25px; line-height: 1.6;">
+                        Control every step of the documentation process. Customize how the AI processes your transcripts and what additional outputs it generates.
+                    </p>
 
-            <div class="button-group" id="prompt-actions" style="display: none; margin-top: 15px;">
-                <button class="btn btn-primary" onclick="savePromptToSnippetManager()">
-                    Save This Prompt
-                </button>
-                <button class="btn btn-secondary" onclick="resetToDefaultPrompt()">
-                    Reset to Default
-                </button>
+                    <!-- System Prompts Section -->
+                    <div id="system-prompts-section" class="prompt-category-section"></div>
+
+                    <!-- Editor Prompts Section -->
+                    <div id="editor-prompts-section" class="prompt-category-section"></div>
+
+                    <!-- Enhancement Prompts Section -->
+                    <div id="enhancement-prompts-section" class="prompt-category-section"></div>
+
+                    <!-- Medical Dictionary Section -->
+                    <div class="prompt-category-section" style="margin-top: 30px;">
+                        <div class="prompt-category-header">
+                            <div class="prompt-category-title">
+                                📖 Medical Dictionary
+                                <span class="badge badge-default" id="dictionary-count">0 terms</span>
+                            </div>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-primary btn-sm" onclick="addMedicalTerms()">
+                                    + Add Terms
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="resetMedicalDictionary()">
+                                    Reset to Default
+                                </button>
+                            </div>
+                        </div>
+                        <div class="prompt-category-description">
+                            These terms help Whisper recognize medical terminology during transcription. Add medications, diagnoses, and terms specific to your specialty for better accuracy.
+                        </div>
+                        <div style="background: white; border: 1px solid #ddd; border-radius: 6px; padding: 15px; max-height: 200px; overflow-y: auto;">
+                            <div id="medical-dictionary-display" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="info-box" style="margin-top: 20px;">
-                <h4>Next Steps</h4>
+                <h4>💡 Quick Workflow</h4>
                 <ul>
-                    <li><strong>Review:</strong> Always review AI-generated notes for accuracy</li>
-                    <li><strong>Edit:</strong> Make any necessary corrections</li>
-                    <li><strong>Copy:</strong> Paste into your EMR</li>
-                    <li><strong>Save:</strong> Store successful prompts in Snippet Manager</li>
+                    <li><strong>Record/Upload:</strong> Capture the clinical encounter</li>
+                    <li><strong>Transcribe:</strong> Convert audio to text (automatic)</li>
+                    <li><strong>Process:</strong> Click "Generate" to create notes</li>
+                    <li><strong>Customize:</strong> Scroll down to adjust prompts as needed</li>
                     <li><strong>Iterate:</strong> Refine your workflow over time</li>
                 </ul>
             </div>
@@ -864,180 +1151,334 @@ permalink: /scribe-tool/
     let recordingStartTime = null;
     let durationInterval = null;
     let currentTranscription = '';
-    let currentOutput = '';
-    let currentDefaultPromptId = ''; // Track which default template is selected
-    let savedPrompts = []; // Cache of saved prompts from snippet manager
+    let currentMedicalNote = ''; // First draft from system prompt
+    let processingResults = {}; // Store all outputs: { system, editor, enhancements: [] }
+    let scribePrompts = null; // Prompt management system
 
-    const WHISPER_MODEL = "Xenova/whisper-base";
+    const WHISPER_MODEL = "Xenova/whisper-medium"; // Upgraded for significantly better accuracy
     const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
+    const SCRIBE_PROMPTS_STORAGE_KEY = 'aiScribePrompts';
+    const MEDICAL_DICTIONARY_STORAGE_KEY = 'medicalDictionary';
 
     // =====================================================
-    // CLINICAL PROMPT TEMPLATES
+    // MEDICAL DICTIONARY FOR TRANSCRIPTION
     // =====================================================
-    // These prompts are used to format transcribed audio into clinical notes.
-    // The system prompt defines the AI's behavior and output format.
-    // You can edit these prompts to customize the output style.
+    // This helps Whisper recognize medical terminology accurately
+    // Users can customize this list for their specialty
+
+    const DEFAULT_MEDICAL_TERMS = [
+        // Common medications
+        'amoxicillin', 'ibuprofen', 'acetaminophen', 'albuterol', 'prednisone', 'azithromycin',
+        'cephalexin', 'metformin', 'lisinopril', 'atorvastatin', 'omeprazole', 'levothyroxine',
+
+        // Common diagnoses
+        'otitis media', 'pharyngitis', 'bronchiolitis', 'pneumonia', 'gastroenteritis',
+        'urinary tract infection', 'UTI', 'upper respiratory infection', 'URI',
+        'asthma', 'diabetes', 'hypertension', 'GERD', 'cellulitis',
+
+        // Anatomy
+        'tympanic membrane', 'pharynx', 'tonsils', 'lymphadenopathy', 'abdomen',
+        'auscultation', 'palpation', 'percussion', 'extremities',
+
+        // Symptoms
+        'rhinorrhea', 'dyspnea', 'tachypnea', 'tachycardia', 'fever', 'cough',
+        'wheezing', 'rales', 'rhonchi', 'erythema', 'edema', 'cyanosis',
+
+        // Procedures/tests
+        'CBC', 'CMP', 'chest x-ray', 'urinalysis', 'strep test', 'rapid antigen',
+
+        // Common abbreviations
+        'BID', 'TID', 'QID', 'PRN', 'PO', 'IM', 'IV', 'q4h', 'q6h'
+    ];
+
+    let medicalDictionary = [...DEFAULT_MEDICAL_TERMS];
+
+    function loadMedicalDictionary() {
+        const stored = localStorage.getItem(MEDICAL_DICTIONARY_STORAGE_KEY);
+        if (stored) {
+            try {
+                medicalDictionary = JSON.parse(stored);
+            } catch (e) {
+                console.error('Error loading medical dictionary:', e);
+                medicalDictionary = [...DEFAULT_MEDICAL_TERMS];
+            }
+        }
+    }
+
+    function saveMedicalDictionary() {
+        localStorage.setItem(MEDICAL_DICTIONARY_STORAGE_KEY, JSON.stringify(medicalDictionary));
+    }
+
+    function buildWhisperPrompt() {
+        // Create a natural sentence using medical terms to guide Whisper
+        // This helps it recognize medical terminology in context
+        const sampleTerms = medicalDictionary.slice(0, 30).join(', ');
+        return `This is a medical consultation discussing: ${sampleTerms}.`;
+    }
+
+    // =====================================================
+    // PROMPT MANAGEMENT SYSTEM
+    // =====================================================
+    // Central prompt storage with categories:
+    // - System Prompts: Clean transcript → first draft medical note
+    // - Editor Prompts: Reformat the medical note (optional)
+    // - Enhancement Prompts: Generate additional outputs (AVS, billing, etc.)
     // =====================================================
 
-    const CLINICAL_PROMPTS = {
-        // =====================================================
-        // APSO FORMAT (Assessment, Plan, Subjective, Objective)
-        // =====================================================
-        // This is the default scribe format. It converts raw transcription
-        // into a structured clinical note using formal medical terminology.
-        //
-        // KEY INSTRUCTIONS:
-        // - Only include information explicitly stated in the transcript
-        // - Do not infer, add, or embellish clinical details
-        // - Use formal medical terminology
-        // - Preserve all clinical information mentioned
-        // - Format and organize but do not fabricate
-        // =====================================================
-        'apso': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a structured APSO (Assessment, Plan, Subjective, Objective) format.
+    const DEFAULT_PROMPTS = {
+        system: {
+            id: 'default-system-1',
+            name: 'Standard Medical Note',
+            prompt: `You are a medical documentation assistant. Your task is to convert a raw clinical encounter transcription into a formal, well-organized medical note.
 
 CRITICAL RULES:
 - Use ONLY information explicitly stated in the transcription
-- Do NOT infer or add clinical reasoning beyond what is spoken
-- Do NOT fabricate any clinical details, measurements, or observations
-- Preserve ALL clinical details mentioned in the transcript
+- Do NOT infer, add, or fabricate any clinical details
+- Do NOT add clinical reasoning beyond what is explicitly mentioned
+- Preserve ALL clinical information from the transcript
+- Remove conversational filler and repetition
 - Use formal medical terminology and standard abbreviations
-- Organize and format the information clearly
+- Organize information clearly and logically
+
+OUTPUT FORMAT:
+Create a structured medical note with clear sections. Use markdown formatting with **bold headers** for sections. Organize information by clinical relevance. Common sections include:
+- Chief Complaint / HPI
+- Past Medical History (if mentioned)
+- Physical Exam / Findings
+- Assessment
+- Plan
+
+Adapt the format based on what information is present in the transcription. Be thorough but concise.
+
+TRANSCRIPTION:`,
+            enabled: true,
+            isDefault: true
+        },
+        editor: {
+            id: 'default-editor-1',
+            name: 'APSO Formatter',
+            prompt: `You are a medical documentation formatter. Take the provided medical note and reformat it into the APSO format (Assessment, Plan, Subjective, Objective).
+
+INSTRUCTIONS:
+- Reorganize the existing note content into APSO sections
+- Do NOT add any new clinical information
+- Do NOT remove any clinical information
+- Simply reorganize what is already present
 
 FORMAT:
 
 **Assessment:**
-[Clinical impression and diagnoses based on the encounter]
+[Clinical impressions and diagnoses from the note]
 
 **Plan:**
-[Treatment plan, medications, follow-up instructions]
+[Treatment plan, medications, follow-up]
 - Use bullet points for clarity
-- Include all medications with dosing if mentioned
-- Document follow-up timing and instructions
 
 **Subjective:**
-[Patient's chief complaint, history of present illness, review of systems]
-- Patient's description of symptoms
-- Relevant medical history mentioned
-- Timeline of symptoms
-
-**Objective:**
-[Physical exam findings, vital signs, test results if mentioned]
-- Document all examination findings stated
-- Include any vital signs or measurements mentioned
-- Note test results or lab values if discussed
-
-Transcription:`,
-
-        // =====================================================
-        // End of APSO System Prompt
-        // =====================================================
-
-        'ap-pithy': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a concise, scannable Assessment & Plan format.
-
-Rules:
-- Each problem as a BOLD header
-- Plan items as bullet points (use "-")
-- Be pithy and scannable
-- Use standard medical abbreviations
-- Remove conversational filler
-- Include only clinically relevant information
-
-Format each problem like this:
-**[Problem Name]**
-- [Plan item 1]
-- [Plan item 2]
-
-Transcription:`,
-
-        'ap-formal': `You are a medical documentation assistant. Convert the following clinical encounter transcription into a formal, detailed Assessment & Plan format.
-
-Rules:
-- Each problem as a BOLD header
-- Full sentences for assessment
-- Detailed plan with bullet points
-- Professional medical language
-- Include medical decision-making rationale
-- Use standard medical abbreviations appropriately
-
-Format each problem like this:
-**[Problem Name]**
-Assessment: [Brief clinical assessment]
-Plan:
-- [Detailed plan item 1]
-- [Detailed plan item 2]
-
-Transcription:`,
-
-        'billing': `You are a medical billing documentation assistant. Analyze the following clinical encounter and generate Medical Decision Making (MDM) documentation for billing purposes.
-
-Include:
-1. Complexity level (straightforward/low/moderate/high)
-2. Number and complexity of problems addressed
-3. Amount/complexity of data reviewed
-4. Risk of complications/morbidity/mortality
-5. Time spent (if mentioned)
-
-Be specific and support the billing level with clinical details.
-
-Transcription:`,
-
-        'avs': `You are a patient education assistant. Convert the following clinical encounter into a patient-friendly After-Visit Summary.
-
-Requirements:
-- 6th-8th grade reading level
-- Explain diagnoses in plain language
-- Clear medication instructions
-- Specific follow-up plan
-- When to seek urgent care (return precautions)
-
-Format:
-**What We Found:**
-[Plain language diagnosis]
-
-**Your Medications:**
-[Simple medication instructions]
-
-**What You Should Do:**
-[Clear action items]
-
-**When to Call or Come Back:**
-[Return precautions]
-
-Transcription:`,
-
-        'signout': `You are a medical handoff assistant. Create a concise patient sign-out from this clinical encounter.
-
-Format:
-- One-liner patient summary
-- Key overnight tasks
-- If/then contingency plans
-- Critical values to monitor
-- Code status (if mentioned)
-
-Be extremely concise. Each patient should be 2-4 lines maximum.
-
-Transcription:`,
-
-        'soap': `You are a medical documentation assistant. Convert the following clinical encounter into a structured SOAP note.
-
-Format:
-**Subjective:**
-[Patient's chief complaint and history]
+[Patient's complaints, history, symptoms]
 
 **Objective:**
 [Physical exam findings, vital signs, test results]
 
-**Assessment:**
-[Clinical impression/diagnosis]
+MEDICAL NOTE TO REFORMAT:`,
+            enabled: false,
+            isDefault: true
+        },
+        enhancements: [
+            {
+                id: 'default-enhance-avs',
+                name: 'After-Visit Summary',
+                prompt: `You are a patient education specialist. Using the medical note below, create a patient-friendly After-Visit Summary.
 
-**Plan:**
-[Treatment plan and follow-up]
+REQUIREMENTS:
+- Use 6th-8th grade reading level
+- Explain medical terms in plain language
+- Be warm and reassuring in tone
+- Make instructions clear and specific
+- Use simple sentence structure
 
-Transcription:`,
+FORMAT:
 
-        'custom': `You are a medical documentation assistant. Format the following clinical transcription into a clear, organized clinical note. Use appropriate medical terminology, organize by problem when applicable, and present information in a scannable format.
+**What We Talked About Today:**
+[Plain language explanation of the visit and findings]
 
-Transcription:`
+**Your Medicine:**
+[Simple medication instructions with what, when, and why for each]
+
+**What You Need To Do:**
+[Clear, numbered action items for the patient]
+
+**When To Call Us or Go To Urgent Care:**
+[Specific warning signs in simple terms]
+
+MEDICAL NOTE:`,
+                enabled: true,
+                isDefault: true
+            },
+            {
+                id: 'default-enhance-billing',
+                name: 'Billing & MDM Summary',
+                prompt: `You are a medical billing specialist. Analyze the medical note below and generate Medical Decision Making (MDM) documentation for billing purposes.
+
+OUTPUT FORMAT:
+
+**Complexity Level:** [Straightforward / Low / Moderate / High]
+
+**Problems Addressed:**
+- [List each problem with complexity: self-limited, stable chronic, acute uncomplicated, etc.]
+
+**Data Reviewed:**
+- [Labs, imaging, records reviewed]
+- [Independent interpretation if applicable]
+
+**Risk Assessment:**
+- [Medication risks, procedural risks, morbidity/mortality risk]
+- [Overall risk: minimal, low, moderate, high]
+
+**Medical Decision Making Summary:**
+[Brief justification for the complexity level and billing code recommendation based on 2023 E/M guidelines]
+
+**Time:** [If mentioned in note]
+
+MEDICAL NOTE:`,
+                enabled: true,
+                isDefault: true
+            }
+        ]
+    };
+
+    // =====================================================
+    // PROMPT MANAGEMENT FUNCTIONS
+    // =====================================================
+
+    function initializePromptSystem() {
+        const stored = localStorage.getItem(SCRIBE_PROMPTS_STORAGE_KEY);
+
+        if (stored) {
+            try {
+                scribePrompts = JSON.parse(stored);
+                // Ensure structure is correct
+                if (!scribePrompts.systemPrompts) scribePrompts.systemPrompts = [];
+                if (!scribePrompts.editorPrompts) scribePrompts.editorPrompts = [];
+                if (!scribePrompts.enhancementPrompts) scribePrompts.enhancementPrompts = [];
+                if (!scribePrompts.metadata) scribePrompts.metadata = { version: '1.0' };
+            } catch (e) {
+                console.error('Error loading prompts:', e);
+                scribePrompts = createDefaultPromptStructure();
+            }
+        } else {
+            scribePrompts = createDefaultPromptStructure();
+        }
+
+        savePromptSystem();
+        return scribePrompts;
+    }
+
+    function createDefaultPromptStructure() {
+        return {
+            systemPrompts: [DEFAULT_PROMPTS.system],
+            editorPrompts: [DEFAULT_PROMPTS.editor],
+            enhancementPrompts: DEFAULT_PROMPTS.enhancements,
+            metadata: {
+                version: '1.0',
+                createdAt: Date.now(),
+                lastModified: Date.now()
+            }
+        };
+    }
+
+    function savePromptSystem() {
+        if (scribePrompts) {
+            scribePrompts.metadata.lastModified = Date.now();
+            localStorage.setItem(SCRIBE_PROMPTS_STORAGE_KEY, JSON.stringify(scribePrompts));
+        }
+    }
+
+    function getActiveSystemPrompt() {
+        const active = scribePrompts.systemPrompts.find(p => p.enabled);
+        return active || scribePrompts.systemPrompts[0]; // Fallback to first if none enabled
+    }
+
+    function getActiveEditorPrompt() {
+        return scribePrompts.editorPrompts.find(p => p.enabled);
+    }
+
+    function getActiveEnhancementPrompts() {
+        return scribePrompts.enhancementPrompts.filter(p => p.enabled);
+    }
+
+    function addPrompt(category, name, prompt) {
+        const newPrompt = {
+            id: Date.now(),
+            name: name,
+            prompt: prompt,
+            enabled: false,
+            isDefault: false,
+            createdAt: Date.now(),
+            lastModified: Date.now()
+        };
+
+        if (category === 'system') {
+            scribePrompts.systemPrompts.push(newPrompt);
+        } else if (category === 'editor') {
+            scribePrompts.editorPrompts.push(newPrompt);
+        } else if (category === 'enhancement') {
+            scribePrompts.enhancementPrompts.push(newPrompt);
+        }
+
+        savePromptSystem();
+        return newPrompt;
+    }
+
+    function updatePrompt(category, id, updates) {
+        let prompts;
+        if (category === 'system') prompts = scribePrompts.systemPrompts;
+        else if (category === 'editor') prompts = scribePrompts.editorPrompts;
+        else if (category === 'enhancement') prompts = scribePrompts.enhancementPrompts;
+
+        const prompt = prompts.find(p => p.id === id);
+        if (prompt) {
+            Object.assign(prompt, updates);
+            prompt.lastModified = Date.now();
+            savePromptSystem();
+        }
+    }
+
+    function deletePrompt(category, id) {
+        if (category === 'system') {
+            scribePrompts.systemPrompts = scribePrompts.systemPrompts.filter(p => p.id !== id);
+        } else if (category === 'editor') {
+            scribePrompts.editorPrompts = scribePrompts.editorPrompts.filter(p => p.id !== id);
+        } else if (category === 'enhancement') {
+            scribePrompts.enhancementPrompts = scribePrompts.enhancementPrompts.filter(p => p.id !== id);
+        }
+        savePromptSystem();
+    }
+
+    window.togglePromptEnabled = function(category, id) {
+        let prompts;
+        if (category === 'system') {
+            prompts = scribePrompts.systemPrompts;
+        } else if (category === 'editor') {
+            prompts = scribePrompts.editorPrompts;
+        } else if (category === 'enhancement') {
+            prompts = scribePrompts.enhancementPrompts;
+        }
+
+        const prompt = prompts.find(p => p.id == id); // Use == for type coercion
+        if (prompt) {
+            const newState = !prompt.enabled;
+
+            // For system and editor prompts, only one can be active at a time
+            // If enabling this prompt, disable all others in the category
+            if ((category === 'system' || category === 'editor') && newState === true) {
+                prompts.forEach(p => p.enabled = false);
+            }
+
+            prompt.enabled = newState;
+            savePromptSystem();
+            renderPromptCustomization(); // Re-render to show updated state
+        }
     };
 
     // =====================================================
@@ -1057,9 +1498,13 @@ Transcription:`
         initBtn.disabled = true;
 
         try {
+            // Step 0: Initialize prompt system and medical dictionary
+            initializePromptSystem();
+            loadMedicalDictionary();
+
             // Step 1: Load Whisper
-            statusMessage.textContent = 'Loading Whisper (speech-to-text model)...';
-            statusDetails.textContent = 'Downloading ~75MB... This may take 2-5 minutes.';
+            statusMessage.textContent = 'Loading Whisper Medium (speech-to-text model)...';
+            statusDetails.textContent = 'Downloading ~1.5GB... This may take 5-15 minutes (one-time download).';
             progressFill.style.width = '25%';
 
             whisperModel = await pipeline(
@@ -1091,7 +1536,7 @@ Transcription:`
 
             progressFill.style.width = '100%';
             statusPanel.className = 'status-panel ready';
-            statusMessage.textContent = 'PPE Scribe Ready!';
+            statusMessage.textContent = 'Scribe Ready!';
             statusDetails.textContent = 'All models loaded. You can now record or upload audio. This setup was one-time—next visit will load in seconds.';
 
             // Hide init panel, show main interface
@@ -1100,6 +1545,7 @@ Transcription:`
                 document.getElementById('workflow-indicator').style.display = 'flex';
                 document.getElementById('main-interface').style.display = 'grid';
                 updateWorkflowStep('record');
+                renderPromptCustomization();
             }, 2000);
 
         } catch (error) {
@@ -1210,12 +1656,13 @@ Transcription:`
             // Convert blob to URL for Whisper
             const audioUrl = URL.createObjectURL(audioBlob);
 
-            // Transcribe
+            // Transcribe with medical terminology guidance
             const result = await whisperModel(audioUrl, {
                 chunk_length_s: 30,
                 stride_length_s: 5,
                 language: 'english',
-                task: 'transcribe'
+                task: 'transcribe',
+                initial_prompt: buildWhisperPrompt() // Guide Whisper with medical terms
             });
 
             currentTranscription = result.text;
@@ -1226,15 +1673,10 @@ Transcription:`
             document.getElementById('transcription-text').value = currentTranscription;
             document.getElementById('transcription-actions').style.display = 'flex';
 
-            // Show prompt customization section
-            document.getElementById('prompt-section-header').style.display = 'block';
-            document.getElementById('prompt-selection').style.display = 'block';
-            document.getElementById('process-btn').style.display = 'block';
-            document.getElementById('process-btn').disabled = true; // Disabled until prompt is selected
-            document.getElementById('recording-status-text').textContent = 'Transcription complete';
-
-            // Load saved prompts into dropdown
-            loadSavedPrompts();
+            // Enable process button and show customization
+            document.getElementById('process-btn').disabled = false;
+            document.getElementById('prompt-customization-section').style.display = 'block';
+            document.getElementById('recording-status-text').textContent = 'Transcription complete - Ready to process';
 
             // Clean up
             URL.revokeObjectURL(audioUrl);
@@ -1254,206 +1696,703 @@ Transcription:`
     }
 
     // =====================================================
-    // PROMPT MANAGEMENT
+    // UI RENDERING - PROMPT CUSTOMIZATION
     // =====================================================
-    function loadSavedPrompts() {
-        try {
-            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
-            // Filter for prompts tagged as clinical prompts (or all prompts)
-            savedPrompts = snippets.filter(s =>
-                s.tags && (s.tags.includes('clinical-prompt') || s.tags.includes('scribe-prompt'))
-            );
 
-            // Populate dropdown with saved prompts
-            const savedPromptsGroup = document.getElementById('saved-prompts');
-            savedPromptsGroup.innerHTML = '';
+    window.toggleCustomization = function() {
+        const content = document.getElementById('customization-content');
+        const btn = document.getElementById('toggle-customization-btn');
 
-            savedPrompts.forEach(snippet => {
-                const option = document.createElement('option');
-                option.value = `saved-${snippet.id}`;
-                option.textContent = snippet.title;
-                savedPromptsGroup.appendChild(option);
-            });
-        } catch (error) {
-            console.error('Error loading saved prompts:', error);
-        }
-    }
-
-    window.loadPromptTemplate = function() {
-        const selectedValue = document.getElementById('clinical-prompt').value;
-        const promptTextarea = document.getElementById('prompt-text');
-
-        if (!selectedValue) {
-            promptTextarea.value = '';
-            document.getElementById('prompt-editor').style.display = 'none';
-            document.getElementById('prompt-actions').style.display = 'none';
-            document.getElementById('process-btn').disabled = true;
-            return;
-        }
-
-        // Check if it's a default prompt or saved prompt
-        if (selectedValue.startsWith('saved-')) {
-            const snippetId = parseInt(selectedValue.replace('saved-', ''));
-            const snippet = savedPrompts.find(s => s.id === snippetId);
-            if (snippet) {
-                promptTextarea.value = snippet.prompt;
-                currentDefaultPromptId = ''; // Not a default template
-            }
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            btn.textContent = 'Hide Customization';
         } else {
-            // Load from default templates
-            const promptTemplate = CLINICAL_PROMPTS[selectedValue];
-            if (promptTemplate) {
-                promptTextarea.value = promptTemplate;
-                currentDefaultPromptId = selectedValue;
-            }
-        }
-
-        // Show editor and actions
-        document.getElementById('prompt-editor').style.display = 'block';
-        document.getElementById('prompt-actions').style.display = 'flex';
-        document.getElementById('process-btn').disabled = false;
-        updatePromptCharCount();
-    };
-
-    window.resetToDefaultPrompt = function() {
-        if (!currentDefaultPromptId) {
-            alert('No default template selected. Please select a default template from the dropdown first.');
-            return;
-        }
-
-        const promptTemplate = CLINICAL_PROMPTS[currentDefaultPromptId];
-        if (promptTemplate) {
-            document.getElementById('prompt-text').value = promptTemplate;
-            updatePromptCharCount();
+            content.style.display = 'none';
+            btn.textContent = 'Show Customization';
         }
     };
 
-    window.savePromptToSnippetManager = function() {
-        const promptText = document.getElementById('prompt-text').value.trim();
-
-        if (!promptText) {
-            alert('No prompt to save. Please enter a prompt first.');
-            return;
-        }
-
-        try {
-            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
-            const title = prompt('Enter a title for this prompt:', 'Custom Clinical Prompt');
-            if (!title) return;
-
-            snippets.push({
-                id: Date.now(),
-                title: title,
-                version: '1.0',
-                tags: ['clinical-prompt', 'scribe-prompt'],
-                prompt: promptText
-            });
-
-            localStorage.setItem('promptSnippets', JSON.stringify(snippets));
-
-            alert('✅ Prompt saved successfully!');
-
-            // Reload saved prompts in dropdown
-            loadSavedPrompts();
-
-        } catch (error) {
-            alert('Failed to save prompt. Storage might be full.');
-            console.error('Save error:', error);
-        }
-    };
-
-    function updatePromptCharCount() {
-        const promptText = document.getElementById('prompt-text').value;
-        const count = promptText.length;
-        const counter = document.getElementById('prompt-char-counter');
-
-        let className = 'char-counter';
-        let message = `${count.toLocaleString()} characters`;
-
-        if (count > 5000) {
-            className += ' error';
-            message += ' ⚠️ Very long prompt';
-        } else if (count > 3000) {
-            className += ' warning';
-            message += ' ⚠️ Long prompt';
-        }
-
-        counter.className = className;
-        counter.textContent = message;
+    function renderPromptCustomization() {
+        renderSystemPromptsSection();
+        renderEditorPromptsSection();
+        renderEnhancementPromptsSection();
+        renderMedicalDictionary();
     }
 
-    // Add input listener for prompt textarea
-    document.addEventListener('DOMContentLoaded', () => {
-        const promptTextarea = document.getElementById('prompt-text');
-        if (promptTextarea) {
-            promptTextarea.addEventListener('input', updatePromptCharCount);
+    function renderMedicalDictionary() {
+        const container = document.getElementById('medical-dictionary-display');
+        const countBadge = document.getElementById('dictionary-count');
+
+        countBadge.textContent = `${medicalDictionary.length} term${medicalDictionary.length !== 1 ? 's' : ''}`;
+
+        container.innerHTML = medicalDictionary.map((term, index) => `
+            <span style="display: inline-flex; align-items: center; gap: 4px; background: #e3f2fd; padding: 4px 8px; border-radius: 4px; font-size: 0.85em;">
+                ${term}
+                <button onclick="removeMedicalTerm(${index})" style="background: none; border: none; color: #666; cursor: pointer; padding: 0; font-size: 1.1em; line-height: 1;" title="Remove term">
+                    ×
+                </button>
+            </span>
+        `).join('');
+    }
+
+    window.addMedicalTerms = function() {
+        const input = prompt(
+            'Enter medical terms to add (comma-separated):\n\n' +
+            'Examples: metoprolol, chronic kidney disease, hyperglycemia'
+        );
+
+        if (!input) return;
+
+        const newTerms = input.split(',')
+            .map(term => term.trim())
+            .filter(term => term.length > 0 && !medicalDictionary.includes(term));
+
+        if (newTerms.length === 0) {
+            alert('No new terms to add (they may already exist).');
+            return;
         }
-    });
+
+        medicalDictionary.push(...newTerms);
+        saveMedicalDictionary();
+        renderMedicalDictionary();
+
+        alert(`✅ Added ${newTerms.length} term${newTerms.length !== 1 ? 's' : ''} to dictionary!`);
+    };
+
+    window.removeMedicalTerm = function(index) {
+        const term = medicalDictionary[index];
+        if (!confirm(`Remove "${term}" from dictionary?`)) return;
+
+        medicalDictionary.splice(index, 1);
+        saveMedicalDictionary();
+        renderMedicalDictionary();
+    };
+
+    window.resetMedicalDictionary = function() {
+        if (!confirm('Reset medical dictionary to default terms? This will remove any custom terms you\'ve added.')) return;
+
+        medicalDictionary = [...DEFAULT_MEDICAL_TERMS];
+        saveMedicalDictionary();
+        renderMedicalDictionary();
+
+        alert('✅ Medical dictionary reset to defaults!');
+    };
+
+    function renderSystemPromptsSection() {
+        const container = document.getElementById('system-prompts-section');
+        const prompts = scribePrompts.systemPrompts;
+
+        container.innerHTML = `
+            <div class="prompt-category-header">
+                <div class="prompt-category-title">
+                    🔧 System Prompts
+                    <span class="badge badge-default">${prompts.length} prompt${prompts.length !== 1 ? 's' : ''}</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showAddPromptDialog('system')">
+                    + Add New
+                </button>
+            </div>
+            <div class="prompt-category-description">
+                The system prompt processes raw transcripts into clean medical notes. Only one can be active at a time.
+            </div>
+            <div class="prompt-list">
+                ${prompts.map(p => renderPromptItem('system', p)).join('')}
+            </div>
+        `;
+    }
+
+    function renderEditorPromptsSection() {
+        const container = document.getElementById('editor-prompts-section');
+        const prompts = scribePrompts.editorPrompts;
+
+        container.innerHTML = `
+            <div class="prompt-category-header">
+                <div class="prompt-category-title">
+                    ✏️ Editor Prompts (Optional)
+                    <span class="badge badge-default">${prompts.length} prompt${prompts.length !== 1 ? 's' : ''}</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showAddPromptDialog('editor')">
+                    + Add New
+                </button>
+            </div>
+            <div class="prompt-category-description">
+                Editor prompts reformat the medical note. This step is optional. Only one can be active at a time.
+            </div>
+            <div class="prompt-list">
+                ${prompts.map(p => renderPromptItem('editor', p)).join('')}
+            </div>
+        `;
+    }
+
+    function renderEnhancementPromptsSection() {
+        const container = document.getElementById('enhancement-prompts-section');
+        const prompts = scribePrompts.enhancementPrompts;
+
+        container.innerHTML = `
+            <div class="prompt-category-header">
+                <div class="prompt-category-title">
+                    ⚡ Enhancement Prompts
+                    <span class="badge badge-default">${prompts.length} prompt${prompts.length !== 1 ? 's' : ''}</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showAddPromptDialog('enhancement')">
+                    + Add New
+                </button>
+            </div>
+            <div class="prompt-category-description">
+                Enhancement prompts generate additional outputs like billing summaries or patient handouts. Multiple can be active.
+            </div>
+            <div class="prompt-list">
+                ${prompts.map(p => renderPromptItem('enhancement', p)).join('')}
+            </div>
+        `;
+    }
+
+    function renderPromptItem(category, prompt) {
+        const enabledClass = prompt.enabled ? 'enabled' : '';
+        const enabledBadge = prompt.enabled ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-secondary">Inactive</span>';
+        const defaultBadge = prompt.isDefault ? '<span class="badge badge-default">Default</span>' : '';
+
+        return `
+            <div class="prompt-item ${enabledClass}" id="prompt-item-${category}-${prompt.id}">
+                <div class="prompt-item-header">
+                    <div class="prompt-item-title">
+                        ${prompt.name}
+                        ${enabledBadge}
+                        ${defaultBadge}
+                    </div>
+                    <div class="prompt-item-actions">
+                        <button class="btn btn-sm ${prompt.enabled ? 'btn-secondary' : 'btn-success'}"
+                                onclick="togglePromptEnabled('${category}', '${prompt.id}')">
+                            ${prompt.enabled ? 'Disable' : 'Enable'}
+                        </button>
+                        <button class="btn btn-sm btn-primary" onclick="togglePromptExpand('${category}', '${prompt.id}')">
+                            Edit
+                        </button>
+                        ${!prompt.isDefault ? `
+                            <button class="btn btn-sm btn-danger" onclick="deletePromptConfirm('${category}', '${prompt.id}')">
+                                Delete
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+                <div class="prompt-item-content" id="prompt-content-${category}-${prompt.id}">
+                    <textarea id="prompt-textarea-${category}-${prompt.id}">${prompt.prompt}</textarea>
+                    <div style="margin-top: 10px; display: flex; gap: 10px;">
+                        <button class="btn btn-primary btn-sm" onclick="savePromptEdit('${category}', '${prompt.id}')">
+                            Save Changes
+                        </button>
+                        <button class="btn btn-secondary btn-sm" onclick="togglePromptExpand('${category}', '${prompt.id}')">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    window.togglePromptExpand = function(category, id) {
+        const content = document.getElementById(`prompt-content-${category}-${id}`);
+        content.classList.toggle('expanded');
+    };
+
+    window.showAddPromptDialog = function(category) {
+        const name = prompt('Enter a name for this prompt:');
+        if (!name) return;
+
+        const promptText = prompt('Enter the prompt text (you can edit this later):');
+        if (!promptText) return;
+
+        addPrompt(category, name, promptText);
+        renderPromptCustomization();
+
+        alert('✅ Prompt added successfully!');
+    };
+
+    window.savePromptEdit = function(category, id) {
+        const textarea = document.getElementById(`prompt-textarea-${category}-${id}`);
+        const newPrompt = textarea.value;
+
+        updatePrompt(category, id, { prompt: newPrompt });
+        togglePromptExpand(category, id);
+        alert('✅ Prompt updated successfully!');
+    };
+
+    window.deletePromptConfirm = function(category, id) {
+        if (!confirm('Are you sure you want to delete this prompt?')) return;
+
+        deletePrompt(category, id);
+        renderPromptCustomization();
+        alert('✅ Prompt deleted successfully!');
+    };
 
     // =====================================================
-    // AI PROCESSING
+    // EXPORT/IMPORT PROMPT CONFIGURATION
     // =====================================================
+
+    window.exportPromptConfiguration = function() {
+        const exportData = {
+            version: '1.0',
+            exportedAt: new Date().toISOString(),
+            prompts: scribePrompts,
+            medicalDictionary: medicalDictionary
+        };
+
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `ai-scribe-config-${new Date().toISOString().split('T')[0]}.json`;
+        link.click();
+        URL.revokeObjectURL(url);
+
+        alert('✅ Configuration exported successfully!\n\nIncludes: prompts and medical dictionary');
+    };
+
+    window.importPromptConfiguration = function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const importData = JSON.parse(e.target.result);
+
+                // Validate the structure
+                if (!importData.prompts) {
+                    throw new Error('Invalid prompt configuration file: missing prompts data');
+                }
+
+                const mode = confirm(
+                    '📥 Import Prompts\n\n' +
+                    'Choose import mode:\n\n' +
+                    'OK = MERGE with existing prompts (adds new, keeps existing)\n' +
+                    'Cancel = REPLACE all prompts (deletes existing)\n\n' +
+                    'Recommended: MERGE to keep your current prompts'
+                );
+
+                if (mode) {
+                    // Merge mode: add imported prompts to existing ones
+                    if (importData.prompts.systemPrompts) {
+                        importData.prompts.systemPrompts.forEach(p => {
+                            // Check if prompt with same ID already exists
+                            const exists = scribePrompts.systemPrompts.find(sp => sp.id === p.id);
+                            if (!exists) {
+                                scribePrompts.systemPrompts.push(p);
+                            }
+                        });
+                    }
+
+                    if (importData.prompts.editorPrompts) {
+                        importData.prompts.editorPrompts.forEach(p => {
+                            const exists = scribePrompts.editorPrompts.find(ep => ep.id === p.id);
+                            if (!exists) {
+                                scribePrompts.editorPrompts.push(p);
+                            }
+                        });
+                    }
+
+                    if (importData.prompts.enhancementPrompts) {
+                        importData.prompts.enhancementPrompts.forEach(p => {
+                            const exists = scribePrompts.enhancementPrompts.find(ep => ep.id === p.id);
+                            if (!exists) {
+                                scribePrompts.enhancementPrompts.push(p);
+                            }
+                        });
+                    }
+
+                    // Merge medical dictionary
+                    if (importData.medicalDictionary) {
+                        importData.medicalDictionary.forEach(term => {
+                            if (!medicalDictionary.includes(term)) {
+                                medicalDictionary.push(term);
+                            }
+                        });
+                    }
+
+                    alert('✅ Configuration merged successfully!\n\nNew prompts and medical terms have been added.');
+                } else {
+                    // Replace mode: completely replace with imported configuration
+                    scribePrompts = importData.prompts;
+                    if (importData.medicalDictionary) {
+                        medicalDictionary = importData.medicalDictionary;
+                    }
+                    alert('✅ Configuration replaced successfully!\n\nAll previous settings have been replaced with the imported configuration.');
+                }
+
+                // Save and re-render
+                savePromptSystem();
+                saveMedicalDictionary();
+                renderPromptCustomization();
+
+                // Clear the file input so the same file can be imported again if needed
+                event.target.value = '';
+
+            } catch (error) {
+                alert('❌ Failed to import prompts:\n\n' + error.message);
+                console.error('Import error:', error);
+                event.target.value = '';
+            }
+        };
+
+        reader.readAsText(file);
+    };
+
+    // =====================================================
+    // AI PROCESSING - MULTI-STAGE PIPELINE WITH STREAMING
+    // =====================================================
+
+    function initializeProgressIndicators(stages) {
+        const container = document.getElementById('progress-stages-container');
+        container.innerHTML = stages.map((stage, index) => `
+            <div class="progress-stage" id="progress-stage-${index}">
+                <div class="progress-stage-icon" id="progress-icon-${index}">⏸️</div>
+                <div class="progress-stage-label">${stage.name}</div>
+                <div class="progress-stage-status" id="progress-status-${index}">Waiting...</div>
+            </div>
+        `).join('');
+
+        document.getElementById('processing-progress').classList.add('active');
+    }
+
+    function updateProgressStage(index, status, icon) {
+        const stage = document.getElementById(`progress-stage-${index}`);
+        const iconEl = document.getElementById(`progress-icon-${index}`);
+        const statusEl = document.getElementById(`progress-status-${index}`);
+
+        // Remove previous states
+        stage.classList.remove('active', 'completed');
+
+        if (status === 'processing') {
+            stage.classList.add('active');
+            iconEl.innerHTML = '<div class="spinner-inline"></div>';
+            statusEl.textContent = 'Processing...';
+        } else if (status === 'completed') {
+            stage.classList.add('completed');
+            iconEl.textContent = '✅';
+            statusEl.textContent = 'Complete';
+        } else if (status === 'error') {
+            iconEl.textContent = '❌';
+            statusEl.textContent = 'Error';
+        }
+    }
+
     window.processWithAI = async function() {
         const transcriptionText = document.getElementById('transcription-text').value.trim();
-        const promptText = document.getElementById('prompt-text').value.trim();
 
         if (!transcriptionText) {
             alert('No transcription to process. Please record or upload audio first.');
             return;
         }
 
-        if (!promptText) {
-            alert('Please select a prompt template or enter a custom prompt.');
-            return;
-        }
+        // Clear previous results
+        processingResults = { system: null, editor: null, enhancements: [] };
+        currentMedicalNote = '';
 
         // Show processing state
         document.getElementById('output-empty').style.display = 'none';
-        document.getElementById('output-spinner').classList.add('active');
-        document.getElementById('output-content').classList.remove('active');
-        document.getElementById('output-actions').style.display = 'none';
+        document.getElementById('output-spinner').style.display = 'none';
+        document.getElementById('output-cards-container').innerHTML = '';
         document.getElementById('process-btn').disabled = true;
 
         try {
-            const fullPrompt = promptText + '\n\n' + transcriptionText;
-
-            // Generate with LLM
-            const response = await llmEngine.chat.completions.create({
-                messages: [
-                    { role: 'user', content: fullPrompt }
-                ],
-                temperature: 0.3, // Lower temperature for more consistent medical documentation
-                max_tokens: 2000,
-                stream: true
-            });
-
-            currentOutput = '';
-            const outputDiv = document.getElementById('output-content');
-            outputDiv.textContent = '';
-            outputDiv.classList.add('active');
-            document.getElementById('output-spinner').classList.remove('active');
-
-            // Stream response
-            for await (const chunk of response) {
-                const delta = chunk.choices[0]?.delta?.content || '';
-                currentOutput += delta;
-                outputDiv.textContent = currentOutput;
-                updateOutputCharCount(currentOutput.length);
+            // Determine which stages will run
+            const systemPrompt = getActiveSystemPrompt();
+            if (!systemPrompt) {
+                throw new Error('No system prompt is active. Please enable a system prompt in the customization section.');
             }
 
-            // Show actions
-            document.getElementById('output-actions').style.display = 'flex';
-            document.getElementById('output-char-counter').style.display = 'block';
+            const editorPrompt = getActiveEditorPrompt();
+            const enhancementPrompts = getActiveEnhancementPrompts();
+
+            // Build stages list for progress indicators
+            const stages = [
+                { name: `System: ${systemPrompt.name}`, type: 'system' }
+            ];
+
+            if (editorPrompt) {
+                stages.push({ name: `Editor: ${editorPrompt.name}`, type: 'editor' });
+            }
+
+            enhancementPrompts.forEach(p => {
+                stages.push({ name: `Enhancement: ${p.name}`, type: 'enhancement' });
+            });
+
+            // Initialize progress indicators
+            initializeProgressIndicators(stages);
+
+            let stageIndex = 0;
+
+            // Stage 1: System Prompt (required)
+            updateProgressStage(stageIndex, 'processing');
+            currentMedicalNote = await runPromptStageStreaming('system', systemPrompt, transcriptionText, stageIndex);
+            processingResults.system = {
+                promptName: systemPrompt.name,
+                promptId: systemPrompt.id,
+                output: currentMedicalNote
+            };
+            updateProgressStage(stageIndex, 'completed');
+            stageIndex++;
+
+            // Stage 2: Editor Prompt (optional)
+            if (editorPrompt) {
+                updateProgressStage(stageIndex, 'processing');
+                const editedNote = await runPromptStageStreaming('editor', editorPrompt, currentMedicalNote, stageIndex);
+                currentMedicalNote = editedNote;
+                processingResults.editor = {
+                    promptName: editorPrompt.name,
+                    promptId: editorPrompt.id,
+                    output: editedNote
+                };
+                updateProgressStage(stageIndex, 'completed');
+                stageIndex++;
+            }
+
+            // Stage 3: Enhancement Prompts (run in parallel with individual progress tracking)
+            if (enhancementPrompts.length > 0) {
+                const enhancementPromises = enhancementPrompts.map((prompt, idx) =>
+                    runEnhancementWithProgress(prompt, currentMedicalNote, stageIndex + idx)
+                );
+
+                const enhancementResults = await Promise.all(enhancementPromises);
+                processingResults.enhancements = enhancementResults.filter(r => r !== null);
+            }
+
+            // Store metadata
+            scribePrompts.metadata.lastSession = {
+                systemPromptUsed: systemPrompt.id,
+                editorPromptUsed: editorPrompt?.id || null,
+                enhancementPromptsUsed: enhancementPrompts.map(p => p.id),
+                timestamp: Date.now()
+            };
+            savePromptSystem();
+
+            // Render output cards
+            renderOutputCards();
+
+            // Hide progress after a moment
+            setTimeout(() => {
+                document.getElementById('processing-progress').classList.remove('active');
+            }, 2000);
+
             updateWorkflowStep('done');
 
         } catch (error) {
-            document.getElementById('output-content').textContent = `Error processing: ${error.message}\n\nPlease try again.`;
-            document.getElementById('output-content').classList.add('active');
-            document.getElementById('output-spinner').classList.remove('active');
+            document.getElementById('processing-progress').classList.remove('active');
+            document.getElementById('output-empty').style.display = 'block';
+            document.getElementById('output-empty').innerHTML = `
+                <div class="empty-state-icon">❌</div>
+                <p>Processing failed: ${error.message}</p>
+                <p>Please check your prompts and try again.</p>
+            `;
             console.error('Processing error:', error);
         }
 
         document.getElementById('process-btn').disabled = false;
+    };
+
+    async function runPromptStageStreaming(stageName, prompt, inputText, stageIndex) {
+        const fullPrompt = prompt.prompt + '\n\n' + inputText;
+
+        const response = await llmEngine.chat.completions.create({
+            messages: [{ role: 'user', content: fullPrompt }],
+            temperature: 0.3,
+            max_tokens: 2000,
+            stream: true // Enable streaming
+        });
+
+        let output = '';
+        for await (const chunk of response) {
+            const delta = chunk.choices[0]?.delta?.content || '';
+            output += delta;
+            // Optional: could add real-time preview here
+        }
+
+        return output;
+    }
+
+    async function runEnhancementWithProgress(prompt, inputText, stageIndex) {
+        updateProgressStage(stageIndex, 'processing');
+
+        try {
+            const output = await runPromptStageStreaming('enhancement', prompt, inputText, stageIndex);
+            updateProgressStage(stageIndex, 'completed');
+            return {
+                promptName: prompt.name,
+                promptId: prompt.id,
+                output: output,
+                error: null
+            };
+        } catch (error) {
+            updateProgressStage(stageIndex, 'error');
+            console.error(`Error in enhancement prompt "${prompt.name}":`, error);
+            return {
+                promptName: prompt.name,
+                promptId: prompt.id,
+                output: null,
+                error: error.message
+            };
+        }
+    }
+
+    // =====================================================
+    // OUTPUT CARDS RENDERING
+    // =====================================================
+
+    function renderOutputCards() {
+        const container = document.getElementById('output-cards-container');
+
+        // Build cards array
+        const cards = [];
+
+        // System prompt output (always present if we got here)
+        if (processingResults.system) {
+            cards.push({
+                title: 'Medical Note',
+                subtitle: `Generated by: ${processingResults.system.promptName}`,
+                content: processingResults.system.output,
+                type: 'system',
+                badge: 'Primary Output'
+            });
+        }
+
+        // Editor prompt output (if used)
+        if (processingResults.editor) {
+            cards.push({
+                title: 'Formatted Note',
+                subtitle: `Formatted by: ${processingResults.editor.promptName}`,
+                content: processingResults.editor.output,
+                type: 'editor',
+                badge: 'Formatted'
+            });
+        }
+
+        // Enhancement outputs
+        processingResults.enhancements.forEach(enhancement => {
+            if (enhancement.error) {
+                cards.push({
+                    title: enhancement.promptName,
+                    subtitle: 'Processing failed',
+                    content: `Error: ${enhancement.error}`,
+                    type: 'enhancement-error',
+                    badge: 'Error',
+                    isError: true
+                });
+            } else {
+                cards.push({
+                    title: enhancement.promptName,
+                    subtitle: 'Enhancement output',
+                    content: enhancement.output,
+                    type: 'enhancement',
+                    badge: 'Enhancement'
+                });
+            }
+        });
+
+        // Render copy all button if there are multiple outputs
+        if (cards.length > 1) {
+            container.innerHTML = `
+                <div class="copy-all-container">
+                    <button class="btn btn-primary btn-lg" onclick="copyAllOutputs()">
+                        📋 Copy All Outputs
+                    </button>
+                </div>
+            `;
+        } else {
+            container.innerHTML = '';
+        }
+
+        // Render individual cards
+        cards.forEach((card, index) => {
+            const cardHtml = createOutputCard(card, index);
+            container.innerHTML += cardHtml;
+        });
+    }
+
+    function createOutputCard(card, index) {
+        const errorClass = card.isError ? 'error' : '';
+
+        return `
+            <div class="output-card ${errorClass}" id="output-card-${index}">
+                <div class="output-card-header">
+                    <div class="output-card-title">
+                        ${card.title}
+                        <span class="output-card-badge">${card.badge}</span>
+                    </div>
+                </div>
+                <div style="font-size: 0.85em; color: #666; margin-bottom: 10px;">
+                    ${card.subtitle}
+                </div>
+                <div class="output-card-content" id="output-card-content-${index}">
+${card.content}
+                </div>
+                ${!card.isError ? `
+                    <div class="output-card-actions">
+                        <button class="btn btn-success btn-sm" onclick="copyCardOutput(${index}, event)">
+                            Copy
+                        </button>
+                        <button class="btn btn-secondary btn-sm" onclick="downloadCardOutput(${index}, '${card.title.replace(/'/g, "\\'")}')">
+                            Download
+                        </button>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    window.copyCardOutput = async function(index, event) {
+        const content = document.getElementById(`output-card-content-${index}`).textContent;
+        try {
+            await navigator.clipboard.writeText(content);
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => btn.textContent = originalText, 2000);
+        } catch (error) {
+            alert('Failed to copy. Please select and copy manually.');
+            console.error('Copy error:', error);
+        }
+    };
+
+    window.downloadCardOutput = function(index, title) {
+        const content = document.getElementById(`output-card-content-${index}`).textContent;
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        const filename = `${title.replace(/[^a-z0-9]/gi, '-').toLowerCase()}-${new Date().toISOString().split('T')[0]}.txt`;
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(url);
+    };
+
+    window.copyAllOutputs = async function() {
+        let allContent = '';
+
+        // Add system/editor output (the main note)
+        if (processingResults.editor) {
+            allContent += `=== FORMATTED MEDICAL NOTE (${processingResults.editor.promptName}) ===\n\n`;
+            allContent += processingResults.editor.output + '\n\n';
+        } else if (processingResults.system) {
+            allContent += `=== MEDICAL NOTE (${processingResults.system.promptName}) ===\n\n`;
+            allContent += processingResults.system.output + '\n\n';
+        }
+
+        // Add enhancements
+        processingResults.enhancements.forEach(enhancement => {
+            if (!enhancement.error) {
+                allContent += `=== ${enhancement.promptName.toUpperCase()} ===\n\n`;
+                allContent += enhancement.output + '\n\n';
+            }
+        });
+
+        try {
+            await navigator.clipboard.writeText(allContent);
+            alert('✅ All outputs copied to clipboard!');
+        } catch (error) {
+            alert('Failed to copy. Please copy each section individually.');
+            console.error('Copy error:', error);
+        }
     };
 
     // =====================================================
@@ -1483,87 +2422,38 @@ Transcription:`
         URL.revokeObjectURL(url);
     };
 
-    window.copyOutput = async function(event) {
-        try {
-            await navigator.clipboard.writeText(currentOutput);
-            const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = '✅ Copied!';
-            setTimeout(() => btn.textContent = originalText, 2000);
-        } catch (error) {
-            alert('Failed to copy. Please select and copy manually.');
-            console.error('Copy error:', error);
-        }
-    };
-
-    window.downloadOutput = function() {
-        const blob = new Blob([currentOutput], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `clinical-note-${new Date().toISOString().split('T')[0]}.txt`;
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-
-    window.saveNoteToSnippetManager = function() {
-        try {
-            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
-            const title = prompt('Enter a title for this clinical note:', 'AI Scribe Note');
-            if (!title) return;
-
-            snippets.push({
-                id: Date.now(),
-                title: title,
-                version: '1.0',
-                tags: ['ai-scribe', 'clinical-note'],
-                prompt: currentOutput
-            });
-
-            localStorage.setItem('promptSnippets', JSON.stringify(snippets));
-
-            if (confirm('✅ Saved to Snippet Manager!\n\nOpen Snippet Manager now?')) {
-                window.location.href = '/snippet-manager';
-            }
-        } catch (error) {
-            alert('Failed to save. Storage might be full.');
-            console.error('Save error:', error);
-        }
-    };
 
     // =====================================================
     // UTILITIES
     // =====================================================
     window.clearAll = function() {
-        if (confirm('Clear all recordings and transcriptions?')) {
+        if (confirm('Clear all recordings, transcriptions, and outputs?')) {
             // Reset recording
             if (mediaRecorder && mediaRecorder.state !== 'inactive') {
                 stopRecording();
             }
             audioChunks = [];
             currentTranscription = '';
-            currentOutput = '';
-            currentDefaultPromptId = '';
+            currentMedicalNote = '';
+            processingResults = { system: null, editor: null, enhancements: [] };
 
             // Reset UI
             document.getElementById('transcription-text').value = '';
             document.getElementById('transcription-text').style.display = 'none';
             document.getElementById('transcription-empty').style.display = 'block';
             document.getElementById('transcription-empty').innerHTML = `
-                <div class="empty-state-icon">🎯</div>
+                <div class="empty-state-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 48px; height: 48px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
+                    </svg>
+                </div>
                 <p>Your transcription will appear here after recording</p>
             `;
             document.getElementById('transcription-actions').style.display = 'none';
-            document.getElementById('output-content').classList.remove('active');
             document.getElementById('output-empty').style.display = 'block';
-            document.getElementById('output-actions').style.display = 'none';
-            document.getElementById('prompt-selection').style.display = 'none';
-            document.getElementById('prompt-section-header').style.display = 'none';
-            document.getElementById('prompt-editor').style.display = 'none';
-            document.getElementById('prompt-actions').style.display = 'none';
-            document.getElementById('process-btn').style.display = 'none';
-            document.getElementById('clinical-prompt').value = '';
-            document.getElementById('prompt-text').value = '';
+            document.getElementById('output-cards-container').innerHTML = '';
+            document.getElementById('process-btn').disabled = true;
+            document.getElementById('prompt-customization-section').style.display = 'none';
             document.getElementById('duration-display').textContent = '0:00';
             document.getElementById('recording-status-text').textContent = 'Ready';
             document.getElementById('status-dot').classList.remove('recording', 'ready');
@@ -1588,24 +2478,6 @@ Transcription:`
         });
     }
 
-    function updateOutputCharCount(count) {
-        const counter = document.getElementById('output-char-counter');
-        let className = 'char-counter';
-        let message = `${count.toLocaleString()} characters`;
-
-        if (count > 5000) {
-            className += ' error';
-            message += ' ⚠️ Very long note';
-        } else if (count > 3000) {
-            className += ' warning';
-            message += ' ⚠️ Long note';
-        } else {
-            message += ' ✅';
-        }
-
-        counter.className = className;
-        counter.textContent = message;
-    }
 </script>
 
 <div class="embed-container" style="text-align: center; margin: 30px auto;">
@@ -1613,7 +2485,12 @@ Transcription:`
 </div>
 
 <div style="background: #e3f2fd; padding: 20px; border-left: 4px solid #2a7ae2; border-radius: 6px; margin-top: 30px;">
-    <h3 style="color: #2a7ae2; font-size: 1.2em; margin-bottom: 12px; text-align: center;">💡 How It Works</h3>
+    <h3 style="color: #2a7ae2; font-size: 1.2em; margin-bottom: 12px; text-align: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 6px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+        </svg>
+        How It Works
+    </h3>
     <p style="margin-bottom: 15px; text-align: center;">This tool combines OpenAI's Whisper (speech-to-text) with Phi-3.5 (clinical formatting) to create a complete AI scribe that runs entirely in your browser.</p>
     <p style="text-align: center;"><strong>Workflow:</strong> Record encounter → Whisper transcribes → Select format → AI generates note → Copy to EMR</p>
     <p style="text-align: center;"><strong>Privacy:</strong> Audio never leaves your device. All processing happens locally. HIPAA-compliant by design.</p>

@@ -33,5 +33,11 @@ collections:
   dotphrases:
     output: false
     permalink: /dotphrases/:path/
+  courses:
+    output: true
+    permalink: /courses/:name/
+  course_modules:
+    output: true
+    permalink: /courses/:course/:name/
 
 google_analytics: G-VNYGW8RWMY
