@@ -205,6 +205,35 @@ permalink: /diagnosis-game/
   position: relative;
 }
 
+/* Patient Eyes */
+.patient-sprite .pixel-art::before {
+  content: '';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 50%, #000 3px, transparent 3px),
+              radial-gradient(circle at 70% 50%, #000 3px, transparent 3px);
+  background-size: 20px 8px;
+  background-position: 0 0, 20px 0;
+  background-repeat: no-repeat;
+}
+
+/* Patient Smile */
+.patient-sprite .pixel-art::after {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 10px;
+  border-bottom: 3px solid #000;
+  border-radius: 0 0 50% 50%;
+}
+
 /* Patient emotions overlay */
 .patient-sprite.happy .emotion-overlay {
   content: "😊";
@@ -242,6 +271,66 @@ permalink: /diagnosis-game/
   box-shadow:
     inset -4px -4px 0 rgba(0, 0, 0, 0.2),
     4px 4px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Doctor Eyes */
+.doctor-sprite .pixel-art::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 50%, #000 3px, transparent 3px),
+              radial-gradient(circle at 70% 50%, #000 3px, transparent 3px);
+  background-size: 20px 8px;
+  background-position: 0 0, 20px 0;
+  background-repeat: no-repeat;
+}
+
+/* Doctor Smile */
+.doctor-sprite .pixel-art::after {
+  content: '';
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 10px;
+  border-bottom: 3px solid #000;
+  border-radius: 0 0 50% 50%;
+}
+
+/* Stethoscope */
+.doctor-sprite::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border: 3px solid #2c3e50;
+  border-radius: 50%;
+  background: #34495e;
+  box-shadow: 0 0 0 2px #7f8c8d;
+  z-index: 10;
+}
+
+/* Stethoscope tubes */
+.doctor-sprite::after {
+  content: '';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 20px;
+  background: #2c3e50;
+  border-radius: 2px;
+  z-index: 9;
 }
 
 /* Speech Bubble */
@@ -692,9 +781,9 @@ permalink: /diagnosis-game/
       You're a doctor seeing patients in the clinic. For each case, you'll review the patient's
       symptoms and physical exam findings. Your job is to write a differential diagnosis and
       recommend appropriate next steps (labs, imaging, treatment). The AI will evaluate your
-      answer and give you a score. Score high enough to move to the next level!
+      answer and give you feedback. All levels are unlocked - play any case you want!
     </p>
-    <p><strong>Passing Score:</strong> 70% or higher</p>
+    <p><strong>Passing Score:</strong> Get at least 3 key items correct to pass!</p>
   </div>
 
   <!-- AI Status -->
@@ -976,15 +1065,13 @@ function renderProgressBar() {
       levelDiv.classList.add('completed');
     } else if (index === gameState.currentLevel) {
       levelDiv.classList.add('current');
-    } else if (index > gameState.currentLevel) {
-      levelDiv.classList.add('locked');
     }
+    // All levels are unlocked - no locked state!
 
     levelDiv.innerHTML = `<div class="progress-level-number">${index + 1}</div>`;
     levelDiv.onclick = () => {
-      if (index <= gameState.currentLevel) {
-        loadLevel(index);
-      }
+      // Allow clicking any level
+      loadLevel(index);
     };
 
     progressBar.appendChild(levelDiv);
@@ -1113,7 +1200,7 @@ async function evaluateAnswer(differential, labs, imaging, treatment) {
   const caseData = gameState.cases[gameState.currentLevel];
 
   // Build evaluation prompt
-  const prompt = `You are a medical educator evaluating a medical student's response to a clinical case.
+  const prompt = `You are a supportive medical educator evaluating a medical student's response to a clinical case.
 
 CASE: ${caseData.title}
 Chief Complaint: ${caseData.chief_complaint}
@@ -1133,23 +1220,25 @@ Expected Imaging: ${Object.values(caseData.expected_next_steps.imaging || []).jo
 Expected Treatment: ${Object.values(caseData.expected_next_steps.immediate || []).concat(Object.values(caseData.expected_next_steps.treatment || [])).join(', ')}
 
 EVALUATE THE STUDENT'S ANSWER:
-1. Give a score from 0-100 based on:
-   - Differential diagnosis correctness (40 points)
-   - Appropriate lab orders (20 points)
-   - Appropriate imaging (20 points)
-   - Treatment plan (20 points)
-   - CRITICAL: If they missed critical diagnoses or critical actions, deduct significant points
+1. Count how many KEY ITEMS they got correct:
+   - Each critical diagnosis identified = 1 point
+   - Each critical action included = 1 point
+   - Other correct diagnoses/actions = 0.5 points
 
-2. Provide specific feedback on what they got right and what they missed.
+2. Calculate percentage score based on items correct out of total key items
 
-3. List any dangerous omissions or errors.
+3. The student PASSES if they get 3 or more key items correct!
+
+4. Provide specific, encouraging feedback on what they got right and what they missed.
+
+5. List any dangerous omissions or errors.
 
 Format your response EXACTLY as follows:
 SCORE: [number 0-100]
 CORRECT: [list what they got right]
 MISSING: [list critical items they missed]
 ERRORS: [list any dangerous mistakes or inappropriate choices]
-FEEDBACK: [2-3 sentences of constructive feedback]`;
+FEEDBACK: [2-3 sentences of constructive, encouraging feedback]`;
 
   try {
     if (gameState.llmLoaded && gameState.llm) {
@@ -1201,7 +1290,7 @@ function parseLLMEvaluation(evaluation, caseData) {
 // ============================================
 
 function ruleBasedEvaluation(differential, labs, imaging, treatment, caseData) {
-  let score = 0;
+  let correctCount = 0;
   const feedback = {
     correct: [],
     missing: [],
@@ -1214,11 +1303,10 @@ function ruleBasedEvaluation(differential, labs, imaging, treatment, caseData) {
   const imagingLower = imaging.toLowerCase();
   const treatmentLower = treatment.toLowerCase();
 
-  // Check differential diagnosis (40 points)
-  let diffScore = 0;
+  // Check differential diagnosis - count each correct diagnosis
   caseData.scoring_notes.critical_diagnoses.forEach(diagnosis => {
     if (diffLower.includes(diagnosis.toLowerCase())) {
-      diffScore += 15;
+      correctCount++;
       feedback.correct.push(`✓ Included critical diagnosis: ${diagnosis}`);
     } else {
       feedback.missing.push(`✗ Missed critical diagnosis: ${diagnosis}`);
@@ -1229,45 +1317,46 @@ function ruleBasedEvaluation(differential, labs, imaging, treatment, caseData) {
   caseData.expected_differential.forEach(diagnosis => {
     if (diffLower.includes(diagnosis.toLowerCase()) &&
         !caseData.scoring_notes.critical_diagnoses.some(cd => cd.toLowerCase() === diagnosis.toLowerCase())) {
-      diffScore += 5;
+      correctCount += 0.5; // Half point for non-critical but correct diagnoses
       feedback.correct.push(`✓ Good differential: ${diagnosis}`);
     }
   });
 
-  score += Math.min(diffScore, 40);
-
-  // Check critical actions in labs/imaging/treatment (20 points each)
-  let actionsScore = 0;
+  // Check critical actions in labs/imaging/treatment - count each correct action
   caseData.scoring_notes.critical_actions.forEach(action => {
     const actionLower = action.toLowerCase();
     if (labsLower.includes(actionLower) ||
         imagingLower.includes(actionLower) ||
         treatmentLower.includes(actionLower)) {
-      actionsScore += 10;
+      correctCount++;
       feedback.correct.push(`✓ Critical action included: ${action}`);
     } else {
       feedback.missing.push(`✗ Missing critical action: ${action}`);
     }
   });
 
-  score += Math.min(actionsScore, 60);
-
   // Check for common pitfalls
   if (caseData.scoring_notes.common_pitfalls) {
     caseData.scoring_notes.common_pitfalls.forEach(pitfall => {
-      // This is a simplified check - in reality would need more sophisticated analysis
       feedback.errors.push(`⚠️ Common pitfall to avoid: ${pitfall}`);
     });
   }
 
+  // Calculate score out of 100 based on correct count
+  // If they get 3+ items correct, they pass (score >= 50)
+  const totalPossible = caseData.scoring_notes.critical_diagnoses.length +
+                       caseData.scoring_notes.critical_actions.length;
+  const scorePercentage = Math.min(Math.round((correctCount / totalPossible) * 100), 100);
+
   return {
-    score: Math.min(score, 100),
+    score: scorePercentage,
+    correctCount: Math.floor(correctCount),
     correct: feedback.correct.join('\n'),
     missing: feedback.missing.join('\n'),
     errors: feedback.errors.join('\n'),
-    feedback: score >= 70 ?
-      'Good job! You identified the key diagnoses and critical actions.' :
-      'Review the critical diagnoses and actions needed for this case.',
+    feedback: correctCount >= 3 ?
+      `Great work! You got ${Math.floor(correctCount)} key items correct!` :
+      `You got ${Math.floor(correctCount)} key items correct. Try to identify at least 3 key diagnoses or actions.`,
     educationalNotes: caseData.educational_notes
   };
 }
@@ -1283,8 +1372,11 @@ function showResults(result) {
     result.score
   );
 
-  // Update progress
-  if (result.score >= 70 && !gameState.completedLevels.includes(gameState.currentLevel)) {
+  // Get correct count (use correctCount if available, otherwise estimate from score)
+  const correctCount = result.correctCount !== undefined ? result.correctCount : Math.floor(result.score / 20);
+
+  // Update progress - mark as completed if they got 3+ items correct
+  if (correctCount >= 3 && !gameState.completedLevels.includes(gameState.currentLevel)) {
     gameState.completedLevels.push(gameState.currentLevel);
   }
 
@@ -1292,34 +1384,34 @@ function showResults(result) {
   const resultsPanel = document.getElementById('resultsPanel');
   resultsPanel.classList.add('show');
 
-  // Patient reaction
+  // Patient reaction based on correct count
   const patientReaction = document.getElementById('patientReaction');
-  if (result.score >= 90) {
+  if (correctCount >= 5) {
     patientReaction.textContent = '😄 I feel so much better! Thank you, doctor!';
-  } else if (result.score >= 70) {
+  } else if (correctCount >= 3) {
     patientReaction.textContent = '😊 Thank you for helping me!';
-  } else if (result.score >= 50) {
+  } else if (correctCount >= 2) {
     patientReaction.textContent = '😐 I think I need a second opinion...';
   } else {
     patientReaction.textContent = '😰 Ohhhhh noooooo...';
   }
 
-  // Score display
-  document.getElementById('scoreNumber').textContent = result.score;
+  // Score display - show percentage
+  document.getElementById('scoreNumber').textContent = result.score + '%';
 
-  // Score rank
+  // Score rank based on correct count
   const scoreRank = document.getElementById('scoreRank');
-  if (result.score >= 90) {
-    scoreRank.textContent = '⭐ EXCELLENT';
+  if (correctCount >= 5) {
+    scoreRank.textContent = `⭐ EXCELLENT (${correctCount} correct!)`;
     scoreRank.className = 'score-rank excellent';
-  } else if (result.score >= 70) {
-    scoreRank.textContent = '👍 GOOD';
+  } else if (correctCount >= 3) {
+    scoreRank.textContent = `👍 PASSED (${correctCount} correct!)`;
     scoreRank.className = 'score-rank good';
-  } else if (result.score >= 50) {
-    scoreRank.textContent = '📚 FAIR';
+  } else if (correctCount >= 2) {
+    scoreRank.textContent = `📚 CLOSE (${correctCount} correct)`;
     scoreRank.className = 'score-rank fair';
   } else {
-    scoreRank.textContent = '📖 NEEDS REVIEW';
+    scoreRank.textContent = `📖 TRY AGAIN (${correctCount} correct)`;
     scoreRank.className = 'score-rank poor';
   }
 
@@ -1337,9 +1429,9 @@ function showResults(result) {
     <p>${result.educationalNotes}</p>
   `;
 
-  // Show/hide next level button
+  // Show next level button if there are more levels (since all are unlocked)
   const nextLevelBtn = document.getElementById('nextLevelBtn');
-  if (result.score >= 70 && gameState.currentLevel < gameState.cases.length - 1) {
+  if (gameState.currentLevel < gameState.cases.length - 1) {
     nextLevelBtn.style.display = 'inline-block';
   } else {
     nextLevelBtn.style.display = 'none';
