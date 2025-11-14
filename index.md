@@ -215,7 +215,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
       Experimental browser-based AI tools demonstrating what's possible with client-side machine learning. <strong>Educational purposes only.</strong> These are prototypes to show technical capabilities, not production clinical tools.
     </p>
 
-    <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem;">
+    <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 3rem;">
 
       <!-- Scribe -->
       <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #059669;">
@@ -342,6 +342,49 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
         <div style="text-align: center;">
           <a href="{{ site.baseurl }}/ask-ai" class="btn btn-lg" style="background: #be185d; color: white; width: 100%;">
             Try Chat
+          </a>
+        </div>
+      </div>
+
+      <!-- PPE Dot Phrase Generator -->
+      <div style="background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%); padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 2px solid #ea580c;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h3 style="color: #c2410c; font-size: var(--font-size-2xl); margin-bottom: 0.5rem;">PPE Dot Phrase Generator</h3>
+          <p style="color: #9a3412; font-weight: 600; font-size: var(--font-size-sm);">Input → Generate → Save</p>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #c2410c; margin-bottom: 0.5rem; font-size: 1rem;">
+              AI-Powered Dot Phrases
+            </h4>
+            <p style="color: #9a3412; font-size: 0.95rem;">
+              Generate reusable EMR dot phrases for clinical documentation. Creates 3 suggestions with wildcards and smart lists.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: #c2410c; margin-bottom: 0.5rem; font-size: 1rem;">
+              Clinical Focus
+            </h4>
+            <p style="color: #9a3412; font-size: 0.95rem;">
+              Specialized in counseling, anticipatory guidance, care instructions, and clinical formatting templates.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="color: #c2410c; margin-bottom: 0.5rem; font-size: 1rem;">
+              Quick Templates
+            </h4>
+            <p style="color: #9a3412; font-size: 0.95rem;">
+              Includes examples for diabetes, UTI, well-child visits, asthma, and more. Save to snippet manager for reuse.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/dot-phrase-generator" class="btn btn-lg" style="background: #ea580c; color: white; width: 100%;">
+            Try Dot Phrase Generator
           </a>
         </div>
       </div>
