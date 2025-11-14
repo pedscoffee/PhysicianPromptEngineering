@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anki Arcade - Retro Flashcard Game</title>
+    <!-- External Libraries for .apkg Support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
     <style>
         * {
             margin: 0;
@@ -436,9 +439,9 @@
 
                     <div class="upload-area" id="uploadArea">
                         <div class="upload-text">⬆️ CLICK TO UPLOAD DECK ⬆️</div>
-                        <div class="upload-hint">Drop CSV or TSV file here</div>
-                        <div class="upload-hint">(Max 300 cards • Front/Back format)</div>
-                        <input type="file" id="fileInput" accept=".csv,.tsv,.txt" style="display: none;">
+                        <div class="upload-hint">Drop APKG, CSV, or TSV file here</div>
+                        <div class="upload-hint">(Max 300 cards • Anki export or Front/Back format)</div>
+                        <input type="file" id="fileInput" accept=".apkg,.csv,.tsv,.txt" style="display: none;">
                     </div>
 
                     <div class="button-container mt-20">
@@ -627,9 +630,23 @@
                 this.hideError();
 
                 try {
-                    const text = await file.text();
-                    const parser = new DeckParser();
-                    const cards = parser.parse(text);
+                    let cards;
+
+                    // Detect file type
+                    if (file.name.endsWith('.apkg')) {
+                        // Show loading message
+                        this.showError('Loading .apkg file... <span class="loading">⏳</span>');
+
+                        const parser = new ApkgParser();
+                        cards = await parser.parse(file);
+                    } else {
+                        // CSV/TSV parsing
+                        const text = await file.text();
+                        const parser = new DeckParser();
+                        cards = parser.parse(text);
+                    }
+
+                    this.hideError();
 
                     if (cards.length === 0) {
                         throw new Error('No valid cards found. Please ensure your file has "front" and "back" columns.');
@@ -882,12 +899,128 @@
             }
 
             showError(message) {
-                this.elements.errorMessage.textContent = '⚠️ ' + message;
+                this.elements.errorMessage.innerHTML = '⚠️ ' + message;
                 this.elements.errorMessage.classList.remove('hidden');
             }
 
             hideError() {
                 this.elements.errorMessage.classList.add('hidden');
+            }
+        }
+
+        // ============================================
+        // APKG Parser (Anki Package Format)
+        // ============================================
+
+        class ApkgParser {
+            async parse(file) {
+                try {
+                    // Load the .apkg file (it's a ZIP archive)
+                    const arrayBuffer = await file.arrayBuffer();
+                    const zip = await JSZip.loadAsync(arrayBuffer);
+
+                    // Extract the SQLite database
+                    const dbFile = zip.file('collection.anki2');
+                    if (!dbFile) {
+                        throw new Error('Invalid .apkg file: collection.anki2 not found');
+                    }
+
+                    const dbBuffer = await dbFile.async('uint8array');
+
+                    // Initialize sql.js
+                    const SQL = await initSqlJs({
+                        locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+                    });
+
+                    const db = new SQL.Database(dbBuffer);
+
+                    // Extract cards from the database
+                    const cards = this.extractCards(db);
+
+                    db.close();
+
+                    return cards;
+
+                } catch (error) {
+                    console.error('APKG parsing error:', error);
+                    throw new Error('Failed to parse .apkg file: ' + error.message);
+                }
+            }
+
+            extractCards(db) {
+                const cards = [];
+
+                try {
+                    // Get models (card templates) from the col table
+                    const colStmt = db.prepare('SELECT models FROM col');
+                    colStmt.step();
+                    const colRow = colStmt.getAsObject();
+                    colStmt.free();
+
+                    const models = JSON.parse(colRow.models);
+
+                    // Get all notes
+                    const notesStmt = db.prepare('SELECT id, mid, flds FROM notes');
+
+                    while (notesStmt.step()) {
+                        const note = notesStmt.getAsObject();
+                        const modelId = note.mid.toString();
+                        const model = models[modelId];
+
+                        if (!model) continue;
+
+                        // Split fields (separated by \x1f character)
+                        const fields = note.flds.split('\x1f');
+
+                        // Get field names from model
+                        const fieldNames = model.flds.map(f => f.name.toLowerCase());
+
+                        // Try to find front/back fields
+                        let frontIdx = fieldNames.findIndex(name =>
+                            name === 'front' || name === 'question' || name === 'text'
+                        );
+                        let backIdx = fieldNames.findIndex(name =>
+                            name === 'back' || name === 'answer' || name === 'extra'
+                        );
+
+                        // If not found, use first two fields
+                        if (frontIdx === -1) frontIdx = 0;
+                        if (backIdx === -1) backIdx = Math.min(1, fields.length - 1);
+
+                        const front = this.stripHtml(fields[frontIdx] || '').trim();
+                        const back = this.stripHtml(fields[backIdx] || '').trim();
+
+                        if (front && back) {
+                            cards.push({ front, back });
+                        }
+                    }
+
+                    notesStmt.free();
+
+                } catch (error) {
+                    console.error('Error extracting cards from database:', error);
+                    throw new Error('Failed to extract cards from database');
+                }
+
+                return cards;
+            }
+
+            stripHtml(html) {
+                // Remove HTML tags and decode entities
+                const tmp = document.createElement('div');
+                tmp.innerHTML = html;
+
+                // Remove sound tags [sound:...]
+                let text = tmp.textContent || tmp.innerText || '';
+                text = text.replace(/\[sound:.*?\]/g, '');
+
+                // Remove image tags
+                text = text.replace(/<img[^>]*>/gi, '');
+
+                // Clean up extra whitespace
+                text = text.replace(/\s+/g, ' ').trim();
+
+                return text;
             }
         }
 
