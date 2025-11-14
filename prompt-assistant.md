@@ -573,7 +573,12 @@ permalink: /prompt-assistant/
             <div id="conversation-history"></div>
 
             <div class="tips-section">
-                <h4>💡 Tips for Best Results</h4>
+                <h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 6px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                    </svg>
+                    Tips for Best Results
+                </h4>
                 <ul>
                     <li><strong>Be specific:</strong> Mention your specialty, note type, and formatting preferences</li>
                     <li><strong>Include examples:</strong> Describe what good output looks like</li>
@@ -1085,7 +1090,12 @@ My practice setting: [Hospital/clinic/specialty]`,
 </div>
 
 <div style="background: #e3f2fd; padding: 20px; border-left: 4px solid #2a7ae2; border-radius: 6px; margin-top: 30px; text-align: center;">
-    <h3 style="color: #2a7ae2; font-size: 1.2em; margin-bottom: 12px;">💡 How It Works</h3>
+    <h3 style="color: #2a7ae2; font-size: 1.2em; margin-bottom: 12px;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 6px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+        </svg>
+        How It Works
+    </h3>
     <p style="margin-bottom: 15px;">This tool downloads a 2GB AI model to your browser on first use. After that, everything runs locally—no internet required, complete privacy. The AI (Phi-3.5-mini) is optimized for prompt engineering tasks and runs surprisingly fast on modern hardware.</p>
     <p><strong>Performance:</strong> Expect 10-30 tokens/second on most laptops, faster with dedicated GPUs. First download takes 5-15 minutes, then it's cached forever.</p>
 </div>
