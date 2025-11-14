@@ -2,7 +2,7 @@
 layout: post
 title: "Personal Prompt Snippet Manager: Your Private Library for AI Documentation"
 date: 2025-11-07 10:00:00 -0500
-author: pedscoffee
+author: PedsCoffee
 categories: [AI, Documentation, Tools, Privacy]
 tags: [snippet manager, prompt library, privacy, HIPAA compliance, workflow tools, prompt organization]
 excerpt: "A free, browser-based tool for organizing your AI prompts. Store unlimited snippets locally with zero privacy concerns—no account, no server, no compromises."
@@ -30,7 +30,7 @@ There had to be a better way.
 
 ## Browser-Based Privacy
 
-The [Personal Prompt Snippet Manager](https://physicianpromptengineering.com/prompt-manager/) solves this through a simple principle: your data never leaves your device.
+The [Personal Prompt Snippet Manager](https://physicianpromptengineering.com/snippet-manager/) solves this through a simple principle: your data never leaves your device.
 
 Everything runs in your browser. No servers. No accounts. No uploads. Your snippets live in your browser's local storage—accessible only to you, on your device.
 
@@ -100,7 +100,7 @@ Think of it like using a calculator on your phone—the tool runs locally, your 
 
 **Initial Setup: None**
 
-1. Visit the [Snippet Manager](https://physicianpromptengineering.com/prompt-manager/)
+1. Visit the [Snippet Manager](https://physicianpromptengineering.com/snippet-manager/)
 2. Start adding prompts immediately (no account needed)
 3. Organize with tags that match your workflow
 4. Export a backup for peace of mind
@@ -224,6 +224,6 @@ Together, we're building a toolkit for the modern physician—practical, private
 
 -----
 
-*Start organizing your prompts today: [Launch the Snippet Manager →](https://physicianpromptengineering.com/prompt-manager/)*
+*Start organizing your prompts today: [Launch the Snippet Manager →](https://physicianpromptengineering.com/snippet-manager/)*
 
-*Questions about setup or best practices? Ask in our [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions) or share your workflow on the [Contributions page](https://physicianpromptengineering.com/contributions.html).*
+*Questions about setup or best practices? Ask in our [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions) or share your workflow on the [Contributions page](https://physicianpromptengineering.com/contributions).*

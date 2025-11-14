@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Prompt Library
-description: Access a free library of production-ready clinical LLM prompts. Copy and paste prompts for A/P formatting, billing analysis, AVS generation, and more.
+description: Access a free library of production-ready clinical LLM prompts. Copy and paste prompts for A&P formatting, billing analysis, AVS generation, and more.
 ---
 
 <style>
@@ -75,7 +75,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
       </div>
       <div class="text-center mt-6">
         <p class="text-secondary">
-          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/contributions" class="text-primary">contribute your own</a>.  See <a href="https://physicianpromptengineering.com/disclaimer/">Disclaimer.</a>
+          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/contributions" class="text-primary">contribute your own</a>.  See <a href="{{ site.baseurl }}/disclaimer">Disclaimer.</a>
         </p>
       </div>
     </div>

@@ -304,7 +304,7 @@ symptomatic relief."</code></pre>
 
       <!-- Additional Resources -->
       <div class="text-center mt-8 text-secondary">
-        <p><a href="https://physicianpromptengineering.com/disclaimer/">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
+        <p><a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
       </div>
 
       <!-- Share Your Prompt CTA -->
