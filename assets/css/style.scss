@@ -122,21 +122,21 @@
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Dark Mode Color Overrides */
-    --color-primary: #3b82f6;
-    --color-primary-dark: #2563eb;
-    --color-primary-light: #1e3a8a;
-    --color-secondary: #06b6d4;
-    --color-secondary-dark: #0891b2;
-    --color-secondary-light: #164e63;
+    /* Dark Mode Color Overrides - Muted blues for professional aesthetic */
+    --color-primary: #60a5fa;           /* Softer blue, less harsh */
+    --color-primary-dark: #3b82f6;      /* Medium blue for hover */
+    --color-primary-light: #1e3a8a;     /* Deep blue for backgrounds */
+    --color-secondary: #22d3ee;         /* Softer cyan */
+    --color-secondary-dark: #06b6d4;    /* Medium cyan */
+    --color-secondary-light: #164e63;   /* Deep teal for backgrounds */
 
-    --color-accent: #8b5cf6;
-    --color-accent-dark: #7c3aed;
-    --color-accent-light: #5b21b6;
+    --color-accent: #a78bfa;            /* Softer purple */
+    --color-accent-dark: #8b5cf6;       /* Medium purple */
+    --color-accent-light: #5b21b6;      /* Deep purple for backgrounds */
 
-    --color-success: #10b981;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
+    --color-success: #34d399;           /* Softer green */
+    --color-warning: #fbbf24;           /* Softer amber */
+    --color-error: #f87171;             /* Softer red */
 
     /* Dark Mode Neutrals */
     --color-text-primary: #f9fafb;
@@ -154,9 +154,13 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
 
-    /* Dark Mode Gradients */
+    /* Dark Mode Gradients - Deeper, more sophisticated */
     --gradient-hero: linear-gradient(135deg, #1e3a8a 0%, #164e63 100%);
     --gradient-primary: linear-gradient(135deg, #1e40af 0%, #0e7490 100%);
+    --gradient-success: linear-gradient(135deg, #065f46 0%, #064e3b 100%);
+    --gradient-info: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    --gradient-warning: linear-gradient(135deg, #92400e 0%, #78350f 100%);
+    --gradient-pink: linear-gradient(135deg, #831843 0%, #701a75 100%);
   }
 }
 
