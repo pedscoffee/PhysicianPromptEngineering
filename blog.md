@@ -63,9 +63,7 @@ permalink: /blog/
         Stay informed about new prompts, EMR integration tips, and clinical AI developments
       </p>
     </div>
-    <div class="embed-container">
-      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-    </div>
+    {%- include newsletter-signup.html -%}
   </div>
 </section>
 
