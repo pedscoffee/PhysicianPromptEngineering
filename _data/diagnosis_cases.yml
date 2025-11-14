@@ -1,0 +1,470 @@
+# Differential Diagnosis Game Cases
+# Each case represents a level in the game
+# Cases are designed to be educational for medical students
+
+level_1_chest_pain:
+  id: "case_001"
+  level: 1
+  difficulty: "Beginner"
+  title: "Case 1: Chest Pain"
+  patient:
+    name: "Alex"
+    age: 45
+    gender: "Male"
+    appearance: "concerned"
+  chief_complaint: "I've been having chest pain for the past 2 hours."
+  symptoms:
+    - "Substernal chest pressure, 7/10 severity"
+    - "Started while mowing the lawn"
+    - "Radiates to left arm and jaw"
+    - "Associated diaphoresis and nausea"
+    - "No relief with rest"
+  physical_exam:
+    vital_signs:
+      - "BP: 145/92 mmHg"
+      - "HR: 98 bpm, regular"
+      - "RR: 18/min"
+      - "Temp: 37.0°C (98.6°F)"
+      - "O2 Sat: 97% on room air"
+    findings:
+      - "Diaphoretic, anxious-appearing"
+      - "Cardiovascular: Regular rate and rhythm, no murmurs"
+      - "Lungs: Clear to auscultation bilaterally"
+      - "Abdomen: Soft, non-tender"
+  expected_differential:
+    - "Acute coronary syndrome (STEMI/NSTEMI)"
+    - "Unstable angina"
+    - "Aortic dissection"
+    - "Pulmonary embolism"
+    - "Pneumothorax"
+  expected_next_steps:
+    immediate:
+      - "ECG (12-lead)"
+      - "Cardiac biomarkers (troponin, CK-MB)"
+      - "Aspirin 325mg (if not contraindicated)"
+      - "IV access"
+      - "Continuous cardiac monitoring"
+    labs:
+      - "Complete blood count"
+      - "Basic metabolic panel"
+      - "Lipid panel"
+    imaging:
+      - "Chest X-ray"
+      - "Consider CT angiography if aortic dissection suspected"
+    treatment:
+      - "Oxygen if hypoxic"
+      - "Nitroglycerin (sublingual or IV)"
+      - "Morphine for pain control"
+      - "Antiplatelet therapy"
+      - "Cardiology consult"
+  scoring_notes:
+    critical_diagnoses:
+      - "Acute coronary syndrome"
+      - "STEMI"
+      - "NSTEMI"
+      - "Myocardial infarction"
+    critical_actions:
+      - "ECG"
+      - "Troponin"
+      - "Aspirin"
+    common_pitfalls:
+      - "Missing life-threatening causes like aortic dissection or PE"
+      - "Not ordering ECG immediately"
+      - "Forgetting aspirin administration"
+  educational_notes: "This is a classic presentation of acute coronary syndrome. The key is recognizing the typical MI symptoms (substernal chest pressure, radiation to arm/jaw, diaphoresis) and immediately ruling out life-threatening causes. ECG and troponin are critical first steps."
+
+level_2_abdominal_pain:
+  id: "case_002"
+  level: 2
+  difficulty: "Beginner"
+  title: "Case 2: Abdominal Pain"
+  patient:
+    name: "Sarah"
+    age: 28
+    gender: "Female"
+    appearance: "uncomfortable"
+  chief_complaint: "I have really bad stomach pain in my right lower side."
+  symptoms:
+    - "Pain started around belly button, migrated to RLQ"
+    - "Started about 12 hours ago"
+    - "Nausea and one episode of vomiting"
+    - "No appetite"
+    - "Pain worse with movement"
+  physical_exam:
+    vital_signs:
+      - "BP: 118/76 mmHg"
+      - "HR: 88 bpm"
+      - "RR: 16/min"
+      - "Temp: 38.3°C (101°F)"
+      - "O2 Sat: 99% on room air"
+    findings:
+      - "Appears uncomfortable, lying still"
+      - "Abdomen: Tenderness at McBurney's point"
+      - "Positive Rovsing sign"
+      - "Guarding and rebound tenderness in RLQ"
+      - "Psoas sign positive"
+  expected_differential:
+    - "Acute appendicitis"
+    - "Ovarian torsion"
+    - "Ectopic pregnancy"
+    - "Pelvic inflammatory disease"
+    - "Ruptured ovarian cyst"
+    - "Mesenteric lymphadenitis"
+    - "Gastroenteritis"
+  expected_next_steps:
+    immediate:
+      - "NPO status"
+      - "IV access and fluid resuscitation"
+    labs:
+      - "Complete blood count with differential"
+      - "Comprehensive metabolic panel"
+      - "Urinalysis"
+      - "Urine pregnancy test (β-hCG)"
+      - "C-reactive protein"
+    imaging:
+      - "Ultrasound of abdomen/pelvis"
+      - "CT abdomen/pelvis with contrast (if diagnosis unclear)"
+    treatment:
+      - "IV fluids"
+      - "Analgesics for pain control"
+      - "Antibiotics (if appendicitis confirmed)"
+      - "Surgical consult"
+      - "Anti-emetics for nausea"
+  scoring_notes:
+    critical_diagnoses:
+      - "Appendicitis"
+      - "Acute appendicitis"
+    critical_actions:
+      - "Pregnancy test"
+      - "Surgical consult"
+      - "Imaging (ultrasound or CT)"
+    common_pitfalls:
+      - "Not considering gynecologic causes in women of childbearing age"
+      - "Forgetting pregnancy test before imaging"
+      - "Delaying surgical consultation"
+  educational_notes: "Classic appendicitis presentation with periumbilical pain migrating to RLQ. In women of childbearing age, ALWAYS obtain pregnancy test and consider gynecologic causes (ectopic pregnancy, ovarian torsion). Don't forget surgical consultation!"
+
+level_3_shortness_breath:
+  id: "case_003"
+  level: 3
+  difficulty: "Intermediate"
+  title: "Case 3: Shortness of Breath"
+  patient:
+    name: "Martha"
+    age: 67
+    gender: "Female"
+    appearance: "distressed"
+  chief_complaint: "I can't catch my breath. It's been getting worse over the past few days."
+  symptoms:
+    - "Progressive dyspnea over 3 days"
+    - "Worse when lying flat (orthopnea)"
+    - "Waking up at night gasping for air (PND)"
+    - "Bilateral leg swelling"
+    - "Decreased exercise tolerance"
+    - "History of hypertension, not compliant with medications"
+  physical_exam:
+    vital_signs:
+      - "BP: 168/98 mmHg"
+      - "HR: 110 bpm, irregular"
+      - "RR: 28/min"
+      - "Temp: 36.8°C (98.2°F)"
+      - "O2 Sat: 88% on room air"
+    findings:
+      - "Respiratory distress, using accessory muscles"
+      - "JVD present at 45 degrees"
+      - "Cardiovascular: Irregularly irregular rhythm, S3 gallop"
+      - "Lungs: Bilateral crackles to mid-lung fields"
+      - "3+ pitting edema bilateral lower extremities"
+  expected_differential:
+    - "Acute decompensated heart failure"
+    - "Atrial fibrillation with rapid ventricular response"
+    - "Pulmonary embolism"
+    - "Pneumonia"
+    - "COPD exacerbation"
+    - "Acute coronary syndrome"
+  expected_next_steps:
+    immediate:
+      - "Oxygen supplementation"
+      - "ECG (12-lead)"
+      - "Place on continuous monitoring"
+      - "IV access"
+    labs:
+      - "BNP or NT-proBNP"
+      - "Troponin"
+      - "Complete blood count"
+      - "Basic metabolic panel"
+      - "Arterial blood gas"
+      - "D-dimer (if PE suspected)"
+    imaging:
+      - "Chest X-ray (portable)"
+      - "Echocardiogram"
+      - "CT pulmonary angiography (if PE suspected)"
+    treatment:
+      - "Supplemental oxygen to maintain O2 sat >90%"
+      - "IV furosemide (diuresis)"
+      - "IV nitroglycerin for afterload reduction"
+      - "Rate control for atrial fibrillation (if present)"
+      - "Consider BiPAP/CPAP for respiratory support"
+      - "Cardiology consult"
+  scoring_notes:
+    critical_diagnoses:
+      - "Heart failure"
+      - "Acute heart failure"
+      - "Decompensated heart failure"
+      - "Congestive heart failure"
+      - "CHF"
+    critical_actions:
+      - "Oxygen"
+      - "BNP"
+      - "Chest X-ray"
+      - "Furosemide"
+      - "Diuresis"
+    common_pitfalls:
+      - "Not recognizing irregular rhythm (A-fib)"
+      - "Missing PE as alternative diagnosis"
+      - "Over-diuresing without monitoring electrolytes"
+  educational_notes: "Classic heart failure exacerbation with volume overload. Key features: orthopnea, PND, JVD, S3 gallop, bilateral crackles, peripheral edema. The irregular rhythm suggests atrial fibrillation. BNP helps confirm heart failure. Treatment focuses on diuresis and reducing preload/afterload."
+
+level_4_headache:
+  id: "case_004"
+  level: 4
+  difficulty: "Intermediate"
+  title: "Case 4: Severe Headache"
+  patient:
+    name: "James"
+    age: 52
+    gender: "Male"
+    appearance: "in severe pain"
+  chief_complaint: "Worst headache of my life - it came on suddenly about an hour ago."
+  symptoms:
+    - "Sudden onset 'thunderclap' headache"
+    - "Started during exercise"
+    - "10/10 severity"
+    - "Associated neck stiffness"
+    - "Nausea and photophobia"
+    - "No prior history of similar headaches"
+  physical_exam:
+    vital_signs:
+      - "BP: 178/102 mmHg"
+      - "HR: 92 bpm"
+      - "RR: 18/min"
+      - "Temp: 37.1°C (98.8°F)"
+      - "O2 Sat: 98% on room air"
+    findings:
+      - "Alert but in severe distress"
+      - "Neck stiffness present"
+      - "Photophobia"
+      - "Neurologic: Cranial nerves II-XII intact"
+      - "No focal neurologic deficits"
+      - "Negative Kernig and Brudzinski signs"
+  expected_differential:
+    - "Subarachnoid hemorrhage"
+    - "Ruptured cerebral aneurysm"
+    - "Intracerebral hemorrhage"
+    - "Meningitis"
+    - "Reversible cerebral vasoconstriction syndrome"
+    - "Acute hypertensive emergency"
+    - "Cerebral venous thrombosis"
+  expected_next_steps:
+    immediate:
+      - "Neurology/neurosurgery consult"
+      - "Stat non-contrast head CT"
+      - "Blood pressure management"
+    labs:
+      - "Complete blood count"
+      - "Coagulation panel (PT/PTT/INR)"
+      - "Basic metabolic panel"
+      - "Type and screen"
+    imaging:
+      - "Non-contrast CT head (STAT)"
+      - "CT angiography of head and neck (if SAH suspected)"
+      - "Lumbar puncture (if CT negative but high suspicion)"
+    treatment:
+      - "Analgesics for severe pain"
+      - "Anti-emetics"
+      - "Cautious blood pressure control (maintain CPP)"
+      - "Keep patient calm and quiet"
+      - "Nimodipine (if SAH confirmed)"
+      - "Neurosurgical intervention if indicated"
+  scoring_notes:
+    critical_diagnoses:
+      - "Subarachnoid hemorrhage"
+      - "SAH"
+      - "Ruptured aneurysm"
+      - "Cerebral aneurysm"
+    critical_actions:
+      - "CT head"
+      - "Non-contrast CT"
+      - "Neurosurgery consult"
+      - "Neurology consult"
+    common_pitfalls:
+      - "Attributing to migraine without ruling out SAH"
+      - "Over-aggressive BP lowering (can worsen brain perfusion)"
+      - "Missing need for lumbar puncture if CT is negative"
+      - "Not consulting neurosurgery emergently"
+  educational_notes: "THUNDERCLAP HEADACHE = SAH UNTIL PROVEN OTHERWISE. Sudden onset, worst headache of life, during exertion - classic SAH presentation. Non-contrast CT is first step (95% sensitive in first 24 hours). If negative with high suspicion, LP is needed (xanthochromia). This is a neurosurgical emergency."
+
+level_5_altered_mental_status:
+  id: "case_005"
+  level: 5
+  difficulty: "Advanced"
+  title: "Case 5: Confusion and Fever"
+  patient:
+    name: "Robert"
+    age: 73
+    gender: "Male"
+    appearance: "confused"
+  chief_complaint: "My husband is confused and has been getting worse over the past day. He has a fever too."
+  symptoms:
+    - "Progressive confusion over 24 hours"
+    - "Fever (per family)"
+    - "Decreased oral intake"
+    - "Not acting like himself"
+    - "History of Type 2 diabetes"
+    - "Lives in nursing home"
+  physical_exam:
+    vital_signs:
+      - "BP: 102/68 mmHg"
+      - "HR: 118 bpm"
+      - "RR: 24/min"
+      - "Temp: 39.2°C (102.6°F)"
+      - "O2 Sat: 94% on room air"
+    findings:
+      - "Oriented only to self, confused"
+      - "Dry mucous membranes, poor skin turgor"
+      - "Cardiovascular: Tachycardic, regular"
+      - "Lungs: Decreased breath sounds right base"
+      - "Neurologic: No focal deficits, no meningeal signs"
+      - "Skin: Warm, flushed"
+  expected_differential:
+    - "Sepsis (likely pneumonia source)"
+    - "Urinary tract infection/urosepsis"
+    - "Meningitis/encephalitis"
+    - "Diabetic hyperglycemic emergency (DKA/HHS)"
+    - "Stroke/intracranial process"
+    - "Medication effect/toxicity"
+    - "Electrolyte abnormality"
+  expected_next_steps:
+    immediate:
+      - "IV access, aggressive fluid resuscitation"
+      - "Blood cultures x2 (before antibiotics)"
+      - "Broad-spectrum antibiotics (within 1 hour)"
+      - "Fingerstick glucose"
+    labs:
+      - "Complete blood count with differential"
+      - "Comprehensive metabolic panel"
+      - "Lactate"
+      - "Urinalysis and urine culture"
+      - "Blood glucose"
+      - "Procalcitonin"
+      - "Arterial blood gas"
+    imaging:
+      - "Chest X-ray"
+      - "CT head (if concerned for intracranial process)"
+    treatment:
+      - "IV fluids (30 mL/kg crystalloid for sepsis)"
+      - "Empiric broad-spectrum antibiotics"
+      - "Source control"
+      - "Vasopressors if remains hypotensive"
+      - "ICU admission"
+      - "Insulin if hyperglycemic"
+  scoring_notes:
+    critical_diagnoses:
+      - "Sepsis"
+      - "Pneumonia"
+      - "Urosepsis"
+      - "Urinary tract infection"
+    critical_actions:
+      - "Blood cultures"
+      - "Antibiotics"
+      - "IV fluids"
+      - "Fluid resuscitation"
+      - "Lactate"
+    common_pitfalls:
+      - "Delaying antibiotics beyond 1 hour (Surviving Sepsis guidelines)"
+      - "Inadequate fluid resuscitation"
+      - "Not getting blood cultures before antibiotics"
+      - "Missing diabetic emergency"
+      - "Not considering multiple concurrent diagnoses in elderly"
+  educational_notes: "Altered mental status + fever + hypotension = SEPSIS. In elderly patients, sepsis often presents atypically. Focus on the sepsis bundle: early recognition, blood cultures, lactate, antibiotics within 1 hour, aggressive fluid resuscitation. Common sources are pneumonia and UTI. Don't forget to check glucose in diabetics!"
+
+level_6_syncope:
+  id: "case_006"
+  level: 6
+  difficulty: "Advanced"
+  title: "Case 6: Loss of Consciousness"
+  patient:
+    name: "Emily"
+    age: 19
+    gender: "Female"
+    appearance: "anxious"
+  chief_complaint: "I passed out at the gym about 30 minutes ago."
+  symptoms:
+    - "Sudden loss of consciousness during volleyball game"
+    - "No warning symptoms"
+    - "Regained consciousness within seconds"
+    - "Brief jerking movements witnessed"
+    - "Denies chest pain, palpitations"
+    - "Family history of sudden cardiac death (brother, age 22)"
+  physical_exam:
+    vital_signs:
+      - "BP: 112/68 mmHg"
+      - "HR: 88 bpm, regular"
+      - "RR: 16/min"
+      - "Temp: 36.9°C (98.4°F)"
+      - "O2 Sat: 99% on room air"
+    findings:
+      - "Alert and oriented, appears well"
+      - "Cardiovascular: Regular rate and rhythm"
+      - "Harsh systolic crescendo-decrescendo murmur, loudest at LLSB"
+      - "Murmur decreases with squatting"
+      - "Strong carotid pulse"
+      - "Lungs: Clear bilaterally"
+      - "Neurologic exam: Normal"
+  expected_differential:
+    - "Hypertrophic cardiomyopathy"
+    - "Long QT syndrome"
+    - "Arrhythmogenic right ventricular cardiomyopathy"
+    - "Brugada syndrome"
+    - "Wolff-Parkinson-White syndrome"
+    - "Vasovagal syncope"
+    - "Seizure"
+    - "Aortic stenosis"
+  expected_next_steps:
+    immediate:
+      - "ECG (12-lead)"
+      - "Continuous cardiac monitoring"
+      - "Restrict physical activity pending workup"
+    labs:
+      - "Troponin"
+      - "Complete blood count"
+      - "Basic metabolic panel"
+      - "Toxicology screen"
+    imaging:
+      - "Echocardiogram"
+      - "Cardiac MRI (if echo inconclusive)"
+    treatment:
+      - "Admit for observation and monitoring"
+      - "Cardiology consult"
+      - "EP study if arrhythmia suspected"
+      - "Genetic testing and family screening"
+      - "ICD consideration if high-risk"
+      - "Beta-blockers (if HCM confirmed)"
+      - "Activity restriction"
+  scoring_notes:
+    critical_diagnoses:
+      - "Hypertrophic cardiomyopathy"
+      - "HCM"
+      - "HOCM"
+      - "Long QT"
+    critical_actions:
+      - "ECG"
+      - "Echocardiogram"
+      - "Cardiology consult"
+      - "Activity restriction"
+    common_pitfalls:
+      - "Dismissing as simple vasovagal syncope without cardiac workup"
+      - "Missing family history red flags"
+      - "Not restricting activity (sudden death risk)"
+      - "Forgetting to examine for murmurs"
+  educational_notes: "Exertional syncope in young person + family history of sudden death = THINK CARDIAC! The systolic murmur that decreases with squatting is classic for HCM (squatting increases preload/afterload, decreases obstruction). This is the #1 cause of sudden cardiac death in young athletes. Needs urgent cardiology evaluation and activity restriction."
