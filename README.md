@@ -10,7 +10,7 @@
 
 > Open-source clinical documentation prompts that transform AI scribe output into physician-ready notes in seconds.
 
-## 🎯 Overview
+## Overview
 
 **Physician Prompt Engineering** provides production-ready prompts that convert raw AI transcripts into perfectly formatted clinical notes matching your exact documentation style—no manual editing required.
 
@@ -22,13 +22,13 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 
 ## ✨ Key Features
 
-- **🏥 EMR-Ready Prompts**: Works with any EMR just need HIPAA safe/IT approved LLM
-- **⏱️ Time Savings**: Minutes saved on each encounter
-- **📋 Specialty Agnostic**: Core framework adaptable to any medical specialty
-- **🔒 HIPAA Compliant**: Designed for use within secure EMR environments
-- **👥 Community-Driven**: Contributed and tested by practicing physicians
+- **EMR-Ready Prompts**: Works with any EMR just need HIPAA safe/IT approved LLM
+- **Time Savings**: Minutes saved on each encounter
+- **Specialty Agnostic**: Core framework adaptable to any medical specialty
+- **HIPAA Compliant**: Designed for use within secure EMR environments
+- **Community-Driven**: Contributed and tested by practicing physicians
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - EMR with integrated AI text generation (e.g., Epic's "Generate Text with AI")
@@ -57,7 +57,7 @@ Precision-engineered prompts that transform raw AI output into concise, personal
    - Expand to complex cases
    - Share improvements with the community
 
-## 📚 Documentation
+## Documentation
 
 ### Core Resources
 
@@ -72,7 +72,7 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 2. **Brevity** = Quality
 3. **Modular Prompts** > Multi-function
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from the medical community! This project thrives on shared knowledge.
 
@@ -111,7 +111,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 ### No Medical Advice
 This project provides educational tools only. It does not constitute medical, legal, or billing advice.
 
-## 📊 Project Status
+## Project Status
 
 ### Current Focus
 - [ ] Expanding specialty-specific prompt library
@@ -121,7 +121,7 @@ This project provides educational tools only. It does not constitute medical, le
 
 [Share your story →](https://physicianpromptengineering.com/contributions)
 
-## 📖 Citation
+## Citation
 
 If you use this project in your research or practice, please cite:
 
@@ -135,14 +135,14 @@ If you use this project in your research or practice, please cite:
 }
 ```
 
-## 📬 Contact & Support
+## Contact & Support
 
 - **Website**: [physicianpromptengineering.com](https://physicianpromptengineering.com)
 - **Discussions**: [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)
 - **Issues**: [GitHub Issues](https://github.com/pedscoffee/PhysicianPromptEngineering/issues)
 - **Email**: Via website contact form
 
-## 📜 License
+## License
 
 This project is open source under the [MIT License](LICENSE). Free to use, modify, and share.
 
