@@ -4,15 +4,35 @@ document.addEventListener('DOMContentLoaded', function() {
   // Dropdown navigation
   const dropdowns = document.querySelectorAll('.dropdown > .page-link');
 
-  dropdowns.forEach(function(dropdown) {
-    // Add ARIA attributes
-    dropdown.setAttribute('role', 'button');
-    dropdown.setAttribute('aria-haspopup', 'true');
-    dropdown.setAttribute('aria-expanded', 'false');
+  function isMobile() {
+    return window.innerWidth <= 599;
+  }
 
-    // Click handler
+  function setupDropdowns() {
+    dropdowns.forEach(function(dropdown) {
+      if (isMobile()) {
+        // Mobile: Add ARIA attributes and event handlers
+        dropdown.setAttribute('role', 'button');
+        dropdown.setAttribute('aria-haspopup', 'true');
+        dropdown.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('tabindex', '0');
+      } else {
+        // Desktop: Remove mobile-specific attributes
+        dropdown.removeAttribute('role');
+        dropdown.removeAttribute('aria-haspopup');
+        dropdown.removeAttribute('aria-expanded');
+        dropdown.removeAttribute('tabindex');
+      }
+    });
+  }
+
+  // Initial setup
+  setupDropdowns();
+
+  // Click handlers (mobile only)
+  dropdowns.forEach(function(dropdown) {
     dropdown.addEventListener('click', function(e) {
-      if (window.innerWidth <= 599) {
+      if (isMobile()) {
         e.preventDefault();
         const parent = this.parentElement;
         const isActive = parent.classList.contains('active');
@@ -33,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Keyboard support
+    // Keyboard support (mobile only)
     dropdown.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
+      if (isMobile() && (e.key === 'Enter' || e.key === ' ')) {
         e.preventDefault();
         this.click();
       }
@@ -70,13 +90,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Re-check on window resize
 window.addEventListener('resize', function() {
+  const dropdowns = document.querySelectorAll('.dropdown');
+
   if (window.innerWidth > 599) {
-    // Remove active class from all dropdowns on desktop
-    const dropdowns = document.querySelectorAll('.dropdown');
+    // Desktop: Remove active class and mobile attributes from all dropdowns
     dropdowns.forEach(function(dropdown) {
       dropdown.classList.remove('active');
       const link = dropdown.querySelector('.page-link');
-      if (link) link.setAttribute('aria-expanded', 'false');
+      if (link) {
+        link.removeAttribute('role');
+        link.removeAttribute('aria-haspopup');
+        link.removeAttribute('aria-expanded');
+        link.removeAttribute('tabindex');
+      }
+    });
+  } else {
+    // Mobile: Ensure ARIA attributes are present
+    dropdowns.forEach(function(dropdown) {
+      const link = dropdown.querySelector('.page-link');
+      if (link) {
+        link.setAttribute('role', 'button');
+        link.setAttribute('aria-haspopup', 'true');
+        link.setAttribute('aria-expanded', dropdown.classList.contains('active') ? 'true' : 'false');
+        link.setAttribute('tabindex', '0');
+      }
     });
   }
 });
