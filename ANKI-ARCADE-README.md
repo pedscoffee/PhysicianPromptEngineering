@@ -16,6 +16,20 @@ A browser-based flashcard learning game with retro arcade-style animations. Stud
 
 ### 1. Prepare Your Deck
 
+**Option A: Use Native Anki Export (.apkg)**
+
+The easiest method! Export directly from Anki Desktop:
+
+1. Open Anki
+2. Select your deck
+3. File → Export
+4. Format: "Anki Deck Package (.apkg)"
+5. Click Export
+
+The game will automatically extract and parse your cards!
+
+**Option B: Export as CSV/TSV**
+
 Export your Anki deck as a CSV or TSV file with the following format:
 
 ```csv
@@ -25,10 +39,11 @@ front,back
 ```
 
 **Requirements:**
-- Must have "front" and "back" columns (or "question"/"answer", "q"/"a")
+- Supports .apkg (native Anki format), CSV, TSV, or TXT files
+- Must have "front" and "back" columns (or "question"/"answer", "q"/"a") for CSV/TSV
 - Maximum 300 cards per session
-- Supports both comma and tab delimiters
-- Handles quoted fields with commas inside
+- For CSV: Handles quoted fields with commas inside
+- For .apkg: Automatically strips HTML formatting and extracts text content
 
 ### 2. Upload and Play
 
@@ -106,11 +121,12 @@ A sample deck (`sample-deck.csv`) is included with 20 general knowledge flashcar
 
 ## Technical Details
 
-- **Framework**: Vanilla JavaScript (no dependencies)
-- **Size**: ~40KB single HTML file
+- **Framework**: Vanilla JavaScript with JSZip and sql.js for .apkg parsing
+- **Size**: ~60KB HTML + ~500KB libraries (loaded from CDN)
 - **Performance**: Optimized for 60fps animations
 - **Storage**: Client-side only, no cookies or tracking
 - **Hosting**: Static file, works on GitHub Pages
+- **Supported Formats**: .apkg (native Anki), CSV, TSV, TXT
 
 ## Tips for Best Results
 
@@ -122,6 +138,15 @@ A sample deck (`sample-deck.csv`) is included with 20 general knowledge flashcar
 
 ## Creating Decks from Anki
 
+**Recommended Method (.apkg):**
+1. Open Anki desktop app
+2. Select your deck
+3. File → Export
+4. Format: "Anki Deck Package (.apkg)"
+5. Click Export
+6. Upload directly to Anki Arcade!
+
+**Alternative Method (CSV/TXT):**
 1. Open Anki desktop app
 2. Select your deck
 3. File → Export
@@ -132,9 +157,11 @@ A sample deck (`sample-deck.csv`) is included with 20 general knowledge flashcar
 ## Troubleshooting
 
 **"No valid cards found" error:**
-- Check that your file has "front" and "back" column headers
-- Ensure the file is actually CSV or TSV format
-- Try opening in a text editor to verify format
+- For .apkg: Make sure the deck has at least one card
+- For CSV/TSV: Check that your file has "front" and "back" column headers
+- Ensure the file is actually in the correct format
+- Try opening CSV files in a text editor to verify format
+- Try using .apkg format instead (more reliable)
 
 **Animations not showing:**
 - Check that you're using a modern browser
