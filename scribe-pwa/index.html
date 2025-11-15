@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Doc Pixel's Coffee - Privacy-first offline medical scribe with AI transcription and customizable clinical note generation">
+    <meta name="theme-color" content="#2C1810">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Coffee">
+
+    <title>Doc Pixel's Coffee - Offline Medical Scribe</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/scribe-pwa/manifest.json">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/coffee-icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/coffee-icon-512.png">
+    <link rel="apple-touch-icon" href="/images/coffee-icon-192.png">
+
+    <style>
+        /* ============================================
+           DOC PIXEL'S COFFEE - PWA MEDICAL SCRIBE
+           Retro pixel-art inspired styling
+           ============================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ui-bg: #2C1810;
+            --ui-border: #D4A76A;
+            --text-color: #FFFFFF;
+            --dark-bg: #0d1117;
+            --accent-gold: #FFD700;
+            --accent-orange: #FFA500;
+            --green: #4CAF50;
+            --blue: #2196F3;
+            --red: #F44336;
+            --grey: #666;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+
+        .app-header {
+            background: var(--ui-bg);
+            border: 4px solid var(--ui-border);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .app-header h1 {
+            color: var(--accent-gold);
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .app-header .subtitle {
+            color: var(--ui-border);
+            text-align: center;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--ui-border);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--grey);
+        }
+
+        .status-dot.online {
+            background: var(--green);
+            animation: pulse-subtle 2s infinite;
+        }
+
+        .status-dot.offline {
+            background: var(--accent-orange);
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ============================================
+           PANELS
+           ============================================ */
+
+        .panel {
+            background: var(--ui-bg);
+            border: 4px solid var(--ui-border);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .panel h2 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .panel h3 {
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+
+        .pixel-button {
+            background: linear-gradient(to bottom, var(--green) 0%, #2E7D32 100%);
+            color: white;
+            border: 4px solid #81C784;
+            padding: 1rem 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.1s;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .pixel-button:hover:not(:disabled) {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .pixel-button:active:not(:disabled) {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .pixel-button:disabled {
+            background: linear-gradient(to bottom, #666 0%, #444 100%);
+            border-color: #888;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .pixel-button.secondary {
+            background: linear-gradient(to bottom, var(--blue) 0%, #1565C0 100%);
+            border-color: #64B5F6;
+        }
+
+        .pixel-button.danger {
+            background: linear-gradient(to bottom, var(--red) 0%, #C62828 100%);
+            border-color: #E57373;
+        }
+
+        .pixel-button.small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .pixel-button.recording {
+            background: linear-gradient(to bottom, var(--red) 0%, #C62828 100%);
+            animation: pulse-recording 1.5s infinite;
+        }
+
+        @keyframes pulse-recording {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        /* ============================================
+           FORMS
+           ============================================ */
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--accent-orange);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group textarea,
+        .form-group input[type="text"],
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: #1a1a1a;
+            border: 3px solid var(--grey);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            resize: vertical;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+        }
+
+        .form-group textarea:focus,
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .hint {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+
+        /* ============================================
+           PROGRESS & LOADING
+           ============================================ */
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #333;
+            border: 3px solid var(--grey);
+            position: relative;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--green), var(--accent-gold), var(--green));
+            background-size: 200% 100%;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-fill.loading {
+            animation: progressShimmer 2s linear infinite;
+        }
+
+        @keyframes progressShimmer {
+            0% { background-position: 200% 0%; }
+            100% { background-position: -200% 0%; }
+        }
+
+        .loading-text {
+            text-align: center;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .spinner {
+            border: 4px solid #333;
+            border-top: 4px solid var(--accent-gold);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ============================================
+           RECORDING INTERFACE
+           ============================================ */
+
+        .recording-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--ui-border);
+            margin-bottom: 1rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .duration-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            font-family: 'Courier New', monospace;
+        }
+
+        .audio-visualizer {
+            width: 100%;
+            height: 60px;
+            background: #1a1a1a;
+            border: 3px solid var(--grey);
+            margin: 1rem 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .audio-visualizer.active {
+            display: flex;
+        }
+
+        .audio-bars {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .audio-bar {
+            width: 6px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+            animation: audioWave 0.8s ease-in-out infinite;
+        }
+
+        .audio-bar:nth-child(1) { animation-delay: 0s; }
+        .audio-bar:nth-child(2) { animation-delay: 0.1s; }
+        .audio-bar:nth-child(3) { animation-delay: 0.2s; }
+        .audio-bar:nth-child(4) { animation-delay: 0.3s; }
+        .audio-bar:nth-child(5) { animation-delay: 0.4s; }
+        .audio-bar:nth-child(6) { animation-delay: 0.5s; }
+        .audio-bar:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes audioWave {
+            0%, 100% { height: 20%; }
+            50% { height: 80%; }
+        }
+
+        /* ============================================
+           OUTPUT CARDS
+           ============================================ */
+
+        .output-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px solid var(--ui-border);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .output-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ui-border);
+        }
+
+        .output-card-title {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .output-card-badge {
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid var(--accent-gold);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .output-card-content {
+            background: #1a1a1a;
+            padding: 1rem;
+            border: 2px solid var(--grey);
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .output-card-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* ============================================
+           PROMPT MANAGEMENT
+           ============================================ */
+
+        .prompt-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid var(--grey);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-item.enabled {
+            border-color: var(--green);
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .prompt-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .prompt-item-title {
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .prompt-item-meta {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .prompt-item-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .prompt-editor {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--grey);
+        }
+
+        .prompt-editor.active {
+            display: block;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 2px solid;
+            margin-left: 0.5rem;
+        }
+
+        .badge.active {
+            background: var(--green);
+            border-color: #81C784;
+            color: white;
+        }
+
+        .badge.inactive {
+            background: var(--grey);
+            border-color: #888;
+            color: white;
+        }
+
+        .badge.preset {
+            background: var(--blue);
+            border-color: #64B5F6;
+            color: white;
+        }
+
+        /* ============================================
+           A/B TESTING MODE
+           ============================================ */
+
+        .ab-test-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .ab-test-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ab-test-result {
+            border: 3px solid var(--ui-border);
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .ab-test-result h4 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           INSTALLATION PROMPT
+           ============================================ */
+
+        .install-prompt {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            max-width: 350px;
+            background: var(--ui-bg);
+            border: 4px solid var(--accent-gold);
+            padding: 1.5rem;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .install-prompt h3 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .install-prompt p {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .install-prompt-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* ============================================
+           MODALS
+           ============================================ */
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--ui-bg);
+            border: 4px solid var(--ui-border);
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .modal h2 {
+            color: var(--accent-gold);
+            margin-top: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-success {
+            color: var(--green);
+        }
+
+        .text-danger {
+            color: var(--red);
+        }
+
+        .text-warning {
+            color: var(--accent-orange);
+        }
+
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+
+        /* ============================================
+           WARNING BOXES
+           ============================================ */
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #78350f;
+        }
+
+        .warning-box h3 {
+            color: #92400e;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .warning-box ul {
+            margin-left: 1.5rem;
+        }
+
+        .warning-box strong {
+            color: #92400e;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        @media (max-width: 768px) {
+            .app-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .pixel-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .status-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .install-prompt {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+                max-width: none;
+            }
+        }
+
+        /* ============================================
+           SESSION PRIVACY INDICATOR
+           ============================================ */
+
+        .privacy-banner {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-left: 4px solid #059669;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #065f46;
+        }
+
+        .privacy-banner strong {
+            color: #047857;
+        }
+
+        /* ============================================
+           TABS
+           ============================================ */
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 3px solid var(--ui-border);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px solid var(--grey);
+            border-bottom: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--text-color);
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tab.active {
+            background: var(--ui-bg);
+            border-color: var(--ui-border);
+            color: var(--accent-gold);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="app-header">
+            <h1>☕ DOC PIXEL'S COFFEE</h1>
+            <p class="subtitle">Privacy-First Offline Medical Scribe</p>
+
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-dot" id="connection-status"></span>
+                    <span id="connection-text">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span id="models-status">Models: Not Loaded</span>
+                </div>
+                <div class="status-item">
+                    <span id="cache-size">Cache: Calculating...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- PRIVACY BANNER -->
+        <div class="privacy-banner">
+            <strong>🔒 100% Private:</strong> All processing happens offline in your browser. No data is ever sent to servers. Your audio and transcriptions are automatically deleted when you close this session.
+        </div>
+
+        <!-- WARNING BOX -->
+        <div class="warning-box">
+            <h3>⚠️ Important - For Educational Use Only</h3>
+            <ul style="margin: 0.5rem 0 0 1.5rem;">
+                <li><strong>Not for clinical use:</strong> This is a demonstration tool for learning prompt engineering</li>
+                <li><strong>No real patient data:</strong> Never input actual patient information</li>
+                <li><strong>Physician review required:</strong> All AI outputs require verification</li>
+                <li><strong>First-time download:</strong> ~3.5GB models download once, then instant loading</li>
+            </ul>
+        </div>
+
+        <!-- INITIALIZATION PANEL -->
+        <div class="panel" id="init-panel">
+            <h2>☕ Welcome to Coffee!</h2>
+            <p>Your offline medical scribe powered by Whisper Large and Qwen 2.5.</p>
+
+            <div class="mt-2 mb-2">
+                <p><strong>What you'll download (one-time):</strong></p>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Whisper-large-v3-turbo: ~1.5GB (speech-to-text)</li>
+                    <li>Qwen2.5-3B-Instruct: ~2GB (clinical note generation)</li>
+                    <li>Total: ~3.5GB</li>
+                </ul>
+                <p class="mt-2"><strong>After first download:</strong> Loads instantly, works completely offline.</p>
+            </div>
+
+            <div id="init-progress" class="hidden">
+                <div class="loading-text" id="init-status">Preparing to download models...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="init-progress-fill"></div>
+                </div>
+                <p class="hint text-center" id="init-details"></p>
+            </div>
+
+            <div class="button-group">
+                <button class="pixel-button" id="init-button" onclick="initializeApp()">
+                    INITIALIZE COFFEE ☕
+                </button>
+            </div>
+        </div>
+
+        <!-- MAIN APP (Hidden until initialized) -->
+        <div id="main-app" class="hidden">
+
+            <!-- RECORDING PANEL -->
+            <div class="panel">
+                <h2>🎙️ Record Clinical Encounter</h2>
+
+                <div class="recording-status">
+                    <div class="status-indicator">
+                        <span class="status-dot" id="rec-status-dot"></span>
+                        <span id="rec-status-text">Ready to Record</span>
+                    </div>
+                    <div class="duration-display" id="duration-display">0:00</div>
+                </div>
+
+                <div class="audio-visualizer" id="audio-visualizer">
+                    <div class="audio-bars">
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="pixel-button danger" id="start-recording-btn" onclick="startRecording()">
+                        ⏺ START RECORDING
+                    </button>
+                    <button class="pixel-button secondary" id="stop-recording-btn" onclick="stopRecording()" disabled>
+                        ⏹ STOP & TRANSCRIBE
+                    </button>
+                    <button class="pixel-button secondary small" onclick="clearSession()">
+                        🗑️ NEW SESSION
+                    </button>
+                </div>
+
+                <p class="hint mt-2">Tip: Speak clearly in a quiet environment for best transcription accuracy</p>
+            </div>
+
+            <!-- TRANSCRIPTION PANEL -->
+            <div class="panel" id="transcription-panel">
+                <h2>📝 Transcription</h2>
+
+                <div id="transcription-loading" class="hidden">
+                    <div class="spinner"></div>
+                    <div class="loading-text">Transcribing audio with Whisper Large...</div>
+                    <p class="hint text-center">This may take 1-3 minutes depending on audio length</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Transcription (Editable)</label>
+                    <textarea
+                        id="transcription-text"
+                        placeholder="Your transcription will appear here. You can edit it before processing..."
+                        rows="10"
+                    ></textarea>
+                    <p class="hint">Review and edit the transcription before generating notes</p>
+                </div>
+
+                <div class="button-group">
+                    <button class="pixel-button" id="process-btn" onclick="showProcessingOptions()" disabled>
+                        ⚡ GENERATE NOTES
+                    </button>
+                    <button class="pixel-button secondary small" onclick="copyTranscription()">
+                        📋 COPY
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROMPT SELECTION PANEL -->
+            <div class="panel hidden" id="prompt-selection-panel">
+                <h2>⚙️ Select Prompts to Run</h2>
+                <p>Choose which prompts to apply to your transcription. You can run multiple prompts to compare outputs.</p>
+
+                <div class="tabs mt-2">
+                    <div class="tab active" onclick="switchTab('system-tab')">System Prompts</div>
+                    <div class="tab" onclick="switchTab('editor-tab')">Editor Prompts</div>
+                    <div class="tab" onclick="switchTab('enhancement-tab')">Enhancement Prompts</div>
+                </div>
+
+                <!-- SYSTEM PROMPTS TAB -->
+                <div id="system-tab" class="tab-content active">
+                    <p class="mb-2"><strong>System Prompt:</strong> Converts raw transcription → clean medical note. Select one:</p>
+                    <div id="system-prompts-list"></div>
+                </div>
+
+                <!-- EDITOR PROMPTS TAB -->
+                <div id="editor-tab" class="tab-content">
+                    <p class="mb-2"><strong>Editor Prompt (Optional):</strong> Reformats the note. Select up to one:</p>
+                    <div id="editor-prompts-list"></div>
+                </div>
+
+                <!-- ENHANCEMENT PROMPTS TAB -->
+                <div id="enhancement-tab" class="tab-content">
+                    <p class="mb-2"><strong>Enhancement Prompts:</strong> Generate additional outputs. Select multiple:</p>
+                    <div id="enhancement-prompts-list"></div>
+                </div>
+
+                <div class="button-group mt-3">
+                    <button class="pixel-button" onclick="processWithSelectedPrompts()">
+                        🚀 PROCESS WITH SELECTED PROMPTS
+                    </button>
+                    <button class="pixel-button secondary small" onclick="showPromptManagement()">
+                        ⚙️ MANAGE PROMPTS
+                    </button>
+                    <button class="pixel-button secondary small" onclick="enableABTesting()">
+                        🔬 A/B TEST MODE
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROCESSING PANEL -->
+            <div class="panel hidden" id="processing-panel">
+                <h2>⚡ Generating Clinical Notes...</h2>
+                <div id="processing-stages"></div>
+            </div>
+
+            <!-- OUTPUTS PANEL -->
+            <div class="panel hidden" id="outputs-panel">
+                <h2>📋 Generated Clinical Notes</h2>
+                <div class="button-group mb-2">
+                    <button class="pixel-button secondary small" onclick="copyAllOutputs()">
+                        📋 COPY ALL
+                    </button>
+                    <button class="pixel-button secondary small" onclick="exportSession()">
+                        💾 EXPORT SESSION
+                    </button>
+                </div>
+                <div id="outputs-container"></div>
+            </div>
+
+            <!-- PROMPT MANAGEMENT PANEL -->
+            <div class="panel hidden" id="prompt-management-panel">
+                <h2>⚙️ Prompt Management</h2>
+                <p>Customize, create, and organize your clinical documentation prompts.</p>
+
+                <div class="button-group mt-2 mb-3">
+                    <button class="pixel-button secondary small" onclick="importPrompts()">
+                        📥 IMPORT
+                    </button>
+                    <button class="pixel-button secondary small" onclick="exportPrompts()">
+                        📤 EXPORT
+                    </button>
+                    <button class="pixel-button secondary small" onclick="loadPresetPrompts()">
+                        📚 LOAD PRESETS
+                    </button>
+                    <button class="pixel-button secondary small" onclick="closePromptManagement()">
+                        ✖ CLOSE
+                    </button>
+                </div>
+
+                <div class="tabs">
+                    <div class="tab active" onclick="switchManagementTab('manage-system')">System</div>
+                    <div class="tab" onclick="switchManagementTab('manage-editor')">Editor</div>
+                    <div class="tab" onclick="switchManagementTab('manage-enhancement')">Enhancement</div>
+                </div>
+
+                <div id="manage-system" class="tab-content active">
+                    <div class="button-group mb-2">
+                        <button class="pixel-button small" onclick="createNewPrompt('system')">
+                            ➕ CREATE NEW SYSTEM PROMPT
+                        </button>
+                    </div>
+                    <div id="manage-system-list"></div>
+                </div>
+
+                <div id="manage-editor" class="tab-content">
+                    <div class="button-group mb-2">
+                        <button class="pixel-button small" onclick="createNewPrompt('editor')">
+                            ➕ CREATE NEW EDITOR PROMPT
+                        </button>
+                    </div>
+                    <div id="manage-editor-list"></div>
+                </div>
+
+                <div id="manage-enhancement" class="tab-content">
+                    <div class="button-group mb-2">
+                        <button class="pixel-button small" onclick="createNewPrompt('enhancement')">
+                            ➕ CREATE NEW ENHANCEMENT PROMPT
+                        </button>
+                    </div>
+                    <div id="manage-enhancement-list"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INSTALL PROMPT (shown if installable) -->
+    <div class="install-prompt hidden" id="install-prompt">
+        <h3>☕ Install Coffee?</h3>
+        <p>Add to your home screen for instant access and offline use.</p>
+        <div class="install-prompt-actions">
+            <button class="pixel-button small" onclick="installApp()">
+                INSTALL
+            </button>
+            <button class="pixel-button secondary small" onclick="dismissInstallPrompt()">
+                LATER
+            </button>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- Create Prompt Modal -->
+    <div class="modal-overlay" id="create-prompt-modal">
+        <div class="modal">
+            <h2>Create New Prompt</h2>
+            <div class="form-group">
+                <label>Prompt Name</label>
+                <input type="text" id="new-prompt-name" placeholder="e.g., My Custom ED Note">
+            </div>
+            <div class="form-group">
+                <label>Specialty</label>
+                <input type="text" id="new-prompt-specialty" placeholder="e.g., Emergency Medicine">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="new-prompt-description" rows="2" placeholder="Brief description of what this prompt does"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Prompt Text</label>
+                <textarea id="new-prompt-text" rows="15" placeholder="Enter your prompt instructions here..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="pixel-button" onclick="saveNewPrompt()">SAVE</button>
+                <button class="pixel-button secondary" onclick="closeCreatePromptModal()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Prompt Modal -->
+    <div class="modal-overlay" id="edit-prompt-modal">
+        <div class="modal">
+            <h2>Edit Prompt</h2>
+            <div class="form-group">
+                <label>Prompt Name</label>
+                <input type="text" id="edit-prompt-name">
+            </div>
+            <div class="form-group">
+                <label>Specialty</label>
+                <input type="text" id="edit-prompt-specialty">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="edit-prompt-description" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Prompt Text</label>
+                <textarea id="edit-prompt-text" rows="15"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="pixel-button" onclick="saveEditedPrompt()">SAVE CHANGES</button>
+                <button class="pixel-button secondary" onclick="closeEditPromptModal()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/scribe-pwa/app.js"></script>
+    <script type="module">
+        // Import all functions from app.js and make them globally available
+        import * as CoffeeApp from '/scribe-pwa/app.js';
+
+        // Expose functions to window for onclick handlers
+        window.CoffeeApp = CoffeeApp;
+        Object.keys(CoffeeApp).forEach(key => {
+            window[key] = CoffeeApp[key];
+        });
+    </script>
+</body>
+</html>
