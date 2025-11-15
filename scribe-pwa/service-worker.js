@@ -1,7 +1,7 @@
 // Doc Pixel's Coffee - Service Worker
 // Enables offline functionality with aggressive caching
 
-const CACHE_VERSION = 'coffee-v1.0.2';
+const CACHE_VERSION = 'coffee-v1.1.0';
 const STATIC_CACHE = `coffee-static-${CACHE_VERSION}`;
 const MODEL_CACHE = `coffee-models-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `coffee-runtime-${CACHE_VERSION}`;
@@ -76,6 +76,34 @@ self.addEventListener('fetch', (event) => {
 
   // Skip non-GET requests
   if (event.request.method !== 'GET') {
+    return;
+  }
+
+  // CRITICAL: Inject COOP/COEP headers for HTML documents to enable SharedArrayBuffer
+  // This is required for ONNX WASM with SIMD support on GitHub Pages
+  if (event.request.destination === 'document' ||
+      event.request.mode === 'navigate' ||
+      url.pathname.endsWith('.html') ||
+      url.pathname === '/scribe-pwa/' ||
+      url.pathname === '/scribe-pwa/index.html') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const newHeaders = new Headers(response.headers);
+          newHeaders.set('Cross-Origin-Embedder-Policy', 'require-corp');
+          newHeaders.set('Cross-Origin-Opener-Policy', 'same-origin');
+
+          return new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: newHeaders
+          });
+        })
+        .catch(error => {
+          console.error('[Coffee SW] Failed to inject headers:', error);
+          return fetch(event.request); // Fallback to original response
+        })
+    );
     return;
   }
 
