@@ -940,6 +940,10 @@ permalink: /paper-librarian/
         summaryContent.innerHTML = '<div class="summary-loading"><p>Generating comprehensive summary...</p><p style="font-size: 0.9em; color: #9ca3af; margin-top: 10px;">This may take 1-2 minutes</p></div>';
 
         try {
+            // Limit paper text to avoid context window issues (roughly 3000 words = ~4000 tokens)
+            const maxChars = 12000;
+            const truncatedText = paperText.substring(0, maxChars);
+
             const prompt = `You are analyzing a research paper or clinical guideline. Provide a comprehensive summary with the following sections:
 
 # Summary
@@ -966,14 +970,14 @@ permalink: /paper-librarian/
 [One sentence summary for busy clinicians]
 
 Paper text:
-${paperText.substring(0, 15000)}
+${truncatedText}
 
 Provide the summary in markdown format. Be concise but comprehensive.`;
 
             const response = await llmEngine.chat.completions.create({
                 messages: [{ role: 'user', content: prompt }],
                 temperature: 0.7,
-                max_tokens: 2000
+                max_tokens: 1500
             });
 
             summaryText = response.choices[0].message.content;
@@ -1000,10 +1004,14 @@ Provide the summary in markdown format. Be concise but comprehensive.`;
         document.getElementById('send-btn').disabled = true;
 
         try {
+            // Limit context to avoid exceeding window (roughly 2500 words)
+            const maxChars = 10000;
+            const truncatedPaper = paperText.substring(0, maxChars);
+
             const contextPrompt = `You are helping a user understand a research paper or clinical guideline. Answer their question based on the paper content. Be accurate, cite specific findings, and note if information isn't in the paper.
 
 Paper excerpt:
-${paperText.substring(0, 10000)}
+${truncatedPaper}
 
 User question: ${question}
 
@@ -1011,11 +1019,10 @@ Provide a clear, helpful answer.`;
 
             const response = await llmEngine.chat.completions.create({
                 messages: [
-                    ...chatHistory,
                     { role: 'user', content: contextPrompt }
                 ],
                 temperature: 0.7,
-                max_tokens: 1500,
+                max_tokens: 800,
                 stream: true
             });
 
@@ -1106,6 +1113,10 @@ Provide a clear, helpful answer.`;
         content.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">Generating discussion questions...</div>';
 
         try {
+            // Limit context to avoid window overflow
+            const maxChars = 10000;
+            const truncatedPaper = paperText.substring(0, maxChars);
+
             const prompt = `Based on this research paper or clinical guideline, generate 5 thought-provoking discussion questions for medical education. For each question, provide a comprehensive answer.
 
 Format as:
@@ -1118,14 +1129,14 @@ A2: [Answer]
 ... etc
 
 Paper excerpt:
-${paperText.substring(0, 10000)}
+${truncatedPaper}
 
 Generate questions that promote critical thinking about methodology, clinical application, limitations, and future directions.`;
 
             const response = await llmEngine.chat.completions.create({
                 messages: [{ role: 'user', content: prompt }],
                 temperature: 0.8,
-                max_tokens: 2500
+                max_tokens: 2000
             });
 
             const text = response.choices[0].message.content;
@@ -1212,6 +1223,10 @@ Generate questions that promote critical thinking about methodology, clinical ap
         content.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;">Generating patient cases...</div>';
 
         try {
+            // Limit context to avoid window overflow
+            const maxChars = 10000;
+            const truncatedPaper = paperText.substring(0, maxChars);
+
             const prompt = `Based on this research paper or clinical guideline, create 3 realistic patient cases that illustrate key concepts. Each case should include:
 
 1. Patient presentation (age, chief complaint, brief history)
@@ -1222,12 +1237,12 @@ Generate questions that promote critical thinking about methodology, clinical ap
 Format each case clearly with headings. Make cases clinically realistic and educational.
 
 Paper excerpt:
-${paperText.substring(0, 10000)}`;
+${truncatedPaper}`;
 
             const response = await llmEngine.chat.completions.create({
                 messages: [{ role: 'user', content: prompt }],
                 temperature: 0.8,
-                max_tokens: 2500
+                max_tokens: 2000
             });
 
             const text = response.choices[0].message.content;
@@ -1316,13 +1331,17 @@ ${paperText.substring(0, 10000)}`;
         input.disabled = true;
 
         try {
+            // Limit context to avoid window overflow
+            const maxChars = 6000;
+            const truncatedPaper = paperText.substring(0, maxChars);
+
             const prompt = `You are discussing a clinical case with a learner. Answer their question about this case, helping them think through clinical reasoning.
 
 Case:
 ${caseItem.fullText}
 
 Related paper context:
-${paperText.substring(0, 5000)}
+${truncatedPaper}
 
 Question: ${question}
 
@@ -1331,7 +1350,7 @@ Provide a helpful, educational response that encourages clinical thinking.`;
             const response = await llmEngine.chat.completions.create({
                 messages: [{ role: 'user', content: prompt }],
                 temperature: 0.7,
-                max_tokens: 800
+                max_tokens: 600
             });
 
             const answer = response.choices[0].message.content;
