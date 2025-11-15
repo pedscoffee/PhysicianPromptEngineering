@@ -26,29 +26,50 @@ body {
   border-bottom-color: #30363d !important;
 }
 
-.site-title,
-.site-title:visited,
-.site-title:hover {
+/* Site title - main logo */
+.site-header .site-title,
+.site-header .site-title:visited,
+.site-header .site-title:hover,
+.site-header .site-title:active {
   color: #ffffff !important;
 }
 
-.site-nav .page-link,
-.site-nav .page-link:visited {
+/* All navigation links */
+.site-header .site-nav .page-link,
+.site-header .site-nav .page-link:visited,
+.site-header .site-nav .page-link:hover,
+.site-header .site-nav .page-link:active {
   color: #ffffff !important;
 }
 
-.site-nav .page-link:hover {
-  color: #c9d1d9 !important;
-}
-
-.dropdown-content a,
-.dropdown-content a:visited {
+/* Dropdown menu parent items */
+.site-header .dropdown .page-link,
+.site-header .dropdown span.page-link {
   color: #ffffff !important;
 }
 
-.dropdown-content a:hover {
+/* Dropdown menu items */
+.site-header .dropdown-content,
+.site-header .dropdown-content a,
+.site-header .dropdown-content a:visited,
+.site-header .dropdown-content a:link {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+.site-header .dropdown-content a:hover {
   background-color: #30363d !important;
   color: #c9d1d9 !important;
+}
+
+/* Mobile menu toggle */
+.site-header .menu-icon > svg {
+  fill: #ffffff !important;
+}
+
+/* Ensure all header text is white */
+.site-header * {
+  color: #ffffff !important;
 }
 
 .game-container {
