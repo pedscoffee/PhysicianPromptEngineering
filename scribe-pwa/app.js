@@ -34,7 +34,7 @@ let newPromptCategory = null;
 let deferredPrompt = null;
 let abTestMode = false;
 
-const WHISPER_MODEL = "Xenova/whisper-large-v3-turbo";
+const WHISPER_MODEL = "Xenova/whisper-large-v3";
 const LLM_MODEL = "Qwen2.5-3B-Instruct-q4f16_1-MLC";
 const STORAGE_KEY_PROMPTS = 'coffee-prompts';
 
