@@ -20,15 +20,6 @@ body {
   background-color: #0d1117 !important;
 }
 
-/* Make site title white for readability */
-.site-title {
-  color: #ffffff !important;
-}
-
-.site-title:visited {
-  color: #ffffff !important;
-}
-
 .game-container {
   background-color: #0d1117;
   color: #c9d1d9;
