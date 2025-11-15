@@ -130,246 +130,20 @@ permalink: /diagnosis-game/
   50% { transform: scale(1.05); }
 }
 
-/* Game Scene */
-.game-scene {
-  background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #90EE90 60%, #90EE90 100%);
+/* Game Banner */
+.game-banner {
+  width: 100%;
+  margin-bottom: 2rem;
   border: 4px solid var(--ui-border);
-  min-height: 300px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border-radius: 8px;
 }
 
-/* Characters Container */
-.characters {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  margin-bottom: 2rem;
-  min-height: 200px;
-}
-
-/* Pixel Art Character Base */
-.character {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.character.patient {
-  animation-delay: 0s;
-}
-
-.character.doctor {
-  animation-delay: 1s;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Patient Sprite */
-.patient-sprite {
-  width: 80px;
-  height: 120px;
-  position: relative;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-}
-
-.patient-sprite.concerned .pixel-art,
-.patient-sprite.uncomfortable .pixel-art,
-.patient-sprite.distressed .pixel-art,
-.patient-sprite.in-pain .pixel-art,
-.patient-sprite.confused .pixel-art,
-.patient-sprite.anxious .pixel-art {
-  background: linear-gradient(to bottom, #8B4513 0%, #8B4513 25%, #FFD1A3 25%, #FFD1A3 60%, #4169E1 60%, #4169E1 80%, #000 80%);
-}
-
-.patient-sprite .pixel-art {
+.game-banner img {
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom,
-    #8B4513 0%, #8B4513 25%,      /* Hair */
-    #FFD1A3 25%, #FFD1A3 60%,      /* Face/body */
-    #4169E1 60%, #4169E1 80%,      /* Clothes */
-    #000 80%);                      /* Shoes */
-  box-shadow:
-    inset -4px -4px 0 rgba(0, 0, 0, 0.2),
-    4px 4px 0 rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-/* Patient Eyes */
-.patient-sprite .pixel-art::before {
-  content: '';
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 8px;
-  background: radial-gradient(circle at 30% 50%, #000 3px, transparent 3px),
-              radial-gradient(circle at 70% 50%, #000 3px, transparent 3px);
-  background-size: 20px 8px;
-  background-position: 0 0, 20px 0;
-  background-repeat: no-repeat;
-}
-
-/* Patient Smile */
-.patient-sprite .pixel-art::after {
-  content: '';
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 10px;
-  border-bottom: 3px solid #000;
-  border-radius: 0 0 50% 50%;
-}
-
-/* Patient emotions overlay */
-.patient-sprite.happy .emotion-overlay {
-  content: "😊";
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-}
-
-.patient-sprite.sad .emotion-overlay {
-  content: "😢";
-}
-
-.patient-sprite.pain .emotion-overlay {
-  content: "😰";
-}
-
-/* Doctor Sprite */
-.doctor-sprite {
-  width: 80px;
-  height: 120px;
-  position: relative;
-  image-rendering: pixelated;
-}
-
-.doctor-sprite .pixel-art {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom,
-    #8B4513 0%, #8B4513 25%,        /* Hair (same as patient) */
-    #FFD1A3 25%, #FFD1A3 60%,       /* Face/body (same as patient) */
-    #4169E1 60%, #4169E1 80%,       /* Clothes (same as patient) */
-    #000 80%);                       /* Shoes */
-  box-shadow:
-    inset -4px -4px 0 rgba(0, 0, 0, 0.2),
-    4px 4px 0 rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-/* Doctor Eyes */
-.doctor-sprite .pixel-art::before {
-  content: '';
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 8px;
-  background: radial-gradient(circle at 30% 50%, #000 3px, transparent 3px),
-              radial-gradient(circle at 70% 50%, #000 3px, transparent 3px);
-  background-size: 20px 8px;
-  background-position: 0 0, 20px 0;
-  background-repeat: no-repeat;
-}
-
-/* Doctor Smile */
-.doctor-sprite .pixel-art::after {
-  content: '';
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 10px;
-  border-bottom: 3px solid #000;
-  border-radius: 0 0 50% 50%;
-}
-
-/* Graduation Cap - Square Top */
-.doctor-sprite::before {
-  content: '';
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 4px;
-  background: #000;
-  box-shadow: 0 -8px 0 0 #000;
-  z-index: 15;
-}
-
-/* Graduation Cap - Base */
-.doctor-sprite::after {
-  content: '';
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 12px;
-  background: #000;
-  border-radius: 2px;
-  z-index: 14;
-}
-
-/* Speech Bubble */
-.speech-bubble {
-  background: white;
-  color: #000;
-  padding: 1rem;
-  border: 4px solid #000;
-  border-radius: 0;
-  margin-top: 1rem;
-  position: relative;
-  max-width: 300px;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.speech-bubble::before {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #000;
-}
-
-.speech-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-top: 16px solid white;
+  height: auto;
+  display: block;
 }
 
 /* Case Panel */
@@ -740,12 +514,6 @@ permalink: /diagnosis-game/
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .characters {
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-  }
-
   .game-header h1 {
     font-size: 1.5rem;
   }
@@ -799,30 +567,9 @@ permalink: /diagnosis-game/
     </div>
   </div>
 
-  <!-- Game Scene -->
-  <div class="game-scene" id="gameScene">
-    <div class="characters">
-      <!-- Patient -->
-      <div class="character patient">
-        <div class="patient-sprite" id="patientSprite">
-          <div class="pixel-art"></div>
-          <div class="emotion-overlay"></div>
-        </div>
-        <div class="speech-bubble" id="patientSpeech">
-          Click "Start Game" to begin!
-        </div>
-      </div>
-
-      <!-- Doctor -->
-      <div class="character doctor">
-        <div class="doctor-sprite">
-          <div class="pixel-art"></div>
-        </div>
-        <div class="speech-bubble">
-          Let me help you!
-        </div>
-      </div>
-    </div>
+  <!-- Game Banner -->
+  <div class="game-banner">
+    <img src="{{ '/images/gamehero.jpg' | relative_url }}" alt="Differential Diagnosis Game">
   </div>
 
   <!-- Case Information Panel -->
@@ -1112,13 +859,6 @@ function loadLevel(levelIndex) {
   document.getElementById('labsInput').value = '';
   document.getElementById('imagingInput').value = '';
   document.getElementById('treatmentInput').value = '';
-
-  // Update patient sprite
-  const patientSprite = document.getElementById('patientSprite');
-  patientSprite.className = `patient-sprite ${caseData.patient.appearance}`;
-
-  // Update patient speech
-  document.getElementById('patientSpeech').textContent = caseData.chief_complaint;
 
   // Update case information
   document.getElementById('caseTitle').textContent = caseData.title;
