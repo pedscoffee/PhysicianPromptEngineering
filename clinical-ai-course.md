@@ -1,12 +1,12 @@
 ---
 layout: course
-title: "Doc Pixel's Training Course"
+title: "Clinical Prompt Engineering for Physicians"
 permalink: /courses/clinical-prompt-engineering/
 description: "Master the art of AI-assisted clinical documentation through hands-on practice and LLM-powered feedback"
 ---
 
 <div class="course-hero">
-  <h1>Doc Pixel's Training Course</h1>
+  <h1>Clinical Prompt Engineering for Physicians</h1>
   <p>Learn to leverage AI for better clinical documentation through interactive exercises with real-time feedback</p>
 
   <div class="course-stats">

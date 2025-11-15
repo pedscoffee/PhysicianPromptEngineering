@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Doc Pixel's Scribe
+title: Scribe
 description: Experimental browser-based clinical documentation tool. Educational demonstration of speech-to-text and AI formatting capabilities.
 permalink: /scribe-tool/
 ---
@@ -906,7 +906,7 @@ permalink: /scribe-tool/
 <!-- Hero Section -->
 <div class="hero">
     <div class="container">
-        <h1 class="hero-title">Doc Pixel's Scribe</h1>
+        <h1 class="hero-title">Scribe</h1>
         <p class="hero-subtitle">
             Experimental browser-based scribe demonstrating speech-to-text and AI-powered clinical note formatting. Educational purposes only.
         </p>

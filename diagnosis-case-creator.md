@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Doc Pixel's Case Creator
+title: Diagnosis Case Creator
 permalink: /diagnosis-case-creator/
 ---
 
@@ -227,8 +227,8 @@ permalink: /diagnosis-case-creator/
 
 <div class="creator-container">
   <div class="creator-header">
-    <h1>Doc Pixel's Case Creator</h1>
-    <p>Create educational clinical cases for Doc Pixel's DDX Challenge</p>
+    <h1>🏥 Diagnosis Case Creator</h1>
+    <p>Create educational clinical cases for the Differential Diagnosis Game</p>
   </div>
 
   <div class="alert alert-info">

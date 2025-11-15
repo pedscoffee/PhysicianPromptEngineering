@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Doc Pixel's Chat
+title: Chat
 description: Experimental conversational AI assistant with site knowledge. Educational demonstration of contextual AI chat capabilities.
 permalink: /ask-ai/
 ---
@@ -456,7 +456,7 @@ permalink: /ask-ai/
 <!-- Hero Section -->
 <div class="hero">
     <div class="container">
-        <h1 class="hero-title">Doc Pixel's Chat</h1>
+        <h1 class="hero-title">Chat</h1>
         <p class="hero-subtitle">
             Experimental conversational AI assistant with site knowledge. Educational demonstration of contextual chat capabilities.
         </p>

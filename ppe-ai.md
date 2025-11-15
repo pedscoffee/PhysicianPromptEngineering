@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Doc Pixel Overview
+title: AI Tools
 description: Browser-based AI tools for clinical documentation - experimental educational demonstrations of what's possible with client-side AI.
 ---
 
 <!-- Hero Section -->
 <div class="hero">
   <div class="container">
-    <h1 class="hero-title">Doc Pixel Overview</h1>
+    <h1 class="hero-title">AI Tools</h1>
     <p class="hero-subtitle">
       Experimental browser-based AI tools demonstrating the potential of client-side machine learning for clinical workflows. Educational purposes only.
     </p>
