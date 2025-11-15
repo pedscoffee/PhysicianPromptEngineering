@@ -437,11 +437,35 @@
                     <h1 class="title">ANKI ARCADE</h1>
                     <p class="subtitle">Retro Flashcard Adventure</p>
 
-                    <div class="upload-area" id="uploadArea">
-                        <div class="upload-text">⬆️ CLICK TO UPLOAD DECK ⬆️</div>
-                        <div class="upload-hint">Drop APKG, CSV, or TSV file here</div>
-                        <div class="upload-hint">(Max 300 cards • Anki export or Front/Back format)</div>
-                        <input type="file" id="fileInput" accept=".apkg,.csv,.tsv,.txt" style="display: none;">
+                    <!-- Mode Toggle -->
+                    <div class="button-container mt-20">
+                        <button class="btn" id="toggleUploadBtn">📁 UPLOAD FILE</button>
+                        <button class="btn btn-secondary" id="togglePasteBtn">📋 PASTE TEXT</button>
+                    </div>
+
+                    <!-- File Upload Mode -->
+                    <div id="uploadMode" style="display: block;">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-text">⬆️ CLICK TO UPLOAD DECK ⬆️</div>
+                            <div class="upload-hint">TXT, CSV, TSV, or APKG file</div>
+                            <div class="upload-hint">(Max 300 cards)</div>
+                            <input type="file" id="fileInput" accept=".txt,.apkg,.csv,.tsv" style="display: none;">
+                        </div>
+                    </div>
+
+                    <!-- Paste Mode -->
+                    <div id="pasteMode" style="display: none;">
+                        <div style="margin: 20px auto; max-width: 600px;">
+                            <div style="color: #00ffff; margin-bottom: 10px; font-size: 14px;">
+                                Paste your Anki text export below:
+                            </div>
+                            <textarea id="pasteArea"
+                                style="width: 100%; height: 200px; background: #111; color: #0f0;
+                                       border: 2px solid #00ffff; border-radius: 5px; padding: 10px;
+                                       font-family: 'Courier New', monospace; font-size: 14px; resize: vertical;"
+                                placeholder="Paste Anki export here...&#10;&#10;Example format:&#10;#separator:tab&#10;#html:false&#10;Front text	Back text&#10;Question	Answer"></textarea>
+                            <button class="btn mt-20" id="processPasteBtn">LOAD CARDS</button>
+                        </div>
                     </div>
 
                     <div class="button-container mt-20">
@@ -565,27 +589,74 @@
             }
 
             attachEventListeners() {
+                // Mode toggle
+                const uploadMode = document.getElementById('uploadMode');
+                const pasteMode = document.getElementById('pasteMode');
+                const toggleUploadBtn = document.getElementById('toggleUploadBtn');
+                const togglePasteBtn = document.getElementById('togglePasteBtn');
+
+                toggleUploadBtn.addEventListener('click', () => {
+                    uploadMode.style.display = 'block';
+                    pasteMode.style.display = 'none';
+                    toggleUploadBtn.classList.remove('btn-secondary');
+                    toggleUploadBtn.classList.add('btn');
+                    togglePasteBtn.classList.remove('btn');
+                    togglePasteBtn.classList.add('btn-secondary');
+                    this.hideError();
+                });
+
+                togglePasteBtn.addEventListener('click', () => {
+                    uploadMode.style.display = 'none';
+                    pasteMode.style.display = 'block';
+                    togglePasteBtn.classList.remove('btn-secondary');
+                    togglePasteBtn.classList.add('btn');
+                    toggleUploadBtn.classList.remove('btn');
+                    toggleUploadBtn.classList.add('btn-secondary');
+                    this.hideError();
+                });
+
+                // Paste processing
+                document.getElementById('processPasteBtn').addEventListener('click', () => {
+                    const text = document.getElementById('pasteArea').value;
+                    this.handlePasteInput(text);
+                });
+
                 // File upload
                 const uploadArea = document.getElementById('uploadArea');
                 const fileInput = document.getElementById('fileInput');
 
-                uploadArea.addEventListener('click', () => fileInput.click());
-                fileInput.addEventListener('change', (e) => this.handleFileUpload(e.target.files[0]));
+                uploadArea.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files && e.target.files[0]) {
+                        this.handleFileUpload(e.target.files[0]);
+                    }
+                });
 
                 // Drag and drop
                 uploadArea.addEventListener('dragover', (e) => {
                     e.preventDefault();
+                    e.stopPropagation();
                     uploadArea.classList.add('dragover');
                 });
 
-                uploadArea.addEventListener('dragleave', () => {
+                uploadArea.addEventListener('dragleave', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     uploadArea.classList.remove('dragover');
                 });
 
                 uploadArea.addEventListener('drop', (e) => {
                     e.preventDefault();
+                    e.stopPropagation();
                     uploadArea.classList.remove('dragover');
-                    this.handleFileUpload(e.dataTransfer.files[0]);
+                    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                        this.handleFileUpload(e.dataTransfer.files[0]);
+                    }
                 });
 
                 // Session management
@@ -640,7 +711,7 @@
                         const parser = new ApkgParser();
                         cards = await parser.parse(file);
                     } else {
-                        // CSV/TSV parsing
+                        // TXT/CSV/TSV parsing
                         const text = await file.text();
                         const parser = new DeckParser();
                         cards = parser.parse(text);
@@ -649,7 +720,36 @@
                     this.hideError();
 
                     if (cards.length === 0) {
-                        throw new Error('No valid cards found. Please ensure your file has "front" and "back" columns.');
+                        throw new Error('No valid cards found. Please check your file format.');
+                    }
+
+                    if (cards.length > 300) {
+                        this.showError(`Deck too large (${cards.length} cards). Limiting to first 300 cards.`);
+                        cards.splice(300);
+                    }
+
+                    this.initializeDeck(cards);
+                    this.startSession();
+
+                } catch (error) {
+                    this.showError(error.message);
+                }
+            }
+
+            handlePasteInput(text) {
+                if (!text || !text.trim()) {
+                    this.showError('Please paste some text first!');
+                    return;
+                }
+
+                this.hideError();
+
+                try {
+                    const parser = new DeckParser();
+                    const cards = parser.parse(text);
+
+                    if (cards.length === 0) {
+                        throw new Error('No valid cards found. Please check your format.');
                     }
 
                     if (cards.length > 300) {
@@ -1035,6 +1135,80 @@
                     throw new Error('File is empty');
                 }
 
+                // Check if this is Anki's native text export format (starts with #)
+                if (lines[0].startsWith('#')) {
+                    return this.parseAnkiTextExport(lines);
+                } else {
+                    return this.parseCSV(lines);
+                }
+            }
+
+            parseAnkiTextExport(lines) {
+                // Parse Anki's text export format
+                // Example:
+                // #separator:tab
+                // #html:false
+                // Front text	Back text
+
+                let separator = '\t'; // Default to tab
+                let htmlEnabled = false;
+                let dataStartIndex = 0;
+
+                // Parse directives (lines starting with #)
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+                    if (!line.startsWith('#')) {
+                        dataStartIndex = i;
+                        break;
+                    }
+
+                    // Parse separator directive
+                    if (line.startsWith('#separator:')) {
+                        const sepValue = line.substring('#separator:'.length).trim().toLowerCase();
+                        if (sepValue === 'tab') separator = '\t';
+                        else if (sepValue === 'comma') separator = ',';
+                        else if (sepValue === 'semicolon') separator = ';';
+                        else if (sepValue === 'space') separator = ' ';
+                    }
+
+                    // Parse html directive
+                    if (line.startsWith('#html:')) {
+                        const htmlValue = line.substring('#html:'.length).trim().toLowerCase();
+                        htmlEnabled = htmlValue === 'true';
+                    }
+                }
+
+                // Parse card data
+                const cards = [];
+                for (let i = dataStartIndex; i < lines.length; i++) {
+                    const line = lines[i];
+                    if (!line || line.startsWith('#')) continue;
+
+                    const parts = line.split(separator);
+                    if (parts.length >= 2) {
+                        let front = parts[0].trim();
+                        let back = parts[1].trim();
+
+                        // Strip HTML if needed
+                        if (htmlEnabled) {
+                            front = this.stripHtml(front);
+                            back = this.stripHtml(back);
+                        }
+
+                        if (front && back) {
+                            cards.push({ front, back });
+                        }
+                    }
+                }
+
+                if (cards.length === 0) {
+                    throw new Error('No valid cards found in Anki export. Each line should have front and back separated by tabs.');
+                }
+
+                return cards;
+            }
+
+            parseCSV(lines) {
                 // Detect delimiter
                 const delimiter = this.detectDelimiter(lines[0]);
 
@@ -1061,6 +1235,16 @@
                 }
 
                 return cards;
+            }
+
+            stripHtml(html) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = html;
+                let text = tmp.textContent || tmp.innerText || '';
+                text = text.replace(/\[sound:.*?\]/g, '');
+                text = text.replace(/<img[^>]*>/gi, '');
+                text = text.replace(/\s+/g, ' ').trim();
+                return text;
             }
 
             detectDelimiter(line) {

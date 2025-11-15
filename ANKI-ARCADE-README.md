@@ -16,21 +16,37 @@ A browser-based flashcard learning game with retro arcade-style animations. Stud
 
 ### 1. Prepare Your Deck
 
-**Option A: Use Native Anki Export (.apkg)**
+**Option A: Text Export (Recommended - Easiest!)**
 
-The easiest method! Export directly from Anki Desktop:
+1. Open Anki Desktop
+2. Select your deck
+3. File → Export
+4. Format: "Notes in Plain Text (.txt)"
+5. Click Export
+6. **Either:**
+   - **Upload the .txt file**, OR
+   - **Open it and copy/paste the contents** into Anki Arcade
 
-1. Open Anki
+Example text export format:
+```
+#separator:tab
+#html:false
+Hola	Hi
+rojo	red
+verde	green
+```
+
+**Option B: Package Export (.apkg)**
+
+1. Open Anki Desktop
 2. Select your deck
 3. File → Export
 4. Format: "Anki Deck Package (.apkg)"
-5. Click Export
+5. Upload to Anki Arcade
 
-The game will automatically extract and parse your cards!
+**Option C: CSV Export**
 
-**Option B: Export as CSV/TSV**
-
-Export your Anki deck as a CSV or TSV file with the following format:
+Create or export a CSV file with this format:
 
 ```csv
 front,back
@@ -39,17 +55,29 @@ front,back
 ```
 
 **Requirements:**
-- Supports .apkg (native Anki format), CSV, TSV, or TXT files
-- Must have "front" and "back" columns (or "question"/"answer", "q"/"a") for CSV/TSV
+- Supports .txt (Anki text export), .apkg, .csv, .tsv files
 - Maximum 300 cards per session
-- For CSV: Handles quoted fields with commas inside
-- For .apkg: Automatically strips HTML formatting and extracts text content
+- Automatically handles tab/comma separators
+- Strips HTML formatting for text-only display
 
-### 2. Upload and Play
+### 2. Load Your Cards
 
-1. Visit the Anki Arcade page
-2. Click or drag-and-drop your deck file
-3. Review cards and rate them:
+Choose your preferred method:
+
+**Method 1: Paste Text (Fast!)**
+1. Click "📋 PASTE TEXT"
+2. Copy your Anki text export
+3. Paste into the text area
+4. Click "LOAD CARDS"
+
+**Method 2: Upload File**
+1. Click "📁 UPLOAD FILE"
+2. Click the upload area or drag-and-drop your file
+3. Cards load automatically
+
+### 3. Review and Play
+
+Rate each card based on how well you remembered it:
    - **Again**: Restart the card (didn't remember)
    - **Hard**: Remembered with difficulty
    - **Good**: Remembered correctly
@@ -136,32 +164,43 @@ A sample deck (`sample-deck.csv`) is included with 20 general knowledge flashcar
 4. **Honest Ratings**: Rate based on actual difficulty, not desired outcome
 5. **Streak Building**: Consecutive "Good/Easy" ratings build your streak
 
-## Creating Decks from Anki
+## Exporting from Anki Desktop
 
-**Recommended Method (.apkg):**
-1. Open Anki desktop app
+**Method 1: Text Export (Easiest for Copy/Paste)**
+1. Open Anki
+2. Select your deck
+3. File → Export
+4. Format: "Notes in Plain Text (.txt)"
+5. **Copy/paste the contents** or upload the file
+
+**Method 2: Package Export (Complete Deck)**
+1. Open Anki
 2. Select your deck
 3. File → Export
 4. Format: "Anki Deck Package (.apkg)"
-5. Click Export
-6. Upload directly to Anki Arcade!
+5. Upload the .apkg file
 
-**Alternative Method (CSV/TXT):**
-1. Open Anki desktop app
-2. Select your deck
-3. File → Export
-4. Format: "Notes in Plain Text"
-5. Include: Front and Back fields
-6. Save as CSV or TXT file
+**Method 3: Create Your Own CSV**
+Create a simple CSV file:
+```csv
+front,back
+Question 1,Answer 1
+Question 2,Answer 2
+```
 
 ## Troubleshooting
 
+**File upload not working:**
+- Try using the **Paste Text** method instead (often more reliable)
+- Make sure you're clicking the upload area (not just near it)
+- Try drag-and-drop instead of clicking
+- Check that your file is .txt, .apkg, .csv, or .tsv format
+
 **"No valid cards found" error:**
-- For .apkg: Make sure the deck has at least one card
-- For CSV/TSV: Check that your file has "front" and "back" column headers
-- Ensure the file is actually in the correct format
-- Try opening CSV files in a text editor to verify format
-- Try using .apkg format instead (more reliable)
+- For Text Export: Make sure file starts with `#separator:tab` or has actual card data
+- For .apkg: Ensure the deck has at least one card
+- For CSV: Check that your file has "front" and "back" column headers
+- **Easiest fix:** Try the copy/paste method with Anki text export
 
 **Animations not showing:**
 - Check that you're using a modern browser
