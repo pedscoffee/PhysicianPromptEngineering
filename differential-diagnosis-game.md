@@ -264,10 +264,10 @@ permalink: /diagnosis-game/
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom,
-    #000 0%, #000 25%,              /* Hair */
-    #FFD1A3 25%, #FFD1A3 40%,       /* Face */
-    #FFFFFF 40%, #FFFFFF 85%,       /* White coat */
-    #000 85%);                       /* Shoes */
+    #8B4513 0%, #8B4513 25%,        /* Hair (same as patient) */
+    #FFD1A3 25%, #FFD1A3 60%,       /* Face/body (same as patient) */
+    #4169E1 60%, #4169E1 80%,       /* Clothes (same as patient) */
+    #000 80%);                       /* Shoes */
   box-shadow:
     inset -4px -4px 0 rgba(0, 0, 0, 0.2),
     4px 4px 0 rgba(0, 0, 0, 0.3);
@@ -278,7 +278,7 @@ permalink: /diagnosis-game/
 .doctor-sprite .pixel-art::before {
   content: '';
   position: absolute;
-  top: 30%;
+  top: 35%;
   left: 50%;
   transform: translateX(-50%);
   width: 40px;
@@ -294,7 +294,7 @@ permalink: /diagnosis-game/
 .doctor-sprite .pixel-art::after {
   content: '';
   position: absolute;
-  top: 37%;
+  top: 45%;
   left: 50%;
   transform: translateX(-50%);
   width: 20px;
@@ -303,34 +303,32 @@ permalink: /diagnosis-game/
   border-radius: 0 0 50% 50%;
 }
 
-/* Stethoscope */
+/* Graduation Cap - Square Top */
 .doctor-sprite::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 8%;
   left: 50%;
   transform: translateX(-50%);
-  width: 30px;
-  height: 30px;
-  border: 3px solid #2c3e50;
-  border-radius: 50%;
-  background: #34495e;
-  box-shadow: 0 0 0 2px #7f8c8d;
-  z-index: 10;
+  width: 50px;
+  height: 4px;
+  background: #000;
+  box-shadow: 0 -8px 0 0 #000;
+  z-index: 15;
 }
 
-/* Stethoscope tubes */
+/* Graduation Cap - Base */
 .doctor-sprite::after {
   content: '';
   position: absolute;
-  top: 35%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  width: 4px;
-  height: 20px;
-  background: #2c3e50;
+  width: 40px;
+  height: 12px;
+  background: #000;
   border-radius: 2px;
-  z-index: 9;
+  z-index: 14;
 }
 
 /* Speech Bubble */
