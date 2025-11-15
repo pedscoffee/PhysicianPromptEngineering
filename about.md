@@ -70,30 +70,6 @@ permalink: /about/
     </div>
   </div>
 </section>
-
-<!-- Founder Section -->
-<section class="section bg-secondary">
-  <div class="container">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h2 class="text-center mb-8">From the Founder</h2>
-
-      <div style="background: var(--color-bg-primary); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
-        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
-          <em>Coming soon</em>
-        </p>
-
-        <ul style="margin-left: 2rem; line-height: 1.8;">
-          <li>Coming soon</li> 
-        </ul>
-
-        <p style="font-style: italic; margin-top: 2rem; text-align: right; color: var(--color-text-secondary);">
-          — PedsCoffee
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Values Section -->
 <section class="section">
   <div class="container">
