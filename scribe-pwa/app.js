@@ -34,7 +34,7 @@ let newPromptCategory = null;
 let deferredPrompt = null;
 let abTestMode = false;
 
-const WHISPER_MODEL = "Xenova/whisper-large-v3";
+const WHISPER_MODEL = "Xenova/whisper-medium";
 const LLM_MODEL = "Qwen2.5-3B-Instruct-q4f16_1-MLC";
 const STORAGE_KEY_PROMPTS = 'coffee-prompts';
 
@@ -769,7 +769,7 @@ export async function initializeApp() {
 
     try {
         // Step 1: Load Whisper
-        initStatus.textContent = 'Loading Whisper Large v3 Turbo...';
+        initStatus.textContent = 'Loading Whisper Medium...';
         initDetails.textContent = 'Downloading ~1.5GB speech recognition model (one-time download)';
         initFill.style.width = '10%';
         initFill.classList.add('loading');
