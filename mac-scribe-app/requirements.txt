@@ -1,0 +1,26 @@
+# Mac Scribe App - Offline AI Medical Scribe
+# Fully offline, privacy-focused medical documentation tool
+
+# Core Dependencies
+PyQt6==6.6.1
+PyQt6-Qt6==6.6.1
+
+# Audio Processing
+sounddevice==0.4.6
+soundfile==0.12.1
+numpy==1.26.2
+
+# Speech-to-Text (Whisper Medium - offline)
+faster-whisper==1.0.0
+# Note: faster-whisper uses CTranslate2 which is optimized for M-series Macs
+
+# LLM Processing (llama.cpp Python bindings - offline)
+llama-cpp-python==0.2.27
+# For M3 Mac with Metal acceleration:
+# pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/metal
+
+# Data Management
+pydantic==2.5.2
+
+# Utilities
+python-dotenv==1.0.0
