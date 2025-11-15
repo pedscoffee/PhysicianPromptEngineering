@@ -1,14 +1,36 @@
 ---
 layout: default
-title: Differential Diagnosis Game
+title: Doc Pixel's DDX Challenge
 permalink: /diagnosis-game/
 ---
 
 <style>
 /* ============================================
-   PIXEL ART GAME STYLING
+   DOC PIXEL'S DDX CHALLENGE STYLING
    Inspired by classic games like Mario and Baba is You
    ============================================ */
+
+/* Force dark mode styling for this page only */
+body {
+  background-color: #0d1117 !important;
+  color: #c9d1d9 !important;
+}
+
+.page-content {
+  background-color: #0d1117 !important;
+}
+
+.game-container {
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+.game-container p,
+.game-container div,
+.game-container span,
+.game-container label {
+  color: #c9d1d9;
+}
 
 :root {
   --pixel-size: 4px;
@@ -536,13 +558,13 @@ permalink: /diagnosis-game/
 <div class="game-container">
   <!-- Header -->
   <div class="game-header">
-    <h1>🏥 DIFFERENTIAL DIAGNOSIS GAME 🎮</h1>
+    <h1>DOC PIXEL'S DDX CHALLENGE</h1>
     <p>Test your clinical reasoning skills!</p>
   </div>
 
   <!-- Instructions -->
   <div class="instructions">
-    <h3>📋 How to Play</h3>
+    <h3>How to Play</h3>
     <p>
       You're a doctor seeing patients in the clinic. For each case, you'll review the patient's
       symptoms and physical exam findings. Your job is to write a differential diagnosis and
@@ -576,16 +598,16 @@ permalink: /diagnosis-game/
   <div class="case-panel hidden" id="casePanel">
     <h2 id="caseTitle">Case Information</h2>
 
-    <h3>👤 Patient Information</h3>
+    <h3>Patient Information</h3>
     <p id="patientInfo"></p>
 
-    <h3>🗣️ Chief Complaint</h3>
+    <h3>Chief Complaint</h3>
     <p id="chiefComplaint"></p>
 
-    <h3>📝 Symptoms</h3>
+    <h3>Symptoms</h3>
     <ul id="symptomsList"></ul>
 
-    <h3>🔍 Physical Examination</h3>
+    <h3>Physical Examination</h3>
     <div id="physicalExam">
       <h4 style="color: #FFD700; margin-top: 1rem;">Vital Signs:</h4>
       <div class="vital-signs" id="vitalSigns"></div>
@@ -596,11 +618,11 @@ permalink: /diagnosis-game/
 
   <!-- Input Section -->
   <div class="input-section hidden" id="inputSection">
-    <h2>📊 Your Medical Assessment</h2>
+    <h2>Your Medical Assessment</h2>
 
     <div class="input-group">
       <label for="differentialInput">
-        1️⃣ Differential Diagnosis
+        1. Differential Diagnosis
       </label>
       <textarea
         id="differentialInput"
@@ -610,7 +632,7 @@ permalink: /diagnosis-game/
 
     <div class="input-group">
       <label for="labsInput">
-        2️⃣ Laboratory Tests
+        2. Laboratory Tests
       </label>
       <textarea
         id="labsInput"
@@ -620,7 +642,7 @@ permalink: /diagnosis-game/
 
     <div class="input-group">
       <label for="imagingInput">
-        3️⃣ Imaging Studies
+        3. Imaging Studies
       </label>
       <textarea
         id="imagingInput"
@@ -630,7 +652,7 @@ permalink: /diagnosis-game/
 
     <div class="input-group">
       <label for="treatmentInput">
-        4️⃣ Initial Treatment/Management
+        4. Initial Treatment/Management
       </label>
       <textarea
         id="treatmentInput"
@@ -640,10 +662,10 @@ permalink: /diagnosis-game/
 
     <div class="button-group">
       <button class="pixel-button" id="submitBtn" onclick="submitAnswer()">
-        📤 Submit Assessment
+        Submit Assessment
       </button>
       <button class="pixel-button secondary" id="hintBtn" onclick="showHint()">
-        💡 Hint
+        Hint
       </button>
     </div>
   </div>
@@ -651,7 +673,7 @@ permalink: /diagnosis-game/
   <!-- Results Panel -->
   <div class="results-panel" id="resultsPanel">
     <div class="patient-reaction" id="patientReaction">
-      <!-- Emoji reaction will be inserted here -->
+      <!-- Reaction will be inserted here -->
     </div>
 
     <div class="score-display">
@@ -661,24 +683,24 @@ permalink: /diagnosis-game/
     </div>
 
     <div class="feedback-section">
-      <h3>📊 Detailed Feedback</h3>
+      <h3>Detailed Feedback</h3>
       <div id="feedbackContent"></div>
     </div>
 
     <div class="feedback-section">
-      <h3>📚 Learning Points</h3>
+      <h3>Learning Points</h3>
       <div id="learningPoints"></div>
     </div>
 
     <div class="button-group">
       <button class="pixel-button" id="nextLevelBtn" onclick="nextLevel()" style="display: none;">
-        ➡️ Next Level
+        Next Level
       </button>
       <button class="pixel-button secondary" id="retryBtn" onclick="retryLevel()">
-        🔄 Try Again
+        Try Again
       </button>
       <button class="pixel-button danger" id="viewAnswerBtn" onclick="viewAnswer()">
-        👁️ View Answer
+        View Answer
       </button>
     </div>
   </div>
@@ -686,7 +708,7 @@ permalink: /diagnosis-game/
   <!-- Start Button -->
   <div class="button-group" id="startSection">
     <button class="pixel-button" onclick="startGame()">
-      🎮 Start Game
+      Start Game
     </button>
   </div>
 
@@ -1045,9 +1067,9 @@ function ruleBasedEvaluation(differential, labs, imaging, treatment, caseData) {
   caseData.scoring_notes.critical_diagnoses.forEach(diagnosis => {
     if (diffLower.includes(diagnosis.toLowerCase())) {
       correctCount++;
-      feedback.correct.push(`✓ Included critical diagnosis: ${diagnosis}`);
+      feedback.correct.push(`Included critical diagnosis: ${diagnosis}`);
     } else {
-      feedback.missing.push(`✗ Missed critical diagnosis: ${diagnosis}`);
+      feedback.missing.push(`Missed critical diagnosis: ${diagnosis}`);
     }
   });
 
@@ -1056,7 +1078,7 @@ function ruleBasedEvaluation(differential, labs, imaging, treatment, caseData) {
     if (diffLower.includes(diagnosis.toLowerCase()) &&
         !caseData.scoring_notes.critical_diagnoses.some(cd => cd.toLowerCase() === diagnosis.toLowerCase())) {
       correctCount += 0.5; // Half point for non-critical but correct diagnoses
-      feedback.correct.push(`✓ Good differential: ${diagnosis}`);
+      feedback.correct.push(`Good differential: ${diagnosis}`);
     }
   });
 
@@ -1067,16 +1089,16 @@ function ruleBasedEvaluation(differential, labs, imaging, treatment, caseData) {
         imagingLower.includes(actionLower) ||
         treatmentLower.includes(actionLower)) {
       correctCount++;
-      feedback.correct.push(`✓ Critical action included: ${action}`);
+      feedback.correct.push(`Critical action included: ${action}`);
     } else {
-      feedback.missing.push(`✗ Missing critical action: ${action}`);
+      feedback.missing.push(`Missing critical action: ${action}`);
     }
   });
 
   // Check for common pitfalls
   if (caseData.scoring_notes.common_pitfalls) {
     caseData.scoring_notes.common_pitfalls.forEach(pitfall => {
-      feedback.errors.push(`⚠️ Common pitfall to avoid: ${pitfall}`);
+      feedback.errors.push(`Common pitfall to avoid: ${pitfall}`);
     });
   }
 
@@ -1125,13 +1147,13 @@ function showResults(result) {
   // Patient reaction based on correct count
   const patientReaction = document.getElementById('patientReaction');
   if (correctCount >= 5) {
-    patientReaction.textContent = '😄 I feel so much better! Thank you, doctor!';
+    patientReaction.textContent = 'I feel so much better! Thank you, doctor!';
   } else if (correctCount >= 3) {
-    patientReaction.textContent = '😊 Thank you for helping me!';
+    patientReaction.textContent = 'Thank you for helping me!';
   } else if (correctCount >= 2) {
-    patientReaction.textContent = '😐 I think I need a second opinion...';
+    patientReaction.textContent = 'I think I need a second opinion...';
   } else {
-    patientReaction.textContent = '😰 Ohhhhh noooooo...';
+    patientReaction.textContent = 'Ohhhhh noooooo...';
   }
 
   // Score display - show percentage
@@ -1140,16 +1162,16 @@ function showResults(result) {
   // Score rank based on correct count
   const scoreRank = document.getElementById('scoreRank');
   if (correctCount >= 5) {
-    scoreRank.textContent = `⭐ EXCELLENT (${correctCount} correct!)`;
+    scoreRank.textContent = `EXCELLENT (${correctCount} correct!)`;
     scoreRank.className = 'score-rank excellent';
   } else if (correctCount >= 3) {
-    scoreRank.textContent = `👍 PASSED (${correctCount} correct!)`;
+    scoreRank.textContent = `PASSED (${correctCount} correct!)`;
     scoreRank.className = 'score-rank good';
   } else if (correctCount >= 2) {
-    scoreRank.textContent = `📚 CLOSE (${correctCount} correct)`;
+    scoreRank.textContent = `CLOSE (${correctCount} correct)`;
     scoreRank.className = 'score-rank fair';
   } else {
-    scoreRank.textContent = `📖 TRY AGAIN (${correctCount} correct)`;
+    scoreRank.textContent = `TRY AGAIN (${correctCount} correct)`;
     scoreRank.className = 'score-rank poor';
   }
 
@@ -1157,9 +1179,9 @@ function showResults(result) {
   const feedbackContent = document.getElementById('feedbackContent');
   feedbackContent.innerHTML = `
     <p><strong>Overall:</strong> ${result.feedback}</p>
-    ${result.correct ? `<div style="margin-top: 1rem;"><strong style="color: #4CAF50;">✓ What you got right:</strong><br>${result.correct.replace(/\n/g, '<br>')}</div>` : ''}
-    ${result.missing ? `<div style="margin-top: 1rem;"><strong style="color: #FF9800;">⚠ What you missed:</strong><br>${result.missing.replace(/\n/g, '<br>')}</div>` : ''}
-    ${result.errors && result.errors !== 'None identified' ? `<div style="margin-top: 1rem;"><strong style="color: #F44336;">✗ Important notes:</strong><br>${result.errors.replace(/\n/g, '<br>')}</div>` : ''}
+    ${result.correct ? `<div style="margin-top: 1rem;"><strong style="color: #4CAF50;">What you got right:</strong><br>${result.correct.replace(/\n/g, '<br>')}</div>` : ''}
+    ${result.missing ? `<div style="margin-top: 1rem;"><strong style="color: #FF9800;">What you missed:</strong><br>${result.missing.replace(/\n/g, '<br>')}</div>` : ''}
+    ${result.errors && result.errors !== 'None identified' ? `<div style="margin-top: 1rem;"><strong style="color: #F44336;">Important notes:</strong><br>${result.errors.replace(/\n/g, '<br>')}</div>` : ''}
   `;
 
   // Learning points
@@ -1199,9 +1221,9 @@ function retryLevel() {
 function showHint() {
   const caseData = gameState.cases[gameState.currentLevel];
   const hints = [
-    `💡 Consider these critical diagnoses: ${caseData.scoring_notes.critical_diagnoses.slice(0, 2).join(', ')}`,
-    `💡 Don't forget these critical actions: ${caseData.scoring_notes.critical_actions.slice(0, 2).join(', ')}`,
-    `💡 Common pitfall: ${caseData.scoring_notes.common_pitfalls[0]}`
+    `Consider these critical diagnoses: ${caseData.scoring_notes.critical_diagnoses.slice(0, 2).join(', ')}`,
+    `Don't forget these critical actions: ${caseData.scoring_notes.critical_actions.slice(0, 2).join(', ')}`,
+    `Common pitfall: ${caseData.scoring_notes.common_pitfalls[0]}`
   ];
 
   alert(hints.join('\n\n'));
