@@ -1,7 +1,7 @@
 // Doc Pixel's Coffee - Service Worker
 // Enables offline functionality with aggressive caching
 
-const CACHE_VERSION = 'coffee-v1.0.1';
+const CACHE_VERSION = 'coffee-v1.0.2';
 const STATIC_CACHE = `coffee-static-${CACHE_VERSION}`;
 const MODEL_CACHE = `coffee-models-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `coffee-runtime-${CACHE_VERSION}`;
