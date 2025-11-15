@@ -4,10 +4,8 @@
 import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.1.2";
 import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
 
-// Configure ONNX Runtime for non-SharedArrayBuffer environments
-// GitHub Pages doesn't provide COOP/COEP headers needed for SharedArrayBuffer
-env.backends.onnx.wasm.numThreads = 1;
-env.backends.onnx.wasm.simd = false;
+// Configure ONNX Runtime with SharedArrayBuffer support
+// Service worker injects COOP/COEP headers to enable SharedArrayBuffer
 env.allowLocalModels = false;
 env.allowRemoteModels = true;
 
