@@ -44,19 +44,5 @@
         "audio/*": [".wav", ".mp3", ".m4a", ".webm", ".ogg"]
       }
     }
-  ],
-  "screenshots": [
-    {
-      "src": "/images/coffee-screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/images/coffee-screenshot-narrow.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
   ]
 }

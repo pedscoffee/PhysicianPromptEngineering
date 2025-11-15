@@ -122,6 +122,8 @@ async function transcribeAudio(audioBlob) {
     try {
         const audioUrl = URL.createObjectURL(audioBlob);
 
+        console.log('[Coffee] Starting transcription with Whisper...');
+
         const result = await whisperModel(audioUrl, {
             chunk_length_s: 30,
             stride_length_s: 5,
@@ -129,6 +131,8 @@ async function transcribeAudio(audioBlob) {
             task: 'transcribe',
             return_timestamps: false
         });
+
+        console.log('[Coffee] Transcription completed:', result);
 
         currentTranscription = result.text;
         currentSessionData.transcription = currentTranscription;
@@ -144,8 +148,24 @@ async function transcribeAudio(audioBlob) {
 
     } catch (error) {
         console.error('[Coffee] Transcription error:', error);
+        console.error('[Coffee] Error details:', {
+            name: error.name,
+            message: error.message,
+            stack: error.stack
+        });
         document.getElementById('transcription-loading').classList.add('hidden');
-        alert(`Transcription failed: ${error.message}`);
+        document.getElementById('rec-status-text').textContent = 'Transcription failed ✗';
+
+        let errorMsg = 'Transcription failed. ';
+        if (error.message && error.message.includes('memory')) {
+            errorMsg += 'Out of memory - try recording shorter audio clips.';
+        } else if (error.message && error.message.includes('ONNX')) {
+            errorMsg += 'Model execution error. Try refreshing the page and re-initializing.';
+        } else {
+            errorMsg += `Error: ${error.message || error}`;
+        }
+
+        alert(errorMsg);
     }
 }
 
@@ -758,8 +778,11 @@ export async function initializeApp() {
             'automatic-speech-recognition',
             WHISPER_MODEL,
             {
-                dtype: 'q8',
-                device: 'webgpu',
+                dtype: {
+                    encoder_model: 'fp32',
+                    decoder_model_merged: 'q8'
+                },
+                device: 'wasm',
                 progress_callback: (progress) => {
                     const percent = 10 + (progress.progress * 40);
                     initFill.style.width = `${percent}%`;
