@@ -20,13 +20,35 @@ body {
   background-color: #0d1117 !important;
 }
 
-/* Make site title white for readability */
-.site-title {
+/* Make ALL header text white for readability in dark mode */
+.site-header {
+  background-color: #0d1117 !important;
+  border-bottom-color: #30363d !important;
+}
+
+.site-title,
+.site-title:visited,
+.site-title:hover {
   color: #ffffff !important;
 }
 
-.site-title:visited {
+.site-nav .page-link,
+.site-nav .page-link:visited {
   color: #ffffff !important;
+}
+
+.site-nav .page-link:hover {
+  color: #c9d1d9 !important;
+}
+
+.dropdown-content a,
+.dropdown-content a:visited {
+  color: #ffffff !important;
+}
+
+.dropdown-content a:hover {
+  background-color: #30363d !important;
+  color: #c9d1d9 !important;
 }
 
 .game-container {

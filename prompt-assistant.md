@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Prompt Assistant
+title: Doc Pixel's Prompt Assistant
 description: Experimental browser-based prompt generator demonstrating AI-powered meta-prompting capabilities. Educational purposes only.
 permalink: /prompt-assistant/
 ---
@@ -482,7 +482,7 @@ permalink: /prompt-assistant/
 <!-- Hero Section -->
 <div class="hero">
     <div class="container">
-        <h1 class="hero-title">Prompt Assistant</h1>
+        <h1 class="hero-title">Doc Pixel's Prompt Assistant</h1>
         <p class="hero-subtitle">
             Experimental meta-prompting tool demonstrating AI-powered prompt generation. Educational purposes only.
         </p>
