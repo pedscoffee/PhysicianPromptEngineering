@@ -239,7 +239,7 @@ self.addEventListener('message', (event) => {
 // Calculate total cache size
 async function getCacheSize() {
   const cacheNames = await caches.keys();
-  const coffeeCache Names = cacheNames.filter(name => name.startsWith('coffee-'));
+  const coffeeCacheNames = cacheNames.filter(name => name.startsWith('coffee-'));
 
   let totalSize = 0;
 
