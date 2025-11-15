@@ -580,7 +580,28 @@ permalink: /paper-librarian/
         text-align: center;
         padding: 30px;
     }
+
+    /* Banner Image */
+    .banner-image {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto 30px auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .banner-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+    }
 </style>
+
+<!-- Banner Image -->
+<div class="banner-image">
+    <img src="{{ '/images/Dox Pixels librarian.jpg' | relative_url }}" alt="Doc Pixel's Librarian">
+</div>
 
 <div class="container">
     <div class="header">
@@ -600,7 +621,7 @@ permalink: /paper-librarian/
     </div>
 
     <div class="warning-box">
-        <h3>⚠️ Educational Tool Only - Important Disclaimers</h3>
+        <h3>Educational Tool Only - Important Disclaimers</h3>
         <ul>
             <li><strong>Not for clinical decisions:</strong> This tool is for educational exploration only. All clinical decisions require professional judgment and verification of primary sources.</li>
             <li><strong>AI limitations:</strong> AI may misinterpret, hallucinate, or miss critical details. Always verify information against the original paper.</li>
@@ -643,7 +664,7 @@ permalink: /paper-librarian/
     <div id="main-content" class="main-content">
         <!-- Sidebar -->
         <div class="sidebar">
-            <h3>📄 Paper Info</h3>
+            <h3>Paper Info</h3>
             <div class="paper-info">
                 <p><strong>File:</strong> <span id="paper-filename">-</span></p>
                 <p><strong>Pages:</strong> <span id="paper-pages">-</span></p>
@@ -799,7 +820,7 @@ permalink: /paper-librarian/
         const initBtn = document.getElementById('init-btn');
 
         statusPanel.className = 'status-panel loading';
-        statusMessage.textContent = '⏳ Loading AI model...';
+        statusMessage.textContent = 'Loading AI model...';
         statusDetails.textContent = 'This may take 5-15 minutes on first use. Models are cached for instant loading next time.';
         progressBar.classList.add('active');
         initBtn.disabled = true;
@@ -811,14 +832,14 @@ permalink: /paper-librarian/
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);
                         progressFill.style.width = `${percent}%`;
-                        statusMessage.textContent = `⏳ Loading: ${percent}%`;
+                        statusMessage.textContent = `Loading: ${percent}%`;
                         statusDetails.textContent = progress.text;
                     }
                 }
             );
 
             statusPanel.className = 'status-panel ready';
-            statusMessage.textContent = '✅ AI Ready!';
+            statusMessage.textContent = 'AI Ready!';
             statusDetails.textContent = 'Upload a PDF to begin analysis';
             progressBar.classList.remove('active');
 
