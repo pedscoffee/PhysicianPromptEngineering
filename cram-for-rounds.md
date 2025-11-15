@@ -424,7 +424,28 @@ permalink: /cram-for-rounds/
     .message-assistant .message-bubble li {
         margin-bottom: 8px;
     }
+
+    /* Banner Image */
+    .banner-image {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 30px auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .banner-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+    }
 </style>
+
+<!-- Banner Image -->
+<div class="banner-image">
+    <img src="{{ '/images/doc pixels cram for rounds.jpg' | relative_url }}" alt="Doc Pixel's Cram for Rounds">
+</div>
 
 <div class="container">
     <div class="header">
@@ -444,7 +465,7 @@ permalink: /cram-for-rounds/
     </div>
 
     <div class="warning-box">
-        <h3>⚠️ Educational Tool Only - Important Disclaimers</h3>
+        <h3>Educational Tool Only - Important Disclaimers</h3>
         <ul>
             <li><strong>For studying only:</strong> This is a learning tool to prepare for rounds. Always verify information with authoritative sources.</li>
             <li><strong>No real patient data:</strong> Use synthesized or de-identified cases only. Never input actual patient information.</li>
@@ -469,7 +490,7 @@ permalink: /cram-for-rounds/
 
     <!-- Input Section -->
     <div id="input-section" class="input-section hidden">
-        <h2>📝 Enter Your Case or Topic</h2>
+        <h2>Enter Your Case or Topic</h2>
         <p>Paste a clinical note, describe a patient case, or enter a topic you need to study. The AI will create a comprehensive study guide and then quiz you on it.</p>
 
         <textarea id="case-input" placeholder="Example: 5yo male, fever 102.5 x 2 days, sore throat, + strep test, started amoxicillin
@@ -483,7 +504,7 @@ Be as detailed or brief as you like - the AI will work with what you provide."><
         </button>
 
         <div class="example-box">
-            <h4>💡 Tips for Best Results:</h4>
+            <h4>Tips for Best Results:</h4>
             <p><strong>Clinical cases:</strong> Include age, chief complaint, key history, exam findings, and management</p>
             <p><strong>Topics:</strong> Be specific about what you need to know (e.g., "DDx for pediatric limp" vs just "pediatrics")</p>
             <p><strong>De-identify:</strong> Remove all patient identifiers before pasting</p>
@@ -493,7 +514,7 @@ Be as detailed or brief as you like - the AI will work with what you provide."><
     <!-- Chat Container -->
     <div id="chat-container" class="chat-container">
         <div class="chat-header">
-            <h2>🎯 Study Session</h2>
+            <h2>Study Session</h2>
             <div class="chat-actions">
                 <button class="btn btn-secondary btn-sm" onclick="clearChat()">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 4px;">
@@ -571,7 +592,7 @@ Be as detailed or brief as you like - the AI will work with what you provide."><
         const initBtn = document.getElementById('init-btn');
 
         statusPanel.className = 'status-panel loading';
-        statusMessage.textContent = '⏳ Loading AI model...';
+        statusMessage.textContent = 'Loading AI model...';
         statusDetails.textContent = 'This may take 5-15 minutes on first use. Models are cached for instant loading next time.';
         progressBar.classList.add('active');
         initBtn.disabled = true;
@@ -583,14 +604,14 @@ Be as detailed or brief as you like - the AI will work with what you provide."><
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);
                         progressFill.style.width = `${percent}%`;
-                        statusMessage.textContent = `⏳ Loading: ${percent}%`;
+                        statusMessage.textContent = `Loading: ${percent}%`;
                         statusDetails.textContent = progress.text;
                     }
                 }
             );
 
             statusPanel.className = 'status-panel ready';
-            statusMessage.textContent = '✅ AI Ready!';
+            statusMessage.textContent = 'AI Ready!';
             statusDetails.textContent = 'Enter your case or topic to get started';
             progressBar.classList.remove('active');
 
@@ -729,9 +750,9 @@ Create a thorough study guide following the exact structure above. Be specific, 
         document.getElementById('typing-indicator').classList.add('active');
 
         try {
-            const prompt = `You are now acting as an attending physician on rounds, quizzing a medical student. Based on the study guide you just created, ask the student ONE specific, challenging question about the case. Make it a rounds-style question that tests clinical reasoning.
+            const prompt = `You are now acting as Doc Pixel, quizzing a medical student on rounds. Based on the study guide you just created, ask the student ONE specific, challenging question about the case. Make it a rounds-style question that tests clinical reasoning.
 
-Don't reference the study guide - just ask a natural, probing question like an attending would. Keep it conversational but challenging.`;
+Don't reference the study guide - just ask a natural, probing question like Doc Pixel would. Keep it conversational but challenging.`;
 
             const response = await llmEngine.chat.completions.create({
                 messages: [
@@ -748,7 +769,7 @@ Don't reference the study guide - just ask a natural, probing question like an a
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message message-assistant';
             messageDiv.innerHTML = `
-                <div class="message-label">Attending Question</div>
+                <div class="message-label">Doc Pixel's Question</div>
                 <div class="message-bubble" id="streaming-bubble"></div>
             `;
             document.getElementById('chat-messages').appendChild(messageDiv);
@@ -791,7 +812,7 @@ Don't reference the study guide - just ask a natural, probing question like an a
         try {
             // Context-aware response
             const systemContext = studyGuideGenerated ?
-                `You are helping a medical student prepare for rounds. You've already provided a study guide. Now you're in practice mode - acting as an attending physician who quizzes students.
+                `You are helping a medical student prepare for rounds. You've already provided a study guide. Now you're in practice mode - acting as Doc Pixel who quizzes students.
 
 The student just responded to your question or asked a follow-up. If they answered your question, provide feedback on their answer (praise good thinking, gently correct errors, provide teaching points). Then ask another challenging rounds-style question.
 
@@ -817,7 +838,7 @@ Keep the conversation dynamic, encouraging, and educational. Reference the origi
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message message-assistant';
             messageDiv.innerHTML = `
-                <div class="message-label">Attending</div>
+                <div class="message-label">Doc Pixel</div>
                 <div class="message-bubble" id="streaming-bubble"></div>
             `;
             document.getElementById('chat-messages').appendChild(messageDiv);
@@ -862,7 +883,7 @@ Keep the conversation dynamic, encouraging, and educational. Reference the origi
 
         let label = '';
         if (role === 'user') label = 'You';
-        else if (role === 'assistant') label = 'Attending';
+        else if (role === 'assistant') label = 'Doc Pixel';
         else if (role === 'system') label = 'System';
 
         const formattedContent = role === 'assistant' || role === 'system' ?
@@ -923,7 +944,7 @@ Keep the conversation dynamic, encouraging, and educational. Reference the origi
                     markdown += `## Study Guide\n\n${msg.content}\n\n---\n\n`;
                     markdown += `## Practice Session\n\n`;
                 } else {
-                    markdown += `**Attending:**\n\n${msg.content}\n\n`;
+                    markdown += `**Doc Pixel:**\n\n${msg.content}\n\n`;
                 }
             }
         });
