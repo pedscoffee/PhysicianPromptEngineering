@@ -44,9 +44,15 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Doc Pixel's Scribe - Offline AI Medical Scribe")
         self.setGeometry(100, 100, 1400, 900)
 
-        # Create central widget
+        # Create scroll area for entire content
+        scroll_area = QScrollArea()
+        scroll_area.setWidgetResizable(True)
+        scroll_area.setFrameShape(QScrollArea.Shape.NoFrame)
+        self.setCentralWidget(scroll_area)
+
+        # Create central widget inside scroll area
         central_widget = QWidget()
-        self.setCentralWidget(central_widget)
+        scroll_area.setWidget(central_widget)
 
         # Main layout
         main_layout = QVBoxLayout(central_widget)
@@ -61,6 +67,7 @@ class MainWindow(QMainWindow):
 
         # Main content area (splitter for recording/output)
         splitter = QSplitter(Qt.Orientation.Horizontal)
+        splitter.setMinimumHeight(400)  # Ensure minimum visible height
 
         # Left panel: Recording & Transcription
         left_panel = self.create_recording_panel()
@@ -71,7 +78,7 @@ class MainWindow(QMainWindow):
         splitter.addWidget(right_panel)
 
         splitter.setSizes([700, 700])
-        main_layout.addWidget(splitter)
+        main_layout.addWidget(splitter, stretch=1)  # Give splitter most of the space
 
         # Bottom: Prompt customization (expandable)
         self.create_prompt_customization(main_layout)
@@ -195,8 +202,9 @@ class MainWindow(QMainWindow):
             "Your transcription will appear here after recording...\n\n"
             "You can edit it before processing."
         )
-        self.transcription_text.setMinimumHeight(300)
-        transcription_layout.addWidget(self.transcription_text)
+        self.transcription_text.setMinimumHeight(250)
+        self.transcription_text.setMaximumHeight(600)  # Prevent excessive height
+        transcription_layout.addWidget(self.transcription_text, stretch=1)
 
         # Transcription actions
         trans_btn_layout = QHBoxLayout()
@@ -235,6 +243,7 @@ class MainWindow(QMainWindow):
         self.main_note_text = QTextEdit()
         self.main_note_text.setPlaceholderText("Your formatted clinical note will appear here...")
         self.main_note_text.setReadOnly(True)
+        self.main_note_text.setMinimumHeight(300)
         self.output_tabs.addTab(self.main_note_text, "📄 Medical Note")
 
         # Enhancement outputs (dynamic tabs will be added during processing)

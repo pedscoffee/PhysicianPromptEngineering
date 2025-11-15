@@ -162,40 +162,107 @@ class LLMEngine:
             logger.error("LLM model not loaded")
             return None
 
+        # Validate input
+        if not prompt or not isinstance(prompt, str):
+            logger.error("Invalid prompt: must be non-empty string")
+            return None
+
+        # Truncate prompt if too long (leave room for generation)
+        max_prompt_chars = 12000  # ~3000 tokens at 4 chars/token
+        if len(prompt) > max_prompt_chars:
+            logger.warning(f"Prompt too long ({len(prompt)} chars), truncating to {max_prompt_chars}")
+            prompt = prompt[:max_prompt_chars] + "\n\n[Note: Transcript truncated due to length]"
+
         try:
             if progress_callback:
-                progress_callback("Generating response...")
+                progress_callback("Preparing prompt...")
 
             # Format prompt for Mistral Instruct
             formatted_prompt = f"<s>[INST] {prompt} [/INST]"
 
-            # Generate with streaming
+            if progress_callback:
+                progress_callback("Generating response (this may take 1-2 minutes)...")
+
+            # Generate with streaming and robust error handling
             response = ""
-            stream = self.model(
-                formatted_prompt,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                stop=["</s>", "[INST]"],
-                stream=True
-            )
+            token_count = 0
+            max_retries = 3
+            retry_count = 0
 
-            for output in stream:
-                token = output['choices'][0]['text']
-                response += token
+            while retry_count < max_retries:
+                try:
+                    # Attempt generation with safer parameters
+                    stream = self.model(
+                        formatted_prompt,
+                        max_tokens=min(max_tokens, 1500),  # Reduce max tokens to avoid memory issues
+                        temperature=temperature,
+                        top_p=0.95,  # Add top_p for more stable generation
+                        stop=["</s>", "[INST]", "\n\n\n"],  # Add extra stop sequence
+                        stream=True,
+                        echo=False  # Don't echo the prompt
+                    )
 
-                # Optional: call progress with partial response
-                # Could implement streaming display here
+                    # Collect response tokens
+                    for output in stream:
+                        try:
+                            if 'choices' in output and len(output['choices']) > 0:
+                                choice = output['choices'][0]
+                                if 'text' in choice:
+                                    token = choice['text']
+                                    response += token
+                                    token_count += 1
+
+                                    # Update progress every 50 tokens
+                                    if token_count % 50 == 0 and progress_callback:
+                                        progress_callback(f"Generating... ({token_count} tokens)")
+
+                                # Check for finish reason
+                                if 'finish_reason' in choice and choice['finish_reason'] is not None:
+                                    logger.info(f"Generation finished: {choice['finish_reason']}")
+                                    break
+                        except (KeyError, IndexError, TypeError) as e:
+                            logger.warning(f"Error parsing output token: {e}")
+                            continue
+
+                    # If we got here, generation succeeded
+                    break
+
+                except Exception as e:
+                    retry_count += 1
+                    logger.warning(f"Generation attempt {retry_count} failed: {e}")
+
+                    if retry_count < max_retries:
+                        if progress_callback:
+                            progress_callback(f"Retrying generation (attempt {retry_count + 1}/{max_retries})...")
+                        # Reduce max_tokens for retry
+                        max_tokens = max_tokens // 2
+                    else:
+                        raise
 
             if progress_callback:
                 progress_callback("Response generated!")
 
-            logger.info(f"Generated {len(response)} characters")
-            return response.strip()
+            logger.info(f"Generated {len(response)} characters ({token_count} tokens)")
+
+            # Clean up response
+            cleaned_response = response.strip()
+
+            # Remove any remaining instruction tags
+            if "[/INST]" in cleaned_response:
+                cleaned_response = cleaned_response.split("[/INST]")[-1].strip()
+
+            return cleaned_response if cleaned_response else None
 
         except Exception as e:
-            logger.error(f"Error during generation: {e}")
+            logger.error(f"Error during generation: {e}", exc_info=True)
             if progress_callback:
                 progress_callback(f"Generation error: {str(e)}")
+
+            # Return partial response if we have any
+            if response and len(response) > 100:
+                logger.info("Returning partial response due to error")
+                return response.strip()
+
             return None
 
     def unload_model(self):
