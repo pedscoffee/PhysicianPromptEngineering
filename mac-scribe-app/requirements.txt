@@ -11,7 +11,8 @@ soundfile==0.12.1
 numpy==1.26.2
 
 # Speech-to-Text (Whisper Medium - offline)
-faster-whisper==1.0.0
+faster-whisper>=1.0.3
+av>=13.0.0  # Required for FFmpeg 8 compatibility
 # Note: faster-whisper uses CTranslate2 which is optimized for M-series Macs
 
 # LLM Processing (llama.cpp Python bindings - offline)
