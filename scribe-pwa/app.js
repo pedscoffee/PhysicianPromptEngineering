@@ -1,8 +1,15 @@
 // Doc Pixel's Coffee - Main Application Logic
-// Complete PWA medical scribe with Whisper Large + Qwen 2.5
+// Complete PWA medical scribe with Whisper Medium + Qwen 2.5
 
-import { pipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.1.2";
+import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.1.2";
 import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
+
+// Configure ONNX Runtime for non-SharedArrayBuffer environments
+// GitHub Pages doesn't provide COOP/COEP headers needed for SharedArrayBuffer
+env.backends.onnx.wasm.numThreads = 1;
+env.backends.onnx.wasm.simd = false;
+env.allowLocalModels = false;
+env.allowRemoteModels = true;
 
 // =====================================================
 // GLOBAL STATE
