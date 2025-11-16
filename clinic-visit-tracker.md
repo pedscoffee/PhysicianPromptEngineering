@@ -407,6 +407,19 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
                 <button class="btn btn-danger" id="cancelBtn" onclick="cancelVisit()" style="display: none;">Cancel</button>
             </div>
 
+            <!-- Time-Based Billing Automation -->
+            <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                <p style="color: #2c3e50; font-weight: 600; margin-bottom: 0.75rem;">⏱️ Time-Based Billing</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-warning" onclick="applyTimeBasedBilling('established')" id="timeBasedEstBtn" style="display: none;">
+                        Established Patient (Time-Based)
+                    </button>
+                    <button class="btn btn-warning" onclick="applyTimeBasedBilling('new')" id="timeBasedNewBtn" style="display: none;">
+                        New Patient (Time-Based)
+                    </button>
+                </div>
+            </div>
+
             <div class="visit-type-indicator" id="visitTypeIndicator"></div>
 
             <!-- Billing Codes -->
@@ -623,6 +636,60 @@ function updateVisitTypeIndicator() {
     }
 }
 
+// Get elapsed time in minutes
+function getElapsedMinutes() {
+    if (!startTime) return 0;
+    const now = new Date();
+    const elapsed = Math.floor((now - startTime - totalPausedDuration) / 1000);
+    return Math.floor(elapsed / 60);
+}
+
+// Apply time-based billing
+function applyTimeBasedBilling(patientType) {
+    const minutes = getElapsedMinutes();
+    let selectedCode = '';
+
+    if (patientType === 'established') {
+        // Established Patient Time Ranges
+        if (minutes < 15) {
+            selectedCode = '99212';
+        } else if (minutes < 30) {
+            selectedCode = '99213';
+        } else if (minutes < 40) {
+            selectedCode = '99214';
+        } else {
+            selectedCode = '99215';
+        }
+    } else if (patientType === 'new') {
+        // New Patient Time Ranges
+        if (minutes < 15) {
+            selectedCode = '99202';
+        } else if (minutes < 30) {
+            selectedCode = '99203';
+        } else if (minutes < 40) {
+            selectedCode = '99204';
+        } else {
+            selectedCode = '99205';
+        }
+    }
+
+    // Clear any previously selected sick visit codes
+    const sickCodes = ['99212', '99213', '99214', '99215', '99202', '99203', '99204', '99205'];
+    sickCodes.forEach(code => {
+        const btn = document.querySelector(`.billing-btn[data-code="${code}"]`);
+        if (btn) {
+            btn.classList.remove('selected');
+        }
+    });
+
+    // Select the appropriate code
+    const targetBtn = document.querySelector(`.billing-btn[data-code="${selectedCode}"]`);
+    if (targetBtn) {
+        targetBtn.classList.add('selected');
+        updateVisitTypeIndicator();
+    }
+}
+
 // Timer Functions
 function startTimer() {
     startTime = new Date();
@@ -635,6 +702,8 @@ function startTimer() {
     document.getElementById('pauseBtn').style.display = 'inline-block';
     document.getElementById('finishBtn').style.display = 'inline-block';
     document.getElementById('cancelBtn').style.display = 'inline-block';
+    document.getElementById('timeBasedEstBtn').style.display = 'inline-block';
+    document.getElementById('timeBasedNewBtn').style.display = 'inline-block';
 }
 
 function pauseTimer() {
@@ -714,6 +783,8 @@ function cancelVisit() {
     document.getElementById('resumeBtn').style.display = 'none';
     document.getElementById('finishBtn').style.display = 'none';
     document.getElementById('cancelBtn').style.display = 'none';
+    document.getElementById('timeBasedEstBtn').style.display = 'none';
+    document.getElementById('timeBasedNewBtn').style.display = 'none';
 }
 
 // Save visit without timer (manual entry)
@@ -757,6 +828,8 @@ function resetForm() {
     document.getElementById('resumeBtn').style.display = 'none';
     document.getElementById('finishBtn').style.display = 'none';
     document.getElementById('cancelBtn').style.display = 'none';
+    document.getElementById('timeBasedEstBtn').style.display = 'none';
+    document.getElementById('timeBasedNewBtn').style.display = 'none';
 }
 
 // Data Storage (localStorage)
