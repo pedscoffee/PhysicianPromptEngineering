@@ -25,6 +25,7 @@ pydantic==2.5.2
 
 # Security & Encryption (HIPAA Compliance)
 cryptography==42.0.0
+keyring==24.3.0  # macOS Keychain integration for credential storage
 
 # Utilities
 python-dotenv==1.0.0
