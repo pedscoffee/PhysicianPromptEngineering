@@ -1,0 +1,43 @@
+title: Physician Prompt Engineering
+description: >-
+  Physician Prompt Engineering offers open-source clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems.
+url: https://physicianpromptengineering.com
+
+# Set the theme
+theme: minima
+
+# Header navigation
+# header_pages:
+  #- blog.md
+  #- prompt-library.md
+  #- best-practices.md
+  #- prompt-generator.md
+  #- snippet-manager.md
+  #- contributions.md
+
+# Minima-specific settings
+minima:
+  skin: classic
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  
+# --- New Prompt Collection ---
+# This tells Jekyll to look for a folder named "_prompts"
+# and treat each file inside as a prompt. 
+collections:
+  prompts:
+    output: true
+    permalink: /prompts/:path/
+  dotphrases:
+    output: false
+    permalink: /dotphrases/:path/
+  courses:
+    output: true
+    permalink: /courses/:name/
+  course_modules:
+    output: true
+    permalink: /courses/:course/:name/
+
+google_analytics: G-VNYGW8RWMY
