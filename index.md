@@ -13,7 +13,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
       Save 2-5 minutes per patient encounter with physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
     </p>
     <div class="hero-cta">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Explore Prompt Library</a>
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
       <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
     </div>
   </div>
@@ -108,7 +108,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     </div>
 
     <div class="text-center mt-8">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Access Full Prompt Library</a>
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Access Full Prompt Library</a>
     </div>
   </div>
 </section>
@@ -226,7 +226,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
               <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
             </svg>
-            <span>Privacy-first (runs in your browser)</span>
+            <span>Runs locally in your browser (Requires Chrome and a modern computer)</span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
@@ -242,7 +242,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           Start Free Interactive Course →
         </a>
         <p class="mt-4 text-sm" style="opacity: 0.9;">
-          No signup required • Complete at your own pace • Certificate upon completion
+          No sign up required • Complete at your own pace • Immediately practical
         </p>
       </div>
     </div>
@@ -258,7 +258,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
       <div class="two-col-grid">
 
         <div>
-          <h3>Requirements</h3>
+          <h3>Building Blocks</h3>
           <ul>
             <li>EMR with integrated AI text generation (Epic, Cerner, or equivalent)</li>
             <li>Institutional approval for AI documentation tools</li>
@@ -298,7 +298,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           <strong>What EMR systems are compatible?</strong>
         </div>
         <div class="accordion-content">
-          <p>These prompts work with any EMR featuring AI text generation capabilities. Confirmed compatible systems include Epic's "Generate Text with AI," Cerner, and similar platforms with LLM integration.</p>
+          <p>These prompts work with any EMR featuring AI text generation capabilities such as Epic's "Generate Text with AI".</p>
         </div>
       </div>
 
@@ -359,7 +359,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
   <div class="container text-center">
     <h2 class="mb-6">Ready to Transform Your Documentation?</h2>
     <div class="hero-cta">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Get Started with Free Prompts</a>
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Get Started with Free Prompts</a>
       <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn btn-outline btn-lg" target="_blank">Star us on GitHub</a>
     </div>
     <p class="text-sm text-secondary mt-6">

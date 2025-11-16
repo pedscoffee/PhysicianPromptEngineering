@@ -110,6 +110,19 @@ description: "Help build our open-source community. We invite physicians to cont
           </ul>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Other Suggestions</h3>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Any suggestions or feedback can also be submitted here</li>
+            <li>See GitHub Discussions or Substack also</li>
+            <li>Avoid sharing any sensitive or protected information</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>

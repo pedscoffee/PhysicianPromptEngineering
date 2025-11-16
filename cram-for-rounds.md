@@ -456,11 +456,6 @@ permalink: /cram-for-rounds/
             Doc Pixel's Cram for Rounds
         </h1>
         <p>Upload a clinical case or topic and get an AI-generated study guide with case presentation, learning objectives, discussion questions, and teaching points. Then practice being quizzed in rounds-style questioning.</p>
-        <div class="privacy-highlight">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-            </svg>
-        </div>
     </div>
 
     <div class="warning-box">
@@ -471,7 +466,7 @@ permalink: /cram-for-rounds/
             <li><strong>AI limitations:</strong> AI may make errors. Always double-check clinical facts and management recommendations.</li>
             <li><strong>Not medical advice:</strong> This tool is for educational preparation, not clinical decision-making.</li>
             <li><strong>Session only:</strong> Nothing is saved between sessions. Export your study guide before closing.</li>
-            <li><strong>First use delay:</strong> AI model downloads once (5-15 min), then loads instantly.</li>
+            <li><strong>First use delay:</strong> AI model downloads once (5-15 min), then loads much more quickly.</li>
         </ul>
     </div>
 

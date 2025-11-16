@@ -225,6 +225,16 @@ permalink: /diagnosis-case-creator/
 }
 </style>
 
+<!-- Hero Section -->
+<div class="hero">
+  <div class="container">
+    <h1 class="hero-title">Doc Pixel's DDX Challenge Case Creator</h1>
+    <p class="hero-subtitle">
+      Create educational clinical cases for the Differential Diagnosis Game
+    </p>
+  </div>
+</div>
+
 <div style="background: #fee2e2; border: 2px solid #dc2626; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 1200px;">
   <h3 style="color: #991b1b; margin-top: 0;">⚠️ IMPORTANT: Fictional Cases Only</h3>
   <p style="color: #991b1b; margin-bottom: 0;">
@@ -232,20 +242,14 @@ permalink: /diagnosis-case-creator/
   </p>
 </div>
 
-<div class="creator-container">
-  <div class="creator-header">
-    <h1>🏥 Diagnosis Case Creator</h1>
-    <p>Create educational clinical cases for the Differential Diagnosis Game</p>
-  </div>
-
   <div class="alert alert-info">
-    <strong>📝 Instructions:</strong> Fill out the form below to create a new clinical case. When you're done,
+    <strong>Instructions:</strong> Fill out the form below to create a new clinical case. When you're done,
     click "Generate YAML" to get the code that you can add to the <code>_data/diagnosis_cases.yml</code> file.
   </div>
 
   <!-- Basic Information -->
   <div class="form-section">
-    <h2>📋 Basic Information</h2>
+    <h2>Basic Information</h2>
 
     <div class="inline-group">
       <div class="form-group">
@@ -282,7 +286,7 @@ permalink: /diagnosis-case-creator/
 
   <!-- Patient Information -->
   <div class="form-section">
-    <h2>👤 Patient Information</h2>
+    <h2>Patient Information</h2>
 
     <div class="inline-group">
       <div class="form-group">
@@ -325,7 +329,7 @@ permalink: /diagnosis-case-creator/
 
   <!-- Clinical Presentation -->
   <div class="form-section">
-    <h2>🗣️ Clinical Presentation</h2>
+    <h2>Clinical Presentation</h2>
 
     <div class="form-group">
       <label for="chiefComplaint">Chief Complaint *</label>
@@ -343,7 +347,7 @@ permalink: /diagnosis-case-creator/
 
   <!-- Physical Examination -->
   <div class="form-section">
-    <h2>🔍 Physical Examination</h2>
+    <h2>Physical Examination</h2>
 
     <h3>Vital Signs</h3>
     <div id="vitalSignsList"></div>
@@ -356,7 +360,7 @@ permalink: /diagnosis-case-creator/
 
   <!-- Expected Answers -->
   <div class="form-section">
-    <h2>✅ Expected Differential Diagnosis</h2>
+    <h2>Expected Differential Diagnosis</h2>
     <div class="form-hint">List all reasonable differential diagnoses (most likely first)</div>
     <div id="differentialList"></div>
     <button type="button" class="btn btn-secondary btn-small" onclick="addDifferential()">+ Add Diagnosis</button>
@@ -364,7 +368,7 @@ permalink: /diagnosis-case-creator/
 
   <!-- Next Steps -->
   <div class="form-section">
-    <h2>🔬 Expected Next Steps</h2>
+    <h2>Expected Next Steps</h2>
 
     <h3>Immediate Actions</h3>
     <div id="immediateActionsList"></div>
@@ -385,7 +389,7 @@ permalink: /diagnosis-case-creator/
 
   <!-- Scoring Guidelines -->
   <div class="form-section">
-    <h2>📊 Scoring Guidelines</h2>
+    <h2>Scoring Guidelines</h2>
 
     <div class="form-group">
       <label>Critical Diagnoses (Must Include) *</label>
@@ -411,7 +415,7 @@ permalink: /diagnosis-case-creator/
 
   <!-- Educational Content -->
   <div class="form-section">
-    <h2>📚 Educational Notes</h2>
+    <h2>Educational Notes</h2>
 
     <div class="form-group">
       <label for="educationalNotes">Teaching Points *</label>
@@ -423,10 +427,10 @@ permalink: /diagnosis-case-creator/
   <!-- Generate Button -->
   <div class="button-group">
     <button type="button" class="btn btn-primary" onclick="generateYAML()">
-      🎯 Generate YAML Code
+      Generate YAML Code
     </button>
     <button type="button" class="btn btn-secondary" onclick="resetForm()">
-      🔄 Clear Form
+      Clear Form
     </button>
   </div>
 
@@ -434,11 +438,11 @@ permalink: /diagnosis-case-creator/
   <div class="output-section" id="outputSection" style="display: none;">
     <h2>📄 Generated YAML Code</h2>
     <div class="alert alert-success">
-      ✅ YAML generated successfully! Copy the code below and add it to <code>_data/diagnosis_cases.yml</code>
+      YAML generated successfully! Copy the code below and add it to <code>_data/diagnosis_cases.yml</code>
     </div>
     <div class="yaml-output" id="yamlOutput"></div>
     <button type="button" class="btn btn-success copy-btn" onclick="copyYAML()">
-      📋 Copy to Clipboard
+      Copy to Clipboard
     </button>
   </div>
 </div>

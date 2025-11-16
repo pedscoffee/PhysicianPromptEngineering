@@ -32,10 +32,10 @@ permalink: /about/
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
               </svg>
             </div>
-            <h3 class="card-title">Open Source</h3>
+            <h3 class="card-title">Still Learning</h3>
           </div>
           <div class="card-body">
-            <p>All prompts, tools, and resources are freely available under the MIT License. No paywalls, no subscriptions.</p>
+            <p>This is a new technology still in its infancy.  It will continue to change.</p>
           </div>
         </div>
 
@@ -60,10 +60,10 @@ permalink: /about/
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
               </svg>
             </div>
-            <h3 class="card-title">Educational Resource and Need for IT/Institutional Approval</h3>
+            <h3 class="card-title">Education</h3>
           </div>
           <div class="card-body">
-            <p>All content is for informational and educational purposes only.  Do not use any tools not formally approved by your institutional policies.</p>
+            <p>All content is for informational and educational purposes only.  Do not use any tools not formally approved by your institutional policies and always check with your IT department before making any changes to your workflow.</p>
           </div>
         </div>
       </div>
@@ -78,13 +78,13 @@ permalink: /about/
 
       <div style="display: grid; gap: 2rem;">
         <div style="border-left: 4px solid var(--color-primary); padding-left: 1.5rem;">
-          <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">Evidence-Based</h3>
-          <p>Every recommendation is grounded in prompt engineering research and real-world clinical testing. We prioritize what works over what sounds impressive.</p>
+          <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">Practical Mindset</h3>
+          <p>Every recommendation is grounded in real-world testing. We prioritize what works over what sounds impressive.</p>
         </div>
 
         <div style="border-left: 4px solid var(--color-secondary); padding-left: 1.5rem;">
           <h3 style="color: var(--color-secondary); margin-bottom: 0.5rem;">Transparency</h3>
-          <p>All code is open source. All prompts are fully visible. No black boxes, no vendor lock-in, no hidden agendas.</p>
+          <p>All code is available on GitHub. All prompts are fully visible.</p>
         </div>
 
         <div style="border-left: 4px solid var(--color-accent); padding-left: 1.5rem;">

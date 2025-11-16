@@ -14,13 +14,13 @@ description: Browser-based AI tools for clinical documentation - experimental ed
   </div>
 </div>
 
-<!-- BETA Warning -->
-<section class="section" style="padding-top: 2rem;">
+<!-- Clinical Responsibility Notice -->
+<section class="section bg-tertiary">
   <div class="container">
-    <div style="max-width: 900px; margin: 0 auto; padding: 1.5rem; background: #fef3c7; border-radius: var(--radius-lg); border-left: 4px solid #f59e0b; margin-bottom: 2rem;">
-      <h3 style="color: #78350f; margin-top: 0; font-size: var(--font-size-lg);">BETA - Educational Demonstration Only</h3>
-      <p style="color: #78350f; margin-bottom: 0;">
-        <strong>These tools are experimental prototypes for educational purposes.</strong> Do not use with any patient data, protected health information, or sensitive information. These demonstrations are not HIPAA-compliant and are not intended for clinical use. They exist to show what's technically possible with browser-based AI.
+    <div class="content-centered notice-box notice-warning">
+      <h3 class="text-warning mb-4">BETA - Educational Demonstration Only</h3>
+      <p>
+         <strong>These tools are experimental prototypes for educational purposes.</strong> Do not use with any patient data, protected health information, or sensitive information. These demonstrations are not HIPAA-compliant and are not intended for clinical use. They exist to show what's technically possible with browser-based AI. <a href="{{ site.baseurl }}/disclaimer">Review our disclaimer</a>.
       </p>
     </div>
   </div>
@@ -50,7 +50,7 @@ description: Browser-based AI tools for clinical documentation - experimental ed
           <ul>
             <li><strong>5-15 minutes</strong> - Initial model download and browser caching</li>
             <li><strong>10-30 seconds</strong> - Subsequent page loads (models load from cache)</li>
-            <li><strong>Permanent</strong> - Models stay cached until you clear browser data</li>
+            <li><strong>Ongoing</strong> - Models stay cached until you clear browser data</li>
           </ul>
         </div>
       </div>

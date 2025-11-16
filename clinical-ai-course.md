@@ -34,7 +34,7 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 - **Hands-On Practice**: Write real prompts, see real outputs, get real feedback
 - **LLM-Powered Evaluation**: AI analyzes your work and suggests improvements
 - **Clinical Focus**: All exercises use realistic medical scenarios
-- **Privacy-First**: Everything runs in your browser - no data leaves your device
+- **Local**: Everything runs in your browser
 - **Iterative Learning**: Practice until you master each concept
 - **Modular Design**: Progress at your own pace
 
@@ -130,10 +130,10 @@ See the AI-generated output from your prompt in real-time.
 
 ### 5. Get Feedback
 Our LLM evaluation system analyzes your work and provides:
-- ✅ Strengths of your approach
-- 💡 Specific improvements to make
-- 📊 Scores based on clinical documentation best practices
-- 🎯 Actionable examples
+- Strengths of your approach
+- Specific improvements to make
+- Scores based on clinical documentation best practices
+- Actionable examples
 
 ### 6. Iterate & Master
 Refine your prompts based on feedback and practice until you achieve mastery.
@@ -141,11 +141,6 @@ Refine your prompts based on feedback and practice until you achieve mastery.
 ## Course Progress
 
 Your progress is automatically saved in your browser. You can return anytime and pick up where you left off.
-
-<div class="course-progress-bar">
-  <div class="progress-fill" style="width: 0%"></div>
-  <div class="progress-text">0 of 14 exercises completed (0%)</div>
-</div>
 
 ## Ready to Start?
 

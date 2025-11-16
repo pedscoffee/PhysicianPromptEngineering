@@ -2,10 +2,8 @@
 
 [![Website](https://img.shields.io/badge/Website-physicianpromptengineering.com-blue?logo=github)](https://physicianpromptengineering.com/)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17449352-green)](https://doi.org/10.5281/zenodo.17449352)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTE.md)
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
-
 ![Community Contributions](./images/thank-you-banner.jpg)
 
 > Open-source clinical documentation prompts that transform AI scribe output into physician-ready notes in seconds.
@@ -22,16 +20,14 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 
 ## Key Features
 
-- **Evidence-Based Design**: Prompts built on prompt engineering research and real clinical testing
-- **Time-Tested**: Community-contributed prompts used in thousands of patient encounters
+- **Practical**: Prompts built and verified by real world testing
 - **Specialty-Agnostic**: Core framework adaptable to any medical specialty
-- **Completely Free**: Open source under MIT License—no subscriptions, no paywalls
 
 ## Quick Start
 
 ### Prerequisites
 - EMR with integrated AI text generation (e.g., Epic's "Generate Text with AI")
-- Institutional approval for AI documentation tools
+- Institutional approval for tools
 - HIPAA-compliant AI scribe service (optional but recommended)
 
 ### Getting Started
@@ -75,7 +71,7 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 
 ### Key Principles
 
-Our approach is grounded in three evidence-based principles:
+Our approach is grounded in three principles:
 
 1. **Few-Shot Examples > Instructions**: 3-5 examples of your desired output teach AI better than lengthy explanations
 2. **Brevity = Quality**: Concise notes scan faster, reduce cognitive load, and minimize review time
@@ -90,7 +86,7 @@ We welcome contributions from the medical community! This project thrives on sha
 ### How to Contribute
 
 #### Option 1: Web Submission (Recommended)
-Use our [submission form](https://physicianpromptengineering.com/contributions) on the website.
+Use our [submission form](https://physicianpromptengineering.com/contribute) on the website.
 
 #### Option 2: GitHub Pull Request
 1. Fork the repository
@@ -105,32 +101,30 @@ Use our [submission form](https://physicianpromptengineering.com/contributions) 
 - International/multilingual adaptations
 - Testing feedback and refinements
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+See [CONTRIBUTE.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## ⚠️ Important Disclaimers
 
 ### Clinical Responsibility
 - All AI-generated content requires physician review before finalizing
 - These tools enhance efficiency, not replace clinical judgment
-- You retain full responsibility for documentation accuracy
+- You retain full responsibility for the output including anything assisted or produced by these tools
 
 ### Security Requirements
-- **ONLY** use within HIPAA-compliant EMR environments
+- **ONLY** use within HIPAA-compliant and IT approved environments and workflows
 - **NEVER** use public AI tools (ChatGPT, Claude, Gemini) with patient data
 - Follow your institution's AI usage policies
 
 ### No Medical Advice
 This project provides educational tools only. It does not constitute medical, legal, or billing advice.
+See full [Disclaimer](https://physicianpromptengineering.com/disclaimer)
 
 ## Project Status
 
 ### Current Focus
 - [ ] Expanding specialty-specific prompt library
-- [ ] EMR integration guides for major systems
-- [ ] Validation studies on time savings
-- [ ] Multi-language support
 
-[Share your story →](https://physicianpromptengineering.com/contributions)
+[Share your story →](https://physicianpromptengineering.com/contribute)
 
 ## Citation
 
@@ -151,9 +145,6 @@ If you use this project in your research or practice, please cite:
 We've developed experimental browser-based tools demonstrating what's possible with client-side AI. These are educational prototypes—**not for clinical use**:
 
 - **Interactive Course**: Hands-on prompt engineering with AI feedback
-- **Scribe**: Speech-to-text with formatting (educational demo)
-- **Prompt Assistant**: Meta-prompting exploration
-- **Chat**: Contextual AI with embedded knowledge
 
 [Explore Browser AI Tools →](https://physicianpromptengineering.com/ppe-ai)
 
@@ -164,13 +155,7 @@ We've developed experimental browser-based tools demonstrating what's possible w
 - **Issues**: [GitHub Issues](https://github.com/pedscoffee/PhysicianPromptEngineering/issues)
 - **About**: [Learn about the project](https://physicianpromptengineering.com/about)
 
-## License
-
-This project is open source under the [MIT License](LICENSE). You are free to use, modify, and distribute this software.
-
 ## Acknowledgments
-
-This project exists because of contributions from practicing physicians who generously share their time, expertise, and refined prompts. Thank you to everyone who has contributed to making clinical documentation less burdensome.
 
 Special thanks to the free online medical education community that inspired this project.
 
@@ -181,7 +166,7 @@ Special thanks to the free online medical education community that inspired this
 </p>
 
 <p align="center">
-  <sub>Built by physicians, for physicians. Because documentation shouldn't dominate medicine.</sub>
+  <sub>Built by physicians, for physicians.</sub>
 </p>
 
 <p align="center">
