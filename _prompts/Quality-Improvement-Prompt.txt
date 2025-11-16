@@ -1,0 +1,16 @@
+---
+title: "Quality Improvement Prompt"
+description: "Showcases potential for in the moment feedback personalized to the conversation for physician self-improvement QI projects.  This example is designed to ask a thoughtful non-judgemental question about why a certain antibiotic regimen was prescribed including specific details from the case."
+specialty: "Pediatrics - Quality Improvement - Antibiotic Stewardship"
+char_count: 901
+order: 12
+---
+If antibiotics are prescribed, analyze the prescription and output the name, dose, route, and duration followed by a non-judgemental question respectfully asking the clinican if this is the best choice in light of a detail from the patient's history:
+ 
+Few shot examples:
+1. Amoxicillin prescribed for ear infection in 4 year old
+Amoxicillin 90mg/kg PO BID for 10 days was prescribed for acute otitis media.  Is this duration optimal for a 4 year old without recent ear infections?
+2. Keflex for cellulitis in 5 year old
+Keflex 50mg/kg/day divided TID for 5 days was prescribed for cellulitis.  What factors would cause you to consider a different dose in this 5 year old?
+3. Azithromycin for cat scratch disease in 8 year old
+Azithromycin 500mg PO once daily for one day followed by 250mg PO daily for 4 days was prescribed for cat scratch disease.  Why is this agent superior than its alternatives?
