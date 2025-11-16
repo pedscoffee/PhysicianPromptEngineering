@@ -5,12 +5,12 @@ permalink: /clinic-visit-tracker/
 description: Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries
 ---
 
-<!-- Hero Banner -->
-<div class="hero" style="background: linear-gradient(135deg, #0088bb 0%, #006b94 100%); padding: 3rem 0; margin-bottom: 2rem; border-radius: 8px;">
+<!-- Hero Section -->
+<div class="hero">
   <div class="container">
-    <h1 class="hero-title" style="color: white; text-align: center; margin-bottom: 1rem;">Clinic Visit Tracker</h1>
-    <p class="hero-subtitle" style="color: rgba(255, 255, 255, 0.9); text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
-      Track your clinic encounters with automated billing codes, wRVU calculations, and daily summaries. All data stored locally in your browser.
+    <h1 class="hero-title">Clinic RVU Tracker</h1>
+    <p class="hero-subtitle">
+       Track your clinic encounters with automated billing codes, wRVU calculations, and daily summaries. All data stored locally in your browser with easy CSV export.
     </p>
   </div>
 </div>
