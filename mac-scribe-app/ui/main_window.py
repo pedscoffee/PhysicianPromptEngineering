@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         """Initialize the user interface"""
-        self.setWindowTitle("Doc Pixel's Scribe - Offline AI Medical Scribe")
+        self.setWindowTitle("Physician Prompt Engineering Scribe")
         self.setGeometry(100, 100, 1400, 900)
 
         # Create scroll area for entire content
@@ -90,35 +90,30 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage("Ready - Click 'Initialize AI' to start")
 
     def create_header(self, layout):
-        """Create retro header"""
+        """Create modern clinical header"""
         header_widget = QWidget()
         header_widget.setStyleSheet("""
             QWidget {
-                background-color: #2C1810;
-                border: 4px solid #D4A76A;
-                border-radius: 0px;
-                padding: 15px;
+                background-color: #ffffff;
+                border: 1px solid #d1dbe6;
+                border-radius: 8px;
+                padding: 20px;
             }
         """)
 
         header_layout = QVBoxLayout(header_widget)
 
-        title = QLabel("🎮 DOC PIXEL'S SCRIBE")
+        title = QLabel("Physician Prompt Engineering Scribe")
         title.setProperty("class", "title")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        title.setFont(QFont("Courier New", 24, QFont.Weight.Bold))
+        title.setFont(QFont("", 24, QFont.Weight.DemiBold))
 
-        subtitle = QLabel("Fully Offline AI Medical Scribe - Your Data Never Leaves Your Mac")
+        subtitle = QLabel("Clinical Documentation Tool")
         subtitle.setProperty("class", "subtitle")
         subtitle.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        privacy_label = QLabel("🔒 100% Private | 🚫 No Internet Required | 💰 Free Forever")
-        privacy_label.setStyleSheet("color: #00FF00; font-weight: bold;")
-        privacy_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
         header_layout.addWidget(title)
         header_layout.addWidget(subtitle)
-        header_layout.addWidget(privacy_label)
 
         layout.addWidget(header_widget)
 
@@ -131,7 +126,6 @@ class MainWindow(QMainWindow):
         # Status label
         self.status_label = QLabel("AI Models Not Loaded")
         self.status_label.setProperty("class", "status")
-        self.status_label.setFont(QFont("Courier New", 12))
         status_layout.addWidget(self.status_label)
 
         # Progress bar
@@ -142,12 +136,11 @@ class MainWindow(QMainWindow):
         # Initialize button
         btn_layout = QHBoxLayout()
 
-        self.init_btn = QPushButton("🚀 Initialize AI Models")
-        self.init_btn.setFont(QFont("Courier New", 12, QFont.Weight.Bold))
+        self.init_btn = QPushButton("Initialize AI Models")
         self.init_btn.clicked.connect(self.initialize_ai)
         btn_layout.addWidget(self.init_btn)
 
-        self.clear_session_btn = QPushButton("🗑️ Clear Session")
+        self.clear_session_btn = QPushButton("Clear Session")
         self.clear_session_btn.setProperty("class", "danger")
         self.clear_session_btn.clicked.connect(self.clear_session_data)
         self.clear_session_btn.setEnabled(False)
@@ -164,19 +157,18 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout(panel)
 
         # Recording group
-        recording_group = QGroupBox("📼 Recording")
+        recording_group = QGroupBox("Recording")
         recording_layout = QVBoxLayout()
 
         # Recording controls
         btn_layout = QHBoxLayout()
 
-        self.record_btn = QPushButton("⏺️ Start Recording")
-        self.record_btn.setFont(QFont("Courier New", 11, QFont.Weight.Bold))
+        self.record_btn = QPushButton("Start Recording")
         self.record_btn.clicked.connect(self.start_recording)
         self.record_btn.setEnabled(False)
         btn_layout.addWidget(self.record_btn)
 
-        self.stop_btn = QPushButton("⏹️ Stop & Transcribe")
+        self.stop_btn = QPushButton("Stop & Transcribe")
         self.stop_btn.setProperty("class", "secondary")
         self.stop_btn.clicked.connect(self.stop_recording)
         self.stop_btn.setEnabled(False)
@@ -187,14 +179,13 @@ class MainWindow(QMainWindow):
         # Recording time
         self.recording_time_label = QLabel("Duration: 0:00")
         self.recording_time_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.recording_time_label.setFont(QFont("Courier New", 14, QFont.Weight.Bold))
         recording_layout.addWidget(self.recording_time_label)
 
         recording_group.setLayout(recording_layout)
         layout.addWidget(recording_group)
 
         # Transcription group
-        transcription_group = QGroupBox("📝 Transcription")
+        transcription_group = QGroupBox("Transcription")
         transcription_layout = QVBoxLayout()
 
         self.transcription_text = QTextEdit()
@@ -209,11 +200,13 @@ class MainWindow(QMainWindow):
         # Transcription actions
         trans_btn_layout = QHBoxLayout()
 
-        self.copy_trans_btn = QPushButton("📋 Copy")
+        self.copy_trans_btn = QPushButton("Copy")
+        self.copy_trans_btn.setProperty("class", "secondary")
         self.copy_trans_btn.clicked.connect(self.copy_transcription)
         trans_btn_layout.addWidget(self.copy_trans_btn)
 
-        self.save_trans_btn = QPushButton("💾 Save")
+        self.save_trans_btn = QPushButton("Save")
+        self.save_trans_btn.setProperty("class", "secondary")
         self.save_trans_btn.clicked.connect(self.save_transcription)
         trans_btn_layout.addWidget(self.save_trans_btn)
 
@@ -230,8 +223,7 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout(panel)
 
         # Process button
-        self.process_btn = QPushButton("🎯 Generate Clinical Notes")
-        self.process_btn.setFont(QFont("Courier New", 12, QFont.Weight.Bold))
+        self.process_btn = QPushButton("Generate Clinical Notes")
         self.process_btn.clicked.connect(self.process_with_ai)
         self.process_btn.setEnabled(False)
         layout.addWidget(self.process_btn)
@@ -244,7 +236,7 @@ class MainWindow(QMainWindow):
         self.main_note_text.setPlaceholderText("Your formatted clinical note will appear here...")
         self.main_note_text.setReadOnly(True)
         self.main_note_text.setMinimumHeight(300)
-        self.output_tabs.addTab(self.main_note_text, "📄 Medical Note")
+        self.output_tabs.addTab(self.main_note_text, "Medical Note")
 
         # Enhancement outputs (dynamic tabs will be added during processing)
         self.enhancement_tabs = {}
@@ -254,11 +246,13 @@ class MainWindow(QMainWindow):
         # Output actions
         output_btn_layout = QHBoxLayout()
 
-        self.copy_all_btn = QPushButton("📋 Copy All Outputs")
+        self.copy_all_btn = QPushButton("Copy All Outputs")
+        self.copy_all_btn.setProperty("class", "secondary")
         self.copy_all_btn.clicked.connect(self.copy_all_outputs)
         output_btn_layout.addWidget(self.copy_all_btn)
 
-        self.save_all_btn = QPushButton("💾 Save All")
+        self.save_all_btn = QPushButton("Save All")
+        self.save_all_btn.setProperty("class", "secondary")
         self.save_all_btn.clicked.connect(self.save_all_outputs)
         output_btn_layout.addWidget(self.save_all_btn)
 
@@ -268,22 +262,28 @@ class MainWindow(QMainWindow):
 
     def create_prompt_customization(self, layout):
         """Create expandable prompt customization section"""
-        customization_group = QGroupBox("⚙️ Customize Prompts & Dictionary")
+        customization_group = QGroupBox("Prompt Management & Configuration")
         customization_layout = QVBoxLayout()
 
         # Expand/collapse button
         btn_layout = QHBoxLayout()
 
-        self.toggle_custom_btn = QPushButton("▼ Show Customization")
+        self.prompt_library_btn = QPushButton("Manage Prompt Library")
+        self.prompt_library_btn.clicked.connect(self.open_prompt_library)
+        btn_layout.addWidget(self.prompt_library_btn)
+
+        self.toggle_custom_btn = QPushButton("Show Details")
         self.toggle_custom_btn.setProperty("class", "secondary")
         self.toggle_custom_btn.clicked.connect(self.toggle_customization)
         btn_layout.addWidget(self.toggle_custom_btn)
 
-        self.export_config_btn = QPushButton("📤 Export Config")
+        self.export_config_btn = QPushButton("Export Config")
+        self.export_config_btn.setProperty("class", "secondary")
         self.export_config_btn.clicked.connect(self.export_configuration)
         btn_layout.addWidget(self.export_config_btn)
 
-        self.import_config_btn = QPushButton("📥 Import Config")
+        self.import_config_btn = QPushButton("Import Config")
+        self.import_config_btn.setProperty("class", "secondary")
         self.import_config_btn.clicked.connect(self.import_configuration)
         btn_layout.addWidget(self.import_config_btn)
 
@@ -311,7 +311,8 @@ class MainWindow(QMainWindow):
 
         dict_btn_layout = QHBoxLayout()
 
-        self.edit_dict_btn = QPushButton("📖 Edit Medical Terms")
+        self.edit_dict_btn = QPushButton("Edit Medical Terms")
+        self.edit_dict_btn.setProperty("class", "secondary")
         self.edit_dict_btn.clicked.connect(self.edit_medical_dictionary)
         dict_btn_layout.addWidget(self.edit_dict_btn)
 
@@ -409,8 +410,18 @@ class MainWindow(QMainWindow):
         is_visible = self.customization_content.isVisible()
         self.customization_content.setVisible(not is_visible)
         self.toggle_custom_btn.setText(
-            "▲ Hide Customization" if not is_visible else "▼ Show Customization"
+            "Hide Details" if not is_visible else "Show Details"
         )
+
+    def open_prompt_library(self):
+        """Open the prompt library manager"""
+        from ui.prompt_library_dialog import PromptLibraryDialog
+
+        dialog = PromptLibraryDialog(self, self.prompt_manager)
+        dialog.exec()
+
+        # Refresh the prompts list after closing
+        self.refresh_prompts_list()
 
     def export_configuration(self):
         """Export prompt configuration"""

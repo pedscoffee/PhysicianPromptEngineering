@@ -163,7 +163,7 @@ class TranscriptionWorker(QThread):
 
 
 class ProcessingWorker(QThread):
-    """Worker thread for multi-stage LLM processing"""
+    """Worker thread for flexible multi-stage LLM processing with custom workflows"""
 
     progress = pyqtSignal(str, str)  # (stage_name, message)
     stage_complete = pyqtSignal(str, str)  # (stage_name, output)
@@ -176,83 +176,75 @@ class ProcessingWorker(QThread):
         self.transcription = transcription
 
     def run(self):
-        """Run multi-stage processing"""
+        """Run flexible workflow processing"""
         results = {
-            "system": None,
-            "editor": None,
-            "enhancements": []
+            "workflow": [],  # List of outputs in order
+            "final_note": None
         }
 
         try:
-            # Stage 1: System prompt (required)
-            system_prompt = self.prompt_manager.get_active_system_prompt()
-            if not system_prompt:
-                logger.error("No active system prompt")
+            # Get all prompts in workflow order
+            workflow_prompts = self.prompt_manager.get_workflow_prompts()
+
+            if not workflow_prompts:
+                logger.error("No active prompts in workflow")
                 self.finished.emit(results)
                 return
 
-            self.progress.emit("system", f"Processing with: {system_prompt.name}")
+            # Keep track of the current working text
+            current_text = self.transcription
+            main_note = None
 
-            full_prompt = system_prompt.prompt + "\n\n" + self.transcription
-            system_output = self.llm_engine.generate(
-                full_prompt,
-                max_tokens=2000,
-                temperature=0.3,
-                progress_callback=lambda msg: self.progress.emit("system", msg)
-            )
+            # Execute each prompt in order
+            for i, prompt in enumerate(workflow_prompts):
+                # Determine prompt category for progress reporting
+                if prompt in self.prompt_manager.config.systemPrompts:
+                    category = "system"
+                elif prompt in self.prompt_manager.config.editorPrompts:
+                    category = "editor"
+                else:
+                    category = "enhancement"
 
-            if system_output:
-                results["system"] = {
-                    "name": system_prompt.name,
-                    "output": system_output
-                }
-                self.stage_complete.emit("system", system_output)
+                self.progress.emit(category, f"Processing with: {prompt.name}")
 
-            # Stage 2: Editor prompt (optional)
-            editor_prompt = self.prompt_manager.get_active_editor_prompt()
-            if editor_prompt and system_output:
-                self.progress.emit("editor", f"Reformatting with: {editor_prompt.name}")
+                # Build the full prompt
+                # System prompts take the transcription
+                # Editor prompts take the previous note
+                # Enhancement prompts take the final note (latest main note)
+                if category in ["system", "editor"]:
+                    input_text = current_text
+                else:
+                    # Enhancements use the latest main note
+                    input_text = main_note if main_note else current_text
 
-                full_prompt = editor_prompt.prompt + "\n\n" + system_output
-                editor_output = self.llm_engine.generate(
+                full_prompt = prompt.prompt + "\n\n" + input_text
+
+                # Generate output
+                output = self.llm_engine.generate(
                     full_prompt,
                     max_tokens=2000,
                     temperature=0.3,
-                    progress_callback=lambda msg: self.progress.emit("editor", msg)
+                    progress_callback=lambda msg: self.progress.emit(category, msg)
                 )
 
-                if editor_output:
-                    results["editor"] = {
-                        "name": editor_prompt.name,
-                        "output": editor_output
-                    }
-                    self.stage_complete.emit("editor", editor_output)
-
-            # Stage 3: Enhancement prompts (parallel-ish, but sequential for simplicity)
-            enhancement_prompts = self.prompt_manager.get_active_enhancement_prompts()
-            final_note = results["editor"]["output"] if results["editor"] else results["system"]["output"]
-
-            for enhancement_prompt in enhancement_prompts:
-                self.progress.emit(
-                    "enhancement",
-                    f"Generating: {enhancement_prompt.name}"
-                )
-
-                full_prompt = enhancement_prompt.prompt + "\n\n" + final_note
-                enhancement_output = self.llm_engine.generate(
-                    full_prompt,
-                    max_tokens=2000,
-                    temperature=0.3,
-                    progress_callback=lambda msg: self.progress.emit("enhancement", msg)
-                )
-
-                if enhancement_output:
+                if output:
                     result = {
-                        "name": enhancement_prompt.name,
-                        "output": enhancement_output
+                        "name": prompt.name,
+                        "category": category,
+                        "output": output
                     }
-                    results["enhancements"].append(result)
-                    self.stage_complete.emit(enhancement_prompt.name, enhancement_output)
+                    results["workflow"].append(result)
+
+                    # Update current text for next prompt
+                    if category in ["system", "editor"]:
+                        current_text = output
+                        main_note = output
+
+                    # Emit stage completion
+                    self.stage_complete.emit(prompt.name if category == "enhancement" else category, output)
+
+            # Set final note
+            results["final_note"] = main_note if main_note else self.transcription
 
             self.finished.emit(results)
 
@@ -306,22 +298,22 @@ class ScribeMainWindow(MainWindow):
         self.progress_bar.setVisible(False)
 
         if success:
-            self.status_label.setText("✅ AI Models Ready!")
+            self.status_label.setText("AI Models Ready")
             self.statusBar().showMessage("AI models loaded successfully - Ready to record", 5000)
 
             # Enable controls
             self.record_btn.setEnabled(True)
             self.clear_session_btn.setEnabled(True)
-            self.init_btn.setText("✅ AI Ready")
+            self.init_btn.setText("AI Ready")
 
             # Load and display active prompts
             self.refresh_prompts_list()
 
         else:
-            self.status_label.setText("❌ Initialization Failed")
+            self.status_label.setText("Initialization Failed")
             self.statusBar().showMessage("Failed to load AI models - Check logs", 5000)
             self.init_btn.setEnabled(True)
-            self.init_btn.setText("🔄 Retry Initialization")
+            self.init_btn.setText("Retry Initialization")
 
     def refresh_prompts_list(self):
         """Refresh the prompts list display"""
@@ -329,15 +321,15 @@ class ScribeMainWindow(MainWindow):
 
         system_prompt = self.prompt_manager.get_active_system_prompt()
         if system_prompt:
-            self.prompts_list.addItem(f"✅ System: {system_prompt.name}")
+            self.prompts_list.addItem(f"System: {system_prompt.name}")
 
         editor_prompt = self.prompt_manager.get_active_editor_prompt()
         if editor_prompt:
-            self.prompts_list.addItem(f"✅ Editor: {editor_prompt.name}")
+            self.prompts_list.addItem(f"Editor: {editor_prompt.name}")
 
         enhancement_prompts = self.prompt_manager.get_active_enhancement_prompts()
         for prompt in enhancement_prompts:
-            self.prompts_list.addItem(f"✅ Enhancement: {prompt.name}")
+            self.prompts_list.addItem(f"Enhancement: {prompt.name}")
 
     def start_recording(self):
         """Start audio recording"""
@@ -484,7 +476,7 @@ class ScribeMainWindow(MainWindow):
                 text_widget = QTextEdit()
                 text_widget.setReadOnly(True)
                 text_widget.setMinimumHeight(300)  # Ensure proper minimum height
-                self.output_tabs.addTab(text_widget, f"📊 {stage_name}")
+                self.output_tabs.addTab(text_widget, stage_name)
                 self.enhancement_tabs[stage_name] = text_widget
 
             self.enhancement_tabs[stage_name].setPlainText(output)
@@ -494,10 +486,7 @@ class ScribeMainWindow(MainWindow):
         self.current_outputs = results
         self.process_btn.setEnabled(True)
 
-        total_outputs = 1  # system
-        if results["editor"]:
-            total_outputs += 1
-        total_outputs += len(results["enhancements"])
+        total_outputs = len(results["workflow"])
 
         self.statusBar().showMessage(
             f"Processing complete - Generated {total_outputs} outputs",
@@ -518,10 +507,10 @@ def main():
 
     # Create application
     app = QApplication(sys.argv)
-    app.setApplicationName("Doc Pixel's Scribe")
+    app.setApplicationName("Physician Prompt Engineering Scribe")
     app.setOrganizationName("Physician Prompt Engineering")
 
-    # Set retro pixelated stylesheet
+    # Set modern clinical stylesheet
     app.setStyleSheet(get_stylesheet())
 
     # Initialize engines
