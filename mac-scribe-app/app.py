@@ -475,7 +475,8 @@ class ScribeMainWindow(MainWindow):
                 from PyQt6.QtWidgets import QTextEdit
                 text_widget = QTextEdit()
                 text_widget.setReadOnly(True)
-                text_widget.setMinimumHeight(300)  # Ensure proper minimum height
+                text_widget.setMinimumHeight(400)  # Ensure proper minimum height
+                # Don't set maximum height to allow full scrolling and copying
                 self.output_tabs.addTab(text_widget, stage_name)
                 self.enhancement_tabs[stage_name] = text_widget
 

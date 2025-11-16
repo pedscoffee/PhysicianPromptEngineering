@@ -39,6 +39,10 @@ class MainWindow(QMainWindow):
         self.init_ui()
         self.load_medical_dictionary()
 
+        # Load prompts immediately so they're available in the library manager
+        if self.prompt_manager and not self.prompt_manager.config:
+            self.prompt_manager.load_prompts()
+
     def init_ui(self):
         """Initialize the user interface"""
         self.setWindowTitle("Physician Prompt Engineering Scribe")
@@ -235,7 +239,8 @@ class MainWindow(QMainWindow):
         self.main_note_text = QTextEdit()
         self.main_note_text.setPlaceholderText("Your formatted clinical note will appear here...")
         self.main_note_text.setReadOnly(True)
-        self.main_note_text.setMinimumHeight(300)
+        self.main_note_text.setMinimumHeight(400)
+        # Don't set maximum height to allow full scrolling
         self.output_tabs.addTab(self.main_note_text, "Medical Note")
 
         # Enhancement outputs (dynamic tabs will be added during processing)
@@ -270,6 +275,7 @@ class MainWindow(QMainWindow):
 
         self.prompt_library_btn = QPushButton("Manage Prompt Library")
         self.prompt_library_btn.clicked.connect(self.open_prompt_library)
+        # Enable immediately so users can manage prompts before initializing AI
         btn_layout.addWidget(self.prompt_library_btn)
 
         self.toggle_custom_btn = QPushButton("Show Details")
