@@ -228,7 +228,7 @@ permalink: /diagnosis-case-creator/
 <div style="background: #fee2e2; border: 2px solid #dc2626; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 1200px;">
   <h3 style="color: #991b1b; margin-top: 0;">⚠️ IMPORTANT: Fictional Cases Only</h3>
   <p style="color: #991b1b; margin-bottom: 0;">
-    <strong>DO NOT use real patient data.</strong> Create only fictional, synthesized clinical cases for educational purposes. This tool is NOT HIPAA-compliant. Never include actual patient information, names, dates, or any identifiable details. All cases should be completely de-identified educational examples.
+    <strong>DO NOT use real patient data.</strong> Create only fictional, synthesized clinical cases for educational purposes. This tool is NOT HIPAA-compliant. Never include actual patient information, names, dates, or any identifiable details. All cases should be completely fabricated educational examples.
   </p>
 </div>
 
