@@ -24,6 +24,12 @@ from ui.styles import get_stylesheet
 from engines.whisper_engine import WhisperEngine
 from engines.llm_engine import LLMEngine
 from engines.prompt_manager import PromptManager
+from security.hipaa_compliance import (
+    secure_delete,
+    clear_sensitive_data,
+    detect_phi,
+    AuditLogger
+)
 
 # Configure logging
 logging.basicConfig(
@@ -259,7 +265,7 @@ class ProcessingWorker(QThread):
 # ============================================
 
 class ScribeMainWindow(MainWindow):
-    """Extended main window with worker thread integration"""
+    """Extended main window with worker thread integration and HIPAA compliance"""
 
     def __init__(self, whisper_engine, llm_engine, prompt_manager):
         super().__init__(whisper_engine, llm_engine, prompt_manager)
@@ -270,6 +276,13 @@ class ScribeMainWindow(MainWindow):
         self.recording_start_time = None
         self.temp_audio_path = Path.home() / ".cache" / "mac-scribe-app" / "temp_recording.wav"
         self.temp_audio_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # HIPAA compliance features
+        self.audit_logger = AuditLogger()
+        self.clipboard_clear_timers = []  # Track clipboard timers
+
+        # Log app startup
+        self.audit_logger.log_event("APP_START", success=True)
 
     def initialize_ai(self):
         """Initialize AI models in background thread"""
@@ -409,9 +422,33 @@ class ScribeMainWindow(MainWindow):
 
     def on_transcription_finished(self, transcription):
         """Handle transcription completion"""
+        # Securely delete temporary audio file
+        try:
+            if self.temp_audio_path.exists():
+                logger.info("Securely deleting temporary audio file...")
+                if secure_delete(str(self.temp_audio_path)):
+                    logger.info("Temporary audio file securely deleted")
+                else:
+                    logger.warning("Failed to securely delete temporary audio file")
+        except Exception as e:
+            logger.error(f"Error during secure deletion: {e}")
+
         if transcription:
             self.current_transcription = transcription
             self.transcription_text.setPlainText(transcription)
+
+            # Check for PHI patterns and log
+            phi_detected = detect_phi(transcription)
+            if phi_detected:
+                logger.warning(f"PHI patterns detected: {list(phi_detected.keys())}")
+                self.audit_logger.log_event(
+                    "TRANSCRIPTION_COMPLETE",
+                    success=True,
+                    phi_detected=True,
+                    details={"phi_types": list(phi_detected.keys())}
+                )
+            else:
+                self.audit_logger.log_event("TRANSCRIPTION_COMPLETE", success=True)
 
             # Enable processing
             self.process_btn.setEnabled(True)
@@ -430,14 +467,52 @@ class ScribeMainWindow(MainWindow):
             self.statusBar().showMessage("Transcription failed - please try again", 5000)
             self.record_btn.setEnabled(True)
             self.stop_btn.setEnabled(False)
+            self.audit_logger.log_event("TRANSCRIPTION_COMPLETE", success=False)
 
     def process_with_ai(self):
-        """Process transcription with AI"""
+        """Process transcription with AI with PHI detection"""
+        from PyQt6.QtWidgets import QMessageBox
+
         transcription = self.transcription_text.toPlainText().strip()
 
         if not transcription:
             self.statusBar().showMessage("No transcription to process", 3000)
             return
+
+        # CRITICAL: Detect potential unmasked PHI before processing
+        phi_found = detect_phi(transcription)
+        if phi_found:
+            phi_types = list(phi_found.keys())
+            phi_details = "\n".join([f"- {k}: {len(v)} occurrence(s)" for k, v in phi_found.items()])
+
+            reply = QMessageBox.warning(
+                self,
+                "Unmasked PHI Detected",
+                f"⚠️ Potential unmasked PHI detected:\n\n{phi_details}\n\n"
+                "HIPAA requires masking or de-identification of PHI.\n\n"
+                "Continue processing anyway?",
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.No
+            )
+
+            if reply == QMessageBox.StandardButton.No:
+                self.audit_logger.log_event(
+                    "PROCESSING_CANCELLED",
+                    success=True,
+                    phi_detected=True,
+                    details={"reason": "User declined due to PHI warning", "phi_types": phi_types}
+                )
+                return
+
+            # User chose to continue despite PHI warning
+            self.audit_logger.log_event(
+                "PROCESSING_START",
+                success=True,
+                phi_detected=True,
+                details={"phi_types": phi_types, "warning_accepted": True}
+            )
+        else:
+            self.audit_logger.log_event("PROCESSING_START", success=True)
 
         # Disable button during processing
         self.process_btn.setEnabled(False)
@@ -488,6 +563,13 @@ class ScribeMainWindow(MainWindow):
         self.process_btn.setEnabled(True)
 
         total_outputs = len(results["workflow"])
+
+        # Audit log processing completion
+        self.audit_logger.log_event(
+            "PROCESSING_COMPLETE",
+            success=True if results["workflow"] else False,
+            details={"outputs_generated": total_outputs}
+        )
 
         self.statusBar().showMessage(
             f"Processing complete - Generated {total_outputs} outputs",

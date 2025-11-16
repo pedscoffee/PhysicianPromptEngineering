@@ -23,5 +23,8 @@ llama-cpp-python==0.2.27
 # Data Management
 pydantic==2.5.2
 
+# Security & Encryption (HIPAA Compliance)
+cryptography==42.0.0
+
 # Utilities
 python-dotenv==1.0.0

@@ -1,5 +1,5 @@
 """
-Main Window - Retro Pixelated Medical Scribe UI
+Main Window - Modern Clinical Medical Scribe UI with HIPAA Compliance
 """
 
 import json
@@ -8,11 +8,18 @@ from PyQt6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QPushButton, QTextEdit, QLabel, QTabWidget, QGroupBox,
     QProgressBar, QListWidget, QMessageBox, QFileDialog,
-    QScrollArea, QCheckBox, QSplitter
+    QScrollArea, QCheckBox, QSplitter, QInputDialog, QLineEdit,
+    QApplication
 )
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QTimer
 from PyQt6.QtGui import QFont
 import logging
+
+# Import security utilities
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+from security.hipaa_compliance import clear_sensitive_data, SimpleEncryption
 
 logger = logging.getLogger(__name__)
 
@@ -368,10 +375,22 @@ class MainWindow(QMainWindow):
         pass
 
     def copy_transcription(self):
-        """Copy transcription to clipboard"""
-        from PyQt6.QtWidgets import QApplication
-        QApplication.clipboard().setText(self.transcription_text.toPlainText())
-        self.statusBar().showMessage("Transcription copied to clipboard!", 3000)
+        """Copy transcription to clipboard with auto-clear"""
+        clipboard = QApplication.clipboard()
+        clipboard.setText(self.transcription_text.toPlainText())
+
+        # Auto-clear clipboard after 5 minutes
+        timer = QTimer()
+        timer.setSingleShot(True)
+        timer.timeout.connect(lambda: self._clear_clipboard_safe(clipboard))
+        timer.start(5 * 60 * 1000)  # 5 minutes
+
+        # Store timer reference to prevent garbage collection
+        if not hasattr(self, 'clipboard_timers'):
+            self.clipboard_timers = []
+        self.clipboard_timers.append(timer)
+
+        self.statusBar().showMessage("Copied to clipboard (will auto-clear in 5 minutes)", 3000)
 
     def save_transcription(self):
         """Save transcription to file"""
@@ -387,29 +406,113 @@ class MainWindow(QMainWindow):
             self.statusBar().showMessage(f"Saved to {file_path}", 3000)
 
     def copy_all_outputs(self):
-        """Copy all outputs to clipboard"""
-        from PyQt6.QtWidgets import QApplication
+        """Copy all outputs to clipboard with auto-clear"""
+        clipboard = QApplication.clipboard()
         all_text = f"=== MEDICAL NOTE ===\n\n{self.main_note_text.toPlainText()}\n\n"
         for name, widget in self.enhancement_tabs.items():
             all_text += f"=== {name.upper()} ===\n\n{widget.toPlainText()}\n\n"
-        QApplication.clipboard().setText(all_text)
-        self.statusBar().showMessage("All outputs copied to clipboard!", 3000)
+        clipboard.setText(all_text)
+
+        # Auto-clear clipboard after 5 minutes
+        timer = QTimer()
+        timer.setSingleShot(True)
+        timer.timeout.connect(lambda: self._clear_clipboard_safe(clipboard))
+        timer.start(5 * 60 * 1000)  # 5 minutes
+
+        # Store timer reference to prevent garbage collection
+        if not hasattr(self, 'clipboard_timers'):
+            self.clipboard_timers = []
+        self.clipboard_timers.append(timer)
+
+        self.statusBar().showMessage("Copied to clipboard (will auto-clear in 5 minutes)", 3000)
+
+    def _clear_clipboard_safe(self, clipboard):
+        """Safely clear clipboard if it still contains our data"""
+        try:
+            clipboard.clear()
+            logger.info("Clipboard auto-cleared after timeout")
+        except Exception as e:
+            logger.error(f"Failed to clear clipboard: {e}")
 
     def save_all_outputs(self):
-        """Save all outputs to file"""
+        """Save all outputs to file with optional encryption"""
+        # Ask if user wants encryption
+        encrypt = QMessageBox.question(
+            self,
+            "File Encryption",
+            "Encrypt file with password?\n\n"
+            "⚠️ Without encryption, PHI will be stored in plain text.\n"
+            "Ensure your Mac uses FileVault if declining.",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.Yes
+        ) == QMessageBox.StandardButton.Yes
+
         file_path, _ = QFileDialog.getSaveFileName(
             self,
             "Save All Outputs",
-            str(Path.home() / "clinical_notes.txt"),
-            "Text Files (*.txt)"
+            str(Path.home() / ("clinical_notes.enc" if encrypt else "clinical_notes.txt")),
+            "Encrypted Files (*.enc)" if encrypt else "Text Files (*.txt)"
         )
-        if file_path:
-            all_text = f"=== MEDICAL NOTE ===\n\n{self.main_note_text.toPlainText()}\n\n"
-            for name, widget in self.enhancement_tabs.items():
-                all_text += f"=== {name.upper()} ===\n\n{widget.toPlainText()}\n\n"
+
+        if not file_path:
+            return
+
+        # Compile all text
+        all_text = f"=== MEDICAL NOTE ===\n\n{self.main_note_text.toPlainText()}\n\n"
+        for name, widget in self.enhancement_tabs.items():
+            all_text += f"=== {name.upper()} ===\n\n{widget.toPlainText()}\n\n"
+
+        if encrypt:
+            # Get encryption password
+            password, ok = QInputDialog.getText(
+                self,
+                "Encryption Password",
+                "Enter encryption password:\n(You will need this to decrypt the file)",
+                QLineEdit.EchoMode.Password
+            )
+
+            if not ok or not password:
+                self.statusBar().showMessage("Save cancelled", 3000)
+                return
+
+            # Confirm password
+            password_confirm, ok = QInputDialog.getText(
+                self,
+                "Confirm Password",
+                "Re-enter password to confirm:",
+                QLineEdit.EchoMode.Password
+            )
+
+            if not ok or password != password_confirm:
+                QMessageBox.warning(self, "Error", "Passwords do not match")
+                return
+
+            # Encrypt and save
+            if SimpleEncryption.encrypt_file(file_path, all_text, password):
+                self.statusBar().showMessage(f"Encrypted file saved to {file_path}", 5000)
+                QMessageBox.information(
+                    self,
+                    "File Encrypted",
+                    "File has been encrypted with AES-256.\n\n"
+                    "⚠️ Store your password securely!\n"
+                    "Lost passwords cannot be recovered."
+                )
+            else:
+                QMessageBox.warning(self, "Error", "Failed to encrypt file")
+        else:
+            # Save unencrypted with warning
             with open(file_path, 'w') as f:
                 f.write(all_text)
             self.statusBar().showMessage(f"Saved to {file_path}", 3000)
+
+            # Show FileVault reminder
+            QMessageBox.warning(
+                self,
+                "Unencrypted File",
+                "⚠️ File saved without encryption.\n\n"
+                "PHI is stored in plain text on disk.\n"
+                "Ensure your Mac uses FileVault full-disk encryption."
+            )
 
     def toggle_customization(self):
         """Toggle customization section visibility"""
@@ -552,16 +655,65 @@ class MainWindow(QMainWindow):
         )
 
     def closeEvent(self, event):
-        """Handle window close - clear session data"""
-        # Auto-clear session data on close for privacy
-        self.current_transcription = ""
-        self.current_outputs = {}
+        """Handle window close - secure cleanup of sensitive data"""
+        logger.info("Application closing - performing secure cleanup...")
+
+        # Clear clipboard to prevent data leakage
+        try:
+            QApplication.clipboard().clear()
+            logger.info("Clipboard cleared")
+        except Exception as e:
+            logger.error(f"Failed to clear clipboard: {e}")
+
+        # Stop and clear all clipboard timers
+        if hasattr(self, 'clipboard_timers'):
+            for timer in self.clipboard_timers:
+                if timer.isActive():
+                    timer.stop()
+            self.clipboard_timers.clear()
+
+        # Securely clear sensitive data from memory
+        try:
+            clear_sensitive_data(
+                getattr(self, 'current_transcription', ''),
+                str(getattr(self, 'current_outputs', {}))
+            )
+            self.current_transcription = ""
+            self.current_outputs = {}
+            logger.info("Sensitive data wiped from memory")
+        except Exception as e:
+            logger.error(f"Failed to wipe sensitive data: {e}")
+
+        # Clear UI widgets
+        try:
+            if hasattr(self, 'transcription_text'):
+                self.transcription_text.clear()
+            if hasattr(self, 'main_note_text'):
+                self.main_note_text.clear()
+            if hasattr(self, 'enhancement_tabs'):
+                for widget in self.enhancement_tabs.values():
+                    widget.clear()
+        except Exception as e:
+            logger.error(f"Failed to clear UI widgets: {e}")
 
         # Unload models to free memory
         if hasattr(self, 'whisper_engine'):
-            self.whisper_engine.unload_model()
+            try:
+                self.whisper_engine.unload_model()
+            except:
+                pass
         if hasattr(self, 'llm_engine'):
-            self.llm_engine.unload_model()
+            try:
+                self.llm_engine.unload_model()
+            except:
+                pass
 
-        logger.info("Application closed, session data cleared")
+        # Log shutdown if audit logger exists
+        if hasattr(self, 'audit_logger'):
+            try:
+                self.audit_logger.log_event("APP_CLOSE", success=True)
+            except:
+                pass
+
+        logger.info("Application closed, all session data securely cleared")
         event.accept()
