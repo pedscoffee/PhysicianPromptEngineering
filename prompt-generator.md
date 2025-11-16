@@ -284,6 +284,13 @@ permalink: /prompt-generator/
         }
     </style>
 
+<div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 100%;">
+  <h3 style="color: #78350f; margin-top: 0;">⚠️ Educational Tool - Use Synthesized Examples Only</h3>
+  <p style="color: #78350f; margin-bottom: 0;">
+    <strong>Do not use real patient data in your examples.</strong> This tool is for educational purposes only and is NOT HIPAA-compliant. When adding examples to your prompts, use only synthesized, de-identified, or fictional clinical scenarios. Never include actual patient information.
+  </p>
+</div>
+
 <div class="container">
         <div class="header">
             <h1>A&P Prompt Generator</h1>
@@ -626,7 +633,7 @@ permalink: /prompt-generator/
 
 <div style="margin-bottom: 20px;">
                 <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">2. Add Few-Shot Examples</h3>
-                <p>Find the "Few-Shot Examples" section in the generated prompt. Add 2-3 of your actual A&P notes that match your desired output format. These examples are crucial—they teach the LLM Editor your exact style, tone, clinical reasoning pattern, and formatting preferences far better than any rule can.</p>
+                <p>Find the "Few-Shot Examples" section in the generated prompt. Add 2-3 <strong>synthesized A&P examples</strong> (do not use real patient data) that match your desired output format. These examples are crucial—they teach the LLM Editor your exact style, tone, clinical reasoning pattern, and formatting preferences far better than any rule can.</p>
                 <p style="margin-top: 10px; color: #666;"><strong>Tip:</strong> Choose examples from different clinical scenarios to show the LLM the diversity of your style.</p>
             </div>
 
@@ -864,7 +871,7 @@ permalink: /prompt-generator/
 
             // FEW-SHOT EXAMPLES
             prompt.push('## Few-Shot Examples\n\n');
-            prompt.push('[⚠️ USER ACTION REQUIRED: Add 2-3 of your actual A&P examples here. These are essential for teaching the AI your exact style and format.]');
+            prompt.push('[⚠️ USER ACTION REQUIRED: Add 2-3 synthesized A&P examples here (do not use real patient data). These are essential for teaching the AI your exact style and format.]');
 
             return prompt.join('');
         }

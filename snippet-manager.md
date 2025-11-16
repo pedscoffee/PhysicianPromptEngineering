@@ -450,6 +450,13 @@ permalink: /snippet-manager/
     }
 </style>
 
+<div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 1600px;">
+  <h3 style="color: #78350f; margin-top: 0; font-size: 1.3em;">⚠️ CRITICAL: No PHI Storage</h3>
+  <p style="color: #78350f; margin-bottom: 0; font-size: 1.05em;">
+    <strong>NEVER store prompts containing Protected Health Information (PHI) or real patient data.</strong> While your snippets are stored locally in your browser, this tool is NOT HIPAA-compliant. Use only for generic, synthesized prompts without identifiable patient information. For clinical documentation, use your institution's approved, HIPAA-compliant systems only.
+  </p>
+</div>
+
 <div class="container">
     <div class="header">
         <h1>Personal Prompt Snippet Manager</h1>

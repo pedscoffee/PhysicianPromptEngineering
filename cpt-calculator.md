@@ -656,6 +656,13 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 </style>
 
+<div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 1600px;">
+  <h3 style="color: #78350f; margin-top: 0;">⚠️ Educational Tool - No Real Patient Data</h3>
+  <p style="color: #78350f; margin-bottom: 0;">
+    <strong>Do not enter real patient information.</strong> This calculator is for educational purposes only and is NOT HIPAA-compliant. Use only with synthesized, de-identified case examples. For actual billing decisions, use your institution's approved systems and consult with certified medical coders.
+  </p>
+</div>
+
 <div class="calculator-container">
     <div class="page-header">
         <h1>CPT E/M Code Calculator</h1>

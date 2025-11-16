@@ -305,6 +305,13 @@ permalink: /dot-phrase-generator/
   }
 </style>
 
+<div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px 0; max-width: 100%;">
+  <h3 style="color: #78350f; margin-top: 0;">⚠️ Educational Tool - No PHI</h3>
+  <p style="color: #78350f; margin-bottom: 0;">
+    <strong>Do not use with real patient data.</strong> This tool is for educational purposes only and is NOT HIPAA-compliant. Create only fictional, synthesized examples for dot phrases.
+  </p>
+</div>
+
 <div class="status-panel" id="status-panel">
   <div id="status-message">AI Model Not Loaded</div>
   <div id="status-details">Click the button below to initialize the AI model (~2GB download, one-time only)</div>
