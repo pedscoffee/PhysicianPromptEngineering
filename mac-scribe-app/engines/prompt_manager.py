@@ -16,9 +16,11 @@ class Prompt(BaseModel):
     """Single prompt configuration"""
     id: str
     name: str
+    description: str = ""
     prompt: str
     enabled: bool = False
     isDefault: bool = False
+    order: int = 0
 
 
 class PromptConfiguration(BaseModel):
@@ -120,11 +122,35 @@ class PromptManager:
         return None
 
     def get_active_enhancement_prompts(self) -> List[Prompt]:
-        """Get all active enhancement prompts"""
+        """Get all active enhancement prompts, sorted by order"""
         if self.config is None:
             return []
 
-        return [p for p in self.config.enhancementPrompts if p.enabled]
+        active = [p for p in self.config.enhancementPrompts if p.enabled]
+        return sorted(active, key=lambda p: p.order)
+
+    def get_workflow_prompts(self) -> List[Prompt]:
+        """Get all active prompts in workflow order"""
+        if self.config is None:
+            return []
+
+        all_prompts = []
+
+        # Add all enabled prompts from all categories
+        for prompt in self.config.systemPrompts:
+            if prompt.enabled:
+                all_prompts.append(prompt)
+
+        for prompt in self.config.editorPrompts:
+            if prompt.enabled:
+                all_prompts.append(prompt)
+
+        for prompt in self.config.enhancementPrompts:
+            if prompt.enabled:
+                all_prompts.append(prompt)
+
+        # Sort by order field
+        return sorted(all_prompts, key=lambda p: p.order)
 
     def export_configuration(self, export_path: str, include_medical_dict: bool = True) -> bool:
         """
