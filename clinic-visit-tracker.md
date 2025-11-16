@@ -2,43 +2,38 @@
 layout: page
 title: Clinic Visit Tracker
 permalink: /clinic-visit-tracker/
-description: Track pediatric clinic encounters with automated billing codes, wRVU calculations, and daily summaries
+description: Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries
 ---
 
+<!-- Hero Banner -->
+<div class="hero" style="background: linear-gradient(135deg, #0088bb 0%, #006b94 100%); padding: 3rem 0; margin-bottom: 2rem; border-radius: 8px;">
+  <div class="container">
+    <h1 class="hero-title" style="color: white; text-align: center; margin-bottom: 1rem;">Clinic Visit Tracker</h1>
+    <p class="hero-subtitle" style="color: rgba(255, 255, 255, 0.9); text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+      Track your clinic encounters with automated billing codes, wRVU calculations, and daily summaries. All data stored locally in your browser.
+    </p>
+  </div>
+</div>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+
+<!-- Data Warning Notice -->
+<div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem;">
+    <p style="margin: 0; color: #856404;">
+        <strong>⚠️ Important:</strong> Your visit data is stored in your browser's local storage.
+        <strong>Export your data regularly</strong> to avoid losing it if you clear your browser cache or use a different device.
+    </p>
+</div>
+
+<!-- Flash Message -->
+<div class="flash-message" id="flashMessage" style="display: none; background-color: #27ae60; color: white; padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    ✓ Visit saved successfully!
+</div>
+
 <style>
-    .wrapper {
-        max-width: 1400px;
-    }
-
-    /* Bible Verse Banner */
-    .verse-banner {
-        background: linear-gradient(135deg, #0088bb 0%, #006b94 100%);
-        border-radius: 8px;
-        padding: 1rem 1.5rem;
-        margin-bottom: 1.5rem;
-        font-style: italic;
-        color: white;
-        box-shadow: 0 2px 10px rgba(0, 136, 187, 0.3);
-    }
-
-    .verse-text {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    /* Flash Message */
-    .flash-message {
-        display: none;
-        background-color: #27ae60;
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-        animation: slideDown 0.3s ease-out;
-    }
-
     .flash-message.show {
         display: block;
+        animation: slideDown 0.3s ease-out;
     }
 
     @keyframes slideDown {
@@ -123,6 +118,15 @@ description: Track pediatric clinic encounters with automated billing codes, wRV
 
     .btn-danger:hover {
         background: #c0392b;
+    }
+
+    .btn-warning {
+        background: #f39c12;
+        color: white;
+    }
+
+    .btn-warning:hover {
+        background: #e67e22;
     }
 
     /* Billing Codes */
@@ -376,16 +380,6 @@ description: Track pediatric clinic encounters with automated billing codes, wRV
     }
 </style>
 
-<!-- Bible Verse Banner -->
-<div class="verse-banner">
-    <div class="verse-text" id="verseText"></div>
-</div>
-
-<!-- Flash Message -->
-<div class="flash-message" id="flashMessage">
-    ✓ Visit saved successfully!
-</div>
-
 <!-- Tab Navigation -->
 <div class="tab-container">
     <div class="tab-buttons">
@@ -423,6 +417,14 @@ description: Track pediatric clinic encounters with automated billing codes, wRV
                 <label class="form-label">Comments (Optional)</label>
                 <textarea id="comments" rows="3" placeholder="Enter any notes about this visit..."></textarea>
             </div>
+
+            <!-- Save Button (for manual entry without timer) -->
+            <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e1e8ed;">
+                <p style="color: #7f8c8d; margin-bottom: 1rem; font-size: 0.9rem;">
+                    <strong>Manual Entry:</strong> Select billing codes and click save below (no timer needed)
+                </p>
+                <button class="btn btn-success" onclick="saveManualVisit()">💾 Save Visit (No Timer)</button>
+            </div>
         </div>
     </div>
 
@@ -431,9 +433,10 @@ description: Track pediatric clinic encounters with automated billing codes, wRV
         <div class="timer-section">
             <h2 style="margin-top: 0;">Daily Summary</h2>
 
-            <div style="margin-bottom: 1.5rem;">
+            <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
                 <input type="date" id="summaryDate" style="padding: 0.5rem 1rem; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 1rem;">
-                <button class="btn btn-primary" onclick="loadDailySummary()" style="margin-left: 0.5rem;">Load Date</button>
+                <button class="btn btn-primary" onclick="loadDailySummary()">Load Date</button>
+                <button class="btn btn-warning" onclick="exportToCSV()" style="margin-left: auto;">📥 Export All Data (CSV)</button>
             </div>
 
             <!-- Stats -->
@@ -462,52 +465,10 @@ description: Track pediatric clinic encounters with automated billing codes, wRV
     </div>
 </div>
 
-<script>
-// Bible Verses
-const BIBLE_VERSES = [
-    "Galatians 6:9 - \"And let us not grow weary of doing good, for in due season we will reap, if we do not give up.\"",
-    "Colossians 3:23 - \"Whatever you do, work heartily, as for the Lord and not for men.\"",
-    "Proverbs 16:3 - \"Commit your work to the Lord, and your plans will be established.\"",
-    "Philippians 4:13 - \"I can do all things through him who strengthens me.\"",
-    "Psalm 90:17 - \"Let the favor of the Lord our God be upon us, and establish the work of our hands upon us.\"",
-    "Isaiah 40:31 - \"But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles.\"",
-    "Matthew 11:28 - \"Come to me, all who labor and are heavy laden, and I will give you rest.\"",
-    "Proverbs 3:5-6 - \"Trust in the Lord with all your heart, and do not lean on your own understanding.\"",
-    "2 Thessalonians 3:13 - \"As for you, brothers, do not grow weary in doing good.\"",
-    "Psalm 127:1 - \"Unless the Lord builds the house, those who build it labor in vain.\"",
-    "1 Corinthians 15:58 - \"Therefore, my beloved brothers, be steadfast, immovable, always abounding in the work of the Lord.\"",
-    "Proverbs 16:9 - \"The heart of man plans his way, but the Lord establishes his steps.\"",
-    "Ecclesiastes 9:10 - \"Whatever your hand finds to do, do it with your might.\"",
-    "Psalm 37:5 - \"Commit your way to the Lord; trust in him, and he will act.\"",
-    "Isaiah 41:10 - \"Fear not, for I am with you; be not dismayed, for I am your God.\"",
-    "Proverbs 21:5 - \"The plans of the diligent lead surely to abundance.\"",
-    "Philippians 4:6-7 - \"Do not be anxious about anything, but in everything by prayer present your requests to God.\"",
-    "James 1:12 - \"Blessed is the man who remains steadfast under trial.\"",
-    "Psalm 121:1-2 - \"I lift up my eyes to the hills. From where does my help come? My help comes from the Lord.\"",
-    "Matthew 6:34 - \"Therefore do not be anxious about tomorrow, for tomorrow will be anxious for itself.\"",
-    "2 Corinthians 12:9 - \"My grace is sufficient for you, for my power is made perfect in weakness.\"",
-    "Hebrews 12:1 - \"Let us run with endurance the race that is set before us.\"",
-    "Psalm 46:1 - \"God is our refuge and strength, a very present help in trouble.\"",
-    "Romans 8:28 - \"And we know that for those who love God all things work together for good.\"",
-    "Proverbs 16:20 - \"Whoever gives thought to the word will discover good, and blessed is he who trusts in the Lord.\"",
-    "Isaiah 26:3 - \"You keep him in perfect peace whose mind is stayed on you.\"",
-    "Psalm 55:22 - \"Cast your burden on the Lord, and he will sustain you.\"",
-    "1 Peter 5:7 - \"Casting all your anxieties on him, because he cares for you.\"",
-    "Nehemiah 8:10 - \"The joy of the Lord is your strength.\"",
-    "Proverbs 18:10 - \"The name of the Lord is a strong tower; the righteous man runs into it and is safe.\"",
-    "Psalm 118:24 - \"This is the day that the Lord has made; let us rejoice and be glad in it.\"",
-    "Jeremiah 29:11 - \"For I know the plans I have for you, declares the Lord, plans for welfare and not for evil.\"",
-    "Matthew 5:16 - \"Let your light shine before others, so that they may see your good works.\"",
-    "Psalm 31:24 - \"Be strong, and let your heart take courage, all you who wait for the Lord!\"",
-    "2 Timothy 1:7 - \"For God gave us a spirit not of fear but of power and love and self-control.\"",
-    "Proverbs 3:24 - \"If you lie down, you will not be afraid; when you lie down, your sleep will be sweet.\"",
-    "John 16:33 - \"In the world you will have tribulation. But take heart; I have overcome the world.\"",
-    "Lamentations 3:22-23 - \"The steadfast love of the Lord never ceases; his mercies never come to an end.\"",
-    "Psalm 73:26 - \"My flesh and my heart may fail, but God is the strength of my heart and my portion forever.\"",
-    "Isaiah 40:29 - \"He gives power to the faint, and to him who has no might he increases strength.\""
-];
+</div><!-- End container -->
 
-// wRVU Lookup
+<script>
+// wRVU Lookup - includes adult preventative codes
 const WRVU_LOOKUP = {
     '99202': { description: 'Level 2 new', wrvu: 0.93 },
     '99203': { description: 'Level 3 new', wrvu: 1.6 },
@@ -522,15 +483,19 @@ const WRVU_LOOKUP = {
     '99383': { description: '5-11yr new', wrvu: 1.7 },
     '99384': { description: '12-17yr new', wrvu: 2.0 },
     '99385': { description: '18-39yr new', wrvu: 1.92 },
+    '99386': { description: '40-64yr new', wrvu: 2.33 },
+    '99387': { description: '65+ yr new', wrvu: 2.5 },
     '99391': { description: '< 1yr est', wrvu: 1.37 },
     '99392': { description: '1-4yr est', wrvu: 1.5 },
     '99393': { description: '5-11yr est', wrvu: 1.5 },
     '99394': { description: '12-17yr est', wrvu: 1.7 },
     '99395': { description: '18-39yr est', wrvu: 1.75 },
+    '99396': { description: '40-64yr est', wrvu: 1.9 },
+    '99397': { description: '65+ yr est', wrvu: 2.0 },
     '25': { description: '25 Modifier', wrvu: 0.0 }
 };
 
-const WELL_VISIT_CODES = ['99381', '99382', '99383', '99384', '99385', '99391', '99392', '99393', '99394', '99395'];
+const WELL_VISIT_CODES = ['99381', '99382', '99383', '99384', '99385', '99386', '99387', '99391', '99392', '99393', '99394', '99395', '99396', '99397'];
 const SICK_VISIT_CODES = ['99212', '99213', '99214', '99215', '99202', '99203', '99204', '99205'];
 
 // Timer State
@@ -539,13 +504,6 @@ let startTime = null;
 let pausedTime = 0;
 let totalPausedDuration = 0;
 let isPaused = false;
-let currentVisitData = null;
-
-// Display random verse
-function displayRandomVerse() {
-    const randomIndex = Math.floor(Math.random() * BIBLE_VERSES.length);
-    document.getElementById('verseText').textContent = BIBLE_VERSES[randomIndex];
-}
 
 // Tab Switching
 function switchTab(tab) {
@@ -574,15 +532,19 @@ function loadBillingCodes() {
 
     const established = ['99212', '99213', '99214', '99215'];
     const newPatient = ['99202', '99203', '99204', '99205'];
-    const wellNew = ['99381', '99382', '99383', '99384', '99385'];
-    const wellEst = ['99391', '99392', '99393', '99394', '99395'];
+    const wellNewPeds = ['99381', '99382', '99383', '99384'];
+    const wellEstPeds = ['99391', '99392', '99393', '99394'];
+    const wellNewAdult = ['99385', '99386', '99387'];
+    const wellEstAdult = ['99395', '99396', '99397'];
     const modifier = ['25'];
 
     const categories = [
         { title: 'Established Patient', codes: established },
         { title: 'New Patient', codes: newPatient },
-        { title: 'Well Visit (New)', codes: wellNew },
-        { title: 'Well Visit (Established)', codes: wellEst },
+        { title: 'Well Visit New (Peds)', codes: wellNewPeds },
+        { title: 'Well Visit Est (Peds)', codes: wellEstPeds },
+        { title: 'Well Visit New (Adult)', codes: wellNewAdult },
+        { title: 'Well Visit Est (Adult)', codes: wellEstAdult },
         { title: 'Modifier', codes: modifier }
     ];
 
@@ -731,21 +693,7 @@ function finishVisit() {
     };
 
     saveVisit(visit);
-
-    // Reset
-    clearInterval(timerInterval);
-    startTime = null;
-    document.getElementById('timerDisplay').textContent = '00:00';
-    document.getElementById('comments').value = '';
-    document.querySelectorAll('.billing-btn.selected').forEach(btn => btn.classList.remove('selected'));
-    document.getElementById('visitTypeIndicator').classList.remove('show');
-
-    document.getElementById('startBtn').style.display = 'inline-block';
-    document.getElementById('pauseBtn').style.display = 'none';
-    document.getElementById('resumeBtn').style.display = 'none';
-    document.getElementById('finishBtn').style.display = 'none';
-    document.getElementById('cancelBtn').style.display = 'none';
-
+    resetForm();
     showFlashMessage();
 
     // Auto-start if enabled
@@ -760,6 +708,49 @@ function cancelVisit() {
     clearInterval(timerInterval);
     startTime = null;
     document.getElementById('timerDisplay').textContent = '00:00';
+
+    document.getElementById('startBtn').style.display = 'inline-block';
+    document.getElementById('pauseBtn').style.display = 'none';
+    document.getElementById('resumeBtn').style.display = 'none';
+    document.getElementById('finishBtn').style.display = 'none';
+    document.getElementById('cancelBtn').style.display = 'none';
+}
+
+// Save visit without timer (manual entry)
+function saveManualVisit() {
+    const selectedCodes = Array.from(document.querySelectorAll('.billing-btn.selected')).map(btn => btn.dataset.code);
+
+    if (selectedCodes.length === 0) {
+        alert('Please select at least one billing code');
+        return;
+    }
+
+    const wellVisitCodes = selectedCodes.filter(code => WELL_VISIT_CODES.includes(code));
+    const visitType = wellVisitCodes.length > 0 ? 'Well' : 'Sick';
+
+    const now = new Date();
+    const visit = {
+        date: now.toISOString().split('T')[0],
+        startTime: now.toISOString(),
+        endTime: now.toISOString(),
+        activeDuration: 0,
+        visitType: visitType,
+        billingCodes: selectedCodes,
+        comments: document.getElementById('comments').value
+    };
+
+    saveVisit(visit);
+    resetForm();
+    showFlashMessage();
+}
+
+function resetForm() {
+    clearInterval(timerInterval);
+    startTime = null;
+    document.getElementById('timerDisplay').textContent = '00:00';
+    document.getElementById('comments').value = '';
+    document.querySelectorAll('.billing-btn.selected').forEach(btn => btn.classList.remove('selected'));
+    document.getElementById('visitTypeIndicator').classList.remove('show');
 
     document.getElementById('startBtn').style.display = 'inline-block';
     document.getElementById('pauseBtn').style.display = 'none';
@@ -850,8 +841,47 @@ function loadDailySummary() {
     });
 }
 
+// Export to CSV
+function exportToCSV() {
+    const visits = getVisits();
+
+    if (visits.length === 0) {
+        alert('No visits to export!');
+        return;
+    }
+
+    // CSV Header
+    let csv = 'Date,Start Time,End Time,Duration (min),Visit Type,Billing Codes,wRVU,Comments\n';
+
+    // CSV Rows
+    visits.forEach(visit => {
+        const date = visit.date;
+        const startTime = new Date(visit.startTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        const endTime = new Date(visit.endTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        const duration = Math.floor(visit.activeDuration / 60);
+        const visitType = visit.visitType;
+        const codes = visit.billingCodes.join(' + ');
+        const wrvu = visit.billingCodes.reduce((sum, code) => sum + (WRVU_LOOKUP[code]?.wrvu || 0), 0).toFixed(2);
+        const comments = (visit.comments || '').replace(/"/g, '""'); // Escape quotes
+
+        csv += `${date},${startTime},${endTime},${duration},${visitType},"${codes}",${wrvu},"${comments}"\n`;
+    });
+
+    // Download
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `clinic-visits-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+
+    alert('✓ Data exported successfully!');
+}
+
 // Initialize
-displayRandomVerse();
 loadBillingCodes();
 document.getElementById('summaryDate').value = new Date().toISOString().split('T')[0];
 </script>
