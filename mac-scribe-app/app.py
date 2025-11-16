@@ -20,6 +20,7 @@ from PyQt6.QtCore import QThread, pyqtSignal, Qt
 from PyQt6.QtGui import QFont
 
 from ui.main_window import MainWindow
+from ui.login_dialog import LoginDialog
 from ui.styles import get_stylesheet
 from engines.whisper_engine import WhisperEngine
 from engines.llm_engine import LLMEngine
@@ -30,6 +31,8 @@ from security.hipaa_compliance import (
     detect_phi,
     AuditLogger
 )
+from security.user_manager import UserManager
+from security.authentication import AuthenticationManager
 
 # Configure logging
 logging.basicConfig(
@@ -267,8 +270,21 @@ class ProcessingWorker(QThread):
 class ScribeMainWindow(MainWindow):
     """Extended main window with worker thread integration and HIPAA compliance"""
 
-    def __init__(self, whisper_engine, llm_engine, prompt_manager):
+    def __init__(
+        self,
+        whisper_engine,
+        llm_engine,
+        prompt_manager,
+        user_manager=None,
+        auth_manager=None,
+        current_user=None
+    ):
         super().__init__(whisper_engine, llm_engine, prompt_manager)
+
+        # User management and authentication
+        self.user_manager = user_manager
+        self.auth_manager = auth_manager
+        self.current_user = current_user
 
         # Audio recorder
         self.audio_recorder = AudioRecorder()
@@ -281,8 +297,14 @@ class ScribeMainWindow(MainWindow):
         self.audit_logger = AuditLogger()
         self.clipboard_clear_timers = []  # Track clipboard timers
 
-        # Log app startup
-        self.audit_logger.log_event("APP_START", success=True)
+        # Log app startup with user info
+        user_name = current_user.username if current_user else "unknown"
+        self.audit_logger.log_event(
+            "APP_START",
+            user=user_name,
+            success=True,
+            details={"user_id": current_user.user_id if current_user else None}
+        )
 
     def initialize_ai(self):
         """Initialize AI models in background thread"""
@@ -596,6 +618,34 @@ def main():
     # Set modern clinical stylesheet
     app.setStyleSheet(get_stylesheet())
 
+    # Initialize user management and authentication
+    logger.info("Initializing security...")
+    user_manager = UserManager()
+    auth_manager = AuthenticationManager()
+
+    # Require authentication before proceeding
+    login_dialog = LoginDialog(user_manager, auth_manager)
+    if login_dialog.exec() != LoginDialog.DialogCode.Accepted:
+        logger.info("Authentication cancelled - exiting")
+        return
+
+    # Get authenticated user
+    authenticated_user = login_dialog.authenticated_user
+    if not authenticated_user:
+        logger.error("No authenticated user - exiting")
+        return
+
+    logger.info(f"User authenticated: {authenticated_user.username} ({authenticated_user.role})")
+
+    # Log authentication success
+    audit_logger = AuditLogger()
+    audit_logger.log_event(
+        "LOGIN_SUCCESS",
+        user=authenticated_user.username,
+        success=True,
+        details={"role": authenticated_user.role, "user_id": authenticated_user.user_id}
+    )
+
     # Initialize engines
     logger.info("Initializing engines...")
     whisper_engine = WhisperEngine(model_size="medium")
@@ -603,13 +653,30 @@ def main():
     prompt_manager = PromptManager()
 
     # Create and show main window
-    window = ScribeMainWindow(whisper_engine, llm_engine, prompt_manager)
+    window = ScribeMainWindow(
+        whisper_engine,
+        llm_engine,
+        prompt_manager,
+        user_manager=user_manager,
+        auth_manager=auth_manager,
+        current_user=authenticated_user
+    )
     window.show()
 
     logger.info("Application started")
 
     # Run application
-    sys.exit(app.exec())
+    exit_code = app.exec()
+
+    # Log logout on exit
+    audit_logger.log_event(
+        "LOGOUT",
+        user=authenticated_user.username,
+        success=True,
+        details={"user_id": authenticated_user.user_id}
+    )
+
+    sys.exit(exit_code)
 
 
 if __name__ == "__main__":
