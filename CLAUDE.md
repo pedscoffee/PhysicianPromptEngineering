@@ -98,9 +98,6 @@ Precision-engineered prompts that transform raw AI output into concise, personal
     ├── cpt-calculator.md         # E&M code complexity analyzer
     ├── clinical-ai-course.md     # Course overview
     ├── ppe-ai.md                 # Browser-based AI tools overview
-    ├── scribe-tool.md            # Speech-to-text demo (beta)
-    ├── prompt-assistant.md       # Meta-prompting tool (beta)
-    ├── ask-ai.md                 # Contextual chat (beta)
     ├── diagnosis-case-creator.md # Case creation tool (beta)
     ├── differential-diagnosis-game.md # DDX challenge game
     ├── anki-arcade.html          # Anki card game (beta)
@@ -561,9 +558,6 @@ find . -name "*.md" -o -name "*.txt" | wc -l
 
 Several pages use client-side AI APIs (experimental):
 - **Interactive Course**: AI feedback on prompt exercises
-- **Scribe Tool**: Speech-to-text with formatting
-- **Prompt Assistant**: Meta-prompting exploration
-- **Chat**: Contextual AI with embedded knowledge
 - **Diagnosis Game**: DDX challenge with AI scoring
 - **Anki Arcade**: Flashcard game with spaced repetition
 
@@ -609,14 +603,14 @@ The site uses a **dropdown menu system** defined in `_layouts/default.html`:
    - Snippet Manager
    - Dot Phrase Library
    - E&M Calculator
-4. **Browser AI (Beta)** (dropdown)
+4. **Doc Pixel AI** (dropdown)
    - Overview
    - Interactive Course
    - Doc Pixel's DDX Challenge
-   - Scribe
-   - Prompt Assistant
-   - Chat
-   - Case Creator
+   - Doc Pixel's Librarian
+   - Doc Pixel's Cram for Rounds
+   - Doc Pixel DDx Case Creator
+   - Anki Arcade
 5. **Contribute** (direct link)
 6. **About** (direct link)
 
