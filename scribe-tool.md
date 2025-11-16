@@ -2493,6 +2493,5 @@ ${card.content}
     </h3>
     <p style="margin-bottom: 15px; text-align: center;">This tool combines OpenAI's Whisper (speech-to-text) with Phi-3.5 (clinical formatting) to create a complete AI scribe that runs entirely in your browser.</p>
     <p style="text-align: center;"><strong>Workflow:</strong> Record encounter → Whisper transcribes → Select format → AI generates note → Copy to EMR</p>
-    <p style="text-align: center;"><strong>Privacy:</strong> Audio never leaves your device. All processing happens locally. HIPAA-compliant by design.</p>
     <p style="text-align: center;"><strong>Cost:</strong> $0/month forever. Compare to $300-700/month for commercial scribes like Nuance DAX or Suki.</p>
 </div>
