@@ -5,7 +5,7 @@ permalink: /clinic-visit-tracker/
 description: Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries
 ---
 
- <!-- Hero Section -->
+<!-- Hero Section -->
 <div class="hero">
   <div class="container">
     <h1 class="hero-title">Clinic RVU Tracker</h1>
@@ -14,7 +14,6 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
     </p>
   </div>
 </div>
-
 
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
 
@@ -72,56 +71,6 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
         justify-content: center;
         flex-wrap: wrap;
         margin-bottom: 2rem;
-    }
-
-    /* Time-based selector */
-    .time-selector {
-        background: #f8f9fa;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .time-selector-title {
-        text-align: center;
-        font-weight: 600;
-        color: #2c3e50;
-        margin-bottom: 1rem;
-        font-size: 1.1rem;
-    }
-
-    .time-buttons {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-    }
-
-    .time-btn {
-        background: white;
-        border: 2px solid #e1e8ed;
-        border-radius: 8px;
-        padding: 1rem;
-        cursor: pointer;
-        transition: all 0.2s;
-        text-align: center;
-    }
-
-    .time-btn:hover {
-        border-color: #0088bb;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 136, 187, 0.2);
-    }
-
-    .time-btn-duration {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #2c3e50;
-        margin-bottom: 0.5rem;
-    }
-
-    .time-btn-codes {
-        font-size: 0.9rem;
-        color: #7f8c8d;
     }
 
     .btn {
@@ -458,29 +407,6 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
                 <button class="btn btn-danger" id="cancelBtn" onclick="cancelVisit()" style="display: none;">Cancel</button>
             </div>
 
-            <!-- Time-Based Billing Selector -->
-            <div class="time-selector">
-                <div class="time-selector-title">⏱️ Quick Select by Time (Established Patient)</div>
-                <div class="time-buttons">
-                    <div class="time-btn" onclick="selectByTime('99212')">
-                        <div class="time-btn-duration">< 15 min</div>
-                        <div class="time-btn-codes">99212 (0.7 wRVU)</div>
-                    </div>
-                    <div class="time-btn" onclick="selectByTime('99213')">
-                        <div class="time-btn-duration">15-29 min</div>
-                        <div class="time-btn-codes">99213 (1.3 wRVU)</div>
-                    </div>
-                    <div class="time-btn" onclick="selectByTime('99214')">
-                        <div class="time-btn-duration">30-39 min</div>
-                        <div class="time-btn-codes">99214 (1.92 wRVU)</div>
-                    </div>
-                    <div class="time-btn" onclick="selectByTime('99215')">
-                        <div class="time-btn-duration">40+ min</div>
-                        <div class="time-btn-codes">99215 (2.8 wRVU)</div>
-                    </div>
-                </div>
-            </div>
-
             <div class="visit-type-indicator" id="visitTypeIndicator"></div>
 
             <!-- Billing Codes -->
@@ -596,22 +522,6 @@ function switchTab(tab) {
         summaryTab.classList.add('active');
         tabBtns[1].classList.add('active');
         loadDailySummary();
-    }
-}
-
-// Select billing code by time
-function selectByTime(code) {
-    // Deselect all sick visit codes first
-    SICK_VISIT_CODES.forEach(c => {
-        const btn = document.querySelector(`.billing-btn[data-code="${c}"]`);
-        if (btn) btn.classList.remove('selected');
-    });
-
-    // Select the clicked code
-    const btn = document.querySelector(`.billing-btn[data-code="${code}"]`);
-    if (btn) {
-        btn.classList.add('selected');
-        updateVisitTypeIndicator();
     }
 }
 
