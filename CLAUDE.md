@@ -100,7 +100,6 @@ Precision-engineered prompts that transform raw AI output into concise, personal
     ├── ppe-ai.md                 # Browser-based AI tools overview
     ├── diagnosis-case-creator.md # Case creation tool (beta)
     ├── differential-diagnosis-game.md # DDX challenge game
-    ├── anki-arcade.html          # Anki card game (beta)
     ├── contribute.md             # Contribution guidelines
     └── disclaimer.md             # Legal/medical disclaimers
 ```
@@ -559,7 +558,6 @@ find . -name "*.md" -o -name "*.txt" | wc -l
 Several pages use client-side AI APIs (experimental):
 - **Interactive Course**: AI feedback on prompt exercises
 - **Diagnosis Game**: DDX challenge with AI scoring
-- **Anki Arcade**: Flashcard game with spaced repetition
 
 **Technical Notes**:
 - Use browser-native AI APIs (Chrome AI, etc.)
@@ -610,7 +608,6 @@ The site uses a **dropdown menu system** defined in `_layouts/default.html`:
    - Doc Pixel's Librarian
    - Doc Pixel's Cram for Rounds
    - Doc Pixel DDx Case Creator
-   - Anki Arcade
 5. **Contribute** (direct link)
 6. **About** (direct link)
 
