@@ -12,38 +12,75 @@
   ],
   "editorPrompts": [
     {
-      "id": "default-editor-1",
+      "id": "editor-ap-pithy",
+      "name": "A/P Formatting (Pithy)",
+      "description": "Scannable, problem-oriented notes with brief bullets",
+      "prompt": "Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.\n\n## Output Structure for Each Problem/Diagnosis\n\n**[Problem/Diagnosis Name]**\n- [A very brief bullet point summarizing a key finding, action, or follow-up plan]\n- [Each point should be a separate bullet, written as a short clinical shorthand phrase]\n\n## Conditional Boilerplate Text\n[Insert after the bulleted list when applicable. This text should be italicized.]\n\nIf well child check or health maintenance discussed:\n\"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed.\"\n\nIf any illness discussed:\n\"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.\"\n\nIf any injury discussed:\n\"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve.\"\n\n## Formatting Rules\n1. Bold formatting for problem names\n2. Italicized formatting for all boilerplate text\n3. Do NOT use section headers like Assessment or Plan\n4. Use a hyphen (-) for all bullets\n5. Write all bullet points in extremely brief, professional shorthand phrases\n6. Keep bullets concise (ideally under 10 words per bullet)\n7. Use standard medical abbreviations (RTC, PRN, BID, etc.)\n8. Never fabricate or infer information not present in the source text\n9. Insert a blank line between problems when multiple diagnoses exist\n\n## Few-Shot Examples\n\n**Asthma**\n- Flovent 44mcg 2 puff BID started\n- Continue albuterol PRN\n- Use spacer\n- RTC 3mo/PRN\n\n**Well Child Check**\n- Growing and developing well\n- Reviewed anticipatory guidance\n- RTC 1yr/PRN\n\n**Vomiting, mild dehydration**\n- NDNT on exam with MMM\n- Zofran PRN, pedialyte, Tylenol, Motrin\n- RTC PRN\n\nMEDICAL NOTE TO REFORMAT:",
+      "enabled": false,
+      "isDefault": true,
+      "order": 1
+    },
+    {
+      "id": "editor-ap-formal",
+      "name": "A/P Formatting (Formal)",
+      "description": "Formal notes with Assessment, Plan, and Next Steps subsections",
+      "prompt": "Reformat the assessment and plan into a structured, problem-oriented format with clear visual hierarchy.\n\n## Output Structure for Each Problem/Diagnosis\n\n**[Problem/Diagnosis Name]**\n\nAssessment:\n    · [Bullet points summarizing diagnostic reasoning and clinical context using formal medical terminology]\n    · [Use \"reassuring\" rather than \"normal\" when appropriate]\n    · [Avoid speculation beyond stated clinical findings]\n\nPlan:\n    · [Immediate interventions, medications, procedures, and orders]\n    · [Each action item as separate bullet]\n\nNext Steps:\n    · [Conditional planning with scenario-based language: \"If [symptom/test], then [action]\"]\n    · [Follow-up intervals and return precautions]\n    · [Monitoring parameters]\n\n## Conditional Boilerplate Text\n[Insert after the bulleted list when applicable. This text should be italicized.]\n\nIf well child check or health maintenance discussed:\n\"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed.\"\n\nIf any illness discussed:\n\"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.\"\n\n## Formatting Rules\n1. **Bold formatting** for problem names and **Italicized formatting** for section headers and boilerplate text\n2. **Indent** section headers (Assessment, Plan, Next Steps) with 4 spaces\n3. **Indent bullets** under each section with 8 spaces\n4. Write all content in clear, short, professional phrases\n5. Include only sections actually discussed; omit unused sections entirely\n6. Never fabricate or infer information not present in the source text\n7. No abbreviations except standard medical ones (BID, mcg, etc.)\n8. Keep bullets concise (ideally under 15 words per bullet)\n9. Insert blank line between problems when multiple diagnoses exist\n\n## Few-Shot Examples\n\n**Asthma**\n\nAssessment:\n    · Child with history of mild persistent asthma.\n    · Recent exacerbation requiring albuterol use multiple times per week.\n    · Exam reassuring with clear breath sounds today.\n\nPlan:\n    · Start Flovent 44 mcg, 2 puffs BID with spacer.\n    · Continue albuterol inhaler as rescue.\n    · Provide asthma action plan to family.\n\nNext Steps:\n    · Follow up in 3 months for asthma control check.\n    · Return sooner for increased rescue use, nighttime symptoms, or respiratory distress.\n    · If control remains poor, consider montelukast or referral to Allergy.\n\nMEDICAL NOTE TO REFORMAT:",
+      "enabled": false,
+      "isDefault": true,
+      "order": 2
+    },
+    {
+      "id": "editor-apso",
       "name": "APSO Formatter",
       "description": "Reformats note into APSO structure",
       "prompt": "You are a medical documentation formatter. Take the provided medical note and reformat it into the APSO format (Assessment, Plan, Subjective, Objective).\n\nINSTRUCTIONS:\n- Reorganize the existing note content into APSO sections\n- Do NOT add any new clinical information\n- Do NOT remove any clinical information\n- Simply reorganize what is already present\n\nFORMAT:\n\n**Assessment:**\n[Clinical impressions and diagnoses from the note]\n\n**Plan:**\n[Treatment plan, medications, follow-up]\n- Use bullet points for clarity\n\n**Subjective:**\n[Patient's complaints, history, symptoms]\n\n**Objective:**\n[Physical exam findings, vital signs, test results]\n\nMEDICAL NOTE TO REFORMAT:",
       "enabled": false,
       "isDefault": true,
-      "order": 1
+      "order": 3
     }
   ],
   "enhancementPrompts": [
     {
-      "id": "default-enhance-avs",
-      "name": "After-Visit Summary",
-      "description": "Patient-friendly summary in plain language",
-      "prompt": "You are a patient education specialist. Using the medical note below, create a patient-friendly After-Visit Summary.\n\nREQUIREMENTS:\n- Use 6th-8th grade reading level\n- Explain medical terms in plain language\n- Be warm and reassuring in tone\n- Make instructions clear and specific\n- Use simple sentence structure\n\nFORMAT:\n\n**What We Talked About Today:**\n[Plain language explanation of the visit and findings]\n\n**Your Medicine:**\n[Simple medication instructions with what, when, and why for each]\n\n**What You Need To Do:**\n[Clear, numbered action items for the patient]\n\n**When To Call Us or Go To Urgent Care:**\n[Specific warning signs in simple terms]\n\nMEDICAL NOTE:",
+      "id": "enhance-avs-personalized",
+      "name": "After-Visit Summary (Personalized)",
+      "description": "Personalized sign-offs and actionable family to-do lists",
+      "prompt": "Generate two components: 3 personalized sign-off options and a family to-do list.\n\nPART 1: PERSONALIZED SIGN-OFFS\nCreate 3 brief, warm sign-off options matching visit context.\nStructure: [Personal touch/acknowledgment], [well-wish or next step]. [Closing]\nGuidelines:\n· Warm and genuine, never formulaic\n· Acknowledge something specific when possible\n· Match emotional tone to visit type\n· Keep <=25 words total\n· Balance professional with personable\n· Reference activities, interests, milestones if mentioned\n· For difficult visits: acknowledge courage, effort, or partnership\n\nKey Elements to Extract: Patient name, activities/hobbies, school transitions, specific treatments, emotional tone, referrals, chronic conditions, parent effort, family context\n\nOutput:\n{Personalized sign off specific to visit}\n{Personalizes sign off emphasizing relationship}\n{Personalized sign off forward-looking/supportive}\n\nPART 2: FAMILY TO-DO LIST\nExtract actionable items into simple checklist. Include only concrete next steps with essential details.\n\nFormat:\nYour To-Do List:\nPrescriptions:\n· [If none: omit \"No new prescriptions today.\"]\nTests/Results:\n· [Test]: Results pending, we will call [timeframe] [If none: omit section]\nAppointments:\n· Schedule [specialty] appointment\n· Return to clinic in [timeframe] [If none: \"No appointments to schedule today.\"]\n\nRules:\n1. Simple dashes for bullets\n2. One item per line, <=12 words\n3. Only items requiring family action\n4. Be specific about timeframes\n5. Bold section headers\n6. No explanations, just actions\n7. Extract from note only\n\nInclude: All new/changed prescriptions, pending test results, referrals needing scheduling, specific return timeframes, concrete action items\nExclude: General advice (fluids, rest), warning signs, explanations, background info\n\nCOMPLETE OUTPUT\n{Personalized sign off specific to visit}\n{Personalizes sign off emphasizing relationship}\n{Personalized sign off forward-looking/supportive}\n\nTo-Do List:\nPrescriptions: [list or \"No new prescriptions today.\"]\nTests/Results: [list or omit if none]\nAppointments: [list or \"No appointments to schedule today.\"]\n\nMEDICAL NOTE:",
       "enabled": true,
       "isDefault": true,
-      "order": 2
+      "order": 4
     },
     {
-      "id": "default-enhance-billing",
-      "name": "Billing & MDM Summary",
-      "description": "Medical decision making analysis for billing",
-      "prompt": "You are a medical billing specialist. Analyze the medical note below and generate Medical Decision Making (MDM) documentation for billing purposes.\n\nOUTPUT FORMAT:\n\n**Complexity Level:** [Straightforward / Low / Moderate / High]\n\n**Problems Addressed:**\n- [List each problem with complexity: self-limited, stable chronic, acute uncomplicated, etc.]\n\n**Data Reviewed:**\n- [Labs, imaging, records reviewed]\n- [Independent interpretation if applicable]\n\n**Risk Assessment:**\n- [Medication risks, procedural risks, morbidity/mortality risk]\n- [Overall risk: minimal, low, moderate, high]\n\n**Medical Decision Making Summary:**\n[Brief justification for the complexity level and billing code recommendation based on 2023 E/M guidelines]\n\n**Time:** [If mentioned in note]\n\nMEDICAL NOTE:",
+      "id": "enhance-billing-detailed",
+      "name": "Billing Analysis (Detailed)",
+      "description": "MDM components with CPT E/M code suggestions and reasoning",
+      "prompt": "Analyze this note and determine the appropriate CPT E/M billing code using 2021 E/M guidelines for an ESTABLISHED patient.\n\nMDM Component Assessment\nA. PROBLEMS ADDRESSED\n· Straightforward: 1 self-limited/minor problem\n· Low: 2+ self-limited/minor problems OR 1 stable chronic illness OR 1 acute uncomplicated illness\n· Moderate: Chronic illness with exacerbation/progression OR 2+ stable chronic illnesses OR undiagnosed new problem OR acute illness with systemic symptoms OR acute complicated injury\n· High: Chronic illness with severe exacerbation OR illness posing threat to life/bodily function\n\nB. DATA COMPLEXITY\n· Low: Assessment requires independent historian, None or one piece of data reviewed/ordered\n· Moderate: Any combination of two tests ordered, test results reviewed, or prior external notes reviewed along with assessment requiring an independent historian\n· High: Meets criteria for Moderate AND discussion with external physician regarding interpretation of tests OR independent test interpretation\n\nC. RISK LEVEL\n· Minimal: Minimal risk from testing/treatment\n· Low: OTC medications, rest, observation\n· Moderate: Prescription drugs, Dx or Rx limited by social factors\n· High: Decision regarding hospitalization\n\n2-of-3 Rule\nOverall MDM = level met by at least 2 of 3 components.\n· Straightforward = 99212\n· Low = 99213\n· Moderate = 99214\n· High = 99215\n\nModifier 25 Check\nAdd modifier 25 for a separately identifiable E/M service during a Well Child Check/Routine child health examination.\n\nOutput Format\nProblems: [Level] [Brief explanation]\nData: [Level] [What was reviewed/ordered]\nRisk: [Level] [Treatment risk level and why]\nMDM Score: Problems ([Level]) + Data ([Level]) + Risk ([Level]) = [Overall Level] (based on 2 of 3)\nFinal Code: 99XXX\n\nModifier 25 Format:\nModifier 25: Well visit with separate E/M for:\n - [Problem 1] ([brief intervention])\n - [Problem 2] ([brief intervention])\n\nCritical Coding Rules\n1. Ordering any culture (e.g., strep, urine) implies consideration of prescription management and elevates Risk to at least Moderate.\n2. Acute illness with systemic symptoms + any culture ordered = 99214 (Moderate Problems + Moderate Data + Moderate Risk).\n3. Assume Assessment requiring an independent historian is always true.\n\n*Do not list any references that were used*\n\nMEDICAL NOTE:",
       "enabled": true,
       "isDefault": true,
-      "order": 3
+      "order": 5
+    },
+    {
+      "id": "enhance-order-suggester",
+      "name": "Order Suggester",
+      "description": "Suggests commonly forgotten orders, prescriptions, referrals, and follow-up items",
+      "prompt": "Based on the diagnoses in this note, generate a comprehensive checklist of commonly indicated orders, referrals, prescriptions, and follow-up items that may have been overlooked.\n\nOutput Structure\nDIAGNOSIS: [Problem Name]\nConsider ordering:\n· [Diagnostic test or imaging]\n· [Lab work]\n\nConsider prescribing:\n· [Medication or supply]\n· [Durable medical equipment]\n\nConsider referring:\n· [Specialist] for [specific reason]\n\nDon't forget:\n· [Patient education materials]\n· [Follow-up scheduling]\n· [Other action items]\n\n[Repeat for each diagnosis]\n\nRules\n1. Only suggest items NOT explicitly mentioned in the note\n2. Group by category: labs/imaging, medications/supplies, referrals, other\n3. Be specific about indication (e.g., \"Pulmonology for persistent control issues\" not just \"Pulmonology\")\n4. Prioritize common omissions over comprehensive lists\n5. Use conditional language: \"Consider\" not \"Must\"\n6. Keep each suggestion to one line\n7. If everything was addressed appropriately, output: \"All appropriate orders addressed in this visit.\"\n\nQuality Checks\nBefore output:\n✓ Only suggest items NOT already in the note\n✓ Each suggestion is specific and actionable\n✓ Grouped logically by category\n✓ Uses conditional language (\"Consider...\")\n✓ Focuses on common omissions, not exhaustive lists\n\nMEDICAL NOTE:",
+      "enabled": false,
+      "isDefault": true,
+      "order": 6
+    },
+    {
+      "id": "enhance-sign-out",
+      "name": "Concise Sign Out",
+      "description": "Transforms notes into concise handoff for covering providers",
+      "prompt": "Create a concise sign-out for covering providers focusing on patients who may require attention during your absence.\n\nOutput Format\nPATIENTS FOR SIGN-OUT\nPatient [#]: [Age range/gender], [Chief diagnosis]\nIllness severity: [Stable / Close monitoring needed / Concerning]\nWhat's pending: [Tests, callbacks, decisions]\nCall if: [Specific triggers for contacting covering provider]\nBackground: [Minimal context - 1-2 sentences max]\n\nRules\n1. Triage by illness severity\n2. Be explicit about when covering provider should act\n3. Keep background minimal - just enough context\n4. Focus on actionable information\n\nFew-Shot Examples\n\nInput: Strep test pending, empiric amoxicillin started, mild illness, follow up PRN\nOutput:\nPATIENTS FOR SIGN-OUT\nPatient 1: School-age child, suspected strep pharyngitis\nIllness severity: Stable\nWhat's pending: Rapid strep test results (expected tomorrow AM)\nCall if: Test returns positive (confirm family aware patient should complete 10-day course). If negative, call family to stop amoxicillin.\nBackground: Mild pharyngitis, no respiratory distress. Started empiric amoxicillin pending test result.\n\nInput: Asthma exacerbation, albuterol not helping at home, started oral steroid, close follow up\nOutput:\nPATIENTS FOR SIGN-OUT\nPatient 1: School-age child, asthma exacerbation\nIllness severity: Close monitoring needed\nWhat's pending: Clinical response to oral prednisone, family to update us tonight or tomorrow AM\nCall if: Family calls reporting worsening work of breathing, persistent cough despite treatment, or refusing to eat/drink. If so, advise ED evaluation.\nBackground: Inadequate response to albuterol at home. Started prednisone 1mg/kg x 5 days in office. Sent home with strict return precautions. Consider admission if deterioration.\n\nQuality Checks\n1. Triaged by urgency\n2. Clear escalation triggers\n3. Minimal background (only what's needed)\n4. Action-oriented\n5. Covering provider can act independently\n\nMEDICAL NOTE:",
+      "enabled": false,
+      "isDefault": true,
+      "order": 7
     }
   ],
   "metadata": {
-    "version": "1.0",
+    "version": "2.0",
     "createdAt": "2025-01-15",
-    "source": "mac-scribe-app"
+    "updatedAt": "2025-01-15",
+    "source": "Physician Prompt Engineering - physicianpromptengineering.com"
   }
 }
