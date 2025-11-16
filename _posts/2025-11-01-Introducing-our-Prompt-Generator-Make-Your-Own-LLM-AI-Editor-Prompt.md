@@ -28,7 +28,7 @@ Our new [Prompt Generator](https://physicianpromptengineering.com/prompt-generat
 
 1. **Select your preferences** from the menus
 2. **Preview the generated prompt** with your specifications incorporated
-3. **Make it your own** by adding few shot examples from your speciality and your most common dot phrases as boilerplate text
+3. **Make it your own** by adding few shot examples from your specialty and your most common dot phrases as boilerplate text
 4. **Test and refine** by making small changes until you're consistently happy with the results
 
 ### Key Features
@@ -64,7 +64,7 @@ The Prompt Generator complements our comprehensive documentation toolkit:
 
 - **[Prompt Library](https://physicianpromptengineering.com/prompt-library/)**: Browse validated prompts from practicing physicians
 - **[Best Practices Guide](https://physicianpromptengineering.com/best-practices/)**: Deep dive into optimization techniques
-- **[Community Contributions](https://physicianpromptengineering.com/contributions/)**: Share your refined prompts with colleagues
+- **[Community Contributions](https://physicianpromptengineering.com/contribute/)**: Share your refined prompts with colleagues
 - **[GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)**: Troubleshoot challenges with peers
 
 ## Expected Outcomes
@@ -73,14 +73,6 @@ The Prompt Generator complements our comprehensive documentation toolkit:
 - **Consistency**: Standardized format across all documentation
 - **Reduced cognitive load**: Less mental energy on documentation, more on clinical reasoning
 - **Billing accuracy**: Improved capture of complexity and medical decision-making
-
-## Support and Resources
-
-Need assistance optimizing your prompts? Multiple support channels available:
-
-- **Technical questions**: Post in our [GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)
-- **Share successes**: Submit refined prompts via our [Contributions page](https://physicianpromptengineering.com/contributions)
-- **Learn techniques**: Review our [Best Practices documentation](https://physicianpromptengineering.com/best-practices)
 
 ## Moving Forward
 

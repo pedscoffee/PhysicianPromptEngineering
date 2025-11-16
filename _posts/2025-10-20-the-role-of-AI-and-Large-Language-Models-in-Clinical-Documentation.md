@@ -19,7 +19,7 @@ Physicians spend **hours on documentation everyday**—a dynamic that undermines
 
 - **Physician burnout**: Many would cite EHR tasks as a primary stressor
 - **Reduced patient interaction**: Average face-to-face time directly impacted
-- **After-hours work**: Many complete 1-2 hours of "pajama time" documentation nightly
+- **After-hours work**: Many have "pajama time" documentation nightly
 
 Electronic health records promised efficiency but delivered complexity. While improving data accessibility and care coordination, they've created an unsustainable documentation burden that technology must now solve.
 
@@ -43,7 +43,7 @@ Templates excel at routine documentation but fail at capturing what matters most
 - Subtle findings and psychosocial factors
 - Individualized treatment considerations
 
-This creates a documentation ceiling where efficiency gains plateau, leaving physicians typing detailed narratives for every unique aspect of care.  No matter how well set up they are even the most efficient physicians must spend hours each day recording the unique details that are the most important part of the chart for each patient.
+This creates a documentation ceiling where efficiency gains plateau, leaving physicians typing detailed narratives for every unique aspect of care.  No matter how well set up they are even the most efficient physicians must significant effort each day recording the unique details that are the most important part of the chart for each patient.
 
 ## The AI-Assisted Documentation Revolution
 
@@ -73,7 +73,7 @@ Since the details captured are based on the actual conversation with the patient
 
 **Mandatory Review Points**
 - All AI output must be reviewed closely
-- Physician takes full responsbility for all documentation in the medical record
+- Physician takes full responsibility for all documentation in the medical record
 
 ### Regulatory Compliance
 
@@ -107,9 +107,7 @@ Since the details captured are based on the actual conversation with the patient
 
 ## Conclusion
 
-AI-assisted documentation represents more than incremental improvement—it's a fundamental reimagining of clinical workflow. By combining ambient intelligence with personalized refinement, physicians can reclaim time for what matters most: patient care.
-
-The technology exists. The evidence supports adoption. The only question is when you'll make the transition from documentation burden to documentation efficiency.
+AI-assisted documentation represents more than incremental improvement—it's a fundamental re-imagining of the work day. By combining ambient intelligence with personalized refinement, physicians can reclaim time for what matters most: patient care.
 
 -----
 
