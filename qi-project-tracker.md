@@ -399,7 +399,7 @@ description: Create and track quality improvement projects with custom variables
         <div class="card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                 <h2 style="margin: 0;">Data Entries (<span id="entryCount">0</span>)</h2>
-                <button class="btn btn-warning" onclick="exportProjectData()">📥 Export to Excel</button>
+                <button class="btn btn-warning" onclick="exportProjectData()">Export to CSV</button>
             </div>
             <div style="overflow-x: auto;">
                 <table class="data-table" id="dataTable"></table>
