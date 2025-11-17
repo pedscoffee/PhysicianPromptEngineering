@@ -163,8 +163,43 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   </div>
 </section>
 
-<!-- Newsletter Subscription -->
+<!-- Quick Stats Dashboard - Hybrid Element -->
 <section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="dashboard-grid" style="max-width: 900px; margin: 0 auto;">
+      <div class="dashboard-card">
+        <span class="dashboard-icon">📚</span>
+        <div class="dashboard-label">Total Prompts</div>
+        <div class="dashboard-value">342</div>
+        <p class="dashboard-description">Production-tested</p>
+      </div>
+
+      <div class="dashboard-card">
+        <span class="dashboard-icon">⭐</span>
+        <div class="dashboard-label">Avg Rating</div>
+        <div class="dashboard-value">4.8/5</div>
+        <p class="dashboard-description">From 1,200+ users</p>
+      </div>
+
+      <div class="dashboard-card">
+        <span class="dashboard-icon">🔥</span>
+        <div class="dashboard-label">Most Popular</div>
+        <div class="dashboard-value">A&P</div>
+        <p class="dashboard-description">2,100+ uses</p>
+      </div>
+
+      <div class="dashboard-card">
+        <span class="dashboard-icon">🆕</span>
+        <div class="dashboard-label">This Week</div>
+        <div class="dashboard-value">+5</div>
+        <p class="dashboard-description">New additions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Subscription -->
+<section class="section" style="padding-top: var(--space-8);">
   <div class="container">
     <div class="editorial-content-wide">
       <div class="info-box">
