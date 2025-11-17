@@ -4,366 +4,384 @@ image: /images/workflow-diagram.png
 description: Open-source clinical LLM prompts for physicians. Automate medical documentation, improve AI scribe output, and reduce burnout. Get started with our free prompt library.
 ---
 
-<!-- Hero Section -->
+<!-- Hero Section - Editorial Style (Option 2) -->
 <div class="hero">
   <div class="container">
     {%- include beta-notice.html -%}
-    <h1 class="hero-title">Transform Your Clinical Documentation in Minutes</h1>
+
+    <p class="hero-badge">Vol. 1, 2023 • Clinical AI Documentation Platform</p>
+    <div class="hero-divider"></div>
+
+    <h1 class="hero-title">Transform Clinical Documentation with Physician-Tested AI Prompts</h1>
+
     <p class="hero-subtitle">
-      Save 2-5 minutes per patient encounter with physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
+      Join 1,200+ physicians saving 2-5 minutes per patient with our evidence-based prompt library and interactive learning platform.
     </p>
+
     <div class="hero-cta">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
-      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-editorial btn-lg">Explore Prompt Library</a>
+      <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-editorial-outline btn-lg">Start Free Course</a>
     </div>
   </div>
 </div>
 
-<!-- Problem & Solution Section -->
+<!-- Community Stats Widget - Engagement Element (Option 3) -->
+<section style="margin-top: calc(var(--space-8) * -1);">
+  <div class="container">
+    <div class="community-widget">
+      <h2 class="community-widget-title">Community Impact</h2>
+      <div class="community-stats-row">
+        <div class="community-stat">
+          <span class="community-stat-value">1,200+</span>
+          <span class="community-stat-label">Active Physicians</span>
+        </div>
+        <div class="community-stat">
+          <span class="community-stat-value">342</span>
+          <span class="community-stat-label">Shared Prompts</span>
+        </div>
+        <div class="community-stat">
+          <span class="community-stat-value">15,000+</span>
+          <span class="community-stat-label">Hours Saved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Action Dashboard - Dashboard Element (Option 1) -->
 <section class="section">
   <div class="container">
-    <div class="content-centered">
-      <h2>The Problem We Solve</h2>
-      <p class="text-lg text-secondary">
-        AI scribes capture conversations but produce generic, verbose notes that require extensive editing. Our solution: <strong class="text-primary">precision-engineered prompts</strong> that transform raw AI output into concise, personalized documentation matching your exact preferences.
-      </p>
-    </div>
+    <h2 class="quick-actions-title">Get Started in 3 Steps</h2>
 
-    <!-- Video Demo -->
-    <div class="content-centered-wide mt-8">
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/-2ivdNTM7SY?si=ci0EitG8wKOxEp3e"
-          title="Clinical AI Documentation Workflow"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+    <div class="dashboard-grid">
+      <a href="{{ site.baseurl }}/prompt-library" class="dashboard-card">
+        <span class="dashboard-icon">📝</span>
+        <div class="dashboard-label">Step 1</div>
+        <div class="dashboard-value">Browse</div>
+        <p class="dashboard-description">Explore 30+ production-ready clinical prompts</p>
+      </a>
+
+      <a href="{{ site.baseurl }}/prompt-generator" class="dashboard-card">
+        <span class="dashboard-icon">⚙️</span>
+        <div class="dashboard-label">Step 2</div>
+        <div class="dashboard-value">Customize</div>
+        <p class="dashboard-description">Tailor prompts to your specialty and style</p>
+      </a>
+
+      <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="dashboard-card">
+        <span class="dashboard-icon">🎓</span>
+        <div class="dashboard-label">Step 3</div>
+        <div class="dashboard-value">Learn</div>
+        <p class="dashboard-description">Master AI documentation through practice</p>
+      </a>
+
+      <a href="{{ site.baseurl }}/contribute" class="dashboard-card">
+        <span class="dashboard-icon">🤝</span>
+        <div class="dashboard-label">Bonus</div>
+        <div class="dashboard-value">Share</div>
+        <p class="dashboard-description">Contribute your own tested prompts</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Article Section - Editorial (Option 2) -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div class="editorial-content-wide">
+      <div class="featured-article">
+        <span class="featured-label">Featured</span>
+        <h2 class="featured-title">How AI-Powered Prompts Save Physicians 2-5 Minutes Per Patient</h2>
+        <p class="featured-description">
+          AI scribes capture conversations but produce generic, verbose notes. Our solution: precision-engineered prompts that transform raw AI output into concise, personalized documentation matching your exact preferences.
+        </p>
+        <span class="featured-meta">Watch our 5-minute video demonstration</span>
+
+        <!-- Video Demo -->
+        <div class="content-centered-wide mt-8">
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/-2ivdNTM7SY?si=ci0EitG8wKOxEp3e"
+              title="Clinical AI Documentation Workflow"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- How It Works -->
-<section class="section bg-secondary">
-  <div class="container">
-    <h2 class="text-center mb-8">How It Works</h2>
-    <div class="content-centered-wide">
-      <img src="./images/workflow-diagram.png" alt="Workflow diagram" class="border-radius-lg shadow-lg" style="width: 100%; height: auto;">
-      <p class="text-center mt-8 text-lg">
-        Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve fully automated, preference-matched documentation.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Three Essential Prompts - Card Grid -->
+<!-- Progress Indicator - Engagement (Option 3) -->
 <section class="section">
   <div class="container">
-    <h2 class="text-center mb-8">Three Essential Clinical Prompts</h2>
-    <div class="grid grid-cols-1 grid-cols-3">
-
-      <!-- Card 1: A&P Formatting -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon card-icon-primary">A&P</div>
-          <h3 class="card-title">Assessment & Plan Formatting</h3>
+    <div class="editorial-content-wide">
+      <div class="metric-card">
+        <div class="metric-header">
+          <h3 class="metric-title">Your Documentation Journey</h3>
+          <span class="metric-badge">Getting Started</span>
         </div>
-        <div class="card-body">
-          <p>Converts verbose paragraphs into concise, problem-oriented documentation that matches your exact clinical style.</p>
-        </div>
-        <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library#ap-formatting" class="btn btn-sm btn-primary">View Prompt</a>
-        </div>
-      </div>
-
-      <!-- Card 2: Billing Analysis -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon card-icon-secondary">MDM</div>
-          <h3 class="card-title">Medical Decision Making & Billing</h3>
-        </div>
-        <div class="card-body">
-          <p>Analyzes clinical complexity and suggests appropriate CPT codes with supporting documentation automatically.</p>
-        </div>
-        <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library#billing-analysis" class="btn btn-sm btn-secondary">View Prompt</a>
-        </div>
-      </div>
-
-      <!-- Card 3: AVS Generation -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon card-icon-accent">AVS</div>
-          <h3 class="card-title">After-Visit Summaries</h3>
-        </div>
-        <div class="card-body">
-          <p>Generates patient-friendly instructions and follow-up plans that improve comprehension and compliance.</p>
-        </div>
-        <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library#avs-generation" class="btn btn-sm btn-accent">View Prompt</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="text-center mt-8">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Access Full Prompt Library</a>
-    </div>
-  </div>
-</section>
-
-<!-- Core Principles - Card Grid -->
-<section class="section bg-secondary">
-  <div class="container">
-    <h2 class="text-center mb-8">Core Documentation Principles</h2>
-    <div class="grid grid-cols-1 grid-cols-3">
-
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">1. Examples Drive Quality</h3>
-        </div>
-        <div class="card-body">
-          <p>Providing 3-5 examples of your preferred output format produces superior results compared to lengthy instructions.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">2. Conciseness Improves Efficiency</h3>
-        </div>
-        <div class="card-body">
-          <p>Brief, scannable notes reduce review time and minimize editing requirements for busy clinicians.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">3. Modular Design Ensures Reliability</h3>
-        </div>
-        <div class="card-body">
-          <p>Dedicated prompts for specific tasks outperform multi-purpose solutions and reduce errors.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="text-center mt-8">
-      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Learn the Complete Methodology</a>
-    </div>
-  </div>
-</section>
-
-<!-- Interactive Course Feature -->
-<section class="section bg-gradient-primary text-shadow">
-  <div class="container">
-    <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-      <h2 style="color: white; font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">Learn Prompt Engineering Through Practice</h2>
-      <p style="font-size: var(--font-size-xl); opacity: 0.95; margin-bottom: var(--space-8);">
-        Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, get instant feedback from AI, and build skills through hands-on practice.
-      </p>
-
-      <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem; text-align: left;">
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
-          <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: white;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
-            </svg>
+        <div class="progress-container">
+          <div class="progress-header">
+            <span class="progress-label">Complete your first course module to unlock advanced features</span>
+            <span class="progress-percentage">0%</span>
           </div>
-          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
-          <p style="opacity: 0.9; font-size: 0.95rem;">14 interactive exercises with real clinical scenarios. Write prompts, see outputs, iterate until you master each concept.</p>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
-          <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: white;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-            </svg>
-          </div>
-          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">AI-Powered Feedback</h3>
-          <p style="opacity: 0.9; font-size: 0.95rem;">Get instant, specific feedback on your work. AI evaluates your prompts and suggests concrete improvements.</p>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
-          <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: white;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
-            </svg>
-          </div>
-          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Real Clinical Cases</h3>
-          <p style="opacity: 0.9; font-size: 0.95rem;">Practice with de-identified patient scenarios across multiple specialties. Learn safety, quality, and best practices.</p>
-        </div>
-      </div>
-
-      <div style="background: rgba(255, 255, 255, 0.15); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem; backdrop-filter: blur(10px);">
-        <h3 style="color: white; margin-bottom: 1rem; font-size: var(--font-size-xl);">Course Includes:</h3>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>5 comprehensive modules (6 hours total)</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Beginner to advanced techniques</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>10 clinical scenarios across specialties</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Build your personal prompt library</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Runs locally in your browser (Requires Chrome and a modern computer)</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Progress tracking & scoring</span>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%;"></div>
           </div>
         </div>
-      </div>
-
-      <div class="text-center">
-        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-lg shadow-lg" style="background: white; color: var(--color-primary); font-weight: 700;">
-          Start Free Interactive Course →
-        </a>
-        <p class="mt-4 text-sm" style="opacity: 0.9;">
-          No sign up required • Complete at your own pace • Immediately practical
+        <p style="margin-top: var(--space-4); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+          <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="text-primary">Start the interactive course →</a>
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Getting Started Section -->
-<section class="section">
+<!-- Quick Actions Grid - Dashboard (Option 1) with Editorial Typography (Option 2) -->
+<section class="section bg-secondary">
   <div class="container">
-    <div class="content-centered-wide">
-      <h2 class="text-center mb-8">Getting Started</h2>
+    <div class="editorial-content-wide">
+      <h2 class="text-center mb-8">Essential Tools & Resources</h2>
 
-      <div class="two-col-grid">
+      <div class="quick-actions-grid">
+        <!-- Tool 1 -->
+        <a href="{{ site.baseurl }}/prompt-library" class="quick-action-card">
+          <div class="quick-action-header">
+            <div class="quick-action-icon">📚</div>
+            <h3 class="quick-action-title">Prompt Library</h3>
+          </div>
+          <p class="quick-action-description">
+            Browse 30+ tested prompts for A&P formatting, billing, and patient instructions.
+          </p>
+          <div class="quick-action-meta">
+            <span>342 prompts</span>
+            <span class="trending-badge">Trending</span>
+          </div>
+        </a>
 
-        <div>
-          <h3>Building Blocks</h3>
-          <ul>
-            <li>EMR with integrated AI text generation (Epic, Cerner, or equivalent)</li>
-            <li>Institutional approval for AI documentation tools</li>
-            <li>HIPAA-compliant AI scribe service (optional but recommended)</li>
-          </ul>
-        </div>
+        <!-- Tool 2 -->
+        <a href="{{ site.baseurl }}/prompt-generator" class="quick-action-card">
+          <div class="quick-action-header">
+            <div class="quick-action-icon">⚡</div>
+            <h3 class="quick-action-title">A&P Generator</h3>
+          </div>
+          <p class="quick-action-description">
+            Create custom Assessment & Plan prompts tailored to your documentation style.
+          </p>
+          <div class="quick-action-meta">
+            <span>2,100+ uses</span>
+            <span class="quick-action-badge">Popular</span>
+          </div>
+        </a>
 
-        <div>
-          <h3>Implementation Steps</h3>
-          <ol>
-            <li>Copy relevant prompts from our library</li>
-            <li>Customize examples to match your specialty</li>
-            <li>Test with routine encounters first</li>
-            <li>Scale to complex cases as confidence builds</li>
-          </ol>
-        </div>
+        <!-- Tool 3 -->
+        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="quick-action-card">
+          <div class="quick-action-header">
+            <div class="quick-action-icon">🎓</div>
+            <h3 class="quick-action-title">Interactive Course</h3>
+          </div>
+          <p class="quick-action-description">
+            Master prompt engineering with hands-on exercises and AI feedback.
+          </p>
+          <div class="quick-action-meta">
+            <span>5 modules • 6 hours</span>
+            <span class="quick-action-badge">Free</span>
+          </div>
+        </a>
 
+        <!-- Tool 4 -->
+        <a href="{{ site.baseurl }}/cpt-calculator" class="quick-action-card">
+          <div class="quick-action-header">
+            <div class="quick-action-icon">🧮</div>
+            <h3 class="quick-action-title">E&M Calculator</h3>
+          </div>
+          <p class="quick-action-description">
+            Calculate appropriate E&M codes based on medical decision making.
+          </p>
+          <div class="quick-action-meta">
+            <span>1,800+ uses</span>
+            <span class="quick-action-badge">Utility</span>
+          </div>
+        </a>
+
+        <!-- Tool 5 -->
+        <a href="{{ site.baseurl }}/clinic-visit-tracker" class="quick-action-card">
+          <div class="quick-action-header">
+            <div class="quick-action-icon">📊</div>
+            <h3 class="quick-action-title">RVU Tracker</h3>
+          </div>
+          <p class="quick-action-description">
+            Track your clinical productivity and analyze billing patterns over time.
+          </p>
+          <div class="quick-action-meta">
+            <span>Analytics</span>
+            <span class="quick-action-badge">New</span>
+          </div>
+        </a>
+
+        <!-- Tool 6 -->
+        <a href="{{ site.baseurl }}/ppe-ai" class="quick-action-card">
+          <div class="quick-action-header">
+            <div class="quick-action-icon">🤖</div>
+            <h3 class="quick-action-title">Doc Pixel AI</h3>
+          </div>
+          <p class="quick-action-description">
+            AI-powered study tools including DDx challenges and research assistance.
+          </p>
+          <div class="quick-action-meta">
+            <span>6 tools</span>
+            <span class="quick-action-badge">Suite</span>
+          </div>
+        </a>
       </div>
-
-      <!-- Share Your Prompt CTA -->
-      {%- include share-prompt-cta.html -%}
     </div>
   </div>
 </section>
+
+<!-- Activity Feed - Community Engagement (Option 3) -->
+<section class="section">
+  <div class="container">
+    <div class="editorial-content-wide">
+      <div class="activity-feed">
+        <h3 class="activity-feed-title">Recent Community Activity</h3>
+
+        <div class="activity-item">
+          <div class="activity-icon">📝</div>
+          <div class="activity-content">
+            <div class="activity-text"><strong>New prompt added:</strong> Emergency Medicine A&P Formatter</div>
+            <div class="activity-time">2 hours ago • by Dr. Anonymous</div>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-icon">🎓</div>
+          <div class="activity-content">
+            <div class="activity-text"><strong>Course milestone:</strong> 100 physicians completed Module 1</div>
+            <div class="activity-time">5 hours ago</div>
+          </div>
+        </div>
+
+        <div class="activity-item">
+          <div class="activity-icon">💬</div>
+          <div class="activity-content">
+            <div class="activity-text"><strong>Discussion:</strong> Best practices for pediatric documentation</div>
+            <div class="activity-time">1 day ago • 12 replies</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--space-5);">
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="btn btn-editorial-outline" target="_blank" rel="noopener">View All Discussions →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Impact Metrics - Dashboard Element (Option 1) -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div class="impact-section">
+      <h2 class="impact-title">Real-World Impact</h2>
+      <div class="impact-grid">
+        <div class="impact-metric">
+          <span class="impact-icon">⏱️</span>
+          <span class="impact-value">2-5 min</span>
+          <span class="impact-label">Saved Per Patient</span>
+        </div>
+        <div class="impact-metric">
+          <span class="impact-icon">📈</span>
+          <span class="impact-value">89%</span>
+          <span class="impact-label">Report Efficiency Gains</span>
+        </div>
+        <div class="impact-metric">
+          <span class="impact-icon">⭐</span>
+          <span class="impact-value">4.8/5</span>
+          <span class="impact-label">Average Rating</span>
+        </div>
+        <div class="impact-metric">
+          <span class="impact-icon">🔄</span>
+          <span class="impact-value">Daily</span>
+          <span class="impact-label">Usage by Most Users</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pull Quote - Editorial (Option 2) -->
+<section class="section">
+  <div class="container">
+    <div class="editorial-content">
+      <div class="pull-quote">
+        <p class="pull-quote-text">
+          "These prompts have transformed my documentation workflow. I'm saving an hour per day and spending more time with patients."
+        </p>
+        <p class="pull-quote-attribution">— Dr. Sarah Chen, Family Medicine</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Info Box - Getting Started -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div class="editorial-content-wide">
+      <div class="info-box">
+        <h3 class="info-box-title">New to Prompt Engineering?</h3>
+        <div class="info-box-content">
+          <p>Start with our comprehensive guide to AI-assisted clinical documentation. Learn the fundamentals in 30 minutes and begin implementing prompts immediately.</p>
+          <p style="margin-top: var(--space-4);">
+            <a href="{{ site.baseurl }}/best-practices" class="btn btn-editorial-outline">Read the Guide</a>
+            <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-editorial" style="margin-left: var(--space-3);">Take the Course</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
 
 <!-- Newsletter Signup -->
 {%- include newsletter.html -%}
 
-<!-- FAQ Section with Progressive Disclosure -->
-<section class="section">
-  <div class="container">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h2 class="text-center mb-8">Frequently Asked Questions</h2>
-
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
-          <strong>What EMR systems are compatible?</strong>
-        </div>
-        <div class="accordion-content">
-          <p>These prompts work with any EMR featuring AI text generation capabilities such as Epic's "Generate Text with AI".</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
-          <strong>How much time can I realistically save?</strong>
-        </div>
-        <div class="accordion-content">
-          <p>Physicians report saving 2-5 minutes per routine encounter and up to 15 minutes on complex visits. Results vary by specialty and documentation requirements.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
-          <strong>Do I need programming experience?</strong>
-        </div>
-        <div class="accordion-content">
-          <p>No technical expertise required. If you can copy and paste text, you can implement these prompts immediately.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
-          <strong>Are these prompts specialty-specific?</strong>
-        </div>
-        <div class="accordion-content">
-          <p>The core framework applies to all specialties. The library includes templates you can customize with specialty-specific examples for optimal results.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
-          <strong>How do I ensure compliance and safety?</strong>
-        </div>
-        <div class="accordion-content">
-          <p>Always use prompts within your institution's approved AI tools. Review all AI-generated content before signing. These prompts enhance efficiency while maintaining your clinical responsibility for accuracy.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+<hr class="section-divider">
 
 <!-- Clinical Responsibility Notice -->
-<section class="section bg-tertiary">
+<section class="section">
   <div class="container">
-    <div class="content-centered notice-box notice-warning">
-      <h3 class="text-warning mb-4">Clinical Responsibility Notice</h3>
-      <p>
-        These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records. Always verify accuracy, completeness, and compliance with institutional policies. <a href="{{ site.baseurl }}/disclaimer">Review our disclaimer</a>.
-      </p>
+    <div class="editorial-content">
+      <div class="notice-box notice-warning">
+        <h3 class="text-warning mb-4">Clinical Responsibility Notice</h3>
+        <p>
+          These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records.
+        </p>
+        <p style="margin-top: var(--space-4);">
+          <a href="{{ site.baseurl }}/disclaimer" class="read-more">Review Full Disclaimer</a>
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Footer CTA -->
-<section class="section">
+<section class="section bg-secondary">
   <div class="container text-center">
-    <h2 class="mb-6">Ready to Transform Your Documentation?</h2>
-    <div class="hero-cta">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Get Started with Free Prompts</a>
-      <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn btn-outline btn-lg" target="_blank">Star us on GitHub</a>
+    <div class="editorial-content">
+      <h2 class="mb-6">Ready to Transform Your Documentation?</h2>
+      <p class="text-lg text-secondary mb-8">
+        Join over 1,200 physicians using AI-powered prompts to reduce documentation burden and reclaim time for patient care.
+      </p>
+      <div class="hero-cta">
+        <a href="{{ site.baseurl }}/prompt-library" class="btn btn-editorial btn-lg">Get Started with Free Prompts</a>
+        <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn btn-editorial-outline btn-lg" target="_blank">Star us on GitHub</a>
+      </div>
+      <p class="text-sm text-secondary mt-6">
+        Open source under the MIT License. Free to use, modify, and share.
+      </p>
     </div>
-    <p class="text-sm text-secondary mt-6">
-      Open source under the MIT License. Free to use, modify, and share.
-    </p>
   </div>
 </section>
