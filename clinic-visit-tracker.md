@@ -374,6 +374,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
     <div class="tab-buttons">
         <button class="tab-btn active" onclick="switchTab('timer')">Timer Mode</button>
         <button class="tab-btn" onclick="switchTab('summary')">Daily Summary</button>
+        <button class="tab-btn" onclick="switchTab('learning')">📚 Learning Log</button>
     </div>
 
     <!-- Timer Mode Tab -->
@@ -420,6 +421,12 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
                 <textarea id="comments" rows="3" placeholder="Enter any notes about this visit..."></textarea>
             </div>
 
+            <!-- Learning Log -->
+            <div class="form-group" style="margin-top: 1rem;">
+                <label class="form-label">📚 Learning Log (Optional)</label>
+                <textarea id="learningLog" rows="3" placeholder="What did you learn from this case? (e.g., new diagnosis, interesting finding, teaching point)"></textarea>
+            </div>
+
             <!-- Save Button (for manual entry without timer) -->
             <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e1e8ed;">
                 <p style="color: #7f8c8d; margin-bottom: 1rem; font-size: 0.9rem;">
@@ -463,6 +470,26 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
 
             <!-- Visits List -->
             <div class="visits-list" id="visitsList"></div>
+        </div>
+    </div>
+
+    <!-- Learning Log Tab -->
+    <div class="tab-content" id="learningTab">
+        <div class="timer-section">
+            <h2 style="margin-top: 0;">📚 Learning Log</h2>
+            <p style="color: #7f8c8d; margin-bottom: 1.5rem;">Track interesting cases, teaching points, and clinical pearls from your practice.</p>
+
+            <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                <input type="date" id="learningDate" style="padding: 0.5rem 1rem; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 1rem;">
+                <button class="btn btn-primary" onclick="loadLearningLog()">Load Date</button>
+                <button class="btn btn-secondary" onclick="loadAllLearning()">Show All</button>
+                <button class="btn btn-warning" onclick="exportLearningToText()" style="margin-left: auto;">📥 Export Learning Log</button>
+            </div>
+
+            <!-- Learning Items List -->
+            <div id="learningList" style="background: white; border: 2px solid #e1e8ed; border-radius: 8px; padding: 1.5rem; min-height: 200px;">
+                <p style="text-align: center; color: #7f8c8d;">Select a date or click "Show All" to view your learning log entries.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -511,19 +538,28 @@ let isPaused = false;
 function switchTab(tab) {
     const timerTab = document.getElementById('timerTab');
     const summaryTab = document.getElementById('summaryTab');
+    const learningTab = document.getElementById('learningTab');
     const tabBtns = document.querySelectorAll('.tab-btn');
 
     tabBtns.forEach(btn => btn.classList.remove('active'));
 
+    // Hide all tabs
+    timerTab.classList.remove('active');
+    summaryTab.classList.remove('active');
+    learningTab.classList.remove('active');
+
     if (tab === 'timer') {
         timerTab.classList.add('active');
-        summaryTab.classList.remove('active');
         tabBtns[0].classList.add('active');
-    } else {
-        timerTab.classList.remove('active');
+    } else if (tab === 'summary') {
         summaryTab.classList.add('active');
         tabBtns[1].classList.add('active');
         loadDailySummary();
+    } else if (tab === 'learning') {
+        learningTab.classList.add('active');
+        tabBtns[2].classList.add('active');
+        // Set default date and load
+        document.getElementById('learningDate').value = new Date().toISOString().split('T')[0];
     }
 }
 
@@ -756,6 +792,13 @@ function finishVisit() {
     };
 
     saveVisit(visit);
+    
+    // Save learning log entry if present
+    const learningText = document.getElementById('learningLog').value.trim();
+    if (learningText) {
+        saveLearningEntry(learningText);
+    }
+    
     resetForm();
     showFlashMessage();
 
@@ -805,6 +848,13 @@ function saveManualVisit() {
     };
 
     saveVisit(visit);
+    
+    // Save learning log entry if present
+    const learningText = document.getElementById('learningLog').value.trim();
+    if (learningText) {
+        saveLearningEntry(learningText);
+    }
+    
     resetForm();
     showFlashMessage();
 }
@@ -814,6 +864,7 @@ function resetForm() {
     startTime = null;
     document.getElementById('timerDisplay').textContent = '00:00';
     document.getElementById('comments').value = '';
+    document.getElementById('learningLog').value = '';
     document.querySelectorAll('.billing-btn.selected').forEach(btn => btn.classList.remove('selected'));
     document.getElementById('visitTypeIndicator').classList.remove('show');
 
@@ -946,6 +997,118 @@ function exportToCSV() {
     window.URL.revokeObjectURL(url);
 
     alert('✓ Data exported successfully!');
+}
+
+// Learning Log Functions
+function saveLearningEntry(text) {
+    const entry = {
+        date: new Date().toISOString().split('T')[0],
+        timestamp: new Date().toISOString(),
+        text: text
+    };
+    
+    const learningEntries = getLearningEntries();
+    learningEntries.push(entry);
+    localStorage.setItem('learningLog', JSON.stringify(learningEntries));
+}
+
+function getLearningEntries() {
+    const data = localStorage.getItem('learningLog');
+    return data ? JSON.parse(data) : [];
+}
+
+function getLearningByDate(date) {
+    return getLearningEntries().filter(entry => entry.date === date);
+}
+
+function loadLearningLog() {
+    const date = document.getElementById('learningDate').value;
+    if (!date) return;
+    
+    const entries = getLearningByDate(date);
+    displayLearningEntries(entries, `Learning Log for ${date}`);
+}
+
+function loadAllLearning() {
+    const entries = getLearningEntries();
+    displayLearningEntries(entries, 'All Learning Log Entries');
+}
+
+function displayLearningEntries(entries, title) {
+    const container = document.getElementById('learningList');
+    
+    if (entries.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">No learning log entries found.</p>';
+        return;
+    }
+    
+    let html = `<h3 style="margin-top: 0; color: #2c3e50;">${title}</h3>`;
+    html += '<ul style="list-style: none; padding: 0;">';
+    
+    entries.forEach((entry, index) => {
+        const date = entry.date;
+        const time = new Date(entry.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        
+        html += `
+            <li style="background: #f8f9fa; border-left: 4px solid #0088bb; padding: 1rem; margin-bottom: 1rem; border-radius: 4px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <strong style="color: #2c3e50;">${date}</strong>
+                    <span style="color: #7f8c8d; font-size: 0.9rem;">${time}</span>
+                </div>
+                <p style="margin: 0; color: #34495e;">${entry.text}</p>
+            </li>
+        `;
+    });
+    
+    html += '</ul>';
+    container.innerHTML = html;
+}
+
+function exportLearningToText() {
+    const entries = getLearningEntries();
+    
+    if (entries.length === 0) {
+        alert('No learning log entries to export!');
+        return;
+    }
+    
+    // Create text content
+    let text = '=== LEARNING LOG ===\n\n';
+    
+    // Group by date
+    const byDate = {};
+    entries.forEach(entry => {
+        if (!byDate[entry.date]) {
+            byDate[entry.date] = [];
+        }
+        byDate[entry.date].push(entry);
+    });
+    
+    // Sort dates
+    const sortedDates = Object.keys(byDate).sort().reverse();
+    
+    sortedDates.forEach(date => {
+        text += `${date}\n`;
+        text += '─'.repeat(50) + '\n';
+        byDate[date].forEach(entry => {
+            const time = new Date(entry.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            text += `• [${time}] ${entry.text}\n`;
+        });
+        text += '\n';
+    });
+    
+    // Download
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `learning-log-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    
+    alert('✓ Learning log exported successfully!');
 }
 
 // Initialize
