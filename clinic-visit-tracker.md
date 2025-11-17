@@ -374,7 +374,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
     <div class="tab-buttons">
         <button class="tab-btn active" onclick="switchTab('timer')">Timer Mode</button>
         <button class="tab-btn" onclick="switchTab('summary')">Daily Summary</button>
-        <button class="tab-btn" onclick="switchTab('learning')">📚 Learning Log</button>
+        <button class="tab-btn" onclick="switchTab('learning')">Learning Log</button>
     </div>
 
     <!-- Timer Mode Tab -->
@@ -423,7 +423,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
 
             <!-- Learning Log -->
             <div class="form-group" style="margin-top: 1rem;">
-                <label class="form-label">📚 Learning Log (Optional)</label>
+                <label class="form-label">Learning Log (Optional)</label>
                 <textarea id="learningLog" rows="3" placeholder="What did you learn from this case? (e.g., new diagnosis, interesting finding, teaching point)"></textarea>
             </div>
 
@@ -476,7 +476,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
     <!-- Learning Log Tab -->
     <div class="tab-content" id="learningTab">
         <div class="timer-section">
-            <h2 style="margin-top: 0;">📚 Learning Log</h2>
+            <h2 style="margin-top: 0;">Learning Log</h2>
             <p style="color: #7f8c8d; margin-bottom: 1.5rem;">Track interesting cases, teaching points, and clinical pearls from your practice.</p>
 
             <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
