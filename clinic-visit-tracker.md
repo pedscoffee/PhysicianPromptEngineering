@@ -20,36 +20,10 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
 <!-- Data Warning Notice -->
 <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem;">
     <p style="margin: 0; color: #856404;">
-        <strong>⚠️ </strong> 
-        
+        <strong>⚠️ Important:</strong> Your visit data is stored in your browser's local storage.
+        <strong>Export your data regularly</strong> to avoid losing it if you clear your browser cache or use a different device.
     </p>
 </div>
-
-<section class="section bg-tertiary">
-  <div class="container">
-    <div style="max-width: 900px; margin: 0 auto;">
-      <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
-        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
-
-        <h3 class="mb-4">100% Local | Export to CSV</h3>
-        <ul>
-          <li><strong>Your data is stored in your browser's local storage.</li>
-          <li><strong>Export your data regularly</strong> to avoid losing it if you clear your browser cache or use a different device.</li>
-        </ul>
-
-        <h3 class="mt-6 mb-4">Quality Assurance Checklist</h3>
-        <ul style="list-style: none; padding-left: 0;">
-          <li>☐ Factual accuracy verified</li>
-          <li>☐ Medications and dosages confirmed</li>
-          <li>☐ Follow-up instructions appropriate</li>
-          <li>☐ Billing documentation sufficient</li>
-          <li>☐ No hallucinated findings</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- Flash Message -->
 <div class="flash-message" id="flashMessage" style="display: none; background-color: #27ae60; color: white; padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
