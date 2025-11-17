@@ -421,6 +421,7 @@ description: Create and track quality improvement projects with custom variables
 </div><!-- End container -->
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 <script>
 // Global state
 let projects = [];
