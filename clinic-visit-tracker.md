@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Clinic Visit Tracker
+title: RVU Data Tracker
 permalink: /clinic-visit-tracker/
 description: Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries
 ---
@@ -8,7 +8,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
 <!-- Hero Section -->
 <div class="hero">
   <div class="container">
-    <h1 class="hero-title">Clinic RVU Tracker</h1>
+    <h1 class="hero-title">RVU Data Tracker</h1>
     <p class="hero-subtitle">
        Track your clinic encounters with automated billing codes, wRVU calculations, and daily summaries. All data stored locally in your browser with easy CSV export.
     </p>
@@ -18,7 +18,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
 
 <!-- Data Warning Notice -->
-<div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem;">
+<div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">
     <p style="margin: 0; color: #856404;">
         <strong>⚠️ Important:</strong> Your visit data is stored in your browser's local storage.
         <strong>Export your data regularly</strong> to avoid losing it if you clear your browser cache or use a different device.
