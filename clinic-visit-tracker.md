@@ -4,17 +4,6 @@ title: RVU Data Tracker
 permalink: /clinic-visit-tracker/
 description: Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries
 ---
-
-<!-- Hero Section -->
-<div class="hero">
-  <div class="container">
-    <h1 class="hero-title">RVU Data Tracker</h1>
-    <p class="hero-subtitle">
-       Track your clinic encounters with automated billing codes, wRVU calculations, and daily summaries. All data stored locally in your browser with easy CSV export.
-    </p>
-  </div>
-</div>
-
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
 
 <!-- Data Warning Notice -->
