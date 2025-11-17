@@ -543,21 +543,21 @@ function loadBillingCodes() {
     const container = document.getElementById('billingCodesContainer');
     container.innerHTML = '';
 
-    const established = ['99212', '99213', '99214', '99215'];
-    const newPatient = ['99202', '99203', '99204', '99205'];
-    const wellNewPeds = ['99381', '99382', '99383', '99384'];
-    const wellEstPeds = ['99391', '99392', '99393', '99394'];
-    const wellNewAdult = ['99385', '99386', '99387'];
-    const wellEstAdult = ['99395', '99396', '99397'];
+    // Sick visits - organized in 2 rows of 4
+    const sickRow1 = ['99202', '99203', '99204', '99205']; // New patient
+    const sickRow2 = ['99212', '99213', '99214', '99215']; // Established
+    
+    // Well visits - organized in 4 rows 
+    const wellRow1 = ['99381', '99382', '99383', '99384', '99385', '99386', '99387']; // New 
+    const wellRow2 = ['99391', '99392', '99393', '99394', '99395', '99396', '99397']; // Established
+    
     const modifier = ['25'];
 
     const categories = [
-        { title: 'Established Patient', codes: established },
-        { title: 'New Patient', codes: newPatient },
-        { title: 'Well Visit New (Peds)', codes: wellNewPeds },
-        { title: 'Well Visit Est (Peds)', codes: wellEstPeds },
-        { title: 'Well Visit New (Adult)', codes: wellNewAdult },
-        { title: 'Well Visit Est (Adult)', codes: wellEstAdult },
+        { title: 'Sick Visits - New Patient', codes: sickRow1 },
+        { title: 'Sick Visits - Established Patient', codes: sickRow2 },
+        { title: 'Well Visits - New Patient', codes: wellRow1 },
+        { title: 'Well Visits - Established Patient', codes: wellRow2 },
         { title: 'Modifier', codes: modifier }
     ];
 
@@ -646,6 +646,11 @@ function getElapsedMinutes() {
 
 // Apply time-based billing
 function applyTimeBasedBilling(patientType) {
+    // Pause the timer when using time-based billing
+    if (!isPaused && startTime) {
+        pauseTimer();
+    }
+    
     const minutes = getElapsedMinutes();
     let selectedCode = '';
 
