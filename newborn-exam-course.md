@@ -25,6 +25,18 @@ description: "Master the newborn physical exam through interactive case-based le
   </div>
 </div>
 
+<div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+  <h3 style="color: #92400e; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 24px; height: 24px;">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+    </svg>
+    Course In Development
+  </h3>
+  <p style="color: #92400e; margin-bottom: 0;">
+    <strong>This course is currently under active development and should not yet be used for learning or assessment.</strong> Content is incomplete, exercises may not function properly, and clinical information has not been fully reviewed for accuracy. Please check back later for the completed version.
+  </p>
+</div>
+
 ## Your Learning Journey
 
 This course teaches newborn physical exam skills through visual learning and clinical case analysis. You'll view images and scenarios of exam findings, practice identifying them, and receive immediate AI-powered feedback on your clinical reasoning.
