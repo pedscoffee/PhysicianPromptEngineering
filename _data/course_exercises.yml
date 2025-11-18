@@ -922,3 +922,232 @@ module5_final_project:
         description: "Shows thoughtful iteration and improvement"
     total_points: 100
     passing_score: 70
+
+# ============================================
+# NEWBORN EXAM MODULE
+# ============================================
+
+newborn_exercise1:
+  id: "nb1"
+  title: "Newborn Examination Documentation"
+  module: "newborn"
+  difficulty: "intermediate"
+  estimated_time: "25 minutes"
+  transcript: "newborn_exam"
+  goal: "Create a comprehensive newborn examination note with all required elements"
+  instructions: |
+    Write a prompt that generates a complete newborn examination note. This is a specialized visit type with specific requirements.
+
+    Your prompt should ensure the AI includes:
+    - Maternal and birth history
+    - Complete physical exam using newborn-specific elements
+    - Growth parameters with percentiles
+    - Newborn-specific assessments (jaundice, feeding, etc.)
+    - Anticipatory guidance appropriate for newborns
+    - Safety counseling for parents
+  example_good_prompt: |
+    Create a comprehensive newborn examination note from this encounter. Use the following structure:
+
+    NEWBORN IDENTIFICATION:
+    - Age in days
+    - Gestational age at birth
+    - Birth weight and current weight with % change
+
+    MATERNAL/BIRTH HISTORY:
+    - Mother's pregnancy/delivery information
+    - Birth complications if any
+    - Hospital course summary
+
+    INTERVAL HISTORY:
+    - Feeding (type, frequency, adequacy)
+    - Output (wet diapers, stools)
+    - Sleep patterns
+    - Parental concerns
+
+    PHYSICAL EXAMINATION:
+    Use systematic newborn exam format:
+    - Vitals with percentiles
+    - General appearance and activity
+    - Complete head-to-toe exam
+    - Newborn reflexes (Moro, grasp, suck, etc.)
+    - Hip examination (Barlow/Ortolani)
+    - Skin findings (jaundice zone, normal variants)
+
+    ASSESSMENT:
+    - Overall health status
+    - Specific findings requiring attention (e.g., jaundice level)
+    - Feeding adequacy
+    - Growth parameters assessment
+
+    PLAN:
+    - Jaundice management if applicable
+    - Feeding plan and support
+    - Preventive care (vaccines, screening results)
+    - Safety counseling (safe sleep, car seat, cord care)
+    - Red flags for parents to monitor
+    - Follow-up timing
+
+    Use professional pediatric terminology. Include specific measurements and percentiles. Address newborn-specific concerns.
+  rubric:
+    criteria:
+      - name: "Newborn-specific format"
+        points: 3
+        description: "Uses appropriate newborn documentation structure"
+      - name: "Complete physical exam"
+        points: 3
+        description: "Includes all required newborn exam components"
+      - name: "Safety and anticipatory guidance"
+        points: 2
+        description: "Addresses parental education and safety"
+      - name: "Clinical appropriateness"
+        points: 2
+        description: "Focuses on age-appropriate concerns and management"
+    total_points: 10
+    passing_score: 7
+
+newborn_exercise2:
+  id: "nb2"
+  title: "Jaundice Assessment and Management"
+  module: "newborn"
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  transcript: "newborn_exam"
+  goal: "Document newborn jaundice with appropriate assessment and management plan"
+  instructions: |
+    Newborn jaundice is a common finding that requires careful documentation and management planning.
+
+    Your prompt should guide the AI to:
+    - Document jaundice severity (visual zone and bilirubin level)
+    - Assess risk factors
+    - Reference appropriate guidelines (Bhutani nomogram)
+    - Create evidence-based management plan
+    - Include specific parent education
+    - Define clear follow-up parameters
+  example_good_prompt: |
+    Generate a newborn visit note with special attention to jaundice assessment and management. Format as follows:
+
+    SUBJECTIVE & OBJECTIVE:
+    Document the visit as standard newborn note, but ensure these jaundice-specific elements are highlighted:
+    - Age of infant in hours
+    - Feeding pattern and adequacy (critical for jaundice)
+    - Visual jaundice assessment (head to toe zones)
+    - Bilirubin level with timing
+    - Risk factors for hyperbilirubinemia
+
+    ASSESSMENT:
+    For jaundice, include:
+    - Classification (physiologic vs pathologic)
+    - Severity level
+    - Risk zone per Bhutani nomogram
+    - Trend if prior values available
+
+    PLAN FOR JAUNDICE:
+    Create detailed management plan:
+    1. Risk stratification based on nomogram
+    2. Feeding optimization (frequency, adequacy assessment)
+    3. Repeat bilirubin timing (specific: "in 24 hours" not "soon")
+    4. Threshold for phototherapy (if applicable)
+    5. Parental education:
+       - How to monitor jaundice progression
+       - Red flags (jaundice below umbilicus, palms/soles, lethargy)
+       - When to call immediately
+    6. Clear follow-up plan with specific timing
+
+    Include evidence-based guidelines. Be specific about timing and thresholds. Emphasize parent education for safety.
+  rubric:
+    criteria:
+      - name: "Complete jaundice assessment"
+        points: 3
+        description: "Documents all key elements of jaundice evaluation"
+      - name: "Evidence-based management"
+        points: 3
+        description: "References appropriate guidelines and thresholds"
+      - name: "Parent education"
+        points: 2
+        description: "Includes clear monitoring instructions and red flags"
+      - name: "Specific follow-up plan"
+        points: 2
+        description: "Defines clear timeline and criteria for follow-up"
+    total_points: 10
+    passing_score: 7
+
+newborn_exercise3:
+  id: "nb3"
+  title: "Feeding Assessment and Support"
+  module: "newborn"
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  transcript: "newborn_exam"
+  goal: "Document comprehensive feeding assessment with supportive guidance"
+  instructions: |
+    Feeding is one of the most critical aspects of newborn care. Your documentation should thoroughly address feeding adequacy and provide clear support.
+
+    Your prompt should ensure documentation of:
+    - Type of feeding (breast, formula, combination)
+    - Frequency and duration
+    - Signs of adequate intake (output, weight trend)
+    - Feeding difficulties if present
+    - Lactation support for breastfeeding
+    - Supplementation needs (vitamin D)
+    - Clear guidance for parents
+  example_good_prompt: |
+    Create a newborn visit note with comprehensive feeding assessment. Structure the note to include:
+
+    FEEDING HISTORY (in HPI or dedicated section):
+    - Type: Breastfeeding, formula, or combination
+    - Frequency (number of feeds per 24 hours)
+    - Duration or amount per feed
+    - Infant behavior at feeds (latching, satisfaction, fussiness)
+    - Maternal concerns or difficulties
+
+    FEEDING ADEQUACY ASSESSMENT (Objective section):
+    - Weight: current weight, birth weight, % change
+    - Weight loss/gain trend with interpretation
+    - Output: wet diapers per day (specific number)
+    - Stool frequency and character
+    - Hydration status on exam
+
+    FEEDING IN ASSESSMENT:
+    Evaluate feeding adequacy:
+    - Is weight loss acceptable (<10% is normal in first week)
+    - Is output adequate (6+ wet diapers after day 5)
+    - Are there concerns for inadequate intake?
+
+    FEEDING PLAN:
+    Create specific feeding support plan:
+    1. Feeding recommendations:
+       - Frequency (e.g., "8-12 times per 24 hours")
+       - On-demand vs scheduled guidance
+       - Duration guidance for breastfeeding
+    2. Lactation support if breastfeeding:
+       - Latch assessment and tips
+       - Positioning reviewed
+       - When to seek lactation consultation
+    3. Supplementation:
+       - Vitamin D 400 IU daily (all breastfed/partially breastfed infants)
+       - Iron supplementation if indicated
+    4. Monitoring plan:
+       - Weight check timing
+       - Output monitoring goals
+       - Signs of inadequate feeding to watch for
+    5. Resources:
+       - Lactation consultant contact if applicable
+       - La Leche League or other support groups
+
+    Use supportive, educational tone. Provide specific numbers and goals. Address parental concerns with evidence-based guidance.
+  rubric:
+    criteria:
+      - name: "Comprehensive feeding assessment"
+        points: 3
+        description: "Documents all aspects of feeding adequacy"
+      - name: "Specific guidance"
+        points: 3
+        description: "Provides clear, actionable feeding plan"
+      - name: "Lactation support"
+        points: 2
+        description: "Includes appropriate breastfeeding support"
+      - name: "Monitoring plan"
+        points: 2
+        description: "Clear parameters for assessing feeding success"
+    total_points: 10
+    passing_score: 7

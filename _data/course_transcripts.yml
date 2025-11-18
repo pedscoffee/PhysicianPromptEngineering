@@ -430,3 +430,137 @@ well_child_exam:
     4. No concerns at this time
     5. Return for 5-year well child visit
     Mother had no additional questions. Post-vaccine instructions provided.
+
+newborn_exam:
+  title: "Newborn Examination - 3 Day Old"
+  specialty: "Pediatrics"
+  difficulty: "intermediate"
+  transcript: |
+    Chief Complaint: Routine newborn examination
+
+    HPI: 3-day-old male infant presenting for first outpatient visit post-hospital discharge. Mother is a 28-year-old G2P2, delivered at 39 weeks 2 days gestation via spontaneous vaginal delivery. Birth weight 3200g (7 lbs 1 oz). Apgar scores 8 and 9 at 1 and 5 minutes. Uncomplicated delivery, no maternal fever, GBS negative. Infant discharged home at 36 hours of life. Mother reports baby is breastfeeding every 2-3 hours, latching well most feeds but sometimes fussy at breast. 6-8 wet diapers per day, 3-4 stools (yellow, seedy). No vomiting. Cord care with alcohol, umbilical stump still attached, dry. No fever, rash, or breathing difficulties noted by parents.
+
+    Maternal History:
+    - Blood type: O positive
+    - GBS: Negative
+    - Hepatitis B: Negative
+    - HIV: Negative
+    - Syphilis: Negative
+    - Prenatal care: Regular, started at 8 weeks
+    - Complications: None
+
+    Birth History:
+    - Gestational age: 39 weeks 2 days
+    - Delivery: Spontaneous vaginal delivery
+    - Birth weight: 3200g (7 lbs 1 oz)
+    - Length: 51 cm (20 inches)
+    - Head circumference: 35 cm
+    - Apgar scores: 8 at 1 min, 9 at 5 min
+    - Complications: None
+    - Resuscitation: Routine care, no interventions needed
+
+    Hospital Course:
+    - Remained with mother in well-baby nursery
+    - Breastfeeding established
+    - Hepatitis B vaccine #1 given
+    - Newborn screening sent
+    - Hearing screen: Passed both ears
+    - Congenital heart disease screening: Passed (SpO2 98% RA)
+    - Jaundice assessment: Transcutaneous bilirubin 7.2 mg/dL at 36 hours (low risk zone)
+    - Discharged home at 36 hours of life
+
+    Current Medications: Vitamin D drops 400 IU daily (started yesterday)
+    Allergies: None known
+    Family History: No bleeding disorders, metabolic disorders, or congenital anomalies. Older sibling age 3, healthy.
+    Social: Lives with mother and father, supportive family. Mother planning to breastfeed exclusively for 6 months. No smoking in home. Safe sleep education provided in hospital.
+
+    Vitals:
+    - Weight: 3100g (6 lbs 13 oz) - down 100g from birth (3.1% weight loss)
+    - Length: 51 cm (20 inches)
+    - Head circumference: 35 cm (50th percentile)
+    - Temperature: 37.0°C (98.6°F) axillary
+    - Heart rate: 145 bpm
+    - Respiratory rate: 42 breaths/min
+    - Oxygen saturation: 99% room air
+
+    Physical Exam:
+    General: Alert, active infant, vigorous cry, well-hydrated, appropriate for gestational age
+
+    HEENT:
+    - Head: Normocephalic, anterior fontanelle soft and flat (2x2 cm), posterior fontanelle small
+    - Molding and caput succedaneum resolving
+    - Eyes: Red reflex present bilaterally, no discharge
+    - Ears: Normal position and formation, good cartilage
+    - Nose: Patent nares bilaterally
+    - Mouth: Intact palate, normal tongue, good suck reflex
+    - Neck: Supple, no masses, full range of motion
+
+    Cardiovascular: Regular rate and rhythm, no murmur appreciated, femoral pulses 2+ bilaterally and equal
+
+    Respiratory: Breath sounds clear and equal bilaterally, no grunting, flaring, or retractions, respiratory effort comfortable
+
+    Abdomen: Soft, non-distended, no masses, bowel sounds present, liver edge 1-2 cm below costal margin (normal), no splenomegaly, umbilical cord stump drying, no erythema or discharge
+
+    Genitourinary: Normal male genitalia, both testes descended, meatus at tip of glans, no hypospadias, anus patent
+
+    Musculoskeletal:
+    - Clavicles intact, no crepitus
+    - Hips: Barlow and Ortolani negative, symmetric gluteal folds
+    - Spine: Intact, no dimple or tuft
+    - Extremities: Symmetric, full range of motion, normal tone
+
+    Neurological:
+    - Tone: Appropriate flexor tone
+    - Moro reflex: Symmetric
+    - Grasp reflex: Present
+    - Suck and root reflexes: Strong
+    - Stepping reflex: Present
+
+    Skin: Pink, warm, well-perfused. Capillary refill <2 seconds. Jaundice noted on face and chest (extends to mid-abdomen). No cyanosis. Small erythema toxicum rash on trunk. Stork bites on nape of neck. Mongolian spots on buttocks.
+
+    Jaundice Assessment: Visual inspection suggests zone 3 jaundice (mid-abdomen). Transcutaneous bilirubin measurement: 12.4 mg/dL at 72 hours of life.
+
+    Assessment:
+    1. Healthy term newborn, 3 days old, doing well
+    2. Physiologic jaundice - moderate level, monitoring indicated
+    3. Breastfeeding, adequate intake based on output and weight loss
+    4. Weight loss 3.1% (acceptable range)
+
+    Plan:
+    1. Jaundice management:
+       - Plotted on Bhutani nomogram: currently in low-intermediate risk zone
+       - Continue frequent breastfeeding (8-12 times per 24 hours)
+       - Repeat bilirubin level in 24 hours
+       - Educate parents on signs of worsening jaundice (below umbilicus, palms/soles)
+       - Increase vigilance for lethargy, poor feeding
+
+    2. Nutrition:
+       - Continue exclusive breastfeeding on demand
+       - Lactation support: reviewed proper latch and positioning
+       - Continue vitamin D 400 IU daily
+       - Expect weight gain to start by day 5-7
+       - Goal to regain birth weight by 2 weeks of age
+
+    3. Preventive care:
+       - Next visit in 2-3 days for weight check and bilirubin recheck
+       - Hepatitis B vaccine #2 at 1-2 months
+       - Newborn screening results will be available in 1-2 weeks (will call with results)
+       - Hearing screen passed - no further testing needed
+
+    4. Safety and anticipatory guidance:
+       - Safe sleep: back to sleep, firm mattress, no loose bedding
+       - Car seat use reviewed
+       - Umbilical cord care: keep dry, fold diaper below cord
+       - Bathing: Sponge baths until cord falls off (usually 1-2 weeks)
+       - Temperature taking and when to call for fever (≥100.4°F rectal)
+
+    5. Red flags to watch for:
+       - Fever ≥100.4°F rectal
+       - Lethargy, difficult to arouse
+       - Poor feeding, refusing feeds
+       - Decreased wet diapers (<6 per day after day 5)
+       - Worsening jaundice (yellowing below umbilicus, palms/soles)
+       - Vomiting (especially bilious or forceful)
+       - Breathing difficulties
+
+    Parents verbalized understanding and had opportunity to ask questions. Provided with after-visit summary and emergency contact numbers. Follow-up visit scheduled in 2 days.
