@@ -1009,7 +1009,3 @@ permalink: /snippet-manager/
     <h3 style="color: #2a7ae2; font-size: 1.1em; margin-bottom: 10px; text-align: center;">Share Your Prompt</h3>
     <p style="text-align: center;">Refined a prompt that consistently delivers quality output? Consider sharing it on the <a href="{{ site.baseurl }}/contributions" style="color: #2a7ae2; font-weight: 600;">contributions page</a>. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.</p>
 </div>
-
-<!-- Onboarding System -->
-{%- include onboarding-system.html -%}
-{%- include snippet-manager-onboarding.html -%}
