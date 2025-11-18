@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Git Master - Learn Git from Scratch"
-description: Interactive Git learning tool with GitHub repository analyzer and AI tutor. Visualize commits, branches, and learn version control from complete beginner to confident user.
+title: "Git Tutor - Version Control for Physicians"
+description: Master Git and GitHub for managing your AI prompts, collaborating on clinical tools, and contributing to open-source medical resources. Interactive learning with AI guidance.
 permalink: /git-master/
 ---
 
@@ -29,58 +29,86 @@ permalink: /git-master/
         padding: 20px;
     }
 
-    /* Header */
-    .header {
+    /* Hero Section */
+    .git-tutor-hero {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 40px 30px;
+        padding: 60px 40px;
         border-radius: 12px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 40px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        text-align: center;
     }
 
-    .header h1 {
-        font-size: 2.5em;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
+    .git-tutor-hero h1 {
+        font-size: 2.8em;
+        margin-bottom: 20px;
+        font-weight: 700;
     }
 
-    .header p {
-        font-size: 1.15em;
+    .git-tutor-hero .subtitle {
+        font-size: 1.3em;
         opacity: 0.95;
-        line-height: 1.7;
-        max-width: 800px;
+        line-height: 1.8;
+        max-width: 900px;
+        margin: 0 auto 30px auto;
     }
 
-    .git-icon {
-        width: 48px;
-        height: 48px;
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30px;
+        flex-wrap: wrap;
     }
 
-    /* Welcome Box */
-    .welcome-box {
-        background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-        border-left: 4px solid #0284c7;
-        padding: 25px;
+    .hero-stat {
+        text-align: center;
+    }
+
+    .hero-stat-value {
+        font-size: 2em;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .hero-stat-label {
+        font-size: 0.95em;
+        opacity: 0.9;
+    }
+
+    /* Info Box */
+    .info-box {
+        background: white;
+        border-left: 4px solid #667eea;
+        padding: 30px;
         border-radius: 8px;
         margin-bottom: 30px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .welcome-box h3 {
-        color: #0c4a6e;
+    .info-box h3 {
+        color: #667eea;
         margin-bottom: 15px;
-        font-size: 1.3em;
+        font-size: 1.4em;
+        font-weight: 600;
     }
 
-    .welcome-box ul {
+    .info-box p {
+        color: #4b5563;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    .info-box ul {
         margin-left: 25px;
-        color: #075985;
+        color: #4b5563;
     }
 
-    .welcome-box li {
-        margin-bottom: 8px;
+    .info-box li {
+        margin-bottom: 10px;
+        line-height: 1.6;
     }
 
     /* Status Panel */
@@ -227,9 +255,10 @@ permalink: /git-master/
     /* Main Content Grid */
     .main-content {
         display: none;
-        grid-template-columns: 350px 1fr;
+        grid-template-columns: 7fr 3fr;
         gap: 25px;
         margin-bottom: 30px;
+        align-items: start;
     }
 
     .main-content.active {
@@ -242,11 +271,11 @@ permalink: /git-master/
         }
 
         .chat-sidebar {
-            order: 2;
+            order: 1;
         }
 
         .visualization-area {
-            order: 1;
+            order: 2;
         }
     }
 
@@ -254,14 +283,11 @@ permalink: /git-master/
     .chat-sidebar {
         background: white;
         border-radius: 12px;
-        padding: 25px;
+        padding: 30px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         display: flex;
         flex-direction: column;
-        height: fit-content;
-        max-height: 85vh;
-        position: sticky;
-        top: 20px;
+        min-height: 70vh;
     }
 
     .chat-sidebar h3 {
@@ -309,11 +335,10 @@ permalink: /git-master/
         flex: 1;
         overflow-y: auto;
         margin-bottom: 20px;
-        padding: 15px;
+        padding: 20px;
         background: #f9fafb;
         border-radius: 8px;
-        min-height: 300px;
-        max-height: 400px;
+        min-height: 500px;
     }
 
     .message {
@@ -604,8 +629,16 @@ permalink: /git-master/
 
     /* Responsive */
     @media (max-width: 768px) {
-        .header h1 {
-            font-size: 1.8em;
+        .git-tutor-hero h1 {
+            font-size: 2em;
+        }
+
+        .git-tutor-hero .subtitle {
+            font-size: 1.1em;
+        }
+
+        .hero-stats {
+            gap: 20px;
         }
 
         .url-input-wrapper {
@@ -624,28 +657,37 @@ permalink: /git-master/
 </style>
 
 <div class="git-master-container">
-    <!-- Header -->
-    <div class="header">
-        <h1>
-            <svg class="git-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-            Git Master
-        </h1>
-        <p>Learn Git from scratch with interactive visualizations and your personal AI tutor. Paste any public GitHub repository URL to explore its commit history, understand branching, and master version control—no prior experience needed!</p>
+    <!-- Hero Section -->
+    <div class="git-tutor-hero">
+        <h1>Git Tutor</h1>
+        <p class="subtitle">Master version control for managing AI prompts, collaborating on clinical tools, and contributing to open-source medical resources. Learn Git interactively with AI guidance.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-value">∞</span>
+                <span class="hero-stat-label">Public Repositories</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-value">AI</span>
+                <span class="hero-stat-label">Powered Guidance</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-value">100%</span>
+                <span class="hero-stat-label">Browser-Based</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Welcome Box -->
-    <div class="welcome-box">
-        <h3>👋 Welcome, Complete Beginner!</h3>
-        <p style="margin-bottom: 12px; color: #075985;">This tool is designed for you if you have:</p>
+    <!-- Info Box -->
+    <div class="info-box">
+        <h3>Why Git Matters for Physicians in the AI Era</h3>
+        <p>As you build your prompt library and explore AI-assisted documentation, Git becomes essential. It's the industry-standard tool for:</p>
         <ul>
-            <li>Little to no command line experience</li>
-            <li>Never used version control before</li>
-            <li>Heard of Git but don't know what it does</li>
-            <li>Want to understand merge conflicts without fear</li>
+            <li><strong>Version Control for Prompts:</strong> Track changes to your clinical prompts over time, experiment with variations, and revert to previous versions that worked better</li>
+            <li><strong>Collaboration:</strong> Share your prompt libraries with colleagues, contribute improvements to open-source medical tools, and learn from other physicians' approaches</li>
+            <li><strong>Professional Development:</strong> Join the growing community of physician-developers building the future of healthcare technology</li>
+            <li><strong>Portfolio Building:</strong> Showcase your contributions to medical informatics and AI implementation projects</li>
         </ul>
-        <p style="margin-top: 12px; color: #0c4a6e; font-weight: 500;">Get started by initializing the AI tutor below, then paste a GitHub repository URL to begin your learning journey!</p>
+        <p style="margin-top: 15px;"><strong>No coding experience required.</strong> This interactive tool uses real GitHub repositories and an AI tutor to teach you Git concepts through exploration and conversation.</p>
     </div>
 
     <!-- Status Panel -->
