@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Prompt Assistant
-description: Experimental browser-based prompt generator demonstrating AI-powered meta-prompting capabilities. Educational purposes only.
+title: AI Prompt Assistant
+description: Create custom AI editor prompts for your clinical workflow using AI-powered metaprompting. Generate or refine prompts to match your exact documentation style.
 permalink: /prompt-assistant/
 ---
 <style>
@@ -12,9 +12,9 @@ permalink: /prompt-assistant/
     }
 
     body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: #f5f5f5;
-        color: #333;
+        font-family: var(--font-family-primary, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+        background: var(--color-bg-secondary, #f9fafb);
+        color: var(--color-text-primary, #1f2937);
         line-height: 1.6;
     }
 
@@ -28,64 +28,102 @@ permalink: /prompt-assistant/
         padding: 20px;
     }
 
-    .header {
-        background: white;
-        padding: 30px;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        padding: 60px 30px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        text-align: center;
     }
 
-    .header h1 {
-        font-size: 2em;
+    .hero h1 {
+        font-size: 2.5em;
         margin-bottom: 15px;
-        color: #2a7ae2;
+        color: #1e40af;
     }
 
-    .header p {
-        color: #666;
-        font-size: 1.05em;
-        margin-bottom: 10px;
+    .hero-subtitle {
+        font-size: 1.2em;
+        color: #1e40af;
+        margin-bottom: 20px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
         line-height: 1.8;
     }
 
     .privacy-highlight {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 8px;
         color: #059669;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 1.1em;
         margin-top: 15px;
     }
 
-    .warning-box {
+    /* Paywall Notice */
+    .paywall-notice {
         background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
         border-left: 4px solid #f59e0b;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .paywall-notice h3 {
+        color: #92400e;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+    }
+
+    .paywall-notice p {
+        color: #78350f;
+        margin-bottom: 15px;
+    }
+
+    .paywall-notice .btn {
+        background: #f59e0b;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+        transition: background 0.2s;
+    }
+
+    .paywall-notice .btn:hover {
+        background: #d97706;
+    }
+
+    /* Warning Box */
+    .warning-box {
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        border-left: 4px solid #dc2626;
         padding: 20px;
         border-radius: 6px;
         margin-bottom: 30px;
     }
 
     .warning-box h3 {
-        color: #92400e;
+        color: #991b1b;
         margin-bottom: 12px;
         font-size: 1.1em;
     }
 
     .warning-box ul {
         margin-left: 20px;
-        color: #78350f;
+        color: #7f1d1d;
     }
 
     .warning-box li {
         margin-bottom: 6px;
     }
 
-    .warning-box strong {
-        color: #92400e;
-    }
-
+    /* Status Panel */
     .status-panel {
         background: white;
         border-radius: 8px;
@@ -135,52 +173,97 @@ permalink: /prompt-assistant/
 
     .progress-fill {
         height: 100%;
-        background: #2a7ae2;
+        background: #2563eb;
         width: 0%;
         transition: width 0.3s ease;
     }
 
-    .btn {
-        padding: 12px 24px;
+    /* Tab Navigation */
+    .tab-navigation {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #e5e7eb;
+    }
+
+    .tab-button {
+        padding: 15px 30px;
+        background: none;
         border: none;
-        border-radius: 6px;
-        font-size: 1em;
-        font-weight: 500;
+        border-bottom: 3px solid transparent;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #6b7280;
         cursor: pointer;
         transition: all 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+        position: relative;
+        top: 2px;
     }
 
-    .btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+    .tab-button:hover {
+        color: #2563eb;
     }
 
-    .btn-primary {
-        background: #2a7ae2;
-        color: white;
+    .tab-button.active {
+        color: #2563eb;
+        border-bottom-color: #2563eb;
     }
 
-    .btn-primary:hover:not(:disabled) {
-        background: #1e5bb8;
+    .tab-content {
+        display: none;
     }
 
-    .btn-success {
-        background: #28a745;
-        color: white;
+    .tab-content.active {
+        display: block;
     }
 
-    .btn-success:hover:not(:disabled) {
-        background: #218838;
+    /* Settings Panel */
+    .settings-panel {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .btn-lg {
-        padding: 16px 32px;
+    .settings-panel h3 {
+        color: #2563eb;
+        margin-bottom: 15px;
         font-size: 1.1em;
     }
 
+    .settings-group {
+        margin-bottom: 15px;
+    }
+
+    .settings-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #374151;
+    }
+
+    .settings-group input {
+        width: 200px;
+        padding: 10px;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 1em;
+    }
+
+    .settings-group input:focus {
+        outline: none;
+        border-color: #2563eb;
+    }
+
+    .settings-group small {
+        display: block;
+        color: #6b7280;
+        margin-top: 5px;
+        font-size: 0.9em;
+    }
+
+    /* Main Layout */
     .main-layout {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -207,16 +290,9 @@ permalink: /prompt-assistant/
     }
 
     .panel h2 {
-        color: #2a7ae2;
+        color: #2563eb;
         margin-bottom: 20px;
         font-size: 1.4em;
-    }
-
-    .panel h3 {
-        color: #333;
-        margin-bottom: 15px;
-        margin-top: 25px;
-        font-size: 1.1em;
     }
 
     .output-panel {
@@ -224,152 +300,254 @@ permalink: /prompt-assistant/
         top: 20px;
     }
 
-    .form-group {
-        margin-bottom: 25px;
+    /* Chat Interface */
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 600px;
     }
 
-    .form-group label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 10px;
-        color: #333;
-        font-size: 1.05em;
-    }
-
-    .form-group label span {
-        color: #999;
-        font-size: 0.9em;
-        font-weight: 400;
-    }
-
-    .form-group textarea {
-        width: 100%;
-        padding: 15px;
-        border: 2px solid #e8e8e8;
-        border-radius: 6px;
-        font-family: inherit;
-        font-size: 1em;
-        transition: border-color 0.2s;
-        resize: vertical;
-        min-height: 150px;
-    }
-
-    .form-group textarea:focus {
-        outline: none;
-        border-color: #2a7ae2;
-    }
-
-    .template-buttons {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .template-btn {
-        padding: 12px 16px;
-        background: #f0f0f0;
-        border: 2px solid #e8e8e8;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-size: 0.95em;
-        text-align: left;
-        font-weight: 500;
-    }
-
-    .template-btn:hover {
-        background: #e3f2fd;
-        border-color: #2a7ae2;
-        color: #2a7ae2;
-    }
-
-    #conversation-history {
-        max-height: 500px;
+    .chat-messages {
+        flex: 1;
         overflow-y: auto;
+        padding: 20px;
+        background: #f9fafb;
+        border-radius: 8px;
         margin-bottom: 20px;
-        padding: 15px;
-        background: #f9f9f9;
-        border-radius: 6px;
-        display: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
 
-    #conversation-history.active {
-        display: block;
-    }
-
-    .message {
-        margin-bottom: 15px;
-        padding: 12px;
-        border-radius: 6px;
+    .chat-message {
+        display: flex;
+        gap: 12px;
         animation: fadeIn 0.3s;
     }
 
-    .message.user {
-        background: #e3f2fd;
-        border-left: 3px solid #2a7ae2;
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    .message.assistant {
-        background: #f0f0f0;
-        border-left: 3px solid #666;
-    }
-
-    .message-label {
+    .message-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-weight: 600;
-        font-size: 0.85em;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        flex-shrink: 0;
+        font-size: 0.9em;
     }
 
-    .message.user .message-label {
-        color: #2a7ae2;
+    .message-avatar.user {
+        background: #dbeafe;
+        color: #1e40af;
     }
 
-    .message.assistant .message-label {
-        color: #666;
+    .message-avatar.assistant {
+        background: #d1fae5;
+        color: #065f46;
     }
 
     .message-content {
-        color: #333;
-        white-space: pre-wrap;
-        font-size: 0.95em;
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 8px;
+        line-height: 1.6;
     }
 
-    #output-content {
-        background: #f9f9f9;
-        padding: 20px;
+    .message-content.user {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .message-content.assistant {
+        background: white;
+        color: #374151;
+        border: 1px solid #e5e7eb;
+    }
+
+    .message-content pre {
+        background: #f3f4f6;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin: 10px 0;
+        font-size: 0.9em;
+    }
+
+    .typing-indicator {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        color: #6b7280;
+        font-style: italic;
+    }
+
+    .typing-indicator.active {
+        display: flex;
+    }
+
+    .typing-dots {
+        display: flex;
+        gap: 4px;
+    }
+
+    .typing-dots span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #9ca3af;
+        animation: bounce 1.4s infinite;
+    }
+
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+        0%, 60%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-10px); }
+    }
+
+    .chat-input-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    #chat-input {
+        flex: 1;
+        padding: 12px 16px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1em;
+        resize: none;
+        min-height: 80px;
+        transition: border-color 0.2s;
+    }
+
+    #chat-input:focus {
+        outline: none;
+        border-color: #2563eb;
+    }
+
+    #chat-input:disabled {
+        background: #f3f4f6;
+        cursor: not-allowed;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 24px;
+        border: none;
         border-radius: 6px;
-        border-left: 3px solid #2a7ae2;
-        min-height: 200px;
+        font-size: 1em;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .btn-primary {
+        background: #2563eb;
+        color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+        background: #1e40af;
+        transform: translateY(-1px);
+    }
+
+    .btn-success {
+        background: #059669;
+        color: white;
+    }
+
+    .btn-success:hover:not(:disabled) {
+        background: #047857;
+    }
+
+    .btn-secondary {
+        background: #6b7280;
+        color: white;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+        background: #4b5563;
+    }
+
+    .btn-lg {
+        padding: 16px 32px;
+        font-size: 1.1em;
+    }
+
+    .btn-sm {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    /* Chat Actions */
+    .chat-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    /* Output Panel */
+    #output-content {
+        background: #f9fafb;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid #e5e7eb;
+        min-height: 300px;
         white-space: pre-wrap;
         font-family: 'Monaco', 'Courier New', monospace;
-        font-size: 0.95em;
-        color: #333;
+        font-size: 0.9em;
+        color: #374151;
         margin-bottom: 20px;
-        display: none;
+        max-height: 600px;
+        overflow-y: auto;
     }
 
-    #output-content.active {
-        display: block;
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #9ca3af;
+    }
+
+    .empty-state-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
     }
 
     .char-counter {
         text-align: right;
         font-size: 0.9em;
-        margin-top: 10px;
-        color: #666;
+        margin-bottom: 15px;
+        color: #6b7280;
+        font-weight: 600;
     }
 
     .char-counter.warning {
         color: #f59e0b;
-        font-weight: 600;
     }
 
     .char-counter.error {
         color: #dc2626;
-        font-weight: 600;
     }
 
     .output-actions {
@@ -378,89 +556,39 @@ permalink: /prompt-assistant/
         flex-wrap: wrap;
     }
 
-    .empty-state {
-        text-align: center;
-        padding: 40px 20px;
-        color: #999;
-    }
-
-    .empty-state-icon {
-        font-size: 3em;
-        margin-bottom: 15px;
-    }
-
-    .tips-section {
+    /* Info Box */
+    .info-box {
         background: #f0f7ff;
-        border-left: 4px solid #2a7ae2;
+        border-left: 4px solid #2563eb;
         padding: 20px;
         border-radius: 6px;
-        margin-top: 25px;
+        margin-bottom: 20px;
     }
 
-    .tips-section h4 {
-        color: #2a7ae2;
-        margin-bottom: 12px;
+    .info-box h4 {
+        color: #1e40af;
+        margin-bottom: 10px;
         font-size: 1.05em;
     }
 
-    .tips-section ul {
+    .info-box ul {
         margin-left: 20px;
-        color: #555;
+        color: #1e40af;
     }
 
-    .tips-section li {
+    .info-box li {
         margin-bottom: 8px;
         line-height: 1.6;
     }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+    .info-box strong {
+        color: #1e40af;
     }
 
-    @keyframes pulse {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.5;
-        }
-    }
-
-    .generating {
-        animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    .fallback-message {
-        background: #fee2e2;
-        border-left: 4px solid #dc2626;
-        padding: 20px;
-        border-radius: 6px;
-        margin-top: 20px;
-    }
-
-    .fallback-message h3 {
-        color: #991b1b;
-        margin-bottom: 10px;
-    }
-
-    .fallback-message p {
-        color: #7f1d1d;
-        margin-bottom: 10px;
-    }
-
-    .fallback-message ul {
-        margin-left: 20px;
-        color: #7f1d1d;
-    }
-
+    /* Spinner */
     .spinner {
         border: 3px solid #f3f3f3;
-        border-top: 3px solid #2a7ae2;
+        border-top: 3px solid #2563eb;
         border-radius: 50%;
         width: 40px;
         height: 40px;
@@ -477,152 +605,271 @@ permalink: /prompt-assistant/
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+
+    /* Welcome Message */
+    .welcome-message {
+        background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
+        border: 2px solid #bfdbfe;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+
+    .welcome-message h3 {
+        color: #1e40af;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+
+    .welcome-message p {
+        color: #1e40af;
+        margin-bottom: 10px;
+        line-height: 1.7;
+    }
+
+    .welcome-message ol {
+        margin-left: 20px;
+        color: #1e40af;
+    }
+
+    .welcome-message li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    .welcome-message strong {
+        color: #1e3a8a;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 1.8em;
+        }
+
+        .hero-subtitle {
+            font-size: 1em;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            font-size: 1em;
+        }
+
+        .chat-container {
+            height: 400px;
+        }
+
+        .output-actions {
+            flex-direction: column;
+        }
+
+        .output-actions .btn {
+            width: 100%;
+        }
+    }
 </style>
 
 <!-- Hero Section -->
 <div class="hero">
     <div class="container">
-        <h1 class="hero-title">Prompt Assistant</h1>
+        <h1>🤖 AI Prompt Assistant</h1>
         <p class="hero-subtitle">
-            Experimental meta-prompting tool demonstrating AI-powered prompt generation. Educational purposes only.
+            Create custom AI editor prompts for your clinical workflow. Generate new prompts from examples or refine existing ones using AI-powered metaprompting.
         </p>
+        <div class="privacy-highlight">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            100% Private - AI runs locally in your browser
+        </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="warning-box" style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
-        <h3 style="color: #78350f; margin-bottom: 12px; font-size: 1.1em;">BETA - Educational Demonstration Only</h3>
-        <p style="color: #78350f; margin-bottom: 10px;">
-            <strong>This is an experimental prototype for educational purposes.</strong> Do not use with any patient data, protected health information, or sensitive information. This tool is not intended for clinical use.
+    <!-- Paywall Notice -->
+    <div class="paywall-notice">
+        <h3>🌟 Premium Feature</h3>
+        <p>
+            This AI-powered prompt assistant and the integrated snippet manager are available to premium subscribers.
+            Support the development of free tools for physicians while getting access to advanced features.
         </p>
+        <a href="/contribute" class="btn">Learn More About Premium Access</a>
     </div>
 
-    <div class="warning-box" id="browser-warning">
-        <h3>Browser Requirements</h3>
+    <!-- Warning Box -->
+    <div class="warning-box">
+        <h3>⚠️ Educational Tool - No PHI</h3>
         <ul>
-            <li><strong>Recommended:</strong> Chrome or Edge version 113+ (with WebGPU support)</li>
-            <li><strong>First-time setup:</strong> Downloads ~2GB AI model (cached for future use)</li>
-            <li><strong>Hardware:</strong> Works best with GPU; functional on CPU but slower</li>
-            <li><strong>Offline capable:</strong> After initial download, works without internet connection</li>
+            <li><strong>Do not</strong> enter any patient data, protected health information, or sensitive information</li>
+            <li>This tool is for creating prompt templates, not processing actual patient notes</li>
+            <li>Use de-identified examples only when demonstrating your desired output format</li>
+            <li>First-time setup downloads a ~2GB AI model (cached for future use)</li>
         </ul>
     </div>
 
+    <!-- Status Panel -->
     <div class="status-panel" id="status-panel">
-        <div id="status-message">Click "Start AI Assistant" to load the AI model</div>
+        <div id="status-message">Click "Initialize AI Assistant" to load the AI model</div>
         <div id="status-details"></div>
         <div class="progress-bar" id="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
-        <button id="init-btn" class="btn btn-primary btn-lg" onclick="initializeEngine()">
-            Initialize Prompt Assistant
+        <button id="init-btn" class="btn btn-success btn-lg" onclick="initializeEngine()">
+            Initialize AI Assistant
         </button>
     </div>
 
-    <div class="main-layout">
-        <div class="panel">
-            <h2>Describe Your Prompt Need</h2>
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settings-panel" style="display: none;">
+        <h3>⚙️ Settings</h3>
+        <div class="settings-group">
+            <label for="char-limit">Character Limit for Your EMR System</label>
+            <input type="number" id="char-limit" value="5000" min="1000" max="50000" step="100">
+            <small>Default: 5,000 (Epic standard). Adjust if your system has different limits.</small>
+        </div>
+    </div>
 
-            <h3>Quick Start Templates</h3>
-            <div class="template-buttons">
-                <button class="template-btn" onclick="loadTemplate('meta-generator')">
-                    Meta-Prompt Generator
-                </button>
-                <button class="template-btn" onclick="loadTemplate('meta-refiner')">
-                    Meta-Prompt Refiner
-                </button>
-                <button class="template-btn" onclick="loadTemplate('ap-formatting')">
-                    A&P Formatting
-                </button>
-                <button class="template-btn" onclick="loadTemplate('billing')">
-                    Billing Documentation
-                </button>
-                <button class="template-btn" onclick="loadTemplate('avs')">
-                    After-Visit Summary
-                </button>
-                <button class="template-btn" onclick="loadTemplate('signout')">
-                    Patient Sign-Out
-                </button>
-                <button class="template-btn" onclick="loadTemplate('custom')">
-                    Start from Scratch
-                </button>
+    <!-- Tab Navigation -->
+    <div class="tab-navigation" id="tab-navigation" style="display: none;">
+        <button class="tab-button active" onclick="switchTab('generate')">
+            ✨ Generate from Scratch
+        </button>
+        <button class="tab-button" onclick="switchTab('refine')">
+            🔧 Refine Existing
+        </button>
+    </div>
+
+    <!-- Tab Content: Generate from Scratch -->
+    <div id="tab-generate" class="tab-content active" style="display: none;">
+        <div class="main-layout">
+            <div class="panel">
+                <h2>💬 Chat with AI Prompt Generator</h2>
+
+                <div class="info-box">
+                    <h4>How to use this tool:</h4>
+                    <ul>
+                        <li><strong>Provide 3-5 examples</strong> of your ideal A&P output format</li>
+                        <li><strong>Optionally</strong> specify any explicit formatting rules</li>
+                        <li><strong>Optionally</strong> provide boilerplate phrases for common scenarios</li>
+                        <li>The AI will analyze patterns and generate a custom prompt for you</li>
+                    </ul>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages-generate">
+                        <!-- Messages will be inserted here -->
+                    </div>
+
+                    <div class="chat-input-container">
+                        <textarea
+                            id="chat-input"
+                            placeholder="Paste your first example A&P output here, or describe what you need..."
+                            disabled
+                        ></textarea>
+                    </div>
+
+                    <div class="chat-actions">
+                        <button id="send-btn" class="btn btn-primary" onclick="sendMessage()" disabled>
+                            Send Message
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearChat()">
+                            Clear Chat
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="user-input">
-                    Your Requirements
-                    <span>(Be specific about formatting, style, and clinical context)</span>
-                </label>
-                <textarea
-                    id="user-input"
-                    placeholder="Example: I need a prompt that converts my pediatric sick visit notes into a concise assessment and plan. I want each problem as a bold header, followed by bullet points for the plan. Keep it brief and scannable, using standard medical abbreviations. Include return precautions when appropriate."
-                ></textarea>
-            </div>
+            <div class="output-panel">
+                <h2>📝 Generated Prompt</h2>
 
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button id="generate-btn" class="btn btn-success btn-lg" onclick="generatePrompt()" disabled>
-                    Generate Prompt
-                </button>
-                <button id="refine-btn" class="btn btn-primary" onclick="refinePrompt()" disabled style="display: none;">
-                    Refine Further
-                </button>
-                <button id="clear-btn" class="btn" style="background: #6b7280; color: white;" onclick="clearConversation()">
-                    Clear
-                </button>
-            </div>
+                <div id="output-empty" class="empty-state">
+                    <div class="empty-state-icon">📋</div>
+                    <p>Your AI-generated prompt will appear here</p>
+                </div>
 
-            <div id="conversation-history"></div>
+                <div class="char-counter" id="char-counter" style="display: none;"></div>
 
-            <div class="tips-section">
-                <h4>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 6px;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                    </svg>
-                    Tips for Best Results
-                </h4>
-                <ul>
-                    <li><strong>Be specific:</strong> Mention your specialty, note type, and formatting preferences</li>
-                    <li><strong>Include examples:</strong> Describe what good output looks like</li>
-                    <li><strong>Iterative refinement:</strong> Generate, test, then use "Refine Further" to improve</li>
-                    <li><strong>Add context:</strong> After generation, add 2-3 real examples to the prompt</li>
-                    <li><strong>Stay under 5,000 characters:</strong> Prompts work best when concise</li>
-                </ul>
+                <div id="output-content" style="display: none;"></div>
+
+                <div class="output-actions" id="output-actions" style="display: none;">
+                    <button class="btn btn-success" onclick="copyPrompt()">
+                        📋 Copy to Clipboard
+                    </button>
+                    <button class="btn btn-primary" onclick="saveToSnippetManager()">
+                        💾 Save to Snippet Manager
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadPrompt()">
+                        ⬇️ Download as .txt
+                    </button>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="output-panel">
-            <h2>Generated Prompt</h2>
+    <!-- Tab Content: Refine Existing -->
+    <div id="tab-refine" class="tab-content" style="display: none;">
+        <div class="main-layout">
+            <div class="panel">
+                <h2>💬 Chat with AI Prompt Refiner</h2>
 
-            <div id="output-empty" class="empty-state">
-                <div class="empty-state-icon"></div>
-                <p>Your AI-generated prompt will appear here</p>
+                <div class="info-box">
+                    <h4>How to use this tool:</h4>
+                    <ul>
+                        <li><strong>Paste your current prompt</strong> that needs improvement</li>
+                        <li><strong>Provide 2-5 examples</strong> of your ideal desired output</li>
+                        <li><strong>Provide 2-5 examples</strong> of what you're currently getting</li>
+                        <li>The AI will identify gaps and generate a refined version</li>
+                    </ul>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages-refine">
+                        <!-- Messages will be inserted here -->
+                    </div>
+
+                    <div class="chat-input-container">
+                        <textarea
+                            id="chat-input-refine"
+                            placeholder="Paste your current prompt or describe what needs improvement..."
+                            disabled
+                        ></textarea>
+                    </div>
+
+                    <div class="chat-actions">
+                        <button id="send-btn-refine" class="btn btn-primary" onclick="sendMessageRefine()" disabled>
+                            Send Message
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearChatRefine()">
+                            Clear Chat
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <div class="spinner" id="spinner"></div>
+            <div class="output-panel">
+                <h2>🔧 Refined Prompt</h2>
 
-            <div id="output-content"></div>
+                <div id="output-empty-refine" class="empty-state">
+                    <div class="empty-state-icon">🔍</div>
+                    <p>Your refined prompt will appear here</p>
+                </div>
 
-            <div class="char-counter" id="char-counter" style="display: none;"></div>
+                <div class="char-counter" id="char-counter-refine" style="display: none;"></div>
 
-            <div class="output-actions" id="output-actions" style="display: none;">
-                <button class="btn btn-success" onclick="copyPrompt()">
-                    Copy to Clipboard
-                </button>
-                <button class="btn btn-primary" onclick="saveToSnippetManager()">
-                    Save to Snippet Manager
-                </button>
-                <button class="btn" style="background: #6b7280; color: white;" onclick="downloadPrompt()">
-                    Download as .txt
-                </button>
-            </div>
+                <div id="output-content-refine" style="display: none;"></div>
 
-            <div class="tips-section" style="margin-top: 25px;">
-                <h4>Next Steps</h4>
-                <ul>
-                    <li><strong>Add examples:</strong> Include 2-3 real before/after examples in your prompt</li>
-                    <li><strong>Test it:</strong> Try the prompt in your AI scribe and iterate</li>
-                    <li><strong>Save it:</strong> Use Snippet Manager to organize versions</li>
-                    <li><strong>Share it:</strong> Consider submitting to our <a href="/contributions">Prompt Library</a></li>
-                </ul>
+                <div class="output-actions" id="output-actions-refine" style="display: none;">
+                    <button class="btn btn-success" onclick="copyPromptRefine()">
+                        📋 Copy to Clipboard
+                    </button>
+                    <button class="btn btn-primary" onclick="saveToSnippetManagerRefine()">
+                        💾 Save to Snippet Manager
+                    </button>
+                    <button class="btn btn-secondary" onclick="downloadPromptRefine()">
+                        ⬇️ Download as .txt
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -636,156 +883,277 @@ permalink: /prompt-assistant/
     // =====================================================
     let engine = null;
     let isLoading = false;
-    let conversationHistory = [];
+    let conversationHistoryGenerate = [];
+    let conversationHistoryRefine = [];
     let currentOutput = '';
+    let currentOutputRefine = '';
+    let currentTab = 'generate';
+    let charLimit = 5000;
 
-    // Model configuration - using Phi-3.5-mini (best balance of quality and speed)
+    // Model configuration
     const MODEL_ID = "Phi-3.5-mini-instruct-q4f16_1-MLC";
 
-    // System prompt optimized for clinical prompt engineering
-    const SYSTEM_PROMPT = `You are an expert medical prompt engineer specializing in clinical documentation AI systems. Your role is to help physicians create effective prompts for AI medical scribes.
+    // System prompts from metaprompt files
+    const SYSTEM_PROMPT_GENERATOR = `# Custom A/P Formatting Prompt Generator
 
-Core Principles:
-1. **Few-shot examples are critical**: Always recommend including 2-3 concrete before/after examples
-2. **Brevity = Quality**: Concise outputs are easier to scan and edit
-3. **One purpose per prompt**: Avoid multi-function prompts
-4. **Specific formatting**: Include exact formatting rules (bold, bullets, structure)
-5. **Medical context matters**: Consider specialty, visit type, and workflow
+You are an expert at analyzing clinical documentation patterns and creating LLM prompts. Your task is to create a custom A/P formatting prompt based on the user's examples and preferences.
 
-Output Format:
-- Start with clear, direct instructions to the AI
-- Include specific formatting requirements
-- Provide template structure with examples
-- Leave space for user to add their own examples
-- Keep total output under 5,000 characters when possible
-- Use professional medical language
+-----
 
-Generate production-ready prompts that physicians can immediately deploy in their EMR AI systems.`;
+## Your Input Requirements
 
-    // =====================================================
-    // TEMPLATES
-    // =====================================================
-    const templates = {
-        'meta-generator': `I want to create a custom A&P formatting prompt using the Meta-Prompt Generator methodology.
+The user will provide:
 
-Please help me generate a complete, production-ready prompt based on my examples and preferences.
+1. **Few-shot examples** - 3-5 examples of their ideal A/P output (these are CRITICAL)
+2. **Explicit formatting rules** (optional) - Any specific requirements they know they want
+3. **Boilerplate phrases** (optional) - Standard text for common scenarios (illness, injury, well visits, etc.)
 
-What I'll provide:
-1. FEW-SHOT EXAMPLES (3-5 examples of my ideal A&P output - these are critical!)
-   [Paste your 3-5 examples of ideal output here]
+-----
 
-2. EXPLICIT FORMATTING RULES (optional - any specific requirements I know I want)
-   [List any specific formatting rules here, such as:
-   - Use bullets vs prose
-   - Brevity requirements
-   - Abbreviation preferences
-   - etc.]
+## Your Analysis Process
 
-3. BOILERPLATE PHRASES (optional - standard text for common scenarios)
-   [List any boilerplate text you want automatically inserted, such as:
-   - Standard illness return precautions
-   - Well visit counseling
-   - etc.]
+### Step 1: Pattern Recognition
 
-Please analyze my examples, extract implicit patterns, and create a complete prompt that matches my style exactly. Keep it under 5,000 characters for EMR compatibility.`,
+Analyze the few-shot examples for:
 
-        'meta-refiner': `I have an existing A&P formatting prompt that needs improvement. Please help me refine it using gap analysis.
+- **Formatting style**: Bullets vs prose, headers vs no headers, indentation patterns
+- **Brevity level**: Detailed vs concise, word count per element
+- **Organization**: Problem-oriented vs chronological, grouping patterns
+- **Language style**: Clinical shorthand vs full sentences, abbreviation usage
+- **Structural elements**: Spacing, separators, hierarchies
 
-What I'll provide:
-1. CURRENT PROMPT
-   [Paste your current A&P formatting prompt here]
+### Step 2: Extract Implicit Rules
 
-2. IDEAL OUTPUT (2-5 examples of what I want)
-   [Paste 2-5 examples of your desired output here]
+Identify patterns the user may not have explicitly stated:
 
-3. CURRENT OUTPUT (2-5 examples of what I'm actually getting)
-   [Paste 2-5 examples of what your current prompt produces]
+- Consistent abbreviations (RTC, PRN, BID, PO, etc.)
+- Formatting conventions (bold, italics, capitalization)
+- One-liner assessment if applicable
+- Problem naming conventions
+- Follow-up instruction patterns
+- Medication notation style
+- Conditional logic (when to include certain elements)
 
-Please:
-1. Identify the top 3-5 gaps between current and ideal output
-2. Explain the root cause of each gap
-3. Provide specific fixes with rationale
-4. Generate a refined version of my prompt with [UPDATED] markers
-5. Suggest priority tests and potential issues to watch for
+### Step 3: Synthesize Requirements
 
-Focus on few-shot examples as the most powerful fix. Keep the refined prompt under 5,000 characters.`,
+Combine:
 
-        'ap-formatting': `I need a prompt that formats my clinical notes into a structured Assessment and Plan section.
+- Patterns from few-shot examples (highest priority)
+- User's explicit rules
+- User's boilerplate phrases
 
-Requirements:
-- Each problem should be a bold header
-- Plan items as bullet points under each problem
-- Use concise, scannable language
-- Include standard medical abbreviations
-- Remove unnecessary verbosity from AI scribe output
+-----
 
-My specialty: [Add your specialty]
-Typical visit types: [Add visit types]`,
+## Your Output Format
 
-        'billing': `I need a prompt that analyzes my clinical documentation and generates medical decision-making (MDM) summaries for billing purposes.
+Generate a complete, ready-to-use A/P formatting prompt with these sections:
 
-Requirements:
-- Identify complexity level (straightforward/low/moderate/high)
-- List data reviewed (labs, imaging, external records)
-- Summarize risk assessment
-- Document time spent if appropriate
-- Format for easy copy-paste into billing section
+### Section 1: Task Description (1-2 sentences)
 
-My typical cases: [Describe your case mix]`,
+Brief, clear statement of what the prompt does.
 
-        'avs': `I need a prompt that converts my clinical notes into patient-friendly after-visit summaries (AVS).
+### Section 2: Output Structure
 
-Requirements:
-- Use 6th-8th grade reading level
-- Explain diagnoses in plain language
-- Clear medication instructions
-- Specific follow-up plan
-- When to seek urgent care (return precautions)
+Describe the exact format, matching the user's examples:
 
-My patient population: [Describe your patients]`,
+- How problems/diagnoses are presented
+- Bullet structure and content
+- Spacing and organization
+- Any conditional elements
 
-        'signout': `I need a prompt that creates concise patient sign-out/handoff documentation.
+### Section 3: Formatting Rules (numbered list)
 
-Requirements:
-- One-liner summary per patient
-- Key overnight tasks
-- If/then contingency plans
-- Code status if relevant
-- Critical labs/vitals to monitor
+Explicit instructions for:
 
-My practice setting: [Hospital/clinic/specialty]`,
+1. Typography (bold, italics, etc.)
+2. Indentation and spacing
+3. Bullet styles
+4. Brevity requirements
+5. Abbreviation usage
+6. Problem naming
+7. Never fabricate information
+8. Any other formatting specifics
 
-        'custom': `Describe your prompt needs in detail. Include:
-- What type of documentation you're working with
-- Your desired output format
-- Your specialty and typical cases
-- Any specific formatting requirements
-- Example of what good output looks like`
-    };
+### Section 4: Boilerplate Text (if applicable)
 
-    // =====================================================
-    // BROWSER COMPATIBILITY CHECK
-    // =====================================================
-    async function checkWebGPUSupport() {
-        if (!navigator.gpu) {
-            document.getElementById('status-panel').className = 'status-panel error';
-            document.getElementById('status-message').innerHTML = `
-                ❌ WebGPU Not Supported
-            `;
-            document.getElementById('status-details').innerHTML = `
-                Your browser doesn't support WebGPU, which is required for running AI models locally.
-                <br><br>
-                <strong>Try:</strong><br>
-                • Chrome or Edge version 113+ on desktop<br>
-                • Enable WebGPU in experimental flags (chrome://flags)<br>
-                <br>
-                <strong>Alternative:</strong> Use our <a href="/prompt-generator">standard Prompt Generator</a> instead.
-            `;
-            document.getElementById('init-btn').style.display = 'none';
-            return false;
-        }
-        return true;
-    }
+Include user's boilerplate with clear conditional triggers:
+
+- When to use each phrase
+- How to format it (italics, placement, etc.)
+
+### Section 5: Few-Shot Examples
+
+Include the user's examples exactly as provided, with the label:
+"## Few-Shot Examples"
+
+-----
+
+## Quality Checks
+
+Before outputting, verify your prompt:
+
+1. Matches the user's example patterns precisely
+2. Includes all user-provided boilerplate
+3. Incorporates explicit rules they mentioned
+4. Is ≤5,000 characters (for EMR LLM constraint)
+5. Uses plain text descriptions (no markdown in instructions)
+6. Has clear, actionable formatting rules
+7. Includes their exact few-shot examples
+
+-----
+
+## Important Constraints
+
+- **Character limit**: Your output prompt must be ≤5,000 characters
+- **Plain text only**: Describe formatting in words (e.g., "Bold the problem name" not "**Problem**")
+- **Preserve examples exactly**: Don't modify the user's few-shot examples
+- **No fabrication**: Emphasize that the LLM should never infer missing information
+- **Show don't tell**: Few-shot examples are the most powerful teaching tool
+
+-----
+
+## Character Count
+
+After generating the prompt, state:
+
+- **Character count**: [X] / 5,000
+- **Remaining headroom**: [Y] characters
+
+If over 5,000 characters, identify what can be condensed without losing critical pattern information.
+
+-----
+
+Take the user's input and generate their custom A/P formatting prompt following this structure.`;
+
+    const SYSTEM_PROMPT_REFINER = `# A/P Prompt Refiner
+
+You are an expert at optimizing LLM prompts for clinical documentation. Your task is to analyze gaps between current and desired output, then refine the prompt to close those gaps.
+
+-----
+
+## Your Input
+
+The user will provide:
+
+1. **Current prompt** - Their A/P formatting prompt
+2. **Ideal output** - 2-5 examples of what they want
+3. **Current output** - 2-5 examples of what they're getting
+
+-----
+
+## Analysis Process
+
+### Step 1: Gap Analysis
+
+Compare current vs ideal output:
+
+- **Formatting**: Bullets, typography, spacing, headers, indentation
+- **Content**: Brevity, language style, abbreviations, detail level
+- **Logic**: Boilerplate triggering, conditional rules, consistency
+- **Structure**: Organization, grouping, element placement
+
+### Step 2: Root Cause
+
+For each gap, identify WHY:
+
+- Missing instruction
+- Unclear instruction
+- Weak/wrong examples
+- Conflicting rules
+- Wrong specificity level
+
+### Step 3: Fix Design
+
+Determine solution:
+
+- Add/clarify instructions
+- Modify few-shot examples (most powerful fix)
+- Reorder for emphasis
+- Remove conflicts
+- Adjust specificity
+
+-----
+
+## Output Format
+
+### Part 1: Gap Summary
+
+List top 3-5 gaps:
+
+1. [Gap] - What's wrong: [issue] | Root cause: [why] | Impact: [effect]
+2. [Next gap]
+
+### Part 2: Fixes
+
+For each gap:
+
+**Fix #1: [Gap]**
+Action: [What to change]
+Location: [Where in prompt]
+Rationale: [Why this works]
+
+### Part 3: Refined Prompt
+
+Complete updated prompt with [UPDATED] markers on changes. Stay ≤5,000 characters.
+
+### Part 4: Testing
+
+Priority tests:
+1. [Scenario]
+2. [Scenario]
+
+Watch for: [Potential issues]
+
+-----
+
+## Key Principles
+
+**Hierarchy of Elements:**
+
+1. Few-shot examples (most powerful)
+2. Explicit rules
+3. Task description
+4. Boilerplate
+
+**Common Patterns:**
+
+- Few-shot example mismatch from desired output → refine few shot examples
+- Too verbose → Add brevity rules, shorter examples, word limits
+- Inconsistent format → Strengthen examples, specific rules
+- Missing abbreviations → Show in examples, list explicitly
+- Wrong detail level → Adjust example granularity
+
+**Strategy:**
+
+- Change ONE thing at a time
+- Preserve what works
+- Examples > instructions when in doubt
+- Keep ≤5,000 characters
+- Plain text only
+
+-----
+
+## Quality Checks
+
+Before output:
+✓ All gaps addressed
+✓ No contradictions
+✓ Examples match instructions
+✓ ≤5,000 characters
+✓ Changes marked [UPDATED]
+✓ Working elements preserved
+
+-----
+
+## Character Count
+
+After generating:
+Original: [X] / 5,000
+Refined: [Y] / 5,000
+
+-----
+
+Analyze the user's inputs and provide gap analysis, specific fixes, and a refined prompt.`;
 
     // =====================================================
     // ENGINE INITIALIZATION
@@ -824,12 +1192,25 @@ My practice setting: [Hospital/clinic/specialty]`,
             );
 
             statusPanel.className = 'status-panel ready';
-            statusMessage.textContent = '✅ AI Ready!';
-            statusDetails.textContent = 'Model loaded and running locally in your browser. You can now generate prompts.';
+            statusMessage.textContent = '✅ AI Assistant Ready!';
+            statusDetails.textContent = 'Model loaded and running locally in your browser.';
             progressBar.classList.remove('active');
-
-            document.getElementById('generate-btn').disabled = false;
             initBtn.style.display = 'none';
+
+            // Show UI elements
+            document.getElementById('settings-panel').style.display = 'block';
+            document.getElementById('tab-navigation').style.display = 'flex';
+            document.getElementById('tab-generate').style.display = 'block';
+
+            // Enable chat inputs
+            document.getElementById('chat-input').disabled = false;
+            document.getElementById('send-btn').disabled = false;
+            document.getElementById('chat-input-refine').disabled = false;
+            document.getElementById('send-btn-refine').disabled = false;
+
+            // Add welcome messages
+            addWelcomeMessage('generate');
+            addWelcomeMessage('refine');
 
         } catch (error) {
             statusPanel.className = 'status-panel error';
@@ -851,147 +1232,403 @@ My practice setting: [Hospital/clinic/specialty]`,
         isLoading = false;
     };
 
+    async function checkWebGPUSupport() {
+        if (!navigator.gpu) {
+            document.getElementById('status-panel').className = 'status-panel error';
+            document.getElementById('status-message').innerHTML = '❌ WebGPU Not Supported';
+            document.getElementById('status-details').innerHTML = `
+                Your browser doesn't support WebGPU, which is required for running AI models locally.
+                <br><br>
+                <strong>Try:</strong><br>
+                • Chrome or Edge version 113+ on desktop<br>
+                • Enable WebGPU in experimental flags (chrome://flags)<br>
+            `;
+            document.getElementById('init-btn').style.display = 'none';
+            return false;
+        }
+        return true;
+    }
+
     // =====================================================
-    // TEMPLATE LOADING
+    // TAB SWITCHING
     // =====================================================
-    window.loadTemplate = function(templateId) {
-        const textarea = document.getElementById('user-input');
-        textarea.value = templates[templateId] || templates.custom;
-        textarea.focus();
+    window.switchTab = function(tab) {
+        currentTab = tab;
+
+        // Update tab buttons
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Update tab content
+        document.getElementById('tab-generate').classList.remove('active');
+        document.getElementById('tab-refine').classList.remove('active');
+
+        if (tab === 'generate') {
+            document.getElementById('tab-generate').classList.add('active');
+            document.getElementById('tab-generate').style.display = 'block';
+            document.getElementById('tab-refine').style.display = 'none';
+        } else {
+            document.getElementById('tab-refine').classList.add('active');
+            document.getElementById('tab-refine').style.display = 'block';
+            document.getElementById('tab-generate').style.display = 'none';
+        }
     };
 
     // =====================================================
-    // PROMPT GENERATION
+    // WELCOME MESSAGES
     // =====================================================
-    window.generatePrompt = async function() {
-        const userInput = document.getElementById('user-input').value.trim();
+    function addWelcomeMessage(tab) {
+        const messagesContainer = tab === 'generate' ?
+            document.getElementById('chat-messages-generate') :
+            document.getElementById('chat-messages-refine');
 
-        if (!userInput) {
-            alert('Please describe what kind of prompt you need.');
-            return;
-        }
+        const welcomeHTML = tab === 'generate' ? `
+            <div class="welcome-message">
+                <h3>👋 Welcome to the Prompt Generator!</h3>
+                <p>I'll help you create a custom A/P formatting prompt. Here's how we'll work together:</p>
+                <ol>
+                    <li><strong>Share 3-5 examples</strong> of your ideal A&P output format (paste them one at a time or all together)</li>
+                    <li><strong>Optional:</strong> Tell me any specific formatting rules you want</li>
+                    <li><strong>Optional:</strong> Provide standard boilerplate phrases for common scenarios</li>
+                </ol>
+                <p>I'll analyze your examples, identify patterns, and generate a complete prompt that matches your style!</p>
+                <p><strong>Let's start:</strong> Paste your first example of ideal A&P output, or describe what you're looking for.</p>
+            </div>
+        ` : `
+            <div class="welcome-message">
+                <h3>👋 Welcome to the Prompt Refiner!</h3>
+                <p>I'll help you improve your existing A/P formatting prompt. Here's what I need:</p>
+                <ol>
+                    <li><strong>Your current prompt</strong> - The prompt you're currently using</li>
+                    <li><strong>2-5 examples of ideal output</strong> - What you want to get</li>
+                    <li><strong>2-5 examples of current output</strong> - What you're actually getting</li>
+                </ol>
+                <p>I'll compare them, identify gaps, and create a refined version with specific improvements marked.</p>
+                <p><strong>Let's start:</strong> Paste your current prompt that needs improvement.</p>
+            </div>
+        `;
 
-        if (!engine) {
-            alert('Please start the AI Assistant first.');
-            return;
-        }
+        messagesContainer.innerHTML = welcomeHTML;
+    }
 
-        // Show generating state
-        document.getElementById('output-empty').style.display = 'none';
-        document.getElementById('spinner').classList.add('active');
-        document.getElementById('output-content').classList.remove('active');
-        document.getElementById('output-actions').style.display = 'none';
-        document.getElementById('char-counter').style.display = 'none';
-        document.getElementById('generate-btn').disabled = true;
+    // =====================================================
+    // CHAT MESSAGING - Generate Tab
+    // =====================================================
+    window.sendMessage = async function() {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+
+        if (!message || !engine) return;
+
+        // Add user message to UI
+        addMessageToChat('generate', 'user', message);
+        input.value = '';
+
+        // Add to conversation history
+        conversationHistoryGenerate.push({
+            role: 'user',
+            content: message
+        });
+
+        // Disable input while processing
+        input.disabled = true;
+        document.getElementById('send-btn').disabled = true;
+
+        // Show typing indicator
+        showTypingIndicator('generate');
 
         try {
-            // Add user message to conversation
-            conversationHistory.push({
-                role: 'user',
-                content: userInput
-            });
-
             // Build messages array
             const messages = [
-                { role: 'system', content: SYSTEM_PROMPT },
-                ...conversationHistory
+                { role: 'system', content: SYSTEM_PROMPT_GENERATOR },
+                ...conversationHistoryGenerate
             ];
 
-            // Generate response with streaming
+            // Get character limit
+            charLimit = parseInt(document.getElementById('char-limit').value) || 5000;
+
+            // Add character limit reminder to last message
+            messages.push({
+                role: 'system',
+                content: `Remember: Keep the final prompt under ${charLimit} characters for EMR compatibility.`
+            });
+
+            // Generate response
             const response = await engine.chat.completions.create({
                 messages: messages,
                 temperature: 0.7,
-                max_tokens: 2000,
-                stream: true
+                max_tokens: 3000,
+                stream: false
             });
 
-            currentOutput = '';
-            const outputDiv = document.getElementById('output-content');
-            outputDiv.textContent = '';
-            outputDiv.classList.add('active');
-            document.getElementById('spinner').classList.remove('active');
-
-            // Stream the response
-            for await (const chunk of response) {
-                const delta = chunk.choices[0]?.delta?.content || '';
-                currentOutput += delta;
-                outputDiv.textContent = currentOutput;
-                updateCharCount(currentOutput.length);
-            }
+            const assistantMessage = response.choices[0].message.content;
 
             // Add assistant response to conversation
-            conversationHistory.push({
+            conversationHistoryGenerate.push({
                 role: 'assistant',
-                content: currentOutput
+                content: assistantMessage
             });
 
-            // Update UI
-            document.getElementById('output-actions').style.display = 'flex';
-            document.getElementById('char-counter').style.display = 'block';
-            document.getElementById('refine-btn').style.display = 'inline-flex';
-            document.getElementById('refine-btn').disabled = false;
-            updateConversationHistory();
+            // Hide typing indicator
+            hideTypingIndicator('generate');
+
+            // Add assistant message to UI
+            addMessageToChat('generate', 'assistant', assistantMessage);
+
+            // Extract and display prompt if present
+            extractAndDisplayPrompt(assistantMessage, 'generate');
 
         } catch (error) {
             console.error('Generation error:', error);
-            document.getElementById('output-content').textContent = `Error generating prompt: ${error.message}\n\nPlease try again.`;
-            document.getElementById('output-content').classList.add('active');
-            document.getElementById('spinner').classList.remove('active');
+            hideTypingIndicator('generate');
+            addMessageToChat('generate', 'assistant', `Error: ${error.message}\n\nPlease try again.`);
         }
 
-        document.getElementById('generate-btn').disabled = false;
-        document.getElementById('user-input').value = '';
+        // Re-enable input
+        input.disabled = false;
+        document.getElementById('send-btn').disabled = false;
+        input.focus();
     };
 
     // =====================================================
-    // REFINEMENT
+    // CHAT MESSAGING - Refine Tab
     // =====================================================
-    window.refinePrompt = async function() {
-        const refinementInput = prompt('How would you like to refine this prompt?\n\nExample:\n- "Make it more concise"\n- "Add a section for return precautions"\n- "Use more bullet points, fewer sentences"');
+    window.sendMessageRefine = async function() {
+        const input = document.getElementById('chat-input-refine');
+        const message = input.value.trim();
 
-        if (!refinementInput || !refinementInput.trim()) return;
+        if (!message || !engine) return;
 
-        document.getElementById('user-input').value = refinementInput.trim();
-        await generatePrompt();
+        // Add user message to UI
+        addMessageToChat('refine', 'user', message);
+        input.value = '';
+
+        // Add to conversation history
+        conversationHistoryRefine.push({
+            role: 'user',
+            content: message
+        });
+
+        // Disable input while processing
+        input.disabled = true;
+        document.getElementById('send-btn-refine').disabled = true;
+
+        // Show typing indicator
+        showTypingIndicator('refine');
+
+        try {
+            // Build messages array
+            const messages = [
+                { role: 'system', content: SYSTEM_PROMPT_REFINER },
+                ...conversationHistoryRefine
+            ];
+
+            // Get character limit
+            charLimit = parseInt(document.getElementById('char-limit').value) || 5000;
+
+            // Add character limit reminder
+            messages.push({
+                role: 'system',
+                content: `Remember: Keep the refined prompt under ${charLimit} characters for EMR compatibility.`
+            });
+
+            // Generate response
+            const response = await engine.chat.completions.create({
+                messages: messages,
+                temperature: 0.7,
+                max_tokens: 3000,
+                stream: false
+            });
+
+            const assistantMessage = response.choices[0].message.content;
+
+            // Add assistant response to conversation
+            conversationHistoryRefine.push({
+                role: 'assistant',
+                content: assistantMessage
+            });
+
+            // Hide typing indicator
+            hideTypingIndicator('refine');
+
+            // Add assistant message to UI
+            addMessageToChat('refine', 'assistant', assistantMessage);
+
+            // Extract and display prompt if present
+            extractAndDisplayPrompt(assistantMessage, 'refine');
+
+        } catch (error) {
+            console.error('Generation error:', error);
+            hideTypingIndicator('refine');
+            addMessageToChat('refine', 'assistant', `Error: ${error.message}\n\nPlease try again.`);
+        }
+
+        // Re-enable input
+        input.disabled = false;
+        document.getElementById('send-btn-refine').disabled = false;
+        input.focus();
     };
 
     // =====================================================
-    // CONVERSATION HISTORY
+    // CHAT UI HELPERS
     // =====================================================
-    function updateConversationHistory() {
-        const historyDiv = document.getElementById('conversation-history');
+    function addMessageToChat(tab, role, content) {
+        const messagesContainer = tab === 'generate' ?
+            document.getElementById('chat-messages-generate') :
+            document.getElementById('chat-messages-refine');
 
-        if (conversationHistory.length === 0) {
-            historyDiv.classList.remove('active');
-            return;
-        }
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'chat-message';
 
-        historyDiv.classList.add('active');
-        historyDiv.innerHTML = conversationHistory.map(msg => `
-            <div class="message ${msg.role}">
-                <div class="message-label">${msg.role === 'user' ? 'You asked' : 'AI generated'}</div>
-                <div class="message-content">${escapeHtml(msg.content)}</div>
-            </div>
-        `).join('');
+        const avatar = document.createElement('div');
+        avatar.className = `message-avatar ${role}`;
+        avatar.textContent = role === 'user' ? 'You' : 'AI';
+
+        const messageContent = document.createElement('div');
+        messageContent.className = `message-content ${role}`;
+        messageContent.textContent = content;
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(messageContent);
+        messagesContainer.appendChild(messageDiv);
 
         // Scroll to bottom
-        historyDiv.scrollTop = historyDiv.scrollHeight;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    window.clearConversation = function() {
-        if (conversationHistory.length > 0) {
+    function showTypingIndicator(tab) {
+        const messagesContainer = tab === 'generate' ?
+            document.getElementById('chat-messages-generate') :
+            document.getElementById('chat-messages-refine');
+
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator active';
+        typingDiv.id = `typing-${tab}`;
+        typingDiv.innerHTML = `
+            <div class="message-avatar assistant">AI</div>
+            <div>
+                Thinking
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        `;
+
+        messagesContainer.appendChild(typingDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function hideTypingIndicator(tab) {
+        const indicator = document.getElementById(`typing-${tab}`);
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+
+    // =====================================================
+    // PROMPT EXTRACTION AND DISPLAY
+    // =====================================================
+    function extractAndDisplayPrompt(message, tab) {
+        // Try to find a complete prompt in the message
+        // Look for common patterns like "---" separators or complete structured content
+
+        // For now, just display the entire message as the prompt
+        // In a more sophisticated version, we could parse sections
+
+        const outputContent = tab === 'generate' ?
+            document.getElementById('output-content') :
+            document.getElementById('output-content-refine');
+
+        const outputEmpty = tab === 'generate' ?
+            document.getElementById('output-empty') :
+            document.getElementById('output-empty-refine');
+
+        const outputActions = tab === 'generate' ?
+            document.getElementById('output-actions') :
+            document.getElementById('output-actions-refine');
+
+        const charCounter = tab === 'generate' ?
+            document.getElementById('char-counter') :
+            document.getElementById('char-counter-refine');
+
+        if (tab === 'generate') {
+            currentOutput = message;
+        } else {
+            currentOutputRefine = message;
+        }
+
+        outputEmpty.style.display = 'none';
+        outputContent.style.display = 'block';
+        outputContent.textContent = message;
+        outputActions.style.display = 'flex';
+
+        updateCharCount(message.length, tab);
+    }
+
+    function updateCharCount(count, tab) {
+        const charCounter = tab === 'generate' ?
+            document.getElementById('char-counter') :
+            document.getElementById('char-counter-refine');
+
+        charCounter.style.display = 'block';
+
+        const limit = parseInt(document.getElementById('char-limit').value) || 5000;
+        let className = 'char-counter';
+        let message = `${count.toLocaleString()} / ${limit.toLocaleString()} characters`;
+
+        if (count > limit) {
+            className += ' error';
+            message += ' ⚠️ Over limit!';
+        } else if (count > limit * 0.9) {
+            className += ' warning';
+            message += ' ⚠️ Close to limit';
+        } else {
+            message += ' ✅ Good';
+        }
+
+        charCounter.className = className;
+        charCounter.textContent = message;
+    }
+
+    // =====================================================
+    // CLEAR CHAT
+    // =====================================================
+    window.clearChat = function() {
+        if (conversationHistoryGenerate.length > 0) {
             if (!confirm('Clear conversation history and start fresh?')) return;
         }
 
-        conversationHistory = [];
+        conversationHistoryGenerate = [];
         currentOutput = '';
-        document.getElementById('conversation-history').classList.remove('active');
-        document.getElementById('output-content').classList.remove('active');
+
+        document.getElementById('chat-messages-generate').innerHTML = '';
+        addWelcomeMessage('generate');
+
+        document.getElementById('output-content').style.display = 'none';
         document.getElementById('output-empty').style.display = 'block';
         document.getElementById('output-actions').style.display = 'none';
         document.getElementById('char-counter').style.display = 'none';
-        document.getElementById('refine-btn').style.display = 'none';
-        document.getElementById('user-input').value = '';
+        document.getElementById('chat-input').value = '';
+    };
+
+    window.clearChatRefine = function() {
+        if (conversationHistoryRefine.length > 0) {
+            if (!confirm('Clear conversation history and start fresh?')) return;
+        }
+
+        conversationHistoryRefine = [];
+        currentOutputRefine = '';
+
+        document.getElementById('chat-messages-refine').innerHTML = '';
+        addWelcomeMessage('refine');
+
+        document.getElementById('output-content-refine').style.display = 'none';
+        document.getElementById('output-empty-refine').style.display = 'block';
+        document.getElementById('output-actions-refine').style.display = 'none';
+        document.getElementById('char-counter-refine').style.display = 'none';
+        document.getElementById('chat-input-refine').value = '';
     };
 
     // =====================================================
@@ -1001,12 +1638,23 @@ My practice setting: [Hospital/clinic/specialty]`,
         try {
             await navigator.clipboard.writeText(currentOutput);
             const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = '✅ Copied!';
-            setTimeout(() => btn.textContent = originalText, 2000);
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Copied!';
+            setTimeout(() => btn.innerHTML = originalText, 2000);
         } catch (error) {
             alert('Failed to copy to clipboard. Please select and copy manually.');
-            console.error('Copy error:', error);
+        }
+    };
+
+    window.copyPromptRefine = async function() {
+        try {
+            await navigator.clipboard.writeText(currentOutputRefine);
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Copied!';
+            setTimeout(() => btn.innerHTML = originalText, 2000);
+        } catch (error) {
+            alert('Failed to copy to clipboard. Please select and copy manually.');
         }
     };
 
@@ -1015,73 +1663,81 @@ My practice setting: [Hospital/clinic/specialty]`,
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `clinical-prompt-${new Date().toISOString().split('T')[0]}.txt`;
+        link.download = `ap-prompt-${new Date().toISOString().split('T')[0]}.txt`;
+        link.click();
+        URL.revokeObjectURL(url);
+    };
+
+    window.downloadPromptRefine = function() {
+        const blob = new Blob([currentOutputRefine], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `ap-prompt-refined-${new Date().toISOString().split('T')[0]}.txt`;
         link.click();
         URL.revokeObjectURL(url);
     };
 
     window.saveToSnippetManager = function() {
-        try {
-            const snippets = JSON.parse(localStorage.getItem('promptSnippets') || '[]');
+        saveSnippet(currentOutput, 'Generated Prompt');
+    };
 
-            const title = prompt('Enter a title for this snippet:', 'AI-Generated Clinical Prompt');
+    window.saveToSnippetManagerRefine = function() {
+        saveSnippet(currentOutputRefine, 'Refined Prompt');
+    };
+
+    function saveSnippet(content, defaultTitle) {
+        try {
+            const snippets = JSON.parse(localStorage.getItem('aiPromptSnippets') || '[]');
+
+            const title = prompt('Enter a title for this prompt:', defaultTitle);
             if (!title) return;
+
+            const tags = prompt('Enter tags (comma-separated):', 'ai-generated, a&p-formatting');
+            const tagArray = tags ? tags.split(',').map(t => t.trim()) : ['ai-generated'];
 
             snippets.push({
                 id: Date.now(),
                 title: title,
-                version: '1.0',
-                tags: ['ai-generated', 'clinical'],
-                prompt: currentOutput
+                content: content,
+                tags: tagArray,
+                created: new Date().toISOString(),
+                charCount: content.length
             });
 
-            localStorage.setItem('promptSnippets', JSON.stringify(snippets));
+            localStorage.setItem('aiPromptSnippets', JSON.stringify(snippets));
 
             if (confirm('✅ Saved to Snippet Manager!\n\nWould you like to open the Snippet Manager now?')) {
-                window.location.href = '/snippet-manager';
+                window.location.href = '/prompt-snippet-manager';
             }
         } catch (error) {
             alert('Failed to save to Snippet Manager. Storage might be full.');
             console.error('Save error:', error);
         }
-    };
-
-    // =====================================================
-    // UTILITIES
-    // =====================================================
-    function updateCharCount(count) {
-        const counter = document.getElementById('char-counter');
-        counter.style.display = 'block';
-
-        let className = 'char-counter';
-        let message = `${count.toLocaleString()} characters`;
-
-        if (count > 5000) {
-            className += ' error';
-            message += ' ⚠️ Too long! Recommended: under 5,000 characters';
-        } else if (count > 4500) {
-            className += ' warning';
-            message += ' ⚠️ Getting long. Consider shortening.';
-        } else {
-            message += ' ✅ Good length';
-        }
-
-        counter.className = className;
-        counter.textContent = message;
-    }
-
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
     }
 
     // =====================================================
-    // INITIALIZATION
+    // KEYBOARD SHORTCUTS
     // =====================================================
-    document.addEventListener('DOMContentLoaded', async () => {
-        // Check WebGPU support on load
-        await checkWebGPUSupport();
+    document.addEventListener('DOMContentLoaded', () => {
+        // Enter to send (Ctrl+Enter for newline)
+        document.getElementById('chat-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.ctrlKey && !e.shiftKey) {
+                e.preventDefault();
+                if (!e.target.disabled) {
+                    sendMessage();
+                }
+            }
+        });
+
+        document.getElementById('chat-input-refine').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.ctrlKey && !e.shiftKey) {
+                e.preventDefault();
+                if (!e.target.disabled) {
+                    sendMessageRefine();
+                }
+            }
+        });
     });
 </script>
 
@@ -1089,13 +1745,10 @@ My practice setting: [Hospital/clinic/specialty]`,
     <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
 </div>
 
-<div style="background: #e3f2fd; padding: 20px; border-left: 4px solid #2a7ae2; border-radius: 6px; margin-top: 30px; text-align: center;">
-    <h3 style="color: #2a7ae2; font-size: 1.2em; margin-bottom: 12px;">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 6px;">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-        </svg>
-        How It Works
+<div style="background: #e3f2fd; padding: 20px; border-left: 4px solid #2563eb; border-radius: 6px; margin-top: 30px; text-align: center;">
+    <h3 style="color: #1e40af; font-size: 1.2em; margin-bottom: 12px;">
+        🔒 Privacy & How It Works
     </h3>
-    <p style="margin-bottom: 15px;">This tool downloads a 2GB AI model to your browser on first use. After that, everything runs locally—no internet required, complete privacy. The AI (Phi-3.5-mini) is optimized for prompt engineering tasks and runs surprisingly fast on modern hardware.</p>
+    <p style="margin-bottom: 15px;">This tool downloads a 2GB AI model (Phi-3.5-mini) to your browser on first use. After that, everything runs locally—no internet required, complete privacy. The AI analyzes your examples and helps you craft the perfect prompt.</p>
     <p><strong>Performance:</strong> Expect 10-30 tokens/second on most laptops, faster with dedicated GPUs. First download takes 5-15 minutes, then it's cached forever.</p>
 </div>
