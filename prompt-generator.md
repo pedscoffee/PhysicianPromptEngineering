@@ -957,3 +957,7 @@ permalink: /prompt-generator/
             updateOutput();
         });
     </script>
+
+<!-- Onboarding System -->
+{%- include onboarding-system.html -%}
+{%- include prompt-generator-onboarding.html -%}

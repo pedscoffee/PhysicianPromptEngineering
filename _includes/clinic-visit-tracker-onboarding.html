@@ -1,0 +1,234 @@
+<!-- Clinic Visit Tracker Onboarding Modal -->
+<div class="onboarding-overlay" id="clinicVisitTrackerOnboarding">
+    <div class="onboarding-modal large">
+        <button class="onboarding-close" onclick="closeOnboarding('clinicVisitTrackerOnboarding')" aria-label="Close">&times;</button>
+
+        <div class="onboarding-content">
+            <!-- Progress Dots -->
+            <div class="onboarding-progress">
+                <span class="onboarding-progress-dot active"></span>
+                <span class="onboarding-progress-dot"></span>
+                <span class="onboarding-progress-dot"></span>
+                <span class="onboarding-progress-dot"></span>
+            </div>
+
+            <!-- Step 1: Welcome -->
+            <div class="onboarding-step active">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 3rem; height: 3rem; color: var(--color-primary);">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                    </svg>
+                    <h2 style="margin: 0;">Welcome to the RVU Data Tracker!</h2>
+                </div>
+
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Track your clinic visits with automatic billing codes, wRVU calculations, and productivity insights.
+                </p>
+
+                <div class="onboarding-feature-grid">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h4>Timer Mode</h4>
+                        <p>Track visit time automatically with start/pause/finish controls</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                            </svg>
+                        </div>
+                        <h4>Auto Billing Codes</h4>
+                        <p>Automatic CPT code suggestions based on visit duration</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                            </svg>
+                        </div>
+                        <h4>wRVU Analytics</h4>
+                        <p>Real-time productivity metrics and daily summaries</p>
+                    </div>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('clinicVisitTrackerOnboarding')">
+                        Get Started
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-text" onclick="completeOnboarding('clinicVisitTrackerOnboarding')">
+                        Skip tour
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: How to Track Visits -->
+            <div class="onboarding-step">
+                <h2>Two Ways to Track Visits</h2>
+                <p>Choose the method that works best for your workflow:</p>
+
+                <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--color-primary);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                            </svg>
+                            <h4 style="margin: 0;">Timer Mode (Recommended)</h4>
+                        </div>
+                        <ol style="margin: 0; padding-left: 1.5rem;">
+                            <li>Click "Start Visit" when you begin seeing a patient</li>
+                            <li>Use pause/resume if interrupted</li>
+                            <li>Click "Finish Visit" when done</li>
+                            <li>Billing codes are suggested based on time</li>
+                        </ol>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #95a5a6;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: #95a5a6;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                            </svg>
+                            <h4 style="margin: 0;">Manual Entry</h4>
+                        </div>
+                        <ol style="margin: 0; padding-left: 1.5rem;">
+                            <li>Select your billing codes manually</li>
+                            <li>Add any comments or learning notes</li>
+                            <li>Click "Save Visit (No Timer)"</li>
+                            <li>Perfect for bulk entry at end of day</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('clinicVisitTrackerOnboarding')">
+                        Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('clinicVisitTrackerOnboarding')">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Billing Codes & wRVUs -->
+            <div class="onboarding-step">
+                <h2>Understanding Billing Codes & wRVUs</h2>
+                <p>The tracker automatically calculates work RVUs based on your selections:</p>
+
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
+                    <h4 style="margin-top: 0; color: var(--color-primary);">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Time-Based Billing
+                    </h4>
+                    <p style="margin: 0;">When using the timer, codes are automatically suggested:</p>
+                    <ul style="margin: 0.5rem 0;">
+                        <li><strong>Established patients:</strong> 99212-99215 based on duration</li>
+                        <li><strong>New patients:</strong> 99202-99205 based on duration</li>
+                        <li><strong>Prolonged service:</strong> +99417 for visits over 55 minutes</li>
+                    </ul>
+                </div>
+
+                <div style="background: #e8f4f8; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--color-primary);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.75rem; height: 1.75rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                        </svg>
+                        <p style="margin: 0; font-weight: 600; color: var(--color-primary);">
+                            Pro Tip: Learning Log
+                        </p>
+                    </div>
+                    <p style="margin: 0;">
+                        Use the Learning Log field to document interesting cases, new diagnoses, or teaching points. Build your personal knowledge base over time!
+                    </p>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('clinicVisitTrackerOnboarding')">
+                        Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('clinicVisitTrackerOnboarding')">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Data Management & Tips -->
+            <div class="onboarding-step">
+                <h2>Important: Protect Your Data</h2>
+
+                <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: #f39c12;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                        </svg>
+                        <h4 style="margin: 0; color: #856404;">Data Storage Warning</h4>
+                    </div>
+                    <p style="margin: 0; color: #856404;">
+                        Your visit data is stored in your browser's local storage. Export regularly to avoid losing data if you clear cache or switch devices.
+                    </p>
+                </div>
+
+                <h4 style="margin-bottom: 1rem;">Quick Tips for Success:</h4>
+                <ul style="font-size: 1.05rem; margin-bottom: 2rem;">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>Export weekly:</strong> Use the Daily Summary tab to download your data
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>Use learning log:</strong> Document interesting cases for future reference
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>Check daily stats:</strong> Monitor your productivity trends over time
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>Mix methods:</strong> Use timer for complex visits, manual entry for simple ones
+                    </li>
+                </ul>
+
+                <div style="text-align: center; background: linear-gradient(135deg, var(--color-primary) 0%, #0066aa 100%); color: white; padding: 2rem; border-radius: 12px;">
+                    <h3 style="margin-top: 0; color: white;">Ready to Track Your Productivity?</h3>
+                    <p style="margin-bottom: 0; opacity: 0.9;">Start your first visit now and see your wRVUs add up!</p>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('clinicVisitTrackerOnboarding')">
+                        Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="completeOnboarding('clinicVisitTrackerOnboarding')">
+                        Start Tracking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize clinic visit tracker onboarding when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    OnboardingSystem.init('clinicVisitTrackerOnboarding', {
+        totalSteps: 4,
+        localStorageKey: 'ppe_clinic_visit_tracker_completed',
+        showOnce: true,
+        delay: 800, // Show after 800ms
+        onComplete: function() {
+            console.log('Clinic Visit Tracker onboarding completed');
+        }
+    });
+});
+</script>

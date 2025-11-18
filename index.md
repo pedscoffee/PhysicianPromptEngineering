@@ -367,3 +367,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     </p>
   </div>
 </section>
+
+<!-- Onboarding System -->
+{%- include onboarding-system.html -%}
+{%- include welcome-onboarding.html -%}
