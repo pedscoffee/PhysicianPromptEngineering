@@ -1,0 +1,519 @@
+# Newborn Pediatric Physical Exam Course - Exercise Configurations
+# Each exercise presents clinical images and scenarios for identification and assessment
+
+# ============================================
+# MODULE 1: GENERAL ASSESSMENT & VITAL SIGNS
+# ============================================
+
+newborn_m1e1:
+  id: "nb_m1e1"
+  title: "APGAR Scoring from Clinical Scenarios"
+  module: 1
+  difficulty: "beginner"
+  estimated_time: "15 minutes"
+  scenario: "apgar_scenarios"
+  goal: "Accurately assess APGAR scores based on clinical descriptions and understand their significance"
+  instructions: |
+    Review the clinical scenarios describing newborn findings at 1 minute and 5 minutes after birth.
+    Provide APGAR scores and interpret their significance.
+
+    Your assessment should include:
+    - Individual component scores (Appearance, Pulse, Grimace, Activity, Respiration)
+    - Total APGAR score
+    - Clinical significance and next steps
+  rubric:
+    criteria:
+      - name: "Accurate scoring"
+        points: 4
+        description: "Correctly assigns APGAR component scores"
+      - name: "Clinical interpretation"
+        points: 3
+        description: "Appropriately interprets the significance of scores"
+      - name: "Management decisions"
+        points: 3
+        description: "Recommends appropriate interventions based on scores"
+    total_points: 10
+    passing_score: 7
+  hints:
+    - "Remember: Appearance (color), Pulse (heart rate), Grimace (reflex irritability), Activity (muscle tone), Respiration"
+    - "Score each component 0, 1, or 2"
+    - "APGAR 7-10 is generally normal, 4-6 needs intervention, 0-3 requires immediate resuscitation"
+
+newborn_m1e2:
+  id: "nb_m1e2"
+  title: "Vital Signs - Normal vs Abnormal"
+  module: 1
+  difficulty: "beginner"
+  estimated_time: "15 minutes"
+  scenario: "vital_signs_cases"
+  goal: "Differentiate normal from abnormal vital signs in newborns and recognize concerning patterns"
+  instructions: |
+    Review the vital signs from several newborn cases.
+    For each case, identify:
+    - Which vital signs are normal vs abnormal for age
+    - Clinical significance of abnormal findings
+    - Appropriate next steps
+  rubric:
+    criteria:
+      - name: "Normal range identification"
+        points: 3
+        description: "Knows normal vital sign ranges for newborns"
+      - name: "Abnormality recognition"
+        points: 3
+        description: "Correctly identifies concerning findings"
+      - name: "Risk stratification"
+        points: 2
+        description: "Appropriately categorizes urgency"
+      - name: "Management planning"
+        points: 2
+        description: "Recommends appropriate monitoring or intervention"
+    total_points: 10
+    passing_score: 7
+  hints:
+    - "Normal newborn heart rate: 120-160 bpm (can go up to 180 when crying)"
+    - "Normal respiratory rate: 30-60 breaths/min"
+    - "Temperature: 36.5-37.5°C (97.7-99.5°F)"
+
+newborn_m1e3:
+  id: "nb_m1e3"
+  title: "General Appearance Assessment"
+  module: 1
+  difficulty: "beginner"
+  estimated_time: "15 minutes"
+  scenario: "general_appearance_image"
+  goal: "Assess overall newborn appearance and identify concerning features"
+  instructions: |
+    Review the image and clinical description of a newborn's general appearance.
+    Provide your assessment of:
+    - Overall appearance (well vs ill-appearing)
+    - Activity level and tone
+    - Color and perfusion
+    - Any dysmorphic features
+    - Concerning findings requiring further evaluation
+  rubric:
+    criteria:
+      - name: "Systematic assessment"
+        points: 3
+        description: "Comprehensively evaluates appearance elements"
+      - name: "Finding identification"
+        points: 3
+        description: "Correctly identifies normal vs concerning features"
+      - name: "Clinical reasoning"
+        points: 2
+        description: "Explains significance of findings"
+      - name: "Next steps"
+        points: 2
+        description: "Appropriate recommendations"
+    total_points: 10
+    passing_score: 7
+
+# ============================================
+# MODULE 2: HEAD, EYES, EARS, NOSE, THROAT
+# ============================================
+
+newborn_m2e1:
+  id: "nb_m2e1"
+  title: "Cranial Findings - Fontanelles and Sutures"
+  module: 2
+  difficulty: "beginner"
+  estimated_time: "20 minutes"
+  scenario: "cranial_findings"
+  goal: "Identify normal fontanelles, sutures, and common cranial variations"
+  instructions: |
+    Examine the images showing different cranial findings in newborns.
+    For each image, identify:
+    - The finding (caput succedaneum, cephalohematoma, normal fontanelle, etc.)
+    - Whether it's normal, benign variation, or pathological
+    - Expected course and any needed follow-up
+    - What to tell parents
+  rubric:
+    criteria:
+      - name: "Accurate identification"
+        points: 4
+        description: "Correctly names the finding"
+      - name: "Classification"
+        points: 3
+        description: "Appropriately categorizes as normal/benign/pathological"
+      - name: "Natural history knowledge"
+        points: 2
+        description: "Knows expected course and resolution"
+      - name: "Parent counseling"
+        points: 1
+        description: "Provides appropriate reassurance or guidance"
+    total_points: 10
+    passing_score: 7
+  hints:
+    - "Caput succedaneum crosses suture lines, resolves in days"
+    - "Cephalohematoma doesn't cross suture lines, may take weeks to resolve"
+    - "Anterior fontanelle closes by 18-24 months"
+
+newborn_m2e2:
+  id: "nb_m2e2"
+  title: "Eye Exam - Red Reflex and Common Findings"
+  module: 2
+  difficulty: "beginner"
+  estimated_time: "20 minutes"
+  scenario: "eye_findings"
+  goal: "Recognize normal and abnormal eye findings in newborns"
+  instructions: |
+    Review the eye examination images.
+    Identify the findings shown and assess:
+    - Red reflex present or absent
+    - Subconjunctival hemorrhage vs other pathology
+    - Urgency of referral if needed
+    - Parent education points
+  rubric:
+    criteria:
+      - name: "Finding identification"
+        points: 4
+        description: "Correctly identifies eye findings"
+      - name: "Red flag recognition"
+        points: 3
+        description: "Knows when urgent referral needed"
+      - name: "Benign vs pathological"
+        points: 2
+        description: "Appropriately categorizes findings"
+      - name: "Communication"
+        points: 1
+        description: "Clear explanation for parents"
+    total_points: 10
+    passing_score: 7
+
+newborn_m2e3:
+  id: "nb_m2e3"
+  title: "Oral Cavity - Tongue-Tie, Cleft, and Other Findings"
+  module: 2
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  scenario: "oral_findings"
+  goal: "Identify oral cavity findings and determine appropriate management"
+  instructions: |
+    Examine images of various oral cavity findings.
+    For each finding, provide:
+    - Identification of the finding
+    - Functional significance
+    - Need for intervention or referral
+    - Feeding implications
+    - Parent counseling points
+  rubric:
+    criteria:
+      - name: "Accurate diagnosis"
+        points: 4
+        description: "Correctly identifies oral findings"
+      - name: "Functional assessment"
+        points: 3
+        description: "Evaluates impact on feeding/function"
+      - name: "Management appropriateness"
+        points: 2
+        description: "Appropriate intervention or watchful waiting"
+      - name: "Family guidance"
+        points: 1
+        description: "Helpful counseling for parents"
+    total_points: 10
+    passing_score: 7
+
+# ============================================
+# MODULE 3: CARDIOVASCULAR & RESPIRATORY
+# ============================================
+
+newborn_m3e1:
+  id: "nb_m3e1"
+  title: "Heart Murmurs - Identification and Significance"
+  module: 3
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  scenario: "cardiac_murmur_cases"
+  goal: "Differentiate innocent from pathological murmurs and determine appropriate workup"
+  instructions: |
+    Review clinical scenarios with murmur descriptions and associated findings.
+    Provide your assessment:
+    - Murmur characteristics (timing, grade, location)
+    - Likelihood of innocent vs pathological
+    - Associated symptoms or findings
+    - Appropriate next steps (observation, echo, cardiology referral)
+  rubric:
+    criteria:
+      - name: "Murmur characterization"
+        points: 3
+        description: "Accurately describes murmur features"
+      - name: "Risk stratification"
+        points: 4
+        description: "Appropriately assesses concerning features"
+      - name: "Workup decisions"
+        points: 2
+        description: "Recommends appropriate diagnostic steps"
+      - name: "Referral criteria"
+        points: 1
+        description: "Knows when to involve cardiology"
+    total_points: 10
+    passing_score: 7
+
+newborn_m3e2:
+  id: "nb_m3e2"
+  title: "Respiratory Patterns and Findings"
+  module: 3
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  scenario: "respiratory_findings"
+  goal: "Recognize normal breathing patterns and identify respiratory distress"
+  instructions: |
+    Review images and videos showing different respiratory patterns.
+    Assess and describe:
+    - Respiratory rate and pattern
+    - Work of breathing (retractions, grunting, flaring)
+    - Severity of distress
+    - Differential diagnosis
+    - Urgency of intervention
+  rubric:
+    criteria:
+      - name: "Pattern recognition"
+        points: 3
+        description: "Identifies respiratory findings accurately"
+      - name: "Severity assessment"
+        points: 3
+        description: "Appropriately grades distress severity"
+      - name: "Differential diagnosis"
+        points: 2
+        description: "Considers appropriate causes"
+      - name: "Management urgency"
+        points: 2
+        description: "Correctly triages urgency"
+    total_points: 10
+    passing_score: 7
+
+newborn_m3e3:
+  id: "nb_m3e3"
+  title: "Cyanosis Evaluation"
+  module: 3
+  difficulty: "advanced"
+  estimated_time: "25 minutes"
+  scenario: "cyanosis_cases"
+  goal: "Differentiate central from peripheral cyanosis and develop appropriate differential diagnosis"
+  instructions: |
+    Review cases with images showing different presentations of cyanosis.
+    Provide comprehensive assessment:
+    - Central vs peripheral cyanosis
+    - Differential diagnosis (cardiac, pulmonary, hematologic, etc.)
+    - Appropriate diagnostic workup
+    - Urgency of intervention
+    - Hyperoxia test interpretation if applicable
+  rubric:
+    criteria:
+      - name: "Cyanosis classification"
+        points: 3
+        description: "Correctly identifies central vs peripheral"
+      - name: "Differential diagnosis"
+        points: 3
+        description: "Comprehensive list of causes"
+      - name: "Diagnostic approach"
+        points: 2
+        description: "Appropriate workup plan"
+      - name: "Clinical reasoning"
+        points: 2
+        description: "Explains thought process clearly"
+    total_points: 10
+    passing_score: 7
+
+# ============================================
+# MODULE 4: ABDOMEN, GU, & MUSCULOSKELETAL
+# ============================================
+
+newborn_m4e1:
+  id: "nb_m4e1"
+  title: "Abdominal Exam - Umbilicus, Hernias, and Masses"
+  module: 4
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  scenario: "abdominal_findings"
+  goal: "Identify common abdominal findings and determine appropriate management"
+  instructions: |
+    Examine images showing various abdominal findings.
+    Assess each finding:
+    - Identification (umbilical granuloma, hernia, etc.)
+    - Benign vs concerning features
+    - Need for surgical consultation
+    - Expected course if observation appropriate
+    - Parent education
+  rubric:
+    criteria:
+      - name: "Finding identification"
+        points: 4
+        description: "Accurately names abdominal findings"
+      - name: "Surgical urgency"
+        points: 3
+        description: "Recognizes when surgical evaluation needed"
+      - name: "Management planning"
+        points: 2
+        description: "Appropriate observation vs intervention"
+      - name: "Communication"
+        points: 1
+        description: "Clear parent counseling"
+    total_points: 10
+    passing_score: 7
+
+newborn_m4e2:
+  id: "nb_m4e2"
+  title: "Hip Exam and Developmental Dysplasia Screening"
+  module: 4
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  scenario: "hip_exam_cases"
+  goal: "Perform systematic hip screening and recognize risk factors for DDH"
+  instructions: |
+    Review hip examination techniques and findings.
+    For the cases presented:
+    - Describe proper examination technique (Ortolani, Barlow)
+    - Identify positive vs negative findings
+    - Recognize risk factors for DDH
+    - Determine need for ultrasound or orthopedic referral
+  rubric:
+    criteria:
+      - name: "Exam technique knowledge"
+        points: 3
+        description: "Understands proper screening maneuvers"
+      - name: "Finding interpretation"
+        points: 3
+        description: "Correctly interprets exam findings"
+      - name: "Risk factor recognition"
+        points: 2
+        description: "Identifies DDH risk factors"
+      - name: "Appropriate referral"
+        points: 2
+        description: "Knows when to order imaging or refer"
+    total_points: 10
+    passing_score: 7
+
+newborn_m4e3:
+  id: "nb_m4e3"
+  title: "Extremity and Spine Examination"
+  module: 4
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  scenario: "extremity_spine_findings"
+  goal: "Identify musculoskeletal variations and abnormalities"
+  instructions: |
+    Review images of extremity and spine findings.
+    Assess:
+    - Normal variations (positional deformities) vs true abnormalities
+    - Spine integrity and sacral dimples
+    - Digit abnormalities (polydactyly, syndactyly)
+    - Need for further evaluation or referral
+  rubric:
+    criteria:
+      - name: "Normal vs abnormal"
+        points: 3
+        description: "Differentiates benign variations from pathology"
+      - name: "Finding identification"
+        points: 3
+        description: "Correctly names findings"
+      - name: "Workup decisions"
+        points: 2
+        description: "Appropriate diagnostic steps"
+      - name: "Referral criteria"
+        points: 2
+        description: "Knows when specialist involvement needed"
+    total_points: 10
+    passing_score: 7
+
+# ============================================
+# MODULE 5: SKIN & NEUROLOGICAL
+# ============================================
+
+newborn_m5e1:
+  id: "nb_m5e1"
+  title: "Newborn Skin Findings - Normal vs Pathological"
+  module: 5
+  difficulty: "intermediate"
+  estimated_time: "25 minutes"
+  scenario: "skin_findings_comprehensive"
+  goal: "Differentiate benign newborn rashes from concerning skin conditions"
+  instructions: |
+    Examine multiple skin finding images.
+    For each finding, provide:
+    - Identification (erythema toxicum, milia, Mongolian spots, etc.)
+    - Benign vs pathological classification
+    - Expected course and resolution
+    - When to worry or investigate further
+    - Parent counseling points
+  rubric:
+    criteria:
+      - name: "Accurate identification"
+        points: 4
+        description: "Correctly identifies skin findings"
+      - name: "Risk stratification"
+        points: 3
+        description: "Appropriately categorizes benign vs concerning"
+      - name: "Natural history knowledge"
+        points: 2
+        description: "Knows expected course"
+      - name: "Parent education"
+        points: 1
+        description: "Provides appropriate reassurance"
+    total_points: 10
+    passing_score: 7
+
+newborn_m5e2:
+  id: "nb_m5e2"
+  title: "Primitive Reflexes Assessment"
+  module: 5
+  difficulty: "advanced"
+  estimated_time: "25 minutes"
+  scenario: "primitive_reflexes"
+  goal: "Assess primitive reflexes and understand their clinical significance"
+  instructions: |
+    Review video demonstrations of primitive reflex testing.
+    For each reflex:
+    - Identify the reflex being tested
+    - Assess if response is normal or abnormal
+    - Know age of appearance and disappearance
+    - Understand clinical significance of abnormalities
+  rubric:
+    criteria:
+      - name: "Reflex identification"
+        points: 3
+        description: "Correctly names reflexes"
+      - name: "Normal vs abnormal"
+        points: 3
+        description: "Accurately assesses responses"
+      - name: "Developmental timeline"
+        points: 2
+        description: "Knows when reflexes appear/disappear"
+      - name: "Clinical significance"
+        points: 2
+        description: "Understands implications of abnormalities"
+    total_points: 10
+    passing_score: 7
+
+newborn_m5e3:
+  id: "nb_m5e3"
+  title: "Tone and Neurological Examination"
+  module: 5
+  difficulty: "advanced"
+  estimated_time: "25 minutes"
+  scenario: "neurological_exam_comprehensive"
+  goal: "Perform comprehensive neurological assessment and recognize concerning findings"
+  instructions: |
+    Review comprehensive neurological examination cases with images and videos.
+    Provide detailed assessment of:
+    - Tone (hypotonic, normal, hypertonic)
+    - Symmetry of movement
+    - Alertness and responsiveness
+    - Concerning neurological signs
+    - Differential diagnosis if abnormalities present
+    - Appropriate workup and referral
+  rubric:
+    criteria:
+      - name: "Comprehensive assessment"
+        points: 3
+        description: "Evaluates all aspects of neuro exam"
+      - name: "Abnormality recognition"
+        points: 4
+        description: "Identifies concerning findings"
+      - name: "Differential diagnosis"
+        points: 2
+        description: "Considers appropriate causes"
+      - name: "Management plan"
+        points: 1
+        description: "Appropriate next steps"
+    total_points: 10
+    passing_score: 7
