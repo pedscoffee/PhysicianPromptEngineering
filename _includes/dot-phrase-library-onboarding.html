@@ -1,0 +1,238 @@
+<!-- Dot Phrase Library Onboarding Modal -->
+<div class="onboarding-overlay" id="dotPhraseLibraryOnboarding">
+    <div class="onboarding-modal large">
+        <button class="onboarding-close" onclick="closeOnboarding('dotPhraseLibraryOnboarding')" aria-label="Close">&times;</button>
+
+        <div class="onboarding-content">
+            <!-- Progress Dots -->
+            <div class="onboarding-progress">
+                <span class="onboarding-progress-dot active"></span>
+                <span class="onboarding-progress-dot"></span>
+                <span class="onboarding-progress-dot"></span>
+            </div>
+
+            <!-- Step 1: Welcome -->
+            <div class="onboarding-step active">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 3rem; height: 3rem; color: var(--color-primary);">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                    <h2 style="margin: 0;">Welcome to Dot Phrase Library!</h2>
+                </div>
+
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Access hundreds of clinical dot phrases organized by workflow. Copy and paste directly into your EMR or AI prompts.
+                </p>
+
+                <div class="onboarding-feature-grid">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
+                            </svg>
+                        </div>
+                        <h4>One-Click Copy</h4>
+                        <p>Click any dot phrase to instantly copy to your clipboard</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                            </svg>
+                        </div>
+                        <h4>Organized by Workflow</h4>
+                        <p>Grouped by inbox, orders, discharge, consults, and more</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                            </svg>
+                        </div>
+                        <h4>AI Integration Ready</h4>
+                        <p>Incorporate dot phrases into your AI prompts for automated notes</p>
+                    </div>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('dotPhraseLibraryOnboarding')">
+                        Learn How to Use
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-text" onclick="completeOnboarding('dotPhraseLibraryOnboarding')">
+                        Skip tour
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Finding & Using Dot Phrases -->
+            <div class="onboarding-step">
+                <h2>Finding & Using Dot Phrases</h2>
+                <p>Multiple ways to find exactly what you need:</p>
+
+                <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>
+                            <h4 style="margin: 0;">Search by Keyword</h4>
+                        </div>
+                        <p style="margin: 0; color: #7f8c8d;">Type keywords like "followup", "refill", or "normal exam" to find relevant phrases instantly</p>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+                            </svg>
+                            <h4 style="margin: 0;">Filter by Group</h4>
+                        </div>
+                        <p style="margin: 0; color: #7f8c8d;">Select from groups like "Inbox Messages", "Orders", "Discharge", "Consults" to narrow your search</p>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                            </svg>
+                            <h4 style="margin: 0;">Browse by Tag</h4>
+                        </div>
+                        <p style="margin: 0; color: #7f8c8d;">Click tags like "Pediatrics", "Internal Medicine", or "ER" to filter by specialty or context</p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%); padding: 1.5rem; border-radius: 12px; border: 2px solid var(--color-primary);">
+                    <h4 style="margin-top: 0; color: var(--color-primary);">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                        </svg>
+                        How to Copy
+                    </h4>
+                    <ol style="margin: 0; padding-left: 1.5rem;">
+                        <li>Find the dot phrase you want to use</li>
+                        <li>Click anywhere on the phrase card</li>
+                        <li>You'll see a "Copied!" notification</li>
+                        <li>Paste directly into your EMR (Ctrl+V or Cmd+V)</li>
+                    </ol>
+                    <p style="margin: 1rem 0 0 0; font-size: 0.95rem; color: #666;">
+                        <strong>Note:</strong> Formatting is preserved, so your dot phrases will paste with proper line breaks and structure.
+                    </p>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('dotPhraseLibraryOnboarding')">
+                        Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('dotPhraseLibraryOnboarding')">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Advanced Tips -->
+            <div class="onboarding-step">
+                <h2>Pro Tips & AI Integration</h2>
+
+                <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                            </svg>
+                            <h4 style="margin: 0;">Integrate with AI Prompts</h4>
+                        </div>
+                        <p style="margin: 0 0 0.75rem 0; color: #7f8c8d;">Add dot phrases to your AI prompts for consistent, automated documentation:</p>
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--color-primary); font-family: monospace; font-size: 0.9rem;">
+                            <strong>Example prompt snippet:</strong><br/><br/>
+                            ## Conditional Boilerplate Text<br/>
+                            If asthma discussed, add:<br/>
+                            "[Your asthma dot phrase here]"
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                            </svg>
+                            <h4 style="margin: 0;">Save Your Favorites</h4>
+                        </div>
+                        <p style="margin: 0; color: #7f8c8d;">
+                            Use the <a href="{{ site.baseurl }}/snippet-manager" style="color: var(--color-primary); font-weight: 600;">Snippet Manager</a> to save your most-used dot phrases for even quicker access!
+                        </p>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                            </svg>
+                            <h4 style="margin: 0;">Customize for Your Practice</h4>
+                        </div>
+                        <p style="margin: 0; color: #7f8c8d;">
+                            These dot phrases are templates - feel free to modify them for your specific workflow, patient population, or EMR requirements.
+                        </p>
+                    </div>
+                </div>
+
+                <h4 style="margin-bottom: 1rem;">Common Use Cases:</h4>
+                <ul style="font-size: 1.05rem; margin-bottom: 2rem;">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>Inbox messages:</strong> Quick responses to common patient questions
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>Normal exams:</strong> Standard physical exam templates
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>Discharge instructions:</strong> Patient education and follow-up guidance
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; vertical-align: middle; margin-right: 0.5rem; color: var(--color-primary);">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <strong>AI automation:</strong> Add to prompts for consistent note generation
+                    </li>
+                </ul>
+
+                <div style="text-align: center; background: linear-gradient(135deg, var(--color-primary) 0%, #0066aa 100%); color: white; padding: 2rem; border-radius: 12px;">
+                    <h3 style="margin-top: 0; color: white;">Ready to Save Time on Documentation?</h3>
+                    <p style="margin-bottom: 0; opacity: 0.9;">Start browsing dot phrases and streamline your clinical workflow today!</p>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('dotPhraseLibraryOnboarding')">
+                        Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="completeOnboarding('dotPhraseLibraryOnboarding')">
+                        Start Browsing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize dot phrase library onboarding when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    OnboardingSystem.init('dotPhraseLibraryOnboarding', {
+        totalSteps: 3,
+        localStorageKey: 'ppe_dot_phrase_library_completed',
+        showOnce: true,
+        delay: 800, // Show after 800ms
+        onComplete: function() {
+            console.log('Dot Phrase Library onboarding completed');
+        }
+    });
+});
+</script>

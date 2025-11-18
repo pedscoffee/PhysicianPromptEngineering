@@ -1115,3 +1115,7 @@ function exportLearningToText() {
 loadBillingCodes();
 document.getElementById('summaryDate').value = new Date().toISOString().split('T')[0];
 </script>
+
+<!-- Onboarding System -->
+{%- include onboarding-system.html -%}
+{%- include clinic-visit-tracker-onboarding.html -%}

@@ -1334,3 +1334,8 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+</script>
+
+<!-- Onboarding System -->
+{%- include onboarding-system.html -%}
+{%- include dot-phrase-library-onboarding.html -%}

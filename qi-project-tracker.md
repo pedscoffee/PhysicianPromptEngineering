@@ -1317,3 +1317,7 @@ function showFlashMessage(message) {
     setTimeout(() => flash.classList.remove('show'), 3000);
 }
 </script>
+
+<!-- Onboarding System -->
+{%- include onboarding-system.html -%}
+{%- include qi-project-tracker-onboarding.html -%}

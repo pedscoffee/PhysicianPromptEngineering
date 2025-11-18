@@ -1,0 +1,221 @@
+<!-- Prompt Generator Onboarding Modal -->
+<div class="onboarding-overlay" id="promptGeneratorOnboarding">
+    <div class="onboarding-modal large">
+        <button class="onboarding-close" onclick="closeOnboarding('promptGeneratorOnboarding')" aria-label="Close">&times;</button>
+
+        <div class="onboarding-content">
+            <!-- Progress Dots -->
+            <div class="onboarding-progress">
+                <span class="onboarding-progress-dot active"></span>
+                <span class="onboarding-progress-dot"></span>
+                <span class="onboarding-progress-dot"></span>
+                <span class="onboarding-progress-dot"></span>
+            </div>
+
+            <!-- Step 1: Welcome -->
+            <div class="onboarding-step active">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 3rem; height: 3rem; color: var(--color-primary);">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                    <h2 style="margin: 0;">Welcome to the A&P Prompt Generator!</h2>
+                </div>
+
+                <p>This tool helps you create custom prompts that transform verbose AI scribe output into concise, problem-oriented A&P documentation that matches your exact clinical style.</p>
+
+                <div class="onboarding-feature-grid">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                            </svg>
+                        </div>
+                        <h4>Fully Customizable</h4>
+                        <p>Define your exact formatting preferences and style</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                            </svg>
+                        </div>
+                        <h4>Save Time</h4>
+                        <p>Generate prompts in minutes, use them forever</p>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2.5rem; height: 2.5rem;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                            </svg>
+                        </div>
+                        <h4>EMR Compatible</h4>
+                        <p>Works with Epic, Cerner, and other AI-enabled systems</p>
+                    </div>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('promptGeneratorOnboarding')">
+                        Show Me How →
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-text" onclick="completeOnboarding('promptGeneratorOnboarding')">
+                        Skip tutorial
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: How It Works -->
+            <div class="onboarding-step">
+                <h2>How It Works</h2>
+                <p>Creating your custom prompt takes just 4 simple steps:</p>
+
+                <div style="display: grid; gap: 1rem; margin: 2rem 0;">
+                    <div style="display: flex; align-items: start; gap: 1rem;">
+                        <div style="background: var(--color-primary); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.25rem 0;">Enter Your A&P Style</h4>
+                            <p style="margin: 0; color: #6c757d;">Add 3-5 examples of how you like to write your A&P notes</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start; gap: 1rem;">
+                        <div style="background: var(--color-primary); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.25rem 0;">Customize Formatting</h4>
+                            <p style="margin: 0; color: #6c757d;">Choose your problem format, line breaks, and brevity level</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start; gap: 1rem;">
+                        <div style="background: var(--color-primary); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.25rem 0;">Generate Your Prompt</h4>
+                            <p style="margin: 0; color: #6c757d;">Click generate and get a ready-to-use prompt tailored to you</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: start; gap: 1rem;">
+                        <div style="background: var(--color-primary); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">4</div>
+                        <div>
+                            <h4 style="margin: 0 0 0.25rem 0;">Use in Your EMR</h4>
+                            <p style="margin: 0; color: #6c757d;">Copy the prompt and paste into Epic's "Generate Text with AI" or similar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('promptGeneratorOnboarding')">
+                        ← Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('promptGeneratorOnboarding')">
+                        Continue →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Key Tips -->
+            <div class="onboarding-step">
+                <h2>Pro Tips for Best Results</h2>
+
+                <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--color-primary);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: var(--color-primary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                            </svg>
+                            <strong>Use Real Examples</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">The more actual examples of your writing you provide, the better your prompt will match your style.</p>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--color-secondary);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: var(--color-secondary);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <strong>Test and Iterate</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Try your prompt on a few cases and adjust the settings if needed. You can regenerate anytime.</p>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--color-accent);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: var(--color-accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                            </svg>
+                            <strong>Save Your Prompt</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Copy and save your generated prompt to a text file for easy access in your daily workflow.</p>
+                    </div>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('promptGeneratorOnboarding')">
+                        ← Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="nextOnboardingStep('promptGeneratorOnboarding')">
+                        Continue →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Ready to Start -->
+            <div class="onboarding-step">
+                <h2>Ready to Create Your Prompt!</h2>
+                <p>You're all set to generate a custom A&P prompt that will save you hours of documentation time.</p>
+
+                <div style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); color: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                    <h3 style="color: white; margin: 0 0 1rem 0;">What You'll Get:</h3>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; flex-shrink: 0;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>A complete, ready-to-use AI prompt</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; flex-shrink: 0;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Customized to your exact documentation style</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; flex-shrink: 0;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Instructions for using it in your EMR</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; flex-shrink: 0;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Ability to regenerate and tweak anytime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="onboarding-actions">
+                    <button class="onboarding-btn onboarding-btn-secondary" onclick="prevOnboardingStep('promptGeneratorOnboarding')">
+                        ← Back
+                    </button>
+                    <button class="onboarding-btn onboarding-btn-primary" onclick="completeOnboarding('promptGeneratorOnboarding')">
+                        Let's Build My Prompt!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    OnboardingSystem.init('promptGeneratorOnboarding', {
+        totalSteps: 4,
+        localStorageKey: 'prompt_generator_onboarding_v1',
+        showOnce: true,
+        delay: 800,
+        onComplete: function() {
+            console.log('Prompt Generator onboarding completed');
+        }
+    });
+});
+</script>
