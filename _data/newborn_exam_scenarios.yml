@@ -1,0 +1,518 @@
+# Newborn Pediatric Physical Exam - Clinical Scenarios
+# Each scenario includes patient demographics, clinical history, and image placeholders
+
+# ============================================
+# MODULE 1: GENERAL ASSESSMENT & VITAL SIGNS
+# ============================================
+
+apgar_scenarios:
+  title: "APGAR Scoring Scenarios"
+  difficulty: "beginner"
+  scenario: |
+    **Scenario 1: Term Infant - Uncomplicated Delivery**
+
+    **At 1 minute:**
+    - Body is pink, extremities slightly blue
+    - Heart rate: 145 bpm (strong, regular)
+    - Grimaces and pulls away when suctioned
+    - Active movement, good muscle tone
+    - Strong cry, regular respirations
+
+    **At 5 minutes:**
+    - Completely pink throughout
+    - Heart rate: 150 bpm
+    - Cries vigorously with stimulation
+    - Active movement, flexed posture
+    - Strong cry, regular respirations
+
+    ---
+
+    **Scenario 2: Infant Requiring Intervention**
+
+    **At 1 minute:**
+    - Central cyanosis, blue throughout
+    - Heart rate: 95 bpm (slow)
+    - No response to stimulation
+    - Some flexion of extremities, decreased tone
+    - Slow, irregular respirations, weak cry
+
+    **At 5 minutes (after stimulation and blow-by O2):**
+    - Body pink, extremities slightly blue
+    - Heart rate: 130 bpm
+    - Grimaces with stimulation
+    - More active movement, improved tone
+    - Regular respirations, good cry
+
+  expected_findings: |
+    Scenario 1:
+    - 1 min: A=1, P=2, G=2, A=2, R=2 = 9/10
+    - 5 min: A=2, P=2, G=2, A=2, R=2 = 10/10
+    - Interpretation: Normal, no intervention needed
+
+    Scenario 2:
+    - 1 min: A=0, P=1, G=0, A=1, R=1 = 3/10
+    - 5 min: A=1, P=2, G=1, A=2, R=2 = 8/10
+    - Interpretation: Required resuscitation, good response to intervention
+
+  image_needed:
+    type: "Clinical illustrations of APGAR scoring components"
+    source: "Create educational diagram or use public domain medical illustrations"
+
+vital_signs_cases:
+  title: "Newborn Vital Signs Cases"
+  difficulty: "beginner"
+  scenario: |
+    **Case 1: Term newborn, 6 hours old**
+    - Heart rate: 155 bpm
+    - Respiratory rate: 45 breaths/min
+    - Temperature: 37.0°C (98.6°F) axillary
+    - Blood pressure: 65/40 mmHg
+    - Oxygen saturation: 98% on room air
+
+    **Case 2: Term newborn, 24 hours old**
+    - Heart rate: 185 bpm (persistent, not crying)
+    - Respiratory rate: 72 breaths/min
+    - Temperature: 37.8°C (100.0°F) axillary
+    - Oxygen saturation: 94% on room air
+    - Mild nasal flaring noted
+
+    **Case 3: Term newborn, 12 hours old**
+    - Heart rate: 98 bpm (during sleep)
+    - Respiratory rate: 35 breaths/min
+    - Temperature: 36.2°C (97.2°F) axillary
+    - Oxygen saturation: 97% on room air
+    - Appearing lethargic
+
+    **Case 4: Preterm newborn (35 weeks), 2 hours old**
+    - Heart rate: 165 bpm
+    - Respiratory rate: 58 breaths/min
+    - Temperature: 36.8°C (98.2°F) in isolette
+    - Oxygen saturation: 96% on room air
+    - Active, appropriate for gestational age
+
+  expected_findings: |
+    Case 1: All vital signs normal for term newborn
+    Case 2: Tachycardia and tachypnea concerning - needs evaluation for sepsis, respiratory distress, cardiac issues
+    Case 3: Bradycardia and hypothermia concerning - needs immediate evaluation, possible sepsis workup
+    Case 4: Normal for preterm infant at this gestational age
+
+general_appearance_image:
+  title: "General Appearance Assessment"
+  difficulty: "beginner"
+  scenario: |
+    **Case: Full-term male infant, 12 hours old**
+
+    **Birth History:**
+    - Gestational age: 39 weeks
+    - Birth weight: 3.4 kg (50th percentile)
+    - APGAR scores: 8 and 9
+    - Uncomplicated vaginal delivery
+    - No maternal complications
+
+    **Current Presentation:**
+    - Infant is pink, well-perfused
+    - Active spontaneous movement of all extremities
+    - Vigorous cry when disturbed
+    - Alert when awake, easily consolable
+    - Symmetric facial features
+    - No dysmorphic features noted
+    - Flexed resting posture
+
+  expected_findings: |
+    Normal, well-appearing term newborn.
+    Good tone, appropriate activity level.
+    No concerning features requiring additional evaluation.
+    Appropriate for routine newborn care.
+
+  image_needed:
+    type: "Photo of well-appearing term newborn in bassinet"
+    source: "Public domain newborn photo from Wikimedia Commons or CDC PHIL"
+    search_terms: "normal term newborn, well baby, CC0 license"
+    requirements: "Clear view of infant showing normal color, posture, and appearance"
+
+# ============================================
+# MODULE 2: HEAD, EYES, EARS, NOSE, THROAT
+# ============================================
+
+cranial_findings:
+  title: "Cranial Molding and Swelling"
+  difficulty: "beginner"
+  scenario: |
+    **Case 1: Term infant, born via vaginal delivery, 6 hours old**
+
+    Diffuse scalp swelling that crosses suture lines. Edematous, soft, pitting quality.
+    No discoloration. Fontanelles soft and flat. Sutures easily palpable.
+
+    **What do you see? What would you tell parents?**
+
+    ---
+
+    **Case 2: Term infant, born via vacuum-assisted delivery, 18 hours old**
+
+    Firm, fluctuant swelling over right parietal bone. Does NOT cross suture lines.
+    Edges well-defined. Anterior fontanelle soft and flat.
+
+    **What is this finding? Natural history? Any concerns?**
+
+    ---
+
+    **Case 3: Term infant, 2 days old, normal exam**
+
+    Anterior fontanelle measures 2 x 2 cm, soft and flat. Posterior fontanelle barely palpable.
+    Sutures approximated but mobile. Normal head shape after resolution of molding.
+
+    **What are you assessing? What's normal?**
+
+  expected_findings: |
+    Case 1: Caput succedaneum - benign, crosses sutures, resolves 24-48 hours, reassurance only
+    Case 2: Cephalohematoma - doesn't cross sutures, may take weeks to resolve, usually benign but monitor for jaundice
+    Case 3: Normal fontanelles - anterior closes 9-18 months, posterior by 2-3 months
+
+  image_needed:
+    - type: "Caput succedaneum clinical photo or diagram"
+      source: "Wikimedia Commons or medical education resource"
+      license: "CC-BY or CC0"
+    - type: "Cephalohematoma clinical photo or diagram"
+      source: "Public domain medical atlas"
+      license: "CC-BY or CC0"
+    - type: "Normal fontanelle examination photo"
+      source: "Educational medical photography collection"
+      license: "CC-BY or CC0"
+
+eye_findings:
+  title: "Newborn Eye Examination"
+  difficulty: "beginner"
+  scenario: |
+    **Case 1: Term infant, 1 day old**
+
+    Image shows bright red-orange bilateral red reflex, equal in both eyes.
+    Pupils equal, round, reactive to light. No leukocoria. Eyes appear normal.
+
+    **Your assessment?**
+
+    ---
+
+    **Case 2: Term infant, 12 hours post-delivery**
+
+    Bright red patch on left sclera, well-demarcated. Red reflex intact bilaterally.
+    No purulent discharge. Infant feeding well, comfortable.
+
+    **What is this finding? What would you tell parents?**
+
+    ---
+
+    **Case 3: Term infant, initial exam**
+
+    Attempting to assess red reflex. Right eye shows normal red reflex.
+    Left eye appears to have white reflex (leukocoria) instead of red.
+
+    **What is your concern? Next steps?**
+
+  expected_findings: |
+    Case 1: Normal red reflex - reassuring, no abnormalities
+    Case 2: Subconjunctival hemorrhage - benign birth trauma, resolves 1-2 weeks, reassurance
+    Case 3: Absent/white red reflex (leukocoria) - URGENT ophthalmology referral
+           Concerning for: retinoblastoma, cataract, retinal detachment, persistent fetal vasculature
+
+  image_needed:
+    - type: "Normal bilateral red reflex photo"
+      source: "Ophthalmology educational resources, CDC, or Wikimedia"
+      license: "Public domain or CC-BY"
+    - type: "Subconjunctival hemorrhage newborn"
+      source: "Pediatric ophthalmology image library"
+      license: "CC-BY or CC0"
+    - type: "Diagram showing leukocoria vs normal red reflex"
+      source: "Medical illustration - public domain"
+      license: "CC0 preferred"
+
+oral_findings:
+  title: "Oral Cavity Examination"
+  difficulty: "intermediate"
+  scenario: |
+    **Case 1: Newborn breastfeeding evaluation**
+
+    Examination of oral cavity reveals tight lingual frenulum extending to tip of tongue.
+    Tongue has heart-shaped appearance when infant cries. Mother reports difficulty with latch,
+    painful nursing. Infant seems frustrated at breast.
+
+    **Finding? Functional significance? Management?**
+
+    ---
+
+    **Case 2: Routine newborn exam, day 2**
+
+    Small white-yellow bumps along midline of hard palate. Firm, cannot be wiped away.
+    No erythema or inflammation. Infant feeding well.
+
+    **What are these? Do they need treatment?**
+
+    ---
+
+    **Case 3: Newborn exam immediately after birth**
+
+    Cleft of the soft palate noted, hard palate intact. No cleft lip.
+    Otherwise normal exam. What are your immediate concerns and next steps?
+
+  expected_findings: |
+    Case 1: Ankyloglossia (tongue-tie) - assess feeding function, may need frenotomy if affecting nursing
+    Case 2: Epstein pearls - benign, keratin-filled cysts, resolve spontaneously, no treatment needed
+    Case 3: Isolated cleft palate - requires multidisciplinary team (plastic surgery, ENT, feeding specialist, genetics)
+           Immediate concerns: feeding difficulty, may need special nipple/feeder
+
+  image_needed:
+    - type: "Ankyloglossia (tongue-tie) clinical photo"
+      source: "Lactation medicine image database or Wikimedia"
+      license: "CC-BY or CC0"
+    - type: "Epstein pearls photo"
+      source: "Pediatric dermatology atlas or medical education resource"
+      license: "Public domain preferred"
+    - type: "Cleft palate photo (isolated posterior cleft)"
+      source: "Craniofacial surgery educational materials"
+      license: "CC-BY with attribution"
+
+# ============================================
+# MODULE 3: CARDIOVASCULAR & RESPIRATORY
+# ============================================
+
+cardiac_murmur_cases:
+  title: "Newborn Heart Murmur Assessment"
+  difficulty: "intermediate"
+  scenario: |
+    **Case 1:**
+    2/6 systolic murmur at left upper sternal border, well-appearing term infant.
+    Normal pulses, no cyanosis, oxygen saturation 99%. Feeding well.
+    Murmur louder when supine, softer when crying.
+
+    **Case 2:**
+    3/6 harsh systolic murmur at left lower sternal border with palpable thrill.
+    Term infant, slightly tachypneic (RR 65). Four-extremity BP normal.
+    No cyanosis but mild increased work of breathing with feeds.
+
+    **Case 3:**
+    2/6 continuous "machinery" murmur at left infraclavicular area.
+    Preterm infant (32 weeks), 5 days old. Bounding pulses.
+    Widened pulse pressure. Mild respiratory distress.
+
+  expected_findings: |
+    Case 1: Likely peripheral pulmonic stenosis (innocent flow murmur) - observe, typically resolves by 6 months
+    Case 2: Likely VSD (ventricular septal defect) - needs echocardiography and cardiology evaluation
+    Case 3: Patent ductus arteriosus (PDA) - common in preterm, may need medical or surgical closure
+
+respiratory_findings:
+  title: "Respiratory Assessment"
+  difficulty: "intermediate"
+  scenario: |
+    **Case 1: Term infant, 2 hours old**
+    - Respiratory rate: 65 breaths/min
+    - Mild intercostal retractions
+    - No grunting, no flaring
+    - Oxygen saturation 96% on room air
+    - Clear breath sounds bilaterally
+
+    **Case 2: Term infant, 30 minutes old**
+    - Respiratory rate: 75 breaths/min
+    - Moderate subcostal and intercostal retractions
+    - Grunting with each breath
+    - Nasal flaring present
+    - Oxygen saturation 92% on room air
+
+    **Case 3: Term infant, 6 hours old**
+    - Brief episodes of apnea (8-10 seconds) followed by rapid breathing
+    - Otherwise well-appearing
+    - Oxygen saturation remains >95%
+    - No color change with episodes
+
+  expected_findings: |
+    Case 1: Mild tachypnea - observe, may be transitional. Monitor for progression.
+    Case 2: Respiratory distress - needs workup (CXR, blood gas), consider surfactant/CPAP. DDx: TTN, RDS, pneumonia, PPHN
+    Case 3: Periodic breathing - normal in newborns if brief (<20 sec) and no desaturation
+
+cyanosis_cases:
+  title: "Cyanosis Evaluation and Management"
+  difficulty: "advanced"
+  scenario: |
+    **Case 1:**
+    Term infant with blue hands and feet but pink trunk and face.
+    Oxygen saturation 97% on room air (right hand). Crying vigorously.
+    Well-perfused centrally. Temperature normal.
+
+    **Case 2:**
+    Term infant with blue discoloration of tongue and mucous membranes.
+    Oxygen saturation 82% on room air, improves to 88% on 100% O2.
+    No respiratory distress. Normal heart sounds. Hyperoxia test positive.
+
+    **Case 3:**
+    Term infant born via C-section, persistent central cyanosis at 4 hours of life.
+    Tachypneic but no significant work of breathing.
+    Oxygen saturation 85% on room air, minimally improves with 100% oxygen.
+    Pulses strong and equal. Loud single S2.
+
+  expected_findings: |
+    Case 1: Acrocyanosis - benign peripheral cyanosis, normal in first 24-48 hours, reassurance
+    Case 2: Central cyanosis with poor oxygen response suggests cardiac etiology (cyanotic heart disease)
+    Case 3: Likely cyanotic congenital heart disease (transposition, tetralogy, etc.) - needs urgent cardiology, echo, possible prostaglandin
+
+# ============================================
+# MODULE 4: ABDOMEN, GU, & MUSCULOSKELETAL
+# ============================================
+
+abdominal_findings:
+  title: "Abdominal Examination Findings"
+  difficulty: "intermediate"
+  scenario: |
+    **Case 1:**
+    Umbilical stump with small pink, moist nodule visible after cord separation at day 10.
+    Does not bleed significantly. Granulation tissue appearance.
+
+    **Case 2:**
+    Bulge near umbilicus that increases with crying. Easily reducible.
+    Overlying skin normal. Fascial defect palpable, approximately 1.5 cm.
+
+    **Case 3:**
+    Firm mass palpable in left flank. Smooth, non-tender.
+    Does NOT cross midline. Infant feeding well, voiding normally.
+
+  expected_findings: |
+    Case 1: Umbilical granuloma - treat with silver nitrate application, usually resolves
+    Case 2: Umbilical hernia - benign in most cases, typically closes by age 4-5, observation unless very large or incarcerated
+    Case 3: Possible renal mass (hydronephrosis, multicystic dysplastic kidney, Wilms tumor) - needs urgent ultrasound
+
+hip_exam_cases:
+  title: "Hip Examination and DDH Screening"
+  difficulty: "intermediate"
+  scenario: |
+    **Case 1:**
+    Term female infant. First-born. Breech presentation until 36 weeks.
+    Hip exam: Symmetric leg lengths. Negative Ortolani. Negative Barlow.
+    Full abduction bilaterally. Equal gluteal folds.
+
+    **Risk factors? Next steps?**
+
+    **Case 2:**
+    Term female infant. Family history of DDH in mother.
+    Hip exam: Positive Ortolani sign on left (palpable clunk with abduction).
+    Limited abduction on left compared to right.
+
+    **Your assessment? Management?**
+
+    **Case 3:**
+    Term male infant. Normal exam. No risk factors.
+    Hip exam: Symmetric abduction. Negative Ortolani and Barlow.
+
+    **Any further screening needed?**
+
+  expected_findings: |
+    Case 1: Risk factors present (breech, female) - needs hip ultrasound at 6 weeks even with normal exam
+    Case 2: Positive Ortolani = hip dysplasia present - urgent orthopedic referral, ultrasound, likely Pavlik harness
+    Case 3: Low risk, normal exam - routine screening only
+
+extremity_spine_findings:
+  title: "Extremity and Spine Assessment"
+  difficulty: "intermediate"
+  scenario: |
+    **Case 1:**
+    Small sacral dimple noted, 1 cm above anal verge. Base visible.
+    No tuft of hair. No drainage. Normal lower extremity tone and movement.
+
+    **Case 2:**
+    Extra digit on left hand, attached by small skin bridge.
+    No bone palpable in extra digit. Otherwise normal hand development.
+
+    **Case 3:**
+    Feet turned inward significantly. Rigid, cannot be passively corrected to neutral position.
+    Creases on medial aspect of feet. Otherwise normal lower extremity exam.
+
+  expected_findings: |
+    Case 1: Low sacral dimple with visible base - typically benign, no imaging needed unless other concerning features
+    Case 2: Postaxial polydactyly - can be tied off or surgically removed, usually benign
+    Case 3: Clubfoot (talipes equinovarus) - needs orthopedic referral for Ponseti casting
+
+# ============================================
+# MODULE 5: SKIN & NEUROLOGICAL
+# ============================================
+
+skin_findings_comprehensive:
+  title: "Newborn Skin - Benign vs Concerning"
+  difficulty: "intermediate"
+  scenario: |
+    **Case 1:**
+    Multiple small white papules on nose and cheeks. Present since birth.
+    No erythema. Infant well-appearing.
+
+    **Case 2:**
+    Blotchy erythematous rash with central yellow-white papules.
+    Appears on trunk and extremities. Started day 2, infant is 3 days old.
+    Afebrile, feeding well.
+
+    **Case 3:**
+    Blue-gray pigmented patch on lower back and buttocks.
+    Irregular borders. Present since birth. Term infant of Asian descent.
+
+    **Case 4:**
+    Vesicular rash in grouped clusters on scalp.
+    Infant appears irritable. Born to mother with history of HSV.
+
+  expected_findings: |
+    Case 1: Milia - benign, keratin cysts, resolve spontaneously
+    Case 2: Erythema toxicum - benign newborn rash, can do Wright stain (eosinophils), resolves spontaneously
+    Case 3: Mongolian spots - benign pigmented birthmark, fades over years, more common in darker-skinned infants
+    Case 4: Concerning for neonatal HSV - needs immediate workup (CSF, blood cultures, PCR), start IV acyclovir
+
+primitive_reflexes:
+  title: "Primitive Reflex Assessment"
+  difficulty: "advanced"
+  scenario: |
+    **Moro Reflex:**
+    Video shows infant's head suddenly but gently dropped back while supported.
+    Infant demonstrates symmetric abduction and extension of arms, hands open,
+    followed by adduction and flexion. Begins to cry.
+
+    **Rooting Reflex:**
+    Cheek stroked, infant turns head toward stimulus and opens mouth.
+
+    **Grasp Reflex:**
+    Finger placed in palm, infant's fingers flex and grasp tightly.
+
+    **Absent Reflex Case:**
+    Moro reflex attempted - no response on right arm. Left arm responds normally.
+    Right arm held limply by side. No spontaneous movement of right arm.
+
+  expected_findings: |
+    Normal reflexes demonstrate intact neurological function.
+    Moro: Present birth to 3-6 months
+    Rooting: Present birth to 3-4 months
+    Grasp: Present birth to 5-6 months
+    Absent Moro on one side: Concerning for brachial plexus injury (Erb's palsy) or clavicle fracture
+
+neurological_exam_comprehensive:
+  title: "Comprehensive Neurological Assessment"
+  difficulty: "advanced"
+  scenario: |
+    **Case 1: Term infant, normal exam**
+    - Alert, responsive to voice and touch
+    - Symmetric spontaneous movements all extremities
+    - Flexed resting posture
+    - Good head control when pulled to sit (minimal lag)
+    - Normal tone throughout
+    - All primitive reflexes intact and symmetric
+
+    **Case 2: Term infant, concerning findings**
+    - Decreased spontaneous movement
+    - Floppy, hypotonic ("frog-leg" posture when supine)
+    - Significant head lag when pulled to sit
+    - Weak suck, poor feeding
+    - Diminished deep tendon reflexes
+
+    **Case 3: Infant born at 42 weeks after prolonged labor**
+    - Hypertonic, fisted hands
+    - Jittery movements
+    - Poor feeding, irritable
+    - High-pitched cry
+    - Seizure-like activity witnessed
+
+  expected_findings: |
+    Case 1: Normal neurological exam for term infant
+    Case 2: Hypotonia - broad differential (genetic syndromes, neuromuscular disorders, sepsis, HIE)
+           Needs urgent workup: labs, genetics consult, neurology consult, brain imaging
+    Case 3: Concerning for hypoxic-ischemic encephalopathy (HIE) or other CNS insult
+           Needs immediate evaluation, EEG, brain imaging, consider therapeutic hypothermia if within window
