@@ -1,7 +1,7 @@
 ---
 layout: page
-title: WorkDay Tracker
-permalink: /workday-tracker/
+title: ClockWork-TimeBox
+permalink: /clockwork-timebox/
 description: Visual time-tracking and workday planning tool with task management, analytics, and Pomodoro timer
 ---
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
