@@ -607,6 +607,10 @@ permalink: /prompt-snippet-manager/
             <option value="">All Tags</option>
         </select>
 
+        <button class="btn btn-primary btn-sm" onclick="createNewSnippet()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg> New Snippet
+        </button>
+
         <button class="btn btn-secondary btn-sm" onclick="exportAllSnippets()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15" /></svg> Export All
         </button>
@@ -892,16 +896,34 @@ permalink: /prompt-snippet-manager/
 
     window.copyFromView = function() {
         navigator.clipboard.writeText(currentViewContent).then(() => {
-            const btn = event.target;
-            const originalText = btn.textContent;
-            btn.textContent = '✅ Copied!';
+            const btn = event.currentTarget || event.target.closest('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Copied!';
             setTimeout(() => {
-                btn.textContent = originalText;
+                btn.innerHTML = originalText;
             }, 2000);
         }).catch(err => {
             alert('Failed to copy to clipboard');
             console.error(err);
         });
+    };
+
+    // =====================================================
+    // CREATE NEW SNIPPET
+    // =====================================================
+    window.createNewSnippet = function() {
+        currentEditId = null;
+
+        document.getElementById('modal-title').textContent = 'Create New Prompt';
+        document.getElementById('edit-id').value = '';
+        document.getElementById('edit-title').value = '';
+        document.getElementById('edit-tags').value = '';
+        document.getElementById('edit-content').value = '';
+
+        updateCharCount();
+
+        document.getElementById('edit-modal').classList.add('active');
+        document.getElementById('edit-title').focus();
     };
 
     // =====================================================
@@ -925,7 +947,6 @@ permalink: /prompt-snippet-manager/
     };
 
     window.saveEdit = function() {
-        const id = parseInt(document.getElementById('edit-id').value);
         const title = document.getElementById('edit-title').value.trim();
         const tags = document.getElementById('edit-tags').value
             .split(',')
@@ -938,13 +959,27 @@ permalink: /prompt-snippet-manager/
             return;
         }
 
-        const snippetIndex = snippets.findIndex(s => s.id === id);
-        if (snippetIndex === -1) return;
+        if (currentEditId === null) {
+            // Create new snippet
+            const newSnippet = {
+                id: Date.now(),
+                title: title,
+                content: content,
+                tags: tags.length > 0 ? tags : ['custom'],
+                created: new Date().toISOString(),
+                charCount: content.length
+            };
+            snippets.unshift(newSnippet);
+        } else {
+            // Edit existing snippet
+            const snippetIndex = snippets.findIndex(s => s.id === currentEditId);
+            if (snippetIndex === -1) return;
 
-        snippets[snippetIndex].title = title;
-        snippets[snippetIndex].tags = tags;
-        snippets[snippetIndex].content = content;
-        snippets[snippetIndex].charCount = content.length;
+            snippets[snippetIndex].title = title;
+            snippets[snippetIndex].tags = tags.length > 0 ? tags : snippets[snippetIndex].tags;
+            snippets[snippetIndex].content = content;
+            snippets[snippetIndex].charCount = content.length;
+        }
 
         saveSnippets();
         closeModal();
@@ -988,9 +1023,9 @@ permalink: /prompt-snippet-manager/
         if (!snippet) return;
 
         navigator.clipboard.writeText(snippet.content).then(() => {
-            const btn = event.target;
+            const btn = event.currentTarget || event.target.closest('button');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '✅ Copied!';
+            btn.innerHTML = 'Copied!';
             setTimeout(() => {
                 btn.innerHTML = originalText;
             }, 2000);
