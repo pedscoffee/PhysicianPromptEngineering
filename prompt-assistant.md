@@ -1200,7 +1200,7 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         const initBtn = document.getElementById('init-btn');
 
         statusPanel.className = 'status-panel loading';
-        statusMessage.textContent = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg> Initializing AI model...';
+        statusMessage.innerHTML = 'Initializing AI model...';
         statusDetails.textContent = 'First time: ~2GB download (cached for future visits)';
         progressBar.classList.add('active');
         initBtn.disabled = true;
@@ -1212,14 +1212,14 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);
                         progressFill.style.width = `${percent}%`;
-                        statusMessage.textContent = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg> Loading: ${percent}%`;
+                        statusMessage.innerHTML = `Loading: ${percent}%`;
                         statusDetails.textContent = progress.text;
                     }
                 }
             );
 
             statusPanel.className = 'status-panel ready';
-            statusMessage.textContent = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg> AI Assistant Ready!';
+            statusMessage.innerHTML = 'AI Assistant Ready!';
             statusDetails.textContent = 'Model loaded and running locally in your browser.';
             progressBar.classList.remove('active');
             initBtn.style.display = 'none';
@@ -1610,7 +1610,7 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         }
 
         charCounter.className = className;
-        charCounter.textContent = message;
+        charCounter.innerHTML = message;
     }
 
     // =====================================================
@@ -1658,9 +1658,9 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     window.copyPrompt = async function() {
         try {
             await navigator.clipboard.writeText(currentOutput);
-            const btn = event.target;
+            const btn = event.currentTarget || event.target.closest('button');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg> Copied!';
+            btn.innerHTML = 'Copied!';
             setTimeout(() => btn.innerHTML = originalText, 2000);
         } catch (error) {
             alert('Failed to copy to clipboard. Please select and copy manually.');
@@ -1670,9 +1670,9 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     window.copyPromptRefine = async function() {
         try {
             await navigator.clipboard.writeText(currentOutputRefine);
-            const btn = event.target;
+            const btn = event.currentTarget || event.target.closest('button');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg> Copied!';
+            btn.innerHTML = 'Copied!';
             setTimeout(() => btn.innerHTML = originalText, 2000);
         } catch (error) {
             alert('Failed to copy to clipboard. Please select and copy manually.');
@@ -1728,8 +1728,8 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
 
             localStorage.setItem('aiPromptSnippets', JSON.stringify(snippets));
 
-            if (confirm('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg> Saved to Snippet Manager!\n\nWould you like to open the Snippet Manager now?')) {
-                window.location.href = '/prompt-snippet-manager';
+            if (confirm('Saved to Snippet Manager!\n\nWould you like to open the Snippet Manager now?')) {
+                window.open('/prompt-snippet-manager', '_blank');
             }
         } catch (error) {
             alert('Failed to save to Snippet Manager. Storage might be full.');
