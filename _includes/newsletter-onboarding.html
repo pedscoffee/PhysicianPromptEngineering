@@ -1,0 +1,73 @@
+<!-- Newsletter Invitation Modal -->
+<div class="onboarding-overlay" id="newsletterOnboarding">
+    <div class="onboarding-modal">
+        <button class="onboarding-close" onclick="closeOnboarding('newsletterOnboarding')" aria-label="Close">&times;</button>
+
+        <div class="onboarding-content">
+            <h2>📬 Stay in the Loop</h2>
+            <p>
+                Join <strong>1,000+ physicians</strong> who get weekly updates on:
+            </p>
+
+            <ul style="font-size: 1.05rem; margin: 1.5rem 0;">
+                <li>New prompts and documentation techniques</li>
+                <li>Time-saving clinical tools and updates</li>
+                <li>Real-world AI implementation strategies</li>
+                <li>Early access to new features</li>
+            </ul>
+
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--color-primary); margin: 1.5rem 0;">
+                <p style="margin: 0; font-weight: 600; color: var(--color-text);">
+                    💡 We respect your inbox
+                </p>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem;">
+                    One email per week, max. Unsubscribe anytime. No spam, ever.
+                </p>
+            </div>
+
+            <!-- Embedded Substack Form -->
+            <div class="embed-container" style="margin: 2rem 0;">
+                <iframe src="https://pedscoffee.substack.com/embed" width="100%" height="320" style="border:1px solid #EEE; background:white; border-radius: 8px;" frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <div class="onboarding-actions">
+                <button class="onboarding-btn onboarding-btn-text" onclick="completeOnboarding('newsletterOnboarding')">
+                    Maybe later
+                </button>
+            </div>
+
+            <p style="text-align: center; font-size: 0.85rem; color: #6c757d; margin-top: 1rem;">
+                By subscribing, you agree to receive emails from Physician Prompt Engineering.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize newsletter onboarding with multiple triggers
+document.addEventListener('DOMContentLoaded', function() {
+    OnboardingSystem.init('newsletterOnboarding', {
+        totalSteps: 1,
+        localStorageKey: 'ppe_newsletter_prompt_shown',
+        showOnce: true, // Only show once per user
+        delay: 0, // No initial delay
+        triggers: [
+            // Show after user scrolls 60% down the page
+            { type: 'scroll', percentage: 60 },
+            // OR show when user tries to leave the page (exit intent)
+            { type: 'exit-intent' }
+        ],
+        onComplete: function() {
+            console.log('Newsletter prompt dismissed');
+        }
+    });
+
+    // Also set up manual trigger for newsletter links
+    document.querySelectorAll('a[href*="newsletter"], .newsletter-trigger').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            OnboardingSystem.trigger('newsletterOnboarding');
+        });
+    });
+});
+</script>
