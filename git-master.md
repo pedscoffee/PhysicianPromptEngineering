@@ -1335,11 +1335,4 @@ What would you like to know about Git? I can explain what you're seeing in the v
         div.textContent = text;
         return div.innerHTML;
     }
-
-    // Make functions available globally
-    window.initializeAI = initializeAI;
-    window.analyzeRepository = analyzeRepository;
-    window.loadExampleRepo = loadExampleRepo;
-    window.sendChatMessage = sendChatMessage;
-    window.askQuickQuestion = askQuickQuestion;
 </script>
