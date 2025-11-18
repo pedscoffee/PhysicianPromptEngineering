@@ -9,7 +9,7 @@ description: Visual time-tracking and workday planning tool with task management
 <!-- Data Warning Notice -->
 <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">
     <p style="margin: 0; color: #856404;">
-        <strong>⚠️ Important:</strong> Your workday data is stored in your browser's local storage.
+        <strong>Important:</strong> Your workday data is stored in your browser's local storage.
         <strong>Export your data regularly</strong> to avoid losing it if you clear your browser cache or use a different device.
     </p>
 </div>
@@ -1064,10 +1064,10 @@ description: Visual time-tracking and workday planning tool with task management
         <!-- Quick Actions -->
         <div class="quick-actions">
             <button class="btn btn-outline" onclick="switchTab('pomodoro')">
-                🍅 Start Pomodoro
+                Start Pomodoro
             </button>
             <button class="btn btn-outline" onclick="openTaskModal()">
-                ➕ Add Task
+                Add Task
             </button>
         </div>
     </div>
@@ -1141,10 +1141,10 @@ description: Visual time-tracking and workday planning tool with task management
                     <option value="all">All Time</option>
                 </select>
                 <button class="btn btn-primary" onclick="exportToCSV()">
-                    📊 Export to CSV
+                    Export to CSV
                 </button>
                 <button class="btn btn-outline" onclick="exportToJSON()">
-                    💾 Export to JSON
+                    Export to JSON
                 </button>
             </div>
         </div>
@@ -1396,28 +1396,11 @@ description: Visual time-tracking and workday planning tool with task management
                 </div>
             </div>
 
-            <div class="form-group">
-                <label>Shape:</label>
-                <div class="shape-picker">
-                    <button class="shape-option" onclick="selectShape('circle')">
-                        <div class="shape-preview circle"></div>
-                        Circle
-                    </button>
-                    <button class="shape-option" onclick="selectShape('rounded-square')">
-                        <div class="shape-preview rounded-square"></div>
-                        Rounded
-                    </button>
-                    <button class="shape-option" onclick="selectShape('square')">
-                        <div class="shape-preview square"></div>
-                        Square
-                    </button>
-                </div>
-            </div>
         </div>
 
         <div class="modal-footer">
             <button class="btn btn-outline" onclick="closeTaskModal()">Cancel</button>
-            <button class="btn btn-success" id="deleteTaskBtn" onclick="deleteTask()" style="display:none; margin-right: auto;">Delete</button>
+            <button class="btn btn-danger" id="deleteTaskBtn" onclick="deleteTask()" style="display:none; margin-right: auto;">Delete</button>
             <button class="btn btn-primary" onclick="saveTaskFromModal()">Save Task</button>
         </div>
     </div>
@@ -1435,10 +1418,10 @@ description: Visual time-tracking and workday planning tool with task management
         <div class="onboarding-step" id="onboardingStep2" style="display:none;">
             <h2>How It Works</h2>
             <ul class="feature-list">
-                <li>🎯 Click any task icon to start tracking time</li>
-                <li>📊 Review your day with detailed analytics</li>
-                <li>🍅 Use Pomodoro timer to stay focused</li>
-                <li>📝 Keep a daily journal</li>
+                <li>Click any task icon to start tracking time</li>
+                <li>Review your day with detailed analytics</li>
+                <li>Use Pomodoro timer to stay focused</li>
+                <li>Keep a daily journal</li>
             </ul>
             <button class="btn btn-outline" onclick="prevOnboardingStep()">Back</button>
             <button class="btn btn-primary" onclick="nextOnboardingStep()">Continue</button>
@@ -1749,19 +1732,42 @@ const WorkDayTracker = {
 
             const timeToday = this.getTaskTimeToday(task.id);
             const iconSvg = createHeroIcon(task.icon, 36, 'white');
+            const deleteIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>';
 
             icon.innerHTML = `
-                <div class="icon-shape ${task.shape}" style="background-color: ${task.color};">
+                <div class="icon-shape circle" style="background-color: ${task.color}; position: relative;">
                     <div class="icon-emoji" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">${iconSvg}</div>
+                    <button class="task-delete-btn" data-task-id="${task.id}" style="position: absolute; top: -8px; right: -8px; width: 24px; height: 24px; border-radius: 50%; background: #e74c3c; border: 2px solid white; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s; color: white;">
+                        ${deleteIconSvg}
+                    </button>
                 </div>
                 <div class="icon-label">${task.name}</div>
                 <div class="time-indicator">${this.formatDuration(timeToday)}</div>
             `;
 
-            icon.onclick = () => this.onTaskClick(task.id);
+            icon.onclick = (e) => {
+                if (e.target.closest('.task-delete-btn')) {
+                    e.stopPropagation();
+                    this.confirmDeleteTask(task.id);
+                } else {
+                    this.onTaskClick(task.id);
+                }
+            };
+
             icon.oncontextmenu = (e) => {
                 e.preventDefault();
                 this.editTask(task.id);
+            };
+
+            // Show delete button on hover
+            icon.onmouseenter = (e) => {
+                const deleteBtn = icon.querySelector('.task-delete-btn');
+                if (deleteBtn) deleteBtn.style.opacity = '1';
+            };
+
+            icon.onmouseleave = (e) => {
+                const deleteBtn = icon.querySelector('.task-delete-btn');
+                if (deleteBtn) deleteBtn.style.opacity = '0';
             };
 
             container.appendChild(icon);
@@ -1952,6 +1958,28 @@ const WorkDayTracker = {
         this.saveToStorage();
         this.render();
         this.closeTaskModal();
+        this.showFlash('Task deleted', 'success');
+    },
+
+    confirmDeleteTask(taskId) {
+        const task = this.state.tasks.find(t => t.id === taskId);
+        if (!task) return;
+
+        if (!confirm(`Delete "${task.name}"? Time entries will be preserved.`)) return;
+
+        // Stop tracking if this is the active task
+        if (this.state.activeTask && this.state.activeTask.id === taskId) {
+            const entry = this.getCurrentTimeEntry();
+            if (entry) {
+                entry.endTime = new Date().toISOString();
+                entry.duration = Math.floor((new Date(entry.endTime) - new Date(entry.startTime)) / 1000);
+            }
+            this.state.activeTask = null;
+        }
+
+        this.state.tasks = this.state.tasks.filter(t => t.id !== taskId);
+        this.saveToStorage();
+        this.render();
         this.showFlash('Task deleted', 'success');
     },
 
@@ -2459,10 +2487,6 @@ function showIconsForCategory() {
 
 function selectColor(color) {
     WorkDayTracker.state.selectedColor = color;
-}
-
-function selectShape(shape) {
-    WorkDayTracker.state.selectedShape = shape;
 }
 
 // Analytics functions
