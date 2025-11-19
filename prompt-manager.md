@@ -506,6 +506,138 @@ permalink: /prompt-manager/
             justify-content: center;
         }
     }
+
+    /* Premium Banner Default Styles */
+    .premium-banner {
+        background: #fff7ed;
+        border: 1px solid #fdba74;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .premium-banner strong {
+        color: #9a3412;
+    }
+    .premium-banner p {
+        margin: 0;
+        color: #c2410c;
+        font-size: 0.9em;
+    }
+
+    /* Dark Mode Support */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+        }
+        .hero h1 {
+            color: #ecfdf5;
+        }
+        .hero-subtitle {
+            color: #d1fae5;
+        }
+
+        /* Stats & Panels */
+        .stats-bar, .toolbar, .snippet-card, .empty-state, .modal-content {
+            background-color: #1f2937;
+            border-color: #374151;
+            color: #f9fafb;
+        }
+
+        .stat-value {
+            color: #34d399;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+        }
+
+        /* Text Colors */
+        h2, h3, .snippet-title, .modal-header h2 {
+            color: #f9fafb;
+        }
+
+        .snippet-meta, .meta-item, .empty-state h2, .empty-state p {
+            color: #9ca3af;
+        }
+
+        /* Inputs & Form Elements */
+        .search-box input, .filter-select, .form-group input, .form-group textarea {
+            background-color: #111827;
+            border-color: #374151;
+            color: #f9fafb;
+        }
+
+        .search-box input::placeholder {
+            color: #6b7280;
+        }
+
+        /* Snippet Preview */
+        .snippet-preview {
+            background: #111827;
+        }
+
+        .snippet-preview pre {
+            color: #d1d5db;
+        }
+
+        /* Tags */
+        .tag {
+            background: #065f46;
+            color: #d1fae5;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #064e3b;
+            border-color: #059669;
+        }
+        .info-box h3, .info-box ul, .info-box li {
+            color: #d1fae5;
+        }
+
+        /* Modal */
+        .modal {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-header {
+            border-bottom-color: #374151;
+        }
+
+        .modal-footer {
+            border-top-color: #374151;
+        }
+
+        .modal-close:hover {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        .form-group label {
+            color: #d1d5db;
+        }
+
+        /* Premium Banner - Dark Mode */
+        .premium-banner {
+            background: #431407;
+            border-color: #9a3412;
+        }
+        .premium-banner strong {
+            color: #fdba74;
+        }
+        .premium-banner p {
+            color: #fed7aa;
+        }
+    }
 </style>
 
 <!-- Hero Section -->
@@ -520,13 +652,14 @@ permalink: /prompt-manager/
 
 <div class="container">
     <!-- Premium Banner -->
-    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+    <!-- Premium Banner -->
+    <div class="premium-banner">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
             <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
         </svg>
         <div>
-            <strong style="color: #9a3412;">Premium Feature</strong>
-            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+            <strong>Premium Feature</strong>
+            <p>This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
         </div>
     </div>
 
