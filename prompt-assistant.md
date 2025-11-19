@@ -167,6 +167,50 @@ permalink: /prompt-assistant/
         display: none;
     }
 
+    .model-selector {
+        margin-bottom: 20px;
+        text-align: left;
+        background: rgba(255,255,255,0.5);
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .model-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+
+    .model-option:hover {
+        background: rgba(255,255,255,0.5);
+    }
+
+    .model-option:last-child {
+        margin-bottom: 0;
+    }
+
+    .model-option input {
+        margin-top: 6px;
+        accent-color: #2563eb;
+    }
+
+    .model-info strong {
+        display: block;
+        color: #1f2937;
+        font-size: 1em;
+    }
+
+    .model-info span {
+        font-size: 0.9em;
+        color: #4b5563;
+    }
+
     .progress-bar.active {
         display: block;
     }
@@ -730,6 +774,24 @@ permalink: /prompt-assistant/
         <div class="progress-bar" id="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
+        
+        <div class="model-selector" id="model-selector">
+            <div style="font-weight: 600; margin-bottom: 10px; color: #374151;">Select AI Model:</div>
+            <label class="model-option">
+                <input type="radio" name="model-choice" value="thinking" checked>
+                <div class="model-info">
+                    <strong>Thinking (Phi-3.5 Mini)</strong>
+                    <span>Higher quality, better reasoning. Best for complex prompts. (~2.2GB)</span>
+                </div>
+            </label>
+            <label class="model-option">
+                <input type="radio" name="model-choice" value="fast">
+                <div class="model-info">
+                    <strong>Fast (Llama 3.2 1B)</strong>
+                    <span>Lightning fast, lower memory. Good for older devices. (~870MB)</span>
+                </div>
+            </label>
+        </div>
         <button id="init-btn" class="btn btn-success btn-lg" onclick="initializeEngine()">
             Initialize AI Assistant
         </button>
@@ -918,7 +980,16 @@ permalink: /prompt-assistant/
     let charLimit = 5000;
 
     // Model configuration
-    const MODEL_ID = "Phi-3.5-mini-instruct-q4f16_1-MLC";
+    const MODELS = {
+        thinking: {
+            id: "Phi-3.5-mini-instruct-q4f16_1-MLC",
+            name: "Thinking (Phi-3.5 Mini)"
+        },
+        fast: {
+            id: "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+            name: "Fast (Llama 3.2 1B)"
+        }
+    };
 
     // System prompts from metaprompt files
     const SYSTEM_PROMPT_GENERATOR = `# Custom A/P Formatting Prompt Generator
@@ -1198,16 +1269,25 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         const progressBar = document.getElementById('progress-bar');
         const progressFill = document.getElementById('progress-fill');
         const initBtn = document.getElementById('init-btn');
+        const modelSelector = document.getElementById('model-selector');
+
+        // Get selected model
+        const selectedValue = document.querySelector('input[name="model-choice"]:checked').value;
+        const selectedModel = MODELS[selectedValue];
 
         statusPanel.className = 'status-panel loading';
-        statusMessage.innerHTML = 'Initializing AI model...';
-        statusDetails.textContent = 'First time: ~2GB download (cached for future visits)';
+        statusMessage.innerHTML = `Initializing ${selectedModel.name}...`;
+        statusDetails.textContent = 'First time load may take a few minutes (cached for future visits)';
         progressBar.classList.add('active');
         initBtn.disabled = true;
+        
+        // Hide selector during load to prevent switching
+        modelSelector.style.opacity = '0.5';
+        modelSelector.style.pointerEvents = 'none';
 
         try {
             engine = await CreateMLCEngine(
-                MODEL_ID,
+                selectedModel.id,
                 {
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);
@@ -1220,9 +1300,10 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
 
             statusPanel.className = 'status-panel ready';
             statusMessage.innerHTML = 'AI Assistant Ready!';
-            statusDetails.textContent = 'Model loaded and running locally in your browser.';
+            statusDetails.textContent = `${selectedModel.name} loaded and running locally.`;
             progressBar.classList.remove('active');
             initBtn.style.display = 'none';
+            modelSelector.style.display = 'none'; // Hide selector after load
 
             // Show UI elements
             document.getElementById('settings-panel').style.display = 'block';
@@ -1254,6 +1335,10 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
             console.error('Engine initialization error:', error);
             initBtn.disabled = false;
             initBtn.textContent = 'Retry';
+            
+            // Re-enable selector on error
+            modelSelector.style.opacity = '1';
+            modelSelector.style.pointerEvents = 'auto';
         }
 
         isLoading = false;
@@ -1793,6 +1878,6 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     <h3 style="color: #1e40af; font-size: 1.2em; margin-bottom: 12px;">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>Privacy & How It Works
     </h3>
-    <p style="margin-bottom: 15px;">This tool downloads a 2GB AI model (Phi-3.5-mini) to your browser on first use. After that, everything runs locally—no internet required, complete privacy. The AI analyzes your examples and helps you craft the perfect prompt.</p>
+    <p style="margin-bottom: 15px;">This tool downloads an AI model to your browser on first use. After that, everything runs locally—no internet required, complete privacy. The AI analyzes your examples and helps you craft the perfect prompt.</p>
     <p><strong>Performance:</strong> Expect 10-30 tokens/second on most laptops, faster with dedicated GPUs. First download takes 5-15 minutes, then it's cached forever.</p>
 </div>
