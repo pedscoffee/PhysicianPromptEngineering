@@ -10,7 +10,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     {%- include beta-notice.html -%}
     <h1 class="hero-title">Transform Your Clinical Documentation in Minutes</h1>
     <p class="hero-subtitle">
-      Save 2-5 minutes per patient encounter with physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
+     Physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
     </p>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>

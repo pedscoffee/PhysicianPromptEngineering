@@ -103,7 +103,7 @@ description: "Help build our open-source community. We invite physicians to cont
         </div>
         <div class="card-body">
           <ul>
-            <li>Include 3-5 real examples (de-identified)</li>
+            <li>Include 3-5 synthetic examples (no real data)</li>
             <li>Test on minimum 10 patient encounters</li>
             <li>Verify compatibility with common EMR systems</li>
             <li>Remove any institution-specific information</li>

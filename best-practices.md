@@ -263,7 +263,7 @@ symptomatic relief."</code></pre>
           <li><strong>Always review</strong> AI output before finalizing</li>
           <li><strong>Maintain responsibility</strong> for clinical accuracy</li>
           <li><strong>Document within</strong> approved institutional tools only</li>
-          <li><strong>Expect 90-95% accuracy</strong>, not perfection</li>
+          <li><strong>Expect output to be helpful</strong>, but also expect errors</li>
         </ul>
 
         <h3 class="mt-6 mb-4">Quality Assurance Checklist</h3>
