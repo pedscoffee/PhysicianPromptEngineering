@@ -99,6 +99,28 @@ permalink: /premium/
     }
 </style>
 
+<div class="premium-hero">
+    <h1>Value for Value</h1>
+    <p>
+        All the premium tools are free to use. Our goal is that the entire community can benefit. We believe in an honor system "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
+    </p>
+    <p style="font-size: 1.1em; font-weight: 500;">
+        Choose a contribution level that matches your current season of life. If you are a student, sharing this resource with others is the best way you can help!
+    </p>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <stripe-buy-button
+        buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
+        publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo">
+    </stripe-buy-button>
+</div>
+
+<div class="value-model">
+    <h2>Why become a Premium Supporter?</h2>
+    <p style="max-width: 700px; margin: 0 auto; color: #475569;">
+        Your support keeps these tools ad-free, private, and open-source. It funds the development of new features like the local AI Prompt Assistant and ensures we can continue building for the medical community.
+    </p>
+</div>
+
 <h2 style="text-align: center; margin-bottom: 30px;">Premium Tools</h2>
 
 <div class="features-grid">
@@ -127,9 +149,7 @@ permalink: /premium/
         </p>
         <a href="/prompt-manager" class="btn-primary">Manage Prompts</a>
     </div>
-</div>
 
-<div class="features-grid">
     <div class="feature-card">
         <h3>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
@@ -169,36 +189,6 @@ permalink: /premium/
         <a href="/qi-project-tracker" class="btn-primary">Manage Project</a>
     </div>
 </div>
-
-<div class="value-model">
-    <h2>Why become a Premium Supporter?</h2>
-    <p style="max-width: 700px; margin: 0 auto 30px; color: #475569;">
-        Your support keeps these tools ad-free, private, and open-source. It funds the development of new features like the local AI Prompt Assistant and ensures we can continue building for the medical community.
-    </p>
-    
-</div>
-
-<div class="premium-hero">
-    <h1>Value for Value</h1>
-    <p>
-        All the premium tools are free to use.  Our goal is that the entire community can benefit.  We believe in a honor system "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
-    </p>
-    <p style="font-size: 1.1em; font-weight: 500;">
-       Choose a contribution level that matches your current season of life.  If you are a student, sharing this resource with others is the best way you can help!  
-    </p>
-
- <script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<stripe-buy-button
-  buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
-  publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo"
->
-</stripe-buy-button>
-</div>
-
-
 
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
     <h3>Join the Community</h3>
