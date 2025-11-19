@@ -115,12 +115,16 @@ permalink: /premium/
         Your support keeps these tools ad-free, private, and open-source. It funds the development of new features like the local AI Prompt Assistant and ensures we can continue building for the medical community.
     </p>
     
-    <!-- Stripe Placeholder -->
-    <div class="placeholder-box">
-        <h3>👇 Support the Project</h3>
-        <p>Stripe Payment Link Placeholder</p>
-        <small>(Insert your Stripe payment link or embed here)</small>
-    </div>
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<stripe-buy-button
+  buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
+  publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo"
+>
+</stripe-buy-button>
+
 </div>
 
 <h2 style="text-align: center; margin-bottom: 30px;">Premium Tools</h2>
