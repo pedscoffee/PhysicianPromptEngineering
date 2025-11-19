@@ -1,9 +1,18 @@
+```
 ---
 layout: page
 title: QI Project Tracker
 permalink: /qi-project-tracker/
 description: Create and track quality improvement projects with custom variables, data collection, visualization, and analysis
 ---
+
+<div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+    <span style="font-size: 24px;">👑</span>
+    <div>
+        <strong style="color: #9a3412;">Premium Feature</strong>
+        <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+    </div>
+</div>
 
 <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;">
 
