@@ -65,7 +65,7 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 ### Tools
 
 - **[A&P Prompt Generator](https://physicianpromptengineering.com/prompt-generator)** - Create customized Assessment & Plan prompts
-- **[Snippet Manager](https://physicianpromptengineering.com/snippet-manager)** - Organize and manage your prompt library locally
+- **[Prompt Manager](https://physicianpromptengineering.com/prompt-manager)** - Organize and manage your prompt library locally
 - **[E&M Calculator](https://physicianpromptengineering.com/cpt-calculator)** - CPT code complexity analysis
 - **[Dot Phrase Library](https://physicianpromptengineering.com/dot-phrase-library)** - Reusable EMR text snippets
 

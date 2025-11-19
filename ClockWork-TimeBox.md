@@ -5,15 +5,56 @@ permalink: /clockwork-timebox/
 description: Visual time-tracking and workday planning tool with task management, analytics, and Pomodoro timer
 ---
 
-<div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
-    <img src="/favicon-32x32.png" alt="Premium" style="width: 24px; height: 24px; vertical-align: middle;">
-    <div>
-        <strong style="color: #9a3412;">Premium Feature</strong>
-        <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+<style>
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        padding: 60px 30px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+        color: #065f46;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2em;
+        color: #047857;
+        margin-bottom: 20px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 40px; height: 40px; display: inline-block; vertical-align: text-bottom; margin-right: 12px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>ClockWork TimeBox</h1>
+        <p class="hero-subtitle">
+            Visual time-tracking and workday planning tool with task management, analytics, and Pomodoro timer.
+        </p>
     </div>
 </div>
 
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+    <!-- Premium Banner -->
+    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+        </svg>
+        <div>
+            <strong style="color: #9a3412;">Premium Feature</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+        </div>
+    </div>
+
+
 
 <!-- Data Warning Notice -->
 <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">

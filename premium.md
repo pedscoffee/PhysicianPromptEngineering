@@ -148,12 +148,12 @@ permalink: /premium/
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 3.42 0h.003c.595.02 1.196.059 1.798.115l.132.012-.002.002h.002l.134-.012a48.217 48.217 0 0 1 3.418 0Zm-7.093 0c.595.02 1.196.059 1.798.115l.132.012-.002.002h.002l.134-.012a48.217 48.217 0 0 1 3.418 0" />
             </svg>
-            Snippet Manager
+            Prompt Manager
         </h3>
         <p style="color: #475569; margin-bottom: 20px;">
             Organize your favorite prompts, dot phrases, and clinical templates. Syncs with the Prompt Assistant for a seamless workflow.
         </p>
-        <a href="/prompt-snippet-manager" class="btn-primary">Manage Snippets</a>
+        <a href="/prompt-manager" class="btn-primary">Manage Prompts</a>
     </div>
 </div>
 

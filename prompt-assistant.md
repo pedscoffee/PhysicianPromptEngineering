@@ -30,7 +30,7 @@ permalink: /prompt-assistant/
 
     /* Hero Section */
     .hero {
-        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
         padding: 60px 30px;
         border-radius: 12px;
         margin-bottom: 40px;
@@ -40,12 +40,12 @@ permalink: /prompt-assistant/
     .hero h1 {
         font-size: 2.5em;
         margin-bottom: 15px;
-        color: #1e40af;
+        color: #065f46;
     }
 
     .hero-subtitle {
         font-size: 1.2em;
-        color: #1e40af;
+        color: #047857;
         margin-bottom: 20px;
         max-width: 800px;
         margin-left: auto;
@@ -736,19 +736,15 @@ permalink: /prompt-assistant/
 </div>
 
 <div class="container">
-    <!-- Paywall Notice -->
-    <div class="paywall-notice">
-        <h3 style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-            </svg>
-            Premium Feature
-        </h3>
-        <p>
-            This AI-powered prompt assistant and the integrated snippet manager are available to premium subscribers.
-            Support the development of free tools for physicians while getting access to advanced features.
-        </p>
-        <a href="/contribute" class="btn">Learn More About Premium Access</a>
+    <!-- Premium Banner -->
+    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+        </svg>
+        <div>
+            <strong style="color: #9a3412;">Premium Feature</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+        </div>
     </div>
 
     <!-- Warning Box -->
