@@ -440,6 +440,54 @@ permalink: /cram-for-rounds/
         display: block;
         border-radius: 8px;
     }
+
+    /* Model Selector Styles */
+    .model-selector-container {
+        text-align: left;
+        margin-bottom: 20px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .model-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-bottom: 10px;
+        background: white;
+        text-align: left;
+    }
+    
+    .model-option:hover {
+        border-color: #2a7ae2;
+        background: #f8fafc;
+    }
+    
+    .model-option input[type="radio"] {
+        margin-top: 4px;
+    }
+    
+    .model-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .model-info strong {
+        color: #1f2937;
+        font-size: 0.95em;
+    }
+    
+    .model-info span {
+        color: #6b7280;
+        font-size: 0.85em;
+    }
 </style>
 
 <!-- Banner Image -->
@@ -472,7 +520,25 @@ permalink: /cram-for-rounds/
 
     <!-- Status Panel -->
     <div id="status-panel" class="status-panel">
-        <div id="status-message">Click "Initialize AI" to begin</div>
+        <div id="status-message">Select a model and click "Initialize AI" to begin</div>
+        
+        <div class="model-selector-container">
+            <label class="model-option">
+                <input type="radio" name="model-choice" value="thinking">
+                <div class="model-info">
+                    <strong>Thinking (Phi-3.5 Mini)</strong>
+                    <span>Higher quality, better reasoning. Best for complex cases. (~2.2GB)</span>
+                </div>
+            </label>
+            <label class="model-option">
+                <input type="radio" name="model-choice" value="fast" checked>
+                <div class="model-info">
+                    <strong>Fast (Llama 3.2 1B)</strong>
+                    <span>Lightning fast, lower memory. Good for older devices. (~870MB)</span>
+                </div>
+            </label>
+        </div>
+
         <div id="status-details">Model is cached locally for instant loading on future visits.</div>
         <div id="progress-bar" class="progress-bar">
             <div id="progress-fill" class="progress-fill"></div>
@@ -572,7 +638,17 @@ Be as detailed or brief as you like - the AI will work with what you provide."><
     let conversationHistory = [];
     let studyGuideGenerated = false;
     let currentCase = '';
-    const LLM_MODEL = "Phi-3.5-mini-instruct-q4f16_1-MLC";
+    
+    const MODELS = {
+        thinking: {
+            id: "Phi-3.5-mini-instruct-q4f16_1-MLC",
+            name: "Thinking (Phi-3.5 Mini)"
+        },
+        fast: {
+            id: "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+            name: "Fast (Llama 3.2 1B)"
+        }
+    };
 
     // =====================================================
     // AI INITIALIZATION
@@ -592,8 +668,14 @@ Be as detailed or brief as you like - the AI will work with what you provide."><
         initBtn.disabled = true;
 
         try {
+            // Get selected model
+            const selectedValue = document.querySelector('input[name="model-choice"]:checked').value;
+            const selectedModel = MODELS[selectedValue];
+            
+            console.log("Initializing model:", selectedModel.name);
+
             llmEngine = await CreateMLCEngine(
-                LLM_MODEL,
+                selectedModel.id,
                 {
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);

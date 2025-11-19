@@ -548,10 +548,54 @@ body {
     font-size: 0.75rem;
   }
 
-  .pixel-button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
   }
+}
+
+/* Model Selector Styles */
+.model-selector-container {
+  margin-bottom: 2rem;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--ui-bg);
+  border: 4px solid var(--ui-border);
+  padding: 1rem;
+}
+
+.model-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 2px solid #444;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.model-option:hover {
+  border-color: #FFD700;
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.model-option input[type="radio"] {
+  margin-top: 4px;
+  accent-color: #FFD700;
+}
+
+.model-info strong {
+  color: #FFD700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.model-info span {
+  color: #c9d1d9;
+  font-size: 0.9em;
 }
 </style>
 
@@ -706,7 +750,25 @@ body {
   </div>
 
   <!-- Start Button -->
-  <div class="button-group" id="startSection">
+  <div class="button-group" id="startSection" style="flex-direction: column; align-items: center;">
+    <div class="model-selector-container">
+        <h3 style="color: #FFD700; margin-top: 0; margin-bottom: 1rem; text-align: center;">Select AI Model</h3>
+        <label class="model-option">
+            <input type="radio" name="model-choice" value="thinking">
+            <div class="model-info">
+                <strong>Thinking (Phi-3.5 Mini)</strong>
+                <span>Higher quality reasoning. Best for complex cases. (~2.2GB)</span>
+            </div>
+        </label>
+        <label class="model-option">
+            <input type="radio" name="model-choice" value="fast" checked>
+            <div class="model-info">
+                <strong>Fast (Llama 3.2 1B)</strong>
+                <span>Lightning fast speed. Good for older devices. (~870MB)</span>
+            </div>
+        </label>
+    </div>
+
     <button class="pixel-button" onclick="startGame()">
       Start Game
     </button>
@@ -733,6 +795,17 @@ let gameState = {
   llm: null,
   llmLoaded: false,
   cases: []
+};
+
+const MODELS = {
+    thinking: {
+        id: "Phi-3.5-mini-instruct-q4f16_1-MLC",
+        name: "Thinking (Phi-3.5 Mini)"
+    },
+    fast: {
+        id: "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+        name: "Fast (Llama 3.2 1B)"
+    }
 };
 
 // ============================================
@@ -772,8 +845,14 @@ async function initializeLLM() {
     // Import MLC Web LLM
     const { CreateMLCEngine } = await import('https://esm.run/@mlc-ai/web-llm');
 
+    // Get selected model
+    const selectedValue = document.querySelector('input[name="model-choice"]:checked').value;
+    const selectedModel = MODELS[selectedValue];
+    
+    console.log("Initializing model:", selectedModel.name);
+
     // Initialize the engine with progress callback
-    gameState.llm = await CreateMLCEngine("Llama-3.1-8B-Instruct-q4f32_1-MLC", {
+    gameState.llm = await CreateMLCEngine(selectedModel.id, {
       initProgressCallback: (progress) => {
         const percent = Math.round(progress.progress * 100);
         statusTextEl.textContent = `Loading AI model: ${percent}% - ${progress.text || ''}`;

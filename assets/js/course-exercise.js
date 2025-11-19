@@ -99,9 +99,9 @@ class CourseExercise {
 
       console.log('Creating LLM engine...');
 
-      // Initialize engine with Phi-3.5 mini model for faster loading and better performance
-      // Alternative models: "Llama-3.1-8B-Instruct-q4f16_1-MLC", "Qwen2.5-7B-Instruct-q4f16_1-MLC"
-      this.llm = await CreateMLCEngine("Phi-3.5-mini-instruct-q4f16_1-MLC", {
+      // Initialize engine with Llama 3.2 1B model for faster loading and better performance
+      // Alternative models: "Phi-3.5-mini-instruct-q4f16_1-MLC", "Qwen2.5-7B-Instruct-q4f16_1-MLC"
+      this.llm = await CreateMLCEngine("Llama-3.2-1B-Instruct-q4f16_1-MLC", {
         initProgressCallback: (progress) => {
           const percent = Math.round(progress.progress * 100);
           this.updateStatus(`Loading AI model: ${percent}% (${progress.text || 'downloading...'})`, 'loading');

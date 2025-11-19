@@ -774,14 +774,14 @@ permalink: /prompt-assistant/
         <div class="model-selector" id="model-selector">
             <div style="font-weight: 600; margin-bottom: 10px; color: #374151;">Select AI Model:</div>
             <label class="model-option">
-                <input type="radio" name="model-choice" value="thinking" checked>
+                <input type="radio" name="model-choice" value="thinking">
                 <div class="model-info">
                     <strong>Thinking (Phi-3.5 Mini)</strong>
                     <span>Higher quality, better reasoning. Best for complex prompts. (~2.2GB)</span>
                 </div>
             </label>
             <label class="model-option">
-                <input type="radio" name="model-choice" value="fast">
+                <input type="radio" name="model-choice" value="fast" checked>
                 <div class="model-info">
                     <strong>Fast (Llama 3.2 1B)</strong>
                     <span>Lightning fast, lower memory. Good for older devices. (~870MB)</span>

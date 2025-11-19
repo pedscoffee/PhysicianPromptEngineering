@@ -947,7 +947,68 @@ The exercises use a browser-based AI model that needs to be loaded first. Click 
   <p style="color: #78350f; margin: 0;">• All processing happens in your browser (privacy-first)</p>
 </div>
 
+<style>
+    .model-selector {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .model-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 15px;
+        background: #f9fafb;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        max-width: 300px;
+    }
+
+    .model-option:hover {
+        border-color: #2563eb;
+        background: #eff6ff;
+    }
+
+    .model-option input {
+        margin-top: 4px;
+    }
+
+    .model-info strong {
+        display: block;
+        color: #333;
+        margin-bottom: 2px;
+    }
+
+    .model-info span {
+        font-size: 0.85em;
+        color: #666;
+        display: block;
+        line-height: 1.4;
+    }
+</style>
+
 <div style="max-width: 600px; margin: 2rem auto; text-align: center;">
+  <div class="model-selector" id="model-selector">
+      <label class="model-option">
+          <input type="radio" name="model-choice" value="thinking">
+          <div class="model-info">
+              <strong>Thinking (Phi-3.5 Mini)</strong>
+              <span>Higher quality, better reasoning. Best for complex prompts. (~2.2GB)</span>
+          </div>
+      </label>
+      <label class="model-option">
+          <input type="radio" name="model-choice" value="fast" checked>
+          <div class="model-info">
+              <strong>Fast (Llama 3.2 1B)</strong>
+              <span>Lightning fast, lower memory. Good for quick exercises. (~870MB)</span>
+          </div>
+      </label>
+  </div>
   <button class="btn-init-ai" onclick="initializeAllExercises()">Initialize AI for Exercises</button>
   <div id="global-init-status" class="llm-status" style="margin-top: 1rem; display: none;"></div>
 </div>
@@ -955,21 +1016,41 @@ The exercises use a browser-based AI model that needs to be loaded first. Click 
 <script>
   let globalLLM = null;
   let globalInitialized = false;
+  
+  const MODELS = {
+      thinking: {
+          id: "Phi-3.5-mini-instruct-q4f16_1-MLC",
+          name: "Thinking (Phi-3.5 Mini)"
+      },
+      fast: {
+          id: "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+          name: "Fast (Llama 3.2 1B)"
+      }
+  };
 
   async function initializeAllExercises() {
     const btn = document.querySelector('.btn-init-ai');
     const status = document.getElementById('global-init-status');
+    const modelSelector = document.getElementById('model-selector');
 
     if (globalInitialized) {
       alert('AI already initialized!');
       return;
     }
 
+    // Get selected model
+    const selectedValue = document.querySelector('input[name="model-choice"]:checked').value;
+    const selectedModel = MODELS[selectedValue];
+
     btn.disabled = true;
-    btn.textContent = 'Initializing...';
+    btn.textContent = `Initializing ${selectedModel.name}...`;
     status.style.display = 'block';
     status.textContent = 'Loading AI model...';
     status.className = 'llm-status status-loading';
+    
+    // Disable model selection
+    const radioButtons = document.querySelectorAll('input[name="model-choice"]');
+    radioButtons.forEach(rb => rb.disabled = true);
 
     try {
       if (!navigator.gpu) {
@@ -978,7 +1059,7 @@ The exercises use a browser-based AI model that needs to be loaded first. Click 
 
       const { CreateMLCEngine } = await import('https://esm.run/@mlc-ai/web-llm');
 
-      globalLLM = await CreateMLCEngine("Llama-3.1-8B-Instruct-q4f32_1-MLC", {
+      globalLLM = await CreateMLCEngine(selectedModel.id, {
         initProgressCallback: (progress) => {
           const percent = Math.round(progress.progress * 100);
           status.textContent = `Loading: ${percent}% (${progress.text || 'downloading...'})`;
@@ -992,6 +1073,9 @@ The exercises use a browser-based AI model that needs to be loaded first. Click 
       status.textContent = 'AI Ready! You can now run exercises below.';
       status.className = 'llm-status status-ready';
       btn.style.display = 'none';
+      
+      // Hide model selector
+      modelSelector.style.display = 'none';
 
       console.log('Global LLM initialized successfully!');
     } catch (error) {
@@ -1000,6 +1084,9 @@ The exercises use a browser-based AI model that needs to be loaded first. Click 
       status.className = 'llm-status status-error';
       btn.disabled = false;
       btn.textContent = 'Retry Initialization';
+      
+      // Re-enable model selection
+      radioButtons.forEach(rb => rb.disabled = false);
     }
   }
 </script>

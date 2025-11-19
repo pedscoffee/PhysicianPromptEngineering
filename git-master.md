@@ -654,6 +654,50 @@ permalink: /git-master/
             gap: 10px;
         }
     }
+
+    /* Model Selector */
+    .model-selector {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .model-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 15px;
+        background: #f9fafb;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        max-width: 300px;
+    }
+
+    .model-option:hover {
+        border-color: #667eea;
+        background: #eff6ff;
+    }
+
+    .model-option input {
+        margin-top: 4px;
+    }
+
+    .model-info strong {
+        display: block;
+        color: #333;
+        margin-bottom: 2px;
+    }
+
+    .model-info span {
+        font-size: 0.85em;
+        color: #666;
+        display: block;
+        line-height: 1.4;
+    }
 </style>
 
 <div class="git-master-container">
@@ -692,7 +736,25 @@ permalink: /git-master/
 
     <!-- Status Panel -->
     <div id="status-panel" class="status-panel">
-        <div id="status-message">Click "Initialize AI Tutor" to begin</div>
+        <div id="status-message">Select an AI model and click "Initialize AI Tutor" to begin</div>
+        
+        <div class="model-selector" id="model-selector">
+            <label class="model-option">
+                <input type="radio" name="model-choice" value="thinking">
+                <div class="model-info">
+                    <strong>Thinking (Phi-3.5 Mini)</strong>
+                    <span>Higher quality, better reasoning. Best for complex concepts. (~2.2GB)</span>
+                </div>
+            </label>
+            <label class="model-option">
+                <input type="radio" name="model-choice" value="fast" checked>
+                <div class="model-info">
+                    <strong>Fast (Llama 3.2 1B)</strong>
+                    <span>Lightning fast, lower memory. Good for quick answers. (~870MB)</span>
+                </div>
+            </label>
+        </div>
+
         <div id="status-details">The AI tutor downloads to your browser once (5-15 minutes), then loads instantly on future visits.</div>
         <div id="progress-bar" class="progress-bar">
             <div id="progress-fill" class="progress-fill"></div>
@@ -868,7 +930,17 @@ permalink: /git-master/
     let commits = [];
     let branches = [];
     let chatHistory = [];
-    const LLM_MODEL = "Llama-3.2-3B-Instruct-q4f16_1-MLC";
+    
+    const MODELS = {
+        thinking: {
+            id: "Phi-3.5-mini-instruct-q4f16_1-MLC",
+            name: "Thinking (Phi-3.5 Mini)"
+        },
+        fast: {
+            id: "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+            name: "Fast (Llama 3.2 1B)"
+        }
+    };
 
     const SYSTEM_PROMPT = `You are a friendly and patient Git tutor helping complete beginners learn version control.
 
@@ -911,16 +983,25 @@ If asked about something advanced, acknowledge it but bring it back to fundament
         const progressBar = document.getElementById('progress-bar');
         const progressFill = document.getElementById('progress-fill');
         const initBtn = document.getElementById('init-btn');
+        const modelSelector = document.getElementById('model-selector');
+
+        // Get selected model
+        const selectedValue = document.querySelector('input[name="model-choice"]:checked').value;
+        const selectedModel = MODELS[selectedValue];
 
         statusPanel.className = 'status-panel loading';
-        statusMessage.textContent = 'Loading AI tutor...';
+        statusMessage.textContent = `Loading ${selectedModel.name}...`;
         statusDetails.textContent = 'This may take 5-15 minutes on first use. The model is cached for instant loading next time.';
         progressBar.classList.add('active');
         initBtn.disabled = true;
+        
+        // Disable model selection during load
+        const radioButtons = document.querySelectorAll('input[name="model-choice"]');
+        radioButtons.forEach(rb => rb.disabled = true);
 
         try {
             llmEngine = await CreateMLCEngine(
-                LLM_MODEL,
+                selectedModel.id,
                 {
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);
@@ -935,6 +1016,9 @@ If asked about something advanced, acknowledge it but bring it back to fundament
             statusMessage.textContent = 'AI Tutor Ready! 🎉';
             statusDetails.textContent = 'Now paste a GitHub repository URL below to start exploring';
             progressBar.classList.remove('active');
+            
+            // Hide model selector after successful load
+            modelSelector.style.display = 'none';
 
             setTimeout(() => {
                 document.getElementById('url-input-section').classList.add('active');
@@ -952,6 +1036,9 @@ If asked about something advanced, acknowledge it but bring it back to fundament
             console.error('AI initialization error:', error);
             initBtn.disabled = false;
             initBtn.textContent = 'Retry Initialization';
+            
+            // Re-enable model selection
+            radioButtons.forEach(rb => rb.disabled = false);
         }
     };
 
