@@ -43,20 +43,19 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
 
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
     <!-- Premium Banner -->
-    <div class="premium-banner">
+    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
             <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
         </svg>
         <div>
-            <strong>Premium Feature</strong>
-            <p>This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+            <strong style="color: #9a3412;">Premium Feature</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
         </div>
     </div>
 
 <!-- Data Warning Notice -->
-<!-- Data Warning Notice -->
-<div class="data-warning">
-    <p>
+<div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">
+    <p style="margin: 0; color: #856404;">
         <strong>⚠️ Important:</strong> Your visit data is stored in your browser's local storage.
         <strong>Export your data regularly</strong> to avoid losing it if you clear your browser cache or use a different device.
     </p>
@@ -414,139 +413,6 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
     .auto-start-toggle label {
         cursor: pointer;
         user-select: none;
-    }
-
-    /* Premium Banner & Data Warning Default Styles */
-    .premium-banner {
-        background: #fff7ed;
-        border: 1px solid #fdba74;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    .premium-banner strong {
-        color: #9a3412;
-    }
-    .premium-banner p {
-        margin: 0;
-        color: #c2410c;
-        font-size: 0.9em;
-    }
-
-    .data-warning {
-        background: #fff3cd;
-        border: 2px solid #ffc107;
-        border-radius: 8px;
-        padding: 1rem 1.5rem;
-        margin-bottom: 1.5rem;
-        margin-top: 1.5rem;
-    }
-    .data-warning p {
-        margin: 0;
-        color: #856404;
-    }
-
-    /* Dark Mode Support */
-    @media (prefers-color-scheme: dark) {
-        /* Global Text & Backgrounds */
-        body {
-            background-color: #1f2937;
-            color: #f9fafb;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-        }
-        .hero h1, .hero-subtitle, .hero p {
-            color: #ecfdf5;
-        }
-        .hero h1 svg {
-             color: #ecfdf5;
-        }
-
-        /* Containers & Cards */
-        .container, .card, .timer-section, .visit-item, .billing-btn {
-            background-color: #1f2937;
-            border-color: #374151;
-            color: #f9fafb;
-        }
-        
-        /* Secondary Backgrounds */
-        .billing-category-title, .form-label, .visit-time {
-            color: #f9fafb;
-        }
-
-        .visit-details, .billing-btn-desc, .stat-label {
-            color: #9ca3af;
-        }
-
-        /* Inputs & Form Elements */
-        input[type="text"], input[type="number"], input[type="date"],
-        select, textarea {
-            background-color: #111827;
-            border-color: #374151;
-            color: #f9fafb;
-        }
-
-        /* Buttons & Interactive Elements */
-        .btn-secondary, .tab-btn {
-            background-color: #1f2937;
-            border-color: #374151;
-            color: #f9fafb;
-        }
-
-        .btn-secondary:hover, .tab-btn:hover {
-            background-color: #374151;
-            border-color: #60a5fa;
-        }
-        
-        .billing-btn:hover {
-            border-color: #60a5fa;
-            background-color: #374151;
-        }
-
-        .tab-btn.active {
-            color: #60a5fa;
-            border-bottom-color: #60a5fa;
-        }
-        
-        /* Specific Overrides */
-        .timer-display {
-            color: #f9fafb;
-        }
-        
-        .stat-card {
-            background-color: #1f2937;
-            border-color: #374151;
-        }
-        
-        .stat-value {
-            color: #f9fafb;
-        }
-
-        /* Premium Banner & Warnings - Dark Mode */
-        .premium-banner {
-            background: #431407;
-            border-color: #9a3412;
-        }
-        .premium-banner strong {
-            color: #fdba74;
-        }
-        .premium-banner p {
-            color: #fed7aa;
-        }
-        
-        .data-warning {
-            background: #422006;
-            border-color: #b45309;
-        }
-        .data-warning p {
-            color: #fcd34d;
-        }
     }
 </style>
 
