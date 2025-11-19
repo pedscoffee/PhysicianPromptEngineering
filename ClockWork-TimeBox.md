@@ -1757,6 +1757,19 @@ const WorkDayTracker = {
                 document.getElementById('taskTimer').textContent = this.formatDuration(taskElapsed);
             }
         }
+
+        // Update individual task time indicators
+        const taskIcons = document.querySelectorAll('.task-icon');
+        taskIcons.forEach(icon => {
+            const taskId = icon.dataset.taskId;
+            if (taskId) {
+                const timeIndicator = icon.querySelector('.time-indicator');
+                if (timeIndicator) {
+                    const timeToday = this.getTaskTimeToday(taskId);
+                    timeIndicator.textContent = this.formatDuration(timeToday);
+                }
+            }
+        });
     },
 
     render() {
@@ -2094,8 +2107,18 @@ const WorkDayTracker = {
 
         const entries = this.state.entries.filter(e => e.dayId === day.id);
 
-        // Calculate stats
-        const totalDuration = entries.reduce((sum, e) => sum + (e.duration || 0), 0);
+        // Calculate stats - handle active entries properly
+        const now = new Date();
+        const totalDuration = entries.reduce((sum, e) => {
+            if (e.endTime) {
+                return sum + (e.duration || 0);
+            } else {
+                // Calculate elapsed time for active entry
+                const elapsed = Math.floor((now - new Date(e.startTime)) / 1000);
+                return sum + elapsed;
+            }
+        }, 0);
+
         const taskCounts = {};
         const taskDurations = {};
 
@@ -2105,7 +2128,14 @@ const WorkDayTracker = {
                 taskDurations[e.taskId] = 0;
             }
             taskCounts[e.taskId]++;
-            taskDurations[e.taskId] += e.duration || 0;
+
+            // Handle active entries properly
+            if (e.endTime) {
+                taskDurations[e.taskId] += e.duration || 0;
+            } else {
+                const elapsed = Math.floor((now - new Date(e.startTime)) / 1000);
+                taskDurations[e.taskId] += elapsed;
+            }
         });
 
         // Update summary cards
@@ -2221,19 +2251,23 @@ const WorkDayTracker = {
             return;
         }
 
-        // Sort entries by start time
-        const sortedEntries = entries.filter(e => e.endTime).sort((a, b) =>
+        // Sort entries by start time - include active entries
+        const now = new Date();
+        const sortedEntries = entries.map(e => ({
+            ...e,
+            effectiveEndTime: e.endTime ? new Date(e.endTime) : now
+        })).sort((a, b) =>
             new Date(a.startTime) - new Date(b.startTime)
         );
 
         if (sortedEntries.length === 0) {
-            container.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">No completed entries yet</p>';
+            container.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">No entries yet</p>';
             return;
         }
 
         // Calculate total time span
         const dayStart = new Date(sortedEntries[0].startTime);
-        const dayEnd = new Date(sortedEntries[sortedEntries.length - 1].endTime);
+        const dayEnd = sortedEntries[sortedEntries.length - 1].effectiveEndTime;
         const totalMinutes = (dayEnd - dayStart) / 60000;
 
         // Create timeline
@@ -2245,9 +2279,18 @@ const WorkDayTracker = {
             if (!task) return;
 
             const startTime = new Date(entry.startTime);
-            const endTime = new Date(entry.endTime);
+            const endTime = entry.effectiveEndTime;
             const startOffset = ((startTime - dayStart) / 60000 / totalMinutes) * 100;
             const width = ((endTime - startTime) / 60000 / totalMinutes) * 100;
+
+            // Calculate duration for display
+            const displayDuration = entry.endTime
+                ? entry.duration
+                : Math.floor((now - startTime) / 1000);
+
+            // Add visual indicator for active tasks
+            const isActive = !entry.endTime;
+            const activeStyle = isActive ? 'border: 2px solid #fff; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);' : '';
 
             const block = document.createElement('div');
             block.style.cssText = `
@@ -2265,11 +2308,13 @@ const WorkDayTracker = {
                 font-weight: 600;
                 overflow: hidden;
                 cursor: pointer;
+                ${activeStyle}
             `;
 
             const iconSvg = createHeroIcon(task.icon, 20, 'white');
             block.innerHTML = `<div style="display: flex; align-items: center; gap: 0.25rem;">${iconSvg}</div>`;
-            block.title = `${task.name}: ${this.formatDuration(entry.duration)} (${startTime.toLocaleTimeString()} - ${endTime.toLocaleTimeString()})`;
+            const endTimeStr = isActive ? 'now' : endTime.toLocaleTimeString();
+            block.title = `${task.name}: ${this.formatDuration(displayDuration)} (${startTime.toLocaleTimeString()} - ${endTimeStr})${isActive ? ' [ACTIVE]' : ''}`;
 
             timeline.appendChild(block);
         });
