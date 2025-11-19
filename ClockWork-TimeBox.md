@@ -2979,3 +2979,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
+
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<stripe-buy-button
+  buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
+  publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo"
+>
+</stripe-buy-button>
