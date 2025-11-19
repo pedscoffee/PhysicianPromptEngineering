@@ -99,16 +99,6 @@ permalink: /premium/
     }
 </style>
 
-<div class="premium-hero">
-    <h1>Value for Value</h1>
-    <p>
-        All the premium tools are free to use.  Our goal is that the entire community can benefit.  We believe in a honor system "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
-    </p>
-    <p style="font-size: 1.1em; font-weight: 500;">
-       Choose a contribution level that matches your current season of life.  If you are a student, sharing this resource with others is the best way you can help!  
-    </p>
-</div>
-
 <h2 style="text-align: center; margin-bottom: 30px;">Premium Tools</h2>
 
 <div class="features-grid">
@@ -188,7 +178,16 @@ permalink: /premium/
     
 </div>
 
-<script async
+<div class="premium-hero">
+    <h1>Value for Value</h1>
+    <p>
+        All the premium tools are free to use.  Our goal is that the entire community can benefit.  We believe in a honor system "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
+    </p>
+    <p style="font-size: 1.1em; font-weight: 500;">
+       Choose a contribution level that matches your current season of life.  If you are a student, sharing this resource with others is the best way you can help!  
+    </p>
+
+ <script async
   src="https://js.stripe.com/v3/buy-button.js">
 </script>
 
@@ -197,6 +196,9 @@ permalink: /premium/
   publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo"
 >
 </stripe-buy-button>
+</div>
+
+
 
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
     <h3>Join the Community</h3>

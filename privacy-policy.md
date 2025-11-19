@@ -166,7 +166,7 @@ permalink: /privacy-policy/
     <div class="content-centered notice-box notice-info">
       <h3 class="mb-4">Summary</h3>
       <p style="margin-bottom: 1rem;">
-        <strong>We respect your privacy.</strong> We collect minimal data (mostly anonymous analytics), never collect patient information, and use industry-standard security practices.
+        <strong>We respect your privacy.</strong> We collect minimal data (mostly anonymous analytics) and never collect patient information.
       </p>
       <p>
         Questions? <a href="{{ site.baseurl }}/about">Contact us</a> or review our <a href="{{ site.baseurl }}/disclaimer">Disclaimer</a>.
