@@ -153,6 +153,11 @@ permalink: /premium/
         <p style="color: #475569; margin-bottom: 20px;">
             Organize your favorite prompts, dot phrases, and clinical templates. Syncs with the Prompt Assistant for a seamless workflow.
         </p>
+        <a href="/prompt-snippet-manager" class="btn-primary">Manage Snippets</a>
+    </div>
+</div>
+
+<div class="features-grid">
     <div class="feature-card">
         <h3>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">

@@ -5,7 +5,7 @@ permalink: /clinic-visit-tracker/
 description: Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries
 ---
 <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
-    <span style="font-size: 24px;">👑</span>
+    <img src="/favicon-32x32.png" alt="Premium" style="width: 24px; height: 24px; vertical-align: middle;">
     <div>
         <strong style="color: #9a3412;">Premium Feature</strong>
         <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
