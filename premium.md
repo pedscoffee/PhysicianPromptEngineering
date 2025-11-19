@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Premium Supporters
+title: Premium Tools
 description: Support the project with a Value for Value model. Pay what you can, matching your season of life.
 permalink: /premium/
 ---
