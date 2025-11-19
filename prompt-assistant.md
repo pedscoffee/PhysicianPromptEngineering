@@ -1341,6 +1341,9 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     // =====================================================
     // CHAT MESSAGING - Generate Tab
     // =====================================================
+    // =====================================================
+    // CHAT MESSAGING - Generate Tab
+    // =====================================================
     window.sendMessage = async function() {
         const input = document.getElementById('chat-input');
         const message = input.value.trim();
@@ -1362,7 +1365,7 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         document.getElementById('send-btn').disabled = true;
 
         // Show typing indicator
-        showTypingIndicator('generate');
+        // showTypingIndicator('generate'); // No longer needed with streaming
 
         try {
             // Get character limit
@@ -1371,40 +1374,49 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
             // Build system prompt with character limit
             const systemPromptWithLimit = SYSTEM_PROMPT_GENERATOR + `\n\n**IMPORTANT**: Keep the final prompt under ${charLimit} characters for EMR compatibility.`;
 
+            // Context Management: Limit history
+            const MAX_HISTORY = 10;
+            const recentHistory = conversationHistoryGenerate.slice(-MAX_HISTORY);
+
             // Build messages array
             const messages = [
                 { role: 'system', content: systemPromptWithLimit },
-                ...conversationHistoryGenerate
+                ...recentHistory
             ];
 
-            // Generate response
-            const response = await engine.chat.completions.create({
+            // Create placeholder for assistant message
+            const messageContentDiv = addMessageToChat('generate', 'assistant', '');
+            let fullResponse = "";
+
+            // Generate response with streaming
+            const chunks = await engine.chat.completions.create({
                 messages: messages,
                 temperature: 0.7,
                 max_tokens: 3000,
-                stream: false
+                stream: true
             });
 
-            const assistantMessage = response.choices[0].message.content;
+            for await (const chunk of chunks) {
+                const content = chunk.choices[0]?.delta?.content || "";
+                fullResponse += content;
+                messageContentDiv.textContent = fullResponse;
+                
+                // Auto-scroll
+                const container = document.getElementById('chat-messages-generate');
+                container.scrollTop = container.scrollHeight;
+            }
 
-            // Add assistant response to conversation
+            // Add assistant response to conversation history
             conversationHistoryGenerate.push({
                 role: 'assistant',
-                content: assistantMessage
+                content: fullResponse
             });
 
-            // Hide typing indicator
-            hideTypingIndicator('generate');
-
-            // Add assistant message to UI
-            addMessageToChat('generate', 'assistant', assistantMessage);
-
             // Extract and display prompt if present
-            extractAndDisplayPrompt(assistantMessage, 'generate');
+            extractAndDisplayPrompt(fullResponse, 'generate');
 
         } catch (error) {
             console.error('Generation error:', error);
-            hideTypingIndicator('generate');
             addMessageToChat('generate', 'assistant', `Error: ${error.message}\n\nPlease try again.`);
         }
 
@@ -1414,6 +1426,9 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         input.focus();
     };
 
+    // =====================================================
+    // CHAT MESSAGING - Refine Tab
+    // =====================================================
     // =====================================================
     // CHAT MESSAGING - Refine Tab
     // =====================================================
@@ -1437,9 +1452,6 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         input.disabled = true;
         document.getElementById('send-btn-refine').disabled = true;
 
-        // Show typing indicator
-        showTypingIndicator('refine');
-
         try {
             // Get character limit
             charLimit = parseInt(document.getElementById('char-limit').value) || 5000;
@@ -1447,40 +1459,49 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
             // Build system prompt with character limit
             const systemPromptWithLimit = SYSTEM_PROMPT_REFINER + `\n\n**IMPORTANT**: Keep the refined prompt under ${charLimit} characters for EMR compatibility.`;
 
+            // Context Management: Limit history
+            const MAX_HISTORY = 10;
+            const recentHistory = conversationHistoryRefine.slice(-MAX_HISTORY);
+
             // Build messages array
             const messages = [
                 { role: 'system', content: systemPromptWithLimit },
-                ...conversationHistoryRefine
+                ...recentHistory
             ];
 
-            // Generate response
-            const response = await engine.chat.completions.create({
+            // Create placeholder for assistant message
+            const messageContentDiv = addMessageToChat('refine', 'assistant', '');
+            let fullResponse = "";
+
+            // Generate response with streaming
+            const chunks = await engine.chat.completions.create({
                 messages: messages,
                 temperature: 0.7,
                 max_tokens: 3000,
-                stream: false
+                stream: true
             });
 
-            const assistantMessage = response.choices[0].message.content;
+            for await (const chunk of chunks) {
+                const content = chunk.choices[0]?.delta?.content || "";
+                fullResponse += content;
+                messageContentDiv.textContent = fullResponse;
+                
+                // Auto-scroll
+                const container = document.getElementById('chat-messages-refine');
+                container.scrollTop = container.scrollHeight;
+            }
 
-            // Add assistant response to conversation
+            // Add assistant response to conversation history
             conversationHistoryRefine.push({
                 role: 'assistant',
-                content: assistantMessage
+                content: fullResponse
             });
 
-            // Hide typing indicator
-            hideTypingIndicator('refine');
-
-            // Add assistant message to UI
-            addMessageToChat('refine', 'assistant', assistantMessage);
-
             // Extract and display prompt if present
-            extractAndDisplayPrompt(assistantMessage, 'refine');
+            extractAndDisplayPrompt(fullResponse, 'refine');
 
         } catch (error) {
             console.error('Generation error:', error);
-            hideTypingIndicator('refine');
             addMessageToChat('refine', 'assistant', `Error: ${error.message}\n\nPlease try again.`);
         }
 
@@ -1515,6 +1536,8 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
 
         // Scroll to bottom
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        
+        return messageContent;
     }
 
     function showTypingIndicator(tab) {
@@ -1553,10 +1576,14 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     // =====================================================
     function extractAndDisplayPrompt(message, tab) {
         // Try to find a complete prompt in the message
-        // Look for common patterns like "---" separators or complete structured content
-
-        // For now, just display the entire message as the prompt
-        // In a more sophisticated version, we could parse sections
+        // Look for markdown code blocks
+        const codeBlockRegex = /```(?:[\w]*\n)?([\s\S]*?)```/;
+        const match = message.match(codeBlockRegex);
+        
+        let promptContent = message;
+        if (match && match[1]) {
+            promptContent = match[1].trim();
+        }
 
         const outputContent = tab === 'generate' ?
             document.getElementById('output-content') :
@@ -1570,22 +1597,18 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
             document.getElementById('output-actions') :
             document.getElementById('output-actions-refine');
 
-        const charCounter = tab === 'generate' ?
-            document.getElementById('char-counter') :
-            document.getElementById('char-counter-refine');
-
         if (tab === 'generate') {
-            currentOutput = message;
+            currentOutput = promptContent;
         } else {
-            currentOutputRefine = message;
+            currentOutputRefine = promptContent;
         }
 
         outputEmpty.style.display = 'none';
         outputContent.style.display = 'block';
-        outputContent.textContent = message;
+        outputContent.textContent = promptContent;
         outputActions.style.display = 'flex';
 
-        updateCharCount(message.length, tab);
+        updateCharCount(promptContent.length, tab);
     }
 
     function updateCharCount(count, tab) {
