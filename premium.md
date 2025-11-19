@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Premium Access
+title: Premium Supporters
 description: Support the project with a Value for Value model. Pay what you can, matching your season of life.
 permalink: /premium/
 ---
@@ -102,7 +102,7 @@ permalink: /premium/
 <div class="premium-hero">
     <h1>Value for Value</h1>
     <p>
-        We believe in a "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
+        We believe in a honor system "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
     </p>
     <p style="font-size: 1.1em; font-weight: 500;">
         Choose a contribution level that matches your current season of life.
@@ -110,7 +110,7 @@ permalink: /premium/
 </div>
 
 <div class="value-model">
-    <h2>Why Premium?</h2>
+    <h2>Why become a Premium Supporter?</h2>
     <p style="max-width: 700px; margin: 0 auto 30px; color: #475569;">
         Your support keeps these tools ad-free, private, and open-source. It funds the development of new features like the local AI Prompt Assistant and ensures we can continue building for the medical community.
     </p>
