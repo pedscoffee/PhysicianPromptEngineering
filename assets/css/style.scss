@@ -1,4 +1,7 @@
---- --- @import "minima";
+---
+---
+
+@import "minima";
 
 /* ============================================================================
    PHYSICIAN PROMPT ENGINEERING - DESIGN SYSTEM
@@ -11,44 +14,29 @@
 
 :root {
   /* Color System - Medical Professional Palette */
-  --color-primary: #2563eb;
-  /* Trust blue */
-  --color-primary-dark: #1e40af;
-  /* Darker blue for hover states */
-  --color-primary-light: #dbeafe;
-  /* Light blue for backgrounds */
-  --color-secondary: #0891b2;
-  /* Medical teal */
+  --color-primary: #2563eb;        /* Trust blue */
+  --color-primary-dark: #1e40af;   /* Darker blue for hover states */
+  --color-primary-light: #dbeafe;  /* Light blue for backgrounds */
+  --color-secondary: #0891b2;      /* Medical teal */
   --color-secondary-dark: #0e7490;
   --color-secondary-light: #cffafe;
 
-  --color-accent: #7c3aed;
-  /* Purple for CTAs */
+  --color-accent: #7c3aed;         /* Purple for CTAs */
   --color-accent-dark: #6d28d9;
   --color-accent-light: #ede9fe;
 
-  --color-success: #059669;
-  /* Green for positive actions */
-  --color-warning: #d97706;
-  /* Orange for warnings */
-  --color-error: #dc2626;
-  /* Red for errors */
+  --color-success: #059669;        /* Green for positive actions */
+  --color-warning: #d97706;        /* Orange for warnings */
+  --color-error: #dc2626;          /* Red for errors */
 
   /* Neutrals */
-  --color-text-primary: #1f2937;
-  /* Near black */
-  --color-text-secondary: #6b7280;
-  /* Gray */
-  --color-text-tertiary: #9ca3af;
-  /* Light gray */
-  --color-bg-primary: #ffffff;
-  /* White */
-  --color-bg-secondary: #f9fafb;
-  /* Off white */
-  --color-bg-tertiary: #f3f4f6;
-  /* Light gray bg */
-  --color-border: #e5e7eb;
-  /* Border gray */
+  --color-text-primary: #1f2937;   /* Near black */
+  --color-text-secondary: #6b7280; /* Gray */
+  --color-text-tertiary: #9ca3af;  /* Light gray */
+  --color-bg-primary: #ffffff;     /* White */
+  --color-bg-secondary: #f9fafb;   /* Off white */
+  --color-bg-tertiary: #f3f4f6;    /* Light gray bg */
+  --color-border: #e5e7eb;         /* Border gray */
   --color-border-light: #f3f4f6;
 
   /* Typography Scale */
@@ -56,24 +44,15 @@
   --font-family-heading: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   --font-family-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 
-  --font-size-xs: 0.75rem;
-  /* 12px */
-  --font-size-sm: 0.875rem;
-  /* 14px */
-  --font-size-base: 1rem;
-  /* 16px */
-  --font-size-lg: 1.125rem;
-  /* 18px */
-  --font-size-xl: 1.25rem;
-  /* 20px */
-  --font-size-2xl: 1.5rem;
-  /* 24px */
-  --font-size-3xl: 1.875rem;
-  /* 30px */
-  --font-size-4xl: 2.25rem;
-  /* 36px */
-  --font-size-5xl: 3rem;
-  /* 48px */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -85,36 +64,22 @@
   --line-height-relaxed: 1.75;
 
   /* Spacing Scale (based on 8px grid) */
-  --space-1: 0.25rem;
-  /* 4px */
-  --space-2: 0.5rem;
-  /* 8px */
-  --space-3: 0.75rem;
-  /* 12px */
-  --space-4: 1rem;
-  /* 16px */
-  --space-5: 1.5rem;
-  /* 24px */
-  --space-6: 2rem;
-  /* 32px */
-  --space-8: 3rem;
-  /* 48px */
-  --space-10: 4rem;
-  /* 64px */
-  --space-12: 6rem;
-  /* 96px */
-  --space-16: 8rem;
-  /* 128px */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-8: 3rem;     /* 48px */
+  --space-10: 4rem;    /* 64px */
+  --space-12: 6rem;    /* 96px */
+  --space-16: 8rem;    /* 128px */
 
   /* Border Radius */
-  --radius-sm: 0.25rem;
-  /* 4px */
-  --radius-md: 0.5rem;
-  /* 8px */
-  --radius-lg: 0.75rem;
-  /* 12px */
-  --radius-xl: 1rem;
-  /* 16px */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
   --radius-full: 9999px;
 
   /* Shadows */
@@ -158,32 +123,20 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark Mode Color Overrides - Muted blues for professional aesthetic */
-    --color-primary: #60a5fa;
-    /* Softer blue, less harsh */
-    --color-primary-dark: #3b82f6;
-    /* Medium blue for hover */
-    --color-primary-light: #1e3a8a;
-    /* Deep blue for backgrounds */
-    --color-secondary: #22d3ee;
-    /* Softer cyan */
-    --color-secondary-dark: #06b6d4;
-    /* Medium cyan */
-    --color-secondary-light: #164e63;
-    /* Deep teal for backgrounds */
+    --color-primary: #60a5fa;           /* Softer blue, less harsh */
+    --color-primary-dark: #3b82f6;      /* Medium blue for hover */
+    --color-primary-light: #1e3a8a;     /* Deep blue for backgrounds */
+    --color-secondary: #22d3ee;         /* Softer cyan */
+    --color-secondary-dark: #06b6d4;    /* Medium cyan */
+    --color-secondary-light: #164e63;   /* Deep teal for backgrounds */
 
-    --color-accent: #a78bfa;
-    /* Softer purple */
-    --color-accent-dark: #8b5cf6;
-    /* Medium purple */
-    --color-accent-light: #5b21b6;
-    /* Deep purple for backgrounds */
+    --color-accent: #a78bfa;            /* Softer purple */
+    --color-accent-dark: #8b5cf6;       /* Medium purple */
+    --color-accent-light: #5b21b6;      /* Deep purple for backgrounds */
 
-    --color-success: #34d399;
-    /* Softer green */
-    --color-warning: #fbbf24;
-    /* Softer amber */
-    --color-error: #f87171;
-    /* Softer red */
+    --color-success: #34d399;           /* Softer green */
+    --color-warning: #fbbf24;           /* Softer amber */
+    --color-error: #f87171;             /* Softer red */
 
     /* Dark Mode Neutrals */
     --color-text-primary: #f9fafb;
@@ -240,12 +193,7 @@ body {
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
@@ -345,8 +293,7 @@ pre code {
 }
 
 /* Lists */
-ul,
-ol {
+ul, ol {
   margin-bottom: var(--space-5);
   padding-left: var(--space-6);
 }
@@ -646,12 +593,6 @@ li {
   white-space: nowrap;
 }
 
-@media (prefers-color-scheme: dark) {
-  .site-title {
-    color: #ffffff !important;
-  }
-}
-
 .site-title:hover {
   color: var(--color-primary);
   text-decoration: none;
@@ -699,13 +640,13 @@ li {
     display: inline-block;
   }
 
-  .dropdown>.page-link {
+  .dropdown > .page-link {
     cursor: pointer;
     padding-right: var(--space-5);
     position: relative;
   }
 
-  .dropdown>.page-link::after {
+  .dropdown > .page-link::after {
     content: "▾";
     font-size: 0.8em;
     position: absolute;
@@ -715,7 +656,7 @@ li {
     transition: transform var(--transition-fast);
   }
 
-  .dropdown:hover>.page-link::after {
+  .dropdown:hover > .page-link::after {
     transform: translateY(-50%) rotate(180deg);
   }
 
@@ -771,14 +712,13 @@ li {
       opacity: 0;
       transform: translateY(-8px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  .dropdown:hover>.page-link {
+  .dropdown:hover > .page-link {
     background-color: var(--color-primary-light);
     color: var(--color-primary);
   }
@@ -796,7 +736,7 @@ li {
     display: block;
   }
 
-  .dropdown>.page-link {
+  .dropdown > .page-link {
     display: block;
     padding: var(--space-3) var(--space-4);
     cursor: pointer;
@@ -804,7 +744,7 @@ li {
     transition: background-color var(--transition-fast);
   }
 
-  .dropdown>.page-link:hover {
+  .dropdown > .page-link:hover {
     background-color: var(--color-bg-tertiary);
   }
 
@@ -835,14 +775,14 @@ li {
     display: block;
   }
 
-  .dropdown>.page-link::after {
+  .dropdown > .page-link::after {
     content: " ▾";
     font-size: 0.8em;
     float: right;
     transition: transform var(--transition-fast);
   }
 
-  .dropdown.active>.page-link::after {
+  .dropdown.active > .page-link::after {
     transform: rotate(180deg);
   }
 }
@@ -1064,8 +1004,7 @@ li {
 /* Video Container */
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
   border-radius: var(--radius-lg);
@@ -1388,12 +1327,12 @@ html {
   text-align: center;
 }
 
-.menu-icon>svg {
+.menu-icon > svg {
   fill: var(--color-text-primary);
 }
 
 @media screen and (min-width: 600px) {
-  .nav-trigger:checked~.trigger {
+  .nav-trigger:checked ~ .trigger {
     display: block;
     padding-bottom: 5px;
   }
@@ -1413,7 +1352,7 @@ html {
     margin-top: var(--space-2);
   }
 
-  .nav-trigger:checked~.trigger {
+  .nav-trigger:checked ~ .trigger {
     display: block;
   }
 
@@ -1469,7 +1408,6 @@ textarea:focus {
 
 /* Print Styles */
 @media print {
-
   .site-header,
   .site-footer,
   .hero-cta,
@@ -1618,7 +1556,6 @@ button:disabled,
 
 /* Reduced Motion Support (Accessibility) */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -2381,8 +2318,7 @@ button:disabled,
 /* Video Container */
 .course-video {
   position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
   max-width: 100%;

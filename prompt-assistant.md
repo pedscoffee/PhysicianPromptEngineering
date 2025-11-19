@@ -712,189 +712,6 @@ permalink: /prompt-assistant/
             width: 100%;
         }
     }
-
-    /* Premium Banner Default Styles */
-    .premium-banner {
-        background: #fff7ed;
-        border: 1px solid #fdba74;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    .premium-banner strong {
-        color: #9a3412;
-    }
-    .premium-banner p {
-        margin: 0;
-        color: #c2410c;
-        font-size: 0.9em;
-    }
-
-    /* Dark Mode Support */
-    @media (prefers-color-scheme: dark) {
-        body {
-            background: #111827;
-            color: #f9fafb;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-        }
-        .hero h1, .hero-subtitle, .privacy-highlight {
-            color: #ecfdf5;
-        }
-
-        /* Panels & Cards */
-        .panel, .status-panel, .settings-panel, .paywall-notice, .warning-box, .info-box, .welcome-message {
-            background-color: #1f2937;
-            border-color: #374151;
-            color: #f9fafb;
-        }
-
-        .status-panel.loading {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-        }
-        .status-panel.ready {
-            background: linear-gradient(135deg, #065f46 0%, #064e3b 100%);
-        }
-        .status-panel.error {
-            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
-        }
-
-        .paywall-notice {
-            background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
-            border-color: #f59e0b;
-        }
-        .paywall-notice h3, .paywall-notice p {
-            color: #fed7aa;
-        }
-
-        .warning-box {
-            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
-            border-color: #dc2626;
-        }
-        .warning-box h3, .warning-box ul, .warning-box li {
-            color: #fecaca;
-        }
-
-        .info-box {
-            background: #1e3a8a;
-            border-color: #60a5fa;
-        }
-        .info-box h4, .info-box ul, .info-box li, .info-box strong {
-            color: #dbeafe;
-        }
-
-        .welcome-message {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            border-color: #60a5fa;
-        }
-        .welcome-message h3, .welcome-message p, .welcome-message ol, .welcome-message li, .welcome-message strong {
-            color: #dbeafe;
-        }
-
-        /* Text Colors */
-        h2, h3, h4, #status-message, .model-info strong {
-            color: #f9fafb;
-        }
-
-        #status-details, .model-info span, .form-group label {
-            color: #d1d5db;
-        }
-
-        /* Inputs & Form Elements */
-        #chat-input, .form-group input, .form-group textarea, .model-selector {
-            background-color: #111827;
-            border-color: #374151;
-            color: #f9fafb;
-        }
-
-        #chat-input:disabled {
-            background: #1f2937;
-        }
-
-        /* Chat Messages */
-        .chat-messages {
-            background: #111827;
-        }
-
-        .message-avatar.user {
-            background: #1e3a8a;
-            color: #dbeafe;
-        }
-
-        .message-avatar.assistant {
-            background: #065f46;
-            color: #d1fae5;
-        }
-
-        .message-content.user {
-            background: #1e3a8a;
-            color: #dbeafe;
-        }
-
-        .message-content.assistant {
-            background: #1f2937;
-            color: #f9fafb;
-            border-color: #374151;
-        }
-
-        .message-content pre {
-            background: #111827;
-        }
-
-        .typing-indicator {
-            background: #1f2937;
-            border-color: #374151;
-            color: #9ca3af;
-        }
-
-        /* Output Panel */
-        #output-content {
-            background: #111827;
-            border-color: #374151;
-            color: #f9fafb;
-        }
-
-        .empty-state {
-            color: #6b7280;
-        }
-
-        /* Tabs */
-        .tab-button {
-            color: #9ca3af;
-        }
-
-        .tab-button:hover {
-            color: #60a5fa;
-        }
-
-        .tab-button.active {
-            color: #60a5fa;
-            border-bottom-color: #60a5fa;
-        }
-
-        /* Model Options */
-        .model-option:hover {
-            background: rgba(55, 65, 81, 0.5);
-        }
-
-        /* Premium Banner - Dark Mode */
-        .premium-banner {
-            background: #431407;
-            border-color: #9a3412;
-        }
-        .premium-banner strong {
-            color: #fdba74;
-        }
-        .premium-banner p {
-            color: #fed7aa;
-        }
-    }
 </style>
 
 <!-- Hero Section -->
@@ -920,14 +737,13 @@ permalink: /prompt-assistant/
 
 <div class="container">
     <!-- Premium Banner -->
-    <!-- Premium Banner -->
-    <div class="premium-banner">
+    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
             <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
         </svg>
         <div>
-            <strong>Premium Feature</strong>
-            <p>This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+            <strong style="color: #9a3412;">Premium Feature</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
         </div>
     </div>
 

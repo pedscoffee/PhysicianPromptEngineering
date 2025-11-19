@@ -97,57 +97,6 @@ permalink: /premium/
         color: white;
         text-decoration: none;
     }
-
-    /* Dark Mode Support */
-    @media (prefers-color-scheme: dark) {
-        body {
-            background: #111827;
-            color: #f9fafb;
-        }
-
-        .premium-hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            border-color: #60a5fa;
-        }
-
-        .premium-hero h1 {
-            color: #dbeafe;
-        }
-
-        .premium-hero p {
-            color: #bfdbfe;
-        }
-
-        .value-model, .feature-card {
-            background-color: #1f2937;
-            border-color: #374151;
-            color: #f9fafb;
-        }
-
-        .value-model h2, .feature-card h3 {
-            color: #f9fafb;
-        }
-
-        .value-model p, .feature-card p {
-            color: #d1d5db;
-        }
-
-        .placeholder-box {
-            background: #111827;
-            border-color: #374151;
-            color: #9ca3af;
-        }
-
-        .btn-primary {
-            background: #60a5fa;
-            color: #111827;
-        }
-
-        .btn-primary:hover {
-            background: #3b82f6;
-            color: #111827;
-        }
-    }
 </style>
 
 <div class="premium-hero">
