@@ -41,3 +41,11 @@ collections:
     permalink: /courses/:course/:name/
 
 google_analytics: G-VNYGW8RWMY
+
+exclude:
+  - tools/diagnostic-visualizer/node_modules
+  - tools/diagnostic-visualizer/src
+  - tools/diagnostic-visualizer/vite.config.ts
+  - tools/diagnostic-visualizer/tsconfig.json
+  - tools/diagnostic-visualizer/tsconfig.app.json
+  - tools/diagnostic-visualizer/tsconfig.node.json
