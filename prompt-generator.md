@@ -284,17 +284,10 @@ permalink: /prompt-generator/
         }
     </style>
 
-<div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 100%;">
-  <h3 style="color: #78350f; margin-top: 0;">⚠️ Educational Tool - Use Synthesized Examples Only</h3>
-  <p style="color: #78350f; margin-bottom: 0;">
-    <strong>Do not use real patient data in your examples.</strong> This tool is for educational purposes only and is NOT HIPAA-compliant. When adding examples to your prompts, use only synthesized, de-identified, or fictional clinical scenarios. Never include actual patient information.
-  </p>
-</div>
-
 <div class="container">
         <div class="header">
             <h1>Quick Start A&P Builder</h1>
-            <p>Create customized prompts for formatting clinical assessment and plan documentation.</p>
+            <p>Create customized prompts for formatting clinical assessment and plan documentation. This tool is for educational purposes only.  Do not include real patient data or sensitive information while using this tool.</p>
         </div>
 
 <div class="main-layout">
