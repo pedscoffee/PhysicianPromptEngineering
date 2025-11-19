@@ -1,6 +1,6 @@
 ---
 layout: page
-title: A&P Prompt Generator
+title: Quick Start A&P Builder
 description: Build custom AI prompts for your clinical workflow. Use our free A&P Prompt Generator to format AI scribe output to your exact style. Try it now.
 permalink: /prompt-generator/
 ---
@@ -293,7 +293,7 @@ permalink: /prompt-generator/
 
 <div class="container">
         <div class="header">
-            <h1>A&P Prompt Generator</h1>
+            <h1>Quick Start A&P Builder</h1>
             <p>Create customized prompts for formatting clinical assessment and plan documentation.</p>
         </div>
 

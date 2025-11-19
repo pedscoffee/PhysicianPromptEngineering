@@ -138,7 +138,7 @@ permalink: /premium/
             AI Prompt Assistant
         </h3>
         <p style="color: #475569; margin-bottom: 20px;">
-            A local, privacy-first AI that helps you generate and refine clinical prompts. Runs entirely in your browser—no patient data ever leaves your device.
+            A local, privacy-first AI that helps you generate and refine clinical prompts. Runs entirely in your browser.
         </p>
         <a href="/prompt-assistant" class="btn-primary">Try It Out</a>
     </div>
