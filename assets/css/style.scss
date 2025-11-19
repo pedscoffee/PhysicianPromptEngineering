@@ -258,6 +258,10 @@ a {
   transition: color var(--transition-fast);
 }
 
+a:visited {
+  color: var(--color-primary);
+}
+
 a:hover {
   color: var(--color-primary-dark);
   text-decoration: underline;
