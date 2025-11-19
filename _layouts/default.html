@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: " en" }}">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
 {%- include head.html -%}
 
@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -29,11 +29,11 @@
             <!-- Blog -->
             <a class="page-link" href="{{ '/blog' | relative_url }}">Blog</a>
 
-            <!-- Tools Dropdown -->
+            <!-- Premium Dropdown -->
             <div class="dropdown">
-              <span class="page-link">Tools</span>
+              <span class="page-link" style="color: #d97706; font-weight: 600;">Premium</span>
               <div class="dropdown-content">
-                <a href="{{ '/premium' | relative_url }}">All Tools</a>
+                <a href="{{ '/premium' | relative_url }}">Overview</a>
                 <a href="{{ '/prompt-assistant' | relative_url }}">AI Prompt Assistant</a>
                 <a href="{{ '/prompt-manager' | relative_url }}">Prompt Manager</a>
                 <a href="{{ '/clockwork-timebox' | relative_url }}">ClockWork TimeBox</a>

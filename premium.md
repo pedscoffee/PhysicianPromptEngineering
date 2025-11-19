@@ -1,53 +1,32 @@
 ---
 layout: page
-title: Free Tools & Community Support
-description: All tools are free. Support the project if you find value in it.
+title: Premium Supporters
+description: Support the project with a Value for Value model. Pay what you can, matching your season of life.
 permalink: /premium/
 ---
 
 <style>
     .premium-hero {
-        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         padding: 60px 30px;
         border-radius: 12px;
         text-align: center;
         margin-bottom: 40px;
-        border: 1px solid #6ee7b7;
+        border: 1px solid #bae6fd;
     }
 
     .premium-hero h1 {
-        color: #065f46;
+        color: #0369a1;
         font-size: 2.5em;
         margin-bottom: 20px;
     }
 
     .premium-hero p {
         font-size: 1.2em;
-        color: #047857;
+        color: #0c4a6e;
         max-width: 800px;
         margin: 0 auto 30px;
         line-height: 1.6;
-    }
-
-    .free-callout {
-        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-        border: 2px solid #fbbf24;
-        padding: 30px;
-        border-radius: 12px;
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .free-callout h2 {
-        color: #92400e;
-        margin-bottom: 15px;
-        font-size: 1.8em;
-    }
-
-    .free-callout p {
-        color: #78350f;
-        font-size: 1.1em;
-        margin: 0;
     }
 
     .value-model {
@@ -121,23 +100,16 @@ permalink: /premium/
 </style>
 
 <div class="premium-hero">
-    <h1>🎁 Everything is Free Forever</h1>
+    <h1>Value for Value</h1>
     <p>
-        All tools on this site are completely free to use. No paywalls, no limits, no trials. The AI Prompt Assistant, ClockWork TimeBox, RVU Tracker, QI Project Tracker, and Prompt Manager are all available to everyone.
+        All the premium tools are free to use.  Our goal is that the entire community can benefit.  We believe in a honor system "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
     </p>
-    <p style="font-size: 1.1em; font-weight: 600;">
-        This is an open-source project built by a physician, for physicians.
+    <p style="font-size: 1.1em; font-weight: 500;">
+       Choose a contribution level that matches your current season of life.  If you are a student, sharing this resource with others is the best way you can help!  
     </p>
 </div>
 
-<div class="free-callout">
-    <h2>✅ No Paywall. Ever.</h2>
-    <p>
-        You don't need to pay anything to access any feature on this site. Everything is free and always will be.
-    </p>
-</div>
-
-<h2 style="text-align: center; margin-bottom: 30px;">Free Tools Available Now</h2>
+<h2 style="text-align: center; margin-bottom: 30px;">Premium Tools</h2>
 
 <div class="features-grid">
     <div class="feature-card">
@@ -150,7 +122,7 @@ permalink: /premium/
         <p style="color: #475569; margin-bottom: 20px;">
             A local, privacy-first AI that helps you generate and refine clinical prompts. Runs entirely in your browser.
         </p>
-        <a href="/prompt-assistant" class="btn-primary">Use It Free</a>
+        <a href="/prompt-assistant" class="btn-primary">Try It Out</a>
     </div>
 
     <div class="feature-card">
@@ -161,9 +133,9 @@ permalink: /premium/
             Prompt Manager
         </h3>
         <p style="color: #475569; margin-bottom: 20px;">
-            Organize your favorite prompts, dot phrases, and clinical templates all in one place.
+            Organize your favorite prompts, dot phrases, and clinical templates. Syncs with the Prompt Assistant for a seamless workflow.
         </p>
-        <a href="/prompt-manager" class="btn-primary">Use It Free</a>
+        <a href="/prompt-manager" class="btn-primary">Manage Prompts</a>
     </div>
 </div>
 
@@ -178,7 +150,7 @@ permalink: /premium/
         <p style="color: #475569; margin-bottom: 20px;">
             Master your clinical time management. Stay on schedule with intelligent timeboxing for patient visits.
         </p>
-        <a href="/clockwork-timebox" class="btn-primary">Use It Free</a>
+        <a href="/clockwork-timebox" class="btn-primary">Start Timer</a>
     </div>
 
     <div class="feature-card">
@@ -191,7 +163,7 @@ permalink: /premium/
         <p style="color: #475569; margin-bottom: 20px;">
             Track your productivity and compensation. Visualize your RVU targets and actual performance.
         </p>
-        <a href="/clinic-visit-tracker" class="btn-primary">Use It Free</a>
+        <a href="/clinic-visit-tracker" class="btn-primary">Track RVUs</a>
     </div>
 
     <div class="feature-card">
@@ -204,11 +176,15 @@ permalink: /premium/
         <p style="color: #475569; margin-bottom: 20px;">
             Manage quality improvement initiatives. Track metrics, interventions, and outcomes in one place.
         </p>
-        <a href="/qi-project-tracker" class="btn-primary">Use It Free</a>
+        <a href="/qi-project-tracker" class="btn-primary">Manage Project</a>
     </div>
 </div>
 
 <div class="value-model">
+    <h2>Why become a Premium Supporter?</h2>
+    <p style="max-width: 700px; margin: 0 auto 30px; color: #475569;">
+        Your support keeps these tools ad-free, private, and open-source. It funds the development of new features like the local AI Prompt Assistant and ensures we can continue building for the medical community.
+    </p>
     
 </div>
 
@@ -218,10 +194,9 @@ permalink: /premium/
 
 <stripe-buy-button
   buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
-  publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo">
+  publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo"
+>
 </stripe-buy-button>
-
-</div>
 
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
     <h3>Join the Community</h3>
