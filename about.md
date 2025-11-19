@@ -63,7 +63,7 @@ permalink: /about/
             <h3 class="card-title">Education</h3>
           </div>
           <div class="card-body">
-            <p>All content is for informational and educational purposes only.  Do not use any tools not formally approved by your institutional policies and always check with your IT department before making any changes to your workflow.</p>
+            <p>All content is for informational and educational purposes only.  Only use tools formally approved by your institutional policies. Always consult your IT department before changing your workflow.</p>
           </div>
         </div>
       </div>
@@ -174,7 +174,7 @@ permalink: /about/
       <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
         <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="btn btn-primary" target="_blank">Start a Discussion on GitHub</a>
         <p class="text-sm text-secondary">
-          This project is still in beta.  We appreciate your feedback!
+          We appreciate your feedback!
         </p>
       </div>
     </div>
