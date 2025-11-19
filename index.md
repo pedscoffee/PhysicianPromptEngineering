@@ -7,14 +7,13 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 <!-- Hero Section -->
 <div class="hero">
   <div class="container">
-    {%- include beta-notice.html -%}
-    <h1 class="hero-title">Transform Your Clinical Documentation in Minutes</h1>
+    <h1 class="hero-title">Get Your Notes Done</h1>
     <p class="hero-subtitle">
      Physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
     </p>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
-      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
+      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Quick Start A&P Prompt Builder</a>
     </div>
   </div>
 </div>
