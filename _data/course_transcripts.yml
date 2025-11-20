@@ -564,3 +564,98 @@ newborn_exam:
        - Breathing difficulties
 
     Parents verbalized understanding and had opportunity to ask questions. Provided with after-visit summary and emergency contact numbers. Follow-up visit scheduled in 2 days.
+
+# ============================================
+# NEW INPUTS FOR REWORKED COURSE
+# ============================================
+
+simple_email_task:
+  title: "Non-Medical: Scheduling Email"
+  specialty: "General"
+  difficulty: "beginner"
+  transcript: |
+    Subject: Meeting next week?
+
+    Hi Dr. Smith,
+
+    I hope you're doing well. I wanted to see if you have time next week to discuss the new clinic workflow. I'm free on Monday morning before 10am, Tuesday after 2pm, or Thursday anytime between 11am and 3pm. Wednesday is completely out for me as I'm at the conference. Friday I'm off.
+
+    Let me know what works for you. We probably need about 30 minutes.
+
+    Thanks,
+    Sarah
+    Practice Manager
+
+bad_soap_note_length:
+  title: "Draft Note - Too Verbose"
+  specialty: "Internal Medicine"
+  difficulty: "intermediate"
+  transcript: |
+    SUBJECTIVE:
+    The patient is a 65-year-old gentleman who comes in today for a follow-up on his high blood pressure. He says that he has been feeling pretty good lately, although he admits he hasn't been perfect with his diet. He tells me that he went to a birthday party last weekend and had a piece of cake and some salty snacks, which he knows he shouldn't have done. He says he takes his lisinopril every single morning right after he brushes his teeth and he never misses a dose. He denies having any headaches, which is good because he used to get them a lot. He also says he doesn't have any chest pain or shortness of breath when he walks his dog around the block. He walks the dog for about 15 minutes twice a day. He says his home blood pressure readings have been mostly in the 130s over 80s, but he forgot to bring his log book today so I can't see the exact numbers. He promises to bring it next time. He also mentions that his wife has been nagging him to eat more vegetables, so he's trying to eat a salad with dinner at least three times a week.
+
+    OBJECTIVE:
+    Vitals showing a blood pressure of 138/82 which is okay but could be better. Heart rate is 72 and regular. He weighs 198 pounds today which is up 2 pounds from last time.
+    Physical exam shows he looks well. His lungs are clear when I listen to them. His heart sounds regular with no extra sounds. His legs don't have any swelling in them.
+
+    ASSESSMENT:
+    Hypertension. It seems to be doing okay but not perfect. He is compliant with his meds but his diet could be better.
+
+    PLAN:
+    1. Keep taking the lisinopril 20mg the same way.
+    2. Try to eat better and listen to his wife about the vegetables.
+    3. Come back in 3 months.
+
+bad_soap_note_hallucination:
+  title: "Draft Note - Contains Errors"
+  specialty: "Cardiology"
+  difficulty: "advanced"
+  transcript: |
+    Patient Encounter Summary:
+    Patient: James Wilson, 58M
+    History: HTN, HLD. Here for follow-up.
+    Meds: Amlodipine 5mg daily.
+    Vitals: BP 145/90, HR 78.
+    Exam: Normal.
+    Plan: Increase Amlodipine to 10mg.
+
+    ---
+    AI Generated Note (Contains Hallucinations):
+
+    Subjective:
+    Mr. Wilson presents for follow-up of hypertension and hyperlipidemia. He reports compliance with his Amlodipine 5mg and Metoprolol 25mg daily. He denies chest pain or shortness of breath. He reports checking his blood pressure at home and it has been elevated.
+
+    Objective:
+    BP 145/90, HR 78.
+    Physical exam reveals a well-developed male in no acute distress. Lungs are clear. Cardiac exam reveals regular rate and rhythm with no murmurs. 1+ pitting edema noted in bilateral lower extremities.
+
+    Assessment:
+    1. Uncontrolled Hypertension
+    2. Hyperlipidemia
+
+    Plan:
+    1. Increase Amlodipine to 10mg daily.
+    2. Continue Metoprolol 25mg daily.
+    3. Check lipid panel.
+    4. Follow up in 4 weeks.
+
+bad_soap_note_tone:
+  title: "Draft Note - Unprofessional Tone"
+  specialty: "Pediatrics"
+  difficulty: "intermediate"
+  transcript: |
+    Subjective:
+    Mom brings in 7yo Timmy because he's got a rash. Started 2 days ago. It's super itchy and driving him crazy. Mom put some cream on it but didn't help much. Timmy says it "burns like fire." No fever or anything else wrong.
+
+    Objective:
+    Kid looks fine, just scratching a lot.
+    Skin: Red bumpy rash on his tummy and back. Looks like contact dermatitis or maybe he touched something he's allergic to. Not infectious looking.
+
+    Assessment:
+    Rash, probably allergic reaction.
+
+    Plan:
+    1. Hydrocortisone cream 2.5% - slather it on twice a day.
+    2. Benadryl if he can't sleep.
+    3. Stop using whatever new soap they bought.
+    4. Come back if it gets gross or infected.

@@ -24,6 +24,18 @@ class CourseExercise {
     this.feedbackPanel = this.container.querySelector('.exercise-feedback');
     this.statusIndicator = this.container.querySelector('.llm-status');
 
+    // Set custom input label if provided
+    if (this.config.input_label) {
+      const labelEl = this.container.querySelector('.input-label-text');
+      if (labelEl) labelEl.textContent = this.config.input_label;
+
+      // Also update the summary text if it exists directly
+      const summaryEl = this.container.querySelector('.exercise-transcript summary');
+      if (summaryEl && !labelEl) {
+        summaryEl.textContent = `📋 View ${this.config.input_label}`;
+      }
+    }
+
     this.bindEvents();
   }
 
@@ -186,7 +198,8 @@ class CourseExercise {
   async executeStudentPrompt(studentPrompt) {
     const transcript = this.config.transcript;
 
-    const fullPrompt = `${studentPrompt}\n\nPatient Encounter Transcript:\n${transcript}`;
+    const inputLabel = this.config.input_label || "Patient Encounter Transcript";
+    const fullPrompt = `${studentPrompt}\n\n${inputLabel}:\n${transcript}`;
 
     const response = await this.llm.chat.completions.create({
       messages: [{ role: 'user', content: fullPrompt }],

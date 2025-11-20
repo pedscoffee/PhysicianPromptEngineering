@@ -44,12 +44,12 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 
   <div class="module-card" data-module-number="1">
     <p class="module-number">Module 1</p>
-    <h3 class="module-title">Fundamentals of AI-Assisted Documentation</h3>
+    <h3 class="module-title">AI Concepts & Terminology</h3>
     <p class="module-description">
-      Learn the basics of prompt engineering for clinical documentation. Master SOAP note generation and formatting control.
+      Start here! Learn how LLMs "think", what a prompt actually is, and master the basics with simple non-medical examples.
     </p>
     <div class="module-meta">
-      <span>⏱ 60 minutes</span>
+      <span>⏱ 45 minutes</span>
       <span class="difficulty-beginner">Beginner</span>
       <span class="module-progress" data-module="1">0/3 exercises</span>
     </div>
@@ -58,13 +58,13 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 
   <div class="module-card" data-module-number="2">
     <p class="module-number">Module 2</p>
-    <h3 class="module-title">Context & Clarity</h3>
+    <h3 class="module-title">Structure & Specificity</h3>
     <p class="module-description">
-      Enhance your prompts with clinical context. Learn to handle ambiguity and create specialty-specific templates.
+      Apply the basics to medicine. Learn to build solid SOAP notes, control formatting, and use templates effectively.
     </p>
     <div class="module-meta">
-      <span>⏱ 75 minutes</span>
-      <span class="difficulty-intermediate">Intermediate</span>
+      <span>⏱ 60 minutes</span>
+      <span class="difficulty-beginner">Beginner</span>
       <span class="module-progress" data-module="2">0/3 exercises</span>
     </div>
     <a href="/courses/clinical-prompt-engineering/module-2/" class="btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.5rem 1.5rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem;">Start Module 2</a>
@@ -72,13 +72,13 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 
   <div class="module-card" data-module-number="3">
     <p class="module-number">Module 3</p>
-    <h3 class="module-title">Advanced Clinical Documentation</h3>
+    <h3 class="module-title">The Art of Refinement</h3>
     <p class="module-description">
-      Tackle complex cases, procedure notes, and differential diagnosis documentation with advanced techniques.
+      <strong>NEW!</strong> Learn to be a "Human in the Loop". Practice fixing bad notes, shortening verbose outputs, and correcting hallucinations.
     </p>
     <div class="module-meta">
-      <span>⏱ 90 minutes</span>
-      <span class="difficulty-advanced">Advanced</span>
+      <span>⏱ 60 minutes</span>
+      <span class="difficulty-intermediate">Intermediate</span>
       <span class="module-progress" data-module="3">0/3 exercises</span>
     </div>
     <a href="/courses/clinical-prompt-engineering/module-3/" class="btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.5rem 1.5rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem;">Start Module 3</a>
@@ -86,13 +86,13 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 
   <div class="module-card" data-module-number="4">
     <p class="module-number">Module 4</p>
-    <h3 class="module-title">Safety & Best Practices</h3>
+    <h3 class="module-title">Advanced Applications</h3>
     <p class="module-description">
-      Learn to identify AI limitations, implement quality checks, and ensure patient privacy and safety.
+      Tackle complex multi-system patients, detailed procedure notes, and diagnostic reasoning.
     </p>
     <div class="module-meta">
       <span>⏱ 75 minutes</span>
-      <span class="difficulty-intermediate">Intermediate</span>
+      <span class="difficulty-advanced">Advanced</span>
       <span class="module-progress" data-module="4">0/3 exercises</span>
     </div>
     <a href="/courses/clinical-prompt-engineering/module-4/" class="btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.5rem 1.5rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem;">Start Module 4</a>
@@ -100,14 +100,14 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 
   <div class="module-card" data-module-number="5">
     <p class="module-number">Module 5</p>
-    <h3 class="module-title">Specialty Applications & Final Project</h3>
+    <h3 class="module-title">Safety & Ethics</h3>
     <p class="module-description">
-      Create custom prompts for your specialty and build your personal prompt library.
+      Master the critical skills of identifying bias, catching errors, and protecting patient privacy.
     </p>
     <div class="module-meta">
-      <span>⏱ 120 minutes</span>
+      <span>⏱ 45 minutes</span>
       <span class="difficulty-advanced">Advanced</span>
-      <span class="module-progress" data-module="5">0/2 exercises + project</span>
+      <span class="module-progress" data-module="5">0/2 exercises</span>
     </div>
     <a href="/courses/clinical-prompt-engineering/module-5/" class="btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.5rem 1.5rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem;">Start Module 5</a>
   </div>

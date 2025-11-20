@@ -1,1153 +1,460 @@
 # Course Exercise Configurations
-# Each exercise defines learning objectives, transcript to use, and evaluation criteria
+# Reworked Curriculum: Beginner -> Structure -> Refinement -> Advanced -> Safety
 
 # ============================================
-# MODULE 1: FUNDAMENTALS
+# MODULE 1: AI CONCEPTS & TERMINOLOGY
 # ============================================
 
 module1_exercise1:
   id: "m1e1"
-  title: "Your First SOAP Note Prompt"
+  title: "The 'Hello World' of Prompting"
   module: 1
   difficulty: "beginner"
-  estimated_time: "15 minutes"
-  transcript: "outpatient_hypertension_followup"
-  goal: "Create a prompt that generates a basic SOAP note from the patient transcript"
+  estimated_time: "10 minutes"
+  transcript: "simple_email_task"
+  input_label: "Source Email"
+  goal: "Write a simple prompt to summarize a non-medical text"
   instructions: |
-    Write a prompt that will generate a SOAP note (Subjective, Objective, Assessment, Plan) from the patient transcript provided.
-
-    Your prompt should instruct the AI to:
-    - Extract and organize information into SOAP format
-    - Use professional medical language
-    - Include all relevant clinical information
+    Before we dive into medical notes, let's understand how the AI thinks. You have an email from a practice manager.
+    
+    Your task: Write a prompt to extract the available meeting times.
+    
+    This teaches you the basic Input -> Prompt -> Output flow.
   example_good_prompt: |
-    Generate a SOAP note from the following patient encounter transcript. Organize the information into these sections: Subjective (patient's complaints and history), Objective (physical exam findings and vitals), Assessment (diagnosis), and Plan (treatment plan). Use professional medical terminology.
+    Read the email below and list the available meeting times for next week. Format them as a bulleted list.
   rubric:
     criteria:
-      - name: "Clear structure request"
-        points: 3
-        description: "Prompt explicitly asks for SOAP format"
-      - name: "Completeness"
-        points: 3
-        description: "Asks for all relevant information to be included"
-      - name: "Professional language"
-        points: 2
-        description: "Requests medical terminology"
-      - name: "Organization"
-        points: 2
-        description: "Specifies how to organize the output"
+      - name: "Information Extraction"
+        points: 5
+        description: "Correctly identifies the available times"
+      - name: "Formatting"
+        points: 5
+        description: "Follows the request for a list"
     total_points: 10
     passing_score: 7
 
 module1_exercise2:
   id: "m1e2"
-  title: "Adding Specificity to Your Prompts"
+  title: "Zero-Shot vs Few-Shot"
   module: 1
   difficulty: "beginner"
   estimated_time: "15 minutes"
-  transcript: "outpatient_diabetes_new"
-  goal: "Improve your prompt with specific formatting and content requirements"
+  transcript: "simple_email_task"
+  input_label: "Source Email"
+  goal: "Learn how providing examples (few-shot) improves output"
   instructions: |
-    Now that you understand basic SOAP notes, make your prompt more specific. Include:
-    - Specific formatting requirements (bullet points, numbering, etc.)
-    - Length guidelines
-    - What to emphasize or include
-    - What to exclude or de-emphasize
+    "Zero-shot" means asking without examples. "Few-shot" means giving examples.
+    
+    Task: Write a prompt that turns the email into a JSON object.
+    
+    First try without an example. Then try providing an example of the JSON format you want.
   example_good_prompt: |
-    Create a detailed SOAP note from this patient encounter. Format as follows:
-
-    S: Use patient's own words in quotes where applicable. Include HPI elements (location, quality, severity, duration, timing, context, modifying factors, associated signs/symptoms).
-
-    O: List vitals first, then physical exam by system. Use standard abbreviations.
-
-    A: Provide diagnosis with ICD-10 code if applicable.
-
-    P: Number each plan item. Include patient education points.
-
-    Keep the note concise but complete, approximately 200-300 words total.
+    Extract the meeting availability into a JSON object.
+    
+    Example format:
+    {
+      "sender": "Name",
+      "availability": [
+        {"day": "Monday", "time": "..."}
+      ]
+    }
+    
+    Email to process:
   rubric:
     criteria:
-      - name: "Specific formatting"
-        points: 3
-        description: "Includes detailed formatting instructions"
-      - name: "Length guidance"
-        points: 2
-        description: "Specifies desired length or detail level"
-      - name: "Content priorities"
-        points: 3
-        description: "Indicates what to emphasize or include"
-      - name: "Clear structure"
-        points: 2
-        description: "Well-organized prompt that's easy to follow"
+      - name: "Structure Definition"
+        points: 5
+        description: "Defines the desired output structure (JSON)"
+      - name: "Example Usage"
+        points: 5
+        description: "Provides an example or clear schema"
     total_points: 10
     passing_score: 7
 
 module1_exercise3:
   id: "m1e3"
-  title: "Format Control and Templates"
+  title: "The Context Window"
   module: 1
   difficulty: "beginner"
   estimated_time: "15 minutes"
-  transcript: "urgent_care_ankle_sprain"
-  goal: "Create a prompt that produces a consistently formatted note using a template structure"
+  transcript: "outpatient_hypertension_followup"
+  input_label: "Patient Transcript"
+  goal: "Understand how AI processes information within its context window"
   instructions: |
-    Write a prompt that provides a specific template for the AI to fill in. This ensures consistent formatting across all notes.
-
-    Your template should include:
-    - Section headers
-    - Subsection organization
-    - Placeholders for key information
-    - Consistent formatting rules
+    The "Context Window" is the amount of text the AI can "see" at once.
+    
+    Task: Ask the AI to find a specific detail buried in the transcript (e.g., the patient's diet).
+    
+    This simulates finding a needle in a haystack, a common clinical task.
   example_good_prompt: |
-    Fill in the following SOAP note template based on the patient encounter transcript:
-
-    SUBJECTIVE:
-    Chief Complaint: [State in patient's words]
-    HPI: [Chronological narrative including onset, duration, severity, aggravating/relieving factors]
-    PMH: [Relevant past medical history]
-    Medications: [Current medications]
-    Allergies: [List or NKDA]
-
-    OBJECTIVE:
-    Vitals: [BP, HR, Temp, etc.]
-    Physical Exam:
-      - General: [General appearance]
-      - [Relevant system]: [Findings]
-    Imaging/Labs: [If performed]
-
-    ASSESSMENT:
-    [Primary diagnosis/diagnoses]
-
-    PLAN:
-    1. [Treatment/intervention]
-    2. [Medications prescribed]
-    3. [Patient education]
-    4. [Follow-up instructions]
-
-    Use professional medical abbreviations. Keep each section concise.
+    Based ONLY on the transcript provided, what did the patient say about their diet? Do not make up information.
   rubric:
     criteria:
-      - name: "Template structure"
-        points: 3
-        description: "Provides clear template for AI to follow"
-      - name: "Complete sections"
-        points: 2
-        description: "Includes all necessary SOAP components"
-      - name: "Formatting consistency"
-        points: 3
-        description: "Specifies consistent formatting approach"
-      - name: "Practical usability"
-        points: 2
-        description: "Template would work well in real clinical practice"
+      - name: "Specific Retrieval"
+        points: 5
+        description: "Accurately retrieves the requested detail"
+      - name: "Hallucination Check"
+        points: 5
+        description: "Does not invent information not in the text"
     total_points: 10
     passing_score: 7
 
 # ============================================
-# MODULE 2: CONTEXT & CLARITY
+# MODULE 2: STRUCTURE & SPECIFICITY
 # ============================================
 
 module2_exercise1:
   id: "m2e1"
-  title: "Adding Clinical Context"
+  title: "Your First SOAP Note"
   module: 2
-  difficulty: "intermediate"
-  estimated_time: "20 minutes"
-  transcript: "er_chest_pain_gerd"
-  goal: "Enhance your prompt with clinical context and decision-making guidance"
+  difficulty: "beginner"
+  estimated_time: "15 minutes"
+  transcript: "outpatient_hypertension_followup"
+  goal: "Create a prompt that generates a basic SOAP note"
   instructions: |
-    Add clinical context to help the AI understand what's important for this type of case.
-
-    Include in your prompt:
-    - The clinical setting (ER, outpatient, etc.)
-    - What the note will be used for
-    - Key clinical decision points to highlight
-    - Risk stratification or important differentials
+    Now let's apply what we learned to medicine.
+    
+    Write a prompt that will generate a SOAP note (Subjective, Objective, Assessment, Plan) from the patient transcript.
+    
+    Your prompt should instruct the AI to:
+    - Extract and organize information into SOAP format
+    - Use professional medical language
   example_good_prompt: |
-    You are documenting an Emergency Department visit for chest pain. Create a SOAP note that:
-
-    1. Highlights critical information for risk stratification (cardiac vs non-cardiac chest pain)
-    2. Documents key negatives that support ruling out ACS (acute coronary syndrome)
-    3. Clearly shows clinical reasoning for the diagnosis
-    4. Includes appropriate risk scoring if applicable
-    5. Emphasizes return precautions in the plan
-
-    The note should be suitable for medical-legal documentation and clear handoff to the primary care physician.
-
-    Format using standard SOAP structure with detailed assessment and plan sections.
+    Generate a SOAP note from the following patient encounter transcript. Organize the information into these sections: Subjective (patient's complaints and history), Objective (physical exam findings and vitals), Assessment (diagnosis), and Plan (treatment plan). Use professional medical terminology.
   rubric:
     criteria:
-      - name: "Setting context"
-        points: 2
-        description: "Specifies clinical setting and purpose"
-      - name: "Clinical priorities"
+      - name: "Clear structure request"
+        points: 4
+        description: "Prompt explicitly asks for SOAP format"
+      - name: "Completeness"
         points: 3
-        description: "Identifies what's medically important to emphasize"
-      - name: "Decision support"
+        description: "Asks for all relevant information to be included"
+      - name: "Professional language"
         points: 3
-        description: "Guides AI on clinical reasoning and risk assessment"
-      - name: "Practical application"
-        points: 2
-        description: "Note would be useful for real clinical care"
+        description: "Requests medical terminology"
     total_points: 10
     passing_score: 7
 
 module2_exercise2:
   id: "m2e2"
-  title: "Handling Ambiguous Information"
+  title: "Formatting & Lists"
   module: 2
-  difficulty: "intermediate"
-  estimated_time: "20 minutes"
-  transcript: "pediatric_asthma_exacerbation"
-  goal: "Write a prompt that handles incomplete or ambiguous information appropriately"
+  difficulty: "beginner"
+  estimated_time: "15 minutes"
+  transcript: "outpatient_diabetes_new"
+  goal: "Improve your prompt with specific formatting requirements"
   instructions: |
-    Clinical transcripts often have ambiguity or missing information. Your prompt should guide the AI on how to handle this.
-
-    Your prompt should instruct the AI to:
-    - Note when information is missing or unclear
-    - Distinguish between facts and interpretations
-    - Indicate uncertainty appropriately
-    - Suggest what additional information might be needed
+    Structure matters for readability.
+    
+    Task: Create a detailed SOAP note prompt that asks for:
+    - Bullet points for the HPI
+    - Numbered list for the Plan
+    - Specific order for Vitals
   example_good_prompt: |
-    Create a pediatric SOAP note from this asthma visit transcript. Follow these guidelines:
-
-    1. If vital information is missing (e.g., peak flow, medication doses), note "[not documented]" rather than inventing data
-    2. Distinguish between objective findings and parental reports (use "mother reports..." vs "patient exhibits...")
-    3. If severity assessment is ambiguous, state: "appears to be [mild/moderate/severe] based on [specific criteria]"
-    4. In assessment, explicitly note any missing information that would be clinically relevant
-    5. Use pediatric-appropriate language and include parent education in plan
-
-    Format as standard SOAP with special attention to asthma severity markers (respiratory rate, oxygen saturation, retractions, air movement).
+    Create a SOAP note.
+    
+    Subjective: Use bullet points for the HPI elements.
+    Objective: List vitals first.
+    Plan: Provide a numbered list of action items.
   rubric:
     criteria:
-      - name: "Ambiguity handling"
-        points: 3
-        description: "Instructs AI how to handle unclear information"
-      - name: "Accuracy preservation"
-        points: 3
-        description: "Prevents AI from inventing or assuming data"
-      - name: "Clinical safety"
-        points: 2
-        description: "Promotes safe documentation practices"
-      - name: "Completeness awareness"
-        points: 2
-        description: "Identifies what's missing but important"
+      - name: "Specific formatting"
+        points: 5
+        description: "Includes detailed formatting instructions"
+      - name: "List usage"
+        points: 5
+        description: "Correctly requests bullets/numbering"
     total_points: 10
     passing_score: 7
 
 module2_exercise3:
   id: "m2e3"
-  title: "Specialty-Specific Templates"
+  title: "Using Templates"
   module: 2
   difficulty: "intermediate"
-  estimated_time: "20 minutes"
-  transcript: "ob_prenatal_visit"
-  goal: "Create a prompt with specialty-specific requirements and terminology"
+  estimated_time: "15 minutes"
+  transcript: "urgent_care_ankle_sprain"
+  goal: "Create a prompt that produces a consistently formatted note using a template"
   instructions: |
-    Different specialties have different documentation needs. Create a prompt tailored for OB prenatal visits.
-
-    Include:
-    - Specialty-specific terminology (G/P notation, gestational age, etc.)
-    - Required elements for this visit type
-    - Relevant clinical calculators or assessments
-    - Specialty-standard formatting
+    Templates ensure nothing is missed.
+    
+    Task: Write a prompt that provides a specific template for the AI to fill in.
+    
+    Include placeholders like [Patient Name], [Chief Complaint], etc.
   example_good_prompt: |
-    Generate an OB prenatal visit note using the following format:
-
+    Fill in the following SOAP note template based on the patient encounter transcript:
+    
     SUBJECTIVE:
-    - Gravida/Para notation (e.g., G2P1001)
-    - EGA (estimated gestational age) by LMP and dating ultrasound
-    - Interval history: fetal movement, contractions, bleeding, leakage
-    - Review of systems focusing on warning signs (headache, visual changes, RUQ pain, swelling)
-
+    Chief Complaint: [State in patient's words]
+    HPI: [Chronological narrative]
+    
     OBJECTIVE:
-    - Maternal vitals with weight and weight gain from pre-pregnancy
-    - Fundal height in cm
-    - Fetal heart tones (FHT) and presentation
-    - Pertinent physical exam findings
-    - Lab results if performed
-
+    Vitals: [BP, HR, Temp]
+    Exam: [Findings]
+    
     ASSESSMENT:
-    - IUP (intrauterine pregnancy) at [X] weeks, [any complications]
-
+    [Primary diagnosis]
+    
     PLAN:
-    - Numbered list including labs/tests, medications, education, next visit
-    - Include any specialized testing needed for current GA
-
-    Use standard OB abbreviations. Ensure all required prenatal screening elements are addressed.
+    1. [Treatment]
+    2. [Follow-up]
   rubric:
     criteria:
-      - name: "Specialty terminology"
-        points: 3
-        description: "Uses appropriate OB-specific terms and formats"
-      - name: "Required elements"
-        points: 3
-        description: "Includes all standard components of prenatal visit"
-      - name: "Clinical appropriateness"
-        points: 2
-        description: "Addresses specialty-specific concerns"
-      - name: "Professional formatting"
-        points: 2
-        description: "Follows OB documentation standards"
+      - name: "Template structure"
+        points: 5
+        description: "Provides clear template for AI to follow"
+      - name: "Completeness"
+        points: 5
+        description: "Template covers all necessary sections"
     total_points: 10
     passing_score: 7
 
 # ============================================
-# MODULE 3: ADVANCED TECHNIQUES
+# MODULE 3: THE ART OF REFINEMENT
 # ============================================
 
 module3_exercise1:
   id: "m3e1"
-  title: "Complex Multi-System Documentation"
+  title: "The 'Too Long' Note"
   module: 3
-  difficulty: "advanced"
-  estimated_time: "25 minutes"
-  transcript: "complex_multisystem"
-  goal: "Create a prompt for complex patients with multiple active problems"
+  difficulty: "intermediate"
+  estimated_time: "20 minutes"
+  transcript: "bad_soap_note_length"
+  input_label: "Draft Note (Too Verbose)"
+  goal: "Refine a verbose note into a concise clinical document"
   instructions: |
-    Complex patients require sophisticated documentation. Your prompt should guide the AI to:
-    - Organize multiple active problems
-    - Show relationships between conditions
-    - Create problem-based assessment and plan
-    - Prioritize acute vs chronic issues
+    AI often writes too much. A key skill is "Refinement" - taking a draft and making it better.
+    
+    Task: The provided "Draft Note" is accurate but way too wordy. Write a prompt to rewrite it to be concise and professional.
   example_good_prompt: |
-    Create a comprehensive SOAP note for this complex multi-system patient. Use problem-oriented documentation:
-
-    SUBJECTIVE & OBJECTIVE:
-    - Organize by system, integrating history and exam findings
-    - Highlight acute changes from baseline
-    - Include comprehensive medication list and relevant labs
-
-    ASSESSMENT & PLAN:
-    Use problem-based format, listing each active problem separately:
-
-    #1. [Most acute/serious problem] - [Current status]
-       - Relevant data supporting this diagnosis
-       - Plan specific to this problem (numbered)
-
-    #2. [Next problem] - [Current status]
-       - Supporting data
-       - Specific plan
-
-    Continue for all active problems.
-
-    Rank problems by acuity (acute conditions first, then chronic stable conditions).
-    Show clinical reasoning connecting related problems (e.g., how CHF exacerbation affects renal function).
-    Include hospital course summary if applicable.
-
-    The note should be suitable for complex case management and handoff between providers.
+    Rewrite the following SOAP note to be concise and professional.
+    
+    - Remove conversational language (e.g., "He tells me that...").
+    - Use standard medical abbreviations.
+    - Keep the HPI to relevant medical facts only.
+    - Limit the plan to actionable items.
   rubric:
     criteria:
-      - name: "Problem organization"
-        points: 3
-        description: "Clear problem-based structure with prioritization"
-      - name: "Clinical reasoning"
-        points: 3
-        description: "Shows relationships and thought process"
-      - name: "Comprehensiveness"
-        points: 2
-        description: "Addresses all relevant aspects of complex case"
-      - name: "Practical utility"
-        points: 2
-        description: "Note supports complex care coordination"
+      - name: "Conciseness"
+        points: 5
+        description: "Successfully reduces word count while keeping facts"
+      - name: "Professional Tone"
+        points: 5
+        description: "Converts conversational text to medical language"
     total_points: 10
     passing_score: 7
 
 module3_exercise2:
   id: "m3e2"
-  title: "Procedure Documentation"
+  title: "Fixing Hallucinations"
   module: 3
   difficulty: "advanced"
-  estimated_time: "25 minutes"
-  transcript: "procedure_colonoscopy"
-  goal: "Create a prompt for detailed procedure notes with specific required elements"
+  estimated_time: "20 minutes"
+  transcript: "bad_soap_note_hallucination"
+  input_label: "Draft Note (With Errors)"
+  goal: "Identify and correct AI hallucinations using the source data"
   instructions: |
-    Procedure notes have specific requirements for medical-legal documentation. Your prompt should ensure:
-    - Complete procedural details
-    - Informed consent documentation
-    - Detailed findings and interventions
-    - Complications and outcomes
-    - Post-procedure instructions
+    The input contains a "Patient Encounter Summary" (Truth) and an "AI Generated Note" (Draft with errors).
+    
+    Task: Write a prompt that identifies the discrepancies between the Summary and the Draft, and rewrites the note correctly.
   example_good_prompt: |
-    Generate a complete colonoscopy procedure note with the following structure:
-
-    PROCEDURE: [Name of procedure]
-
-    INDICATION: [Reason for procedure]
-
-    PATIENT INFORMATION:
-    - Brief relevant history
-    - ASA classification
-    - Informed consent (risks discussed: bleeding, perforation, sedation, missed lesions)
-
-    MEDICATIONS/SEDATION:
-    - Agents used, doses, patient tolerance
-
-    PROCEDURE DETAILS:
-    - Scope advanced to [landmark]
-    - Quality of bowel preparation (Boston Bowel Prep Scale)
-    - Withdrawal time
-    - Segments examined
-
-    FINDINGS:
-    - Anatomical region-by-region description
-    - Any polyps (size, location, morphology)
-    - Other pathology
-
-    INTERVENTIONS:
-    - Polypectomy details (technique, size, location, specimen handling)
-    - Photos taken
-
-    COMPLICATIONS: [None or describe]
-
-    SPECIMENS: [Number and labeling]
-
-    ASSESSMENT: [Summary of findings]
-
-    PLAN:
-    - Pathology follow-up
-    - Recommended surveillance interval
-    - Post-procedure instructions
-    - When to call for complications
-
-    Use precise anatomical locations (distance from anal verge in cm). Include all required elements for billing and medical-legal documentation.
+    Compare the "Patient Encounter Summary" with the "AI Generated Note".
+    
+    Identify any hallucinations (medications or findings in the note that are NOT in the summary).
+    
+    Then, rewrite the note using ONLY the facts from the "Patient Encounter Summary".
   rubric:
     criteria:
-      - name: "Complete documentation"
-        points: 3
-        description: "All required procedure note elements present"
-      - name: "Medical-legal adequacy"
-        points: 3
-        description: "Consent, risks, complications properly documented"
-      - name: "Procedural detail"
-        points: 2
-        description: "Sufficient detail for quality metrics and billing"
-      - name: "Clear structure"
-        points: 2
-        description: "Organized, easy to follow format"
+      - name: "Error Identification"
+        points: 5
+        description: "Prompt asks to find/fix the specific errors"
+      - name: "Fact Fidelity"
+        points: 5
+        description: "Rewritten note contains only verified facts"
     total_points: 10
     passing_score: 7
 
 module3_exercise3:
   id: "m3e3"
-  title: "Differential Diagnosis and Clinical Reasoning"
+  title: "Tone Shift"
   module: 3
-  difficulty: "advanced"
-  estimated_time: "25 minutes"
-  transcript: "er_chest_pain_gerd"
-  goal: "Create a prompt that generates documentation showing diagnostic reasoning"
+  difficulty: "intermediate"
+  estimated_time: "15 minutes"
+  transcript: "bad_soap_note_tone"
+  input_label: "Draft Note (Unprofessional)"
+  goal: "Change the tone of a note from casual to professional"
   instructions: |
-    Advanced documentation shows your clinical thinking. Create a prompt that generates a note demonstrating:
-    - Differential diagnosis considered
-    - Positive and negative findings supporting/refuting each
-    - Clinical reasoning pathway
-    - Evidence-based decision making
+    The draft note is written in very casual, unprofessional language.
+    
+    Task: Write a prompt to rewrite this into a formal medical record.
   example_good_prompt: |
-    Create an Emergency Department note for this chest pain case that demonstrates clinical reasoning:
-
-    SUBJECTIVE: [Standard HPI]
-
-    OBJECTIVE: [Vitals, exam, diagnostics]
-
-    ASSESSMENT - Use clinical reasoning format:
-
-    Chief Complaint: Chest Pain
-
-    Differential Diagnosis Considered:
-    1. Acute Coronary Syndrome
-       - Supporting: [age, risk factors, etc.]
-       - Against: [atypical features, negative troponin, etc.]
-       - HEART score: [X] = [risk category]
-
-    2. GERD/Esophageal
-       - Supporting: [burning quality, relation to food, etc.]
-       - Against: [if any]
-
-    3. [Other differentials as applicable]
-
-    Most Likely Diagnosis: [X] based on:
-    - [Key supporting evidence]
-    - [Results of risk stratification]
-    - [Clinical judgment factors]
-
-    PLAN:
-    - Addresses primary diagnosis
-    - Includes safety-netting (what would change the diagnosis)
-    - Return precautions specific to dangerous differentials
-    - Appropriate follow-up and testing
-
-    The assessment should read like a clinical reasoning case presentation, showing how you arrived at the diagnosis and ruled out dangerous alternatives.
+    Rewrite this note to be a formal medical record.
+    
+    - Change "Mom brings in..." to "Patient presents with mother..."
+    - Replace slang ("super itchy", "gross") with medical terms ("pruritus", "purulent").
+    - Maintain a neutral, objective tone.
   rubric:
     criteria:
-      - name: "Differential diagnosis"
-        points: 3
-        description: "Lists and evaluates relevant differential diagnoses"
-      - name: "Clinical reasoning"
-        points: 3
-        description: "Shows thought process and evidence evaluation"
-      - name: "Risk stratification"
-        points: 2
-        description: "Appropriately assesses and documents risk"
-      - name: "Safety-netting"
-        points: 2
-        description: "Includes red flags and return precautions"
+      - name: "Tone Transformation"
+        points: 5
+        description: "Successfully shifts from casual to formal"
+      - name: "Terminology"
+        points: 5
+        description: "Uses appropriate medical terminology"
     total_points: 10
     passing_score: 7
 
 # ============================================
-# MODULE 4: SAFETY & BEST PRACTICES
+# MODULE 4: ADVANCED APPLICATIONS
 # ============================================
 
 module4_exercise1:
   id: "m4e1"
-  title: "Identifying AI Limitations and Errors"
+  title: "Complex Multi-System"
   module: 4
-  difficulty: "intermediate"
-  estimated_time: "20 minutes"
-  transcript: "psych_depression_followup"
-  goal: "Create a prompt that includes quality checks and identifies when AI might make errors"
+  difficulty: "advanced"
+  estimated_time: "25 minutes"
+  transcript: "complex_multisystem"
+  goal: "Create a prompt for complex patients with multiple active problems"
   instructions: |
-    AI can make mistakes. Create a prompt that:
-    - Identifies high-risk areas where AI might err
-    - Includes validation steps
-    - Requests AI to flag uncertainties
-    - Preserves patient safety
+    Complex patients require sophisticated documentation.
+    
+    Task: Guide the AI to organize multiple active problems and show relationships between conditions.
   example_good_prompt: |
-    Create a psychiatry follow-up note for this depression visit. Include these safety measures:
-
-    CRITICAL SAFETY ELEMENTS (flag if missing from transcript):
-    - Suicide risk assessment (ideation, plan, intent, means)
-    - Homicidal ideation assessment
-    - Current mental status exam
-    - Medication compliance and side effects
-
-    If any of these are not clearly documented in the transcript, explicitly note "[CLINICIAN MUST ASSESS]" in that section.
-
-    MEDICATION DOCUMENTATION:
-    - Current medications with doses
-    - Any changes proposed
-    - If dosing unclear from transcript, note "[VERIFY DOSE]"
-
-    RISK ASSESSMENT:
-    - State explicit risk level (low/medium/high) based ONLY on documented factors
-    - If inadequate information to assess risk, state: "[INSUFFICIENT DATA FOR RISK STRATIFICATION - REQUIRES DIRECT CLINICAL ASSESSMENT]"
-
-    MENTAL STATUS EXAM:
-    - Only document findings explicitly stated in transcript
-    - Do not infer or assume mental status findings
-
-    Follow standard psychiatric SOAP format. Prioritize accuracy over completeness - flag gaps rather than making assumptions.
+    Create a comprehensive SOAP note. Use problem-oriented documentation in the Assessment & Plan.
+    
+    List each active problem separately with its own plan. Prioritize acute issues (CHF exacerbation) over chronic ones.
   rubric:
     criteria:
-      - name: "Safety awareness"
-        points: 3
-        description: "Identifies high-risk elements requiring verification"
-      - name: "Accuracy over completeness"
-        points: 3
-        description: "Flags gaps rather than making assumptions"
-      - name: "Validation steps"
-        points: 2
-        description: "Includes checks for critical information"
-      - name: "Clinical responsibility"
-        points: 2
-        description: "Makes clear what requires physician review"
+      - name: "Problem organization"
+        points: 5
+        description: "Clear problem-based structure"
+      - name: "Prioritization"
+        points: 5
+        description: "Acute issues listed first"
     total_points: 10
     passing_score: 7
 
 module4_exercise2:
   id: "m4e2"
-  title: "Quality Assurance Checks"
+  title: "Procedure Documentation"
   module: 4
-  difficulty: "intermediate"
-  estimated_time: "20 minutes"
-  transcript: "well_child_exam"
-  goal: "Build quality checks into your prompt to catch errors and omissions"
+  difficulty: "advanced"
+  estimated_time: "25 minutes"
+  transcript: "procedure_colonoscopy"
+  goal: "Create a prompt for detailed procedure notes"
   instructions: |
-    Create a prompt with built-in quality assurance. Your prompt should:
-    - Check for required elements
-    - Verify logical consistency
-    - Flag potential errors
-    - Ensure completeness for visit type
+    Procedure notes have specific medical-legal requirements.
+    
+    Task: Create a prompt that ensures all required elements (Consent, Indications, Findings, Complications) are documented.
   example_good_prompt: |
-    Generate a well-child examination note for this 4-year visit. Include these quality checks:
-
-    REQUIRED ELEMENTS CHECKLIST (flag if missing):
-    □ Growth parameters plotted on growth curve
-    □ Developmental assessment
-    □ Vision and hearing screening
-    □ Immunization status and vaccines given today
-    □ Anticipatory guidance topics
-
-    INTERNAL CONSISTENCY CHECKS:
-    - Verify BMI calculation matches height/weight
-    - Confirm immunizations are age-appropriate
-    - Check developmental milestones align with chronological age
-
-    If any inconsistencies found, note: "[VERIFY: possible documentation error - {describe issue}]"
-
-    COMPLETENESS VERIFICATION:
-    At the end of the note, include a brief summary:
-    "Quality Check: [All required elements present / Missing: {list}]"
-
-    FORMAT:
-    - Standard pediatric SOAP format
-    - Growth parameters in both absolute values and percentiles
-    - Age-appropriate anticipatory guidance
-    - Clear documentation of vaccines with lot numbers if available
-
-    Do not fabricate missing data - instead, clearly flag what's absent but should be documented.
+    Generate a colonoscopy procedure note.
+    
+    Ensure you include:
+    - Indication
+    - Informed Consent (risks discussed)
+    - Findings (location and size of polyps)
+    - Interventions (removal method)
+    - Plan (follow-up interval)
   rubric:
     criteria:
-      - name: "Required elements check"
-        points: 3
-        description: "Verifies all necessary components present"
-      - name: "Consistency verification"
-        points: 3
-        description: "Checks for logical errors and inconsistencies"
-      - name: "Completeness assessment"
-        points: 2
-        description: "Evaluates overall documentation quality"
-      - name: "Error prevention"
-        points: 2
-        description: "Includes safeguards against common mistakes"
+      - name: "Completeness"
+        points: 5
+        description: "All required procedure elements present"
+      - name: "Detail"
+        points: 5
+        description: "Captures specific findings accurately"
     total_points: 10
     passing_score: 7
 
 module4_exercise3:
   id: "m4e3"
-  title: "Privacy and De-identification"
+  title: "Differential Diagnosis"
   module: 4
   difficulty: "advanced"
   estimated_time: "25 minutes"
-  transcript: "outpatient_diabetes_new"
-  goal: "Create a prompt that handles patient privacy and can de-identify information when needed"
+  transcript: "er_chest_pain_gerd"
+  goal: "Generate documentation showing diagnostic reasoning"
   instructions: |
-    Patient privacy is critical. Create a prompt that:
-    - Identifies protected health information (PHI)
-    - Can de-identify notes when requested
-    - Maintains clinical utility while protecting privacy
-    - Follows HIPAA guidelines
+    Advanced documentation shows your thinking.
+    
+    Task: Create a prompt that generates a note demonstrating the differential diagnosis considered and why certain things were ruled out.
   example_good_prompt: |
-    Generate a clinical note from this transcript with privacy protection options:
-
-    STANDARD MODE (for internal use):
-    - Include all relevant clinical information
-    - Use professional medical documentation
-    - Standard SOAP format
-
-    DE-IDENTIFIED MODE (for teaching/sharing):
-    If de-identification is requested, replace:
-    - Names → Patient, Mr./Ms. [A]
-    - Dates → relative time (e.g., "3 months ago" instead of specific dates)
-    - Ages > 90 → ">90 years"
-    - Specific locations → general regions
-    - Unique identifiers → [REDACTED]
-
-    PRIVACY PRINCIPLES:
-    1. Never include:
-       - Social Security numbers
-       - Phone numbers
-       - Email addresses
-       - Specific addresses
-       - Photos or images
-
-    2. Be cautious with:
-       - Rare diagnoses that could identify patient
-       - Unusual combinations of conditions
-       - Very specific demographic details
-
-    3. Maintain clinical utility:
-       - Keep relevant clinical information
-       - Preserve medical context
-       - Retain teaching value
-
-    For this exercise, generate both:
-    1. Standard clinical note
-    2. De-identified version suitable for teaching
-
-    Label each version clearly.
+    Create an ED note. In the Assessment, explicitly list the Differential Diagnosis.
+    
+    For each differential (ACS, GERD, PE), explain why it is less likely based on the evidence (e.g., "Troponin negative", "No SOB").
   rubric:
     criteria:
-      - name: "PHI identification"
-        points: 3
-        description: "Correctly identifies protected health information"
-      - name: "De-identification approach"
-        points: 3
-        description: "Appropriately de-identifies while preserving utility"
-      - name: "Privacy awareness"
-        points: 2
-        description: "Demonstrates understanding of privacy principles"
-      - name: "Practical application"
-        points: 2
-        description: "Creates usable de-identified documentation"
+      - name: "Reasoning"
+        points: 5
+        description: "Shows thought process and evidence evaluation"
+      - name: "Differential"
+        points: 5
+        description: "Lists relevant differentials"
     total_points: 10
     passing_score: 7
 
 # ============================================
-# MODULE 5: SPECIALTY APPLICATIONS
+# MODULE 5: SAFETY & ETHICS
 # ============================================
 
 module5_exercise1:
   id: "m5e1"
-  title: "Custom Specialty Workflow"
+  title: "Identifying Bias & Errors"
   module: 5
   difficulty: "advanced"
-  estimated_time: "30 minutes"
-  transcript: "procedure_colonoscopy"
-  goal: "Create a comprehensive prompt tailored to your specialty's specific needs"
+  estimated_time: "20 minutes"
+  transcript: "psych_depression_followup"
+  goal: "Create a prompt that includes quality checks"
   instructions: |
-    Design a complete prompt system for your specialty. This should include:
-    - Specialty-specific documentation requirements
-    - Common visit types and their unique needs
-    - Billing and coding considerations
-    - Quality metrics specific to your field
-    - Workflow integration points
+    AI can make mistakes.
+    
+    Task: Create a prompt that identifies high-risk areas (Suicide Risk) and explicitly asks the AI to flag if information is missing.
   example_good_prompt: |
-    GASTROENTEROLOGY PROCEDURE NOTE SYSTEM
-
-    Purpose: Generate complete procedure notes meeting all quality, billing, and medical-legal requirements
-
-    PROCEDURE TYPE DETECTION:
-    First, identify procedure type from transcript:
-    - Colonoscopy (screening vs diagnostic)
-    - EGD (upper endoscopy)
-    - ERCP
-    - Other
-
-    UNIVERSAL REQUIREMENTS (all procedures):
-    1. Indication (with ICD-10 if possible)
-    2. Informed consent documentation
-    3. Timeout verification
-    4. Sedation/anesthesia details
-    5. Procedure details (scope type, depth reached, landmarks)
-    6. Findings (anatomic detail, photodocumentation)
-    7. Interventions performed
-    8. Specimens collected and labeling
-    9. Complications
-    10. Post-procedure status
-    11. Follow-up plan
-
-    COLONOSCOPY-SPECIFIC REQUIREMENTS:
-    - Quality metrics: cecal intubation (yes/no, landmarks identified)
-    - Prep quality (Boston Bowel Prep Scale score)
-    - Withdrawal time (minimum 6 minutes for quality)
-    - Polyp details: size (mm), location (cm from anal verge), morphology (Paris classification), removal method
-    - Recommendation for follow-up colonoscopy per USPSTF guidelines
-
-    BILLING OPTIMIZATION:
-    - Polyp removal: document size and technique for appropriate CPT coding
-    - Photo documentation: note number of photos for quality metrics
-    - Multiple biopsies: specify number and locations
-
-    OUTPUT FORMAT:
-    Use structured procedure note format with clearly labeled sections.
-    Include quality metrics summary at bottom.
-    Flag any missing elements required for billing or quality reporting.
-
-    SAFETY CHECKS:
-    - Verify anticoagulation management if applicable
-    - Document post-procedure instructions including warning signs
-    - Confirm pathology follow-up plan
+    Create a psych note.
+    
+    CRITICAL SAFETY CHECK:
+    - If Suicide Risk is not explicitly stated, write "[RISK NOT ASSESSED]".
+    - Do not infer mental status if not described.
   rubric:
     criteria:
-      - name: "Specialty customization"
-        points: 3
-        description: "Thoroughly tailored to specialty requirements"
-      - name: "Comprehensive coverage"
-        points: 3
-        description: "Addresses documentation, billing, quality, safety"
-      - name: "Workflow integration"
-        points: 2
-        description: "Practical for real-world use"
-      - name: "Quality optimization"
-        points: 2
-        description: "Supports best practices and quality metrics"
+      - name: "Safety awareness"
+        points: 5
+        description: "Identifies high-risk elements"
+      - name: "Accuracy"
+        points: 5
+        description: "Flags gaps rather than assuming"
     total_points: 10
     passing_score: 7
 
 module5_exercise2:
   id: "m5e2"
-  title: "Multi-Encounter Summary"
+  title: "De-identification"
   module: 5
   difficulty: "advanced"
-  estimated_time: "30 minutes"
-  transcript: "complex_multisystem"
-  goal: "Create a prompt that can synthesize information across multiple visits or create continuity summaries"
-  instructions: |
-    Advanced practice requires summarizing longitudinal care. Create a prompt that can:
-    - Synthesize information from multiple encounters
-    - Track problem evolution over time
-    - Create continuity summaries
-    - Identify trends and changes
-  example_good_prompt: |
-    Create a CONTINUITY OF CARE SUMMARY for this complex patient.
-
-    Purpose: Provide comprehensive overview for care transitions, referrals, or new providers
-
-    STRUCTURE:
-
-    1. PATIENT DEMOGRAPHICS
-       - Age, key identifiers (no PHI if de-identified version)
-
-    2. PROBLEM LIST (in order of clinical priority)
-       For each problem include:
-       - Diagnosis with date of onset/diagnosis
-       - Current status (active acute, active chronic stable, active chronic unstable, resolved)
-       - Key management points
-       - Last assessment date
-
-    3. CURRENT MEDICATIONS
-       - List with doses, frequencies, indications
-       - Recent changes highlighted
-
-    4. RECENT CLINICAL COURSE
-       - Summarize trajectory of active problems
-       - Hospitalizations or ED visits
-       - Significant test results with trends
-
-    5. CARE TEAM & CONSULTANTS
-       - Specialists involved
-       - Care coordination needs
-
-    6. UPCOMING NEEDS
-       - Pending tests or referrals
-       - Overdue preventive care
-       - Scheduled procedures
-
-    7. GOALS OF CARE
-       - Patient's priorities
-       - Treatment goals
-       - Advanced directives status
-
-    8. SOCIAL DETERMINANTS
-       - Relevant social factors affecting care
-       - Support system
-       - Barriers to care
-
-    FORMAT:
-    - Concise but comprehensive (1-2 pages)
-    - Easy to scan quickly
-    - Highlights what's most important for safe care
-    - Suitable for handoff, referral, or transition
-
-    CLINICAL SYNTHESIS:
-    Show clinical thinking about how problems relate to each other and overall trajectory.
-    This should read as a thoughtful summary, not just a data dump.
-  rubric:
-    criteria:
-      - name: "Comprehensive synthesis"
-        points: 3
-        description: "Integrates information into coherent summary"
-      - name: "Longitudinal perspective"
-        points: 3
-        description: "Shows trajectory and evolution over time"
-      - name: "Clinical utility"
-        points: 2
-        description: "Useful for care transitions and coordination"
-      - name: "Prioritization"
-        points: 2
-        description: "Highlights what's most important"
-    total_points: 10
-    passing_score: 7
-
-module5_final_project:
-  id: "m5fp"
-  title: "Build Your Personal Prompt Library"
-  module: 5
-  difficulty: "advanced"
-  estimated_time: "60 minutes"
-  transcript: "multiple"
-  goal: "Create a comprehensive set of prompts for your common clinical scenarios"
-  instructions: |
-    FINAL PROJECT: Create your own prompt library tailored to your practice.
-
-    Your library should include at least 5 different prompt templates for:
-
-    1. Your most common visit type
-    2. A complex/comprehensive visit
-    3. A procedure note (if applicable) or specialized documentation
-    4. A follow-up visit template
-    5. A specialty-specific scenario
-
-    REQUIREMENTS FOR EACH PROMPT:
-
-    ✓ Clear purpose and use case
-    ✓ Specific formatting instructions
-    ✓ Quality checks built in
-    ✓ Safety considerations
-    ✓ Appropriate for your specialty
-    ✓ Tested and refined
-
-    EVALUATION CRITERIA:
-
-    Your prompt library will be evaluated on:
-    - Practical utility for your practice
-    - Comprehensive coverage of your common scenarios
-    - Quality and safety measures included
-    - Professional formatting and organization
-    - Evidence of thoughtful refinement
-
-    DELIVERABLE:
-
-    Create a document (or set of documents) that you could actually use in your clinical practice.
-    Format it in a way that makes prompts easy to access and use.
-
-    Consider:
-    - How will you organize your prompts?
-    - How will you access them quickly during clinic?
-    - How will you update them as you learn what works?
-    - Could you share them with colleagues?
-
-    BONUS ELEMENTS:
-    - Version control (dating your prompts as you improve them)
-    - Specialty-specific quality metrics
-    - Integration with your EMR workflow
-    - Shortcuts or quick-access methods
-    - Troubleshooting guides for common issues
-  rubric:
-    criteria:
-      - name: "Comprehensiveness"
-        points: 20
-        description: "Covers all required prompt types thoroughly"
-      - name: "Quality and safety"
-        points: 20
-        description: "Includes appropriate checks and safeguards"
-      - name: "Specialty customization"
-        points: 20
-        description: "Tailored to specific practice needs"
-      - name: "Practical usability"
-        points: 20
-        description: "Organized for real-world use"
-      - name: "Refinement and polish"
-        points: 20
-        description: "Shows thoughtful iteration and improvement"
-    total_points: 100
-    passing_score: 70
-
-# ============================================
-# NEWBORN EXAM MODULE
-# ============================================
-
-newborn_exercise1:
-  id: "nb1"
-  title: "Newborn Examination Documentation"
-  module: "newborn"
-  difficulty: "intermediate"
-  estimated_time: "25 minutes"
-  transcript: "newborn_exam"
-  goal: "Create a comprehensive newborn examination note with all required elements"
-  instructions: |
-    Write a prompt that generates a complete newborn examination note. This is a specialized visit type with specific requirements.
-
-    Your prompt should ensure the AI includes:
-    - Maternal and birth history
-    - Complete physical exam using newborn-specific elements
-    - Growth parameters with percentiles
-    - Newborn-specific assessments (jaundice, feeding, etc.)
-    - Anticipatory guidance appropriate for newborns
-    - Safety counseling for parents
-  example_good_prompt: |
-    Create a comprehensive newborn examination note from this encounter. Use the following structure:
-
-    NEWBORN IDENTIFICATION:
-    - Age in days
-    - Gestational age at birth
-    - Birth weight and current weight with % change
-
-    MATERNAL/BIRTH HISTORY:
-    - Mother's pregnancy/delivery information
-    - Birth complications if any
-    - Hospital course summary
-
-    INTERVAL HISTORY:
-    - Feeding (type, frequency, adequacy)
-    - Output (wet diapers, stools)
-    - Sleep patterns
-    - Parental concerns
-
-    PHYSICAL EXAMINATION:
-    Use systematic newborn exam format:
-    - Vitals with percentiles
-    - General appearance and activity
-    - Complete head-to-toe exam
-    - Newborn reflexes (Moro, grasp, suck, etc.)
-    - Hip examination (Barlow/Ortolani)
-    - Skin findings (jaundice zone, normal variants)
-
-    ASSESSMENT:
-    - Overall health status
-    - Specific findings requiring attention (e.g., jaundice level)
-    - Feeding adequacy
-    - Growth parameters assessment
-
-    PLAN:
-    - Jaundice management if applicable
-    - Feeding plan and support
-    - Preventive care (vaccines, screening results)
-    - Safety counseling (safe sleep, car seat, cord care)
-    - Red flags for parents to monitor
-    - Follow-up timing
-
-    Use professional pediatric terminology. Include specific measurements and percentiles. Address newborn-specific concerns.
-  rubric:
-    criteria:
-      - name: "Newborn-specific format"
-        points: 3
-        description: "Uses appropriate newborn documentation structure"
-      - name: "Complete physical exam"
-        points: 3
-        description: "Includes all required newborn exam components"
-      - name: "Safety and anticipatory guidance"
-        points: 2
-        description: "Addresses parental education and safety"
-      - name: "Clinical appropriateness"
-        points: 2
-        description: "Focuses on age-appropriate concerns and management"
-    total_points: 10
-    passing_score: 7
-
-newborn_exercise2:
-  id: "nb2"
-  title: "Jaundice Assessment and Management"
-  module: "newborn"
-  difficulty: "intermediate"
   estimated_time: "20 minutes"
-  transcript: "newborn_exam"
-  goal: "Document newborn jaundice with appropriate assessment and management plan"
+  transcript: "outpatient_diabetes_new"
+  goal: "Create a prompt that handles patient privacy"
   instructions: |
-    Newborn jaundice is a common finding that requires careful documentation and management planning.
-
-    Your prompt should guide the AI to:
-    - Document jaundice severity (visual zone and bilirubin level)
-    - Assess risk factors
-    - Reference appropriate guidelines (Bhutani nomogram)
-    - Create evidence-based management plan
-    - Include specific parent education
-    - Define clear follow-up parameters
+    Task: Create a prompt that generates a de-identified version of the note suitable for teaching.
+    
+    Remove all PHI (Names, Dates, Locations) and replace them with placeholders.
   example_good_prompt: |
-    Generate a newborn visit note with special attention to jaundice assessment and management. Format as follows:
-
-    SUBJECTIVE & OBJECTIVE:
-    Document the visit as standard newborn note, but ensure these jaundice-specific elements are highlighted:
-    - Age of infant in hours
-    - Feeding pattern and adequacy (critical for jaundice)
-    - Visual jaundice assessment (head to toe zones)
-    - Bilirubin level with timing
-    - Risk factors for hyperbilirubinemia
-
-    ASSESSMENT:
-    For jaundice, include:
-    - Classification (physiologic vs pathologic)
-    - Severity level
-    - Risk zone per Bhutani nomogram
-    - Trend if prior values available
-
-    PLAN FOR JAUNDICE:
-    Create detailed management plan:
-    1. Risk stratification based on nomogram
-    2. Feeding optimization (frequency, adequacy assessment)
-    3. Repeat bilirubin timing (specific: "in 24 hours" not "soon")
-    4. Threshold for phototherapy (if applicable)
-    5. Parental education:
-       - How to monitor jaundice progression
-       - Red flags (jaundice below umbilicus, palms/soles, lethargy)
-       - When to call immediately
-    6. Clear follow-up plan with specific timing
-
-    Include evidence-based guidelines. Be specific about timing and thresholds. Emphasize parent education for safety.
+    Generate a de-identified clinical note.
+    
+    Replace:
+    - Patient Name -> [Patient]
+    - Dates -> [Date]
+    - Ages > 90 -> >90
+    
+    Keep the clinical facts but remove identifiers.
   rubric:
     criteria:
-      - name: "Complete jaundice assessment"
-        points: 3
-        description: "Documents all key elements of jaundice evaluation"
-      - name: "Evidence-based management"
-        points: 3
-        description: "References appropriate guidelines and thresholds"
-      - name: "Parent education"
-        points: 2
-        description: "Includes clear monitoring instructions and red flags"
-      - name: "Specific follow-up plan"
-        points: 2
-        description: "Defines clear timeline and criteria for follow-up"
-    total_points: 10
-    passing_score: 7
-
-newborn_exercise3:
-  id: "nb3"
-  title: "Feeding Assessment and Support"
-  module: "newborn"
-  difficulty: "intermediate"
-  estimated_time: "20 minutes"
-  transcript: "newborn_exam"
-  goal: "Document comprehensive feeding assessment with supportive guidance"
-  instructions: |
-    Feeding is one of the most critical aspects of newborn care. Your documentation should thoroughly address feeding adequacy and provide clear support.
-
-    Your prompt should ensure documentation of:
-    - Type of feeding (breast, formula, combination)
-    - Frequency and duration
-    - Signs of adequate intake (output, weight trend)
-    - Feeding difficulties if present
-    - Lactation support for breastfeeding
-    - Supplementation needs (vitamin D)
-    - Clear guidance for parents
-  example_good_prompt: |
-    Create a newborn visit note with comprehensive feeding assessment. Structure the note to include:
-
-    FEEDING HISTORY (in HPI or dedicated section):
-    - Type: Breastfeeding, formula, or combination
-    - Frequency (number of feeds per 24 hours)
-    - Duration or amount per feed
-    - Infant behavior at feeds (latching, satisfaction, fussiness)
-    - Maternal concerns or difficulties
-
-    FEEDING ADEQUACY ASSESSMENT (Objective section):
-    - Weight: current weight, birth weight, % change
-    - Weight loss/gain trend with interpretation
-    - Output: wet diapers per day (specific number)
-    - Stool frequency and character
-    - Hydration status on exam
-
-    FEEDING IN ASSESSMENT:
-    Evaluate feeding adequacy:
-    - Is weight loss acceptable (<10% is normal in first week)
-    - Is output adequate (6+ wet diapers after day 5)
-    - Are there concerns for inadequate intake?
-
-    FEEDING PLAN:
-    Create specific feeding support plan:
-    1. Feeding recommendations:
-       - Frequency (e.g., "8-12 times per 24 hours")
-       - On-demand vs scheduled guidance
-       - Duration guidance for breastfeeding
-    2. Lactation support if breastfeeding:
-       - Latch assessment and tips
-       - Positioning reviewed
-       - When to seek lactation consultation
-    3. Supplementation:
-       - Vitamin D 400 IU daily (all breastfed/partially breastfed infants)
-       - Iron supplementation if indicated
-    4. Monitoring plan:
-       - Weight check timing
-       - Output monitoring goals
-       - Signs of inadequate feeding to watch for
-    5. Resources:
-       - Lactation consultant contact if applicable
-       - La Leche League or other support groups
-
-    Use supportive, educational tone. Provide specific numbers and goals. Address parental concerns with evidence-based guidance.
-  rubric:
-    criteria:
-      - name: "Comprehensive feeding assessment"
-        points: 3
-        description: "Documents all aspects of feeding adequacy"
-      - name: "Specific guidance"
-        points: 3
-        description: "Provides clear, actionable feeding plan"
-      - name: "Lactation support"
-        points: 2
-        description: "Includes appropriate breastfeeding support"
-      - name: "Monitoring plan"
-        points: 2
-        description: "Clear parameters for assessing feeding success"
+      - name: "De-identification"
+        points: 5
+        description: "Removes PHI correctly"
+      - name: "Utility"
+        points: 5
+        description: "Preserves clinical value"
     total_points: 10
     passing_score: 7
