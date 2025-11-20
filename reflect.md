@@ -83,8 +83,8 @@ permalink: /reflect/
         padding: 10px;
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 50px); /* Taller on mobile */
-        min-height: 800px; /* Increased min-height for mobile */
+        height: 110vh; /* Significantly taller for mobile */
+        min-height: 1000px; /* Ensure plenty of vertical space */
         position: relative;
     }
 
