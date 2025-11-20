@@ -85,6 +85,7 @@ description: Plan your work schedule, PTO, and CME for the entire year.
     to { opacity: 1; transform: translateY(0); }
   }
 
+<style>
   /* Hero Section */
   .hero {
       background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
@@ -117,7 +118,6 @@ description: Plan your work schedule, PTO, and CME for the entire year.
         <h1>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 40px; height: 40px; display: inline-block; vertical-align: text-bottom; margin-right: 12px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-            </svg>
             Annual PTO Planner
         </h1>
         <p class="hero-subtitle">
