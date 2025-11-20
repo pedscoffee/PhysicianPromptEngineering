@@ -661,6 +661,174 @@ const dotPhraseData = [
         ]
       }
     ]
+  },
+  {
+    name: "Clinical Documentation",
+    level: 1,
+    subgroups: [
+      {
+        name: "History (HPI)",
+        level: 2,
+        phrases: [
+          {
+            title: "General HPI (OLDCARTS)",
+            shortcut: ".dochpigen",
+            tags: ["doc", "hpi", "general"],
+            contentHtml: `<p><strong>Onset:</strong> ***<br><strong>Location:</strong> ***<br><strong>Duration:</strong> ***<br><strong>Character:</strong> ***<br><strong>Aggravating factors:</strong> ***<br><strong>Relieving factors:</strong> ***<br><strong>Timing:</strong> ***<br><strong>Severity:</strong> ***</p>`
+          },
+          {
+            title: "Follow-up HPI",
+            shortcut: ".dochpifu",
+            tags: ["doc", "hpi", "follow-up"],
+            contentHtml: `<p>Patient returns for follow-up of ***.<br>Since last visit, symptoms have ***.<br>Current compliance with treatment plan: ***.<br>New complaints/concerns: ***.</p>`
+          }
+        ]
+      },
+      {
+        name: "Physical Exam",
+        level: 2,
+        phrases: [
+          {
+            title: "General Normal Exam",
+            shortcut: ".docpenorm",
+            tags: ["doc", "pe", "normal"],
+            contentHtml: `<p><strong>Gen:</strong> Well-appearing, no acute distress.<br><strong>HEENT:</strong> NC/AT. PERRL. EOMI. Oropharynx clear.<br><strong>CV:</strong> RRR, no murmurs/rubs/gallops.<br><strong>Resp:</strong> CTAB, no wheezes/rales/rhonchi.<br><strong>Abd:</strong> Soft, non-tender, non-distended.<br><strong>Ext:</strong> No edema, warm and well-perfused.<br><strong>Neuro:</strong> Alert and oriented x3. Grossly non-focal.</p>`
+          },
+          {
+            title: "Telehealth Observation",
+            shortcut: ".docpetele",
+            tags: ["doc", "pe", "telehealth"],
+            contentHtml: `<p><strong>General:</strong> Patient appears comfortable, no acute distress noted on video.<br><strong>Resp:</strong> No increased work of breathing, speaking in full sentences.<br><strong>Neuro:</strong> Alert, conversant, answers questions appropriately.<br><strong>Skin:</strong> No visible rashes or lesions on exposed skin.</p>`
+          }
+        ]
+      },
+      {
+        name: "Review of Systems",
+        level: 2,
+        phrases: [
+          {
+            title: "General 10-point ROS",
+            shortcut: ".docrosgen",
+            tags: ["doc", "ros", "general"],
+            contentHtml: `<p><strong>Const:</strong> Negative for fever, chills, fatigue.<br><strong>Eyes:</strong> Negative for visual changes.<br><strong>ENT:</strong> Negative for sore throat, congestion.<br><strong>CV:</strong> Negative for chest pain, palpitations.<br><strong>Resp:</strong> Negative for SOB, cough.<br><strong>GI:</strong> Negative for abdominal pain, nausea/vomiting.<br><strong>GU:</strong> Negative for dysuria, frequency.<br><strong>MSK:</strong> Negative for joint pain, swelling.<br><strong>Skin:</strong> Negative for rash, lesions.<br><strong>Neuro:</strong> Negative for headache, dizziness.</p>`
+          }
+        ]
+      },
+      {
+        name: "Assessment & Plan",
+        level: 2,
+        phrases: [
+          {
+            title: "Discussion Note",
+            shortcut: ".docplandisc",
+            tags: ["doc", "plan", "counseling"],
+            contentHtml: `<p>Extensive discussion held with patient regarding ***. Reviewed diagnosis, prognosis, and treatment options including ***. Risks and benefits discussed. Patient verbalized understanding and agreement with plan. All questions answered.</p>`
+          },
+          {
+            title: "Time-Based Billing",
+            shortcut: ".docplantime",
+            tags: ["doc", "plan", "billing"],
+            contentHtml: `<p>Total time spent on patient care today was *** minutes, with greater than 50% of time spent on counseling and coordination of care regarding ***.</p>`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Patient Instructions / AVS",
+    level: 1,
+    subgroups: [
+      {
+        name: "General Care",
+        level: 2,
+        phrases: [
+          {
+            title: "Viral Illness Care",
+            shortcut: ".avsviral",
+            tags: ["avs", "viral", "care"],
+            contentHtml: `<p><strong>Viral Illness Instructions:</strong><br>- Rest and hydration are key.<br>- Use acetaminophen (Tylenol) or ibuprofen (Motrin) for fever/pain as needed.<br>- Monitor for worsening symptoms.<br>- Antibiotics are not indicated for viral infections.</p>`
+          },
+          {
+            title: "OTC Pain Management",
+            shortcut: ".avspain",
+            tags: ["avs", "pain", "otc"],
+            contentHtml: `<p><strong>Pain Management:</strong><br>- Acetaminophen (Tylenol): *** mg every 6 hours as needed.<br>- Ibuprofen (Motrin/Advil): *** mg every 6-8 hours as needed.<br>- Take with food to prevent stomach upset.<br>- Do not exceed daily maximum doses.</p>`
+          },
+          {
+            title: "Lifestyle Advice",
+            shortcut: ".avslife",
+            tags: ["avs", "lifestyle", "health"],
+            contentHtml: `<p><strong>Healthy Lifestyle Recommendations:</strong><br>- <strong>Diet:</strong> Focus on whole foods, fruits, vegetables, and lean proteins. Limit processed foods and sugary drinks.<br>- <strong>Exercise:</strong> Aim for 150 minutes of moderate activity per week.<br>- <strong>Sleep:</strong> Aim for 7-9 hours of quality sleep per night.</p>`
+          }
+        ]
+      },
+      {
+        name: "Safety & Precautions",
+        level: 2,
+        phrases: [
+          {
+            title: "Return Precautions",
+            shortcut: ".avsret",
+            tags: ["avs", "safety", "return"],
+            contentHtml: `<p><strong>Return to Clinic or ER if:</strong><br>- Fever > 100.4 F (38 C) persists or returns.<br>- Difficulty breathing or chest pain.<br>- Severe abdominal pain.<br>- Unable to keep fluids down.<br>- Symptoms worsen or fail to improve as expected.</p>`
+          },
+          {
+            title: "Antibiotic Stewardship",
+            shortcut: ".avsantibx",
+            tags: ["avs", "antibiotics", "education"],
+            contentHtml: `<p><strong>Why No Antibiotics?</strong><br>Your illness appears to be caused by a virus. Antibiotics only kill bacteria and do not work against viruses. Taking antibiotics when not needed can cause side effects and lead to antibiotic resistance. We will treat your symptoms to help you feel better while your body fights the virus.</p>`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Compliance & Legal",
+    level: 1,
+    subgroups: [
+      {
+        name: "Consent & Logistics",
+        level: 2,
+        phrases: [
+          {
+            title: "Telehealth Consent",
+            shortcut: ".legtele",
+            tags: ["legal", "consent", "telehealth"],
+            contentHtml: `<p>Patient consents to telehealth visit. Risks and limitations of remote evaluation discussed, including potential technical issues and inability to perform complete physical exam. Patient understands and agrees to proceed.</p>`
+          },
+          {
+            title: "Chaperone Present",
+            shortcut: ".legchap",
+            tags: ["legal", "chaperone"],
+            contentHtml: `<p>Chaperone *** was present for the physical examination.</p>`
+          },
+          {
+            title: "Interpreter Used",
+            shortcut: ".legint",
+            tags: ["legal", "interpreter"],
+            contentHtml: `<p>Professional interpreter (ID# ***) used for this encounter. Language: ***.</p>`
+          }
+        ]
+      },
+      {
+        name: "Discussions",
+        level: 2,
+        phrases: [
+          {
+            title: "Code Status Discussion",
+            shortcut: ".legcode",
+            tags: ["legal", "code-status", "eol"],
+            contentHtml: `<p>Detailed discussion regarding code status held with patient/family. Explained CPR, intubation, and intensive care measures. Patient/Family expresses wish to be: *** (e.g., DNR/DNI, Full Code).</p>`
+          },
+          {
+            title: "Refusal of Care",
+            shortcut: ".legref",
+            tags: ["legal", "refusal", "risk"],
+            contentHtml: `<p>Patient declines recommended ***. Risks of refusal, including ***, were clearly explained. Patient demonstrates capacity to make this decision and understands the potential consequences. Patient persists in refusal.</p>`
+          }
+        ]
+      }
+    ]
   }
 ];
 
