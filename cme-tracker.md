@@ -350,6 +350,11 @@ permalink: /cme-tracker/
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Export
             </button>
+            <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Import
+            </button>
+            <input type="file" id="import-file" accept=".csv" style="display:none" onchange="importData(this)">
         </div>
     </div>
 
@@ -460,15 +465,18 @@ permalink: /cme-tracker/
             
             <div class="form-group">
                 <label>Description</label>
-                <input type="text" id="entry-desc" class="form-control" placeholder="e.g. ACP Conference Registration" required>
+                <input type="text" id="entry-desc" class="form-control" placeholder="e.g. Conference Registration" required>
             </div>
             
             <div class="form-group">
                 <label>Category</label>
                 <select id="entry-category" class="form-control">
-                    <option value="Registration">Registration</option>
-                    <option value="Travel">Travel / Hotel</option>
-                    <option value="Materials">Books / Subscriptions</option>
+                    <option value="Registration">Conference</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Materials">Books</option>
+                    <option value="Courses">Courses</option>
+                    <option value="Subscriptions">Subscriptions</option>
+                    <option value="Supplies">Supplies </option>
                     <option value="Other">Other</option>
                 </select>
             </div>
@@ -716,6 +724,104 @@ permalink: /cme-tracker/
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+    }
+
+    function importData(input) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const text = e.target.result;
+                const rows = parseCSV(text);
+                
+                // Skip header row if it exists
+                const startIdx = rows.length > 0 && rows[0][0] === 'Date' ? 1 : 0;
+                
+                let addedCount = 0;
+                for (let i = startIdx; i < rows.length; i++) {
+                    const row = rows[i];
+                    if (row.length < 4) continue; // Skip invalid rows
+
+                    // Map CSV columns to entry object
+                    // Expected: Date, Description, Category, Cost, Days Used
+                    const entry = {
+                        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+                        date: row[0],
+                        desc: row[1],
+                        category: row[2],
+                        cost: parseFloat(row[3]) || 0,
+                        days: parseFloat(row[4]) || 0
+                    };
+
+                    if (entry.date && entry.desc) {
+                        state.entries.push(entry);
+                        addedCount++;
+                    }
+                }
+
+                saveState();
+                alert(`Successfully imported ${addedCount} entries.`);
+            } catch (err) {
+                console.error(err);
+                alert('Error parsing CSV file. Please check the format.');
+            }
+            
+            // Reset input
+            input.value = '';
+        };
+        reader.readAsText(file);
+    }
+
+    // Simple CSV Parser that handles quotes
+    function parseCSV(text) {
+        const rows = [];
+        let currentRow = [];
+        let currentCell = '';
+        let inQuotes = false;
+        
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const nextChar = text[i + 1];
+            
+            if (inQuotes) {
+                if (char === '"' && nextChar === '"') {
+                    currentCell += '"';
+                    i++; // Skip next quote
+                } else if (char === '"') {
+                    inQuotes = false;
+                } else {
+                    currentCell += char;
+                }
+            } else {
+                if (char === '"') {
+                    inQuotes = true;
+                } else if (char === ',') {
+                    currentRow.push(currentCell);
+                    currentCell = '';
+                } else if (char === '\n' || char === '\r') {
+                    if (currentCell || currentRow.length > 0) {
+                        currentRow.push(currentCell);
+                        rows.push(currentRow);
+                    }
+                    currentRow = [];
+                    currentCell = '';
+                    // Handle \r\n
+                    if (char === '\r' && nextChar === '\n') i++;
+                } else {
+                    currentCell += char;
+                }
+            }
+        }
+        
+        // Push last row if exists
+        if (currentCell || currentRow.length > 0) {
+            currentRow.push(currentCell);
+            rows.push(currentRow);
+        }
+        
+        return rows;
     }
 
     // Close modal on outside click
