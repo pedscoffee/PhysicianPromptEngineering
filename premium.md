@@ -97,6 +97,61 @@ permalink: /premium/
         color: white;
         text-decoration: none;
     }
+
+    .tool-section {
+        background: white;
+        padding: 50px 40px;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+        margin-bottom: 40px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s;
+    }
+
+    .tool-section:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .tool-header h3 {
+        color: #0f172a;
+        font-size: 1.8em;
+        margin: 0;
+    }
+
+    .tool-description {
+        color: #475569;
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .tool-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+    }
+
+    .tool-features li {
+        color: #64748b;
+        padding: 10px 0 10px 30px;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .tool-features li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+        font-weight: bold;
+    }
 </style>
 
 <div class="premium-hero">
@@ -121,73 +176,96 @@ permalink: /premium/
     </p>
 </div>
 
-<h2 style="text-align: center; margin-bottom: 30px;">Premium Tools</h2>
+<h2 style="text-align: center; margin-bottom: 50px; color: #0f172a;">Premium Tools</h2>
 
-<div class="features-grid">
-    <div class="feature-card">
-        <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-            </svg>
-            AI Prompt Assistant
-        </h3>
-        <p style="color: #475569; margin-bottom: 20px;">
-            A local, privacy-first AI that helps you generate and refine clinical prompts. Runs entirely in your browser.
-        </p>
-        <a href="/prompt-assistant" class="btn-primary">Try It Out</a>
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+        </svg>
+        <h3>AI Prompt Assistant</h3>
     </div>
+    <p class="tool-description">A local, privacy-first AI that helps you generate and refine clinical prompts. Runs entirely in your browser with no data leaving your device.</p>
+    <ul class="tool-features">
+        <li>Generate clinical documentation prompts tailored to your specialty</li>
+        <li>Refine and optimize existing prompts for better results</li>
+        <li>100% private - all processing happens locally in your browser</li>
+        <li>No internet required after initial load</li>
+        <li>Seamlessly integrates with the Prompt Manager</li>
+    </ul>
+    <a href="/prompt-assistant" class="btn-primary">Try It Out</a>
+</div>
 
-    <div class="feature-card">
-        <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 3.42 0h.003c.595.02 1.196.059 1.798.115l.132.012-.002.002h.002l.134-.012a48.217 48.217 0 0 1 3.418 0Zm-7.093 0c.595.02 1.196.059 1.798.115l.132.012-.002.002h.002l.134-.012a48.217 48.217 0 0 1 3.418 0" />
-            </svg>
-            Prompt Manager
-        </h3>
-        <p style="color: #475569; margin-bottom: 20px;">
-            Organize your favorite prompts, dot phrases, and clinical templates. Syncs with the Prompt Assistant for a seamless workflow.
-        </p>
-        <a href="/prompt-manager" class="btn-primary">Manage Prompts</a>
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 3.42 0h.003c.595.02 1.196.059 1.798.115l.132.012-.002.002h.002l.134-.012a48.217 48.217 0 0 1 3.418 0Zm-7.093 0c.595.02 1.196.059 1.798.115l.132.012-.002.002h.002l.134-.012a48.217 48.217 0 0 1 3.418 0" />
+        </svg>
+        <h3>Prompt Manager</h3>
     </div>
+    <p class="tool-description">Organize and access your favorite prompts, dot phrases, and clinical templates in one centralized location.</p>
+    <ul class="tool-features">
+        <li>Store unlimited prompts and templates</li>
+        <li>Organize by specialty, encounter type, or custom categories</li>
+        <li>Quick search and filter functionality</li>
+        <li>Export and import prompt libraries</li>
+        <li>Syncs with the AI Prompt Assistant for streamlined workflow</li>
+    </ul>
+    <a href="/prompt-manager" class="btn-primary">Manage Prompts</a>
+</div>
 
-    <div class="feature-card">
-        <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-            ClockWork TimeBox
-        </h3>
-        <p style="color: #475569; margin-bottom: 20px;">
-            Master your clinical time management. Stay on schedule with intelligent timeboxing for patient visits.
-        </p>
-        <a href="/clockwork-timebox" class="btn-primary">Start Timer</a>
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <h3>ClockWork TimeBox</h3>
     </div>
+    <p class="tool-description">Master your clinical time management with intelligent timeboxing designed for patient visits and clinic workflows.</p>
+    <ul class="tool-features">
+        <li>Set custom time allocations for different visit types</li>
+        <li>Visual and audio alerts to keep you on schedule</li>
+        <li>Track time spent on documentation vs. patient interaction</li>
+        <li>Analyze your time management patterns over multiple sessions</li>
+        <li>Reduce clinic overruns and improve work-life balance</li>
+    </ul>
+    <a href="/clockwork-timebox" class="btn-primary">Start Timer</a>
+</div>
 
-    <div class="feature-card">
-        <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-            </svg>
-            RVU Data Tracker
-        </h3>
-        <p style="color: #475569; margin-bottom: 20px;">
-            Track your productivity and compensation. Visualize your RVU targets and actual performance.
-        </p>
-        <a href="/clinic-visit-tracker" class="btn-primary">Track RVUs</a>
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <h3>RVU Data Tracker</h3>
     </div>
+    <p class="tool-description">Track your clinical productivity and compensation with comprehensive RVU monitoring and visualization tools.</p>
+    <ul class="tool-features">
+        <li>Log daily RVUs by encounter type and CPT code</li>
+        <li>Visualize progress toward monthly and annual targets</li>
+        <li>Compare actual performance against benchmarks</li>
+        <li>Export data for compensation reviews and negotiations</li>
+        <li>Identify high-value encounter patterns and optimization opportunities</li>
+    </ul>
+    <a href="/clinic-visit-tracker" class="btn-primary">Track RVUs</a>
+</div>
 
-    <div class="feature-card">
-        <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-            QI Project Tracker
-        </h3>
-        <p style="color: #475569; margin-bottom: 20px;">
-            Manage quality improvement initiatives. Track metrics, interventions, and outcomes in one place.
-        </p>
-        <a href="/qi-project-tracker" class="btn-primary">Manage Project</a>
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <h3>QI Project Tracker</h3>
     </div>
+    <p class="tool-description">Manage quality improvement initiatives from planning to implementation with comprehensive project tracking and outcome monitoring.</p>
+    <ul class="tool-features">
+        <li>Define SMART goals and track milestones</li>
+        <li>Log interventions and monitor key performance metrics</li>
+        <li>Visualize improvement trends with charts and graphs</li>
+        <li>Document PDSA cycles and learnings</li>
+        <li>Generate reports for presentations and publications</li>
+    </ul>
+    <a href="/qi-project-tracker" class="btn-primary">Manage Project</a>
 </div>
 
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
