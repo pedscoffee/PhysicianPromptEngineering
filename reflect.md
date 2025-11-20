@@ -147,7 +147,7 @@ permalink: /reflect/
         cursor: grab;
         color: white;
         font-weight: 600;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         line-height: 1.2;
         padding: 8px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
@@ -452,7 +452,7 @@ const CONFIG = {
         strategy: '#8b5cf6',
         anatomic: '#14b8a6'
     },
-    tileSize: 110, // Mobile default
+    tileSize: 90, // Mobile default
     physics: {
         drag: 0.9,      // Friction
         stiffness: 0.05, // Spring stiffness for return to center
