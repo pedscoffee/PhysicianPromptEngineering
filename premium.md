@@ -270,6 +270,24 @@ permalink: /premium/
     <a href="/qi-project-tracker" class="btn-primary">Manage Project</a>
 </div>
 
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+        </svg>
+        <h3>Annual PTO Planner</h3>
+    </div>
+    <p class="tool-description">Plan your work schedule, vacation days, and CME time for the entire year with this interactive calendar tool.</p>
+    <ul class="tool-features">
+        <li>Visualize your entire year at a glance with dual calendar views</li>
+        <li>Track PTO and CME allowances separately with real-time budget updates</li>
+        <li>Automatically accounts for US Federal Holidays</li>
+        <li>Data persists locally in your browser - no login required</li>
+        <li>Export and import your schedule for backup or sharing</li>
+    </ul>
+    <a href="/pto-planner" class="btn-primary">Plan Schedule</a>
+</div>
+
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
     <h3>Join the Community</h3>
     <p style="margin-bottom: 20px; color: #475569;">

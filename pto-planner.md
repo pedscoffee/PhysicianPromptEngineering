@@ -225,13 +225,13 @@ description: Plan your work schedule, PTO, and CME for the entire year.
       }
     },
 
-    saveData() {
+    saveData(shouldRender = true) {
       const dataToSave = {
         config: state.config,
         events: state.events
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-      this.render();
+      if (shouldRender) this.render();
     },
 
     exportData() {
@@ -537,7 +537,7 @@ description: Plan your work schedule, PTO, and CME for the entire year.
         const dayEl = document.createElement('div');
         dayEl.className = `aspect-square flex items-center justify-center rounded-md cursor-pointer transition-all ${bgClass} day-cell relative group`;
         dayEl.textContent = d;
-        dayEl.onclick = () => this.toggleEvent(dateStr, 'PTO');
+        dayEl.onclick = () => this.toggleEvent(dateStr);
         
         // Tooltip
         if (holidayName || event) {
@@ -610,7 +610,7 @@ description: Plan your work schedule, PTO, and CME for the entire year.
         cell.onclick = (e) => {
           // Don't toggle if clicking input
           if (e.target.tagName === 'INPUT') return;
-          this.toggleEvent(dateStr, 'PTO');
+          this.toggleEvent(dateStr);
         };
 
         let content = `<div class="font-medium text-sm mb-1 ${isWeekend ? 'text-slate-400' : 'text-slate-700'}">${d}</div>`;
@@ -728,16 +728,16 @@ description: Plan your work schedule, PTO, and CME for the entire year.
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-slate-700 mb-1">PTO Allowance</label>
-                <input type="number" class="w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary" value="${state.config.ptoAllowance}" onchange="state.config.ptoAllowance = parseInt(this.value); App.saveData()">
+                <input type="number" class="w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary" value="${state.config.ptoAllowance}" onchange="state.config.ptoAllowance = parseInt(this.value); App.saveData(false)">
               </div>
               <div>
                 <label class="block text-sm font-medium text-slate-700 mb-1">CME Allowance</label>
-                <input type="number" class="w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary" value="${state.config.cmeAllowance}" onchange="state.config.cmeAllowance = parseInt(this.value); App.saveData()">
+                <input type="number" class="w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary" value="${state.config.cmeAllowance}" onchange="state.config.cmeAllowance = parseInt(this.value); App.saveData(false)">
               </div>
             </div>
             
             <div class="flex items-center gap-3">
-               <input type="checkbox" id="weekends" class="rounded text-primary focus:ring-primary" ${state.config.weekendsCount ? 'checked' : ''} onchange="state.config.weekendsCount = this.checked; App.saveData()">
+               <input type="checkbox" id="weekends" class="rounded text-primary focus:ring-primary" ${state.config.weekendsCount ? 'checked' : ''} onchange="state.config.weekendsCount = this.checked; App.saveData(false)">
                <label for="weekends" class="text-sm text-slate-700">Weekends count as work days</label>
             </div>
           </div>
@@ -748,7 +748,7 @@ description: Plan your work schedule, PTO, and CME for the entire year.
             <div class="grid grid-cols-2 gap-2">
               ${Object.entries(state.config.holidays).map(([key, val]) => `
                 <label class="flex items-center gap-2 text-sm text-slate-600 cursor-pointer hover:bg-slate-50 p-1 rounded">
-                  <input type="checkbox" class="rounded text-primary focus:ring-primary" ${val ? 'checked' : ''} onchange="state.config.holidays.${key} = this.checked; App.saveData()">
+                  <input type="checkbox" class="rounded text-primary focus:ring-primary" ${val ? 'checked' : ''} onchange="state.config.holidays.${key} = this.checked; App.saveData(false)">
                   ${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                 </label>
               `).join('')}

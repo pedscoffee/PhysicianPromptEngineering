@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: " en" }}">
 
 {%- include head.html -%}
 
@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -39,6 +39,7 @@
                 <a href="{{ '/clockwork-timebox' | relative_url }}">ClockWork TimeBox</a>
                 <a href="{{ '/clinic-visit-tracker' | relative_url }}">RVU Data Tracker</a>
                 <a href="{{ '/qi-project-tracker' | relative_url }}">QI Project Tracker</a>
+                <a href="{{ '/pto-planner' | relative_url }}">Annual PTO Planner</a>
               </div>
             </div>
 
