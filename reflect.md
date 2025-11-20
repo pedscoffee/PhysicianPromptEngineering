@@ -360,6 +360,9 @@ permalink: /reflect/
                 Anatomic
             </div>
         </div>
+        <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: -5px; margin-bottom: 10px;">
+            (Click a category to bring tiles to top)
+        </p>
 
         <div id="tile-canvas" class="tile-canvas">
             <!-- Tiles injected by JS -->
