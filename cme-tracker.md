@@ -327,7 +327,6 @@ permalink: /cme-tracker/
         .controls-bar { flex-direction: column; align-items: stretch; }
         .btn { justify-content: center; }
     }
-</style>
 
 /* Hero Section */
   .hero {
