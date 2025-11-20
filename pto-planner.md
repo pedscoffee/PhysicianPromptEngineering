@@ -84,10 +84,63 @@ description: Plan your work schedule, PTO, and CME for the entire year.
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* Hero Section */
+  .hero {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      padding: 60px 30px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      text-align: center;
+  }
+
+  .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #065f46;
+  }
+
+  .hero-subtitle {
+      font-size: 1.2em;
+      color: #047857;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+  }
 </style>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 40px; height: 40px; display: inline-block; vertical-align: text-bottom; margin-right: 12px;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+            Annual PTO Planner
+        </h1>
+        <p class="hero-subtitle">
+            Plan your work schedule, vacation days, and CME time for the entire year with this interactive calendar tool.
+        </p>
+    </div>
+</div>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+    <!-- Premium Banner -->
+    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+        </svg>
+        <div>
+            <strong style="color: #9a3412;">Premium Feature</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+        </div>
+    </div>
 
 <div id="app" class="min-h-screen bg-slate-50 font-sans text-slate-800 pb-20">
   <!-- App will be rendered here -->
+</div>
 </div>
 
 <script>
@@ -361,10 +414,8 @@ description: Plan your work schedule, PTO, and CME for the entire year.
       header.className = 'bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm';
       header.innerHTML = `
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="bg-primary/10 p-2 rounded-lg text-primary">
-              ${Icons.calendar}
-            </div>
             <h1 class="text-xl font-bold text-slate-800 hidden md:block">PTO Planner <span class="text-slate-400 font-normal">${state.config.year}</span></h1>
           </div>
           
