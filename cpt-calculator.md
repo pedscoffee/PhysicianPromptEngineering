@@ -656,17 +656,10 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
     }
 </style>
 
-<div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 1600px;">
-  <h3 style="color: #78350f; margin-top: 0;">⚠️ Educational Tool - No Real Patient Data</h3>
-  <p style="color: #78350f; margin-bottom: 0;">
-    <strong>Do not enter real patient information.</strong> This calculator is for educational purposes only and is NOT HIPAA-compliant. Use only with synthesized, de-identified case examples. For actual billing decisions, use your institution's approved systems and consult with certified medical coders.
-  </p>
-</div>
-
 <div class="calculator-container">
     <div class="page-header">
         <h1>CPT E/M Code Calculator</h1>
-        <p class="page-subtitle">For Personal Use | Based on AMA Guidelines | Supports MDM and Time-Based Coding | <a href="{{ site.baseurl }}/disclaimer">Review our disclaimer</a></p>
+        <p class="page-subtitle">For Educational & Personal Use Only | Based on AMA Guidelines | Supports MDM and Time-Based Coding | <a href="{{ site.baseurl }}/disclaimer">Review our disclaimer</a></p>
     </div>
 
     <div class="instructions-container">
@@ -683,6 +676,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
                 <li><strong>Result:</strong> The calculator automatically determines the appropriate E/M code using the 2 of 3 MDM rule</li>
             </ul>
             <p><strong>Note:</strong> If both a well visit and E/M code are generated, the E/M code should be billed with modifier -25. Time-based coding is shown as an alternative when applicable - use whichever yields the higher level code. The stopwatch automatically starts when you load the page and continues running until paused.</p>
+            <p>Do not enter real patient information. This calculator is for personal and educational purposes only.  For actual billing decisions, use your institution's approved systems and consult with certified medical coders.</p>
         </div>
     </div>
 
