@@ -162,11 +162,7 @@ permalink: /premium/
     <p style="font-size: 1.1em; font-weight: 500;">
         Choose a contribution level that matches your current season of life. If you are a student, sharing this resource with others is the best way you can help!
     </p>
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-    <stripe-buy-button
-        buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
-        publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo">
-    </stripe-buy-button>
+
 </div>
 
 <div class="value-model">
@@ -174,6 +170,12 @@ permalink: /premium/
     <p style="max-width: 700px; margin: 0 auto; color: #475569;">
         Your support keeps these tools ad-free, private, and open-source. It funds the development of new features like the local AI Prompt Assistant and ensures we can continue building for the medical community.
     </p>
+
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <stripe-buy-button
+        buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
+        publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo">
+    </stripe-buy-button>
 </div>
 
 <h2 style="text-align: center; margin-bottom: 50px; color: #0f172a;">Premium Tools</h2>
