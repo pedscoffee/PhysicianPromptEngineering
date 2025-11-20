@@ -406,7 +406,7 @@ const DATA = {
         { id: "inflammatory", label: "Inflammatory", def: "Non-autoimmune inflammatory processes and dysregulation of inflammatory pathways.", q: "Is there a primary inflammatory process that's not autoimmune in nature?" },
         { id: "idiopathic", label: "Idiopathic", def: "Conditions without a clearly identified cause, or where the mechanism remains uncertain.", q: "Have you fully investigated, or might this genuinely be idiopathic? What's the threshold for accepting this label?" },
         { id: "structural", label: "Structural / Mechanical", def: "Anatomical abnormalities, obstructions, or mechanical problems affecting normal function.", q: "Could there be a structural issue - a blockage, displacement, or anatomical variant - causing dysfunction?" },
-        { id: "psychiatric", label: "Psychiatric", def: "Mental health conditions that manifest with a variety of ways.", q: "How might psychological, social, or behavioral factors be contributing? Is this somatization or functional?" }
+        { id: "psychiatric", label: "Psychiatric", def: "Mental health conditions that manifest with a variety of ways.", q: "How might psychological, social, or behavioral factors be contributing? Is this somatization or functional?" },
         { id: "Social", label: "Social", def: "There's always a bigger context.", q: "How might the social determinants of health be contributing to this presentation?" }
     ],
     biases: [
@@ -431,15 +431,15 @@ const DATA = {
     ],
     anatomic: [
         { id: "mentalct", label: "Mental CT Scan", def: "Systematically visualizing anatomy from front to back, identifying each tissue plane and structure.", q: "Starting at the skin and moving deeper, what anatomic structures in this region could produce these symptoms?" },
-        { id: "systems", label: "Organ Systems Review", def: "Systematically considering each major organ system as a potential source of symptoms.", q: "Go through each system: cardiac, pulmonary, GI, renal, neuro, etc. - could any of these be the primary problem?" }
-        { id: "Respiratory", label: "Respiratory", def: "Just breathe.", q: "Could there be a respiratory component to this presentation??" }
-        { id: "Cardiovascular", label: "Cardiovascular", def: "Pump it up!", q: "Could there be a cardiovascular component to this presentation??" }
-        { id: "FEN", label: "FEN", def: "Thirsty?", q: "Is there a component of Fluids Enteral Nutrition that needs to be addressed?" }
-        { id: "GI", label: "GI", def: "Go with your gut.", q: "Is there a component of the gastrointestinal system that needs to be addressed?" }
-        { id: "Renal", label: "Renal", def: "Pass the salt please.", q: "Is there a component of the renal system that needs to be addressed?" }
-        { id: "Heme", label: "Heme", def: "Peripheral smear to the rescue!", q: "Is there a component of the hematologic system that needs to be addressed?" }
-        { id: "Neuro", label: "Neuro", def: "Mind over Matter", q: "Is there a component of the neurologic system that needs to be addressed?" }
-        { id: "Genetics", label: "Genetics", def: "It runs in the family", q: "Could there be a genetics component to this?" }
+        { id: "systems", label: "Organ Systems Review", def: "Systematically considering each major organ system as a potential source of symptoms.", q: "Go through each system: cardiac, pulmonary, GI, renal, neuro, etc. - could any of these be the primary problem?" },
+        { id: "Respiratory", label: "Respiratory", def: "Just breathe.", q: "Could there be a respiratory component to this presentation??" },
+        { id: "Cardiovascular", label: "Cardiovascular", def: "Pump it up!", q: "Could there be a cardiovascular component to this presentation??" },
+        { id: "FEN", label: "FEN", def: "Thirsty?", q: "Is there a component of Fluids Enteral Nutrition that needs to be addressed?" },
+        { id: "GI", label: "GI", def: "Go with your gut.", q: "Is there a component of the gastrointestinal system that needs to be addressed?" },
+        { id: "Renal", label: "Renal", def: "Pass the salt please.", q: "Is there a component of the renal system that needs to be addressed?" },
+        { id: "Heme", label: "Heme", def: "Peripheral smear to the rescue!", q: "Is there a component of the hematologic system that needs to be addressed?" },
+        { id: "Neuro", label: "Neuro", def: "Mind over Matter", q: "Is there a component of the neurologic system that needs to be addressed?" },
+        { id: "Genetics", label: "Genetics", def: "It runs in the family", q: "Could there be a genetics component to this?" },
         { id: "Metabolic", label: "Metabolic", def: "Enzymes galore", q: "Could there be a metabolic component to this?" }
 
     ]
