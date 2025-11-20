@@ -329,6 +329,61 @@ permalink: /cme-tracker/
     }
 </style>
 
+/* Hero Section */
+  .hero {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      padding: 60px 30px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      text-align: center;
+  }
+
+  .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #065f46;
+  }
+
+  .hero-subtitle {
+      font-size: 1.2em;
+      color: #047857;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+  }
+</style>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            </svg>
+            CME & Budget Tracker
+        </h1>
+        <p class="hero-subtitle">
+            Plan your work schedule, vacation days, and CME time for the entire year with this interactive calendar tool.
+        </p>
+    </div>
+</div>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+    <!-- Premium Banner -->
+    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+        </svg>
+        <div>
+            <strong style="color: #9a3412;">Premium Feature</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+        </div>
+    </div>
+
+
 <div class="app-container">
     <!-- Header -->
     <div class="app-header">
