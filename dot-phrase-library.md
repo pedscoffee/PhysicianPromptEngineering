@@ -481,7 +481,7 @@ const dotPhraseData = [
     level: 1,
     subgroups: [
       {
-        name: "Lab Results",
+        name: "Results Management",
         level: 2,
         subgroups: [
           {
@@ -489,22 +489,16 @@ const dotPhraseData = [
             level: 3,
             phrases: [
               {
-                title: "Normal Lab - Routine Follow-up",
-                shortcut: ".labnormal",
-                tags: ["labs", "normal", "follow-up", "routine"],
-                contentHtml: `<p>Lab results are within normal limits. Please call patient to inform them of normal results and schedule routine follow-up per protocol.</p><p>Thank you.</p>`
+                title: "Normal Result - No Action",
+                shortcut: ".resnorm",
+                tags: ["results", "normal", "no-action"],
+                contentHtml: `<p>Results are normal. No further action needed. Please notify patient.</p><p>Thank you.</p>`
               },
               {
-                title: "Normal Lab - No Action Needed",
-                shortcut: ".labnormalnoaction",
-                tags: ["labs", "normal", "no-action"],
-                contentHtml: `<p>Lab results are within normal limits. No further action needed at this time. Please document in chart and notify patient via portal message.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Normal Lab with Patient Education",
-                shortcut: ".labnormaled",
-                tags: ["labs", "normal", "education"],
-                contentHtml: `<p>Lab results are within normal limits. Please call patient to review results and provide education regarding ***. Schedule follow-up in *** months.</p><p>Thank you.</p>`
+                title: "Normal Result - Continue Plan",
+                shortcut: ".resnormcont",
+                tags: ["results", "normal", "plan"],
+                contentHtml: `<p>Results are normal. Please notify patient and advise to continue current management plan.</p><p>Thank you.</p>`
               }
             ]
           },
@@ -513,306 +507,156 @@ const dotPhraseData = [
             level: 3,
             phrases: [
               {
-                title: "Abnormal Lab - Requires Callback",
-                shortcut: ".lababnormal",
-                tags: ["labs", "abnormal", "callback", "urgent"],
-                contentHtml: `<p>Lab results show ***. Please call patient within 24 hours to discuss results and arrange for ***. Document all attempts to reach patient.</p><p>Thank you.</p>`
+                title: "Abnormal - Call Patient",
+                shortcut: ".rescall",
+                tags: ["results", "abnormal", "call"],
+                contentHtml: `<p>Results are abnormal. Please call patient to discuss findings and next steps regarding ***.</p><p>Thank you.</p>`
               },
               {
-                title: "Abnormal Lab - Repeat Needed",
-                shortcut: ".lababnormalrepeat",
-                tags: ["labs", "abnormal", "repeat"],
-                contentHtml: `<p>Lab results show ***. Please contact patient to schedule repeat labs in *** to confirm findings. Provide fasting instructions if applicable.</p><p>Thank you.</p>`
+                title: "Abnormal - Repeat Test",
+                shortcut: ".resrpt",
+                tags: ["results", "abnormal", "repeat"],
+                contentHtml: `<p>Results require confirmation. Please contact patient to repeat *** in ***.</p><p>Thank you.</p>`
               },
               {
-                title: "Abnormal Lab - Start Medication",
-                shortcut: ".lababnormalmed",
-                tags: ["labs", "abnormal", "medication"],
-                contentHtml: `<p>Lab results indicate need to initiate ***. Please call patient to discuss starting medication, send prescription to pharmacy, and schedule follow-up in ***.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Abnormal Lab - Adjust Medication",
-                shortcut: ".lababnormaladjust",
-                tags: ["labs", "abnormal", "medication", "adjustment"],
-                contentHtml: `<p>Lab results indicate need to adjust ***. Please call patient to discuss medication change, send updated prescription to pharmacy, and arrange follow-up labs in ***.</p><p>Thank you.</p>`
-              }
-            ]
-          },
-          {
-            name: "Critical Results",
-            level: 3,
-            phrases: [
-              {
-                title: "Critical Lab - Immediate Action",
-                shortcut: ".labcritical",
-                tags: ["labs", "critical", "urgent", "immediate"],
-                contentHtml: `<p><strong>CRITICAL VALUE: ***</strong></p><p>Please call patient immediately. If unable to reach patient after 3 attempts, notify provider. Patient may require immediate evaluation in ED. Document all communication attempts with timestamps.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Critical Lab - ED Referral",
-                shortcut: ".labcriticaled",
-                tags: ["labs", "critical", "emergency", "urgent"],
-                contentHtml: `<p><strong>CRITICAL VALUE: ***</strong></p><p>Please call patient immediately and advise to proceed to emergency department. If patient declines or cannot be reached, notify provider immediately. Document communication and patient decision.</p><p>Thank you.</p>`
+                title: "Abnormal - Schedule Visit",
+                shortcut: ".resappt",
+                tags: ["results", "abnormal", "appt"],
+                contentHtml: `<p>Results require discussion. Please schedule patient for a follow-up visit within *** to review.</p><p>Thank you.</p>`
               }
             ]
           }
         ]
       },
       {
-        name: "Imaging Results",
+        name: "Prescriptions",
         level: 2,
         subgroups: [
           {
-            name: "Normal Imaging",
+            name: "Refill Responses",
             level: 3,
             phrases: [
               {
-                title: "Normal Imaging - Routine",
-                shortcut: ".imagingnormal",
-                tags: ["imaging", "normal", "routine"],
-                contentHtml: `<p>Imaging results are normal. Please notify patient via portal message or phone call per their preference. No further imaging needed at this time.</p><p>Thank you.</p>`
+                title: "Refill Approved",
+                shortcut: ".rxok",
+                tags: ["rx", "refill", "approved"],
+                contentHtml: `<p>Refill approved and sent to pharmacy. Please notify patient.</p><p>Thank you.</p>`
               },
               {
-                title: "Normal Imaging - Continue Current Plan",
-                shortcut: ".imagingnormalcontinue",
-                tags: ["imaging", "normal", "follow-up"],
-                contentHtml: `<p>Imaging results are reassuring and support continuing current management plan. Please call patient to review findings and confirm next follow-up appointment.</p><p>Thank you.</p>`
+                title: "Refill Denied - Needs Appt",
+                shortcut: ".rxappt",
+                tags: ["rx", "refill", "denied", "appt"],
+                contentHtml: `<p>Unable to refill. Patient requires an appointment for monitoring prior to next refill. Please schedule.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Refill Denied - Other",
+                shortcut: ".rxno",
+                tags: ["rx", "refill", "denied"],
+                contentHtml: `<p>Refill denied due to ***. Please notify patient.</p><p>Thank you.</p>`
               }
             ]
           },
           {
-            name: "Abnormal Imaging",
+            name: "New Prescriptions",
             level: 3,
             phrases: [
               {
-                title: "Abnormal Imaging - Requires Discussion",
-                shortcut: ".imagingabnormal",
-                tags: ["imaging", "abnormal", "callback"],
-                contentHtml: `<p>Imaging shows ***. Please call patient to schedule appointment for in-person discussion of findings and next steps.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Abnormal Imaging - Specialist Referral",
-                shortcut: ".imagingabnormalreferral",
-                tags: ["imaging", "abnormal", "referral", "specialist"],
-                contentHtml: `<p>Imaging demonstrates *** requiring specialist evaluation. Please call patient to discuss findings, submit referral to ***, and provide patient with specialist contact information.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Abnormal Imaging - Additional Studies",
-                shortcut: ".imagingabnormaladditional",
-                tags: ["imaging", "abnormal", "follow-up"],
-                contentHtml: `<p>Imaging findings of *** require additional workup. Please call patient to arrange for *** and schedule follow-up visit to review all results.</p><p>Thank you.</p>`
-              }
-            ]
-          },
-          {
-            name: "Critical Imaging",
-            level: 3,
-            phrases: [
-              {
-                title: "Critical Imaging - Urgent Action",
-                shortcut: ".imagingcritical",
-                tags: ["imaging", "critical", "urgent", "immediate"],
-                contentHtml: `<p><strong>URGENT IMAGING FINDING: ***</strong></p><p>Please call patient immediately to discuss findings and arrange urgent evaluation. If unable to reach patient, notify provider. Document all communication attempts.</p><p>Thank you.</p>`
+                title: "New Rx Sent",
+                shortcut: ".rxnew",
+                tags: ["rx", "new"],
+                contentHtml: `<p>New prescription for *** sent to pharmacy. Please notify patient and review instructions.</p><p>Thank you.</p>`
               }
             ]
           }
         ]
       },
       {
-        name: "Patient Communications",
+        name: "Patient Messages",
         level: 2,
         subgroups: [
           {
-            name: "Medication Questions",
+            name: "Triage & Action",
             level: 3,
             phrases: [
               {
-                title: "Medication Side Effects",
-                shortcut: ".medsideeffect",
-                tags: ["medication", "side-effects", "callback"],
-                contentHtml: `<p>Patient reporting *** with ***. Please call to assess symptom severity and timing. Discuss continuing current medication vs. alternatives. Schedule follow-up as appropriate.</p><p>Thank you.</p>`
+                title: "Call Patient",
+                shortcut: ".msgcall",
+                tags: ["msg", "call"],
+                contentHtml: `<p>Please call patient regarding ***. Document response.</p><p>Thank you.</p>`
               },
               {
-                title: "Medication Clarification",
-                shortcut: ".medclarify",
-                tags: ["medication", "education", "callback"],
-                contentHtml: `<p>Patient has questions about ***. Please call to clarify dosing instructions, timing, and administration. Confirm patient understanding and address any concerns.</p><p>Thank you.</p>`
+                title: "Schedule Appointment",
+                shortcut: ".msgappt",
+                tags: ["msg", "appt"],
+                contentHtml: `<p>Please contact patient to schedule an appointment for ***.</p><p>Thank you.</p>`
               },
               {
-                title: "Out of Medication",
-                shortcut: ".medout",
-                tags: ["medication", "refill", "callback"],
-                contentHtml: `<p>Patient reports being out of ***. Please call to verify current dosing, send refill to pharmacy, and review importance of medication adherence and timely refill requests.</p><p>Thank you.</p>`
+                title: "Message Acknowledged",
+                shortcut: ".msgok",
+                tags: ["msg", "ack"],
+                contentHtml: `<p>Message received and reviewed. No further action needed at this time.</p><p>Thank you.</p>`
               }
             ]
           },
           {
-            name: "General Questions",
+            name: "Advice",
             level: 3,
             phrases: [
               {
-                title: "General Medical Question",
-                shortcut: ".questiongeneral",
-                tags: ["question", "education", "callback"],
-                contentHtml: `<p>Patient has questions regarding ***. Please call to address concerns and provide appropriate education. Offer to schedule visit if more detailed discussion needed.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Test Procedure Question",
-                shortcut: ".questionprocedure",
-                tags: ["question", "procedure", "education"],
-                contentHtml: `<p>Patient has questions about upcoming ***. Please call to explain procedure, preparation requirements, and what to expect. Provide written instructions via portal if available.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Portal Message Response",
-                shortcut: ".portalresponse",
-                tags: ["portal", "message", "communication"],
-                contentHtml: `<p>Please respond to patient portal message regarding ***. Provide clear, concise information and advise patient to call if further questions or if appointment needed.</p><p>Thank you.</p>`
-              }
-            ]
-          },
-          {
-            name: "Symptom Reports",
-            level: 3,
-            phrases: [
-              {
-                title: "New Symptom - Routine Triage",
-                shortcut: ".symptomnew",
-                tags: ["symptoms", "triage", "callback"],
-                contentHtml: `<p>Patient reporting ***. Please call to assess symptom onset, severity, and associated factors. Provide appropriate guidance and schedule visit if warranted.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Worsening Symptom",
-                shortcut: ".symptomworse",
-                tags: ["symptoms", "triage", "urgent", "callback"],
-                contentHtml: `<p>Patient reporting worsening ***. Please call within 2 hours to assess current status. Arrange urgent visit or direct to appropriate level of care based on clinical assessment.</p><p>Thank you.</p>`
-              },
-              {
-                title: "Chronic Symptom Check-in",
-                shortcut: ".symptomchronic",
-                tags: ["symptoms", "chronic", "follow-up"],
-                contentHtml: `<p>Patient checking in regarding chronic ***. Please call to assess current symptom control and effectiveness of management plan. Adjust plan as needed and schedule follow-up.</p><p>Thank you.</p>`
+                title: "Medical Advice",
+                shortcut: ".msgadvice",
+                tags: ["msg", "advice"],
+                contentHtml: `<p>Please advise patient to ***. If symptoms worsen or persist, they should call back or seek urgent care.</p><p>Thank you.</p>`
               }
             ]
           }
         ]
       },
       {
-        name: "Appointments & Scheduling",
+        name: "Orders & Admin",
         level: 2,
-        phrases: [
+        subgroups: [
           {
-            title: "Schedule Follow-up Visit",
-            shortcut: ".schedulefollow",
-            tags: ["scheduling", "follow-up", "appointment"],
-            contentHtml: `<p>Please call patient to schedule follow-up appointment in ***. Ensure patient has visit reason and any required preparation instructions.</p><p>Thank you.</p>`
+            name: "Orders",
+            level: 3,
+            phrases: [
+              {
+                title: "Order Labs",
+                shortcut: ".ordlab",
+                tags: ["order", "lab"],
+                contentHtml: `<p>Please order the following labs: ***. Notify patient when order is placed.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Order Imaging",
+                shortcut: ".ordimg",
+                tags: ["order", "imaging"],
+                contentHtml: `<p>Please order ***. Ensure pre-authorization if needed.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Order Referral",
+                shortcut: ".ordref",
+                tags: ["order", "referral"],
+                contentHtml: `<p>Please place referral to *** for ***. Include recent notes and relevant results.</p><p>Thank you.</p>`
+              }
+            ]
           },
           {
-            title: "Schedule Urgent Visit",
-            shortcut: ".scheduleurgent",
-            tags: ["scheduling", "urgent", "appointment"],
-            contentHtml: `<p>Please call patient to arrange urgent appointment within *** to address ***. If no urgent slots available, coordinate with provider for appropriate alternative.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Pre-Visit Preparation",
-            shortcut: ".previsitprep",
-            tags: ["scheduling", "appointment", "preparation"],
-            contentHtml: `<p>Patient has upcoming appointment on ***. Please call to confirm appointment and review required preparation including ***. Send written instructions via portal.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Missed Appointment Follow-up",
-            shortcut: ".missedappt",
-            tags: ["scheduling", "missed-appointment", "follow-up"],
-            contentHtml: `<p>Patient missed appointment on ***. Please call to reschedule and assess if patient is experiencing barriers to care. Emphasize importance of follow-up for ***.</p><p>Thank you.</p>`
-          }
-        ]
-      },
-      {
-        name: "Referrals & Coordination",
-        level: 2,
-        phrases: [
-          {
-            title: "Submit Specialist Referral",
-            shortcut: ".referralsubmit",
-            tags: ["referral", "specialist", "coordination"],
-            contentHtml: `<p>Please submit referral to *** for evaluation of ***. Provide specialist with relevant clinical information and recent test results. Give patient specialist contact information and expected timeline.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Referral Status Update",
-            shortcut: ".referralstatus",
-            tags: ["referral", "specialist", "follow-up"],
-            contentHtml: `<p>Please check status of referral to *** submitted on ***. Contact patient with update and assist with scheduling if referral approved. Follow up with insurance if delays.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Specialist Report Follow-up",
-            shortcut: ".specialistreport",
-            tags: ["referral", "specialist", "results", "callback"],
-            contentHtml: `<p>Specialist report received from ***. Please call patient to review findings and recommendations. Coordinate implementation of specialist's treatment plan and schedule appropriate follow-up.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Care Coordination - Multiple Providers",
-            shortcut: ".carecoordination",
-            tags: ["coordination", "specialist", "communication"],
-            contentHtml: `<p>Please coordinate care with *** regarding ***. Ensure all providers have current medication list and test results. Contact patient to review coordinated plan and next steps.</p><p>Thank you.</p>`
-          }
-        ]
-      },
-      {
-        name: "Test Ordering & Tracking",
-        level: 2,
-        phrases: [
-          {
-            title: "Order Labs",
-            shortcut: ".orderlabs",
-            tags: ["labs", "order", "scheduling"],
-            contentHtml: `<p>Please order *** for patient. Call to explain test purpose, any required preparation, and timeframe for completion. Provide lab requisition and instructions.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Order Imaging",
-            shortcut: ".orderimaging",
-            tags: ["imaging", "order", "scheduling"],
-            contentHtml: `<p>Please order *** for evaluation of ***. Call patient to explain test purpose and provide scheduling information. Ensure any required pre-authorization is obtained.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Outstanding Test Reminder",
-            shortcut: ".testreminder",
-            tags: ["labs", "imaging", "follow-up", "reminder"],
-            contentHtml: `<p>Patient has outstanding *** ordered on *** that has not been completed. Please call to remind patient and assist with scheduling if needed. Address any barriers to completion.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Tracking Pending Results",
-            shortcut: ".trackresults",
-            tags: ["results", "tracking", "follow-up"],
-            contentHtml: `<p>Please follow up on pending results for *** completed on ***. Contact facility if results not received. Call patient once results available to review findings.</p><p>Thank you.</p>`
-          }
-        ]
-      },
-      {
-        name: "Administrative Tasks",
-        level: 2,
-        phrases: [
-          {
-            title: "Form Completion Request",
-            shortcut: ".formrequest",
-            tags: ["administrative", "forms", "documentation"],
-            contentHtml: `<p>Patient requesting completion of *** form. Please obtain form from patient, review with provider for completion, and return to patient via ***.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Medical Records Request",
-            shortcut: ".recordsrequest",
-            tags: ["administrative", "records", "documentation"],
-            contentHtml: `<p>Please process medical records request for ***. Verify patient authorization, prepare requested records, and send via *** per patient preference. Notify patient once completed.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Insurance Authorization",
-            shortcut: ".authrequest",
-            tags: ["administrative", "authorization", "insurance"],
-            contentHtml: `<p>Prior authorization required for ***. Please gather required documentation, submit authorization request, and follow up with insurance. Keep patient updated on authorization status.</p><p>Thank you.</p>`
-          },
-          {
-            title: "Prescription Transfer",
-            shortcut: ".rxtransfer",
-            tags: ["medication", "transfer", "pharmacy"],
-            contentHtml: `<p>Patient requesting transfer of *** to *** pharmacy. Please contact current pharmacy to arrange transfer and confirm with new pharmacy that prescription is available for pickup.</p><p>Thank you.</p>`
+            name: "Administrative",
+            level: 3,
+            phrases: [
+              {
+                title: "Forms Completed",
+                shortcut: ".admform",
+                tags: ["admin", "forms"],
+                contentHtml: `<p>Forms have been completed and signed. Please return to patient via ***.</p><p>Thank you.</p>`
+              },
+              {
+                title: "Work/School Note",
+                shortcut: ".admwork",
+                tags: ["admin", "note"],
+                contentHtml: `<p>Please provide patient with a note excusing them from *** until ***.</p><p>Thank you.</p>`
+              }
+            ]
           }
         ]
       }
