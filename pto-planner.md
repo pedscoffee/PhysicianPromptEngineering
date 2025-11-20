@@ -414,9 +414,13 @@ description: Plan your work schedule, PTO, and CME for the entire year.
       header.className = 'bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm';
       header.innerHTML = `
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <h1 class="text-xl font-bold text-slate-800 hidden md:block">PTO Planner <span class="text-slate-400 font-normal">${state.config.year}</span></h1>
+            <h1 class="text-xl font-bold text-slate-800 hidden md:flex items-center gap-2">
+              PTO Planner 
+              <button class="p-1 hover:bg-slate-100 rounded text-slate-400 hover:text-primary transition-colors" onclick="state.config.year--; App.saveData()">${Icons.chevronLeft}</button>
+              <span class="text-slate-600 font-normal">${state.config.year}</span>
+              <button class="p-1 hover:bg-slate-100 rounded text-slate-400 hover:text-primary transition-colors" onclick="state.config.year++; App.saveData()">${Icons.chevronRight}</button>
+            </h1>
           </div>
           
           <div class="flex items-center gap-3">
