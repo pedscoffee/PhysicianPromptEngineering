@@ -288,6 +288,24 @@ permalink: /premium/
     <a href="/pto-planner" class="btn-primary">Plan Schedule</a>
 </div>
 
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <h3>CME & Budget Tracker</h3>
+    </div>
+    <p class="tool-description">Track your Continuing Medical Education budget, expenses, and days off with this easy-to-use ledger.</p>
+    <ul class="tool-features">
+        <li>Manage your annual CME allowance and educational leave days</li>
+        <li>Track expenses by category (Registration, Travel, Materials)</li>
+        <li>Visual progress bars for budget and days remaining</li>
+        <li>Export expense reports for reimbursement</li>
+        <li>Data persists locally in your browser</li>
+    </ul>
+    <a href="/cme-tracker" class="btn-primary">Track Budget</a>
+</div>
+
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
     <h3>Join the Community</h3>
     <p style="margin-bottom: 20px; color: #475569;">
