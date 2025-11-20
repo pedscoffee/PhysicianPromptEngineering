@@ -1,8 +1,8 @@
 ---
 layout: page
-title: "Clinical Metacognition Tool"
+title: "Reflect"
 description: "A mobile-first interactive tool for diagnostic reflection, featuring frameworks, cognitive biases, and metacognitive strategies."
-permalink: /clinical-metacognition/
+permalink: /reflect/
 ---
 
 <style>
@@ -35,6 +35,47 @@ permalink: /clinical-metacognition/
         overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        padding: 60px 30px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+        color: #065f46;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2em;
+        color: #047857;
+        margin-bottom: 20px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
+    }
+
+    /* Premium Banner */
+    .premium-banner {
+        background: #fff7ed;
+        border: 1px solid #fdba74;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
     /* Layout Containers */
     .tool-container {
         max-width: 100%;
@@ -42,27 +83,9 @@ permalink: /clinical-metacognition/
         padding: 10px;
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 100px); /* Adjust for site header */
-        min-height: 600px;
+        height: calc(100vh - 50px); /* Taller on mobile */
+        min-height: 800px; /* Increased min-height for mobile */
         position: relative;
-    }
-
-    .page-header {
-        text-align: center;
-        margin-bottom: 10px;
-        flex-shrink: 0;
-    }
-
-    .page-header h1 {
-        font-size: 1.5rem;
-        color: var(--primary);
-        margin: 0 0 5px 0;
-    }
-
-    .page-header p {
-        color: var(--text-muted);
-        margin: 0;
-        font-size: 0.9rem;
     }
 
     /* Legend */
@@ -82,9 +105,17 @@ permalink: /clinical-metacognition/
         gap: 5px;
         color: var(--text-muted);
         background: white;
-        padding: 4px 8px;
+        padding: 6px 12px;
         border-radius: 12px;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        cursor: pointer;
+        transition: transform 0.1s, background 0.1s;
+        user-select: none;
+    }
+
+    .legend-item:active {
+        transform: scale(0.95);
+        background: #f9fafb;
     }
 
     .legend-color {
@@ -283,49 +314,72 @@ permalink: /clinical-metacognition/
     }
 </style>
 
-<div class="tool-container">
-    <header class="page-header">
-        <h1>Diagnostic Metacognition</h1>
-        <p>Drag to organize. Tap to reflect.</p>
-    </header>
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 40px; height: 40px;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+            </svg>
+            Reflect
+        </h1>
+        <p class="hero-subtitle">
+            A metacognitive tool for diagnostic reasoning. Explore frameworks, biases, and strategies to refine your clinical thinking.
+        </p>
+    </div>
+</div>
 
-    <div class="category-legend">
-        <div class="legend-item">
-            <span class="legend-color" style="background: var(--framework-blue);"></span>
-            Frameworks
-        </div>
-        <div class="legend-item">
-            <span class="legend-color" style="background: var(--bias-orange);"></span>
-            Biases
-        </div>
-        <div class="legend-item">
-            <span class="legend-color" style="background: var(--strategy-purple);"></span>
-            Strategies
-        </div>
-        <div class="legend-item">
-            <span class="legend-color" style="background: var(--anatomic-teal);"></span>
-            Anatomic
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+    <!-- Premium Banner -->
+    <div class="premium-banner">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
+            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+        </svg>
+        <div>
+            <strong style="color: #9a3412;">Premium Feature</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
         </div>
     </div>
 
-    <div id="tile-canvas" class="tile-canvas">
-        <!-- Tiles injected by JS -->
-    </div>
-
-    <!-- Expanded Card Overlay -->
-    <div id="expanded-overlay" class="expanded-overlay">
-        <div class="expanded-card" id="expanded-card">
-            <div class="card-header" id="card-header">
-                <span class="card-badge" id="card-category">Category</span>
-                <h2 class="card-title" id="card-title">Title</h2>
+    <div class="tool-container">
+        <div class="category-legend">
+            <div class="legend-item" onclick="app.focusCategory('Diagnostic Framework')">
+                <span class="legend-color" style="background: var(--framework-blue);"></span>
+                Frameworks
             </div>
-            <div class="card-body">
-                <p class="card-definition" id="card-definition">Definition goes here.</p>
-                <div class="card-question" id="card-question">Reflection question goes here?</div>
-                
-                <div class="card-actions">
-                    <button class="btn-action btn-secondary" onclick="app.closeCard()">Close</button>
-                    <button class="btn-action btn-primary" onclick="app.markConsidered()">Mark Considered</button>
+            <div class="legend-item" onclick="app.focusCategory('Cognitive Bias')">
+                <span class="legend-color" style="background: var(--bias-orange);"></span>
+                Biases
+            </div>
+            <div class="legend-item" onclick="app.focusCategory('Metacognitive Strategy')">
+                <span class="legend-color" style="background: var(--strategy-purple);"></span>
+                Strategies
+            </div>
+            <div class="legend-item" onclick="app.focusCategory('Anatomic Approach')">
+                <span class="legend-color" style="background: var(--anatomic-teal);"></span>
+                Anatomic
+            </div>
+        </div>
+
+        <div id="tile-canvas" class="tile-canvas">
+            <!-- Tiles injected by JS -->
+        </div>
+
+        <!-- Expanded Card Overlay -->
+        <div id="expanded-overlay" class="expanded-overlay">
+            <div class="expanded-card" id="expanded-card">
+                <div class="card-header" id="card-header">
+                    <span class="card-badge" id="card-category">Category</span>
+                    <h2 class="card-title" id="card-title">Title</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-definition" id="card-definition">Definition goes here.</p>
+                    <div class="card-question" id="card-question">Reflection question goes here?</div>
+                    
+                    <div class="card-actions">
+                        <button class="btn-action btn-secondary" onclick="app.closeCard()">Close</button>
+                        <button class="btn-action btn-primary" onclick="app.markConsidered()">Mark Considered</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -418,10 +472,23 @@ class MetacognitionApp {
         this.setupEvents();
         this.startPhysics();
         
-        // Initial layout scatter
+        // Initial layout scatter - Grouped by category
+        // We define 4 distinct zones based on the canvas size
+        const zones = {
+            'Diagnostic Framework': { x: 0.25, y: 0.25 },
+            'Cognitive Bias': { x: 0.75, y: 0.25 },
+            'Metacognitive Strategy': { x: 0.25, y: 0.75 },
+            'Anatomic Approach': { x: 0.75, y: 0.75 }
+        };
+
         this.tiles.forEach(tile => {
-            tile.x = Math.random() * (this.width - 100) + 50;
-            tile.y = Math.random() * (this.height - 100) + 50;
+            const zone = zones[tile.category];
+            // Add some randomness around the zone center
+            const offsetX = (Math.random() - 0.5) * (this.width * 0.3);
+            const offsetY = (Math.random() - 0.5) * (this.height * 0.3);
+            
+            tile.x = (this.width * zone.x) + offsetX;
+            tile.y = (this.height * zone.y) + offsetY;
         });
     }
 
@@ -642,6 +709,19 @@ class MetacognitionApp {
             this.activeTile.el.classList.add('considered');
             this.closeCard();
         }
+    }
+
+    focusCategory(category) {
+        // Move tiles of this category to the top of the screen
+        // and others to the bottom
+        this.tiles.forEach(tile => {
+            if (tile.category === category) {
+                tile.vy = -20; // Strong push up
+                tile.vx = (Math.random() - 0.5) * 10; // Slight scatter
+            } else {
+                tile.vy = 10; // Push others down
+            }
+        });
     }
 }
 

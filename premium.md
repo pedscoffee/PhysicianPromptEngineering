@@ -306,6 +306,24 @@ permalink: /premium/
     <a href="/cme-tracker" class="btn-primary">Track Budget</a>
 </div>
 
+<div class="tool-section">
+    <div class="tool-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #2563eb;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+        </svg>
+        <h3>Reflect</h3>
+    </div>
+    <p class="tool-description">A metacognitive tool for diagnostic reasoning. Explore frameworks, biases, and strategies to refine your clinical thinking.</p>
+    <ul class="tool-features">
+        <li>Interactive, physics-based tile interface</li>
+        <li>Explore 30+ diagnostic frameworks and cognitive biases</li>
+        <li>Structured reflection questions for each concept</li>
+        <li>Mobile-first design for on-the-go reflection</li>
+        <li>Track which concepts you've considered for a case</li>
+    </ul>
+    <a href="/reflect" class="btn-primary">Start Reflecting</a>
+</div>
+
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
     <h3>Join the Community</h3>
     <p style="margin-bottom: 20px; color: #475569;">
