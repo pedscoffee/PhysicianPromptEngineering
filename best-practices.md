@@ -25,7 +25,8 @@ description: Learn how to write effective medical prompts. Our definitive guide 
           title="Prompt Engineering Tutorial"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
+          allowfullscreen
+          loading="lazy">
         </iframe>
       </div>
     </div>

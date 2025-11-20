@@ -133,7 +133,7 @@ description: "Help build our open-source community. We invite physicians to cont
     <div style="max-width: 900px; margin: 0 auto;">
       <h2 class="text-center mb-8">Submit Your Prompt</h2>
       <div style="background: var(--color-bg-primary); padding: var(--space-6); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScicxuLRUnXqv43QbRZ2zcYWuX47B_HOhJM3ir7dV11IE4Gpw/viewform?embedded=true" width="100%" height="863" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScicxuLRUnXqv43QbRZ2zcYWuX47B_HOhJM3ir7dV11IE4Gpw/viewform?embedded=true" width="100%" height="863" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Loading...</iframe>
       </div>
     </div>
   </div>

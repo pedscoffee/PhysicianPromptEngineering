@@ -36,7 +36,8 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           title="Clinical AI Documentation Workflow"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
+          allowfullscreen
+          loading="lazy">
         </iframe>
       </div>
     </div>
@@ -293,45 +294,45 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
       <h2 class="text-center mb-8">Frequently Asked Questions</h2>
 
       <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
           <strong>What EMR systems are compatible?</strong>
-        </div>
+        </button>
         <div class="accordion-content">
           <p>These prompts work with any EMR featuring AI text generation capabilities such as Epic's "Generate Text with AI".</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
           <strong>How much time can I realistically save?</strong>
-        </div>
+        </button>
         <div class="accordion-content">
           <p>Physicians report saving 2-5 minutes per routine encounter and up to 15 minutes on complex visits. Results vary by specialty and documentation requirements.</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
           <strong>Do I need programming experience?</strong>
-        </div>
+        </button>
         <div class="accordion-content">
           <p>No technical expertise required. If you can copy and paste text, you can implement these prompts immediately.</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
           <strong>Are these prompts specialty-specific?</strong>
-        </div>
+        </button>
         <div class="accordion-content">
           <p>The core framework applies to all specialties. The library includes templates you can customize with specialty-specific examples for optimal results.</p>
         </div>
       </div>
 
       <div class="accordion-item">
-        <div class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
           <strong>How do I ensure compliance and safety?</strong>
-        </div>
+        </button>
         <div class="accordion-content">
           <p>Always use prompts within your institution's approved AI tools. Review all AI-generated content before signing. These prompts enhance efficiency while maintaining your clinical responsibility for accuracy.</p>
         </div>
