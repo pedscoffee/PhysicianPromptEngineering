@@ -7,7 +7,7 @@ permalink: /courses/clinical-prompt-engineering/module-4/
 description: "Tackle complex cases, procedure notes, and diagnostic reasoning"
 duration: "75 minutes"
 difficulty: "advanced"
-next_module: "/courses/clinical-prompt-engineering/module-5/"
+next_module: "/courses/clinical-prompt-engineering/"
 ---
 
 ## Welcome to Module 4!
@@ -235,7 +235,7 @@ For each item, explain the evidence for/against..."></textarea>
   <div class="exercise-feedback">
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
-      <a href="/courses/clinical-prompt-engineering/module-5/" class="btn-next-exercise">Continue to Module 5 →</a>
+      <a href="/courses/clinical-prompt-engineering/" class="btn-next-exercise">Finish Course 🎓</a>
     </div>
   </div>
   <div class="exercise-progress">
@@ -257,12 +257,12 @@ For each item, explain the evidence for/against..."></textarea>
 
 ---
 
-## Module 4 Complete! 🎉
+## Module 4 Complete!
 
 You are now handling the most complex documentation tasks.
 
-One final module remains: **Safety & Ethics**. We'll cover how to protect your patients and yourself.
+**Congratulations!** You have completed the Clinical Prompt Engineering course.
 
 <div style="text-align: center; margin: 3rem 0;">
-  <a href="/courses/clinical-prompt-engineering/module-5/" class="btn-primary" style="display: inline-block; padding: 1rem 2rem; font-size: 1.125rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600;">Continue to Module 5 →</a>
+  <a href="/courses/clinical-prompt-engineering/" class="btn-primary" style="display: inline-block; padding: 1rem 2rem; font-size: 1.125rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600;">Finish Course 🎓</a>
 </div>

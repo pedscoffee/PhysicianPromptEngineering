@@ -11,15 +11,15 @@ description: "Master the art of AI-assisted clinical documentation through hands
 
   <div class="course-stats">
     <div class="course-stat">
-      <span class="course-stat-value">5</span>
+      <span class="course-stat-value">4</span>
       <span class="course-stat-label">Modules</span>
     </div>
     <div class="course-stat">
-      <span class="course-stat-value">14</span>
+      <span class="course-stat-value">12</span>
       <span class="course-stat-label">Exercises</span>
     </div>
     <div class="course-stat">
-      <span class="course-stat-value">~6 hours</span>
+      <span class="course-stat-value">~5 hours</span>
       <span class="course-stat-label">Total Time</span>
     </div>
   </div>
@@ -98,19 +98,7 @@ This course teaches you how to effectively use AI for clinical documentation. Th
     <a href="/courses/clinical-prompt-engineering/module-4/" class="btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.5rem 1.5rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem;">Start Module 4</a>
   </div>
 
-  <div class="module-card" data-module-number="5">
-    <p class="module-number">Module 5</p>
-    <h3 class="module-title">Safety & Ethics</h3>
-    <p class="module-description">
-      Master the critical skills of identifying bias, catching errors, and protecting patient privacy.
-    </p>
-    <div class="module-meta">
-      <span>⏱ 45 minutes</span>
-      <span class="difficulty-advanced">Advanced</span>
-      <span class="module-progress" data-module="5">0/2 exercises</span>
-    </div>
-    <a href="/courses/clinical-prompt-engineering/module-5/" class="btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.5rem 1.5rem; background: #2563eb; color: white; text-decoration: none; border-radius: 0.5rem;">Start Module 5</a>
-  </div>
+
 
 </div>
 
