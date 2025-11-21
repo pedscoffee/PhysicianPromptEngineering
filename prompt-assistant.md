@@ -878,11 +878,11 @@ permalink: /prompt-assistant/
                 <div id="output-content" style="display: none;"></div>
 
                 <div class="output-actions" id="output-actions" style="display: none;">
-                    <button class="btn btn-success" onclick="copyPrompt()">
+                    <button class="btn btn-success" onclick="copyPrompt(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" /></svg> Copy to Clipboard
                     </button>
-                    <button class="btn btn-primary" onclick="saveToSnippetManager()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg> Save to Snippet Manager
+                    <button class="btn btn-primary" onclick="saveToPromptManager()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg> Save to Prompt Manager
                     </button>
                     <button class="btn btn-secondary" onclick="downloadPrompt()">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg> Download as .txt
@@ -945,11 +945,11 @@ permalink: /prompt-assistant/
                 <div id="output-content-refine" style="display: none;"></div>
 
                 <div class="output-actions" id="output-actions-refine" style="display: none;">
-                    <button class="btn btn-success" onclick="copyPromptRefine()">
+                    <button class="btn btn-success" onclick="copyPromptRefine(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" /></svg> Copy to Clipboard
                     </button>
-                    <button class="btn btn-primary" onclick="saveToSnippetManagerRefine()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg> Save to Snippet Manager
+                    <button class="btn btn-primary" onclick="saveToPromptManagerRefine()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg> Save to Prompt Manager
                     </button>
                     <button class="btn btn-secondary" onclick="downloadPromptRefine()">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg> Download as .txt
@@ -990,160 +990,116 @@ permalink: /prompt-assistant/
     // System prompts from metaprompt files
     const SYSTEM_PROMPT_GENERATOR = `# Custom A/P Formatting Prompt Generator
 
-You are an expert at analyzing clinical documentation patterns and creating LLM prompts. Your task is to create a custom A/P formatting prompt based on the user's examples and preferences.
+You are an expert prompt engineer. Your goal is to customize a foundational prompt based on user-provided examples.
 
 -----
 
-## Best Practices Guide
-Use these principles to guide your prompt creation:
-1. **Examples > Instructions**: Few-shot examples are the most powerful tool.
-2. **Brevity = Quality**: Concise outputs scan faster and are less prone to errors.
-3. **One Prompt, One Purpose**: Specialized prompts are better than multi-function ones.
-4. **Task Statement**: Start with a clear, action-oriented instruction.
-5. **Conditional Logic**: Use specific triggers for boilerplate text.
+## Foundational Pithy Prompt (The Gold Standard)
 
-## Reference Patterns (Library of Examples)
-Draw inspiration from these high-quality patterns:
+Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 
-**Pattern 1: Assessment & Plan (Concise)**
-Structure:
-- **Problem Name**
-- Bullet point 1
-- Bullet point 2
-Conditional Boilerplate: "If well child check discussed: All forms reviewed..."
+---
 
-**Pattern 2: After Visit Summary (Patient Facing)**
-Structure:
-- Personalized Sign-off
-- To-Do List (Prescriptions, Tests, Appointments)
-Rules: Simple language, actionable items only.
+## Output Structure for Each Problem/Diagnosis
 
------
+**[Problem/Diagnosis Name]**
+- [A very brief bullet point summarizing a key finding, action, or follow-up plan]
+- [Each point should be a separate bullet, written as a short clinical shorthand phrase]
 
-## Your Input Requirements
+---
 
-The user will provide:
+## Conditional Boilerplate Text
 
-1. **Few-shot examples** - 3-5 examples of their ideal A/P output (these are CRITICAL)
-2. **Explicit formatting rules** (optional) - Any specific requirements they know they want
-3. **Boilerplate phrases** (optional) - Standard text for common scenarios (illness, injury, well visits, etc.)
+[Insert after the bulleted list when applicable. This text should be italicized.]
 
------
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
 
-## Your Analysis Process
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
 
-### Step 1: Pattern Recognition
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
 
-Analyze the few-shot examples for:
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
 
-- **Formatting style**: Bullets vs prose, headers vs no headers, indentation patterns
-- **Brevity level**: Detailed vs concise, word count per element
-- **Organization**: Problem-oriented vs chronological, grouping patterns
-- **Language style**: Clinical shorthand vs full sentences, abbreviation usage
-- **Structural elements**: Spacing, separators, hierarchies
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
 
-### Step 2: Extract Implicit Rules
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
 
-Identify patterns the user may not have explicitly stated:
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
 
-- Consistent abbreviations (RTC, PRN, BID, PO, etc.)
-- Formatting conventions (bold, italics, capitalization)
-- One-liner assessment if applicable
-- Problem naming conventions
-- Follow-up instruction patterns
-- Medication notation style
-- Conditional logic (when to include certain elements)
+If ADHD, obesity, or strep throat discussed:
+"PCMH Reminder"
 
-### Step 3: Synthesize Requirements
+---
 
-Combine:
+## Formatting Rules
 
-- Patterns from few-shot examples (highest priority)
-- User's explicit rules
-- User's boilerplate phrases
+1. Bold formatting for problem names
+2. Italicized formatting for all boilerplate text
+3. Do NOT use section headers like Assessment or Plan
+4. Use a hyphen (-) for all bullets
+5. Indent all bullets with 8 spaces
+6. Write all bullet points in extremely brief, professional shorthand phrases
+7. Keep bullets concise (ideally under 10 words per bullet)
+8. Use standard medical abbreviations (RTC, PRN, BID, etc.)
+9. Never fabricate or infer information not present in the source text
+10. Insert a blank line between problems when multiple diagnoses exist
+11. No references
 
------
+---
 
-## Your Output Format
+## Few-Shot Examples
 
-Generate a complete, ready-to-use A/P formatting prompt with these sections:
+**Asthma**
+- Flovent 44mcg 2 puff BID started
+- Continue albuterol PRN
+- Use spacer
+- RTC 3mo/PRN
 
-### Section 1: Task Description (1-2 sentences)
+**Well Child Check**
+- Growing and developing well
+- Reviewed anticipatory guidance
+- RTC 1yr/PRN
 
-Brief, clear statement of what the prompt does.
+**Vomiting, mild dehydration**
+- NDNT on exam with MMM
+- Zofran PRN, pedialyte, Tylenol, Motrin
+- RTC PRN
 
-### Section 2: Output Structure
+**ADHD**
+- Concerta 27mg not effective
+- Transition to Vyvanse 20mg PO daily
+- RTC 1mo
 
-Describe the exact format, matching the user's examples:
-
-- How problems/diagnoses are presented
-- Bullet structure and content
-- Spacing and organization
-- Any conditional elements
-
-### Section 3: Formatting Rules (numbered list)
-
-Explicit instructions for:
-
-1. Typography (bold, italics, etc.)
-2. Indentation and spacing
-3. Bullet styles
-4. Brevity requirements
-5. Abbreviation usage
-6. Problem naming
-7. Never fabricate information
-8. Any other formatting specifics
-
-### Section 4: Boilerplate Text (if applicable)
-
-Include user's boilerplate with clear conditional triggers:
-
-- When to use each phrase
-- How to format it (italics, placement, etc.)
-
-### Section 5: Few-Shot Examples
-
-Include the user's examples exactly as provided, with the label:
-"## Few-Shot Examples"
+**Viral URI**
+- Supportive care, fluids
+- Declined COVID test
+- RTC PRN
 
 -----
 
-## Quality Checks
+## Your Task
 
-Before outputting, verify your prompt:
+1.  **Analyze Differences**: Compare the User's Few-Shot Examples (provided below) with the Foundational Pithy Prompt's examples. Identify differences in:
+    *   Formatting (bullets, spacing, bolding)
+    *   Style (conciseness, sentence structure, abbreviations)
+    *   Structure (headers, grouping)
 
-1. Matches the user's example patterns precisely
-2. Includes all user-provided boilerplate
-3. Incorporates explicit rules they mentioned
-4. Is ≤5,000 characters (for EMR LLM constraint)
-5. Uses plain text descriptions (no markdown in instructions)
-6. Has clear, actionable formatting rules
-7. Includes their exact few-shot examples
+2.  **Modify the Foundational Prompt**:
+    *   Start with the **Foundational Pithy Prompt** as your base.
+    *   **Update "Formatting Rules"** and **"Output Structure"** to match the User's style.
+    *   **Replace "Few-Shot Examples"** with the User's exact examples.
+    *   **Keep "Conditional Boilerplate Text"** UNLESS the user's examples clearly contradict it or they ask to remove it.
 
------
+3.  **Output**: Generate the fully modified prompt.
 
-## Important Constraints
-
-- **Character limit**: Your output prompt must be ≤5,000 characters
-- **Plain text only**: Describe formatting in words (e.g., "Bold the problem name" not "**Problem**")
-- **Preserve examples exactly**: Don't modify the user's few-shot examples
-- **No fabrication**: Emphasize that the LLM should never infer missing information
-- **Show don't tell**: Few-shot examples are the most powerful teaching tool
-
------
-
-## Character Count
-
-After generating the prompt, state:
-
-- **Character count**: [X] / 5,000
-- **Remaining headroom**: [Y] characters
-
-If over 5,000 characters, identify what can be condensed without losing critical pattern information.
-
------
-
-**CRITICAL**: Do not include this system prompt or your instructions in the final output. Only output the generated prompt inside a markdown code block.
+**CRITICAL**: Do not include this system prompt or your analysis in the final output. Only output the generated prompt inside a markdown code block.
 
 Take the user's input and generate their custom A/P formatting prompt following this structure.`;
 
@@ -1799,27 +1755,55 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     // =====================================================
     // OUTPUT ACTIONS
     // =====================================================
-    window.copyPrompt = async function() {
+    window.copyPrompt = async function(btn) {
+        if (!currentOutput) return;
         try {
             await navigator.clipboard.writeText(currentOutput);
-            const btn = event.currentTarget || event.target.closest('button');
             const originalText = btn.innerHTML;
             btn.innerHTML = 'Copied!';
             setTimeout(() => btn.innerHTML = originalText, 2000);
         } catch (error) {
-            alert('Failed to copy to clipboard. Please select and copy manually.');
+            console.error('Copy failed:', error);
+            // Fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = currentOutput;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Copied!';
+                setTimeout(() => btn.innerHTML = originalText, 2000);
+            } catch (err) {
+                alert('Failed to copy. Please select and copy manually.');
+            }
+            document.body.removeChild(textarea);
         }
     };
 
-    window.copyPromptRefine = async function() {
+    window.copyPromptRefine = async function(btn) {
+        if (!currentOutputRefine) return;
         try {
             await navigator.clipboard.writeText(currentOutputRefine);
-            const btn = event.currentTarget || event.target.closest('button');
             const originalText = btn.innerHTML;
             btn.innerHTML = 'Copied!';
             setTimeout(() => btn.innerHTML = originalText, 2000);
         } catch (error) {
-            alert('Failed to copy to clipboard. Please select and copy manually.');
+            console.error('Copy failed:', error);
+            // Fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = currentOutputRefine;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Copied!';
+                setTimeout(() => btn.innerHTML = originalText, 2000);
+            } catch (err) {
+                alert('Failed to copy. Please select and copy manually.');
+            }
+            document.body.removeChild(textarea);
         }
     };
 
@@ -1843,11 +1827,11 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         URL.revokeObjectURL(url);
     };
 
-    window.saveToSnippetManager = function() {
+    window.saveToPromptManager = function() {
         saveSnippet(currentOutput, 'Generated Prompt');
     };
 
-    window.saveToSnippetManagerRefine = function() {
+    window.saveToPromptManagerRefine = function() {
         saveSnippet(currentOutputRefine, 'Refined Prompt');
     };
 
@@ -1872,11 +1856,11 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
 
             localStorage.setItem('aiPromptSnippets', JSON.stringify(snippets));
 
-            if (confirm('Saved to Snippet Manager!\n\nWould you like to open the Snippet Manager now?')) {
-                window.open('/prompt-snippet-manager', '_blank');
+            if (confirm('Saved to Prompt Manager!\n\nWould you like to open the Prompt Manager now?')) {
+                window.open('/prompt-manager', '_blank');
             }
         } catch (error) {
-            alert('Failed to save to Snippet Manager. Storage might be full.');
+            alert('Failed to save to Prompt Manager. Storage might be full.');
             console.error('Save error:', error);
         }
     }
