@@ -18,10 +18,10 @@ Before we jump into writing complex medical notes, we need to speak the same lan
 
 By the end of this module, you will understand:
 
-- ✅ **What a "Prompt" actually is** (Input vs Output)
-- ✅ **Zero-Shot vs. Few-Shot Prompting** (The power of examples)
-- ✅ **The Context Window** (How much can the AI remember?)
-- ✅ **Hallucinations** (Why AI lies and how to catch it)
+- **What a "Prompt" actually is** (Input vs Output)
+- **Zero-Shot vs. Few-Shot Prompting** (The power of examples)
+- **The Context Window** (How much can the AI remember?)
+- **Hallucinations** (Why AI lies and how to catch it)
 
 ---
 
@@ -50,20 +50,20 @@ Let's start with something simple. You have an email from a practice manager, Sa
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Write a prompt to extract the available meeting times from Sarah's email.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Source Email</span></summary>
+    <summary>View <span class="input-label-text">Source Email</span></summary>
     <div class="transcript-content" id="transcript-content-m1e1">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m1e1">✍️ Your Prompt:</label>
+    <label for="student-prompt-m1e1">Your Prompt:</label>
     <textarea id="student-prompt-m1e1" class="student-prompt" rows="5" placeholder="Write your prompt here..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Just ask for what you want clearly. "List the times..."
+      Tip: Just ask for what you want clearly. "List the times..."
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -78,24 +78,6 @@ Let's start with something simple. You have an email from a practice manager, Sa
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-2').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -149,17 +131,17 @@ Now, let's try to get that same email data into a specific format: **JSON** (a f
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Extract the meeting times into a JSON object. Try providing an example (Few-Shot) to get the format exactly right.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Source Email</span></summary>
+    <summary>View <span class="input-label-text">Source Email</span></summary>
     <div class="transcript-content" id="transcript-content-m1e2">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m1e2">✍️ Your Prompt:</label>
+    <label for="student-prompt-m1e2">Your Prompt:</label>
     <textarea id="student-prompt-m1e2" class="student-prompt" rows="10" placeholder="Try giving an example...
     
 Example format:
@@ -169,7 +151,7 @@ Example format:
 
 Now process this email:"></textarea>
     <div class="editor-hints">
-      💡 Tip: Define the structure you want by showing an example of it.
+      Tip: Define the structure you want by showing an example of it.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -184,24 +166,6 @@ Now process this email:"></textarea>
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-3').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -252,20 +216,20 @@ Now we switch to a medical transcript. It's long. Your job is to find one specif
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Find exactly what the patient said about their diet. Do not include other details.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Patient Transcript</span></summary>
+    <summary>View <span class="input-label-text">Patient Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m1e3">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m1e3">✍️ Your Prompt:</label>
+    <label for="student-prompt-m1e3">Your Prompt:</label>
     <textarea id="student-prompt-m1e3" class="student-prompt" rows="5" placeholder="Based on the transcript..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Use phrases like "Based ONLY on the text provided..."
+      Tip: Use phrases like "Based ONLY on the text provided..."
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -280,24 +244,6 @@ Now we switch to a medical transcript. It's long. Your job is to find one specif
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <a href="/courses/clinical-prompt-engineering/module-2/" class="btn-next-exercise">Continue to Module 2 →</a>

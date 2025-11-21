@@ -124,7 +124,7 @@ class CourseExercise {
 
       console.log('LLM initialized successfully!');
       this.isInitialized = true;
-      this.updateStatus('AI Ready ✓', 'ready');
+      this.updateStatus('AI Ready', 'ready');
 
       // Share this instance globally for other exercises
       window.sharedLLM = this.llm;
@@ -170,22 +170,17 @@ class CourseExercise {
       // Show output
       this.displayOutput(generatedOutput);
 
-      // Step 2: Evaluate the output
-      this.updateStatus('Evaluating your work...', 'loading');
-      const feedback = await this.evaluateOutput(studentPrompt, generatedOutput);
-
-      // Show feedback
-      this.displayFeedback(feedback);
-
       // Update progress
       this.currentAttempt++;
-      this.bestScore = Math.max(this.bestScore, feedback.score);
       this.updateProgress();
 
-      // Save to localStorage
-      this.saveProgress(feedback.score);
+      // Save to localStorage (mark as completed without score)
+      this.saveProgress(10);
 
-      this.updateStatus('Complete!', 'ready');
+      this.updateStatus('Complete', 'ready');
+
+      // Show actions
+      this.showActions();
     } catch (error) {
       console.error('Exercise error:', error);
       this.showError('An error occurred while processing your prompt. Please try again.');
@@ -211,142 +206,39 @@ class CourseExercise {
     return response.choices[0].message.content;
   }
 
-  async evaluateOutput(studentPrompt, generatedOutput) {
-    const rubric = this.config.rubric;
-    const goal = this.config.goal;
-    const examplePrompt = this.config.example_good_prompt;
-
-    const evaluationPrompt = `You are an expert medical educator evaluating a student's prompt engineering exercise.
-
-EXERCISE GOAL: ${goal}
-
-STUDENT'S PROMPT:
-${studentPrompt}
-
-GENERATED OUTPUT FROM THAT PROMPT (Truncated):
-${generatedOutput.substring(0, 1000)}...
-
-REFERENCE "GOOD" PROMPT (For comparison only):
-${examplePrompt}
-
-EVALUATION INSTRUCTIONS:
-Compare the student's prompt to the reference prompt and the exercise goal.
-Do NOT assign a score.
-Focus on what the student did well and exactly how they can improve to match the quality of the reference prompt.
-
-Provide feedback in the following JSON format:
-{
-  "strengths": ["specific strength 1", "specific strength 2"],
-  "improvements": ["specific improvement 1", "specific improvement 2"],
-  "example_improvement": "A specific suggestion on how to rephrase a part of their prompt"
-}
-
-Be specific, constructive, and encouraging.`;
-
-    try {
-      const response = await this.llm.chat.completions.create({
-        messages: [{ role: 'user', content: evaluationPrompt }],
-        temperature: 0.3,
-        max_tokens: 1000
-      });
-
-      const content = response.choices[0].message.content;
-      console.log("Evaluation Raw Response:", content);
-
-      // Extract JSON from response
-      let jsonStr = content;
-
-      // Try to find JSON object boundaries
-      const firstOpen = content.indexOf('{');
-      const lastClose = content.lastIndexOf('}');
-
-      if (firstOpen !== -1 && lastClose !== -1 && lastClose > firstOpen) {
-        jsonStr = content.substring(firstOpen, lastClose + 1);
-      } else {
-        console.warn('Could not find JSON object in response:', content);
-        throw new Error('No JSON found in response');
-      }
-
-      const feedback = JSON.parse(jsonStr);
-
-      // Validate feedback structure
-      if (!feedback.strengths || !feedback.improvements) {
-        throw new Error('Invalid feedback structure');
-      }
-
-      return feedback;
-    } catch (error) {
-      console.error('Evaluation error:', error);
-
-      // Fallback feedback
-      return {
-        strengths: ['Your prompt generated a response'],
-        improvements: [
-          'Try to be more specific in your instructions',
-          'Consider adding formatting requirements',
-          'Compare your prompt to the example solution'
-        ],
-        example_improvement: 'Check the "View Example Solution" for ideas.'
-      };
-    }
-  }
-
   displayOutput(output) {
     const outputContent = this.outputPanel.querySelector('.output-content');
     if (outputContent) {
       outputContent.textContent = output;
     }
-
     this.outputPanel.style.display = 'block';
     this.outputPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  displayFeedback(feedback) {
-    // Strengths
-    const strengthsList = this.feedbackPanel.querySelector('.feedback-strengths ul');
-    if (strengthsList) {
-      strengthsList.innerHTML = '';
-      feedback.strengths.forEach(strength => {
-        const li = document.createElement('li');
-        li.textContent = strength;
-        strengthsList.appendChild(li);
-      });
-    }
-
-    // Improvements
-    const improvementsList = this.feedbackPanel.querySelector('.feedback-improvements ul');
-    if (improvementsList) {
-      improvementsList.innerHTML = '';
-      feedback.improvements.forEach(improvement => {
-        const li = document.createElement('li');
-        li.textContent = improvement;
-        improvementsList.appendChild(li);
-      });
-    }
-
-    // Hide Score Elements
-    const scoreContainer = this.feedbackPanel.querySelector('.feedback-score');
-    if (scoreContainer) {
-      scoreContainer.style.display = 'none';
-    }
-
-    // Example improvement
-    const exampleImprovement = this.feedbackPanel.querySelector('.example-improvement p');
-    if (exampleImprovement && feedback.example_improvement) {
-      exampleImprovement.textContent = feedback.example_improvement;
-      this.feedbackPanel.querySelector('.example-improvement').style.display = 'block';
-    } else {
-      const exImpDiv = this.feedbackPanel.querySelector('.example-improvement');
-      if (exImpDiv) exImpDiv.style.display = 'none';
-    }
-
-    // Hide detailed criteria scores
-    const criteriaDetails = this.feedbackPanel.querySelector('.criteria-details');
-    if (criteriaDetails) {
-      criteriaDetails.style.display = 'none';
-    }
-
+  showActions() {
+    // Show the feedback panel but hide the feedback content, just show actions
     this.feedbackPanel.style.display = 'block';
+
+    // Hide lists and scores
+    const strengths = this.feedbackPanel.querySelector('.feedback-strengths');
+    if (strengths) strengths.style.display = 'none';
+
+    const improvements = this.feedbackPanel.querySelector('.feedback-improvements');
+    if (improvements) improvements.style.display = 'none';
+
+    const score = this.feedbackPanel.querySelector('.feedback-score');
+    if (score) score.style.display = 'none';
+
+    const example = this.feedbackPanel.querySelector('.example-improvement');
+    if (example) example.style.display = 'none';
+
+    const criteria = this.feedbackPanel.querySelector('.criteria-details');
+    if (criteria) criteria.style.display = 'none';
+
+    // Ensure actions are visible
+    const actions = this.feedbackPanel.querySelector('.exercise-actions');
+    if (actions) actions.style.display = 'flex';
+
     this.feedbackPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 

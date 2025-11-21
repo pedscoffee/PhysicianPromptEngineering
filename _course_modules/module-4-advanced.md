@@ -18,9 +18,9 @@ In this module, we'll handle **Complex Cases** that require more than just a sim
 
 ### Learning Objectives
 
-- ✅ **Document complex multi-system patients**
-- ✅ **Create detailed procedure notes**
-- ✅ **Show diagnostic reasoning (Differential Diagnosis)**
+- **Document complex multi-system patients**
+- **Create detailed procedure notes**
+- **Show diagnostic reasoning (Differential Diagnosis)**
 
 ---
 
@@ -44,17 +44,17 @@ You need **Problem-Oriented Charting**.
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Create a comprehensive note for a complex patient. Organize the Assessment & Plan by problem, prioritizing acute issues.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Patient Transcript</span></summary>
+    <summary>View <span class="input-label-text">Patient Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m4e1">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m4e1">✍️ Your Prompt:</label>
+    <label for="student-prompt-m4e1">Your Prompt:</label>
     <textarea id="student-prompt-m4e1" class="student-prompt" rows="12" placeholder="Create a comprehensive note...
 
 Assessment & Plan:
@@ -63,7 +63,7 @@ Organize by problem:
 2. [Chronic Problem]
 ..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Tell the AI to "Prioritize acute conditions" and "List each problem separately".
+      Tip: Tell the AI to "Prioritize acute conditions" and "List each problem separately".
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -78,24 +78,6 @@ Organize by problem:
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-2').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -142,17 +124,17 @@ Templates are critical here.
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Generate a complete colonoscopy note. Ensure ALL required elements (Consent, Timeout, Findings, Complications) are present.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Procedure Transcript</span></summary>
+    <summary>View <span class="input-label-text">Procedure Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m4e2">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m4e2">✍️ Your Prompt:</label>
+    <label for="student-prompt-m4e2">Your Prompt:</label>
     <textarea id="student-prompt-m4e2" class="student-prompt" rows="10" placeholder="Generate a procedure note.
 
 Required Elements:
@@ -160,7 +142,7 @@ Required Elements:
 - Consent
 ..."></textarea>
     <div class="editor-hints">
-      💡 Tip: List the "Required Elements" explicitly in your prompt.
+      Tip: List the "Required Elements" explicitly in your prompt.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -175,24 +157,6 @@ Required Elements:
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-3').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -237,24 +201,24 @@ The "Assessment" section shouldn't just be a diagnosis. It should show **why** y
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Generate a note that explicitly lists the Differential Diagnosis and explains why you ruled out other causes.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Patient Transcript</span></summary>
+    <summary>View <span class="input-label-text">Patient Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m4e3">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m4e3">✍️ Your Prompt:</label>
+    <label for="student-prompt-m4e3">Your Prompt:</label>
     <textarea id="student-prompt-m4e3" class="student-prompt" rows="10" placeholder="Create an ED note.
 
 Assessment:
 Include a Differential Diagnosis section.
 For each item, explain the evidence for/against..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Ask the AI to "Show its work" or "Explain its reasoning".
+      Tip: Ask the AI to "Show its work" or "Explain its reasoning".
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -269,24 +233,6 @@ For each item, explain the evidence for/against..."></textarea>
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <a href="/courses/clinical-prompt-engineering/module-5/" class="btn-next-exercise">Continue to Module 5 →</a>

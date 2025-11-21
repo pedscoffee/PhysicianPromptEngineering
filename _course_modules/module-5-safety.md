@@ -20,9 +20,9 @@ In this module, we'll focus on **Safety First**.
 
 ### Learning Objectives
 
-- ✅ **Identify and mitigate bias**
-- ✅ **Implement safety checks** for high-risk patients
-- ✅ **De-identify data** to protect patient privacy
+- **Identify and mitigate bias**
+- **Implement safety checks** for high-risk patients
+- **De-identify data** to protect patient privacy
 
 ---
 
@@ -46,24 +46,24 @@ You can program these safety checks directly into your prompts.
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Create a prompt that explicitly checks for suicide risk. If risk is not assessed in the transcript, the AI should flag it.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Psych Transcript</span></summary>
+    <summary>View <span class="input-label-text">Psych Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m5e1">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m5e1">✍️ Your Prompt:</label>
+    <label for="student-prompt-m5e1">Your Prompt:</label>
     <textarea id="student-prompt-m5e1" class="student-prompt" rows="10" placeholder="Create a psych note.
 
 SAFETY CHECK:
 - If suicide risk is mentioned, document it.
 - If NOT mentioned, write 'RISK NOT ASSESSED' in bold."></textarea>
     <div class="editor-hints">
-      💡 Tip: Use "If/Then" logic in your prompt to handle missing information.
+      Tip: Use "If/Then" logic in your prompt to handle missing information.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -78,24 +78,6 @@ SAFETY CHECK:
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-2').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -142,17 +124,17 @@ But you can use AI to *help* you de-identify notes for teaching or research (usi
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Create a prompt that removes ALL PHI (Names, Dates, Locations) and replaces them with placeholders like [Name].</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Patient Transcript</span></summary>
+    <summary>View <span class="input-label-text">Patient Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m5e2">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m5e2">✍️ Your Prompt:</label>
+    <label for="student-prompt-m5e2">Your Prompt:</label>
     <textarea id="student-prompt-m5e2" class="student-prompt" rows="8" placeholder="Remove all PHI.
     
 Replace:
@@ -160,7 +142,7 @@ Replace:
 - Dates -> [Date]
 ..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Be exhaustive. List every type of PHI you want removed.
+      Tip: Be exhaustive. List every type of PHI you want removed.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -175,24 +157,6 @@ Replace:
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <a href="/courses/clinical-prompt-engineering/" class="btn-next-exercise">Finish Course 🎓</a>
@@ -217,7 +181,7 @@ Replace:
 
 ---
 
-## Course Complete! 🎓
+## Course Complete!
 
 Congratulations! You have completed the **Clinical Prompt Engineering Course**.
 

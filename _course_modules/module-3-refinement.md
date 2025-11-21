@@ -18,9 +18,9 @@ Sometimes the AI gives you a draft that is *almost* right, but needs work. This 
 
 ### Learning Objectives
 
-- ✅ **Shorten verbose notes** (Summarization)
-- ✅ **Catch and fix hallucinations** (Fact-checking)
-- ✅ **Adjust the tone** (Professionalism)
+- **Shorten verbose notes** (Summarization)
+- **Catch and fix hallucinations** (Fact-checking)
+- **Adjust the tone** (Professionalism)
 
 ---
 
@@ -44,20 +44,20 @@ You are given a "Draft Note" that is accurate but extremely wordy and conversati
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Rewrite the verbose draft note to be concise and professional. Remove conversational fluff.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Draft Note (Too Verbose)</span></summary>
+    <summary>View <span class="input-label-text">Draft Note (Too Verbose)</span></summary>
     <div class="transcript-content" id="transcript-content-m3e1">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m3e1">✍️ Your Prompt:</label>
+    <label for="student-prompt-m3e1">Your Prompt:</label>
     <textarea id="student-prompt-m3e1" class="student-prompt" rows="8" placeholder="Rewrite the following note..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Use instructions like "Be concise", "Remove conversational language", "Use medical abbreviations".
+      Tip: Use instructions like "Be concise", "Remove conversational language", "Use medical abbreviations".
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -72,24 +72,6 @@ You are given a "Draft Note" that is accurate but extremely wordy and conversati
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-2').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -138,17 +120,17 @@ You are given a "Patient Encounter Summary" (the truth) and an "AI Generated Not
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Identify the hallucinations in the draft note and rewrite it using ONLY the facts from the summary.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Draft Note (With Errors)</span></summary>
+    <summary>View <span class="input-label-text">Draft Note (With Errors)</span></summary>
     <div class="transcript-content" id="transcript-content-m3e2">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m3e2">✍️ Your Prompt:</label>
+    <label for="student-prompt-m3e2">Your Prompt:</label>
     <textarea id="student-prompt-m3e2" class="student-prompt" rows="10" placeholder="Compare the Summary and the Note.
     
 Identify errors:
@@ -157,7 +139,7 @@ Identify errors:
 Rewrite the note:
 ..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Explicitly ask the AI to "List the discrepancies" first, then rewrite. This forces it to "think" before writing.
+      Tip: Explicitly ask the AI to "List the discrepancies" first, then rewrite. This forces it to "think" before writing.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -172,24 +154,6 @@ Rewrite the note:
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-3').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -236,20 +200,20 @@ You have a note written in very casual, unprofessional language. Polish it up.
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Rewrite the unprofessional draft into a formal medical record.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Draft Note (Unprofessional)</span></summary>
+    <summary>View <span class="input-label-text">Draft Note (Unprofessional)</span></summary>
     <div class="transcript-content" id="transcript-content-m3e3">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m3e3">✍️ Your Prompt:</label>
+    <label for="student-prompt-m3e3">Your Prompt:</label>
     <textarea id="student-prompt-m3e3" class="student-prompt" rows="8" placeholder="Rewrite this note to be formal..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Ask to replace slang with medical terminology.
+      Tip: Ask to replace slang with medical terminology.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -264,24 +228,6 @@ You have a note written in very casual, unprofessional language. Polish it up.
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <a href="/courses/clinical-prompt-engineering/module-4/" class="btn-next-exercise">Continue to Module 4 →</a>

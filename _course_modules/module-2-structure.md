@@ -18,9 +18,9 @@ In this module, we will apply the concepts of **Input -> Prompt -> Output** to c
 
 ### Learning Objectives
 
-- ✅ **Generate a basic SOAP note** from a transcript
-- ✅ **Control formatting** (lists, bullet points, order)
-- ✅ **Use Templates** to ensure consistency
+- **Generate a basic SOAP note** from a transcript
+- **Control formatting** (lists, bullet points, order)
+- **Use Templates** to ensure consistency
 
 ---
 
@@ -44,20 +44,20 @@ You have a transcript of a hypertension follow-up. Your goal is to turn this con
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Write a prompt that generates a standard SOAP note from the transcript.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Patient Transcript</span></summary>
+    <summary>View <span class="input-label-text">Patient Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m2e1">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m2e1">✍️ Your Prompt:</label>
+    <label for="student-prompt-m2e1">Your Prompt:</label>
     <textarea id="student-prompt-m2e1" class="student-prompt" rows="8" placeholder="Generate a SOAP note..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Explicitly list the sections you want: Subjective, Objective, Assessment, Plan.
+      Tip: Explicitly list the sections you want: Subjective, Objective, Assessment, Plan.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -72,24 +72,6 @@ You have a transcript of a hypertension follow-up. Your goal is to turn this con
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-2').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -139,23 +121,23 @@ Let's try a new patient (Diabetes). This time, be very specific about the format
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Create a SOAP note where the HPI uses bullet points and the Plan is a numbered list.</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Patient Transcript</span></summary>
+    <summary>View <span class="input-label-text">Patient Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m2e2">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m2e2">✍️ Your Prompt:</label>
+    <label for="student-prompt-m2e2">Your Prompt:</label>
     <textarea id="student-prompt-m2e2" class="student-prompt" rows="8" placeholder="Create a SOAP note.
     
 Subjective: Use bullet points...
 Plan: Use a numbered list..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Tell the AI exactly how to format each section.
+      Tip: Tell the AI exactly how to format each section.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -170,24 +152,6 @@ Plan: Use a numbered list..."></textarea>
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <button class="btn-next-exercise" onclick="document.getElementById('lesson-3').scrollIntoView({behavior: 'smooth'});">Next Lesson →</button>
@@ -234,17 +198,17 @@ Instead of describing the format, you simply **show** the AI the empty shell you
   <div class="llm-status">Ready to start</div>
 
   <div class="exercise-goal">
-    <h3>🎯 Your Challenge</h3>
+    <h3>Your Challenge</h3>
     <p>Provide a specific template for the AI to fill in. Include placeholders like [Patient Name] and [Diagnosis].</p>
   </div>
 
   <details class="exercise-transcript">
-    <summary>📋 View <span class="input-label-text">Patient Transcript</span></summary>
+    <summary>View <span class="input-label-text">Patient Transcript</span></summary>
     <div class="transcript-content" id="transcript-content-m2e3">Loading...</div>
   </details>
 
   <div class="exercise-editor">
-    <label for="student-prompt-m2e3">✍️ Your Prompt:</label>
+    <label for="student-prompt-m2e3">Your Prompt:</label>
     <textarea id="student-prompt-m2e3" class="student-prompt" rows="12" placeholder="Fill in this template:
 
 Patient: [Name]
@@ -256,7 +220,7 @@ S:
 O:
 ..."></textarea>
     <div class="editor-hints">
-      💡 Tip: Copy-paste the structure you use in your EHR.
+      Tip: Copy-paste the structure you use in your EHR.
     </div>
     <div class="hint-display"></div>
     <div class="error-message"></div>
@@ -271,24 +235,6 @@ O:
   </div>
 
   <div class="exercise-feedback">
-    <div class="feedback-strengths">
-      <h4>✅ Strengths</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-improvements">
-      <h4>💡 Ways to Improve</h4>
-      <ul></ul>
-    </div>
-    <div class="feedback-score">
-      <h4>Your Score</h4>
-      <div class="score-value" data-score="0">0</div>
-      <div class="score-status"></div>
-    </div>
-    <div class="example-improvement">
-      <h4>Example Improvement:</h4>
-      <p></p>
-    </div>
-    <div class="criteria-details"></div>
     <div class="exercise-actions">
       <button class="btn-retry">Try Again</button>
       <a href="/courses/clinical-prompt-engineering/module-3/" class="btn-next-exercise">Continue to Module 3 →</a>

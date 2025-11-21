@@ -27,12 +27,12 @@ description: "Master the art of AI-assisted clinical documentation through hands
 
 ## Your Learning Journey
 
-This course teaches you how to effectively use AI for clinical documentation. Through hands-on exercises with real patient scenarios (de-identified), you'll practice writing prompts and receive immediate feedback from our AI evaluation system.
+This course teaches you how to effectively use AI for clinical documentation. Through hands-on exercises with real patient scenarios (de-identified), you'll practice writing prompts and refine your skills using self-evaluation and example solutions.
 
 ### What Makes This Course Unique
 
 - **Hands-On Practice**: Write real prompts, see real outputs, get real feedback
-- **LLM-Powered Evaluation**: AI analyzes your work and suggests improvements
+- **Self-Paced Learning**: Compare your work with expert examples
 - **Clinical Focus**: All exercises use realistic medical scenarios
 - **Local**: Everything runs in your browser
 - **Iterative Learning**: Practice until you master each concept
