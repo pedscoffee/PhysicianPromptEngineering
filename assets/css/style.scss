@@ -718,6 +718,16 @@ li {
     background-color: var(--color-primary-light);
     color: var(--color-primary);
   }
+
+  /* Premium link styling */
+  .premium-link {
+    color: var(--color-warning);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .dropdown:hover > .premium-link {
+    color: var(--color-warning);
+  }
 }
 
 /* Mobile Navigation */
@@ -780,6 +790,97 @@ li {
 
   .dropdown.active > .page-link::after {
     transform: rotate(180deg);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   DARK MODE OVERRIDES - Force header elements to respect dark mode
+   These rules override Minima theme's hardcoded colors
+   ---------------------------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  /* Force site header background to be dark */
+  .site-header {
+    background-color: var(--color-bg-primary) !important;
+    border-bottom-color: var(--color-border) !important;
+  }
+
+  /* Ensure backdrop blur uses dark background */
+  @supports (backdrop-filter: blur(8px)) {
+    .site-header {
+      background-color: rgba(31, 41, 55, 0.95) !important;
+    }
+  }
+
+  /* Force site title to be light in dark mode */
+  .site-title,
+  .site-header .site-title {
+    color: var(--color-text-primary) !important;
+  }
+
+  .site-title:hover,
+  .site-header .site-title:hover {
+    color: var(--color-primary) !important;
+  }
+
+  /* Force navigation links to be light in dark mode */
+  .site-nav .page-link,
+  .site-header .site-nav .page-link {
+    color: var(--color-text-primary) !important;
+  }
+
+  .site-nav .page-link:hover,
+  .site-header .site-nav .page-link:hover {
+    background-color: var(--color-primary-light) !important;
+    color: var(--color-primary) !important;
+  }
+
+  /* Ensure premium link stays orange in dark mode */
+  .premium-link,
+  .site-nav .premium-link {
+    color: var(--color-warning) !important;
+  }
+
+  .dropdown:hover > .premium-link {
+    color: var(--color-warning) !important;
+  }
+
+  /* Force dropdown content to use dark theme */
+  .dropdown-content {
+    background-color: var(--color-bg-primary) !important;
+    border-color: var(--color-border) !important;
+  }
+
+  .dropdown-content a {
+    color: var(--color-text-primary) !important;
+  }
+
+  .dropdown-content a:hover {
+    background-color: var(--color-primary-light) !important;
+    color: var(--color-primary) !important;
+  }
+
+  /* Mobile navigation overrides */
+  .site-nav .trigger {
+    background-color: var(--color-bg-primary) !important;
+  }
+
+  /* Mobile menu icon (hamburger) */
+  .menu-icon > svg {
+    fill: var(--color-text-primary) !important;
+  }
+
+  /* Mobile dropdown backgrounds */
+  .dropdown > .page-link {
+    color: var(--color-text-primary) !important;
+  }
+
+  .dropdown > .page-link:hover {
+    background-color: var(--color-bg-tertiary) !important;
+  }
+
+  .dropdown-content {
+    background-color: var(--color-bg-secondary) !important;
   }
 }
 
