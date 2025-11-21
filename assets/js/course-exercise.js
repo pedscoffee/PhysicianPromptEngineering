@@ -37,6 +37,7 @@ class CourseExercise {
     }
 
     this.bindEvents();
+    this.updateProgress();
   }
 
   bindEvents() {
@@ -213,6 +214,7 @@ class CourseExercise {
   async evaluateOutput(studentPrompt, generatedOutput) {
     const rubric = this.config.rubric;
     const goal = this.config.goal;
+    const examplePrompt = this.config.example_good_prompt;
 
     const evaluationPrompt = `You are an expert medical educator evaluating a student's prompt engineering exercise.
 
@@ -224,36 +226,33 @@ ${studentPrompt}
 GENERATED OUTPUT FROM THAT PROMPT:
 ${generatedOutput}
 
-EVALUATION RUBRIC:
-${JSON.stringify(rubric.criteria, null, 2)}
-Total possible points: ${rubric.total_points}
-Passing score: ${rubric.passing_score}
+REFERENCE "GOOD" PROMPT (For comparison only):
+${examplePrompt}
 
-Please evaluate this work and provide feedback in the following JSON format:
+EVALUATION INSTRUCTIONS:
+Compare the student's prompt to the reference prompt and the exercise goal.
+Do NOT assign a score.
+Focus on what the student did well and exactly how they can improve to match the quality of the reference prompt.
+
+Provide feedback in the following JSON format:
 {
   "strengths": ["specific strength 1", "specific strength 2"],
-  "improvements": ["specific improvement 1", "specific improvement 2", "specific improvement 3"],
-  "score": 8,
-  "criteria_scores": {
-    "criterion_name": {"points": 2, "feedback": "brief explanation"}
-  },
-  "example_improvement": "One specific example of how to improve the prompt...",
-  "passed": true
+  "improvements": ["specific improvement 1", "specific improvement 2"],
+  "example_improvement": "A specific suggestion on how to rephrase a part of their prompt"
 }
 
-Be specific and actionable in your feedback. Reference the actual prompt and output.
-Score fairly based on the rubric. Provide constructive suggestions.`;
+Be specific, constructive, and encouraging.`;
 
     try {
       const response = await this.llm.chat.completions.create({
         messages: [{ role: 'user', content: evaluationPrompt }],
-        temperature: 0.3, // Lower temperature for consistent evaluation
+        temperature: 0.3,
         max_tokens: 1000
       });
 
       const content = response.choices[0].message.content;
 
-      // Extract JSON from response (might be wrapped in markdown code blocks)
+      // Extract JSON from response
       let jsonStr = content;
       if (content.includes('```json')) {
         jsonStr = content.split('```json')[1].split('```')[0].trim();
@@ -264,7 +263,7 @@ Score fairly based on the rubric. Provide constructive suggestions.`;
       const feedback = JSON.parse(jsonStr);
 
       // Validate feedback structure
-      if (!feedback.strengths || !feedback.improvements || typeof feedback.score !== 'number') {
+      if (!feedback.strengths || !feedback.improvements) {
         throw new Error('Invalid feedback structure');
       }
 
@@ -272,17 +271,15 @@ Score fairly based on the rubric. Provide constructive suggestions.`;
     } catch (error) {
       console.error('Evaluation error:', error);
 
-      // Fallback feedback if evaluation fails
+      // Fallback feedback
       return {
         strengths: ['Your prompt generated a response'],
         improvements: [
           'Try to be more specific in your instructions',
           'Consider adding formatting requirements',
-          'Think about what information is most important'
+          'Compare your prompt to the example solution'
         ],
-        score: 5,
-        example_improvement: 'Add specific sections you want in the output, like "Format the output as: Subjective, Objective, Assessment, Plan"',
-        passed: false
+        example_improvement: 'Check the "View Example Solution" for ideas.'
       };
     }
   }
@@ -320,29 +317,26 @@ Score fairly based on the rubric. Provide constructive suggestions.`;
       });
     }
 
-    // Score
-    const scoreValue = this.feedbackPanel.querySelector('.score-value');
-    if (scoreValue) {
-      scoreValue.textContent = feedback.score;
-      scoreValue.setAttribute('data-score', feedback.score);
-    }
-
-    const scoreStatus = this.feedbackPanel.querySelector('.score-status');
-    if (scoreStatus) {
-      const passed = feedback.score >= this.config.rubric.passing_score;
-      scoreStatus.textContent = passed ? '✅ Passed!' : '📝 Keep practicing';
-      scoreStatus.className = 'score-status ' + (passed ? 'passed' : 'not-passed');
+    // Hide Score Elements
+    const scoreContainer = this.feedbackPanel.querySelector('.feedback-score');
+    if (scoreContainer) {
+      scoreContainer.style.display = 'none';
     }
 
     // Example improvement
-    const exampleImprovement = this.feedbackPanel.querySelector('.example-improvement');
+    const exampleImprovement = this.feedbackPanel.querySelector('.example-improvement p');
     if (exampleImprovement && feedback.example_improvement) {
       exampleImprovement.textContent = feedback.example_improvement;
+      this.feedbackPanel.querySelector('.example-improvement').style.display = 'block';
+    } else {
+      const exImpDiv = this.feedbackPanel.querySelector('.example-improvement');
+      if (exImpDiv) exImpDiv.style.display = 'none';
     }
 
-    // Show detailed criteria scores if available
-    if (feedback.criteria_scores) {
-      this.displayCriteriaScores(feedback.criteria_scores);
+    // Hide detailed criteria scores
+    const criteriaDetails = this.feedbackPanel.querySelector('.criteria-details');
+    if (criteriaDetails) {
+      criteriaDetails.style.display = 'none';
     }
 
     this.feedbackPanel.style.display = 'block';
@@ -350,20 +344,7 @@ Score fairly based on the rubric. Provide constructive suggestions.`;
   }
 
   displayCriteriaScores(criteriaScores) {
-    const detailsContainer = this.feedbackPanel.querySelector('.criteria-details');
-    if (!detailsContainer) return;
-
-    detailsContainer.innerHTML = '<h5>Detailed Scoring:</h5>';
-
-    for (const [criterion, details] of Object.entries(criteriaScores)) {
-      const criterionDiv = document.createElement('div');
-      criterionDiv.className = 'criterion-score';
-      criterionDiv.innerHTML = `
-        <strong>${criterion}:</strong> ${details.points} points
-        <br><small>${details.feedback}</small>
-      `;
-      detailsContainer.appendChild(criterionDiv);
-    }
+    // Deprecated
   }
 
   updateProgress() {
@@ -372,9 +353,11 @@ Score fairly based on the rubric. Provide constructive suggestions.`;
       attemptCount.textContent = this.currentAttempt;
     }
 
-    const bestScoreEl = this.container.querySelector('.best-score');
-    if (bestScoreEl) {
-      bestScoreEl.textContent = this.bestScore;
+    // Hide best score
+    const progressDiv = this.container.querySelector('.exercise-progress');
+    if (progressDiv) {
+      // Just show attempts
+      progressDiv.innerHTML = `Attempts: <span class="attempt-count">${this.currentAttempt}</span>`;
     }
   }
 
