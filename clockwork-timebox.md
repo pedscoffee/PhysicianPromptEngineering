@@ -50,7 +50,7 @@ description: Visual time-tracking and workday planning tool with task management
         </svg>
         <div>
             <strong style="color: #9a3412;">Premium Feature</strong>
-            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is part of our Premium suite. Please consider supporting the project if you find it useful.</p>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is free thanks to the support of our community. Please consider supporting the project if you find it useful.</p>
         </div>
     </div>
 
