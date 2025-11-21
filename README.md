@@ -2,7 +2,7 @@
 
 [![Website](https://img.shields.io/badge/Website-physicianpromptengineering.com-blue?logo=github)](https://physicianpromptengineering.com/)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17449352-green)](https://doi.org/10.5281/zenodo.17449352)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTE.md)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](support.md)
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
 ![Community Contributions](./images/thank-you-banner.jpg)
 
@@ -86,7 +86,7 @@ We welcome contributions from the medical community! This project thrives on sha
 ### How to Contribute
 
 #### Option 1: Web Submission (Recommended)
-Use our [submission form](https://physicianpromptengineering.com/contribute) on the website.
+Use our [submission form](https://physicianpromptengineering.com/support#contribute) on the website.
 
 #### Option 2: GitHub Pull Request
 1. Fork the repository
@@ -124,7 +124,7 @@ See full [Disclaimer](https://physicianpromptengineering.com/disclaimer)
 ### Current Focus
 - [ ] Expanding specialty-specific prompt library
 
-[Share your story →](https://physicianpromptengineering.com/contribute)
+[Share your story →](https://physicianpromptengineering.com/support#contribute)
 
 ## Citation
 
@@ -172,6 +172,6 @@ Special thanks to the free online medical education community that inspired this
 <p align="center">
   <a href="https://physicianpromptengineering.com">Visit Website</a> ·
   <a href="https://physicianpromptengineering.com/best-practices">Best Practices</a> ·
-  <a href="https://physicianpromptengineering.com/contributions">Contribute</a> ·
+  <a href="https://physicianpromptengineering.com/support#contribute">Contribute</a> ·
   <a href="https://physicianpromptengineering.com/about">About</a>
 </p>

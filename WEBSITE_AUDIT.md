@@ -13,9 +13,9 @@ Technically, the site is built on a solid foundation using Jekyll and a custom S
 
 ### 2.1 Broken Internal Link
 *   **Location:** `prompt-library.md` (Line 78)
-*   **Issue:** The link to "contribute your own" points to `/contributions`, but the actual page is `/contribute`.
+*   **Issue:** The link to "contribute your own" points to `/contributions`, but the actual page is `/support#contribute`.
 *   **Impact:** Users trying to contribute will encounter a 404 error.
-*   **Fix:** Update the link to `{{ site.baseurl }}/contribute`.
+*   **Fix:** Update the link to `{{ site.baseurl }}/support#contribute`.
 
 ### 2.2 Accessibility Barriers
 *   **Location:** `index.md` (FAQ Section)
@@ -71,13 +71,13 @@ Technically, the site is built on a solid foundation using Jekyll and a custom S
 ## 5. Recommendations
 
 ### High Priority
-1.  **Fix the Broken Link:** Correct `/contributions` to `/contribute` in `prompt-library.md`.
+1.  **Fix the Broken Link:** Correct `/contributions` to `/support#contribute` in `prompt-library.md`.
 2.  **Fix FAQ Accessibility:** Refactor the FAQ accordion in `index.md` to use semantic `<button>` elements.
 
 ### Medium Priority
 3.  **Lazy Load Embeds:** Add `loading="lazy"` to YouTube and Google Form iframes.
 4.  **Refactor CSS:** Move inline styles from Markdown files into utility classes in `style.scss` (e.g., `.text-center`, `.mb-4`).
-5.  **Standardize "Contribute" Link:** Ensure the footer and other pages consistently link to `/contribute`.
+5.  **Standardize "Contribute" Link:** Ensure the footer and other pages consistently link to `/support#contribute`.
 
 ### Low Priority
 6.  **Enhance 404 Page:** Create a custom `404.html` layout to guide lost users back to the library.

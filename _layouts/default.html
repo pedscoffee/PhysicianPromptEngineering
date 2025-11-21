@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -26,34 +26,29 @@
 
           <div class="trigger">
 
-            <!-- Blog -->
-            <a class="page-link" href="{{ '/blog' | relative_url }}">Blog</a>
-
-            <!-- Premium Dropdown -->
+            <!-- Tools Dropdown -->
             <div class="dropdown">
-              <span class="page-link" style="color: #d97706; font-weight: 600;">Premium</span>
+              <span class="page-link">Tools</span>
               <div class="dropdown-content">
-                <a href="{{ '/premium' | relative_url }}">Overview</a>
+                <span
+                  style="display:block; padding: 8px 16px; font-weight:bold; color:#64748b; font-size: 0.8em; text-transform: uppercase;">Documentation</span>
                 <a href="{{ '/prompt-assistant' | relative_url }}">AI Prompt Assistant</a>
                 <a href="{{ '/prompt-manager' | relative_url }}">Prompt Manager</a>
+                <a href="{{ '/prompt-library' | relative_url }}">Prompt Library</a>
+                <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>
+                <a href="{{ '/best-practices' | relative_url }}">Best Practices</a>
+                <a href="{{ '/prompt-generator' | relative_url }}">Quick Start A&P Builder</a>
+
+                <span
+                  style="display:block; padding: 8px 16px; font-weight:bold; color:#64748b; font-size: 0.8em; text-transform: uppercase; border-top: 1px solid #e2e8f0;">Productivity
+                  & Tracking</span>
                 <a href="{{ '/clockwork-timebox' | relative_url }}">ClockWork TimeBox</a>
                 <a href="{{ '/clinic-visit-tracker' | relative_url }}">RVU Data Tracker</a>
                 <a href="{{ '/qi-project-tracker' | relative_url }}">QI Project Tracker</a>
                 <a href="{{ '/pto-planner' | relative_url }}">Annual PTO Planner</a>
                 <a href="{{ '/cme-tracker' | relative_url }}">CME & Budget Tracker</a>
                 <a href="{{ '/reflect' | relative_url }}">Reflect</a>
-              </div>
-            </div>
-
-            <!-- Resources Dropdown -->
-            <div class="dropdown">
-              <span class="page-link">Resources</span>
-              <div class="dropdown-content">
-                <a href="{{ '/prompt-library' | relative_url }}">Prompt Library</a>
-                <a href="{{ '/best-practices' | relative_url }}">Best Practices</a>
-                <a href="{{ '/prompt-generator' | relative_url }}">Quick Start A&P Builder</a>
                 <a href="{{ '/cpt-calculator' | relative_url }}">E&M Calculator</a>
-                <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>
               </div>
             </div>
 
@@ -71,8 +66,15 @@
               </div>
             </div>
 
-            <!-- Contributions -->
-            <a class="page-link" href="{{ '/contribute' | relative_url }}">Contribute</a>
+            <!-- Community Dropdown -->
+            <div class="dropdown">
+              <span class="page-link">Community</span>
+              <div class="dropdown-content">
+                <a href="{{ '/blog' | relative_url }}">Blog</a>
+                <a href="{{ '/support#contribute' | relative_url }}">Contribute Prompts</a>
+                <a href="{{ '/support#support' | relative_url }}">Support This Project</a>
+              </div>
+            </div>
 
             <!-- About -->
             <a class="page-link" href="{{ '/about' | relative_url }}">About</a>
@@ -88,6 +90,7 @@
     {{ content }}
   </main>
 
+  {%- include cta-banner.html -%}
   {%- include footer.html -%}
 
   {%- include cookie-consent.html -%}
