@@ -64,7 +64,7 @@ The Prompt Generator complements our comprehensive documentation toolkit:
 
 - **[Prompt Library](https://physicianpromptengineering.com/prompt-library/)**: Browse validated prompts from practicing physicians
 - **[Best Practices Guide](https://physicianpromptengineering.com/best-practices/)**: Deep dive into optimization techniques
-- **[Community Contributions](https://physicianpromptengineering.com/contribute/)**: Share your refined prompts with colleagues
+- **[Community Contributions](https://physicianpromptengineering.com/support/)**: Share your refined prompts with colleagues
 - **[GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)**: Troubleshoot challenges with peers
 
 ## Expected Outcomes

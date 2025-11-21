@@ -75,7 +75,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
       </div>
       <div class="text-center mt-6">
         <p class="text-secondary">
-          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/contribute" class="text-primary">contribute your own</a>.  See <a href="{{ site.baseurl }}/disclaimer">Disclaimer.</a>
+          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/support#contribute" class="text-primary">contribute your own</a>.  See <a href="{{ site.baseurl }}/disclaimer">Disclaimer.</a>
         </p>
       </div>
     </div>
@@ -185,7 +185,7 @@ Example format:
       Help the community by contributing your tested prompts to our library.
     </p>
     <div class="hero-cta">
-      <a href="{{ site.baseurl }}/contributions" class="btn btn-primary btn-lg">Contribute Your Prompt</a>
+      <a href="{{ site.baseurl }}/support#contribute" class="btn btn-primary btn-lg">Contribute Your Prompt</a>
       <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Learn Best Practices</a>
     </div>
   </div>
