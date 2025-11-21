@@ -324,6 +324,24 @@ permalink: /prompt-refiner/
         <div class="progress-bar" id="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
+        
+        <div class="model-selector" id="model-selector" style="text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px; margin: 15px 0;">
+            <div style="font-weight: 600; margin-bottom: 10px; color: #374151;">Select AI Model:</div>
+            <label class="model-option" style="display: flex; gap: 10px; margin-bottom: 10px; cursor: pointer;">
+                <input type="radio" name="model-choice" value="thinking">
+                <div class="model-info">
+                    <strong style="display: block; color: #1f2937;">Thinking (Phi-3.5 Mini)</strong>
+                    <span style="font-size: 0.9em; color: #4b5563;">Higher quality, better reasoning. Best for complex prompts. (~2.2GB)</span>
+                </div>
+            </label>
+            <label class="model-option" style="display: flex; gap: 10px; cursor: pointer;">
+                <input type="radio" name="model-choice" value="fast" checked>
+                <div class="model-info">
+                    <strong style="display: block; color: #1f2937;">Fast (Llama 3.2 1B)</strong>
+                    <span style="font-size: 0.9em; color: #4b5563;">Lightning fast, lower memory. Good for older devices. (~870MB)</span>
+                </div>
+            </label>
+        </div>
         <button id="init-btn" class="btn btn-success btn-lg" onclick="initializeEngine()" style="margin-top: 15px; max-width: 300px;">
             Initialize AI
         </button>
@@ -421,7 +439,18 @@ permalink: /prompt-refiner/
     window.copyOutput = copyOutput;
     window.saveToPromptManager = saveToPromptManager;
 
-    const SYSTEM_PROMPT = \`You are an expert prompt engineer. Your task is to refine an existing prompt based on the user's desired changes.
+    const MODELS = {
+        thinking: {
+            id: "Phi-3.5-mini-instruct-q4f16_1-MLC",
+            name: "Thinking (Phi-3.5 Mini)"
+        },
+        fast: {
+            id: "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+            name: "Fast (Llama 3.2 1B)"
+        }
+    };
+
+    const SYSTEM_PROMPT = `You are an expert prompt engineer. Your task is to refine an existing prompt based on the user's desired changes.
 
 You will be given:
 1. The Current Prompt.
@@ -440,7 +469,7 @@ Format your response exactly as follows:
 
 ### Refined Prompt
 [The full text of the refined prompt]
-\`;
+`;
 
     async function initializeEngine() {
         const statusPanel = document.getElementById('status-panel');
@@ -455,8 +484,9 @@ Format your response exactly as follows:
             progressBar.classList.add('active');
             statusPanel.classList.remove('error');
             
-            // Use the "Fast" model by default as it's sufficient for this task
-            const selectedModel = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
+            // Get selected model
+            const modelChoice = document.querySelector('input[name="model-choice"]:checked').value;
+            const selectedModel = MODELS[modelChoice].id;
 
             engine = await CreateMLCEngine(
                 selectedModel,
@@ -464,8 +494,8 @@ Format your response exactly as follows:
                     initProgressCallback: (initProgress) => {
                         statusMessage.textContent = initProgress.text;
                         const percent = Math.round(initProgress.progress * 100);
-                        progressFill.style.width = \`\${percent}%\`;
-                        statusDetails.textContent = \`\${percent}% Complete\`;
+                        progressFill.style.width = `${percent}%`;
+                        statusDetails.textContent = `${percent}% Complete`;
                     }
                 }
             );
@@ -475,6 +505,7 @@ Format your response exactly as follows:
             statusDetails.textContent = "You can now refine your prompts.";
             initBtn.style.display = 'none';
             progressBar.style.display = 'none';
+            document.getElementById('model-selector').style.display = 'none';
             
             document.getElementById('refine-btn').disabled = false;
 
@@ -509,11 +540,11 @@ Format your response exactly as follows:
         document.getElementById('empty-output').style.display = 'none';
 
         try {
-            const userMessage = \`Current Prompt:
-\${currentPrompt}
+            const userMessage = `Current Prompt:
+${currentPrompt}
 
 Desired Changes:
-\${desiredChanges}\`;
+${desiredChanges}`;
 
             const messages = [
                 { role: "system", content: SYSTEM_PROMPT },
@@ -543,7 +574,7 @@ Desired Changes:
         const refinedMatch = text.match(/### Refined Prompt([\s\S]*)/i);
 
         const summaryHtml = summaryMatch 
-            ? '<ul>' + summaryMatch[1].trim().split('\\n').filter(line => line.trim().startsWith('-')).map(line => \`<li>\${line.replace(/^-\s*/, '')}</li>\`).join('') + '</ul>'
+            ? '<ul>' + summaryMatch[1].trim().split('\n').filter(line => line.trim().startsWith('-')).map(line => `<li>${line.replace(/^-\s*/, '')}</li>`).join('') + '</ul>'
             : '<p>No summary provided.</p>';
 
         const refinedText = refinedMatch ? refinedMatch[1].trim() : text;
