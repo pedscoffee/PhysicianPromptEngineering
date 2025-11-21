@@ -254,10 +254,16 @@ Be specific, constructive, and encouraging.`;
 
       // Extract JSON from response
       let jsonStr = content;
-      if (content.includes('```json')) {
-        jsonStr = content.split('```json')[1].split('```')[0].trim();
-      } else if (content.includes('```')) {
-        jsonStr = content.split('```')[1].split('```')[0].trim();
+
+      // Try to find JSON object boundaries
+      const firstOpen = content.indexOf('{');
+      const lastClose = content.lastIndexOf('}');
+
+      if (firstOpen !== -1 && lastClose !== -1 && lastClose > firstOpen) {
+        jsonStr = content.substring(firstOpen, lastClose + 1);
+      } else {
+        console.warn('Could not find JSON object in response:', content);
+        throw new Error('No JSON found in response');
       }
 
       const feedback = JSON.parse(jsonStr);
