@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -31,6 +31,7 @@
               <span class="page-link">Documentation</span>
               <div class="dropdown-content">
                 <a href="{{ '/prompt-assistant' | relative_url }}">AI Prompt Assistant</a>
+                <a href="{{ '/prompt-refiner' | relative_url }}">Prompt Refiner</a>
                 <a href="{{ '/prompt-manager' | relative_url }}">Prompt Manager</a>
                 <a href="{{ '/prompt-library' | relative_url }}">Prompt Library</a>
                 <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>
