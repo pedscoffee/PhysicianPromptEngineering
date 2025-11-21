@@ -223,8 +223,8 @@ EXERCISE GOAL: ${goal}
 STUDENT'S PROMPT:
 ${studentPrompt}
 
-GENERATED OUTPUT FROM THAT PROMPT:
-${generatedOutput}
+GENERATED OUTPUT FROM THAT PROMPT (Truncated):
+${generatedOutput.substring(0, 1000)}...
 
 REFERENCE "GOOD" PROMPT (For comparison only):
 ${examplePrompt}
@@ -251,6 +251,7 @@ Be specific, constructive, and encouraging.`;
       });
 
       const content = response.choices[0].message.content;
+      console.log("Evaluation Raw Response:", content);
 
       // Extract JSON from response
       let jsonStr = content;
