@@ -17,21 +17,21 @@ permalink: /prompt-remix/
 }
 
 .remix-header {
-    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
+    background: linear-gradient(135deg, var(--color-primary-light, #dbeafe) 0%, var(--color-secondary-light, #e0f2fe) 100%);
     padding: 40px 30px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-lg, 8px);
     margin-bottom: 30px;
     text-align: center;
 }
 
 .remix-header h1 {
-    color: var(--color-primary-dark);
+    color: var(--color-primary-dark, #1e5bb8);
     font-size: 2.2em;
     margin-bottom: 10px;
 }
 
 .remix-header p {
-    color: var(--color-text-secondary);
+    color: var(--color-text-secondary, #666);
     font-size: 1.1em;
     max-width: 700px;
     margin: 0 auto;
@@ -39,9 +39,9 @@ permalink: /prompt-remix/
 
 /* Toolbar */
 .remix-toolbar {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    background: var(--color-bg-primary, #fff);
+    border: 1px solid var(--color-border, #e8e8e8);
+    border-radius: var(--radius-md, 6px);
     padding: 15px 20px;
     margin-bottom: 25px;
     display: flex;
@@ -60,24 +60,24 @@ permalink: /prompt-remix/
 
 .prompt-selector-group label {
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-text-primary, #333);
     white-space: nowrap;
 }
 
 #prompt-selector {
     padding: 10px 16px;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border: 2px solid var(--color-border, #e8e8e8);
+    border-radius: var(--radius-md, 6px);
     font-size: 1em;
     min-width: 280px;
-    background: var(--color-bg-primary);
+    background: var(--color-bg-primary, #fff);
     cursor: pointer;
-    transition: border-color var(--transition-fast);
+    transition: border-color 0.2s;
 }
 
 #prompt-selector:focus {
     outline: none;
-    border-color: var(--color-primary);
+    border-color: var(--color-primary, #2a7ae2);
 }
 
 .toolbar-actions {
@@ -88,21 +88,21 @@ permalink: /prompt-remix/
 
 .toolbar-btn {
     padding: 8px 16px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border, #e8e8e8);
+    border-radius: var(--radius-md, 6px);
+    background: var(--color-bg-primary, #fff);
     cursor: pointer;
     font-size: 0.9em;
     font-weight: 500;
-    transition: all var(--transition-fast);
+    transition: all 0.2s;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .toolbar-btn:hover:not(:disabled) {
-    background: var(--color-bg-secondary);
-    border-color: var(--color-primary);
+    background: var(--color-bg-secondary, #f5f5f5);
+    border-color: var(--color-primary, #2a7ae2);
 }
 
 .toolbar-btn:disabled {
@@ -131,18 +131,18 @@ permalink: /prompt-remix/
 
 /* Editor Panel */
 .editor-panel {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    background: var(--color-bg-primary, #fff);
+    border: 1px solid var(--color-border, #e8e8e8);
+    border-radius: var(--radius-lg, 8px);
     overflow: hidden;
 }
 
 .panel-header {
-    background: var(--color-bg-secondary);
+    background: var(--color-bg-secondary, #f5f5f5);
     padding: 15px 20px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border, #e8e8e8);
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-text-primary, #333);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -156,7 +156,7 @@ permalink: /prompt-remix/
 
 /* Section Accordion */
 .section-item {
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border, #e8e8e8);
 }
 
 .section-item:last-child {
@@ -165,17 +165,17 @@ permalink: /prompt-remix/
 
 .section-header {
     padding: 15px 20px;
-    background: var(--color-bg-primary);
+    background: var(--color-bg-primary, #fff);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background var(--transition-fast);
+    transition: background 0.2s;
     user-select: none;
 }
 
 .section-header:hover {
-    background: var(--color-bg-secondary);
+    background: var(--color-bg-secondary, #f5f5f5);
 }
 
 .section-header-left {
@@ -186,15 +186,15 @@ permalink: /prompt-remix/
 
 .section-title {
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-text-primary, #333);
     font-size: 0.95em;
 }
 
 .section-badge {
-    background: var(--color-primary);
+    background: var(--color-primary, #2a7ae2);
     color: white;
     padding: 2px 8px;
-    border-radius: var(--radius-full);
+    border-radius: 9999px;
     font-size: 0.75em;
     font-weight: 600;
 }
@@ -204,8 +204,8 @@ permalink: /prompt-remix/
 }
 
 .section-toggle {
-    color: var(--color-text-secondary);
-    transition: transform var(--transition-fast);
+    color: var(--color-text-secondary, #666);
+    transition: transform 0.2s;
     font-size: 0.8em;
 }
 
@@ -226,20 +226,20 @@ permalink: /prompt-remix/
     width: 100%;
     min-height: 150px;
     padding: 15px;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border: 2px solid var(--color-border, #e8e8e8);
+    border-radius: var(--radius-md, 6px);
     font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
     font-size: 0.9em;
     line-height: 1.6;
     resize: vertical;
-    transition: border-color var(--transition-fast);
-    background: var(--color-bg-tertiary);
+    transition: border-color 0.2s;
+    background: var(--color-bg-tertiary, #fafafa);
 }
 
 .section-textarea:focus {
     outline: none;
-    border-color: var(--color-primary);
-    background: var(--color-bg-primary);
+    border-color: var(--color-primary, #2a7ae2);
+    background: var(--color-bg-primary, #fff);
 }
 
 /* Examples Section - Special Styling */
@@ -256,13 +256,13 @@ permalink: /prompt-remix/
 .add-examples-btn {
     width: 100%;
     padding: 15px;
-    border: 2px dashed var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-bg-secondary);
+    border: 2px dashed var(--color-border, #e8e8e8);
+    border-radius: var(--radius-md, 6px);
+    background: var(--color-bg-secondary, #f5f5f5);
     cursor: pointer;
     font-size: 0.95em;
-    color: var(--color-text-secondary);
-    transition: all var(--transition-fast);
+    color: var(--color-text-secondary, #666);
+    transition: all 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -270,16 +270,16 @@ permalink: /prompt-remix/
 }
 
 .add-examples-btn:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    background: var(--color-primary-light);
+    border-color: var(--color-primary, #2a7ae2);
+    color: var(--color-primary, #2a7ae2);
+    background: var(--color-primary-light, #dbeafe);
 }
 
 /* Preview Panel */
 .preview-panel {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    background: var(--color-bg-primary, #fff);
+    border: 1px solid var(--color-border, #e8e8e8);
+    border-radius: var(--radius-lg, 8px);
     position: sticky;
     top: 100px;
     max-height: calc(100vh - 120px);
@@ -296,9 +296,9 @@ permalink: /prompt-remix/
 }
 
 .preview-header {
-    background: var(--color-bg-secondary);
+    background: var(--color-bg-secondary, #f5f5f5);
     padding: 15px 20px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border, #e8e8e8);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -306,15 +306,15 @@ permalink: /prompt-remix/
 
 .preview-header-title {
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-text-primary, #333);
 }
 
 .char-counter {
     font-size: 0.9em;
     font-weight: 600;
     padding: 4px 12px;
-    border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
+    border-radius: 9999px;
+    transition: all 0.2s;
 }
 
 .char-counter.good {
@@ -336,7 +336,7 @@ permalink: /prompt-remix/
     flex: 1;
     overflow-y: auto;
     padding: 20px;
-    background: var(--color-bg-tertiary);
+    background: var(--color-bg-tertiary, #fafafa);
 }
 
 #preview-text {
@@ -345,11 +345,11 @@ permalink: /prompt-remix/
     line-height: 1.6;
     white-space: pre-wrap;
     word-wrap: break-word;
-    color: var(--color-text-primary);
+    color: var(--color-text-primary, #333);
 }
 
 .preview-empty {
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary, #999);
     font-style: italic;
     text-align: center;
     padding: 40px 20px;
@@ -358,11 +358,11 @@ permalink: /prompt-remix/
 /* Action Buttons */
 .action-buttons {
     padding: 20px;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border, #e8e8e8);
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    background: var(--color-bg-primary);
+    background: var(--color-bg-primary, #fff);
 }
 
 .action-btn {
@@ -370,15 +370,20 @@ permalink: /prompt-remix/
     min-width: 120px;
     padding: 12px 20px;
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md, 6px);
     font-size: 0.95em;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .action-btn svg {
@@ -387,23 +392,23 @@ permalink: /prompt-remix/
 }
 
 .action-btn-primary {
-    background: var(--color-primary);
+    background: var(--color-primary, #2a7ae2);
     color: white;
 }
 
-.action-btn-primary:hover {
-    background: var(--color-primary-dark);
+.action-btn-primary:hover:not(:disabled) {
+    background: var(--color-primary-dark, #1e5bb8);
     transform: translateY(-1px);
 }
 
 .action-btn-secondary {
-    background: var(--color-bg-secondary);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
+    background: var(--color-bg-secondary, #f5f5f5);
+    color: var(--color-text-primary, #333);
+    border: 1px solid var(--color-border, #e8e8e8);
 }
 
-.action-btn-secondary:hover {
-    background: var(--color-bg-tertiary);
+.action-btn-secondary:hover:not(:disabled) {
+    background: var(--color-bg-tertiary, #fafafa);
 }
 
 .action-btn-success {
@@ -411,16 +416,16 @@ permalink: /prompt-remix/
     color: white;
 }
 
-.action-btn-success:hover {
+.action-btn-success:hover:not(:disabled) {
     background: #047857;
 }
 
 /* Tip Box */
 .tip-box {
     background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
-    border-left: 4px solid var(--color-primary);
+    border-left: 4px solid var(--color-primary, #2a7ae2);
     padding: 15px 20px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md, 6px);
     margin-top: 25px;
     display: flex;
     align-items: flex-start;
@@ -437,12 +442,12 @@ permalink: /prompt-remix/
 }
 
 .tip-box-content strong {
-    color: var(--color-primary-dark);
+    color: var(--color-primary-dark, #1e5bb8);
 }
 
 .tip-box-content p {
     margin: 0;
-    color: var(--color-text-secondary);
+    color: var(--color-text-secondary, #666);
     font-size: 0.95em;
     line-height: 1.5;
 }
@@ -467,16 +472,16 @@ permalink: /prompt-remix/
 }
 
 .modal-content {
-    background: var(--color-bg-primary);
-    border-radius: var(--radius-lg);
+    background: var(--color-bg-primary, #fff);
+    border-radius: var(--radius-lg, 8px);
     max-width: 500px;
     width: 100%;
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
     padding: 20px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border, #e8e8e8);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -484,7 +489,7 @@ permalink: /prompt-remix/
 
 .modal-header h3 {
     margin: 0;
-    color: var(--color-primary);
+    color: var(--color-primary, #2a7ae2);
 }
 
 .modal-close {
@@ -492,17 +497,17 @@ permalink: /prompt-remix/
     border: none;
     font-size: 1.5em;
     cursor: pointer;
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary, #999);
     padding: 0;
     width: 32px;
     height: 32px;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+    border-radius: var(--radius-md, 6px);
+    transition: all 0.2s;
 }
 
 .modal-close:hover {
-    background: var(--color-bg-secondary);
-    color: var(--color-text-primary);
+    background: var(--color-bg-secondary, #f5f5f5);
+    color: var(--color-text-primary, #333);
 }
 
 .modal-body {
@@ -517,26 +522,26 @@ permalink: /prompt-remix/
     display: block;
     font-weight: 600;
     margin-bottom: 8px;
-    color: var(--color-text-primary);
+    color: var(--color-text-primary, #333);
 }
 
 .modal-form-group input {
     width: 100%;
     padding: 12px;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border: 2px solid var(--color-border, #e8e8e8);
+    border-radius: var(--radius-md, 6px);
     font-size: 1em;
-    transition: border-color var(--transition-fast);
+    transition: border-color 0.2s;
 }
 
 .modal-form-group input:focus {
     outline: none;
-    border-color: var(--color-primary);
+    border-color: var(--color-primary, #2a7ae2);
 }
 
 .modal-footer {
     padding: 20px;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border, #e8e8e8);
     display: flex;
     gap: 10px;
     justify-content: flex-end;
@@ -547,15 +552,15 @@ permalink: /prompt-remix/
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: var(--color-text-primary);
+    background: var(--color-text-primary, #333);
     color: white;
     padding: 15px 25px;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md, 6px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     z-index: 1100;
     transform: translateY(100px);
     opacity: 0;
-    transition: all var(--transition-base);
+    transition: all 0.3s;
 }
 
 .toast.show {
@@ -623,13 +628,13 @@ permalink: /prompt-remix/
         display: block;
         width: 100%;
         padding: 12px;
-        background: var(--color-bg-secondary);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
+        background: var(--color-bg-secondary, #f5f5f5);
+        border: 1px solid var(--color-border, #e8e8e8);
+        border-radius: var(--radius-md, 6px);
         margin-bottom: 15px;
         cursor: pointer;
         font-weight: 600;
-        color: var(--color-primary);
+        color: var(--color-primary, #2a7ae2);
     }
 
     .mobile-close-preview {
@@ -645,34 +650,6 @@ permalink: /prompt-remix/
     .mobile-close-preview {
         display: none !important;
     }
-}
-
-/* AI Optimizer Section (Future) */
-.ai-optimizer-btn {
-    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all var(--transition-fast);
-    opacity: 0.7;
-}
-
-.ai-optimizer-btn:hover {
-    opacity: 1;
-    transform: translateY(-1px);
-}
-
-.ai-badge {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-    font-size: 0.75em;
 }
 </style>
 
@@ -802,19 +779,35 @@ permalink: /prompt-remix/
 <div class="toast" id="toast"></div>
 
 <!-- Prompt Library Data -->
+<!-- 
+  FIX: Added default values for all fields to prevent JavaScript syntax errors
+  if any prompt file is missing front matter fields.
+  
+  Also added error handling around the entire block.
+-->
 <script>
-window.PROMPT_LIBRARY = {
-  {% for prompt in site.prompts %}
-  "{{ prompt.title | slugify }}": {
-    slug: "{{ prompt.title | slugify }}",
-    title: {{ prompt.title | jsonify }},
-    description: {{ prompt.description | jsonify }},
-    specialty: {{ prompt.specialty | jsonify }},
-    charCount: {{ prompt.char_count }},
-    content: {{ prompt.content | jsonify }}
-  }{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-};
+(function() {
+  try {
+    window.PROMPT_LIBRARY = {
+      {% assign sorted_prompts = site.prompts | sort: "order" %}
+      {% for prompt in sorted_prompts %}
+      "{{ prompt.title | slugify }}": {
+        slug: "{{ prompt.title | slugify }}",
+        title: {{ prompt.title | default: "Untitled" | jsonify }},
+        description: {{ prompt.description | default: "" | jsonify }},
+        specialty: {{ prompt.specialty | default: "General" | jsonify }},
+        charCount: {{ prompt.char_count | default: 0 }},
+        order: {{ prompt.order | default: 999 }},
+        content: {{ prompt.content | default: "" | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    };
+    console.log('✅ PROMPT_LIBRARY loaded:', Object.keys(window.PROMPT_LIBRARY).length, 'prompts');
+  } catch (e) {
+    console.error('❌ Failed to load PROMPT_LIBRARY:', e);
+    window.PROMPT_LIBRARY = {};
+  }
+})();
 </script>
 
 <!-- Prompt Remix JavaScript -->
