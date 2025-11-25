@@ -1,26 +1,62 @@
 [
     {
         "id": "case_simple_soap",
-        "name": "Simple SOAP (Paragraph HPI)",
-        "description": "Standard outpatient visit with paragraph-style history.",
+        "name": "Outpatient SOAP (Paragraph)",
+        "description": "Standard outpatient visit with paragraph-style HPI - Primary Care",
         "content": "SUBJECTIVE:\nPatient is a 45-year-old male presenting with 3 days of right knee pain. He states it started after playing tennis. The pain is sharp, 6/10, worse with walking, better with rest. No swelling or redness noted. He has tried Ibuprofen with some relief. Denies fevers or chills.\n\nOBJECTIVE:\nVitals: BP 130/80, HR 72, Temp 98.6.\nGen: NAD.\nMSK: Right knee with mild tenderness over medial joint line. McMurray's negative. Lachman's negative. ROM intact but painful at end flexion. No effusion.\n\nASSESSMENT:\nRight knee pain, likely medial meniscus strain vs sprain.\n\nPLAN:\n1. Rest, Ice, Compression, Elevation.\n2. Continue NSAIDs prn.\n3. Return if worse or no improvement in 1 week."
     },
     {
         "id": "case_complex_admission",
-        "name": "Complex Admission (Bulleted HPI)",
-        "description": "Inpatient admission note with bulleted history and complex problem list.",
+        "name": "Hospital Admission (Bulleted)",
+        "description": "Inpatient admission with bulleted HPI - Internal Medicine",
         "content": "HISTORY OF PRESENT ILLNESS:\nPatient is a 68-year-old female with PMH of CHF, COPD, and Diabetes who presents with shortness of breath.\n\n*   Onset: 2 days ago, gradual worsening.\n*   Severity: Now dyspneic at rest.\n*   Associated Sx: Orthopnea (3 pillows), PND, and increased leg swelling.\n*   Triggers: None identified. No missed meds.\n*   ROS: Positive for cough (dry), negative for fever, chest pain.\n\nREVIEW OF SYSTEMS:\nConst: Fatigue.\nResp: SOB, Cough.\nCV: Leg swelling.\n\nPHYSICAL EXAM:\nGen: Sitting upright, tachypneic.\nLungs: Crackles bilateral bases halfway up. Wheezing expiratory.\nHeart: RRR, S3 gallop present. 2+ pitting edema to knees.\n\nLABS/IMAGING:\nNa 135, K 4.5, Cr 1.2 (baseline 1.0).\nBNP: 1200.\nCXR: Pulmonary edema, cardiomegaly.\n\nASSESSMENT/PLAN:\n1. Acute Decompensated Heart Failure\n   - Likely due to dietary indiscretion.\n   - Start Lasix 40mg IV BID.\n   - Monitor I/Os, daily weights.\n2. COPD Exacerbation\n   - Mild wheezing, likely reactive.\n   - Cont Duonebs.\n3. Diabetes Type 2\n   - SSI."
     },
     {
+        "id": "case_peds_well_child",
+        "name": "Pediatric Well-Child (Structured)",
+        "description": "Well-child check with growth chart data - Pediatrics",
+        "content": "WELL CHILD CHECK - 2 YEARS\n\nCHIEF CONCERN: None. Here for 2-year checkup.\n\nHISTORY:\n- Development: Walking well, running. Says 20+ words. Starting 2-word phrases.\n- Diet: Whole milk 16oz/day. Eats table foods. No choking episodes.\n- Sleep: 11 hours at night, 2-hour nap.\n- Safety: Car seat rear-facing. Outlet covers in place.\n\nGROWTH:\nWeight: 12.5 kg (50th percentile)\nHeight: 86 cm (60th percentile)\nHead Circ: 48 cm (50th percentile)\n\nEXAM:\nGen: Alert, playful, appropriate.\nHEENT: TMs clear bilaterally. Dentition: 16 teeth.\nHeart: RRR, no murmur.\nLungs: Clear.\nAbdomen: Soft, non-tender.\nNeuro: Walks independently, climbs stairs with hand held.\n\nASSESSMENT:\nHealthy 2-year-old. Development appropriate.\n\nPLAN:\n- Vaccines: DTaP, IPV, Hib, PCV13 given today.\n- Anticipatory guidance: Discipline, screen time limits.\n- RTC: 3-year visit."
+    },
+    {
         "id": "case_consult_note",
-        "name": "Consult Note (Mixed Format)",
-        "description": "Specialist consult note with specific question and focused exam.",
+        "name": "Cardiology Consult (Focused)",
+        "description": "Specialist consult with specific question - Cardiology",
         "content": "REASON FOR CONSULT: Pre-operative cardiac risk stratification.\n\nHISTORY:\nMr. Jones is a 72M scheduled for elective total hip arthroplasty tomorrow. He reports good functional capacity - can walk 2 blocks and climb 1 flight of stairs without chest pain or SOB. \n\nPMH: HTN, HLD.\nMEDS: Lisinopril, Atorvastatin.\nALLERGIES: PCN.\n\nEXAM:\nBP 140/85, HR 68.\nHeart: Regular rhythm, no murmurs.\nLungs: Clear.\nExt: No edema.\n\nEKG:\nNSR at 68 bpm. No Q waves or ST changes.\n\nIMPRESSION:\n72M with RCRI score 0. Good functional capacity (>4 METs).\n\nRECOMMENDATION:\nLow cardiac risk for non-cardiac surgery.\nProceed with surgery.\nContinue beta-blocker if started (none currently).\nNo further cardiac testing indicated."
     },
     {
         "id": "case_rough_dictation",
-        "name": "Rough Dictation (Unstructured)",
-        "description": "Raw, unstructured text simulating a quick voice dictation.",
+        "name": "Voice Dictation (Unstructured)",
+        "description": "Raw dictation simulating voice-to-text - Family Medicine",
         "content": "Patient is here for follow up of hypertension. Uh, blood pressure today was 150 over 90. He says he missed a few doses of his lisinopril because he ran out. No chest pain or shortness of breath. Exam is normal heart sounds regular lungs clear. I'm gonna refill his lisinopril 20 milligrams daily and told him to take it every day. Also checked a chem 7 which was normal. Potassium 4.2. Creatinine 0.9. Follow up in 3 months."
+    },
+    {
+        "id": "case_psych_intake",
+        "name": "Psychiatric Intake (Narrative)",
+        "description": "Initial psychiatric evaluation - Psychiatry",
+        "content": "PSYCHIATRIC INTAKE EVALUATION\n\nIDENTIFYING INFORMATION:\n28-year-old female presenting for initial evaluation of depression.\n\nCHIEF COMPLAINT:\n\"I can't get out of bed anymore.\"\n\nHISTORY OF PRESENT ILLNESS:\nPatient reports 6 months of worsening depressed mood. She describes feeling sad most days, with decreased interest in activities she used to enjoy (reading, seeing friends). Sleep is increased - sleeping 12 hours per day but still feels tired. Appetite is decreased with 10-lb unintentional weight loss. Concentration is poor at work. Denies suicidal ideation currently, but reports passive thoughts of \"not wanting to be here\" 2 weeks ago. No plan or intent. No prior suicide attempts.\n\nPAST PSYCHIATRIC HISTORY:\nOne prior episode of depression at age 22 during college, treated with Zoloft for 1 year with good response. Discontinued after feeling better.\n\nMENTAL STATUS EXAM:\nAppearance: Casually dressed, poor eye contact.\nBehavior: Psychomotor slowing noted.\nSpeech: Soft, decreased rate.\nMood: \"Terrible.\"\nAffect: Flat, congruent.\nThought Process: Linear, goal-directed.\nThought Content: Denies SI/HI currently. No delusions.\nPerception: No hallucinations.\nCognition: Alert and oriented x3. Concentration impaired.\nInsight: Good - recognizes need for treatment.\nJudgment: Fair.\n\nASSESSMENT:\nMajor Depressive Disorder, recurrent episode, moderate severity.\n\nPLAN:\n1. Restart Sertraline 50mg daily.\n2. Refer to therapy (CBT).\n3. Safety plan reviewed. Patient to call crisis line if SI worsens.\n4. Follow-up in 2 weeks."
+    },
+    {
+        "id": "case_ob_prenatal",
+        "name": "OB Prenatal Visit (Templated)",
+        "description": "Routine prenatal visit with template format - Obstetrics",
+        "content": "OB VISIT - 28 WEEKS\n\nGRAVIDA/PARA: G2P1001\nEDD: 12/15/2024 (by LMP, confirmed by US)\nGESTATIONAL AGE: 28w0d\n\nINTERVAL HISTORY:\n- Fetal movement: Good, feels baby move throughout day.\n- Contractions: None.\n- Vaginal bleeding: None.\n- Leakage of fluid: None.\n- Concerns: None.\n\nVITALS:\nBP: 118/72\nWeight: +18 lbs from pre-pregnancy weight\n\nEXAM:\nFundal Height: 28 cm (appropriate for dates)\nFHR: 145 bpm by Doppler\nEdema: Trace pedal edema\n\nLABS TODAY:\n- Glucose screen (1-hour): 128 (normal <140)\n- Hemoglobin: 11.2 (mild anemia)\n\nASSESSMENT:\nIntrauterine pregnancy at 28 weeks. Uncomplicated.\n\nPLAN:\n- Continue prenatal vitamins.\n- Start iron supplementation for mild anemia.\n- Tdap vaccine given today.\n- RhoGAM given (patient is Rh negative).\n- Return in 2 weeks for routine visit.\n- Discussed signs of preterm labor."
+    },
+    {
+        "id": "case_ed_trauma",
+        "name": "ED Trauma Note (ATLS Format)",
+        "description": "Emergency department trauma evaluation - Emergency Medicine",
+        "content": "TRAUMA ACTIVATION - LEVEL 2\n\nMECHANISM: MVC, T-boned on driver side at ~35 mph. Airbags deployed. Prolonged extrication.\n\nPRIMARY SURVEY:\nA: Airway patent, C-spine immobilized.\nB: RR 20, SpO2 98% on RA. Breath sounds equal bilaterally.\nC: HR 110, BP 100/60. 2 large-bore IVs placed. 1L NS bolus given.\nD: GCS 15 (E4V5M6). Pupils 3mm, equal and reactive.\nE: Temp 98.2. No obvious deformities. Abrasions to left chest wall.\n\nSECONDARY SURVEY:\nHEAD: No step-offs, no hematoma.\nNECK: Midline, no tenderness. C-collar in place.\nCHEST: Tenderness over left ribs 5-7. No crepitus.\nABDOMEN: Soft, non-tender. Seatbelt sign present.\nPELVIS: Stable.\nEXTREMITIES: No deformities. Pulses intact x4.\n\nIMAGING:\n- CT Head: Negative for bleed.\n- CT C-spine: No fracture.\n- CXR: Left rib fractures 5-6, no pneumothorax.\n- CT Abdomen/Pelvis: No solid organ injury. No free fluid.\n\nASSESSMENT:\nBlunt chest trauma with rib fractures. Hemodynamically stable.\n\nDISPOSITION:\nAdmit to Trauma Surgery for pain control and pulmonary toilet.\nIncentive spirometry.\nPain control: Toradol, Tylenol. Avoid NSAIDs long-term given rib fx."
+    },
+    {
+        "id": "case_derm_progress",
+        "name": "Dermatology Progress Note (Problem-Focused)",
+        "description": "Follow-up for chronic skin condition - Dermatology",
+        "content": "DERMATOLOGY FOLLOW-UP\n\nPROBLEM: Moderate plaque psoriasis\n\nHPI:\nPatient returns for 3-month follow-up of psoriasis. Started on Otezla 3 months ago after failing topical therapies. Reports significant improvement in plaques on elbows and knees. Itching much better. No side effects from medication. Compliance is good.\n\nEXAM:\nElbows: Previously thick, scaly plaques now with minimal erythema and scaling. Estimated 80% improvement.\nKnees: Similar improvement.\nScalp: Mild scaling, improved from baseline.\n\nBSA affected: <3% (down from 15% at last visit)\nPASI score: 4.2 (down from 18.5)\n\nASSESSMENT:\nModerate plaque psoriasis, well-controlled on Otezla.\n\nPLAN:\n- Continue Otezla 30mg BID.\n- Continue clobetasol foam to scalp PRN.\n- Labs: CBC, CMP today to monitor (patient on Otezla >3 months).\n- RTC in 6 months or sooner if flare."
+    },
+    {
+        "id": "case_surgery_op_note",
+        "name": "Operative Note (Structured)",
+        "description": "Surgical procedure note - General Surgery",
+        "content": "OPERATIVE REPORT\n\nPREOPERATIVE DIAGNOSIS: Acute appendicitis\nPOSTOPERATIVE DIAGNOSIS: Acute appendicitis, perforated\nPROCEDURE: Laparoscopic appendectomy\nSURGEON: Dr. Smith\nASSISTANT: Dr. Jones\nANESTHESIA: General endotracheal\n\nINDICATION:\n32-year-old male with 24 hours of RLQ pain, fever, and elevated WBC. CT showed inflamed appendix with surrounding fat stranding.\n\nFINDINGS:\nPerforated appendix at tip with purulent fluid in RLQ. No abscess formation.\n\nPROCEDURE IN DETAIL:\nPatient positioned supine. Timeout performed. Abdomen prepped and draped in sterile fashion. Umbilical incision made and Veress needle inserted. Pneumoperitoneum established to 15mmHg. 10mm trocar placed at umbilicus under direct vision. Two 5mm trocars placed in LLQ and suprapubic region under direct visualization.\n\nAppendix identified in RLQ. Purulent fluid noted and suctioned. Appendix mobilized. Mesoappendix divided with LigaSure. Appendiceal base stapled with Endo-GIA. Appendix placed in specimen bag and removed through umbilical port. Irrigation of RLQ performed with 1L warm saline until clear. Hemostasis confirmed. Trocars removed under direct vision. Fascia at umbilicus closed with 0-Vicryl. Skin closed with 4-0 Monocryl subcuticular.\n\nEBL: <10mL\nSPECIMEN: Appendix to pathology\nCOMPLICATIONS: None\nDISPOSITION: To PACU in stable condition"
     }
 ]
