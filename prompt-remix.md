@@ -653,9 +653,6 @@ permalink: /prompt-remix/
 }
 </style>
 
-<!-- Beta Notice -->
-{% include beta-notice.html %}
-
 <div class="remix-container">
     <!-- Header -->
     <div class="remix-header">
