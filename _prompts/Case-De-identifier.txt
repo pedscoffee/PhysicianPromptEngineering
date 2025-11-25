@@ -1,0 +1,34 @@
+---
+title: "Case De-identifier"
+description: "Robustly identifies and replaces PII/PHI with realistic placeholders.  Crucial for creating educational cases or sharing examples safely."
+specialty: "All (Privacy/Education)"
+char_count: 3000
+order: 35
+---
+De-identify the provided clinical text by replacing all Protected Health Information (PHI) with realistic placeholders.
+
+Input: Clinical Note with PHI.
+Output: De-identified Note.
+
+Output Format:
+[De-identified Text]
+
+Rules:
+1.  **Safe Harbor**: Remove Names, Dates (except year), Locations (smaller than state), MRNs, Phone numbers, Emails.
+2.  **Realistic Placeholders**:
+    - Replace names with "[Name]" or a fake name like "Mr. Doe".
+    - Replace dates with "[Date]" or shift dates consistently if preserving timeline is needed.
+    - Replace hospitals with "[Hospital]".
+3.  **Context Preservation**: Keep the clinical story intact. Do not remove ages > 89 (change to "Age > 90").
+
+Few-Shot Examples:
+Input:
+Mr. John Smith (DOB 5/12/1954) was seen at Mass General on 10/2/2023. Dr. Jones saw him.
+
+Output:
+Mr. [Patient Name] (DOB [Date]) was seen at [Hospital] on [Date]. Dr. [Provider Name] saw him.
+
+Quality Checks:
+1. Are all names gone?
+2. Are all dates gone?
+3. Is the clinical meaning preserved?

@@ -1,0 +1,95 @@
+---
+title: "Clinical Note to JSON"
+description: "Extracts structured clinical data from unstructured notes into a strict JSON format.  Demonstrates the ability of LLMs to act as an interoperability layer."
+specialty: "Informatics / Research"
+char_count: 5000
+order: 32
+---
+Extract clinical entities from the text and output them in strict JSON format.
+
+Input: Unstructured Clinical Note.
+Output: JSON object.
+
+Output Format:
+```json
+{
+  "patient": {
+    "age": [Number or null],
+    "gender": "[String]",
+    "mrn": "[String or null]"
+  },
+  "vitals": {
+    "bp_systolic": [Number],
+    "bp_diastolic": [Number],
+    "hr": [Number],
+    "temp_c": [Number]
+  },
+  "medications_active": [
+    {
+      "name": "[String]",
+      "dose": "[String]",
+      "frequency": "[String]"
+    }
+  ],
+  "diagnoses": [
+    {
+      "name": "[String]",
+      "icd10_prediction": "[String]",
+      "status": "[Active/Resolved/Chronic]"
+    }
+  ],
+  "plan_actions": [
+    "[String]",
+    "[String]"
+  ]
+}
+```
+
+Rules:
+1.  **Strict JSON**: Output must be valid JSON. No markdown outside the code block.
+2.  **Null Handling**: If a field is not found, use `null` (not "N/A").
+3.  **Normalization**: Convert temperature to Celsius if in Fahrenheit.
+
+Few-Shot Examples:
+Input:
+Pt is a 55yo male. BP 120/80, HR 72. Taking lisinopril 10mg daily.
+Assessment: HTN - well controlled.
+Plan: Continue meds.
+
+Output:
+```json
+{
+  "patient": {
+    "age": 55,
+    "gender": "Male",
+    "mrn": null
+  },
+  "vitals": {
+    "bp_systolic": 120,
+    "bp_diastolic": 80,
+    "hr": 72,
+    "temp_c": null
+  },
+  "medications_active": [
+    {
+      "name": "lisinopril",
+      "dose": "10mg",
+      "frequency": "daily"
+    }
+  ],
+  "diagnoses": [
+    {
+      "name": "Hypertension",
+      "icd10_prediction": "I10",
+      "status": "Chronic"
+    }
+  ],
+  "plan_actions": [
+    "Continue lisinopril"
+  ]
+}
+```
+
+Quality Checks:
+1. Is it valid JSON?
+2. Are units normalized?

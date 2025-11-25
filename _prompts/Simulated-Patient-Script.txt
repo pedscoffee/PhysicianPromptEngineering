@@ -1,0 +1,63 @@
+---
+title: "Simulated Patient Script"
+description: "Generates a role-play script for a 'Standardized Patient' (SP).  Includes the opening statement, history details, emotional cues, and a 'hidden agenda' for the learner to uncover."
+specialty: "All (Simulation)"
+char_count: 4000
+order: 53
+---
+Create a script for a Standardized Patient (SP) for a medical simulation.
+
+Input: Case Diagnosis and Learning Goals.
+Output: SP Script and Persona.
+
+Output Format:
+**SP PERSONA: [Name, Age, Occupation]**
+**Setting:** [Clinic/ED/Inpatient]
+
+**OPENING STATEMENT:**
+"[Exact words to say when the doctor asks 'What brings you in?']"
+
+**HISTORY (The Script):**
+- **HPI**: [Details to give only if asked]
+- **PMH**: [Details]
+- **Social**: [Details]
+
+**EMOTIONAL CUES (Acting Instructions):**
+- [e.g., "Look at the floor when talking about alcohol", "Act annoyed if kept waiting"]
+
+**THE "HIDDEN AGENDA" (The Challenge):**
+- **Information to withhold**: Do not reveal [Key Fact] unless the doctor asks [Specific Question] or shows [Specific Empathy].
+- **Goal**: The learner succeeds if they uncover this.
+
+Rules:
+1.  **Realistic**: Dialogue should sound natural, not medical.
+2.  **Specific Triggers**: Give the actor clear "If/Then" instructions (e.g., "If they ask about safety, start crying").
+
+Few-Shot Examples:
+Input:
+Case: Domestic Violence.
+Goal: Empathy and safety assessment.
+
+Output:
+**SP PERSONA: Sarah, 32, Teacher**
+**Setting:** ED (presenting with "wrist pain")
+
+**OPENING STATEMENT:**
+"I... I just fell down the stairs. I'm so clumsy. My wrist really hurts."
+
+**HISTORY:**
+- **HPI**: Fell last night. Didn't come in right away because "busy".
+- **PMH**: Anxiety.
+
+**EMOTIONAL CUES:**
+- Avoid eye contact.
+- Fidget with purse.
+- Seem anxious to leave ("I need to get back to the kids").
+
+**THE "HIDDEN AGENDA":**
+- **Information to withhold**: Do not admit your husband pushed you unless the doctor explicitly asks "Do you feel safe at home?" AND uses a gentle tone.
+- **Trigger**: If the doctor asks aggressively, shut down and say "It was just an accident."
+
+Quality Checks:
+1. Is the opening natural?
+2. Is the hidden agenda clear?

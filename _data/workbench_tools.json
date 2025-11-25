@@ -1,0 +1,56 @@
+[
+  {
+    "id": "pre_mortem",
+    "name": "Pre-Mortem Generator",
+    "icon": "🔮",
+    "description": "Assume a bad outcome happened in 3 days. What caused it? Use this to find hidden risks.",
+    "input_label": "Clinical Case & Plan",
+    "placeholder": "e.g., 2yo with fever and ear tugging. Plan: Amoxicillin for AOM.",
+    "system_prompt": "Perform a 'Pre-Mortem' analysis. Assume it is 3 days in the future and the patient has had a bad outcome. Identify 3 likely causes (Missed Diagnosis, Failed Plan, Silent Complication) and suggest preventative actions. Be pessimistic and plausible."
+  },
+  {
+    "id": "chalk_talk",
+    "name": "Chalk Talk Generator",
+    "icon": "👨‍🏫",
+    "description": "Generate a 5-minute teaching script with whiteboard layout instructions.",
+    "input_label": "Topic",
+    "placeholder": "e.g., Hyponatremia Workup",
+    "system_prompt": "Create a 5-minute 'Chalk Talk' teaching script. Include: 1. The Hook (30s), 2. The Board (Visual Layout instructions), 3. The Script (3 key concepts), 4. The Wrap-Up (Pearl). Keep it brief and visual."
+  },
+  {
+    "id": "pediatric_story",
+    "name": "Pediatric Storyteller",
+    "icon": "🧸",
+    "description": "Explain a diagnosis to a child using a metaphor based on their interests.",
+    "input_label": "Age, Diagnosis, Interest",
+    "placeholder": "e.g., 5yo, Asthma, Race Cars",
+    "system_prompt": "Create a short, metaphorical story to explain the diagnosis/treatment to the child using their specific interest. The metaphor must map correctly to physiology. Keep it positive and empowering. Include a 'Parent Tip'."
+  },
+  {
+    "id": "bias_checker",
+    "name": "Cognitive Bias Checker",
+    "icon": "🧠",
+    "description": "Scan a case for Anchoring, Premature Closure, and Confirmation Bias.",
+    "input_label": "Case & Reasoning",
+    "placeholder": "e.g., 50M with chest pain, feels like reflux. GI cocktail helped, so I'm sending him home on PPI.",
+    "system_prompt": "Audit the case for cognitive biases (Anchoring, Premature Closure, Availability, Confirmation Bias). For each identified bias, state the Evidence, Risk, and a Debiasing Strategy."
+  },
+  {
+    "id": "note_to_json",
+    "name": "Clinical Note to JSON",
+    "icon": "💻",
+    "description": "Extract structured data (Vitals, Meds, Dx) into strict JSON format.",
+    "input_label": "Unstructured Note",
+    "placeholder": "e.g., Pt is 55yo male. BP 120/80. Taking lisinopril.",
+    "system_prompt": "Extract clinical entities into strict JSON format with keys: patient, vitals, medications_active, diagnoses, plan_actions. Use null for missing values. Do not include markdown formatting outside the code block."
+  },
+  {
+    "id": "referral_letter",
+    "name": "Referral Letter Generator",
+    "icon": "✉️",
+    "description": "Draft a professional referral letter to a specialist.",
+    "input_label": "Clinical Note / Reason",
+    "placeholder": "e.g., 45M with refractory GERD despite max PPI. Needs EGD.",
+    "system_prompt": "Create a formal medical referral letter. Sections: Re: Patient, Clinical Context, Workup to Date, Specific Question/Reason for Referral. Maintain professional tone."
+  }
+]

@@ -1,0 +1,50 @@
+---
+title: "Pediatric Storyteller"
+description: "Generates a personalized, age-appropriate metaphorical story to explain a diagnosis or treatment to a child.  Uses the child's interests (e.g., superheroes, dinosaurs) to make medical concepts understandable and less scary."
+specialty: "Pediatrics"
+char_count: 3800
+order: 31
+---
+Create a short, metaphorical story to explain a medical diagnosis or treatment to a child.
+
+Input:
+- Child's Age
+- Diagnosis/Topic
+- Child's Interest (e.g., Space, Princesses, Trucks)
+
+Output: A short story (read time < 2 mins).
+
+Output Format:
+**Title: [Creative Title]**
+
+[Story Paragraph 1: The Setup - Metaphor for the body]
+[Story Paragraph 2: The Problem - Metaphor for the illness]
+[Story Paragraph 3: The Solution - Metaphor for the treatment]
+
+**Parent Tip:** [One sentence on how to reinforce the analogy]
+
+Rules:
+1.  **Age Appropriate**: Adjust vocabulary and complexity for the age.
+2.  **Positive/Empowering**: The child or the medicine should be the hero.
+3.  **Accurate Analogy**: The metaphor should map correctly to the physiology (e.g., White blood cells = Soldiers/Defenders).
+
+Few-Shot Examples:
+Input:
+Age: 5
+Diagnosis: Asthma (needs inhaler)
+Interest: Cars
+
+Output:
+**Title: The Race Car Engine**
+
+Imagine your lungs are like the engine of a super-fast race car. When the engine is working perfectly, the air zooms in and out like a car on a smooth track.
+
+But sometimes, the track gets a little tight and squeeze-y, like a traffic jam. That's what asthma is—it makes the air tubes narrow so the air can't zoom as fast.
+
+Your inhaler is like a special mechanic pit crew. When you use it, it clears the track and opens up the road so the air can zoom fast again! Vroom!
+
+**Parent Tip:** Remind him that the inhaler is his "turbo boost" to clear the track before he runs/plays.
+
+Quality Checks:
+1. Is the metaphor consistent?
+2. Is it not scary?

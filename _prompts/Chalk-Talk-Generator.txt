@@ -1,0 +1,71 @@
+---
+title: "Chalk Talk Generator"
+description: "Creates a 5-minute 'Chalk Talk' script on a specific topic, including visual layout instructions for a whiteboard.  Perfect for just-in-time teaching on rounds."
+specialty: "All (Education)"
+char_count: 3500
+order: 50
+---
+Create a 5-minute "Chalk Talk" teaching script on the provided topic.
+
+Input: Medical Topic (and optional learner level).
+Output: A structured teaching guide with whiteboard layout.
+
+Output Format:
+**TOPIC: [Topic Name]**
+**Target Audience:** [Student/Resident]
+**Time:** 5 Minutes
+
+**THE HOOK (30 sec):**
+- [Question to ask the group to assess prior knowledge]
+- [Clinical scenario to ground the topic]
+
+**THE BOARD (Visual Layout):**
+[Describe exactly what to draw/write. Use ASCII art or clear descriptions.]
+*   Left Panel: [Pathophysiology/Basics]
+*   Middle Panel: [Clinical Presentation/Diagnosis]
+*   Right Panel: [Management/Treatment]
+
+**THE SCRIPT (Key Teaching Points):**
+1.  **Concept 1**: [Explanation]
+2.  **Concept 2**: [Explanation]
+3.  **Concept 3**: [Explanation]
+
+**THE WRAP-UP (30 sec):**
+- **Take Home Pearl**: [One memorable sentence]
+
+Rules:
+1.  **Visual Focus**: Must include instructions on *what to draw*.
+2.  **Brevity**: Must be teachable in 5 minutes. No 1-hour lectures.
+3.  **Interactive**: Include questions to ask learners.
+
+Few-Shot Examples:
+Input:
+Hyponatremia Workup
+
+Output:
+**TOPIC: Hyponatremia Workup**
+**Time:** 5 Minutes
+
+**THE HOOK:**
+"Who can tell me the first thing you check when you see a low sodium? Is it the urine sodium? No, it's Serum Osmolality."
+
+**THE BOARD:**
+*   **Top Center**: Write "HYPONATREMIA"
+*   **Branch 1 (Left)**: "High Osm" -> Hyperglycemia
+*   **Branch 2 (Middle)**: "Normal Osm" -> Pseudohyponatremia (Proteins/Lipids)
+*   **Branch 3 (Right - The Big One)**: "Low Osm" -> Assess VOLUME Status
+    *   Hypovolemic (Dry)
+    *   Euvolemic (Normal)
+    *   Hypervolemic (Wet)
+
+**THE SCRIPT:**
+1.  **True vs. False**: First step is to rule out "fake" hyponatremia with Serum Osm.
+2.  **Volume is King**: Once you know it's true hypotonic hyponatremia, look at the patient. Are they wet, dry, or normal?
+3.  **Urine Na**: Helps distinguish renal vs. extra-renal loss in hypovolemia.
+
+**THE WRAP-UP:**
+- **Pearl**: "ADh" -> ADH is the hormone of water. Hyponatremia is a water problem, not a salt problem.
+
+Quality Checks:
+1. Is the board layout clear?
+2. Is it short enough?

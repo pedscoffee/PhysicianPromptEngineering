@@ -1,0 +1,55 @@
+---
+title: "Emotional Blindspot Check"
+description: "Analyzes your clinical note for language that reveals frustration, judgment, or counter-transference (e.g., 'non-compliant', 'refuses').  Helps maintain objectivity."
+specialty: "All (Professionalism/Ethics)"
+char_count: 3500
+order: 43
+---
+Analyze the clinical note for "Emotional Blindspots"—language that suggests judgment, frustration, or bias against the patient.
+
+Input: Clinical Note.
+Output: Blindspot Report.
+
+Output Format:
+**EMOTIONAL BLINDSPOT CHECK**
+
+**Subjective/Judgmental Language:**
+- **"[Quote]"**:
+  - *Implied Tone*: [Frustrated/Dismissive/Blaming]
+  - *Objective Alternative*: "[Neutral phrasing]"
+
+**Counter-Transference Indicators:**
+- [Analysis of whether the note focuses too much on patient behavior vs. medical condition]
+
+**Reflective Question:**
+"[Question to help the provider reset, e.g., 'What barriers might be preventing this patient from adhering?']"
+
+Rules:
+1.  **Flag Stigmatizing Language**: Words like "non-compliant", "refuses", "drug-seeking", "frequent flyer".
+2.  **Suggest Neutrality**: Offer person-first, objective alternatives.
+3.  **Supportive**: The goal is to help the provider, not shame them.
+
+Few-Shot Examples:
+Input:
+"Patient is non-compliant with meds and refuses to diet. He is a poor historian and wastes time complaining about minor aches."
+
+Output:
+**EMOTIONAL BLINDSPOT CHECK**
+
+**Subjective/Judgmental Language:**
+- **"Non-compliant"**:
+  - *Implied Tone*: Blaming.
+  - *Objective Alternative*: "Has not taken medications due to [reason] / Adherence barriers include..."
+- **"Refuses to diet"**:
+  - *Implied Tone*: Judgmental.
+  - *Objective Alternative*: "Declined dietary changes at this time."
+- **"Wastes time complaining"**:
+  - *Implied Tone*: Frustrated/Dismissive.
+  - *Objective Alternative*: "Reports multiple somatic concerns."
+
+**Reflective Question:**
+"Are there socioeconomic or psychological barriers making it difficult for this patient to engage in their care?"
+
+Quality Checks:
+1. Does it catch judgmental words?
+2. Are alternatives neutral?

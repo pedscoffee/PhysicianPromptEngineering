@@ -1,0 +1,26 @@
+[
+    {
+        "id": "case_simple_soap",
+        "name": "Simple SOAP (Paragraph HPI)",
+        "description": "Standard outpatient visit with paragraph-style history.",
+        "content": "SUBJECTIVE:\nPatient is a 45-year-old male presenting with 3 days of right knee pain. He states it started after playing tennis. The pain is sharp, 6/10, worse with walking, better with rest. No swelling or redness noted. He has tried Ibuprofen with some relief. Denies fevers or chills.\n\nOBJECTIVE:\nVitals: BP 130/80, HR 72, Temp 98.6.\nGen: NAD.\nMSK: Right knee with mild tenderness over medial joint line. McMurray's negative. Lachman's negative. ROM intact but painful at end flexion. No effusion.\n\nASSESSMENT:\nRight knee pain, likely medial meniscus strain vs sprain.\n\nPLAN:\n1. Rest, Ice, Compression, Elevation.\n2. Continue NSAIDs prn.\n3. Return if worse or no improvement in 1 week."
+    },
+    {
+        "id": "case_complex_admission",
+        "name": "Complex Admission (Bulleted HPI)",
+        "description": "Inpatient admission note with bulleted history and complex problem list.",
+        "content": "HISTORY OF PRESENT ILLNESS:\nPatient is a 68-year-old female with PMH of CHF, COPD, and Diabetes who presents with shortness of breath.\n\n*   Onset: 2 days ago, gradual worsening.\n*   Severity: Now dyspneic at rest.\n*   Associated Sx: Orthopnea (3 pillows), PND, and increased leg swelling.\n*   Triggers: None identified. No missed meds.\n*   ROS: Positive for cough (dry), negative for fever, chest pain.\n\nREVIEW OF SYSTEMS:\nConst: Fatigue.\nResp: SOB, Cough.\nCV: Leg swelling.\n\nPHYSICAL EXAM:\nGen: Sitting upright, tachypneic.\nLungs: Crackles bilateral bases halfway up. Wheezing expiratory.\nHeart: RRR, S3 gallop present. 2+ pitting edema to knees.\n\nLABS/IMAGING:\nNa 135, K 4.5, Cr 1.2 (baseline 1.0).\nBNP: 1200.\nCXR: Pulmonary edema, cardiomegaly.\n\nASSESSMENT/PLAN:\n1. Acute Decompensated Heart Failure\n   - Likely due to dietary indiscretion.\n   - Start Lasix 40mg IV BID.\n   - Monitor I/Os, daily weights.\n2. COPD Exacerbation\n   - Mild wheezing, likely reactive.\n   - Cont Duonebs.\n3. Diabetes Type 2\n   - SSI."
+    },
+    {
+        "id": "case_consult_note",
+        "name": "Consult Note (Mixed Format)",
+        "description": "Specialist consult note with specific question and focused exam.",
+        "content": "REASON FOR CONSULT: Pre-operative cardiac risk stratification.\n\nHISTORY:\nMr. Jones is a 72M scheduled for elective total hip arthroplasty tomorrow. He reports good functional capacity - can walk 2 blocks and climb 1 flight of stairs without chest pain or SOB. \n\nPMH: HTN, HLD.\nMEDS: Lisinopril, Atorvastatin.\nALLERGIES: PCN.\n\nEXAM:\nBP 140/85, HR 68.\nHeart: Regular rhythm, no murmurs.\nLungs: Clear.\nExt: No edema.\n\nEKG:\nNSR at 68 bpm. No Q waves or ST changes.\n\nIMPRESSION:\n72M with RCRI score 0. Good functional capacity (>4 METs).\n\nRECOMMENDATION:\nLow cardiac risk for non-cardiac surgery.\nProceed with surgery.\nContinue beta-blocker if started (none currently).\nNo further cardiac testing indicated."
+    },
+    {
+        "id": "case_rough_dictation",
+        "name": "Rough Dictation (Unstructured)",
+        "description": "Raw, unstructured text simulating a quick voice dictation.",
+        "content": "Patient is here for follow up of hypertension. Uh, blood pressure today was 150 over 90. He says he missed a few doses of his lisinopril because he ran out. No chest pain or shortness of breath. Exam is normal heart sounds regular lungs clear. I'm gonna refill his lisinopril 20 milligrams daily and told him to take it every day. Also checked a chem 7 which was normal. Potassium 4.2. Creatinine 0.9. Follow up in 3 months."
+    }
+]

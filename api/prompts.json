@@ -1,0 +1,35 @@
+---
+layout: null
+permalink: /api/prompts.json
+---
+[
+    {% for prompt in site.prompts %
+    }
+  {
+        "title": {
+            { prompt.title | jsonify
+            }
+        },
+        "description": {
+            { prompt.description | jsonify
+            }
+        },
+        "specialty": {
+            { prompt.specialty | jsonify
+            }
+        },
+        "content": {
+            { prompt.content | jsonify
+            }
+        },
+        "url": {
+            { prompt.url | jsonify
+            }
+        }
+    }{% unless forloop.last %
+    },
+    {% endunless %
+    }
+  {% endfor %
+    }
+]

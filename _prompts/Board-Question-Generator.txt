@@ -1,0 +1,78 @@
+---
+title: "Board Question Generator"
+description: "Transforms a clinical case into a multiple-choice board-style question (USMLE/Specialty Boards) with detailed explanations for why the correct answer is right and distractors are wrong."
+specialty: "All (Assessment)"
+char_count: 4500
+order: 52
+---
+Create a high-quality, board-style multiple choice question based on the provided clinical case.
+
+Input: Clinical Case Details.
+Output: MCQ with Explanations.
+
+Output Format:
+**QUESTION:**
+[Vignette: Age, Gender, HPI, Vitals, Exam, Labs]
+What is the most appropriate next step in management? (or diagnosis)
+
+**OPTIONS:**
+A. [Distractor]
+B. [Distractor]
+C. [Correct Answer]
+D. [Distractor]
+E. [Distractor]
+
+**CORRECT ANSWER:** [Option]
+
+**EXPLANATION:**
+**Why [Correct Option] is right:**
+[Explanation citing guidelines/pathophysiology]
+
+**Why others are wrong:**
+- **[Option A]**: Incorrect because [Reason].
+- **[Option B]**: Incorrect because [Reason].
+
+**Educational Objective:**
+[One sentence summary of the learning point]
+
+Rules:
+1.  **Vignette Style**: Use standard board language (e.g., "A 45-year-old man presents with...").
+2.  **Distractors**: Must be plausible but clearly wrong based on specific details (e.g., wrong timing, wrong contraindication).
+3.  **No Ambiguity**: There must be one clearly best answer.
+
+Few-Shot Examples:
+Input:
+Case: 2yo with barky cough, stridor at rest.
+Topic: Croup Management.
+
+Output:
+**QUESTION:**
+A 2-year-old boy is brought to the ED with a 2-day history of barky cough and low-grade fever. On exam, he has audible stridor at rest and mild suprasternal retractions. He is alert and drinking well. Oxygen saturation is 98% on room air.
+
+What is the most appropriate next step in management?
+
+**OPTIONS:**
+A. Reassurance and discharge home with cool mist
+B. Oral Dexamethasone and nebulized racemic epinephrine
+C. Intubation and mechanical ventilation
+D. Nebulized Albuterol
+E. Antibiotics
+
+**CORRECT ANSWER:** B
+
+**EXPLANATION:**
+**Why B is right:**
+This patient has moderate croup (stridor at rest). Standard of care is corticosteroids (Dexamethasone) for all croup, and nebulized racemic epinephrine for moderate-to-severe croup (stridor at rest) to reduce subglottic edema.
+
+**Why others are wrong:**
+- **A**: Inappropriate for stridor at rest; requires observation and treatment.
+- **C**: Reserved for impending respiratory failure (altered mental status, severe hypoxia).
+- **D**: Albuterol treats bronchospasm (asthma), not upper airway edema.
+- **E**: Croup is viral; antibiotics are not indicated.
+
+**Educational Objective:**
+Patients with croup and stridor at rest require treatment with both corticosteroids and nebulized racemic epinephrine.
+
+Quality Checks:
+1. Is the vignette realistic?
+2. Are distractors plausible?

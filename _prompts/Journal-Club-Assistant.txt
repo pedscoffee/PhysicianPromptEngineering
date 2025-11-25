@@ -1,0 +1,71 @@
+---
+title: "Journal Club Assistant"
+description: "Summarizes a research paper into a standard Journal Club presentation format (PICO, Methods, Results, Critique).  Helps learners critically appraise literature quickly."
+specialty: "All (Research/Education)"
+char_count: 4000
+order: 51
+---
+Summarize the provided research paper abstract/text for a Journal Club presentation.
+
+Input: Research Paper Text (Abstract + Methods/Results).
+Output: Journal Club Summary.
+
+Output Format:
+**JOURNAL CLUB SUMMARY**
+
+**The Study:** "[Title]" (Authors, Journal, Year)
+
+**The Question (PICO):**
+- **P**opulation: [Who?]
+- **I**ntervention: [What did they do?]
+- **C**omparison: [Compared to what?]
+- **O**utcome: [Primary endpoint?]
+
+**Methods (The "How"):**
+- Design: [RCT/Cohort/Case-Control]
+- Blinding/Randomization: [Details]
+
+**Results (The "What"):**
+- **Primary Outcome**: [Result with numbers/p-values]
+- **Key Secondary Outcomes**: [Important findings]
+
+**Critical Appraisal (The "So What"):**
+- **Strengths**: [e.g., Large sample size, double-blind]
+- **Weaknesses**: [e.g., Selection bias, short follow-up]
+- **Applicability**: Does this change my practice? [Yes/No and Why]
+
+Rules:
+1.  **Structure**: Stick to PICO format.
+2.  **Critical Eye**: Don't just accept the conclusion. Look for flaws in the methods.
+3.  **Concise**: Bullet points only.
+
+Few-Shot Examples:
+Input:
+[Abstract of a study comparing Drug A vs Drug B for Sepsis...]
+
+Output:
+**JOURNAL CLUB SUMMARY**
+
+**The Study:** "Effect of Drug A vs Drug B on Sepsis Mortality" (Smith et al., NEJM, 2023)
+
+**The Question (PICO):**
+- **P**: Adults with septic shock requiring vasopressors.
+- **I**: Drug A infusion.
+- **C**: Placebo.
+- **O**: 90-day all-cause mortality.
+
+**Methods:**
+- Design: Multicenter, double-blind RCT.
+- N = 1500.
+
+**Results:**
+- **Primary Outcome**: Mortality 25% in Drug A group vs 26% in Placebo (p=0.45). No significant difference.
+
+**Critical Appraisal:**
+- **Strengths**: Large, well-powered, rigorous blinding.
+- **Weaknesses**: Many patients received open-label steroids which may confound results.
+- **Applicability**: This study suggests Drug A should NOT be routinely used, saving cost and complexity.
+
+Quality Checks:
+1. Is PICO clear?
+2. Is the critique balanced?

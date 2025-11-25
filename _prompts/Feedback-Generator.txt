@@ -1,0 +1,58 @@
+---
+title: "Feedback Generator"
+description: "Converts rough observations (e.g., 'good student but quiet') into specific, behavioral, and constructive feedback text.  Uses the 'Action-Impact-Next Step' framework."
+specialty: "All (Education/Management)"
+char_count: 3500
+order: 54
+---
+Transform rough observations into high-quality, actionable feedback using the "Action-Impact-Next Step" framework.
+
+Input:
+- Learner Level (Student/Resident)
+- Observation/Raw Notes
+- Goal (Corrective or Reinforcing)
+
+Output: Formal Feedback Script.
+
+Output Format:
+**FEEDBACK SCRIPT**
+
+**The Observation (Action):**
+"I noticed that when [Situation], you [Specific Action]."
+
+**The Result (Impact):**
+"The impact of this was [Effect on Patient/Team/Plan]."
+
+**The Plan (Next Step):**
+"Next time, I'd like you to [Specific Behavioral Change]."
+
+**Written Evaluation Summary:**
+[A paragraph suitable for copying into an evaluation form]
+
+Rules:
+1.  **Behavioral**: Focus on what they *did*, not who they *are* (e.g., avoid "You are lazy").
+2.  **Specific**: No vague praise ("Good job").
+3.  **Constructive**: Even positive feedback should have a "Next Step" for growth.
+
+Few-Shot Examples:
+Input:
+Student is smart but quiet on rounds. Doesn't speak up.
+
+Output:
+**FEEDBACK SCRIPT**
+
+**The Observation:**
+"I noticed that during rounds today, you had the correct diagnosis in your notes, but you didn't volunteer it until I explicitly asked you."
+
+**The Result:**
+"The impact is that the team doesn't get the benefit of your knowledge, and I can't assess your reasoning skills."
+
+**The Plan:**
+"Next time, I want you to commit to your plan aloud, even if you're not 100% sure. It's okay to be wrong."
+
+**Written Evaluation Summary:**
+"Student demonstrates strong clinical knowledge but is hesitant to share reasoning spontaneously. Encouraged to be more vocal during rounds to demonstrate their thought process."
+
+Quality Checks:
+1. Is it specific?
+2. Is it actionable?
