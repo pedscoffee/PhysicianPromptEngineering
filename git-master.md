@@ -6,59 +6,43 @@ permalink: /git-master/
 ---
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        background: #f5f5f5;
-        color: #333;
-        line-height: 1.6;
-    }
-
-    .wrapper {
-        max-width: 100%;
-    }
-
+    /* Scoped styles for Git Tutor specific elements not covered by global CSS */
+    
     .git-master-container {
         max-width: 100%;
         margin: 0 auto;
-        padding: 20px;
     }
 
     /* Hero Section */
     .git-tutor-hero {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--gradient-hero);
         color: white;
-        padding: 60px 40px;
-        border-radius: 12px;
-        margin-bottom: 40px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding: var(--space-8) var(--space-4);
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--space-8);
+        box-shadow: var(--shadow-xl);
         text-align: center;
     }
 
     .git-tutor-hero h1 {
-        font-size: 2.8em;
-        margin-bottom: 20px;
-        font-weight: 700;
+        font-size: var(--font-size-4xl);
+        margin-bottom: var(--space-4);
+        color: white;
     }
 
     .git-tutor-hero .subtitle {
-        font-size: 1.3em;
+        font-size: var(--font-size-xl);
         opacity: 0.95;
-        line-height: 1.8;
-        max-width: 900px;
-        margin: 0 auto 30px auto;
+        line-height: var(--line-height-relaxed);
+        max-width: 800px;
+        margin: 0 auto var(--space-6) auto;
     }
 
     .hero-stats {
         display: flex;
         justify-content: center;
-        gap: 40px;
-        margin-top: 30px;
+        gap: var(--space-8);
+        margin-top: var(--space-6);
         flex-wrap: wrap;
     }
 
@@ -67,91 +51,87 @@ permalink: /git-master/
     }
 
     .hero-stat-value {
-        font-size: 2em;
-        font-weight: 700;
+        font-size: var(--font-size-3xl);
+        font-weight: var(--font-weight-bold);
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: var(--space-1);
     }
 
     .hero-stat-label {
-        font-size: 0.95em;
+        font-size: var(--font-size-sm);
         opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
     /* Info Box */
     .info-box {
-        background: white;
-        border-left: 4px solid #667eea;
-        padding: 30px;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background: var(--color-bg-primary);
+        border-left: 4px solid var(--color-primary);
+        padding: var(--space-6);
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--space-6);
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--color-border);
     }
 
     .info-box h3 {
-        color: #667eea;
-        margin-bottom: 15px;
-        font-size: 1.4em;
-        font-weight: 600;
-    }
-
-    .info-box p {
-        color: #4b5563;
-        line-height: 1.8;
-        margin-bottom: 15px;
-    }
-
-    .info-box ul {
-        margin-left: 25px;
-        color: #4b5563;
-    }
-
-    .info-box li {
-        margin-bottom: 10px;
-        line-height: 1.6;
+        color: var(--color-primary);
+        margin-bottom: var(--space-4);
+        font-size: var(--font-size-xl);
     }
 
     /* Status Panel */
     .status-panel {
-        background: white;
-        border-radius: 8px;
-        padding: 25px;
-        margin-bottom: 30px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background: var(--color-bg-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        margin-bottom: var(--space-6);
+        box-shadow: var(--shadow-md);
         text-align: center;
+        border: 1px solid var(--color-border);
     }
 
     .status-panel.loading {
-        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        background: var(--gradient-info);
+        border: none;
     }
 
     .status-panel.ready {
-        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        background: var(--gradient-success);
+        border: none;
     }
 
     .status-panel.error {
-        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        background: var(--gradient-error);
+        border: none;
     }
 
     #status-message {
-        font-size: 1.2em;
-        margin-bottom: 15px;
-        font-weight: 600;
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--space-4);
+        font-weight: var(--font-weight-semibold);
     }
 
     #status-details {
-        font-size: 0.95em;
-        color: #666;
-        margin-top: 10px;
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
+        margin-top: var(--space-2);
+    }
+
+    .status-panel.loading #status-details,
+    .status-panel.ready #status-details,
+    .status-panel.error #status-details {
+        color: rgba(0,0,0,0.7);
     }
 
     .progress-bar {
         width: 100%;
         height: 8px;
         background: rgba(255,255,255,0.5);
-        border-radius: 4px;
+        border-radius: var(--radius-full);
         overflow: hidden;
-        margin-top: 15px;
+        margin-top: var(--space-4);
         display: none;
     }
 
@@ -161,19 +141,20 @@ permalink: /git-master/
 
     .progress-fill {
         height: 100%;
-        background: #667eea;
+        background: var(--color-primary);
         width: 0%;
         transition: width 0.3s ease;
     }
 
     /* URL Input Section */
     .url-input-section {
-        background: white;
-        border-radius: 12px;
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        background: var(--color-bg-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        margin-bottom: var(--space-6);
+        box-shadow: var(--shadow-md);
         display: none;
+        border: 1px solid var(--color-border);
     }
 
     .url-input-section.active {
@@ -181,47 +162,48 @@ permalink: /git-master/
     }
 
     .url-input-section h2 {
-        color: #667eea;
-        margin-bottom: 20px;
-        font-size: 1.6em;
+        color: var(--color-primary);
+        margin-bottom: var(--space-4);
     }
 
     .url-input-wrapper {
         display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
+        gap: var(--space-4);
+        margin-bottom: var(--space-4);
     }
 
     #repo-url-input {
         flex: 1;
-        padding: 15px;
-        border: 2px solid #d1d5db;
-        border-radius: 8px;
-        font-size: 1em;
-        font-family: 'Monaco', 'Courier New', monospace;
+        padding: var(--space-3);
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-base);
+        font-family: var(--font-family-mono);
+        background: var(--color-bg-primary);
+        color: var(--color-text-primary);
     }
 
     #repo-url-input:focus {
         outline: none;
-        border-color: #667eea;
+        border-color: var(--color-primary);
     }
 
     #analyze-btn {
-        padding: 15px 35px;
-        background: #667eea;
+        padding: var(--space-3) var(--space-6);
+        background: var(--color-primary);
         color: white;
         border: none;
-        border-radius: 8px;
-        font-size: 1em;
-        font-weight: 600;
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-semibold);
         cursor: pointer;
-        transition: all 0.2s;
+        transition: var(--transition-base);
     }
 
     #analyze-btn:hover:not(:disabled) {
-        background: #5568d3;
+        background: var(--color-primary-dark);
         transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        box-shadow: var(--shadow-md);
     }
 
     #analyze-btn:disabled {
@@ -232,32 +214,33 @@ permalink: /git-master/
     .example-repos {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 15px;
+        gap: var(--space-2);
+        margin-top: var(--space-4);
     }
 
     .example-repo {
-        padding: 8px 16px;
-        background: #f3f4f6;
-        border-radius: 6px;
-        font-size: 0.9em;
+        padding: var(--space-2) var(--space-4);
+        background: var(--color-bg-tertiary);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-sm);
         cursor: pointer;
-        transition: all 0.2s;
-        border: 1px solid #e5e7eb;
+        transition: var(--transition-fast);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-secondary);
     }
 
     .example-repo:hover {
-        background: #667eea;
+        background: var(--color-primary);
         color: white;
-        border-color: #667eea;
+        border-color: var(--color-primary);
     }
 
     /* Main Content Grid */
     .main-content {
         display: none;
         grid-template-columns: 7fr 3fr;
-        gap: 25px;
-        margin-bottom: 30px;
+        gap: var(--space-6);
+        margin-bottom: var(--space-6);
         align-items: start;
     }
 
@@ -281,49 +264,50 @@ permalink: /git-master/
 
     /* Chat Sidebar */
     .chat-sidebar {
-        background: white;
-        border-radius: 12px;
-        padding: 30px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        background: var(--color-bg-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-md);
         display: flex;
         flex-direction: column;
         min-height: 70vh;
+        border: 1px solid var(--color-border);
     }
 
     .chat-sidebar h3 {
-        color: #667eea;
-        margin-bottom: 20px;
+        color: var(--color-primary);
+        margin-bottom: var(--space-4);
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 1.3em;
+        gap: var(--space-2);
+        font-size: var(--font-size-xl);
     }
 
     .quick-questions {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid #f3f4f6;
+        gap: var(--space-2);
+        margin-bottom: var(--space-4);
+        padding-bottom: var(--space-4);
+        border-bottom: 1px solid var(--color-border-light);
     }
 
     .quick-question-btn {
-        padding: 10px 15px;
-        background: #f3f4f6;
-        border: 1px solid #e5e7eb;
-        border-radius: 6px;
-        font-size: 0.9em;
+        padding: var(--space-2) var(--space-4);
+        background: var(--color-bg-tertiary);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-sm);
         cursor: pointer;
         text-align: left;
-        transition: all 0.2s;
-        color: #374151;
+        transition: var(--transition-fast);
+        color: var(--color-text-primary);
     }
 
     .quick-question-btn:hover:not(:disabled) {
-        background: #667eea;
+        background: var(--color-primary);
         color: white;
-        border-color: #667eea;
+        border-color: var(--color-primary);
     }
 
     .quick-question-btn:disabled {
@@ -334,15 +318,16 @@ permalink: /git-master/
     .chat-messages {
         flex: 1;
         overflow-y: auto;
-        margin-bottom: 20px;
-        padding: 20px;
-        background: #f9fafb;
-        border-radius: 8px;
+        margin-bottom: var(--space-4);
+        padding: var(--space-4);
+        background: var(--color-bg-secondary);
+        border-radius: var(--radius-md);
         min-height: 500px;
+        border: 1px solid var(--color-border);
     }
 
     .message {
-        margin-bottom: 20px;
+        margin-bottom: var(--space-4);
         animation: fadeIn 0.3s ease;
     }
 
@@ -352,64 +337,69 @@ permalink: /git-master/
     }
 
     .message-label {
-        font-size: 0.85em;
-        font-weight: 600;
-        margin-bottom: 5px;
-        color: #6b7280;
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-semibold);
+        margin-bottom: var(--space-1);
+        color: var(--color-text-tertiary);
     }
 
     .message-bubble {
-        padding: 12px 16px;
-        border-radius: 8px;
-        line-height: 1.6;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--radius-lg);
+        line-height: var(--line-height-normal);
+        font-size: var(--font-size-sm);
     }
 
     .message-user .message-bubble {
-        background: #667eea;
+        background: var(--color-primary);
         color: white;
         margin-left: 10%;
+        border-bottom-right-radius: var(--radius-sm);
     }
 
     .message-assistant .message-bubble {
-        background: white;
-        color: #333;
-        border: 1px solid #e5e7eb;
+        background: var(--color-bg-primary);
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border);
         margin-right: 10%;
+        border-bottom-left-radius: var(--radius-sm);
     }
 
     .chat-input-area {
         display: flex;
-        gap: 10px;
+        gap: var(--space-2);
     }
 
     #chat-input {
         flex: 1;
-        padding: 12px;
-        border: 2px solid #d1d5db;
-        border-radius: 6px;
-        font-size: 0.95em;
+        padding: var(--space-3);
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-base);
         resize: none;
         font-family: inherit;
+        background: var(--color-bg-primary);
+        color: var(--color-text-primary);
     }
 
     #chat-input:focus {
         outline: none;
-        border-color: #667eea;
+        border-color: var(--color-primary);
     }
 
     #send-chat-btn {
-        padding: 12px 20px;
-        background: #667eea;
+        padding: var(--space-3) var(--space-5);
+        background: var(--color-primary);
         color: white;
         border: none;
-        border-radius: 6px;
-        font-weight: 600;
+        border-radius: var(--radius-md);
+        font-weight: var(--font-weight-semibold);
         cursor: pointer;
-        transition: all 0.2s;
+        transition: var(--transition-fast);
     }
 
     #send-chat-btn:hover:not(:disabled) {
-        background: #5568d3;
+        background: var(--color-primary-dark);
     }
 
     #send-chat-btn:disabled {
@@ -419,10 +409,10 @@ permalink: /git-master/
 
     .typing-indicator {
         display: none;
-        padding: 10px;
-        color: #666;
+        padding: var(--space-2);
+        color: var(--color-text-secondary);
         font-style: italic;
-        font-size: 0.9em;
+        font-size: var(--font-size-sm);
     }
 
     .typing-indicator.active {
@@ -431,55 +421,57 @@ permalink: /git-master/
 
     .empty-chat {
         text-align: center;
-        padding: 40px 20px;
-        color: #9ca3af;
+        padding: var(--space-8) var(--space-4);
+        color: var(--color-text-tertiary);
     }
 
     /* Visualization Area */
     .visualization-area {
-        background: white;
-        border-radius: 12px;
-        padding: 30px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        background: var(--color-bg-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--color-border);
     }
 
     .repo-header {
-        margin-bottom: 25px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid #f3f4f6;
+        margin-bottom: var(--space-6);
+        padding-bottom: var(--space-4);
+        border-bottom: 1px solid var(--color-border-light);
     }
 
     .repo-header h2 {
-        color: #667eea;
-        font-size: 1.8em;
-        margin-bottom: 10px;
+        color: var(--color-primary);
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--space-2);
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: var(--space-2);
     }
 
     .repo-meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
-        color: #6b7280;
-        font-size: 0.95em;
+        gap: var(--space-4);
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-sm);
     }
 
     .repo-meta-item {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: var(--space-1);
     }
 
     .visualization-canvas {
-        background: #fafafa;
-        border-radius: 8px;
-        padding: 20px;
+        background: var(--color-bg-tertiary);
+        border-radius: var(--radius-md);
+        padding: var(--space-4);
         min-height: 500px;
-        margin-bottom: 20px;
+        margin-bottom: var(--space-4);
         overflow-x: auto;
         position: relative;
+        border: 1px solid var(--color-border);
     }
 
     #git-graph {
@@ -491,14 +483,14 @@ permalink: /git-master/
         position: absolute;
         background: rgba(0, 0, 0, 0.9);
         color: white;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 0.9em;
+        padding: var(--space-3);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-sm);
         max-width: 350px;
-        z-index: 1000;
+        z-index: var(--z-tooltip);
         display: none;
         pointer-events: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        box-shadow: var(--shadow-xl);
     }
 
     .commit-tooltip.active {
@@ -506,39 +498,39 @@ permalink: /git-master/
     }
 
     .tooltip-commit-msg {
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: #a5b4fc;
+        font-weight: var(--font-weight-semibold);
+        margin-bottom: var(--space-2);
+        color: var(--color-primary-light);
     }
 
     .tooltip-meta {
-        font-size: 0.85em;
-        color: #d1d5db;
-        margin-bottom: 5px;
+        font-size: var(--font-size-xs);
+        color: var(--color-text-secondary);
+        margin-bottom: 0;
     }
 
     .merge-conflict-section {
-        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-        border-left: 4px solid #f59e0b;
-        border-radius: 8px;
-        padding: 25px;
-        margin-top: 30px;
+        background: var(--gradient-warning);
+        border-left: 4px solid var(--color-warning);
+        border-radius: var(--radius-md);
+        padding: var(--space-6);
+        margin-top: var(--space-6);
     }
 
     .merge-conflict-section h3 {
-        color: #92400e;
-        margin-bottom: 15px;
-        font-size: 1.4em;
+        color: #78350f;
+        margin-bottom: var(--space-3);
+        font-size: var(--font-size-lg);
     }
 
     .conflict-example {
         background: #1e293b;
         color: #e2e8f0;
-        padding: 20px;
-        border-radius: 6px;
-        font-family: 'Monaco', 'Courier New', monospace;
-        font-size: 0.9em;
-        margin: 15px 0;
+        padding: var(--space-4);
+        border-radius: var(--radius-md);
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-sm);
+        margin: var(--space-4) 0;
         overflow-x: auto;
     }
 
@@ -553,40 +545,6 @@ permalink: /git-master/
 
     .conflict-incoming {
         color: #34d399;
-    }
-
-    .btn {
-        padding: 12px 24px;
-        border: none;
-        border-radius: 6px;
-        font-size: 1em;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: inline-block;
-    }
-
-    .btn-primary {
-        background: #667eea;
-        color: white;
-    }
-
-    .btn-primary:hover:not(:disabled) {
-        background: #5568d3;
-    }
-
-    .btn-secondary {
-        background: #6b7280;
-        color: white;
-    }
-
-    .btn-secondary:hover:not(:disabled) {
-        background: #4b5563;
-    }
-
-    .btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
     }
 
     .loading-spinner {
@@ -607,38 +565,39 @@ permalink: /git-master/
     .branch-legend {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
-        margin-bottom: 20px;
-        padding: 15px;
-        background: #f9fafb;
-        border-radius: 8px;
+        gap: var(--space-3);
+        margin-bottom: var(--space-4);
+        padding: var(--space-3);
+        background: var(--color-bg-secondary);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--color-border);
     }
 
     .branch-item {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 0.9em;
+        gap: var(--space-2);
+        font-size: var(--font-size-sm);
     }
 
     .branch-color {
-        width: 20px;
-        height: 20px;
-        border-radius: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: var(--radius-sm);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
         .git-tutor-hero h1 {
-            font-size: 2em;
+            font-size: var(--font-size-3xl);
         }
 
         .git-tutor-hero .subtitle {
-            font-size: 1.1em;
+            font-size: var(--font-size-lg);
         }
 
         .hero-stats {
-            gap: 20px;
+            gap: var(--space-4);
         }
 
         .url-input-wrapper {
@@ -651,7 +610,7 @@ permalink: /git-master/
 
         .repo-meta {
             flex-direction: column;
-            gap: 10px;
+            gap: var(--space-2);
         }
     }
 
@@ -659,27 +618,28 @@ permalink: /git-master/
     .model-selector {
         display: flex;
         justify-content: center;
-        gap: 20px;
-        margin-bottom: 20px;
+        gap: var(--space-4);
+        margin-bottom: var(--space-4);
         text-align: left;
     }
 
     .model-option {
         display: flex;
         align-items: flex-start;
-        gap: 10px;
-        padding: 10px 15px;
-        background: #f9fafb;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
+        gap: var(--space-2);
+        padding: var(--space-3);
+        background: var(--color-bg-secondary);
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-md);
         cursor: pointer;
-        transition: all 0.2s;
+        transition: var(--transition-fast);
         max-width: 300px;
+        color: var(--color-text-primary);
     }
 
     .model-option:hover {
-        border-color: #667eea;
-        background: #eff6ff;
+        border-color: var(--color-primary);
+        background: var(--color-bg-tertiary);
     }
 
     .model-option input {
@@ -688,13 +648,13 @@ permalink: /git-master/
 
     .model-info strong {
         display: block;
-        color: #333;
+        color: var(--color-text-primary);
         margin-bottom: 2px;
     }
 
     .model-info span {
-        font-size: 0.85em;
-        color: #666;
+        font-size: var(--font-size-xs);
+        color: var(--color-text-secondary);
         display: block;
         line-height: 1.4;
     }
@@ -731,7 +691,7 @@ permalink: /git-master/
             <li><strong>Professional Development:</strong> Join the growing community of physician-developers building the future of healthcare technology</li>
             <li><strong>Portfolio Building:</strong> Showcase your contributions to medical informatics and AI implementation projects</li>
         </ul>
-        <p style="margin-top: 15px;"><strong>No coding experience required.</strong> This interactive tool uses real GitHub repositories and an AI tutor to teach you Git concepts through exploration and conversation.</p>
+        <p style="margin-top: var(--space-4);"><strong>No coding experience required.</strong> This interactive tool uses real GitHub repositories and an AI tutor to teach you Git concepts through exploration and conversation.</p>
     </div>
 
     <!-- Status Panel -->
@@ -759,7 +719,7 @@ permalink: /git-master/
         <div id="progress-bar" class="progress-bar">
             <div id="progress-fill" class="progress-fill"></div>
         </div>
-        <button id="init-btn" class="btn btn-primary" onclick="initializeAI()" style="margin-top: 20px;">
+        <button id="init-btn" class="btn btn-primary" onclick="initializeAI()" style="margin-top: var(--space-4);">
             Initialize AI Tutor
         </button>
     </div>
@@ -778,7 +738,7 @@ permalink: /git-master/
                 <span id="analyze-btn-text">Analyze Repository</span>
             </button>
         </div>
-        <div style="margin-top: 10px; color: #6b7280; font-size: 0.9em;">
+        <div style="margin-top: var(--space-2); color: var(--color-text-secondary); font-size: var(--font-size-sm);">
             <strong>Try these examples:</strong>
         </div>
         <div class="example-repos">
@@ -819,11 +779,11 @@ permalink: /git-master/
 
             <div id="chat-messages" class="chat-messages">
                 <div class="empty-chat">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 48px; height: 48px; margin: 0 auto; color: #d1d5db;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 48px; height: 48px; margin: 0 auto; color: var(--color-text-tertiary);">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
                     </svg>
-                    <p style="margin-top: 15px;">Ask me anything about Git!</p>
-                    <p style="font-size: 0.85em; margin-top: 5px;">Click a quick question above or type your own below.</p>
+                    <p style="margin-top: var(--space-4);">Ask me anything about Git!</p>
+                    <p style="font-size: var(--font-size-sm); margin-top: var(--space-1);">Click a quick question above or type your own below.</p>
                 </div>
             </div>
 
@@ -884,7 +844,7 @@ permalink: /git-master/
             <!-- Merge Conflict Education Section -->
             <div class="merge-conflict-section">
                 <h3>🔀 Understanding Merge Conflicts</h3>
-                <p style="color: #78350f; margin-bottom: 15px;">
+                <p style="color: #78350f; margin-bottom: var(--space-4);">
                     Merge conflicts happen when two people edit the same part of a file. Don't worry—they're normal and easy to fix! Here's what conflict markers look like:
                 </p>
 
@@ -896,20 +856,20 @@ permalink: /git-master/
 <span class="conflict-marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-name</span>
                 </div>
 
-                <div style="margin-top: 20px;">
-                    <strong style="color: #92400e; display: block; margin-bottom: 10px;">How to resolve:</strong>
+                <div style="margin-top: var(--space-4);">
+                    <strong style="color: #92400e; display: block; margin-bottom: var(--space-2);">How to resolve:</strong>
                     <ol style="margin-left: 25px; color: #78350f;">
-                        <li style="margin-bottom: 8px;">Open the conflicted file in your editor</li>
-                        <li style="margin-bottom: 8px;">Look for the conflict markers (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;)</li>
-                        <li style="margin-bottom: 8px;">Decide which changes to keep (or combine both!)</li>
-                        <li style="margin-bottom: 8px;">Remove all the conflict markers</li>
-                        <li style="margin-bottom: 8px;">Save the file and test your code</li>
-                        <li style="margin-bottom: 8px;">Stage the file: <code style="background: #1e293b; color: #fbbf24; padding: 2px 8px; border-radius: 4px;">git add &lt;filename&gt;</code></li>
-                        <li style="margin-bottom: 8px;">Complete the merge: <code style="background: #1e293b; color: #fbbf24; padding: 2px 8px; border-radius: 4px;">git commit</code></li>
+                        <li style="margin-bottom: var(--space-2);">Open the conflicted file in your editor</li>
+                        <li style="margin-bottom: var(--space-2);">Look for the conflict markers (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;)</li>
+                        <li style="margin-bottom: var(--space-2);">Decide which changes to keep (or combine both!)</li>
+                        <li style="margin-bottom: var(--space-2);">Remove all the conflict markers</li>
+                        <li style="margin-bottom: var(--space-2);">Save the file and test your code</li>
+                        <li style="margin-bottom: var(--space-2);">Stage the file: <code style="background: #1e293b; color: #fbbf24; padding: 2px 8px; border-radius: 4px;">git add &lt;filename&gt;</code></li>
+                        <li style="margin-bottom: var(--space-2);">Complete the merge: <code style="background: #1e293b; color: #fbbf24; padding: 2px 8px; border-radius: 4px;">git commit</code></li>
                     </ol>
                 </div>
 
-                <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.5); border-radius: 6px;">
+                <div style="margin-top: var(--space-4); padding: var(--space-4); background: rgba(255,255,255,0.5); border-radius: var(--radius-md);">
                     <strong style="color: #92400e;">💡 Pro Tip:</strong>
                     <p style="color: #78350f; margin-top: 5px;">Ask the AI Tutor to walk you through a specific merge conflict scenario. Just type "Help me understand merge conflicts" in the chat!</p>
                 </div>
