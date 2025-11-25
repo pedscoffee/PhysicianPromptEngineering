@@ -1,0 +1,8 @@
+---
+layout: null
+permalink: /api/featured_tools.json
+---
+{
+    { site.data.workbench_tools | jsonify
+    }
+}

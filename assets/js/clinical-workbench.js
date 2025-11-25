@@ -44,32 +44,17 @@ class ClinicalWorkbench {
 
     async loadData() {
         try {
-            // Load Featured Tools (V2.0)
-            // Note: In a real Jekyll setup, we might output this to JSON too, 
-            // but for now we'll fetch the file we created.
-            // Actually, let's just hardcode the featured ones or fetch if possible.
-            // Since we can't easily fetch _data directly in JS without a build step,
-            // we will rely on the api/prompts.json for library prompts.
-            // For featured tools, we'll assume they are a subset or special category.
-            // Let's load the synthetic cases.
+            // Load Featured Tools
+            const featuredResp = await fetch('/api/featured_tools.json');
+            this.featuredTools = await featuredResp.json();
 
-            const casesResp = await fetch('/_data/synthetic_cases.json'); // This won't work in Jekyll usually unless moved to assets or api.
-            // Correction: _data is not served. I need to move synthetic_cases.json to an accessible location or output it via Liquid.
-            // For this environment, I'll assume I made a mistake in the plan and should have made an API endpoint for cases too.
-            // I will fix this by creating api/cases.json in the next step if needed, but for now let's try to fetch the file I created 
-            // assuming the user might move it. Wait, I can't rely on that.
-            // I will use a fallback for now or fetch from the file I just wrote if the server serves it.
-            // Actually, I'll create the API endpoint for cases in a moment.
-
-            // Let's assume api/prompts.json exists.
+            // Load Library Prompts
             const promptsResp = await fetch('/api/prompts.json');
             this.libraryPrompts = await promptsResp.json();
 
-            // For cases, I'll use the ones I defined in the previous step, but I need to access them.
-            // I'll create a quick fetch for them if I can, or just hardcode them here for robustness if the file isn't served.
-            // To be safe, I will fetch a new endpoint I will create: /api/cases.json
-            const casesResp2 = await fetch('/api/cases.json');
-            this.syntheticCases = await casesResp2.json();
+            // Load Synthetic Cases
+            const casesResp = await fetch('/api/cases.json');
+            this.syntheticCases = await casesResp.json();
 
         } catch (e) {
             console.error("Error loading data", e);
@@ -77,11 +62,26 @@ class ClinicalWorkbench {
     }
 
     renderUI() {
+        // Populate Featured Tools
+        this.featuredList.innerHTML = '';
+        this.featuredTools.forEach(tool => {
+            const div = document.createElement('div');
+            div.className = 'tool-card';
+            div.innerHTML = `<span class="tool-icon">${tool.icon}</span><span class="tool-name">${tool.name}</span>`;
+            div.addEventListener('click', () => this.setActivePrompt({
+                title: tool.name,
+                description: tool.description,
+                content: tool.system_prompt, // Map system_prompt to content
+                isFeatured: true
+            }));
+            this.featuredList.appendChild(div);
+        });
+
         // Populate Library Select
         this.libraryPrompts.sort((a, b) => a.title.localeCompare(b.title));
         this.libraryPrompts.forEach(p => {
             const opt = document.createElement('option');
-            opt.value = p.title; // Use title as ID for now
+            opt.value = p.title;
             opt.textContent = p.title;
             this.librarySelect.appendChild(opt);
         });
