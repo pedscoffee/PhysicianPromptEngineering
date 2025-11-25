@@ -821,6 +821,24 @@ permalink: /prompt-remix/
   <div class="container">
     <h2 style="text-align: center; margin-bottom: 30px; color: #1e5bb8;">🧪 Clinical AI Workbench</h2>
     
+    <!-- Educational Context -->
+    <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 20px; border-radius: 6px; margin-bottom: 24px;">
+      <h3 style="margin-top: 0; color: #0369a1; font-size: 1.1em; display: flex; align-items: center; gap: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.499 5.258 50.55 50.55 0 0 0-2.658.813m-15.482 0A50.55 50.55 0 0 1 12 13.489a50.55 50.55 0 0 1 6.74-3.342" />
+        </svg>
+        Learning Goal: Iterative Testing
+      </h3>
+      <p style="margin-bottom: 10px; color: #334155; line-height: 1.6;">
+        The goal of this workbench is to teach the <strong>process</strong> of building a case library and iteratively testing your prompts.
+      </p>
+      <ul style="margin: 0; padding-left: 20px; color: #475569; line-height: 1.6;">
+        <li style="margin-bottom: 8px;"><strong>Model Differences:</strong> This tool runs a small AI model directly in your browser for privacy. It is less powerful than the large models you likely use at work (like GPT-4 or Claude 3.5).</li>
+        <li style="margin-bottom: 8px;"><strong>Performance:</strong> Some complex prompts from the library may not work perfectly here. That's expected! If a prompt works well on this small model, it will likely work <em>even better</em> on larger models.</li>
+        <li><strong>Best Practice:</strong> Use this tool to refine the <em>structure</em> and <em>logic</em> of your prompt. Once the logic holds up here, you can be confident deploying it to your production environment.</li>
+      </ul>
+    </div>
+
     <div class="safety-banner" style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
       <div class="safety-icon" style="font-size: 24px;">⚠️</div>
       <div>
@@ -870,7 +888,7 @@ permalink: /prompt-remix/
   </div>
 </div>
 
-<div id="prompt-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; padding: 40px;">
+<div id="prompt-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; padding: 40px;">
   <div style="background: white; max-width: 800px; margin: 0 auto; padding: 30px; border-radius: 8px; max-height: 80vh; overflow-y: auto;">
     <h3>Full Prompt</h3>
     <pre id="modal-prompt-content" style="background: #f5f5f5; padding: 15px; border-radius: 4px; white-space: pre-wrap; font-size: 13px;"></pre>
