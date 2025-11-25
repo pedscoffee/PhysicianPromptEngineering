@@ -177,6 +177,34 @@ class ClinicalWorkbench {
         this.statusIndicator.className = `status-indicator status-${type}`;
     }
 
+    setCustomPrompt(title, content) {
+        this.selectedPrompt = {
+            title: title,
+            content: content
+        };
+
+        // Add to dropdown if not exists or select it
+        let opt = Array.from(this.promptSelect.options).find(o => o.value === 'custom-remix');
+        if (!opt) {
+            opt = document.createElement('option');
+            opt.value = 'custom-remix';
+            opt.textContent = '★ Custom Remix';
+            this.promptSelect.insertBefore(opt, this.promptSelect.firstChild);
+        }
+        opt.dataset.content = content;
+        this.promptSelect.value = 'custom-remix';
+
+        // Update UI
+        this.viewPromptBtn.disabled = false;
+        this.updateRunButton();
+
+        // Flash effect to show it updated
+        this.promptSelect.style.backgroundColor = '#d1fae5';
+        setTimeout(() => {
+            this.promptSelect.style.backgroundColor = '';
+        }, 500);
+    }
+
     async runPrompt() {
         const caseData = this.caseInput.value.trim();
         if (!this.selectedPrompt || !caseData) return;

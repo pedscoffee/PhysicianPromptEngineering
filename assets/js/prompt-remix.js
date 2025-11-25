@@ -3,13 +3,13 @@
  * Allows users to customize library prompts with their own examples and preferences
  */
 
-(function() {
+(function () {
     'use strict';
 
     // =====================================================
     // STATE MANAGEMENT
     // =====================================================
-    
+
     let currentPromptSlug = null;
     let sections = [];
     let undoManager = null;
@@ -250,7 +250,7 @@
             previewEl.classList.add('preview-empty');
             charCounter.textContent = '0 / 5,000';
             charCounter.className = 'char-counter good';
-            
+
             if (copyBtn) copyBtn.disabled = true;
             if (saveBtn) saveBtn.disabled = true;
             if (downloadBtn) downloadBtn.disabled = true;
@@ -504,6 +504,31 @@
         }
     }
 
+    function testInWorkbench() {
+        if (!sections || sections.length === 0) return;
+
+        const content = assembleSections(sections);
+        const title = currentPromptSlug ?
+            `${window.PROMPT_LIBRARY[currentPromptSlug].title} (Remix)` :
+            'Custom Remix';
+
+        // Check if workbench is loaded
+        if (window.workbench) {
+            window.workbench.setCustomPrompt(title, content);
+
+            // Scroll to workbench
+            const workbenchSection = document.getElementById('workbench-section');
+            if (workbenchSection) {
+                workbenchSection.scrollIntoView({ behavior: 'smooth' });
+                showToast('Prompt sent to Workbench!', 'success');
+            } else {
+                showToast('Workbench not found on page', 'error');
+            }
+        } else {
+            showToast('Workbench is initializing...', 'warning');
+        }
+    }
+
     // =====================================================
     // UNDO/REDO
     // =====================================================
@@ -703,7 +728,8 @@
         downloadPrompt,
         openSaveModal,
         closeSaveModal,
-        saveToPromptManager
+        saveToPromptManager,
+        testInWorkbench
     };
 
 })();

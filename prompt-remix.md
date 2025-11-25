@@ -738,6 +738,12 @@ permalink: /prompt-remix/
                     </svg>
                     Download
                 </button>
+                <button class="action-btn" id="test-btn" style="background: #8b5cf6; color: white;" onclick="window.promptRemix.testInWorkbench()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                    </svg>
+                    Test in Workbench
+                </button>
             </div>
         </div>
     </div>
@@ -809,6 +815,71 @@ permalink: /prompt-remix/
   }
 })();
 </script>
+
+<!-- Workbench Section -->
+<div id="workbench-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e5e7eb;">
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 30px; color: #1e5bb8;">🧪 Clinical AI Workbench</h2>
+    
+    <div class="safety-banner" style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
+      <div class="safety-icon" style="font-size: 24px;">⚠️</div>
+      <div>
+        <strong>Safety First: Synthetic Data Only</strong><br>
+        This tool is for <strong>prompt refinement and testing only</strong>. Do not enter real patient data. Use the provided synthetic cases or create your own de-identified examples.
+      </div>
+    </div>
+
+    <div style="text-align: right; margin-bottom: 16px;">
+      <span id="llm-status" class="status-indicator status-loading" style="display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 8px; background: #dbeafe; color: #1e40af;">AI Not Loaded</span>
+      <button id="btn-init-ai" class="btn btn-sm btn-outline" style="padding: 8px 16px; border: 1px solid #e5e7eb; border-radius: 6px; background: white; cursor: pointer;">Initialize AI Engine</button>
+    </div>
+
+    <div class="workbench-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+      
+      <div class="selector-card" style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px;">
+        <h3 style="margin-top: 0; font-size: 18px; margin-bottom: 12px;">1. Select Prompt</h3>
+        <select id="prompt-select" class="form-select" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px;">
+          <option value="">Choose a prompt...</option>
+        </select>
+        <div style="margin-top: 12px;">
+          <button id="btn-view-prompt" class="btn btn-xs btn-text" disabled style="background: none; border: none; color: #2a7ae2; cursor: pointer; padding: 0;">View Full Prompt</button>
+        </div>
+      </div>
+
+      <div class="selector-card" style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px;">
+        <h3 style="margin-top: 0; font-size: 18px; margin-bottom: 12px;">2. Select Case Data</h3>
+        <select id="case-select" class="form-select" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px;">
+          <option value="custom">Custom Input</option>
+        </select>
+        <div style="margin-top: 12px;">
+          <textarea id="case-input" class="form-textarea" placeholder="Paste your synthetic case data here..." style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; min-height: 150px; font-family: monospace;"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-bottom: 24px;">
+      <button id="btn-run" class="btn btn-primary btn-lg" disabled style="padding: 12px 24px; background: #2a7ae2; color: white; border: none; border-radius: 6px; font-size: 1.1em; cursor: pointer;">Run Prompt</button>
+    </div>
+
+    <div id="output-box" class="output-box" style="background: #f8f9fa; border-left: 4px solid #0d6efd; padding: 20px; border-radius: 4px; margin-top: 24px; display: none;">
+      <h3 style="margin-top: 0;">Output</h3>
+      <div id="output-content" class="output-content" style="white-space: pre-wrap; font-family: monospace;"></div>
+    </div>
+
+  </div>
+</div>
+
+<div id="prompt-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; padding: 40px;">
+  <div style="background: white; max-width: 800px; margin: 0 auto; padding: 30px; border-radius: 8px; max-height: 80vh; overflow-y: auto;">
+    <h3>Full Prompt</h3>
+    <pre id="modal-prompt-content" style="background: #f5f5f5; padding: 15px; border-radius: 4px; white-space: pre-wrap; font-size: 13px;"></pre>
+    <button class="btn btn-secondary mt-3" onclick="document.getElementById('prompt-modal').style.display='none'" style="padding: 8px 16px; background: #6b7280; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 15px;">Close</button>
+  </div>
+</div>
+
+<!-- Workbench Scripts -->
+<script type="module" src="{{ '/assets/js/clinical-workbench.js' | relative_url }}"></script>
 
 <!-- Prompt Remix JavaScript -->
 <script src="{{ '/assets/js/prompt-remix.js' | relative_url }}"></script>
