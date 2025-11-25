@@ -714,7 +714,6 @@ permalink: /prompt-assistant/
     }
 </style>
 
-<!-- Hero Section -->
 <div class="hero">
     <div class="container">
         <h1 style="display: flex; align-items: center; justify-content: center; gap: 12px;">
@@ -736,7 +735,6 @@ permalink: /prompt-assistant/
 </div>
 
 <div class="container">
-    <!-- Premium Banner -->
     <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
             <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
@@ -747,7 +745,6 @@ permalink: /prompt-assistant/
         </div>
     </div>
 
-    <!-- Warning Box -->
     <div class="warning-box">
         <h3 style="display: flex; align-items: center; gap: 8px;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
@@ -763,7 +760,6 @@ permalink: /prompt-assistant/
         </ul>
     </div>
 
-    <!-- Status Panel -->
     <div class="status-panel" id="status-panel">
         <div id="status-message">Click "Initialize AI Assistant" to load the AI model</div>
         <div id="status-details"></div>
@@ -793,7 +789,6 @@ permalink: /prompt-assistant/
         </button>
     </div>
 
-    <!-- Settings Panel -->
     <div class="settings-panel" id="settings-panel" style="display: none;">
         <h3 style="display: flex; align-items: center; gap: 8px;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
@@ -809,7 +804,6 @@ permalink: /prompt-assistant/
         </div>
     </div>
 
-    <!-- Tab Navigation -->
     <div class="tab-navigation" id="tab-navigation" style="display: none;">
         <button class="tab-button active" onclick="switchTab('generate')" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
@@ -825,7 +819,6 @@ permalink: /prompt-assistant/
         </button>
     </div>
 
-    <!-- Tab Content: Generate from Scratch -->
     <div id="tab-generate" class="tab-content active" style="display: none;">
         <div class="main-layout">
             <div class="panel">
@@ -843,8 +836,7 @@ permalink: /prompt-assistant/
 
                 <div class="chat-container">
                     <div class="chat-messages" id="chat-messages-generate">
-                        <!-- Messages will be inserted here -->
-                    </div>
+                        </div>
 
                     <div class="chat-input-container">
                         <textarea
@@ -892,7 +884,6 @@ permalink: /prompt-assistant/
         </div>
     </div>
 
-    <!-- Tab Content: Refine Existing -->
     <div id="tab-refine" class="tab-content" style="display: none;">
         <div class="main-layout">
             <div class="panel">
@@ -910,8 +901,7 @@ permalink: /prompt-assistant/
 
                 <div class="chat-container">
                     <div class="chat-messages" id="chat-messages-refine">
-                        <!-- Messages will be inserted here -->
-                    </div>
+                        </div>
 
                     <div class="chat-input-container">
                         <textarea
@@ -987,121 +977,53 @@ permalink: /prompt-assistant/
         }
     };
 
-    // System prompts from metaprompt files
-    const SYSTEM_PROMPT_GENERATOR = `# Custom A/P Formatting Prompt Generator
+    // Optimized System Prompt for Prompt Assistant (Generator)
+    // Designed for small models (Llama 3.2 1B / Phi-3.5 Mini)
+    const SYSTEM_PROMPT_GENERATOR = `You are an expert Clinical Prompt Engineer. Your goal is to build a custom system prompt for a physician to use with an AI scribe.
 
-You are an expert prompt engineer. Your goal is to customize a foundational prompt based on user-provided examples.
+### YOUR PROCESS
+1. **Discovery:** Ask the user's specialty and preferred style (e.g., "Pithy/Brief" vs. "Detailed/Formal").
+2. **Data Gathering:** You MUST obtain 3-5 distinct examples of their ideal note output. Do not generate a prompt without these.
+3. **Analysis:** Analyze their examples for:
+   - Header style (e.g., "Assessment" vs. "**Diagnosis**" vs. None)
+   - Brevity (Full sentences vs. fragmented phrases)
+   - Abbreviations (e.g., "RTC 3mo", "PRN")
+   - Formatting (Hyphens, bullets, bolding)
+4. **Generation:** construct the final prompt inside a code block.
 
------
+### ANALYSIS GUIDELINES
+- **Pithy Style:** typically uses no section headers, heavy abbreviations, and fragments (e.g., "- Start Amox").
+- **Formal Style:** typically uses headers (Assessment/Plan), complete sentences, and standard grammar.
+- **Rule:** If the user's examples lack headers, your generated prompt must explicitly forbid headers.
 
-## Foundational Pithy Prompt (The Gold Standard)
+### PROMPT TEMPLATE (Use this structure for the output)
+\`\`\`markdown
+[Task Statement: 1 sentence instructing the AI to act as a medical scribe for [Specialty] using specific formatting.]
 
-Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
-
----
-
-## Output Structure for Each Problem/Diagnosis
-
-**[Problem/Diagnosis Name]**
-- [A very brief bullet point summarizing a key finding, action, or follow-up plan]
-- [Each point should be a separate bullet, written as a short clinical shorthand phrase]
-
----
-
-## Conditional Boilerplate Text
-
-[Insert after the bulleted list when applicable. This text should be italicized.]
-
-If well child check or health maintenance discussed:
-"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
-
-If any illness discussed:
-"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
-
-If any injury discussed:
-"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
-
-If ear infection discussed:
-"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
-
-If strep test discussed:
-"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
-
-If dehydration, vomiting, diarrhea, or decreased urination discussed:
-"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
-
-If trouble breathing discussed:
-"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
-
-If ADHD, obesity, or strep throat discussed:
-"PCMH Reminder"
-
----
+## Output Structure
+[Describe the exact visual format based on the user's examples.]
 
 ## Formatting Rules
+1. [Rule regarding headers/bolding]
+2. [Rule regarding sentence structure/brevity]
+3. [Rule regarding abbreviations]
+4. [Rule regarding negative constraints (what NOT to do)]
 
-1. Bold formatting for problem names
-2. Italicized formatting for all boilerplate text
-3. Do NOT use section headers like Assessment or Plan
-4. Use a hyphen (-) for all bullets
-5. Indent all bullets with 8 spaces
-6. Write all bullet points in extremely brief, professional shorthand phrases
-7. Keep bullets concise (ideally under 10 words per bullet)
-8. Use standard medical abbreviations (RTC, PRN, BID, etc.)
-9. Never fabricate or infer information not present in the source text
-10. Insert a blank line between problems when multiple diagnoses exist
-11. No references
-
----
+## Conditional Boilerplate
+[Only if user requested specific standard text, format as: If [condition] discussed, add "[text]"]
 
 ## Few-Shot Examples
+[Insert the user's provided examples EXACTLY as written. Do not edit them.]
+\`\`\`
 
-**Asthma**
-- Flovent 44mcg 2 puff BID started
-- Continue albuterol PRN
-- Use spacer
-- RTC 3mo/PRN
+### CONSTRAINTS
+- **Examples > Instructions:** The "Few-Shot Examples" section is the most important. Copy user inputs exactly.
+- **Brevity:** The final generated prompt must be under 5,000 characters.
+- **Safety:** Do not allow the prompt to hallucinate medical facts.
+- **Wait:** Do not generate the prompt until you have analyzed at least 3 user examples.
 
-**Well Child Check**
-- Growing and developing well
-- Reviewed anticipatory guidance
-- RTC 1yr/PRN
-
-**Vomiting, mild dehydration**
-- NDNT on exam with MMM
-- Zofran PRN, pedialyte, Tylenol, Motrin
-- RTC PRN
-
-**ADHD**
-- Concerta 27mg not effective
-- Transition to Vyvanse 20mg PO daily
-- RTC 1mo
-
-**Viral URI**
-- Supportive care, fluids
-- Declined COVID test
-- RTC PRN
-
------
-
-## Your Task
-
-1.  **Analyze Differences**: Compare the User's Few-Shot Examples (provided below) with the Foundational Pithy Prompt's examples. Identify differences in:
-    *   Formatting (bullets, spacing, bolding)
-    *   Style (conciseness, sentence structure, abbreviations)
-    *   Structure (headers, grouping)
-
-2.  **Modify the Foundational Prompt**:
-    *   Start with the **Foundational Pithy Prompt** as your base.
-    *   **Update "Formatting Rules"** and **"Output Structure"** to match the User's style.
-    *   **Replace "Few-Shot Examples"** with the User's exact examples.
-    *   **Keep "Conditional Boilerplate Text"** UNLESS the user's examples clearly contradict it or they ask to remove it.
-
-3.  **Output**: Generate the fully modified prompt.
-
-**CRITICAL**: Do not include this system prompt or your analysis in the final output. Only output the generated prompt inside a markdown code block.
-
-Take the user's input and generate their custom A/P formatting prompt following this structure.`;
+### INTERACTION STYLE
+Be concise, professional, and helpful. Guide the user step-by-step.`;
 
     const SYSTEM_PROMPT_REFINER = `# A/P Prompt Refiner
 
@@ -1418,9 +1340,6 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     // =====================================================
     // CHAT MESSAGING - Generate Tab
     // =====================================================
-    // =====================================================
-    // CHAT MESSAGING - Generate Tab
-    // =====================================================
     window.sendMessage = async function() {
         const input = document.getElementById('chat-input');
         const message = input.value.trim();
@@ -1441,9 +1360,6 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         input.disabled = true;
         document.getElementById('send-btn').disabled = true;
 
-        // Show typing indicator
-        // showTypingIndicator('generate'); // No longer needed with streaming
-
         try {
             // Get character limit
             charLimit = parseInt(document.getElementById('char-limit').value) || 5000;
@@ -1451,7 +1367,7 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
             // Build system prompt with character limit
             const systemPromptWithLimit = SYSTEM_PROMPT_GENERATOR + `\n\n**IMPORTANT**: Keep the final prompt under ${charLimit} characters for EMR compatibility.`;
 
-            // Context Management: Limit history
+            // Context Management: Limit history to 10
             const MAX_HISTORY = 10;
             const recentHistory = conversationHistoryGenerate.slice(-MAX_HISTORY);
 
@@ -1503,9 +1419,6 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         input.focus();
     };
 
-    // =====================================================
-    // CHAT MESSAGING - Refine Tab
-    // =====================================================
     // =====================================================
     // CHAT MESSAGING - Refine Tab
     // =====================================================
@@ -1617,37 +1530,6 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         return messageContent;
     }
 
-    function showTypingIndicator(tab) {
-        const messagesContainer = tab === 'generate' ?
-            document.getElementById('chat-messages-generate') :
-            document.getElementById('chat-messages-refine');
-
-        const typingDiv = document.createElement('div');
-        typingDiv.className = 'typing-indicator active';
-        typingDiv.id = `typing-${tab}`;
-        typingDiv.innerHTML = `
-            <div class="message-avatar assistant">AI</div>
-            <div>
-                Thinking
-                <div class="typing-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        `;
-
-        messagesContainer.appendChild(typingDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    function hideTypingIndicator(tab) {
-        const indicator = document.getElementById(`typing-${tab}`);
-        if (indicator) {
-            indicator.remove();
-        }
-    }
-
     // =====================================================
     // PROMPT EXTRACTION AND DISPLAY
     // =====================================================
@@ -1713,191 +1595,4 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         charCounter.innerHTML = message;
     }
 
-    // =====================================================
-    // CLEAR CHAT
-    // =====================================================
-    window.clearChat = function() {
-        if (conversationHistoryGenerate.length > 0) {
-            if (!confirm('Clear conversation history and start fresh?')) return;
-        }
-
-        conversationHistoryGenerate = [];
-        currentOutput = '';
-
-        document.getElementById('chat-messages-generate').innerHTML = '';
-        addWelcomeMessage('generate');
-
-        document.getElementById('output-content').style.display = 'none';
-        document.getElementById('output-empty').style.display = 'block';
-        document.getElementById('output-actions').style.display = 'none';
-        document.getElementById('char-counter').style.display = 'none';
-        document.getElementById('chat-input').value = '';
-    };
-
-    window.clearChatRefine = function() {
-        if (conversationHistoryRefine.length > 0) {
-            if (!confirm('Clear conversation history and start fresh?')) return;
-        }
-
-        conversationHistoryRefine = [];
-        currentOutputRefine = '';
-
-        document.getElementById('chat-messages-refine').innerHTML = '';
-        addWelcomeMessage('refine');
-
-        document.getElementById('output-content-refine').style.display = 'none';
-        document.getElementById('output-empty-refine').style.display = 'block';
-        document.getElementById('output-actions-refine').style.display = 'none';
-        document.getElementById('char-counter-refine').style.display = 'none';
-        document.getElementById('chat-input-refine').value = '';
-    };
-
-    // =====================================================
-    // OUTPUT ACTIONS
-    // =====================================================
-    window.copyPrompt = async function(btn) {
-        if (!currentOutput) return;
-        try {
-            await navigator.clipboard.writeText(currentOutput);
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'Copied!';
-            setTimeout(() => btn.innerHTML = originalText, 2000);
-        } catch (error) {
-            console.error('Copy failed:', error);
-            // Fallback
-            const textarea = document.createElement('textarea');
-            textarea.value = currentOutput;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = 'Copied!';
-                setTimeout(() => btn.innerHTML = originalText, 2000);
-            } catch (err) {
-                alert('Failed to copy. Please select and copy manually.');
-            }
-            document.body.removeChild(textarea);
-        }
-    };
-
-    window.copyPromptRefine = async function(btn) {
-        if (!currentOutputRefine) return;
-        try {
-            await navigator.clipboard.writeText(currentOutputRefine);
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'Copied!';
-            setTimeout(() => btn.innerHTML = originalText, 2000);
-        } catch (error) {
-            console.error('Copy failed:', error);
-            // Fallback
-            const textarea = document.createElement('textarea');
-            textarea.value = currentOutputRefine;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = 'Copied!';
-                setTimeout(() => btn.innerHTML = originalText, 2000);
-            } catch (err) {
-                alert('Failed to copy. Please select and copy manually.');
-            }
-            document.body.removeChild(textarea);
-        }
-    };
-
-    window.downloadPrompt = function() {
-        const blob = new Blob([currentOutput], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `ap-prompt-${new Date().toISOString().split('T')[0]}.txt`;
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-
-    window.downloadPromptRefine = function() {
-        const blob = new Blob([currentOutputRefine], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `ap-prompt-refined-${new Date().toISOString().split('T')[0]}.txt`;
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-
-    window.saveToPromptManager = function() {
-        saveSnippet(currentOutput, 'Generated Prompt');
-    };
-
-    window.saveToPromptManagerRefine = function() {
-        saveSnippet(currentOutputRefine, 'Refined Prompt');
-    };
-
-    function saveSnippet(content, defaultTitle) {
-        try {
-            const snippets = JSON.parse(localStorage.getItem('aiPromptSnippets') || '[]');
-
-            const title = prompt('Enter a title for this prompt:', defaultTitle);
-            if (!title) return;
-
-            const tags = prompt('Enter tags (comma-separated):', 'ai-generated, a&p-formatting');
-            const tagArray = tags ? tags.split(',').map(t => t.trim()) : ['ai-generated'];
-
-            snippets.push({
-                id: Date.now(),
-                title: title,
-                content: content,
-                tags: tagArray,
-                created: new Date().toISOString(),
-                charCount: content.length
-            });
-
-            localStorage.setItem('aiPromptSnippets', JSON.stringify(snippets));
-
-            if (confirm('Saved to Prompt Manager!\n\nWould you like to open the Prompt Manager now?')) {
-                window.open('/prompt-manager', '_blank');
-            }
-        } catch (error) {
-            alert('Failed to save to Prompt Manager. Storage might be full.');
-            console.error('Save error:', error);
-        }
-    }
-
-    // =====================================================
-    // KEYBOARD SHORTCUTS
-    // =====================================================
-    document.addEventListener('DOMContentLoaded', () => {
-        // Enter to send (Ctrl+Enter for newline)
-        document.getElementById('chat-input').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.ctrlKey && !e.shiftKey) {
-                e.preventDefault();
-                if (!e.target.disabled) {
-                    sendMessage();
-                }
-            }
-        });
-
-        document.getElementById('chat-input-refine').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.ctrlKey && !e.shiftKey) {
-                e.preventDefault();
-                if (!e.target.disabled) {
-                    sendMessageRefine();
-                }
-            }
-        });
-    });
-</script>
-
-<div class="embed-container" style="text-align: center; margin: 30px auto;">
-    <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-</div>
-
-<div style="background: #e3f2fd; padding: 20px; border-left: 4px solid #2563eb; border-radius: 6px; margin-top: 30px; text-align: center;">
-    <h3 style="color: #1e40af; font-size: 1.2em; margin-bottom: 12px;">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>Privacy & How It Works
-    </h3>
-    <p style="margin-bottom: 15px;">This tool downloads an AI model to your browser on first use. After that, everything runs locally—no internet required, complete privacy. The AI analyzes your examples and helps you craft the perfect prompt.</p>
-    <p><strong>Performance:</strong> Expect 10-30 tokens/second on most laptops, faster with dedicated GPUs. First download takes 5-15 minutes, then it's cached forever.</p>
-</div>
+    // =
