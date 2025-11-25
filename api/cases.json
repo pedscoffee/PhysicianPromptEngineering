@@ -1,8 +1,0 @@
----
-layout: null
-permalink: /api/cases.json
----
-{
-    { site.data.synthetic_cases | jsonify
-    }
-}
