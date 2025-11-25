@@ -13,7 +13,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
     </p>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
-      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Quick Start A&P Prompt Builder</a>
+      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Read Best Practices</a>
     </div>
   </div>
 </div>
@@ -246,6 +246,143 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Comprehensive Tools Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center mb-8">Explore Our Tools</h2>
+    
+    <!-- Documentation Tools -->
+    <h3 class="mb-4 text-primary">Documentation & Prompts</h3>
+    <div class="grid grid-cols-1 grid-cols-3 mb-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-manager">Prompt Manager</a></h4>
+          <p>Save, organize, and quickly access your favorite prompts.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-remix">Prompt Remix</a></h4>
+          <p>Combine multiple prompts into a single, cohesive workflow.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-assistant">AI Prompt Assistant</a></h4>
+          <p>Get AI help to write or improve your custom prompts.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-generator">Quick Start A&P Builder</a></h4>
+          <p>Rapidly build a structured Assessment & Plan prompt.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/workbench">Clinical AI Workbench</a></h4>
+          <p>Test your prompts safely with synthetic patient cases.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/dot-phrase-library">Dot Phrase Library</a></h4>
+          <p>A collection of smart phrases for common clinical scenarios.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Productivity Tools -->
+    <h3 class="mb-4 text-secondary">Productivity & Tracking</h3>
+    <div class="grid grid-cols-1 grid-cols-3 mb-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/clockwork-timebox">ClockWork TimeBox</a></h4>
+          <p>Visual timer and task manager for clinical sessions.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/clinic-visit-tracker">RVU Data Tracker</a></h4>
+          <p>Track your clinic volume and RVU production.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/qi-project-tracker">QI Project Tracker</a></h4>
+          <p>Manage Quality Improvement projects and milestones.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/pto-planner">Annual PTO Planner</a></h4>
+          <p>Visualize and plan your time off for the year.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/cme-tracker">CME & Budget Tracker</a></h4>
+          <p>Keep track of your Continuing Medical Education credits.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/reflect">Reflect</a></h4>
+          <p>A simple tool for daily clinical reflection and journaling.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/cpt-calculator">E&M Calculator</a></h4>
+          <p>Calculate E&M codes based on medical decision making.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc Pixel AI -->
+    <h3 class="mb-4 text-accent">Doc Pixel AI & Education</h3>
+    <div class="grid grid-cols-1 grid-cols-3">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/">Interactive Course</a></h4>
+          <p>Master prompt engineering with hands-on exercises.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/differential-diagnosis-game">DDx Challenge</a></h4>
+          <p>Test your diagnostic skills against AI.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/paper-librarian">Doc Pixel's Librarian</a></h4>
+          <p>Organize and summarize medical literature.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/cram-for-rounds">Cram for Rounds</a></h4>
+          <p>Quick clinical pearls and review topics.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/diagnosis-case-creator">Case Creator</a></h4>
+          <p>Generate synthetic clinical cases for teaching.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/git-master">Git Tutor</a></h4>
+          <p>Learn version control basics for medical projects.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
