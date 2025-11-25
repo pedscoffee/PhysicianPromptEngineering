@@ -657,20 +657,6 @@ description: Learn how to write effective medical prompts. Our definitive guide 
         <p class="subtitle">
           Have questions about the best practices above? Ask the AI tutor! Get personalized guidance on few-shot learning, prompt structure, clinical documentation, and more.
         </p>
-        <div class="hero-features">
-          <div class="hero-feature">
-            <span class="hero-feature-icon">💬</span>
-            <span class="hero-feature-label">Interactive Q&A</span>
-          </div>
-          <div class="hero-feature">
-            <span class="hero-feature-icon">🔒</span>
-            <span class="hero-feature-label">100% Private</span>
-          </div>
-          <div class="hero-feature">
-            <span class="hero-feature-icon">⚡</span>
-            <span class="hero-feature-label">Runs in Browser</span>
-          </div>
-        </div>
       </div>
 
       <!-- Status Panel -->
