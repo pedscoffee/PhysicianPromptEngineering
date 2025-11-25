@@ -325,3 +325,789 @@ symptomatic relief."</code></pre>
     </div>
   </div>
 </section>
+
+<!-- ============================================== -->
+<!-- PROMPT ENGINEERING TUTOR SECTION -->
+<!-- ============================================== -->
+
+<style>
+    /* Prompt Tutor Specific Styles */
+    .prompt-tutor-container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Hero Section */
+    .prompt-tutor-hero {
+        background: linear-gradient(135deg, var(--color-primary, #2563eb) 0%, var(--color-accent, #7c3aed) 100%);
+        color: white;
+        padding: 60px 40px;
+        border-radius: var(--radius-lg, 12px);
+        margin-bottom: 40px;
+        box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+        text-align: center;
+    }
+
+    .prompt-tutor-hero h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .prompt-tutor-hero .subtitle {
+        font-size: 1.2em;
+        opacity: 0.95;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto 30px auto;
+    }
+
+    .hero-features {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .hero-feature {
+        text-align: center;
+    }
+
+    .hero-feature-icon {
+        font-size: 2em;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .hero-feature-label {
+        font-size: 0.95em;
+        opacity: 0.9;
+    }
+
+    /* Status Panel */
+    .tutor-status-panel {
+        background: white;
+        border-radius: var(--radius-md, 8px);
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.1));
+        text-align: center;
+    }
+
+    .tutor-status-panel.loading {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    }
+
+    .tutor-status-panel.ready {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    }
+
+    .tutor-status-panel.error {
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    }
+
+    #tutor-status-message {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    #tutor-status-details {
+        font-size: 0.95em;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    .tutor-progress-bar {
+        width: 100%;
+        height: 8px;
+        background: rgba(0,0,0,0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 15px;
+        display: none;
+    }
+
+    .tutor-progress-bar.active {
+        display: block;
+    }
+
+    .tutor-progress-fill {
+        height: 100%;
+        background: var(--color-primary, #2563eb);
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+
+    /* Chat Interface */
+    .tutor-chat-container {
+        display: none;
+        background: white;
+        border-radius: var(--radius-lg, 12px);
+        box-shadow: var(--shadow-md, 0 2px 6px rgba(0,0,0,0.1));
+        overflow: hidden;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .tutor-chat-container.active {
+        display: block;
+    }
+
+    .tutor-chat-header {
+        background: linear-gradient(135deg, var(--color-primary, #2563eb) 0%, var(--color-accent, #7c3aed) 100%);
+        color: white;
+        padding: 20px 25px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .tutor-chat-header h3 {
+        margin: 0;
+        font-size: 1.3em;
+        color: white;
+    }
+
+    .tutor-chat-header svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .tutor-quick-questions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 15px 20px;
+        background: #f9fafb;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .tutor-quick-btn {
+        padding: 8px 14px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        font-size: 0.85em;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: #374151;
+    }
+
+    .tutor-quick-btn:hover:not(:disabled) {
+        background: var(--color-primary, #2563eb);
+        color: white;
+        border-color: var(--color-primary, #2563eb);
+    }
+
+    .tutor-quick-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .tutor-chat-messages {
+        height: 450px;
+        overflow-y: auto;
+        padding: 20px;
+        background: #fafafa;
+    }
+
+    .tutor-message {
+        margin-bottom: 20px;
+        animation: tutorFadeIn 0.3s ease;
+    }
+
+    @keyframes tutorFadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tutor-message-label {
+        font-size: 0.8em;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #6b7280;
+    }
+
+    .tutor-message-bubble {
+        padding: 12px 16px;
+        border-radius: 12px;
+        line-height: 1.6;
+        max-width: 85%;
+    }
+
+    .tutor-message-user .tutor-message-bubble {
+        background: var(--color-primary, #2563eb);
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 4px;
+    }
+
+    .tutor-message-assistant .tutor-message-bubble {
+        background: white;
+        color: #333;
+        border: 1px solid #e5e7eb;
+        border-bottom-left-radius: 4px;
+    }
+
+    .tutor-typing-indicator {
+        display: none;
+        padding: 10px 20px;
+        color: #666;
+        font-style: italic;
+        font-size: 0.9em;
+    }
+
+    .tutor-typing-indicator.active {
+        display: block;
+    }
+
+    .tutor-typing-dots {
+        display: inline-flex;
+        gap: 4px;
+    }
+
+    .tutor-typing-dots span {
+        width: 6px;
+        height: 6px;
+        background: var(--color-primary, #2563eb);
+        border-radius: 50%;
+        animation: tutorBounce 1.4s infinite ease-in-out both;
+    }
+
+    .tutor-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .tutor-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes tutorBounce {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+    }
+
+    .tutor-chat-input-area {
+        display: flex;
+        gap: 10px;
+        padding: 15px 20px;
+        background: white;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    #tutor-chat-input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 0.95em;
+        resize: none;
+        font-family: inherit;
+        transition: border-color 0.2s;
+    }
+
+    #tutor-chat-input:focus {
+        outline: none;
+        border-color: var(--color-primary, #2563eb);
+    }
+
+    #tutor-send-btn {
+        padding: 12px 24px;
+        background: var(--color-primary, #2563eb);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    #tutor-send-btn:hover:not(:disabled) {
+        background: var(--color-primary-dark, #1d4ed8);
+        transform: translateY(-1px);
+    }
+
+    #tutor-send-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .tutor-empty-chat {
+        text-align: center;
+        padding: 60px 20px;
+        color: #9ca3af;
+    }
+
+    .tutor-empty-chat svg {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 20px;
+        color: #d1d5db;
+    }
+
+    .tutor-empty-chat p {
+        margin-bottom: 8px;
+    }
+
+    /* Init Button */
+    .tutor-init-btn {
+        padding: 15px 35px;
+        background: var(--color-primary, #2563eb);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 20px;
+    }
+
+    .tutor-init-btn:hover:not(:disabled) {
+        background: var(--color-primary-dark, #1d4ed8);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .tutor-init-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Code styling in chat */
+    .tutor-message-bubble code {
+        background: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+        color: #e11d48;
+    }
+
+    .tutor-message-bubble pre {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 10px 0;
+        font-size: 0.85em;
+    }
+
+    .tutor-message-bubble pre code {
+        background: none;
+        color: inherit;
+        padding: 0;
+    }
+
+    .tutor-message-bubble ul, .tutor-message-bubble ol {
+        margin: 10px 0;
+        padding-left: 25px;
+    }
+
+    .tutor-message-bubble li {
+        margin-bottom: 5px;
+    }
+
+    .tutor-message-bubble strong {
+        color: var(--color-primary, #2563eb);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .prompt-tutor-hero h2 {
+            font-size: 1.8em;
+        }
+
+        .prompt-tutor-hero .subtitle {
+            font-size: 1em;
+        }
+
+        .hero-features {
+            gap: 20px;
+        }
+
+        .tutor-quick-questions {
+            flex-direction: column;
+        }
+
+        .tutor-chat-messages {
+            height: 350px;
+        }
+
+        .tutor-chat-input-area {
+            flex-direction: column;
+        }
+
+        #tutor-send-btn {
+            width: 100%;
+        }
+    }
+</style>
+
+<section class="section">
+  <div class="container">
+    <div class="prompt-tutor-container">
+      
+      <!-- Tutor Hero -->
+      <div class="prompt-tutor-hero">
+        <h2>🤖 Prompt Engineering Tutor</h2>
+        <p class="subtitle">
+          Have questions about the best practices above? Ask the AI tutor! Get personalized guidance on few-shot learning, prompt structure, clinical documentation, and more.
+        </p>
+        <div class="hero-features">
+          <div class="hero-feature">
+            <span class="hero-feature-icon">💬</span>
+            <span class="hero-feature-label">Interactive Q&A</span>
+          </div>
+          <div class="hero-feature">
+            <span class="hero-feature-icon">🔒</span>
+            <span class="hero-feature-label">100% Private</span>
+          </div>
+          <div class="hero-feature">
+            <span class="hero-feature-icon">⚡</span>
+            <span class="hero-feature-label">Runs in Browser</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Panel -->
+      <div id="tutor-status-panel" class="tutor-status-panel">
+        <div id="tutor-status-message">Click below to initialize the AI Tutor</div>
+        <div id="tutor-status-details">The AI downloads to your browser once (~870MB), then loads instantly on future visits. Requires Chrome/Edge 113+ with WebGPU.</div>
+        <div id="tutor-progress-bar" class="tutor-progress-bar">
+          <div id="tutor-progress-fill" class="tutor-progress-fill"></div>
+        </div>
+        <button id="tutor-init-btn" class="tutor-init-btn" onclick="initializePromptTutor()">
+          Initialize AI Tutor
+        </button>
+      </div>
+
+      <!-- Chat Interface -->
+      <div id="tutor-chat-container" class="tutor-chat-container">
+        <div class="tutor-chat-header">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+          </svg>
+          <h3>Prompt Engineering Tutor</h3>
+        </div>
+
+        <div class="tutor-quick-questions">
+          <button class="tutor-quick-btn" onclick="askTutorQuestion('What are few-shot examples and how do I use them?')">
+            Few-shot examples?
+          </button>
+          <button class="tutor-quick-btn" onclick="askTutorQuestion('How do I make my prompts more concise?')">
+            Make prompts concise
+          </button>
+          <button class="tutor-quick-btn" onclick="askTutorQuestion('Explain modular prompt architecture')">
+            Modular prompts
+          </button>
+          <button class="tutor-quick-btn" onclick="askTutorQuestion('What makes a good task statement?')">
+            Task statements
+          </button>
+          <button class="tutor-quick-btn" onclick="askTutorQuestion('How do I write prompts for clinical documentation?')">
+            Clinical documentation
+          </button>
+        </div>
+
+        <div id="tutor-chat-messages" class="tutor-chat-messages">
+          <div class="tutor-empty-chat">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+            </svg>
+            <p style="font-size: 1.1em; font-weight: 500;">Ask me about prompt engineering!</p>
+            <p style="font-size: 0.9em;">Click a quick question above or type your own below.</p>
+          </div>
+        </div>
+
+        <div class="tutor-typing-indicator" id="tutor-typing-indicator">
+          <span class="tutor-typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          AI is thinking...
+        </div>
+
+        <div class="tutor-chat-input-area">
+          <textarea
+            id="tutor-chat-input"
+            rows="2"
+            placeholder="Ask about prompt engineering, few-shot learning, clinical prompts..."
+            aria-label="Chat message input"
+          ></textarea>
+          <button id="tutor-send-btn" onclick="sendTutorMessage()">
+            Send
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script type="module">
+    import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
+
+    // =====================================================
+    // STATE
+    // =====================================================
+    let promptTutorEngine = null;
+    let tutorChatHistory = [];
+
+    const PROMPT_TUTOR_SYSTEM = `You are a friendly and expert prompt engineering tutor, specializing in clinical and medical documentation.
+
+Your knowledge base includes these core principles:
+1. **Examples > Instructions**: Use 3-5 few-shot examples instead of lengthy explanations. LLMs learn patterns better through demonstration.
+2. **Brevity = Quality**: Concise outputs are easier to review, less error-prone, and sound more natural.
+3. **One Prompt, One Purpose**: Modular prompts outperform multi-function ones. Chain specialized prompts together.
+
+Key techniques you teach:
+- Few-shot learning: Providing example input-output pairs
+- Task statement optimization: Starting with clear, action-oriented instructions
+- Conditional logic: Using triggers (like ICD-10 codes) for contextual content
+- Format hierarchy: Examples > Task statement > Explicit rules
+- Clinical applications: A&P formatting, billing documentation, patient instructions
+
+Your teaching style:
+- Use simple, clear language
+- Provide concrete examples when explaining concepts
+- Be encouraging and supportive
+- Give practical, actionable advice
+- Keep responses focused and concise (2-3 paragraphs max)
+- Use bullet points sparingly for key takeaways
+
+When asked about clinical prompts, remember:
+- Physicians need fast, scannable outputs
+- Medical abbreviations are appropriate
+- Brief documentation reduces errors
+- Always emphasize physician review of AI output
+
+You help physicians and healthcare professionals write better prompts for AI-assisted documentation and clinical workflows.`;
+
+    // =====================================================
+    // AI INITIALIZATION
+    // =====================================================
+    window.initializePromptTutor = async function() {
+        const statusPanel = document.getElementById('tutor-status-panel');
+        const statusMessage = document.getElementById('tutor-status-message');
+        const statusDetails = document.getElementById('tutor-status-details');
+        const progressBar = document.getElementById('tutor-progress-bar');
+        const progressFill = document.getElementById('tutor-progress-fill');
+        const initBtn = document.getElementById('tutor-init-btn');
+
+        statusPanel.className = 'tutor-status-panel loading';
+        statusMessage.textContent = 'Loading AI Tutor...';
+        statusDetails.textContent = 'This may take 5-15 minutes on first use. The model is cached for instant loading next time.';
+        progressBar.classList.add('active');
+        initBtn.disabled = true;
+
+        try {
+            promptTutorEngine = await CreateMLCEngine(
+                "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+                {
+                    initProgressCallback: (progress) => {
+                        const percent = (progress.progress * 100).toFixed(1);
+                        progressFill.style.width = `${percent}%`;
+                        statusMessage.textContent = `Loading: ${percent}%`;
+                        statusDetails.textContent = progress.text;
+                    }
+                }
+            );
+
+            statusPanel.className = 'tutor-status-panel ready';
+            statusMessage.textContent = 'AI Tutor Ready! 🎉';
+            statusDetails.textContent = 'Start asking questions about prompt engineering!';
+            progressBar.classList.remove('active');
+
+            setTimeout(() => {
+                statusPanel.style.display = 'none';
+                document.getElementById('tutor-chat-container').classList.add('active');
+                
+                // Send welcome message
+                addTutorMessage('assistant', "Hello! I'm your prompt engineering tutor. I can help you understand few-shot learning, modular prompt design, clinical documentation prompts, and more. What would you like to learn about?");
+            }, 1000);
+
+        } catch (error) {
+            statusPanel.className = 'tutor-status-panel error';
+            statusMessage.textContent = 'Failed to load AI tutor';
+            statusDetails.innerHTML = `
+                Error: ${error.message}
+                <br><br>
+                <strong>Requirements:</strong> Chrome/Edge 113+ on desktop with WebGPU support.
+                <br>Make sure you have sufficient memory (~2GB free).
+            `;
+            console.error('AI initialization error:', error);
+            initBtn.disabled = false;
+            initBtn.textContent = 'Retry';
+        }
+    };
+
+    // =====================================================
+    // CHAT FUNCTIONS
+    // =====================================================
+    window.sendTutorMessage = async function() {
+        const input = document.getElementById('tutor-chat-input');
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        input.value = '';
+        await processTutorMessage(message);
+    };
+
+    window.askTutorQuestion = async function(question) {
+        await processTutorMessage(question);
+    };
+
+    async function processTutorMessage(userMessage) {
+        if (!promptTutorEngine) {
+            alert('AI tutor is not initialized yet. Please wait for it to load.');
+            return;
+        }
+
+        // Disable inputs
+        document.getElementById('tutor-chat-input').disabled = true;
+        document.getElementById('tutor-send-btn').disabled = true;
+        document.querySelectorAll('.tutor-quick-btn').forEach(btn => btn.disabled = true);
+
+        // Add user message
+        addTutorMessage('user', userMessage);
+
+        // Show typing indicator
+        document.getElementById('tutor-typing-indicator').classList.add('active');
+
+        try {
+            // Build messages array with history
+            const messages = [
+                { role: 'system', content: PROMPT_TUTOR_SYSTEM },
+                ...tutorChatHistory.slice(-8), // Keep last 8 messages for context
+                { role: 'user', content: userMessage }
+            ];
+
+            // Get AI response with streaming
+            const response = await promptTutorEngine.chat.completions.create({
+                messages: messages,
+                temperature: 0.7,
+                max_tokens: 500,
+                stream: true
+            });
+
+            document.getElementById('tutor-typing-indicator').classList.remove('active');
+
+            // Create message bubble for streaming
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'tutor-message tutor-message-assistant';
+            messageDiv.innerHTML = `
+                <div class="tutor-message-label">AI Tutor</div>
+                <div class="tutor-message-bubble" id="tutor-streaming-bubble"></div>
+            `;
+            document.getElementById('tutor-chat-messages').appendChild(messageDiv);
+
+            let fullResponse = '';
+            const streamingBubble = document.getElementById('tutor-streaming-bubble');
+
+            for await (const chunk of response) {
+                const delta = chunk.choices[0]?.delta?.content || '';
+                fullResponse += delta;
+                streamingBubble.innerHTML = renderTutorMarkdown(fullResponse);
+                scrollTutorToBottom();
+            }
+
+            streamingBubble.id = '';
+
+            // Update chat history
+            tutorChatHistory.push(
+                { role: 'user', content: userMessage },
+                { role: 'assistant', content: fullResponse }
+            );
+
+        } catch (error) {
+            document.getElementById('tutor-typing-indicator').classList.remove('active');
+            addTutorMessage('assistant', 'Sorry, I encountered an error. Please try again.');
+            console.error('Chat error:', error);
+        }
+
+        // Re-enable inputs
+        document.getElementById('tutor-chat-input').disabled = false;
+        document.getElementById('tutor-send-btn').disabled = false;
+        document.querySelectorAll('.tutor-quick-btn').forEach(btn => btn.disabled = false);
+        document.getElementById('tutor-chat-input').focus();
+    }
+
+    function addTutorMessage(role, content) {
+        const messagesDiv = document.getElementById('tutor-chat-messages');
+        const emptyChat = messagesDiv.querySelector('.tutor-empty-chat');
+        if (emptyChat) emptyChat.remove();
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `tutor-message tutor-message-${role}`;
+
+        const label = role === 'user' ? 'You' : 'AI Tutor';
+        const formattedContent = role === 'assistant' ? renderTutorMarkdown(content) : escapeHtml(content);
+
+        messageDiv.innerHTML = `
+            <div class="tutor-message-label">${label}</div>
+            <div class="tutor-message-bubble">${formattedContent}</div>
+        `;
+
+        messagesDiv.appendChild(messageDiv);
+        scrollTutorToBottom();
+    }
+
+    function scrollTutorToBottom() {
+        const messagesDiv = document.getElementById('tutor-chat-messages');
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    // =====================================================
+    // UTILITIES
+    // =====================================================
+    function renderTutorMarkdown(text) {
+        let html = text;
+
+        // Code blocks
+        html = html.replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>');
+        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+        // Bold and italic
+        html = html.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/\*([^\*]+)\*/g, '<em>$1</em>');
+
+        // Headers
+        html = html.replace(/^### (.+)$/gm, '<h4 style="margin: 15px 0 10px 0; font-size: 1em;">$1</h4>');
+        html = html.replace(/^## (.+)$/gm, '<h3 style="margin: 15px 0 10px 0; font-size: 1.1em;">$1</h3>');
+
+        // Lists
+        html = html.replace(/^[\-\*] (.+)$/gm, '<li>$1</li>');
+        html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+
+        // Numbered lists
+        html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+
+        // Line breaks
+        html = html.replace(/\n\n/g, '<br><br>');
+        html = html.replace(/\n/g, '<br>');
+
+        return html;
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Enter to send (Shift+Enter for new line)
+    document.addEventListener('DOMContentLoaded', () => {
+        const textarea = document.getElementById('tutor-chat-input');
+        if (textarea) {
+            textarea.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendTutorMessage();
+                }
+            });
+        }
+    });
+</script>
