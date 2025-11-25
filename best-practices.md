@@ -70,6 +70,18 @@ description: Learn how to write effective medical prompts. Our definitive guide 
       </div>
 
     </div>
+
+    <!-- AI Tutor Callout -->
+    <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 1.25rem 1.5rem; border-radius: var(--radius-lg, 12px); margin-top: 2rem; display: flex; align-items: center; gap: 15px; border-left: 4px solid #059669;">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #047857; flex-shrink: 0;">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+      </svg>
+      <div style="flex: 1;">
+        <strong style="color: #065f46; font-size: 1.05em;">Have questions? Ask the AI Tutor!</strong>
+        <p style="margin: 0.25rem 0 0 0; color: #047857; font-size: 0.95em;">Get personalized guidance on these principles and more from our interactive AI Prompt Engineering Tutor below.</p>
+      </div>
+      <a href="#prompt-tutor" style="background: #059669; color: white; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.2s;" onmouseover="this.style.background='#047857'" onmouseout="this.style.background='#059669'">Jump to Tutor ↓</a>
+    </div>
   </div>
 </section>
 
@@ -200,168 +212,51 @@ description: Learn how to write effective medical prompts. Our definitive guide 
   </div>
 </section>
 
-<!-- Advanced Techniques -->
-<section class="section">
-  <div class="container">
-    <div style="max-width: 900px; margin: 0 auto;">
-      <h2 class="mb-8">Advanced Techniques</h2>
-
-      <div class="grid grid-cols-1 grid-cols-2">
-
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Task Statement Optimization</h3>
-          </div>
-          <div class="card-body">
-            <p>Begin every prompt with a clear, action-oriented instruction:</p>
-            <p class="mt-4"><span class="badge badge-success">Good</span></p>
-            <p class="text-sm">"Convert the following transcript into a problem-based assessment and plan"</p>
-            <p class="mt-4"><span style="background: #fee2e2; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">Avoid</span></p>
-            <p class="text-sm">"You are a physician who needs to write notes"</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Conditional Logic Implementation</h3>
-          </div>
-          <div class="card-body">
-            <p>Use ICD-10 codes as triggers for boilerplate text:</p>
-            <pre class="mt-4"><code>If diagnosis includes J06.9, add:
-"Supportive care discussed
-including rest, fluids, and
-symptomatic relief."</code></pre>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="card mt-6">
-        <div class="card-header">
-          <h3 class="card-title">Format Rules Hierarchy</h3>
-        </div>
-        <div class="card-body">
-          <ol>
-            <li><strong>Few-shot examples</strong> (highest priority)</li>
-            <li><strong>Task statement</strong></li>
-            <li><strong>Explicit formatting rules</strong> (lowest priority, use sparingly)</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Safety and Compliance -->
-<section class="section bg-tertiary">
-  <div class="container">
-    <div style="max-width: 900px; margin: 0 auto;">
-      <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
-        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
-
-        <h3 class="mb-4">Critical Reminders</h3>
-        <ul>
-          <li><strong>Always review</strong> AI output before finalizing</li>
-          <li><strong>Maintain responsibility</strong> for clinical accuracy</li>
-          <li><strong>Document within</strong> approved institutional tools only</li>
-          <li><strong>Expect output to be helpful</strong>, but also expect errors</li>
-        </ul>
-
-        <h3 class="mt-6 mb-4">Quality Assurance Checklist</h3>
-        <ul style="list-style: none; padding-left: 0;">
-          <li>☐ Factual accuracy verified</li>
-          <li>☐ Medications and dosages confirmed</li>
-          <li>☐ Follow-up instructions appropriate</li>
-          <li>☐ Billing documentation sufficient</li>
-          <li>☐ No hallucinated findings</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Getting Started -->
-<section class="section">
-  <div class="container">
-    <div style="max-width: 900px; margin: 0 auto;">
-      <h2 class="text-center mb-8">Getting Started</h2>
-
-      <div class="card">
-        <div class="card-body">
-          <ol style="line-height: var(--line-height-relaxed);">
-            <li><strong>Select one workflow</strong> (e.g., Assessment & Plan only)</li>
-            <li><strong>Gather 5 examples</strong> from your recent notes</li>
-            <li><strong>Create initial prompt</strong> using our template</li>
-            <li><strong>Test on 10 encounters</strong> before scaling</li>
-            <li><strong>Iterate based</strong> on specific failures</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Browse Prompt Library</a>
-        <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
-      </div>
-
-      <!-- Additional Resources -->
-      <div class="text-center mt-8 text-secondary">
-        <p><a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
-      </div>
-
-      <!-- Share Your Prompt CTA -->
-      <div style="background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin-top: 3rem;">
-        <h3 style="color: var(--color-primary); font-size: var(--font-size-xl); margin-bottom: var(--space-4); text-align: center;">Share Your Prompt</h3>
-        <p style="text-align: center; margin-bottom: var(--space-4);">
-          Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
-        </p>
-        <div style="text-align: center;">
-          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt</a>
-        </div>
-      </div>
-
-      <p class="text-sm text-secondary text-center mt-8">
-        <em>Reference: Adapted from Schulhoff, S. "The Prompt Report: A Systematic Survey of Prompting Techniques" (2024)</em>
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ============================================== -->
 <!-- PROMPT ENGINEERING TUTOR SECTION -->
 <!-- ============================================== -->
 
 <style>
-    /* Prompt Tutor Specific Styles */
+    /* Prompt Tutor Specific Styles - Green Theme */
     .prompt-tutor-container {
         max-width: 100%;
         margin: 0 auto;
         padding: 20px;
     }
 
-    /* Hero Section */
+    /* Hero Section - Green like ClockWork TimeBox */
     .prompt-tutor-hero {
-        background: linear-gradient(135deg, var(--color-primary, #2563eb) 0%, var(--color-accent, #7c3aed) 100%);
-        color: white;
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
         padding: 60px 40px;
         border-radius: var(--radius-lg, 12px);
         margin-bottom: 40px;
-        box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
         text-align: center;
     }
 
     .prompt-tutor-hero h2 {
         font-size: 2.5em;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         font-weight: 700;
-        color: white;
+        color: #065f46;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .prompt-tutor-hero h2 svg {
+        width: 48px;
+        height: 48px;
     }
 
     .prompt-tutor-hero .subtitle {
         font-size: 1.2em;
-        opacity: 0.95;
-        line-height: 1.8;
+        color: #047857;
+        margin-bottom: 20px;
         max-width: 800px;
-        margin: 0 auto 30px auto;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
     }
 
     .hero-features {
@@ -384,7 +279,8 @@ symptomatic relief."</code></pre>
 
     .hero-feature-label {
         font-size: 0.95em;
-        opacity: 0.9;
+        color: #047857;
+        font-weight: 500;
     }
 
     /* Status Panel */
@@ -398,7 +294,7 @@ symptomatic relief."</code></pre>
     }
 
     .tutor-status-panel.loading {
-        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
     }
 
     .tutor-status-panel.ready {
@@ -413,19 +309,19 @@ symptomatic relief."</code></pre>
         font-size: 1.2em;
         margin-bottom: 15px;
         font-weight: 600;
-        color: #333;
+        color: #065f46;
     }
 
     #tutor-status-details {
         font-size: 0.95em;
-        color: #666;
+        color: #047857;
         margin-top: 10px;
     }
 
     .tutor-progress-bar {
         width: 100%;
         height: 8px;
-        background: rgba(0,0,0,0.1);
+        background: rgba(255,255,255,0.5);
         border-radius: 4px;
         overflow: hidden;
         margin-top: 15px;
@@ -438,12 +334,12 @@ symptomatic relief."</code></pre>
 
     .tutor-progress-fill {
         height: 100%;
-        background: var(--color-primary, #2563eb);
+        background: #059669;
         width: 0%;
         transition: width 0.3s ease;
     }
 
-    /* Chat Interface */
+    /* Chat Interface - Green Theme */
     .tutor-chat-container {
         display: none;
         background: white;
@@ -459,8 +355,8 @@ symptomatic relief."</code></pre>
     }
 
     .tutor-chat-header {
-        background: linear-gradient(135deg, var(--color-primary, #2563eb) 0%, var(--color-accent, #7c3aed) 100%);
-        color: white;
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        color: #065f46;
         padding: 20px 25px;
         display: flex;
         align-items: center;
@@ -470,12 +366,13 @@ symptomatic relief."</code></pre>
     .tutor-chat-header h3 {
         margin: 0;
         font-size: 1.3em;
-        color: white;
+        color: #065f46;
     }
 
     .tutor-chat-header svg {
         width: 28px;
         height: 28px;
+        color: #047857;
     }
 
     .tutor-quick-questions {
@@ -483,25 +380,25 @@ symptomatic relief."</code></pre>
         flex-wrap: wrap;
         gap: 8px;
         padding: 15px 20px;
-        background: #f9fafb;
-        border-bottom: 1px solid #e5e7eb;
+        background: #f0fdf4;
+        border-bottom: 1px solid #a7f3d0;
     }
 
     .tutor-quick-btn {
         padding: 8px 14px;
         background: white;
-        border: 1px solid #e5e7eb;
+        border: 1px solid #a7f3d0;
         border-radius: 20px;
         font-size: 0.85em;
         cursor: pointer;
         transition: all 0.2s;
-        color: #374151;
+        color: #065f46;
     }
 
     .tutor-quick-btn:hover:not(:disabled) {
-        background: var(--color-primary, #2563eb);
+        background: #059669;
         color: white;
-        border-color: var(--color-primary, #2563eb);
+        border-color: #059669;
     }
 
     .tutor-quick-btn:disabled {
@@ -541,7 +438,7 @@ symptomatic relief."</code></pre>
     }
 
     .tutor-message-user .tutor-message-bubble {
-        background: var(--color-primary, #2563eb);
+        background: #059669;
         color: white;
         margin-left: auto;
         border-bottom-right-radius: 4px;
@@ -557,7 +454,7 @@ symptomatic relief."</code></pre>
     .tutor-typing-indicator {
         display: none;
         padding: 10px 20px;
-        color: #666;
+        color: #047857;
         font-style: italic;
         font-size: 0.9em;
     }
@@ -574,7 +471,7 @@ symptomatic relief."</code></pre>
     .tutor-typing-dots span {
         width: 6px;
         height: 6px;
-        background: var(--color-primary, #2563eb);
+        background: #059669;
         border-radius: 50%;
         animation: tutorBounce 1.4s infinite ease-in-out both;
     }
@@ -598,7 +495,7 @@ symptomatic relief."</code></pre>
     #tutor-chat-input {
         flex: 1;
         padding: 12px 15px;
-        border: 2px solid #e5e7eb;
+        border: 2px solid #a7f3d0;
         border-radius: 8px;
         font-size: 0.95em;
         resize: none;
@@ -608,12 +505,12 @@ symptomatic relief."</code></pre>
 
     #tutor-chat-input:focus {
         outline: none;
-        border-color: var(--color-primary, #2563eb);
+        border-color: #059669;
     }
 
     #tutor-send-btn {
         padding: 12px 24px;
-        background: var(--color-primary, #2563eb);
+        background: #059669;
         color: white;
         border: none;
         border-radius: 8px;
@@ -623,7 +520,7 @@ symptomatic relief."</code></pre>
     }
 
     #tutor-send-btn:hover:not(:disabled) {
-        background: var(--color-primary-dark, #1d4ed8);
+        background: #047857;
         transform: translateY(-1px);
     }
 
@@ -642,17 +539,17 @@ symptomatic relief."</code></pre>
         width: 64px;
         height: 64px;
         margin: 0 auto 20px;
-        color: #d1d5db;
+        color: #a7f3d0;
     }
 
     .tutor-empty-chat p {
         margin-bottom: 8px;
     }
 
-    /* Init Button */
+    /* Init Button - Green */
     .tutor-init-btn {
         padding: 15px 35px;
-        background: var(--color-primary, #2563eb);
+        background: #059669;
         color: white;
         border: none;
         border-radius: 8px;
@@ -664,9 +561,9 @@ symptomatic relief."</code></pre>
     }
 
     .tutor-init-btn:hover:not(:disabled) {
-        background: var(--color-primary-dark, #1d4ed8);
+        background: #047857;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
     }
 
     .tutor-init-btn:disabled {
@@ -676,12 +573,12 @@ symptomatic relief."</code></pre>
 
     /* Code styling in chat */
     .tutor-message-bubble code {
-        background: #f0f0f0;
+        background: #f0fdf4;
         padding: 2px 6px;
         border-radius: 4px;
         font-family: 'Monaco', 'Courier New', monospace;
         font-size: 0.9em;
-        color: #e11d48;
+        color: #047857;
     }
 
     .tutor-message-bubble pre {
@@ -710,7 +607,7 @@ symptomatic relief."</code></pre>
     }
 
     .tutor-message-bubble strong {
-        color: var(--color-primary, #2563eb);
+        color: #059669;
     }
 
     /* Responsive */
@@ -745,13 +642,18 @@ symptomatic relief."</code></pre>
     }
 </style>
 
-<section class="section">
+<section class="section" id="prompt-tutor">
   <div class="container">
     <div class="prompt-tutor-container">
       
-      <!-- Tutor Hero -->
+      <!-- Tutor Hero - Green Theme -->
       <div class="prompt-tutor-hero">
-        <h2>🤖 Prompt Engineering Tutor</h2>
+        <h2>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+          </svg>
+          Prompt Engineering Tutor
+        </h2>
         <p class="subtitle">
           Have questions about the best practices above? Ask the AI tutor! Get personalized guidance on few-shot learning, prompt structure, clinical documentation, and more.
         </p>
@@ -787,7 +689,7 @@ symptomatic relief."</code></pre>
       <div id="tutor-chat-container" class="tutor-chat-container">
         <div class="tutor-chat-header">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
           </svg>
           <h3>Prompt Engineering Tutor</h3>
         </div>
@@ -813,10 +715,10 @@ symptomatic relief."</code></pre>
         <div id="tutor-chat-messages" class="tutor-chat-messages">
           <div class="tutor-empty-chat">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
             </svg>
-            <p style="font-size: 1.1em; font-weight: 500;">Ask me about prompt engineering!</p>
-            <p style="font-size: 0.9em;">Click a quick question above or type your own below.</p>
+            <p style="font-size: 1.1em; font-weight: 500; color: #065f46;">Ask me about prompt engineering!</p>
+            <p style="font-size: 0.9em; color: #047857;">Click a quick question above or type your own below.</p>
           </div>
         </div>
 
@@ -931,12 +833,14 @@ You help physicians and healthcare professionals write better prompts for AI-ass
         } catch (error) {
             statusPanel.className = 'tutor-status-panel error';
             statusMessage.textContent = 'Failed to load AI tutor';
+            statusMessage.style.color = '#991b1b';
             statusDetails.innerHTML = `
                 Error: ${error.message}
                 <br><br>
                 <strong>Requirements:</strong> Chrome/Edge 113+ on desktop with WebGPU support.
                 <br>Make sure you have sufficient memory (~2GB free).
             `;
+            statusDetails.style.color = '#991b1b';
             console.error('AI initialization error:', error);
             initBtn.disabled = false;
             initBtn.textContent = 'Retry';
@@ -1111,3 +1015,129 @@ You help physicians and healthcare professionals write better prompts for AI-ass
         }
     });
 </script>
+
+<!-- Advanced Techniques -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="mb-8">Advanced Techniques</h2>
+
+      <div class="grid grid-cols-1 grid-cols-2">
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Task Statement Optimization</h3>
+          </div>
+          <div class="card-body">
+            <p>Begin every prompt with a clear, action-oriented instruction:</p>
+            <p class="mt-4"><span class="badge badge-success">Good</span></p>
+            <p class="text-sm">"Convert the following transcript into a problem-based assessment and plan"</p>
+            <p class="mt-4"><span style="background: #fee2e2; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">Avoid</span></p>
+            <p class="text-sm">"You are a physician who needs to write notes"</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Conditional Logic Implementation</h3>
+          </div>
+          <div class="card-body">
+            <p>Use ICD-10 codes as triggers for boilerplate text:</p>
+            <pre class="mt-4"><code>If diagnosis includes J06.9, add:
+"Supportive care discussed
+including rest, fluids, and
+symptomatic relief."</code></pre>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card mt-6">
+        <div class="card-header">
+          <h3 class="card-title">Format Rules Hierarchy</h3>
+        </div>
+        <div class="card-body">
+          <ol>
+            <li><strong>Few-shot examples</strong> (highest priority)</li>
+            <li><strong>Task statement</strong></li>
+            <li><strong>Explicit formatting rules</strong> (lowest priority, use sparingly)</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Safety and Compliance -->
+<section class="section bg-tertiary">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="padding: var(--space-6); background: var(--color-bg-primary); border-radius: var(--radius-lg); border: 2px solid var(--color-warning);">
+        <h2 style="color: var(--color-warning); margin-bottom: var(--space-6);">Safety and Compliance</h2>
+
+        <h3 class="mb-4">Critical Reminders</h3>
+        <ul>
+          <li><strong>Always review</strong> AI output before finalizing</li>
+          <li><strong>Maintain responsibility</strong> for clinical accuracy</li>
+          <li><strong>Document within</strong> approved institutional tools only</li>
+          <li><strong>Expect output to be helpful</strong>, but also expect errors</li>
+        </ul>
+
+        <h3 class="mt-6 mb-4">Quality Assurance Checklist</h3>
+        <ul style="list-style: none; padding-left: 0;">
+          <li>☐ Factual accuracy verified</li>
+          <li>☐ Medications and dosages confirmed</li>
+          <li>☐ Follow-up instructions appropriate</li>
+          <li>☐ Billing documentation sufficient</li>
+          <li>☐ No hallucinated findings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Getting Started -->
+<section class="section">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="text-center mb-8">Getting Started</h2>
+
+      <div class="card">
+        <div class="card-body">
+          <ol style="line-height: var(--line-height-relaxed);">
+            <li><strong>Select one workflow</strong> (e.g., Assessment & Plan only)</li>
+            <li><strong>Gather 5 examples</strong> from your recent notes</li>
+            <li><strong>Create initial prompt</strong> using our template</li>
+            <li><strong>Test on 10 encounters</strong> before scaling</li>
+            <li><strong>Iterate based</strong> on specific failures</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Browse Prompt Library</a>
+        <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg">Try Prompt Generator</a>
+      </div>
+
+      <!-- Additional Resources -->
+      <div class="text-center mt-8 text-secondary">
+        <p><a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
+      </div>
+
+      <!-- Share Your Prompt CTA -->
+      <div style="background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary); margin-top: 3rem;">
+        <h3 style="color: var(--color-primary); font-size: var(--font-size-xl); margin-bottom: var(--space-4); text-align: center;">Share Your Prompt</h3>
+        <p style="text-align: center; margin-bottom: var(--space-4);">
+          Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
+        </p>
+        <div style="text-align: center;">
+          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt</a>
+        </div>
+      </div>
+
+      <p class="text-sm text-secondary text-center mt-8">
+        <em>Reference: Adapted from Schulhoff, S. "The Prompt Report: A Systematic Survey of Prompting Techniques" (2024)</em>
+      </p>
+    </div>
+  </div>
+</section>
