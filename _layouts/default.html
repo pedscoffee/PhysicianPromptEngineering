@@ -8,14 +8,14 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
         {%- if page_paths -%}
         <nav class="site-nav">
           <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-          <label for="nav-trigger">
+          <label for="nav-trigger" aria-label="Toggle navigation">
             <span class="menu-icon">
               <svg viewBox="0 0 18 15" width="18px" height="15px">
                 <path
@@ -28,7 +28,7 @@
 
             <!-- Documentation & Prompts Dropdown -->
             <div class="dropdown">
-              <span class="page-link">Documentation & Prompts</span>
+              <button class="page-link" aria-expanded="false">Documentation & Prompts</button>
               <div class="dropdown-content">
                 <a href="{{ '/prompt-library' | relative_url }}"><strong>Prompt Library</strong></a>
                 <a href="{{ '/best-practices' | relative_url }}"><strong>Best Practices</strong></a>
@@ -46,7 +46,7 @@
 
             <!-- Productivity & Tools Dropdown -->
             <div class="dropdown">
-              <span class="page-link">Productivity & Tools</span>
+              <button class="page-link" aria-expanded="false">Productivity & Tools</button>
               <div class="dropdown-content">
                 <a href="{{ '/clockwork-timebox' | relative_url }}">ClockWork TimeBox</a>
                 <a href="{{ '/clinic-visit-tracker' | relative_url }}">RVU Data Tracker</a>
@@ -61,7 +61,7 @@
 
             <!-- Community Dropdown -->
             <div class="dropdown">
-              <span class="page-link">Community</span>
+              <button class="page-link" aria-expanded="false">Community</button>
               <div class="dropdown-content">
                 <a href="{{ '/blog' | relative_url }}">Blog</a>
                 <a href="{{ '/support#contribute' | relative_url }}">Contribute Prompts</a>
