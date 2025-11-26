@@ -11,7 +11,7 @@ layout: null
     },
   {% endfor %}
   {% for page in pages_with_titles %}
-    {% unless page.path contains '_archived' %}
+    {% unless page.name contains '_archived' %}
       {
         "title"    : "{{ page.title | escape }}",
         "url"      : "{{ site.baseurl }}{{ page.url }}",
