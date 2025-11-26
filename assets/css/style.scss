@@ -847,10 +847,24 @@ li {
   }
 }
 
-/* ----------------------------------------------------------------------------
-   DARK MODE OVERRIDES - Force header elements to respect dark mode
+/* Dark Mode Overrides - Force header elements to respect dark mode
    These rules override Minima theme's hardcoded colors
    ---------------------------------------------------------------------------- */
+
+/* Fix for mobile menu white box in dark mode */
+@media (prefers-color-scheme: dark) {
+  .menu-icon>svg path {
+    fill: var(--color-text-primary) !important;
+  }
+
+  .menu-icon>svg {
+    fill: var(--color-text-primary) !important;
+  }
+
+  label[for="nav-trigger"] {
+    background-color: transparent !important;
+  }
+}
 
 /* Accessibility: Button Reset for Dropdowns */
 button.page-link {
@@ -867,21 +881,6 @@ button.page-link {
   display: block;
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Fix for mobile menu white box in dark mode */
-@media (prefers-color-scheme: dark) {
-  .menu-icon>svg path {
-    fill: var(--color-text-primary) !important;
-  }
-
-  .menu-icon>svg {
-    fill: var(--color-text-primary) !important;
-  }
-
-  label[for="nav-trigger"] {
-    background-color: transparent !important;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
