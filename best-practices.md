@@ -1107,7 +1107,7 @@ symptomatic relief."</code></pre>
 
       <!-- Additional Resources -->
       <div class="text-center mt-8 text-secondary">
-        <p><a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/contributions" class="text-primary">Contributions page</a>.</p>
+        <p><a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>  Questions about setup or best practices? Ask in our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="text-primary">GitHub Discussions</a> or share your workflow on the <a href="{{ site.baseurl }}/support#contribute" class="text-primary">Contributions page</a>.</p>
       </div>
 
       <!-- Share Your Prompt CTA -->
@@ -1117,7 +1117,7 @@ symptomatic relief."</code></pre>
           Refined a prompt that consistently delivers quality output? Consider sharing it on the contributions page. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.
         </p>
         <div style="text-align: center;">
-          <a href="{{ site.baseurl }}/contributions" class="btn btn-primary">Contribute Your Prompt</a>
+          <a href="{{ site.baseurl }}/support#contribute" class="btn btn-primary">Contribute Your Prompt</a>
         </div>
       </div>
 

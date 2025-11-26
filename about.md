@@ -119,7 +119,7 @@ permalink: /about/
             <p>Refined a prompt that works well? Share it with the community to help colleagues save time.</p>
           </div>
           <div class="card-footer">
-            <a href="{{ site.baseurl }}/contributions" class="btn btn-sm btn-primary">Contribute</a>
+            <a href="{{ site.baseurl }}/support#contribute" class="btn btn-sm btn-primary">Contribute</a>
           </div>
         </div>
 
