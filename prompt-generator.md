@@ -287,7 +287,12 @@ permalink: /prompt-generator/
 <div class="container">
         <div class="hero" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 4rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
             <div class="container">
-                <h1 class="hero-title" style="color: #065f46; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Quick Start A&P Builder</h1>
+                <h1 class="hero-title" style="color: #065f46; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 48px; height: 48px; display: inline-block; vertical-align: middle; margin-right: 10px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                    </svg>
+                    Quick Start A&P Builder
+                </h1>
                 <p class="hero-subtitle" style="color: #047857; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Create customized prompts for formatting clinical assessment and plan documentation. This tool is for educational purposes only. Do not include real patient data or sensitive information while using this tool.</p>
             </div>
         </div>

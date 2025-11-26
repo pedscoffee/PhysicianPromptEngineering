@@ -691,7 +691,11 @@ permalink: /prompt-remix/
 
     <!-- Mobile Preview Toggle -->
     <button class="mobile-preview-toggle" id="mobile-preview-toggle">
-        📄 Show Preview & Actions
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 6px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+        Show Preview & Actions
     </button>
 
     <!-- Main Content -->
@@ -699,7 +703,12 @@ permalink: /prompt-remix/
         <!-- Editor Panel -->
         <div class="editor-panel">
             <div class="panel-header">
-                <span>📝 Editor</span>
+                <span style="display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                    </svg>
+                    Editor
+                </span>
                 <span id="section-count" style="font-weight: normal; color: var(--color-text-secondary); font-size: 0.9em;">0 sections</span>
             </div>
             <div class="editor-content" id="editor-content">
@@ -712,7 +721,12 @@ permalink: /prompt-remix/
         <!-- Preview Panel -->
         <div class="preview-panel" id="preview-panel">
             <div class="preview-header">
-                <span class="preview-header-title">📋 Live Preview</span>
+                <span class="preview-header-title" style="display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                    </svg>
+                    Live Preview
+                </span>
                 <span class="char-counter good" id="char-counter">0 / 5,000</span>
                 <button class="toolbar-btn mobile-close-preview" id="close-preview" style="margin-left: 10px;">✕ Close</button>
             </div>
@@ -752,7 +766,11 @@ permalink: /prompt-remix/
 
     <!-- Tip Box -->
     <div class="tip-box">
-        <div class="tip-box-icon">💡</div>
+        <div class="tip-box-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-11.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+            </svg>
+        </div>
         <div class="tip-box-content">
             <p><strong>Tip:</strong> Few-shot examples are the most powerful part of your prompt. Replace the defaults with 3-5 examples of YOUR ideal A&P format to teach the AI exactly how you like your notes. The examples section is highlighted in yellow for easy access.</p>
         </div>
