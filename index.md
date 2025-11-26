@@ -2,6 +2,12 @@
 layout: default
 image: /images/workflow-diagram.png
 description: Open-source clinical LLM prompts for physicians. Automate medical documentation, improve AI scribe output, and reduce burnout. Get started with our free prompt library.
+redirect_from:
+  - /cram-for-rounds/
+  - /diagnosis-case-creator/
+  - /differential-diagnosis-game/
+  - /paper-librarian/
+  - /ppe-ai/
 ---
 
 <!-- Hero Section -->

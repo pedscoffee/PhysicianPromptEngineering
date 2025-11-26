@@ -1,7 +1,6 @@
 ---
 layout: null
 ---
-{% assign pages_with_titles = site.pages | where_exp: "item", "item.title != nil" %}
 [
   {% for post in site.posts %}
     {
@@ -10,14 +9,14 @@ layout: null
       "content"  : "{{ post.content | strip_html | strip_newlines | truncate: 200 | escape }}"
     },
   {% endfor %}
-  {% for page in pages_with_titles %}
-    {% unless page.title == "Page Moved" or page.title == "Page Not Found" %}
+  {% for page in site.pages %}
+    {% if page.title %}
       {
         "title"    : "{{ page.title | escape }}",
         "url"      : "{{ site.baseurl }}{{ page.url }}",
         "content"  : "{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}"
       },
-    {% endunless %}
+    {% endif %}
   {% endfor %}
   {% for prompt in site.prompts %}
     {
