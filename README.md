@@ -140,13 +140,9 @@ If you use this project in your research or practice, please cite:
 }
 ```
 
-## Browser-Based AI Tools (Beta)
+### 🤖 Interactive Learning
 
-We've developed experimental browser-based tools demonstrating what's possible with client-side AI. These are educational prototypes—**not for clinical use**:
-
-- **Interactive Course**: Hands-on prompt engineering with AI feedback
-
-[Explore Browser AI Tools →](https://physicianpromptengineering.com/ppe-ai)
+[Try Our Interactive Course →](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)
 
 ## Support & Contact
 

@@ -342,47 +342,6 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
       </div>
     </div>
 
-    <!-- Doc Pixel AI -->
-    <h3 class="mb-4 text-accent">Doc Pixel AI & Education</h3>
-    <div class="grid grid-cols-1 grid-cols-3">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/">Interactive Course</a></h4>
-          <p>Master prompt engineering with hands-on exercises.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/differential-diagnosis-game">DDx Challenge</a></h4>
-          <p>Test your diagnostic skills against AI.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/paper-librarian">Doc Pixel's Librarian</a></h4>
-          <p>Organize and summarize medical literature.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/cram-for-rounds">Cram for Rounds</a></h4>
-          <p>Quick clinical pearls and review topics.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/diagnosis-case-creator">Case Creator</a></h4>
-          <p>Generate synthetic clinical cases for teaching.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/git-master">Git Tutor</a></h4>
-          <p>Learn version control basics for medical projects.</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 

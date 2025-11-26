@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -26,12 +26,14 @@
 
           <div class="trigger">
 
-            <!-- Documentation Dropdown -->
+            <!-- Documentation & Prompts Dropdown -->
             <div class="dropdown">
-              <span class="page-link">Documentation</span>
+              <span class="page-link">Documentation & Prompts</span>
               <div class="dropdown-content">
                 <a href="{{ '/prompt-library' | relative_url }}"><strong>Prompt Library</strong></a>
                 <a href="{{ '/best-practices' | relative_url }}"><strong>Best Practices</strong></a>
+                <a href="{{ '/courses/clinical-prompt-engineering/' | relative_url }}"><strong>Interactive
+                    Course</strong></a>
                 <hr style="margin: 5px 0; border: 0; border-top: 1px solid #eee;">
                 <a href="{{ '/prompt-manager' | relative_url }}">Prompt Manager</a>
                 <a href="{{ '/prompt-remix' | relative_url }}">Prompt Remix</a>
@@ -42,9 +44,9 @@
               </div>
             </div>
 
-            <!-- Productivity Dropdown -->
+            <!-- Productivity & Tools Dropdown -->
             <div class="dropdown">
-              <span class="page-link">Productivity</span>
+              <span class="page-link">Productivity & Tools</span>
               <div class="dropdown-content">
                 <a href="{{ '/clockwork-timebox' | relative_url }}">ClockWork TimeBox</a>
                 <a href="{{ '/clinic-visit-tracker' | relative_url }}">RVU Data Tracker</a>
@@ -53,19 +55,6 @@
                 <a href="{{ '/cme-tracker' | relative_url }}">CME & Budget Tracker</a>
                 <a href="{{ '/reflect' | relative_url }}">Reflect</a>
                 <a href="{{ '/cpt-calculator' | relative_url }}">E&M Calculator</a>
-              </div>
-            </div>
-
-            <!-- Doc Pixel AI Dropdown -->
-            <div class="dropdown">
-              <span class="page-link">Doc Pixel AI</span>
-              <div class="dropdown-content">
-                <a href="{{ '/ppe-ai' | relative_url }}">Overview</a>
-                <a href="{{ '/courses/clinical-prompt-engineering/' | relative_url }}">Interactive Course</a>
-                <a href="{{ '/differential-diagnosis-game' | relative_url }}">Doc Pixel's DDX Challenge</a>
-                <a href="{{ '/paper-librarian' | relative_url }}">Doc Pixel's Librarian</a>
-                <a href="{{ '/cram-for-rounds' | relative_url }}">Doc Pixel's Cram for Rounds</a>
-                <a href="{{ '/diagnosis-case-creator' | relative_url }}">Doc Pixel DDx Case Creator</a>
                 <a href="{{ '/git-master' | relative_url }}">Git Tutor</a>
               </div>
             </div>
