@@ -2481,36 +2481,3 @@ button:disabled,
     margin: var(--space-4);
   }
 }
-/* ============================================================================
-   ACCESSIBILITY & FIXES
-   ============================================================================ */
-/* Accessibility: Button Reset for Dropdowns */
-button.page-link {
-  background: none;
-  border: none;
-  font: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  color: var(--color-text-primary);
-}
-/* Accessibility: Focus-within for Dropdowns */
-.dropdown:focus-within .dropdown-content {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-/* Fix for mobile menu white box in dark mode */
-@media (prefers-color-scheme: dark) {
-  .menu-icon > svg path { 
-    fill: var(--color-text-primary) !important; 
-  }
-  
-  .menu-icon > svg {
-    fill: var(--color-text-primary) !important;
-  }
-  
-  label[for="nav-trigger"] {
-    background-color: transparent !important;
-  }
-}
