@@ -2,6 +2,7 @@
 layout: null
 ---
 {% assign pages_with_titles = site.pages | where_exp: "item", "item.title != nil" %}
+{% assign active_pages = pages_with_titles | where_exp: "item", "item.path contains '_archived' == false" %}
 [
   {% for post in site.posts %}
     {
@@ -10,7 +11,7 @@ layout: null
       "content"  : "{{ post.content | strip_html | strip_newlines | truncate: 200 | escape }}"
     },
   {% endfor %}
-  {% for page in pages_with_titles %}
+  {% for page in active_pages %}
     {
       "title"    : "{{ page.title | escape }}",
       "url"      : "{{ site.baseurl }}{{ page.url }}",
