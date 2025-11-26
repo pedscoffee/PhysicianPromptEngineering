@@ -2,7 +2,6 @@
 layout: null
 ---
 {% assign pages_with_titles = site.pages | where_exp: "item", "item.title != nil" %}
-{% assign active_pages = pages_with_titles | where_exp: "item", "item.path contains '_archived' == false" %}
 [
   {% for post in site.posts %}
     {
@@ -11,12 +10,14 @@ layout: null
       "content"  : "{{ post.content | strip_html | strip_newlines | truncate: 200 | escape }}"
     },
   {% endfor %}
-  {% for page in active_pages %}
-    {
-      "title"    : "{{ page.title | escape }}",
-      "url"      : "{{ site.baseurl }}{{ page.url }}",
-      "content"  : "{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}"
-    },
+  {% for page in pages_with_titles %}
+    {% unless page.path contains '_archived' %}
+      {
+        "title"    : "{{ page.title | escape }}",
+        "url"      : "{{ site.baseurl }}{{ page.url }}",
+        "content"  : "{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}"
+      },
+    {% endunless %}
   {% endfor %}
   {% for prompt in site.prompts %}
     {
