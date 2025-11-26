@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -39,7 +39,7 @@
                 <a href="{{ '/prompt-remix' | relative_url }}">Prompt Remix</a>
                 <a href="{{ '/prompt-assistant' | relative_url }}">AI Prompt Assistant</a>
                 <a href="{{ '/prompt-generator' | relative_url }}">Quick Start A&P Builder</a>
-                <a href="{{ '/workbench' | relative_url }}">Clinical AI Workbench</a>
+
                 <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>
               </div>
             </div>

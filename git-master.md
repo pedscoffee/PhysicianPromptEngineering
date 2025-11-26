@@ -18,8 +18,8 @@ permalink: /git-master/
 
     /* Hero Section - Using site color variables */
     .git-tutor-hero {
-        background: linear-gradient(135deg, var(--color-primary, #2563eb) 0%, var(--color-accent, #7c3aed) 100%);
-        color: white;
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        color: #065f46;
         padding: 60px 40px;
         border-radius: var(--radius-lg, 12px);
         margin-bottom: 40px;
@@ -31,7 +31,7 @@ permalink: /git-master/
         font-size: 2.8em;
         margin-bottom: 20px;
         font-weight: 700;
-        color: white;
+        color: #065f46;
     }
 
     .git-tutor-hero .subtitle {
@@ -730,20 +730,37 @@ permalink: /git-master/
 <div class="git-master-container">
     <!-- Hero Section -->
     <div class="git-tutor-hero">
-        <h1>🔀 Git Tutor</h1>
-        <p class="subtitle">Master version control for managing AI prompts, collaborating on clinical tools, and contributing to open-source medical resources. Learn Git interactively with AI guidance.</p>
+        <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 48px; height: 48px; display: inline-block; vertical-align: middle; margin-right: 10px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+            </svg>
+            Git Tutor
+        </h1>
+        <p class="subtitle" style="color: #047857;">Master version control for managing AI prompts, collaborating on clinical tools, and contributing to open-source medical resources. Learn Git interactively with AI guidance.</p>
         <div class="hero-stats">
             <div class="hero-stat">
-                <span class="hero-stat-value">∞</span>
-                <span class="hero-stat-label">Public Repositories</span>
+                <span class="hero-stat-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 32px; height: 32px; margin: 0 auto 5px auto; display: block;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S12 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S12 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                    </svg>
+                </span>
+                <span class="hero-stat-label" style="color: #047857;">Public Repositories</span>
             </div>
             <div class="hero-stat">
-                <span class="hero-stat-value">🤖</span>
-                <span class="hero-stat-label">AI-Powered Guidance</span>
+                <span class="hero-stat-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 32px; height: 32px; margin: 0 auto 5px auto; display: block;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                </span>
+                <span class="hero-stat-label" style="color: #047857;">AI-Powered Guidance</span>
             </div>
             <div class="hero-stat">
-                <span class="hero-stat-value">100%</span>
-                <span class="hero-stat-label">Browser-Based</span>
+                <span class="hero-stat-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 32px; height: 32px; margin: 0 auto 5px auto; display: block;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                    </svg>
+                </span>
+                <span class="hero-stat-label" style="color: #047857;">Browser-Based</span>
             </div>
         </div>
     </div>

@@ -101,13 +101,13 @@ permalink: /blog/
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Prompt Generator</h3>
+          <h3 class="card-title">Prompt Assistant</h3>
         </div>
         <div class="card-body">
-          <p>Create custom A&P prompts tailored to your specific documentation style.</p>
+          <p>Create custom AI editor prompts for your clinical workflow using AI-powered metaprompting.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-sm btn-accent">Try Generator</a>
+          <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-sm btn-accent">Try Assistant</a>
         </div>
       </div>
 

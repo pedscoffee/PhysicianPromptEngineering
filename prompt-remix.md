@@ -17,7 +17,7 @@ permalink: /prompt-remix/
 }
 
 .remix-header {
-    background: linear-gradient(135deg, var(--color-primary-light, #dbeafe) 0%, var(--color-secondary-light, #e0f2fe) 100%);
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
     padding: 40px 30px;
     border-radius: var(--radius-lg, 8px);
     margin-bottom: 30px;
@@ -25,13 +25,13 @@ permalink: /prompt-remix/
 }
 
 .remix-header h1 {
-    color: var(--color-primary-dark, #1e5bb8);
+    color: #065f46;
     font-size: 2.2em;
     margin-bottom: 10px;
 }
 
 .remix-header p {
-    color: var(--color-text-secondary, #666);
+    color: #047857;
     font-size: 1.1em;
     max-width: 700px;
     margin: 0 auto;
@@ -656,7 +656,12 @@ permalink: /prompt-remix/
 <div class="remix-container">
     <!-- Header -->
     <div class="remix-header">
-        <h1>✏️ Prompt Remix</h1>
+        <h1>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 40px; height: 40px; display: inline-block; vertical-align: middle; margin-right: 10px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+            </svg>
+            Prompt Remix
+        </h1>
         <p>Start from a proven prompt, make it yours. Customize any library prompt with your own examples and preferences.</p>
     </div>
 

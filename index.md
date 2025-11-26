@@ -155,93 +155,42 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 </section>
 
 <!-- Interactive Course Feature -->
-<section class="section bg-gradient-primary text-shadow">
+<!-- Interactive Course Feature -->
+<section class="section" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
   <div class="container">
     <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-      <h2 style="color: white; font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">Learn Prompt Engineering Through Practice</h2>
-      <p style="font-size: var(--font-size-xl); opacity: 0.95; margin-bottom: var(--space-8);">
+      <h2 style="color: #065f46; font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">Learn Prompt Engineering Through Practice</h2>
+      <p style="font-size: var(--font-size-xl); color: #047857; margin-bottom: var(--space-8);">
         Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, get instant feedback from AI, and build skills through hands-on practice.
       </p>
 
-      <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem; margin-bottom: 3rem; text-align: left;">
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+      <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 3rem; text-align: left;">
+        <div style="background: rgba(255, 255, 255, 0.6); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
           <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: white;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #059669;">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
             </svg>
           </div>
-          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
-          <p style="opacity: 0.9; font-size: 0.95rem;">14 interactive exercises with real clinical scenarios. Write prompts, see outputs, iterate until you master each concept.</p>
+          <h3 style="color: #065f46; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
+          <p style="color: #064e3b; font-size: 0.95rem;">4 modules, 12 exercises, ~30 minutes. Write prompts, see outputs, iterate until you master each concept.</p>
         </div>
 
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+        <div style="background: rgba(255, 255, 255, 0.6); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
           <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: white;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-            </svg>
-          </div>
-          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">AI-Powered Feedback</h3>
-          <p style="opacity: 0.9; font-size: 0.95rem;">Get instant, specific feedback on your work. AI evaluates your prompts and suggests concrete improvements.</p>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
-          <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: white;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #059669;">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
             </svg>
           </div>
-          <h3 style="color: white; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Real Clinical Cases</h3>
-          <p style="opacity: 0.9; font-size: 0.95rem;">Practice with de-identified patient scenarios across multiple specialties. Learn safety, quality, and best practices.</p>
-        </div>
-      </div>
-
-      <div style="background: rgba(255, 255, 255, 0.15); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem; backdrop-filter: blur(10px);">
-        <h3 style="color: white; margin-bottom: 1rem; font-size: var(--font-size-xl);">Course Includes:</h3>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: left;">
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>5 comprehensive modules (6 hours total)</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Beginner to advanced techniques</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>10 clinical scenarios across specialties</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Build your personal prompt library</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Runs locally in your browser (Requires Chrome and a modern computer)</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 20px; height: 20px; color: #10b981; flex-shrink: 0;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-            </svg>
-            <span>Progress tracking & scoring</span>
-          </div>
+          <h3 style="color: #065f46; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Clinical Cases</h3>
+          <p style="color: #064e3b; font-size: 0.95rem;">Practice with de-identified patient scenarios across multiple specialties. Learn safety, quality, and best practices.</p>
         </div>
       </div>
 
       <div class="text-center">
-        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-lg shadow-lg" style="background: white; color: var(--color-primary); font-weight: 700;">
+        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-lg shadow-lg" style="background: #059669; color: white; font-weight: 700; border: none;">
           Start Free Interactive Course →
         </a>
-        <p class="mt-4 text-sm" style="opacity: 0.9;">
+        <p class="mt-4 text-sm" style="color: #065f46; opacity: 0.9;">
           No sign up required • Complete at your own pace • Immediately practical
         </p>
       </div>
@@ -266,7 +215,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
       <div class="card">
         <div class="card-body">
           <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-remix">Prompt Remix</a></h4>
-          <p>Combine multiple prompts into a single, cohesive workflow.</p>
+          <p>Start from a proven prompt, make it yours. Customize any library prompt with your own examples and preferences.</p>
         </div>
       </div>
       <div class="card">
@@ -281,12 +230,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
           <p>Rapidly build a structured Assessment & Plan prompt.</p>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/workbench">Clinical AI Workbench</a></h4>
-          <p>Test your prompts safely with synthetic patient cases.</p>
-        </div>
-      </div>
+
       <div class="card">
         <div class="card-body">
           <h4 class="card-title"><a href="{{ site.baseurl }}/dot-phrase-library">Dot Phrase Library</a></h4>
@@ -383,60 +327,7 @@ description: Open-source clinical LLM prompts for physicians. Automate medical d
 <!-- Newsletter Signup -->
 {%- include newsletter.html -%}
 
-<!-- FAQ Section with Progressive Disclosure -->
-<section class="section">
-  <div class="container">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h2 class="text-center mb-8">Frequently Asked Questions</h2>
 
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
-          <strong>What EMR systems are compatible?</strong>
-        </button>
-        <div class="accordion-content">
-          <p>These prompts work with any EMR featuring AI text generation capabilities such as Epic's "Generate Text with AI".</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
-          <strong>How much time can I realistically save?</strong>
-        </button>
-        <div class="accordion-content">
-          <p>Physicians report saving 2-5 minutes per routine encounter and up to 15 minutes on complex visits. Results vary by specialty and documentation requirements.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
-          <strong>Do I need programming experience?</strong>
-        </button>
-        <div class="accordion-content">
-          <p>No technical expertise required. If you can copy and paste text, you can implement these prompts immediately.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
-          <strong>Are these prompts specialty-specific?</strong>
-        </button>
-        <div class="accordion-content">
-          <p>The core framework applies to all specialties. The library includes templates you can customize with specialty-specific examples for optimal results.</p>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')" type="button">
-          <strong>How do I ensure compliance and safety?</strong>
-        </button>
-        <div class="accordion-content">
-          <p>Always use prompts within your institution's approved AI tools. Review all AI-generated content before signing. These prompts enhance efficiency while maintaining your clinical responsibility for accuracy.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- Clinical Responsibility Notice -->
 <section class="section bg-tertiary">

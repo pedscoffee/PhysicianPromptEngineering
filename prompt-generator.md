@@ -285,9 +285,11 @@ permalink: /prompt-generator/
     </style>
 
 <div class="container">
-        <div class="header">
-            <h1>Quick Start A&P Builder</h1>
-            <p>Create customized prompts for formatting clinical assessment and plan documentation. This tool is for educational purposes only.  Do not include real patient data or sensitive information while using this tool.</p>
+        <div class="hero" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 4rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
+            <div class="container">
+                <h1 class="hero-title" style="color: #065f46; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Quick Start A&P Builder</h1>
+                <p class="hero-subtitle" style="color: #047857; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Create customized prompts for formatting clinical assessment and plan documentation. This tool is for educational purposes only. Do not include real patient data or sensitive information while using this tool.</p>
+            </div>
         </div>
 
 <div class="main-layout">

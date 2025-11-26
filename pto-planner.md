@@ -98,6 +98,7 @@ description: Plan your work schedule, PTO, and CME for the entire year.
       font-size: 2.5em;
       margin-bottom: 15px;
       color: #065f46;
+      font-weight: 700;
   }
 
   .hero-subtitle {

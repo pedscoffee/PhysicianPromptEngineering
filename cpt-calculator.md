@@ -657,9 +657,11 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 </style>
 
 <div class="calculator-container">
-    <div class="page-header">
-        <h1>CPT E/M Code Calculator</h1>
-        <p class="page-subtitle">For Educational & Personal Use Only | Based on AMA Guidelines | Supports MDM and Time-Based Coding | <a href="{{ site.baseurl }}/disclaimer">Review our disclaimer</a></p>
+    <div class="hero" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 4rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
+        <div class="container">
+            <h1 class="hero-title" style="color: #065f46; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">CPT E/M Code Calculator</h1>
+            <p class="hero-subtitle" style="color: #047857; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">For Educational & Personal Use Only | Based on AMA Guidelines | Supports MDM and Time-Based Coding | <a href="{{ site.baseurl }}/disclaimer" style="color: #065f46; text-decoration: underline;">Review our disclaimer</a></p>
+        </div>
     </div>
 
     <div class="instructions-container">

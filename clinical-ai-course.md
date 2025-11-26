@@ -5,22 +5,24 @@ permalink: /courses/clinical-prompt-engineering/
 description: "Master the art of AI-assisted clinical documentation through hands-on practice and LLM-powered feedback"
 ---
 
-<div class="course-hero">
-  <h1>Clinical Prompt Engineering for Physicians</h1>
-  <p>Learn to leverage AI for better clinical documentation through interactive exercises with real-time feedback</p>
-
-  <div class="course-stats">
-    <div class="course-stat">
-      <span class="course-stat-value">4</span>
-      <span class="course-stat-label">Modules</span>
-    </div>
-    <div class="course-stat">
-      <span class="course-stat-value">12</span>
-      <span class="course-stat-label">Exercises</span>
-    </div>
-    <div class="course-stat">
-      <span class="course-stat-value">~5 hours</span>
-      <span class="course-stat-label">Total Time</span>
+<div class="hero">
+  <div class="container">
+    <h1 class="hero-title">Clinical Prompt Engineering for Physicians</h1>
+    <p class="hero-subtitle">Learn to leverage AI for better clinical documentation through interactive exercises with real-time feedback</p>
+  
+    <div class="course-stats">
+      <div class="course-stat">
+        <span class="course-stat-value">4</span>
+        <span class="course-stat-label">Modules</span>
+      </div>
+      <div class="course-stat">
+        <span class="course-stat-value">12</span>
+        <span class="course-stat-label">Exercises</span>
+      </div>
+      <div class="course-stat">
+        <span class="course-stat-value">~5 hours</span>
+        <span class="course-stat-label">Total Time</span>
+      </div>
     </div>
   </div>
 </div>
