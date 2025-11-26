@@ -1,14 +1,38 @@
 ---
 layout: null
 ---
-{% assign pages_with_titles = site.pages | where_exp: "item", "item.title != nil" %}
-{% assign all_docs = site.posts | concat: site.prompts | concat: pages_with_titles %}
+{% assign pages_with_titles = site.pages | where_exp: "item",
+  "item.title != nil" %
+}
 [
-  {% for doc in all_docs %}
+  {% for post in site.posts %
+  }
     {
-      "title"    : "{{ doc.title | escape }}",
-      "url"      : "{{ site.baseurl }}{{ doc.url }}",
-      "content"  : "{{ doc.content | strip_html | strip_newlines | truncate: 200 | escape }}"
-    }{% unless forloop.last %},{% endunless %}
-  {% endfor %}
+    "title": "{{ post.title | escape }}",
+    "url": "{{ site.baseurl }}{{ post.url }}",
+    "content": "{{ post.content | strip_html | strip_newlines | truncate: 200 | escape }}"
+  },
+  {% endfor %
+  }
+  {% for page in pages_with_titles %
+  }
+    {
+    "title": "{{ page.title | escape }}",
+    "url": "{{ site.baseurl }}{{ page.url }}",
+    "content": "{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}"
+  },
+  {% endfor %
+  }
+  {% for prompt in site.prompts %
+  }
+    {
+    "title": "{{ prompt.title | escape }}",
+    "url": "{{ site.baseurl }}/prompt-library#{{ prompt.title | slugify }}",
+    "content": "{{ prompt.content | strip_html | strip_newlines | truncate: 200 | escape }}"
+  }{% unless forloop.last %
+  },
+  {% endunless %
+  }
+  {% endfor %
+  }
 ]
