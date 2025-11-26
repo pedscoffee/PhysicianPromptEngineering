@@ -11,7 +11,7 @@ layout: null
     },
   {% endfor %}
   {% for page in pages_with_titles %}
-    {% unless page.name contains '_archived' %}
+    {% unless page.title == "Page Moved" or page.title == "Page Not Found" %}
       {
         "title"    : "{{ page.title | escape }}",
         "url"      : "{{ site.baseurl }}{{ page.url }}",
