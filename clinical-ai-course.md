@@ -20,7 +20,7 @@ description: "Master the art of AI-assisted clinical documentation through hands
         <span class="course-stat-label">Exercises</span>
       </div>
       <div class="course-stat">
-        <span class="course-stat-value">~5 hours</span>
+        <span class="course-stat-value">~30 minutes</span>
         <span class="course-stat-label">Total Time</span>
       </div>
     </div>
