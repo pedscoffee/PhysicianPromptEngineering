@@ -85,7 +85,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
 <!-- Newsletter -->
 <section class="section">
   <div class="container">
-    <h2 class="text-center mb-6">Get Notified of New Prompts</h2>
+
     <div class="embed-container">
       {% include newsletter.html %}
     </div>

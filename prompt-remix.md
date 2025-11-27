@@ -925,7 +925,7 @@ permalink: /prompt-remix/
 <!-- Newsletter -->
 <section class="section" style="margin-top: 60px;">
   <div class="container">
-    <h2 class="text-center mb-6">Get Notified of New Features</h2>
+
     <div class="embed-container">
       {% include newsletter.html %}
     </div>

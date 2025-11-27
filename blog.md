@@ -57,12 +57,7 @@ permalink: /blog/
 <!-- Newsletter Section -->
 <section class="section bg-secondary">
   <div class="container">
-    <div class="text-center mb-8">
-      <h2 class="mb-4">Subscribe for Updates</h2>
-      <p class="text-lg text-secondary">
-        Stay informed about new prompts, EMR integration tips, and clinical AI developments
-      </p>
-    </div>
+
     <div id="newsletter" class="embed-container">
       {% include newsletter.html %}
     </div>
