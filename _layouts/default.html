@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -94,18 +94,33 @@
 
   {%- include cookie-consent.html -%}
 
-  <!-- Simple Jekyll Search -->
-  <script src="{{ '/assets/js/simple-jekyll-search.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/simple-jekyll-search.min.js' | relative_url }}" defer></script>
   <script>
-    SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('results-container'),
-      json: '{{ "/search.json" | relative_url }}',
-      searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-      noResultsText: 'No results found',
-      limit: 10,
-      fuzzy: false
-    })
+    // Lazy load search - only initialize when user focuses on search input
+    window.addEventListener('DOMContentLoaded', function () {
+      var searchInput = document.getElementById('search-input');
+      var searchInitialized = false;
+
+      function initializeSearch() {
+        if (searchInitialized) return;
+        searchInitialized = true;
+
+        SimpleJekyllSearch({
+          searchInput: searchInput,
+          resultsContainer: document.getElementById('results-container'),
+          json: '{{ "/search.json" | relative_url }}',
+          searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+          noResultsText: 'No results found',
+          limit: 10,
+          fuzzy: false
+        });
+      }
+
+      // Initialize on first focus
+      if (searchInput) {
+        searchInput.addEventListener('focus', initializeSearch, { once: true });
+      }
+    });
   </script>
 
 </body>
