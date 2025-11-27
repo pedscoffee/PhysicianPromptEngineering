@@ -19,15 +19,7 @@ description: Learn how to write effective medical prompts. Our definitive guide 
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
-        <iframe
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-          src="https://www.youtube-nocookie.com/embed/haSZOP6fiFM?si=a7yZiRBuRdaB95Y9"
-          title="Prompt Engineering Tutorial"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+        {% include youtube-facade.html video_id="haSZOP6fiFM" title="Prompt Engineering Tutorial" %}
       </div>
     </div>
   </div>

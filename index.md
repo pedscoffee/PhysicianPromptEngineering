@@ -37,14 +37,7 @@ redirect_from:
     <!-- Video Demo -->
     <div class="content-centered-wide mt-8">
       <div class="video-container">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/-2ivdNTM7SY?si=ci0EitG8wKOxEp3e"
-          title="Clinical AI Documentation Workflow"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+        {% include youtube-facade.html video_id="-2ivdNTM7SY" title="Clinical AI Documentation Workflow" %}
       </div>
     </div>
   </div>

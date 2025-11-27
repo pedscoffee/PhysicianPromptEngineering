@@ -1,2 +1,16 @@
-<script async src="https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js"
-  data-form="bbb56cb2-b806-11f0-9ae9-71cfcd46639b"></script>
+<div id="newsletter-placeholder" style="min-height: 100px;"></div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        var script = document.createElement("script");
+        script.src = "https://eomail5.com/form/bbb56cb2-b806-11f0-9ae9-71cfcd46639b.js";
+        script.setAttribute("data-form", "bbb56cb2-b806-11f0-9ae9-71cfcd46639b");
+        script.async = true;
+        document.getElementById("newsletter-placeholder").appendChild(script);
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.getElementById("newsletter-placeholder"));
+  });
+</script>
