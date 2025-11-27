@@ -14,5 +14,5 @@ def extract_text(pdf_path):
     print(f"--- End of {pdf_path} ---\n")
 
 if __name__ == "__main__":
-    extract_text("PageSpeed Insights Desktop 11.27.25.pdf")
-    extract_text("PageSpeed Insights mobile 11.27.25.pdf")
+    extract_text("PageSpeed Insights Desktop.pdf")
+    extract_text("PageSpeed Insights Mobile.pdf")

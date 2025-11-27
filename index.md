@@ -48,7 +48,7 @@ redirect_from:
   <div class="container">
     <h2 class="text-center mb-8">How It Works</h2>
     <div class="content-centered-wide">
-      <img src="./images/workflow-diagram.png" alt="Workflow diagram" class="border-radius-lg shadow-lg" style="width: 100%; height: auto;">
+      {% include workflow-diagram.html %}
       <p class="text-center mt-8 text-lg">
         Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve fully automated, preference-matched documentation.
       </p>
