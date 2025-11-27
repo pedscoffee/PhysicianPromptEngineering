@@ -324,7 +324,13 @@ redirect_from:
 </section>
 
 <!-- Newsletter Signup -->
-{%- include newsletter.html -%}
+<section class="section">
+  <div class="container">
+    <div class="embed-container">
+      {%- include newsletter.html -%}
+    </div>
+  </div>
+</section>
 
 
 
