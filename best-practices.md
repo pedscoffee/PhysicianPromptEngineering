@@ -89,7 +89,7 @@ description: Learn how to write effective medical prompts. Our definitive guide 
 <section class="section">
   <div class="container">
     <div class="embed-container">
-      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+      {% include newsletter.html %}
     </div>
   </div>
 </section>

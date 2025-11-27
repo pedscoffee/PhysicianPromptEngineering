@@ -1160,7 +1160,7 @@ permalink: /prompt-manager/
 </script>
 
 <div class="embed-container" style="text-align: center; margin: 30px auto;">
-    <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    {% include newsletter.html %}
 </div>
 
 <div style="background: #f0fdf4; padding: 20px; border-left: 4px solid #059669; border-radius: 6px; margin-top: 30px; text-align: center;">

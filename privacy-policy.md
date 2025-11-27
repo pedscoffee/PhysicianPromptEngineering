@@ -40,7 +40,7 @@ permalink: /privacy-policy/
       <h4 style="margin-top: 20px; margin-bottom: 10px;">1.2 Information You Provide</h4>
       <p>We do not require you to create an account or provide personal information to access most features of our website. However, if you choose to:</p>
       <ul>
-        <li><strong>Subscribe to our newsletter:</strong> We collect your email address through Substack (third-party service)</li>
+        <li><strong>Subscribe to our newsletter:</strong> We collect your email address through Email Octopus (third-party service)</li>
         <li><strong>Contribute prompts via GitHub:</strong> Your GitHub username and any information you provide in contributions</li>
         <li><strong>Contact us:</strong> Any information you choose to provide in communications</li>
       </ul>
@@ -91,7 +91,7 @@ permalink: /privacy-policy/
       <ul>
         <li><strong>Google Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
         <li><strong>GitHub Pages:</strong> Hosting service - <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Privacy Policy</a></li>
-        <li><strong>Substack:</strong> Newsletter platform - <a href="https://substack.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <li><strong>Email Octopus:</strong> Newsletter platform - <a href="https://emailoctopus.com/legal/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
         <li><strong>YouTube:</strong> Video embeds (privacy-enhanced mode) - <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
       </ul>
 

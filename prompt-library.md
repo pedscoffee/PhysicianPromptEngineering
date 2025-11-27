@@ -87,7 +87,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   <div class="container">
     <h2 class="text-center mb-6">Get Notified of New Prompts</h2>
     <div class="embed-container">
-      <iframe src="https://pedscoffee.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+      {% include newsletter.html %}
     </div>
   </div>
 </section>
