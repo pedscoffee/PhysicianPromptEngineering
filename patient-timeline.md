@@ -313,6 +313,7 @@ permalink: /patient-timeline/
                             <option value="intervention">Intervention</option>
                             <option value="imaging">Imaging</option>
                             <option value="diagnosis">Diagnosis</option>
+                            <option value="course">Clinical Course</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -388,13 +389,16 @@ permalink: /patient-timeline/
 <script>
     let events = [];
     const categoryColors = {
-        symptom: '#ef4444',
-        lab: '#8b5cf6',
-        intervention: '#10b981',
-        imaging: '#f59e0b',
-        diagnosis: '#3b82f6',
-        other: '#6b7280'
+        symptom: '#ef4444',      // Red
+        lab: '#3b82f6',          // Blue
+        intervention: '#10b981', // Green
+        imaging: '#8b5cf6',      // Purple
+        diagnosis: '#f59e0b',    // Amber
+        course: '#6366f1',       // Indigo
+        other: '#6b7280'         // Gray
     };
+
+    const categories = ['symptom', 'lab', 'intervention', 'imaging', 'diagnosis', 'course', 'other'];
 
     // Handle form submission
     document.getElementById('eventForm').addEventListener('submit', function(e) {
@@ -792,7 +796,8 @@ permalink: /patient-timeline/
         
         Rules:
         - "day" must be an integer. Day 1 is admission or start of story.
-        - "category" must be one of: symptom, lab, intervention, imaging, diagnosis, other.
+        - "category" must be one of: symptom, lab, intervention, imaging, diagnosis, course, other.
+        - Use "course" for clinical progress (e.g., "improving", "worsening", "stable").
         - "description" should be concise (under 10 words).
         - Do not include any markdown formatting or explanations, JUST the JSON array.
         `;
