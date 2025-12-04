@@ -285,6 +285,29 @@ redirect_from:
       </div>
     </div>
 
+    <!-- Visualization Tools -->
+    <h3 class="mb-4 text-accent">Visualization Tools</h3>
+    <div class="grid grid-cols-1 grid-cols-3 mb-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/clinical-flowchart">Clinical Flowchart Generator</a></h4>
+          <p>Transform clinical logic into visual flowcharts using AI or manual editing. Perfect for treatment algorithms and decision trees.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/differential-mindmap">Differential Mind Map</a></h4>
+          <p>Generate organized mind maps for differential diagnoses. Visualize diagnostic thinking by system or category.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/mechanism-mapper">Pathophysiology Mechanism Mapper</a></h4>
+          <p>Create visual diagrams of disease mechanisms and pathophysiology pathways for educational purposes.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
