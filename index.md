@@ -267,6 +267,12 @@ redirect_from:
       </div>
       <div class="card">
         <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/trainee-goal-setter">Trainee Goal Setter</a></h4>
+          <p>Set rotation goals and get attending feedback.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
           <h4 class="card-title"><a href="{{ site.baseurl }}/pto-planner">Annual PTO Planner</a></h4>
           <p>Visualize and plan your time off for the year.</p>
         </div>
