@@ -106,6 +106,48 @@ permalink: /differential-mindmap/
         align-items: center;
         gap: 6px;
     }
+
+    .mode-toggle {
+        display: flex;
+        gap: 8px;
+        background: #f3f4f6;
+        padding: 4px;
+        border-radius: 8px;
+    }
+
+    .mode-btn {
+        background: transparent;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85em;
+        font-weight: 600;
+        color: #6b7280;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .mode-btn:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .mode-btn.active {
+        background: white;
+        color: #6b21a8;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .mode-panel {
+        animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 </style>
 
 <!-- Mermaid JS -->
@@ -140,18 +182,56 @@ permalink: /differential-mindmap/
     <div class="mindmap-container">
         <!-- Input Panel -->
         <div class="input-panel">
-            <h3 style="margin-bottom: 15px; color: #333;">Clinical Scenario</h3>
-            <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
-                Describe the patient's chief complaint and key findings.
-            </p>
-            <textarea id="inputLogic" placeholder="Example:
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="margin: 0; color: #333;">Input</h3>
+                <div class="mode-toggle">
+                    <button id="aiModeBtn" class="mode-btn active" onclick="switchMode('ai')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z" />
+                        </svg>
+                        AI Mode
+                    </button>
+                    <button id="manualModeBtn" class="mode-btn" onclick="switchMode('manual')">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                        </svg>
+                        Manual Mode
+                    </button>
+                </div>
+            </div>
+            
+            <!-- AI Mode -->
+            <div id="aiMode" class="mode-panel">
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                    Describe the patient's chief complaint and key findings.
+                </p>
+                <textarea id="inputLogic" placeholder="Example:
 30yo female with acute RLQ pain.
 - Nausea/Vomiting
 - No fever
 - LMP 6 weeks ago
 - Mild leukocytosis"></textarea>
+                
+                <button id="generateBtn" class="btn-primary" disabled>Generate Mind Map</button>
+            </div>
             
-            <button id="generateBtn" class="btn-primary" disabled>Generate Mind Map</button>
+            <!-- Manual Mode -->
+            <div id="manualMode" class="mode-panel" style="display: none;">
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                    Edit Mermaid code directly. <a href="https://mermaid.js.org/syntax/mindmap.html" target="_blank" style="color: #2a7ae2;">View syntax guide →</a>
+                </p>
+                <textarea id="mermaidCode" placeholder="mindmap
+  root((RLQ Pain))
+    GI
+      Appendicitis
+      Crohn's Disease
+    GYN
+      Ectopic Pregnancy
+      Ovarian Torsion" style="font-family: 'Monaco', 'Courier New', monospace; min-height: 200px;"></textarea>
+                
+                <button id="renderBtn" class="btn-primary" onclick="renderManualCode()">Render Mind Map</button>
+            </div>
+            
             <div id="statusBar" style="margin-top: 15px; color: #666; font-size: 0.9em; display: none;"></div>
         </div>
 
@@ -321,7 +401,7 @@ permalink: /differential-mindmap/
         width: 100%;
         height: 100%;
         background: rgba(0,0,0,0.85);
-        z-index: 1000;
+        z-index: 99999;
         justify-content: center;
         align-items: center;
         backdrop-filter: blur(5px);
@@ -470,4 +550,53 @@ permalink: /differential-mindmap/
     document.getElementById('fullscreenModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
+
+    // Mode Switching
+    window.switchMode = function(mode) {
+        const aiMode = document.getElementById('aiMode');
+        const manualMode = document.getElementById('manualMode');
+        const aiModeBtn = document.getElementById('aiModeBtn');
+        const manualModeBtn = document.getElementById('manualModeBtn');
+        
+        if (mode === 'ai') {
+            aiMode.style.display = 'block';
+            manualMode.style.display = 'none';
+            aiModeBtn.classList.add('active');
+            manualModeBtn.classList.remove('active');
+        } else {
+            aiMode.style.display = 'none';
+            manualMode.style.display = 'block';
+            aiModeBtn.classList.remove('active');
+            manualModeBtn.classList.add('active');
+        }
+    }
+
+    // Manual Code Rendering
+    window.renderManualCode = function() {
+        const code = document.getElementById('mermaidCode').value.trim();
+        if (!code) return;
+        
+        const outputDiv = document.getElementById('mermaid-output');
+        outputDiv.innerHTML = '';
+        
+        document.getElementById('fullscreenBtn').style.display = 'inline-flex';
+        
+        mermaid.render('mindmapDiv', code).then(result => {
+            outputDiv.innerHTML = result.svg;
+            const statusBar = document.getElementById('statusBar');
+            statusBar.style.display = 'block';
+            statusBar.textContent = 'Mind map rendered successfully!';
+            statusBar.style.color = '#16a34a';
+            setTimeout(() => {
+                statusBar.style.display = 'none';
+                statusBar.style.color = '#666';
+            }, 2000);
+        }).catch(error => {
+            outputDiv.innerHTML = `<div style="color:red; padding: 20px;">
+                <strong>Mermaid Syntax Error:</strong><br>
+                ${error.message}<br><br>
+                <a href="https://mermaid.js.org/syntax/mindmap.html" target="_blank" style="color: #2a7ae2;">View syntax guide →</a>
+            </div>`;
+        });
+    }
 </script>
