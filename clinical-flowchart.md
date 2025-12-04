@@ -218,6 +218,20 @@ permalink: /clinical-flowchart/
 </div>
 
 <div class="container">
+    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px 20px; margin-bottom: 20px; border-radius: 6px;">
+        <div style="display: flex; align-items: start; gap: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f59e0b" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            </svg>
+            <div>
+                <strong style="color: #92400e; display: block; margin-bottom: 4px;">Educational Use Only</strong>
+                <p style="color: #78350f; margin: 0; font-size: 0.9em;">
+                    This tool is for educational and training purposes only. <strong>Do not input any patient health information (PHI)</strong> or other sensitive data. All processing occurs locally in your browser, but you are responsible for ensuring compliance with HIPAA and other privacy regulations.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div class="model-status" id="modelStatus">
         <strong>AI Model Status:</strong> Not Loaded. 
         <button id="loadModelBtn" class="copy-btn" style="margin-left: 10px; border-color: #fcd34d;">Load AI Model (~1GB)</button>
@@ -442,7 +456,11 @@ Else if afebrile:
         // Extract Mermaid
         const mermaidMatch = content.match(/```mermaid\n([\s\S]*?)\n```/);
         if (mermaidMatch && mermaidMatch[1]) {
-            renderMermaid(mermaidMatch[1]);
+            const mermaidCode = mermaidMatch[1];
+            renderMermaid(mermaidCode);
+            
+            // Populate manual editor with generated code
+            document.getElementById('mermaidCode').value = mermaidCode;
         }
 
         // Extract Text
@@ -675,6 +693,7 @@ Else if afebrile:
         const manualMode = document.getElementById('manualMode');
         const aiModeBtn = document.getElementById('aiModeBtn');
         const manualModeBtn = document.getElementById('manualModeBtn');
+        const statusBar = document.getElementById('statusBar');
         
         if (mode === 'ai') {
             aiMode.style.display = 'block';
@@ -686,6 +705,16 @@ Else if afebrile:
             manualMode.style.display = 'block';
             aiModeBtn.classList.remove('active');
             manualModeBtn.classList.add('active');
+            
+            // Show tip if there's AI-generated code
+            const manualCode = document.getElementById('mermaidCode').value;
+            if (manualCode) {
+                statusBar.style.display = 'block';
+                statusBar.textContent = '💡 AI-generated code loaded! Edit and click "Render Flowchart" to update.';
+                statusBar.style.background = '#f0f9ff';
+                statusBar.style.color = '#0369a1';
+                setTimeout(() => statusBar.style.display = 'none', 4000);
+            }
         }
     }
 
