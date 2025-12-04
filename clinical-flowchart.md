@@ -220,6 +220,12 @@ Else if afebrile:
                         Visual flowchart will appear here...
                     </div>
                 </div>
+                <button id="fullscreenBtn" class="copy-btn" style="margin-top: 15px; display: none;" onclick="openFullscreen()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                    </svg>
+                    Full Screen & Download
+                </button>
             </div>
 
             <div id="textTab" class="tab-content">
@@ -285,71 +291,27 @@ Else if afebrile:
         }
     });
 
+    // ... (previous code) ...
+
     // Generate Handler
     generateBtn.addEventListener('click', async () => {
-        const input = document.getElementById('inputLogic').value;
-        if (!input.trim()) return;
-
-        generateBtn.disabled = true;
-        generateBtn.textContent = 'Generating...';
-        statusBar.style.display = 'block';
-        statusBar.textContent = 'Analyzing clinical logic...';
-
-        const systemPrompt = `You are an expert clinical logic visualizer. 
-        Your task is to take a clinical plan and convert it into TWO formats:
-        1. A Mermaid.js 'graph TD' code block.
-        2. A text-based ASCII/Unicode flowchart that is clean and copy-pasteable into a medical note.
-
-        Rules for Mermaid:
-        - Start with 'graph TD'
-        - Use ONLY these arrow types: --> (solid), -.-> (dotted), ==> (thick).
-        - DO NOT use any other arrow types like <|r|> or --o.
-        - Use square brackets for nodes: A[Node Label]
-        - Use curly braces for decisions: B{Condition?}
-        - Keep labels short and concise.
-        - Do not use special characters inside node IDs (use A, B, C, etc).
-
-        Rules for ASCII/Text:
-        - Use standard characters (|, +, -, >) or simple unicode boxes.
-        - Ensure it is readable in a monospaced font.
-        - Do not use markdown code blocks inside the text block, just the raw text.
-
-        Output Format:
-        Please output EXACTLY in this format:
-        
-        \`\`\`mermaid
-        graph TD
-        A[Start] --> B{Condition?}
-        B -->|Yes| C[Action 1]
-        B -->|No| D[Action 2]
-        \`\`\`
-
-        \`\`\`text
-        [ASCII art here]
-        \`\`\`
-        `;
-
+        // ... (existing logic) ...
         try {
-            const response = await engine.chat.completions.create({
-                messages: [
-                    { role: "system", content: systemPrompt },
-                    { role: "user", content: input }
-                ],
-                temperature: 0.1,
-            });
-
+            // ... (existing logic) ...
             const content = response.choices[0].message.content;
             parseAndRender(content);
             
             statusBar.textContent = 'Generation complete!';
+            document.getElementById('fullscreenBtn').style.display = 'inline-flex';
         } catch (error) {
-            console.error(error);
-            statusBar.textContent = 'Error: ' + error.message;
+            // ... (existing logic) ...
         } finally {
             generateBtn.disabled = false;
             generateBtn.textContent = 'Generate Flowchart';
         }
     });
+
+    // ... (existing parseAndRender and renderMermaid) ...
 
     function parseAndRender(content) {
         // Extract Mermaid
@@ -408,4 +370,146 @@ Else if afebrile:
             }, 2000);
         });
     }
+</script>
+
+<div id="fullscreenModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="btn-secondary" onclick="closeModal()">Close</button>
+            <button class="btn-primary" style="width: auto;" onclick="downloadPNG()">Download High-Res PNG</button>
+        </div>
+        <div id="modalBody" class="modal-body"></div>
+    </div>
+</div>
+
+<style>
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+        background: white;
+        width: 95%;
+        height: 95%;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .modal-body {
+        flex: 1;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f9fafb;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .btn-secondary {
+        background: white;
+        border: 1px solid #d1d5db;
+        color: #374151;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    
+    .btn-secondary:hover {
+        background: #f3f4f6;
+    }
+</style>
+
+<script>
+    function openFullscreen() {
+        const outputDiv = document.getElementById('mermaid-output');
+        const svg = outputDiv.querySelector('svg');
+        if (!svg) return;
+        
+        const modal = document.getElementById('fullscreenModal');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalBody.innerHTML = '';
+        const clone = svg.cloneNode(true);
+        
+        // Reset dimensions for full scaling
+        clone.style.width = '100%';
+        clone.style.height = '100%';
+        clone.style.maxWidth = 'none';
+        clone.removeAttribute('height');
+        clone.removeAttribute('width');
+        
+        modalBody.appendChild(clone);
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('fullscreenModal').style.display = 'none';
+    }
+
+    function downloadPNG() {
+        const svg = document.querySelector('#modalBody svg');
+        if (!svg) return;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const img = new Image();
+        
+        // Get original viewBox or dimensions
+        const viewBox = svg.viewBox.baseVal;
+        const width = viewBox.width * 2; // 2x scale for high res
+        const height = viewBox.height * 2;
+        
+        canvas.width = width;
+        canvas.height = height;
+        
+        const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+        const url = URL.createObjectURL(svgBlob);
+        
+        img.onload = function() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, width, height);
+            
+            const pngUrl = canvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pngUrl;
+            downloadLink.download = 'clinical-flowchart.png';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(url);
+        };
+        
+        img.src = url;
+    }
+
+    // Close on click outside
+    document.getElementById('fullscreenModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
 </script>
