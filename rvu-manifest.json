@@ -1,0 +1,31 @@
+{
+  "name": "RVU Data Tracker",
+  "short_name": "RVU Tracker",
+  "description": "Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries",
+  "start_url": "/clinic-visit-tracker/",
+  "scope": "/clinic-visit-tracker/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#065f46",
+  "background_color": "#d1fae5",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["medical", "productivity", "utilities"]
+}
