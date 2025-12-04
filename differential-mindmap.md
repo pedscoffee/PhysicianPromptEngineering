@@ -232,9 +232,10 @@ permalink: /differential-mindmap/
         1. Start with 'mindmap'
         2. The root node should be the Chief Complaint (e.g., root((RLQ Pain))).
         3. Use indentation to create branches.
-        4. Do NOT use special characters like brackets [] or braces {} inside node labels unless they are part of the text.
-        5. Do NOT use icons or complex styling syntax. Keep it strictly text-based indentation.
-        6. Output ONLY the mermaid code block.
+        4. ONE NODE PER LINE.
+        5. DO NOT use Markdown formatting like **bold** or *italics*. Use plain text only.
+        6. DO NOT use special characters like [], {}, or () inside node labels (except for the root node shape).
+        7. Output ONLY the mermaid code block.
 
         Example Output Format:
         \`\`\`mermaid
