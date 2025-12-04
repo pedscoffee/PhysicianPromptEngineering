@@ -191,7 +191,7 @@ permalink: /workflow-optimizer/
 
     #workflow-canvas {
         width: 100%;
-        height: 650px;
+        height: 800px;
         border: 2px solid #e8e8e8;
         border-radius: 8px;
         position: relative;
@@ -200,6 +200,15 @@ permalink: /workflow-optimizer/
             linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px);
         background-size: 20px 20px;
         cursor: crosshair;
+        overflow: hidden;
+    }
+
+    .canvas-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-origin: 0 0;
+        transition: transform 0.2s;
     }
 
     #workflow-canvas.drag-mode {
@@ -497,6 +506,29 @@ permalink: /workflow-optimizer/
             </svg>
             Align V
         </button>
+        
+        <div style="border-left: 1px solid #e8e8e8; height: 32px; margin: 0 4px;"></div>
+        
+        <button class="tool-button" onclick="zoomCanvas(0.9)" title="Zoom Out">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                <path d="m21 21-4.35-4.35M8 11h6" stroke-linecap="round" stroke-width="2"/>
+            </svg>
+            Zoom Out
+        </button>
+        <span id="zoomLevel" style="font-size: 0.85em; color: #6b7280; min-width: 45px; text-align: center;">100%</span>
+        <button class="tool-button" onclick="zoomCanvas(1.1)" title="Zoom In">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                <path d="m21 21-4.35-4.35M11 8v6M8 11h6" stroke-linecap="round" stroke-width="2"/>
+            </svg>
+            Zoom In
+        </button>
+        <button class="tool-button" onclick="resetZoom()" title="Reset Zoom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+            </svg>
+        </button>
     </div>
 
     <div class="workflow-container">
@@ -689,6 +721,8 @@ permalink: /workflow-optimizer/
     let connectingFrom = null;
     let history = [];
     let currentEditNodeId = null;
+    let currentZoom = 1;
+    let workflows = [];
 
     const DEFAULT_COSTS = {
         start: 0,
@@ -697,6 +731,70 @@ permalink: /workflow-optimizer/
         parallel: 100,
         end: 0
     };
+
+    // Load saved workflows from localStorage
+    function loadWorkflowLibrary() {
+        try {
+            const stored = localStorage.getItem('clinicalWorkflows');
+            workflows = stored ? JSON.parse(stored) : [];
+        } catch (error) {
+            console.error('Error loading workflows:', error);
+            workflows = [];
+        }
+    }
+
+    function saveWorkflowLibrary() {
+        try {
+            localStorage.setItem('clinicalWorkflows', JSON.stringify(workflows));
+        } catch (error) {
+            alert('Failed to save workflow library. Storage might be full.');
+            console.error('Save error:', error);
+        }
+    }
+
+    // Zoom functions
+    function zoomCanvas(factor) {
+        currentZoom *= factor;
+        currentZoom = Math.max(0.25, Math.min(currentZoom, 2)); // Limit between 25% and 200%
+        
+        const canvas = document.getElementById('workflow-canvas');
+        const inner = canvas.querySelector('.canvas-inner') || canvas;
+        
+        // Apply transform to all nodes and SVG
+        const nodes = canvas.querySelectorAll('.workflow-node');
+        const svg = document.getElementById('connections-svg');
+        
+        nodes.forEach(node => {
+            const x = parseFloat(node.style.left) || 0;
+            const y = parseFloat(node.style.top) || 0;
+            node.style.transform = `scale(${currentZoom})`;
+            node.style.transformOrigin = '0 0';
+        });
+        
+        if (svg) {
+            svg.style.transform = `scale(${currentZoom})`;
+            svg.style.transformOrigin = '0 0';
+        }
+        
+        document.getElementById('zoomLevel').textContent = Math.round(currentZoom * 100) + '%';
+    }
+
+    function resetZoom() {
+        currentZoom = 1;
+        const canvas = document.getElementById('workflow-canvas');
+        const nodes = canvas.querySelectorAll('.workflow-node');
+        const svg = document.getElementById('connections-svg');
+        
+        nodes.forEach(node => {
+            node.style.transform = '';
+        });
+        
+        if (svg) {
+            svg.style.transform = '';
+        }
+        
+        document.getElementById('zoomLevel').textContent = '100%';
+    }
 
     function setMode(mode) {
         currentMode = mode;
@@ -1219,35 +1317,110 @@ permalink: /workflow-optimizer/
     }
 
     function saveWorkflow() {
-        const data = {
-            nodes,
-            connections,
-            timestamp: new Date().toISOString()
-        };
-        
-        localStorage.setItem('clinicalWorkflow', JSON.stringify(data));
-        alert('Workflow saved to browser storage!');
-    }
-
-    function loadWorkflow() {
-        const saved = localStorage.getItem('clinicalWorkflow');
-        if (!saved) {
-            alert('No saved workflow found');
+        if (nodes.length === 0) {
+            alert('Add some nodes before saving the workflow');
             return;
         }
         
-        if (nodes.length > 0 && !confirm('Replace current workflow with saved version?')) return;
+        const name = prompt('Enter a name for this workflow:');
+        if (!name || !name.trim()) return;
+        
+        const workflow = {
+            id: Date.now(),
+            name: name.trim(),
+            nodes: JSON.parse(JSON.stringify(nodes)),
+            connections: JSON.parse(JSON.stringify(connections)),
+            created: new Date().toISOString(),
+            nodeCount: nodes.length,
+            connectionCount: connections.length
+        };
+        
+        workflows.push(workflow);
+        saveWorkflowLibrary();
+        alert(`Workflow "${workflow.name}" saved successfully!`);
+    }
+
+    function loadWorkflow() {
+        if (workflows.length === 0) {
+            alert('No saved workflows found. Save a workflow first!');
+            return;
+        }
+        
+        // Create a selection dialog
+        let html = '<div style="max-height: 400px; overflow-y: auto;">';
+        html += '<h3 style="margin-bottom: 15px;">Select a workflow to load:</h3>';
+        
+        workflows.forEach((wf, index) => {
+            const date = new Date(wf.created).toLocaleDateString();
+            html += `
+                <div style="border: 1px solid #e8e8e8; padding: 12px; margin-bottom: 10px; border-radius: 6px; cursor: pointer; hover: background: #f9fafb;" 
+                     onclick="loadWorkflowById(${wf.id})">
+                    <strong>${wf.name}</strong><br>
+                    <small style="color: #6b7280;">${wf.nodeCount} steps, ${wf.connectionCount} connections • ${date}</small>
+                    <button onclick="event.stopPropagation(); deleteWorkflow(${wf.id})" 
+                            style="float: right; background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;">
+                        Delete
+                    </button>
+                </div>
+            `;
+        });
+        
+        html += '</div>';
+        
+        // Use a simple modal approach
+        const existingModal = document.getElementById('workflowSelectModal');
+        if (existingModal) existingModal.remove();
+        
+        const modal = document.createElement('div');
+        modal.id = 'workflowSelectModal';
+        modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;';
+        modal.innerHTML = `
+            <div style="background: white; padding: 25px; border-radius: 12px; max-width: 600px; width: 100%;">
+                ${html}
+                <button onclick="document.getElementById('workflowSelectModal').remove()" 
+                        style="margin-top: 15px; padding: 10px 20px; background: #6b7280; color: white; border: none; border-radius: 6px; cursor: pointer; width: 100%;">
+                    Cancel
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+    }
+
+    window.loadWorkflowById = function(id) {
+        const workflow = workflows.find(wf => wf.id === id);
+        if (!workflow) return;
+        
+        if (nodes.length > 0 && !confirm(`Replace current workflow with "${workflow.name}"?`)) return;
         
         saveState();
-        const data = JSON.parse(saved);
-        nodes = data.nodes;
-        connections = data.connections;
+        nodes = JSON.parse(JSON.stringify(workflow.nodes));
+        connections = JSON.parse(JSON.stringify(workflow.connections));
         nodeIdCounter = Math.max(...nodes.map(n => n.id), 0);
         connectionIdCounter = Math.max(...connections.map(c => c.id), 0);
         
         renderNodes();
         renderConnections();
         updateStats();
+        
+        const modal = document.getElementById('workflowSelectModal');
+        if (modal) modal.remove();
+        
+        alert(`Loaded workflow: ${workflow.name}`);
+    }
+
+    window.deleteWorkflow = function(id) {
+        if (!confirm('Delete this saved workflow?')) return;
+        
+        workflows = workflows.filter(wf => wf.id !== id);
+        saveWorkflowLibrary();
+        
+        // Refresh the modal
+        const modal = document.getElementById('workflowSelectModal');
+        if (modal) {
+            modal.remove();
+            loadWorkflow();
+        }
     }
 
     function exportWorkflow() {
@@ -1384,6 +1557,7 @@ permalink: /workflow-optimizer/
     });
 
     // Initialize
+    loadWorkflowLibrary();
     updateStats();
     renderNodes();
     renderConnections();
