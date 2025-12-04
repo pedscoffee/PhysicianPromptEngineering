@@ -193,7 +193,7 @@ permalink: /patient-timeline/
             Patient Timeline Visualizer
         </h1>
         <p class="hero-subtitle" style="color: #b45309; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
-            Create interactive patient timelines for case presentations and teaching. Visualize the temporal progression of symptoms, labs, and interventions.
+            Create interactive patient timelines for case presentations and teaching. Visualize the temporal progression of symptoms, labs, and interventions over the course of clinical days.
         </p>
     </div>
 </div>
@@ -220,8 +220,8 @@ permalink: /patient-timeline/
             
             <form id="eventForm">
                 <div class="form-group">
-                    <label for="eventDate">Date/Time</label>
-                    <input type="datetime-local" id="eventDate" required>
+                    <label for="eventDay">Relative Day</label>
+                    <input type="number" id="eventDay" min="1" placeholder="e.g., 1 (Admission Day)" required>
                 </div>
 
                 <div class="form-group">
@@ -308,7 +308,7 @@ permalink: /patient-timeline/
         
         const event = {
             id: Date.now(),
-            date: new Date(document.getElementById('eventDate').value),
+            day: parseInt(document.getElementById('eventDay').value),
             category: document.getElementById('eventCategory').value,
             description: document.getElementById('eventDescription').value
         };
@@ -329,13 +329,13 @@ permalink: /patient-timeline/
             return;
         }
 
-        // Sort events by date
-        const sortedEvents = [...events].sort((a, b) => a.date - b.date);
+        // Sort events by day
+        const sortedEvents = [...events].sort((a, b) => a.day - b.day);
         
         listEl.innerHTML = sortedEvents.map(event => `
             <div class="event-item ${event.category}">
                 <div>
-                    <strong>${event.date.toLocaleDateString()}</strong><br>
+                    <strong>Day ${event.day}</strong><br>
                     ${event.description}
                 </div>
                 <button onclick="deleteEvent(${event.id})" title="Delete">×</button>
@@ -382,11 +382,24 @@ permalink: /patient-timeline/
             .attr('transform', `translate(${margin.left},${margin.top})`);
 
         // Sort events
-        const sortedEvents = [...events].sort((a, b) => a.date - b.date);
+        const sortedEvents = [...events].sort((a, b) => a.day - b.day);
 
         // Create scales
-        const xScale = d3.scaleTime()
-            .domain(d3.extent(sortedEvents, d => d.date))
+        // Use linear scale for days. If only 1 event or all same day, add padding.
+        const dayExtent = d3.extent(sortedEvents, d => d.day);
+        let minDay = dayExtent[0];
+        let maxDay = dayExtent[1];
+        
+        if (minDay === maxDay) {
+            minDay = minDay - 1;
+            maxDay = maxDay + 1;
+        }
+        
+        // Ensure we start at least at day 0 or 1 if user wants
+        if (minDay > 1) minDay = 1;
+
+        const xScale = d3.scaleLinear()
+            .domain([minDay, maxDay])
             .range([0, innerWidth]);
 
         // Group events by category for y positioning
@@ -398,15 +411,12 @@ permalink: /patient-timeline/
 
         // Draw timeline axis
         const xAxis = d3.axisBottom(xScale)
-            .ticks(5)
-            .tickFormat(d3.timeFormat('%m/%d %H:%M'));
+            .ticks(Math.min(maxDay - minDay, 10)) // Don't show too many ticks
+            .tickFormat(d => `Day ${d}`);
 
         g.append('g')
             .attr('transform', `translate(0,${innerHeight})`)
-            .call(xAxis)
-            .selectAll('text')
-            .attr('transform', 'rotate(-45)')
-            .style('text-anchor', 'end');
+            .call(xAxis);
 
         // Draw horizontal lines for each category
         categories.forEach(cat => {
@@ -427,7 +437,7 @@ permalink: /patient-timeline/
             .enter()
             .append('circle')
             .attr('class', 'event-circle')
-            .attr('cx', d => xScale(d.date))
+            .attr('cx', d => xScale(d.day))
             .attr('cy', d => yScale(d.category) + yScale.bandwidth() / 2)
             .attr('r', 8)
             .attr('fill', d => categoryColors[d.category])
@@ -444,7 +454,7 @@ permalink: /patient-timeline/
                     .style('opacity', 1)
                     .html(`
                         <strong>${d.category.charAt(0).toUpperCase() + d.category.slice(1)}</strong><br>
-                        ${d.date.toLocaleString()}<br>
+                        Day ${d.day}<br>
                         ${d.description}
                     `)
                     .style('left', (event.pageX + 10) + 'px')
