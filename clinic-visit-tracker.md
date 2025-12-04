@@ -38,6 +38,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
         <p class="hero-subtitle">
             Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries.
         </p>
+        <a href="/rvu-tracker-mobile/" style="display: inline-block; background: #065f46; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 10px;">📱 Open Mobile Version</a>
     </div>
 </div>
 
