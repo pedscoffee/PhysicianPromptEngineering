@@ -295,16 +295,65 @@ Else if afebrile:
 
     // Generate Handler
     generateBtn.addEventListener('click', async () => {
-        // ... (existing logic) ...
+        const input = document.getElementById('inputLogic').value;
+        if (!input.trim()) return;
+
+        generateBtn.disabled = true;
+        generateBtn.textContent = 'Generating...';
+        statusBar.style.display = 'block';
+        statusBar.textContent = 'Analyzing clinical logic...';
+
+        const systemPrompt = `You are an expert clinical logic visualizer. 
+        Your task is to take a clinical plan and convert it into TWO formats:
+        1. A Mermaid.js 'graph TD' code block.
+        2. A text-based ASCII/Unicode flowchart that is clean and copy-pasteable into a medical note.
+
+        Rules for Mermaid:
+        - Start with 'graph TD'
+        - Use ONLY these arrow types: --> (solid), -.-> (dotted), ==> (thick).
+        - DO NOT use any other arrow types like <|r|> or --o.
+        - Use square brackets for nodes: A[Node Label]
+        - Use curly braces for decisions: B{Condition?}
+        - Keep labels short and concise.
+        - Do not use special characters inside node IDs (use A, B, C, etc).
+
+        Rules for ASCII/Text:
+        - Use standard characters (|, +, -, >) or simple unicode boxes.
+        - Ensure it is readable in a monospaced font.
+        - Do not use markdown code blocks inside the text block, just the raw text.
+
+        Output Format:
+        Please output EXACTLY in this format:
+        
+        \`\`\`mermaid
+        graph TD
+        A[Start] --> B{Condition?}
+        B -->|Yes| C[Action 1]
+        B -->|No| D[Action 2]
+        \`\`\`
+
+        \`\`\`text
+        [ASCII art here]
+        \`\`\`
+        `;
+
         try {
-            // ... (existing logic) ...
+            const response = await engine.chat.completions.create({
+                messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: input }
+                ],
+                temperature: 0.1,
+            });
+
             const content = response.choices[0].message.content;
             parseAndRender(content);
             
             statusBar.textContent = 'Generation complete!';
             document.getElementById('fullscreenBtn').style.display = 'inline-flex';
         } catch (error) {
-            // ... (existing logic) ...
+            console.error(error);
+            statusBar.textContent = 'Error: ' + error.message;
         } finally {
             generateBtn.disabled = false;
             generateBtn.textContent = 'Generate Flowchart';
@@ -376,7 +425,8 @@ Else if afebrile:
     <div class="modal-content">
         <div class="modal-header">
             <button class="btn-secondary" onclick="closeModal()">Close</button>
-            <button class="btn-primary" style="width: auto;" onclick="downloadPNG()">Download High-Res PNG</button>
+            <button class="btn-secondary" onclick="downloadSVG()">Download SVG</button>
+            <button class="btn-primary" style="width: auto;" onclick="downloadPNG()">Download PNG</button>
         </div>
         <div id="modalBody" class="modal-body"></div>
     </div>
@@ -470,38 +520,68 @@ Else if afebrile:
         document.getElementById('fullscreenModal').style.display = 'none';
     }
 
+    function downloadSVG() {
+        const svg = document.querySelector('#modalBody svg');
+        if (!svg) return;
+
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+        const url = URL.createObjectURL(svgBlob);
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = 'clinical-flowchart.svg';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        URL.revokeObjectURL(url);
+    }
+
     function downloadPNG() {
         const svg = document.querySelector('#modalBody svg');
         if (!svg) return;
 
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const svgData = new XMLSerializer().serializeToString(svg);
-        const img = new Image();
+        // Clone and prepare SVG for rendering
+        const svgClone = svg.cloneNode(true);
+        const svgData = new XMLSerializer().serializeToString(svgClone);
         
-        // Get original viewBox or dimensions
+        // Get dimensions
         const viewBox = svg.viewBox.baseVal;
         const width = viewBox.width * 2; // 2x scale for high res
         const height = viewBox.height * 2;
         
+        const canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
+        const ctx = canvas.getContext('2d');
         
+        const img = new Image();
         const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
         const url = URL.createObjectURL(svgBlob);
         
         img.onload = function() {
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, width, height);
-            
-            const pngUrl = canvas.toDataURL('image/png');
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pngUrl;
-            downloadLink.download = 'clinical-flowchart.png';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+            try {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                const pngUrl = canvas.toDataURL('image/png');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pngUrl;
+                downloadLink.download = 'clinical-flowchart.png';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            } catch (error) {
+                console.error('PNG export failed:', error);
+                alert('PNG export failed due to browser security restrictions. Please use "Download SVG" instead.');
+            } finally {
+                URL.revokeObjectURL(url);
+            }
+        };
+        
+        img.onerror = function() {
+            alert('Failed to load image for PNG export. Please use "Download SVG" instead.');
             URL.revokeObjectURL(url);
         };
         

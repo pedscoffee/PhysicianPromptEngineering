@@ -307,7 +307,8 @@ Increased Preload and Afterload worsen Heart Failure (Vicious Cycle)."></textare
     <div class="modal-content">
         <div class="modal-header">
             <button class="btn-secondary" onclick="closeModal()">Close</button>
-            <button class="btn-primary" style="width: auto;" onclick="downloadPNG()">Download High-Res PNG</button>
+            <button class="btn-secondary" onclick="downloadSVG()">Download SVG</button>
+            <button class="btn-primary" style="width: auto;" onclick="downloadPNG()">Download PNG</button>
         </div>
         <div id="modalBody" class="modal-body"></div>
     </div>
@@ -401,38 +402,66 @@ Increased Preload and Afterload worsen Heart Failure (Vicious Cycle)."></textare
         document.getElementById('fullscreenModal').style.display = 'none';
     }
 
+    function downloadSVG() {
+        const svg = document.querySelector('#modalBody svg');
+        if (!svg) return;
+
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+        const url = URL.createObjectURL(svgBlob);
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = 'mechanism-diagram.svg';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        URL.revokeObjectURL(url);
+    }
+
     function downloadPNG() {
         const svg = document.querySelector('#modalBody svg');
         if (!svg) return;
 
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const svgData = new XMLSerializer().serializeToString(svg);
-        const img = new Image();
+        const svgClone = svg.cloneNode(true);
+        const svgData = new XMLSerializer().serializeToString(svgClone);
         
-        // Get original viewBox or dimensions
         const viewBox = svg.viewBox.baseVal;
-        const width = viewBox.width * 2; // 2x scale for high res
+        const width = viewBox.width * 2;
         const height = viewBox.height * 2;
         
+        const canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
+        const ctx = canvas.getContext('2d');
         
+        const img = new Image();
         const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
         const url = URL.createObjectURL(svgBlob);
         
         img.onload = function() {
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, width, height);
-            
-            const pngUrl = canvas.toDataURL('image/png');
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pngUrl;
-            downloadLink.download = 'mechanism-diagram.png';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+            try {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                const pngUrl = canvas.toDataURL('image/png');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pngUrl;
+                downloadLink.download = 'mechanism-diagram.png';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            } catch (error) {
+                console.error('PNG export failed:', error);
+                alert('PNG export failed due to browser security restrictions. Please use "Download SVG" instead.');
+            } finally {
+                URL.revokeObjectURL(url);
+            }
+        };
+        
+        img.onerror = function() {
+            alert('Failed to load image for PNG export. Please use "Download SVG" instead.');
             URL.revokeObjectURL(url);
         };
         

@@ -225,9 +225,50 @@ permalink: /differential-mindmap/
 
     // Generate Handler
     generateBtn.addEventListener('click', async () => {
-        // ... (existing logic) ...
+        const input = document.getElementById('inputLogic').value;
+        if (!input.trim()) return;
+
+        generateBtn.disabled = true;
+        generateBtn.textContent = 'Generating...';
+        statusBar.style.display = 'block';
+        statusBar.textContent = 'Analyzing differential diagnosis...';
+
+        const systemPrompt = `You are an expert clinical diagnostician.
+        Your task is to take a clinical scenario and generate a Mermaid.js 'mindmap' code block.
+        
+        Rules:
+        1. Start with 'mindmap'
+        2. The root node should be the Chief Complaint (e.g., root((RLQ Pain))).
+        3. Use indentation to create branches.
+        4. ONE NODE PER LINE.
+        5. DO NOT use Markdown formatting like **bold** or *italics*. Use plain text only.
+        6. DO NOT use special characters like [], {}, or () inside node labels (except for the root node shape).
+        7. Output ONLY the mermaid code block.
+
+        Example Output Format:
+        \`\`\`mermaid
+        mindmap
+          root((RLQ Pain))
+            GI
+              Appendicitis
+              Crohn's Flare
+            GYN
+              Ectopic Pregnancy
+              Ovarian Torsion
+            GU
+              Kidney Stone
+        \`\`\`
+        `;
+
         try {
-            // ... (existing logic) ...
+            const response = await engine.chat.completions.create({
+                messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: input }
+                ],
+                temperature: 0.3,
+            });
+
             const content = response.choices[0].message.content;
             const mermaidMatch = content.match(/```mermaid\n([\s\S]*?)\n```/);
             
@@ -239,7 +280,8 @@ permalink: /differential-mindmap/
                 statusBar.textContent = 'Error parsing output. Raw output: ' + content.substring(0, 50) + '...';
             }
         } catch (error) {
-            // ... (existing logic) ...
+            console.error(error);
+            statusBar.textContent = 'Error: ' + error.message;
         } finally {
             generateBtn.disabled = false;
             generateBtn.textContent = 'Generate Mind Map';
@@ -263,7 +305,8 @@ permalink: /differential-mindmap/
     <div class="modal-content">
         <div class="modal-header">
             <button class="btn-secondary" onclick="closeModal()">Close</button>
-            <button class="btn-primary" style="width: auto;" onclick="downloadPNG()">Download High-Res PNG</button>
+            <button class="btn-secondary" onclick="downloadSVG()">Download SVG</button>
+            <button class="btn-primary" style="width: auto;" onclick="downloadPNG()">Download PNG</button>
         </div>
         <div id="modalBody" class="modal-body"></div>
     </div>
@@ -357,38 +400,66 @@ permalink: /differential-mindmap/
         document.getElementById('fullscreenModal').style.display = 'none';
     }
 
+    function downloadSVG() {
+        const svg = document.querySelector('#modalBody svg');
+        if (!svg) return;
+
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+        const url = URL.createObjectURL(svgBlob);
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = 'differential-mindmap.svg';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        URL.revokeObjectURL(url);
+    }
+
     function downloadPNG() {
         const svg = document.querySelector('#modalBody svg');
         if (!svg) return;
 
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const svgData = new XMLSerializer().serializeToString(svg);
-        const img = new Image();
+        const svgClone = svg.cloneNode(true);
+        const svgData = new XMLSerializer().serializeToString(svgClone);
         
-        // Get original viewBox or dimensions
         const viewBox = svg.viewBox.baseVal;
-        const width = viewBox.width * 2; // 2x scale for high res
+        const width = viewBox.width * 2;
         const height = viewBox.height * 2;
         
+        const canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
+        const ctx = canvas.getContext('2d');
         
+        const img = new Image();
         const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
         const url = URL.createObjectURL(svgBlob);
         
         img.onload = function() {
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, width, height);
-            
-            const pngUrl = canvas.toDataURL('image/png');
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pngUrl;
-            downloadLink.download = 'differential-mindmap.png';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+            try {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                const pngUrl = canvas.toDataURL('image/png');
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pngUrl;
+                downloadLink.download = 'differential-mindmap.png';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            } catch (error) {
+                console.error('PNG export failed:', error);
+                alert('PNG export failed due to browser security restrictions. Please use "Download SVG" instead.');
+            } finally {
+                URL.revokeObjectURL(url);
+            }
+        };
+        
+        img.onerror = function() {
+            alert('Failed to load image for PNG export. Please use "Download SVG" instead.');
             URL.revokeObjectURL(url);
         };
         
