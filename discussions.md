@@ -32,9 +32,9 @@ permalink: /discussions/
       <div class="giscus"></div>
       <script src="https://giscus.app/client.js"
         data-repo="pedscoffee/PhysicianPromptEngineering"
-        data-repo-id="[REPO_ID]"
+        data-repo-id="[R_kgDOQDTjig]"
         data-category="Community Forum"
-        data-category-id="[CATEGORY_ID]"
+        data-category-id="[DIC_kwDOQDTjis4CzZEt]"
         data-mapping="specific"
         data-term="Community Forum"
         data-strict="0"
