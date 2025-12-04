@@ -306,6 +306,18 @@ redirect_from:
           <p>Create visual diagrams of disease mechanisms and pathophysiology pathways for educational purposes.</p>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/patient-timeline">Patient Timeline Visualizer</a></h4>
+          <p>Create interactive patient timelines for case presentations. Visualize the temporal progression of symptoms, labs, and interventions.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/workflow-optimizer">Clinical Workflow Optimizer</a></h4>
+          <p>Map and optimize clinical workflows with drag-and-drop flowcharts. Identify bottlenecks and improve efficiency.</p>
+        </div>
+      </div>
     </div>
 
   </div>
