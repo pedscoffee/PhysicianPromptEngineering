@@ -6,29 +6,6 @@ permalink: /pwa-apps/
 ---
 
 <style>
-    .pwa-hero {
-        background: linear-gradient(135deg, #065f46 0%, #047857 100%);
-        padding: 60px 30px;
-        border-radius: 16px;
-        margin-bottom: 40px;
-        text-align: center;
-        color: white;
-    }
-
-    .pwa-hero h1 {
-        font-size: 2.5em;
-        margin-bottom: 15px;
-        color: white;
-    }
-
-    .pwa-hero-subtitle {
-        font-size: 1.2em;
-        opacity: 0.9;
-        max-width: 700px;
-        margin: 0 auto 20px;
-        line-height: 1.6;
-    }
-
     .section-title {
         font-size: 1.8em;
         color: #065f46;
@@ -180,6 +157,7 @@ permalink: /pwa-apps/
         align-items: center;
         justify-content: center;
         font-size: 24px;
+        color: #065f46;
     }
 
     .app-name {
@@ -218,6 +196,8 @@ permalink: /pwa-apps/
     .btn-install:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 15px rgba(6, 95, 70, 0.3);
+        color: white;
+        text-decoration: none;
     }
 
     .btn-open {
@@ -264,10 +244,6 @@ permalink: /pwa-apps/
     }
 
     @media (max-width: 768px) {
-        .pwa-hero h1 {
-            font-size: 1.8em;
-        }
-        
         .platform-tabs {
             flex-direction: column;
         }
@@ -279,12 +255,14 @@ permalink: /pwa-apps/
 </style>
 
 <!-- Hero Section -->
-<div class="pwa-hero">
-    <h1>📱 Mobile Apps</h1>
-    <p class="pwa-hero-subtitle">
+<div class="hero">
+  <div class="container">
+    <h1 class="hero-title">Mobile Apps</h1>
+    <p class="hero-subtitle">
         Install our tools directly on your phone or tablet for instant access—no app store needed. 
         Works offline and launches in fullscreen like a native app.
     </p>
+  </div>
 </div>
 
 <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 1.5rem;">
@@ -296,19 +274,39 @@ permalink: /pwa-apps/
     
     <div class="benefits-grid">
         <div class="benefit-card">
-            <h4>⚡ Instant Access</h4>
+            <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 22.5 12 13.5H3.75z" />
+                </svg>
+                Instant Access
+            </h4>
             <p>Launch directly from your home screen—no need to open a browser first.</p>
         </div>
         <div class="benefit-card">
-            <h4>📴 Works Offline</h4>
+            <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.28 9.322a4.877 4.877 0 0 1 0-7.06" /> <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25a4.877 4.877 0 0 1 4.717 5.312M12 2.25a4.877 4.877 0 0 0-4.717 5.312M12 2.25V2.25m-4.717 5.312a4.877 4.877 0 0 1 7.064 0" /> <path stroke-linecap="round" stroke-linejoin="round" d="M1.5 15.75l10.5-11.25L12 10.5h8.25L9.75 22.5 12 13.5H3.75z" />
+                </svg>
+                Works Offline
+            </h4>
             <p>Core features work even without an internet connection.</p>
         </div>
         <div class="benefit-card">
-            <h4>🖥️ Fullscreen Mode</h4>
+            <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.25V6.75a2.25 2.25 0 0 1 2.25-2.25h1.5M15.75 4.5h1.5A2.25 2.25 0 0 1 19.5 6.75v1.5m0 9.75v1.5a2.25 2.25 0 0 1-2.25 2.25h-1.5M4.5 15.75H3m0 0v-1.5a2.25 2.25 0 0 1 2.25-2.25h1.5M4.5 9.75H3m0 0v-1.5a2.25 2.25 0 0 1 2.25-2.25h1.5M15.75 19.5H21m0 0v-1.5a2.25 2.25 0 0 1-2.25-2.25h-1.5m-6-15h1.5m-6 0h1.5m-6 0h1.5" />
+                </svg>
+                Fullscreen Mode
+            </h4>
             <p>No browser toolbar—the tool takes up your entire screen.</p>
         </div>
         <div class="benefit-card">
-            <h4>💾 Your Data Persists</h4>
+            <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M10.5 18H5.25A2.25 2.25 0 0 1 3 15.75V8.25A2.25 2.25 0 0 1 5.25 6H18.75a2.25 2.25 0 0 1 2.25 2.25v7.5A2.25 2.25 0 0 1 18.75 18H13.5m-3-12H5.25A2.25 2.25 0 0 0 3 8.25v7.5A2.25 2.25 0 0 0 5.25 18H13.5" />
+                </svg>
+                Your Data Persists
+            </h4>
             <p>All data is saved locally on your device between sessions.</p>
         </div>
     </div>
@@ -353,7 +351,11 @@ permalink: /pwa-apps/
         <h3>Installing on Desktop (Chrome, Edge, Brave)</h3>
         <ol class="step-list">
             <li>Open the tool you want to install</li>
-            <li>Look for the <strong>install icon</strong> in the address bar (📥 or ➕)</li>
+            <li>Look for the <strong>install icon</strong> in the address bar (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline; vertical-align: middle;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                </svg>
+            )</li>
             <li>Click the icon and confirm <strong>"Install"</strong></li>
             <li>The app will open in its own window and appear in your Start menu or Applications folder</li>
         </ol>
@@ -367,7 +369,11 @@ permalink: /pwa-apps/
     <!-- RVU Tracker -->
     <div class="app-card">
         <div class="app-header">
-            <div class="app-icon" style="background: #d1fae5;">💰</div>
+            <div class="app-icon" style="background: #d1fae5;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 28px; height: 28px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.25a3 3 0 0 1 6 0m-6 0H6m6 0H18" />
+                </svg>
+            </div>
             <h3 class="app-name">RVU Tracker</h3>
         </div>
         <p class="app-desc">Track clinic encounters with automated billing codes, wRVU calculations, and daily summaries.</p>
@@ -379,7 +385,11 @@ permalink: /pwa-apps/
     <!-- ClockWork TimeBox -->
     <div class="app-card">
         <div class="app-header">
-            <div class="app-icon" style="background: #dbeafe;">⏱️</div>
+            <div class="app-icon" style="background: #dbeafe;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 28px; height: 28px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
             <h3 class="app-name">TimeBox</h3>
         </div>
         <p class="app-desc">Visual time-tracking with task management, analytics, and Pomodoro timer for focused work.</p>
@@ -391,7 +401,11 @@ permalink: /pwa-apps/
     <!-- E&M Calculator -->
     <div class="app-card">
         <div class="app-header">
-            <div class="app-icon" style="background: #fef3c7;">🧮</div>
+            <div class="app-icon" style="background: #fef3c7;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 28px; height: 28px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 3v21h12V3H6zm0 3h12M6 6v3h12V6M6 9h12M6 9v3h12V9m0 0v3h12V9M6 12h12M6 12v3h12V12m0 0v3h12V12M6 15h12M6 15v3h12V15m0 0v3h12V15M6 18h12M6 18v3h12V18m0 0v3h12V18M6 21h12" />
+                </svg>
+            </div>
             <h3 class="app-name">E&M Calculator</h3>
         </div>
         <p class="app-desc">Calculate CPT E/M billing codes with well visit support and automated MDM assessment.</p>
@@ -403,7 +417,11 @@ permalink: /pwa-apps/
     <!-- CME Tracker -->
     <div class="app-card">
         <div class="app-header">
-            <div class="app-icon" style="background: #d1fae5;">💵</div>
+            <div class="app-icon" style="background: #d1fae5;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 28px; height: 28px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.25a3 3 0 0 1 6 0m-6 0H6m6 0H18" />
+                </svg>
+            </div>
             <h3 class="app-name">CME Tracker</h3>
         </div>
         <p class="app-desc">Track your CME budget, expenses, and educational leave days throughout the year.</p>
@@ -415,7 +433,11 @@ permalink: /pwa-apps/
     <!-- PTO Planner -->
     <div class="app-card">
         <div class="app-header">
-            <div class="app-icon" style="background: #ccfbf1;">📅</div>
+            <div class="app-icon" style="background: #ccfbf1;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 28px; height: 28px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008zM12 9h.008v.008H12V9zM9.75 9h.008v.008H9.75V9zM9.75 12h.008v.008H9.75V12zM9.75 15h.008v.008H9.75V15zM12 15h.008v.008H12V15zM12 12h.008v.008H12v-.008zM15.75 12h.008v.008H15.75V12zM15.75 9h.008v.008H15.75V9zM15.75 15h.008v.008H15.75V15z" />
+                </svg>
+            </div>
             <h3 class="app-name">PTO Planner</h3>
         </div>
         <p class="app-desc">Plan your work schedule, vacation days, and CME time for the entire year.</p>
@@ -427,7 +449,11 @@ permalink: /pwa-apps/
     <!-- Dot Phrase Library -->
     <div class="app-card">
         <div class="app-header">
-            <div class="app-icon" style="background: #e0f2fe;">📋</div>
+            <div class="app-icon" style="background: #e0f2fe;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 28px; height: 28px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 3h6m-6 3h6M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5m-1.5-1.5h.008v.008h-.008V11.5zM12 11h.008v.008H12V11zM11.5 5.25a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75V11a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75V5.25z" />
+                </svg>
+            </div>
             <h3 class="app-name">Dot Phrases</h3>
         </div>
         <p class="app-desc">Access clinical dot phrases with formatting preserved. Copy directly into your EMR.</p>
