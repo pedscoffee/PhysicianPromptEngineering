@@ -189,7 +189,7 @@ permalink: /differential-mindmap/
 
         try {
             engine = await CreateMLCEngine(
-                "Phi-3.5-mini-instruct-q4f16_1-MLC",
+                "Gemma-2-2b-it-q4f16_1-MLC",
                 {
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);
