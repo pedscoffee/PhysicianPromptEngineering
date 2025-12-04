@@ -365,6 +365,7 @@ description: A structured tool for medical trainees to set rotation goals and re
         </div>
         <div class="navigation-buttons">
             <button class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
+            <button class="btn btn-secondary" onclick="exportMarkdown()">Export Plan (Save)</button>
             <button class="btn btn-primary" onclick="nextStep(4)">Next: Review →</button>
         </div>
     </div>
@@ -416,7 +417,7 @@ description: A structured tool for medical trainees to set rotation goals and re
             </div>
 
             <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
-                <button class="btn btn-primary" onclick="printSummary()">Print / Save as PDF</button>
+                <button class="btn btn-primary" onclick="exportMarkdown()">Export Final Review</button>
                 <button class="btn btn-secondary" onclick="copyToClipboard()">Copy to Clipboard</button>
             </div>
         </div>
@@ -593,8 +594,63 @@ description: A structured tool for medical trainees to set rotation goals and re
         }
     }
 
-    function printSummary() {
-        window.print();
+    function exportMarkdown() {
+        const data = JSON.parse(localStorage.getItem('traineeGoalSetter') || '{}');
+        const getVal = (key) => data[key] || '-';
+        
+        let md = `# Learning Plan\n\n`;
+        
+        // Reflection
+        md += `## 1. Reflection\n`;
+        if (!dailyMode) {
+            md += `**Previous Feedback:**\n${getVal('reflect-external')}\n\n`;
+            if (getVal('feedback-reflect')) md += `> **Attending Feedback:** ${getVal('feedback-reflect')}\n\n`;
+            md += `**Strengths:**\n${getVal('reflect-strengths')}\n\n`;
+        }
+        md += `**${dailyMode ? "Today's Focus" : "Growth Areas"}:**\n${getVal('reflect-growth')}\n\n`;
+
+        // Goals
+        md += `## 2. Goals\n`;
+        md += `**${dailyMode ? "Today's Goal" : "Goal 1"}:** ${getVal('goal-1')}\n`;
+        if (getVal('feedback-goal-1')) md += `> **Attending Feedback:** ${getVal('feedback-goal-1')}\n`;
+        md += `\n`;
+        
+        if (!dailyMode) {
+            md += `**Goal 2:** ${getVal('goal-2')}\n`;
+            if (getVal('feedback-goal-2')) md += `> **Attending Feedback:** ${getVal('feedback-goal-2')}\n`;
+            md += `\n`;
+            md += `**Goal 3:** ${getVal('goal-3')}\n`;
+            if (getVal('feedback-goal-3')) md += `> **Attending Feedback:** ${getVal('feedback-goal-3')}\n`;
+            md += `\n`;
+        }
+
+        // Action Plan
+        md += `## 3. Action Plan\n`;
+        md += `**Resources:**\n${getVal('plan-resources')}\n\n`;
+        md += `**Support Needed:**\n${getVal('plan-support')}\n\n`;
+        if (getVal('feedback-support')) md += `> **Attending Commitment:** ${getVal('feedback-support')}\n\n`;
+
+        // Review (if present)
+        if (getVal('review-learner') || getVal('review-rotation') || getVal('review-attending')) {
+            md += `## 4. End of Rotation Review\n`;
+            md += `**Learner Reflection:**\n${getVal('review-learner')}\n\n`;
+            md += `**Feedback for Rotation:**\n${getVal('review-rotation')}\n\n`;
+            if (getVal('review-attending')) md += `> **End of Rotation Evaluation:** ${getVal('review-attending')}\n\n`;
+        }
+
+        // Embed State
+        md += `\n\n<!-- STATE_DATA: ${JSON.stringify(data)} -->`;
+
+        // Download
+        const blob = new Blob([md], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'learning-plan.md';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 
     function copyToClipboard() {
@@ -618,11 +674,23 @@ description: A structured tool for medical trainees to set rotation goals and re
         const reader = new FileReader();
         reader.onload = function(e) {
             try {
-                const data = JSON.parse(e.target.result);
+                const text = e.target.result;
+                let data;
+
+                // Try to find embedded state in Markdown
+                const match = text.match(/<!-- STATE_DATA: (.*?) -->/);
+                if (match && match[1]) {
+                    data = JSON.parse(match[1]);
+                } else {
+                    // Fallback: Try parsing the whole file as JSON (legacy support)
+                    data = JSON.parse(text);
+                }
+
                 localStorage.setItem('traineeGoalSetter', JSON.stringify(data));
                 location.reload();
             } catch (err) {
-                alert('Error importing file. Please ensure it is a valid JSON file.');
+                alert('Error importing file. Please ensure it is a valid Learning Plan file.');
+                console.error(err);
             }
         };
         reader.readAsText(file);
