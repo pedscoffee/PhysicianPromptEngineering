@@ -1217,19 +1217,6 @@ permalink: /workflow-optimizer/
         renderConnections();
         updateStats();
     }
-            if (nodes[i].type !== 'decision' || nodes[i + 1].x === nodes[i].x) {
-                connections.push({
-                    id: ++connectionIdCounter,
-                    from: nodes[i].id,
-                    to: nodes[i + 1].id
-                });
-            }
-        }
-        
-        renderNodes();
-        renderConnections();
-        updateStats();
-    }
 
     function saveWorkflow() {
         const data = {
