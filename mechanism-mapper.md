@@ -190,7 +190,7 @@ Increased Preload and Afterload worsen Heart Failure (Vicious Cycle)."></textare
 
         try {
             engine = await CreateMLCEngine(
-                "Gemma-2-2b-it-q4f16_1-MLC",
+                "Phi-3.5-mini-instruct-q4f16_1-MLC",
                 {
                     initProgressCallback: (progress) => {
                         const percent = (progress.progress * 100).toFixed(1);
