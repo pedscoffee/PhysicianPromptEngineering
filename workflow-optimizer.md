@@ -550,17 +550,17 @@ permalink: /workflow-optimizer/
 
             <div class="section-title">Templates</div>
 
-            <button class="template-button" onclick="loadTemplate('clinic')">
-                📋 Standard Clinic Visit
+            <button class="template-button" onclick="loadTemplate('simple')">
+                Simple Sequential Process
             </button>
-            <button class="template-button" onclick="loadTemplate('emergency')">
-                🚨 ER Patient Flow
+            <button class="template-button" onclick="loadTemplate('branching')">
+                Decision-Based Branching
             </button>
-            <button class="template-button" onclick="loadTemplate('or')">
-                🏥 OR Procedure
+            <button class="template-button" onclick="loadTemplate('parallel')">
+                Parallel Task Execution
             </button>
-            <button class="template-button" onclick="loadTemplate('discharge')">
-                📤 Discharge Process
+            <button class="template-button" onclick="loadTemplate('complex')">
+                Complex Multi-Path Flow
             </button>
 
             <div class="stats-panel">
@@ -573,9 +573,13 @@ permalink: /workflow-optimizer/
                     <span>Total Time:</span>
                     <strong id="totalTime">0 min</strong>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" id="costStat" style="display: none;">
                     <span>Est. Cost:</span>
                     <strong id="totalCost">$0</strong>
+                </div>
+                <div class="stat-item" id="customVarStat" style="display: none;">
+                    <span id="customVarLabel">Custom:</span>
+                    <strong id="customVarValue">0</strong>
                 </div>
                 <div class="stat-item">
                     <span>Decision Points:</span>
@@ -589,10 +593,30 @@ permalink: /workflow-optimizer/
 
             <div class="section-title">Actions</div>
 
-            <button class="btn-secondary" onclick="saveWorkflow()">💾 Save Workflow</button>
-            <button class="btn-secondary" onclick="loadWorkflow()">📁 Load Workflow</button>
-            <button class="btn-secondary" onclick="clearWorkflow()">🗑️ Clear All</button>
-            <button class="btn-primary" onclick="exportWorkflow()">⬇️ Export SVG</button>
+            <button class="btn-secondary" onclick="saveWorkflow()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                </svg>
+                Save Workflow
+            </button>
+            <button class="btn-secondary" onclick="loadWorkflow()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
+                </svg>
+                Load Workflow
+            </button>
+            <button class="btn-secondary" onclick="clearWorkflow()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                </svg>
+                Clear All
+            </button>
+            <button class="btn-primary" onclick="exportWorkflow()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px; display: inline;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                Export SVG
+            </button>
         </div>
 
         <!-- Canvas -->
@@ -630,8 +654,21 @@ permalink: /workflow-optimizer/
             <input type="number" id="editTime" min="0" value="0">
         </div>
         <div class="form-group">
-            <label>Cost ($)</label>
-            <input type="number" id="editCost" min="0" value="0">
+            <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" id="enableCost" onchange="toggleCostInput()">
+                Track Cost
+            </label>
+            <input type="number" id="editCost" min="0" value="0" style="display: none; margin-top: 8px;" placeholder="Enter cost in $">
+        </div>
+        <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" id="enableCustomVar" onchange="toggleCustomVarInput()">
+                Custom Variable
+            </label>
+            <div id="customVarInputs" style="display: none; margin-top: 8px;">
+                <input type="text" id="customVarName" placeholder="Variable name (e.g. Risk Score)" style="margin-bottom: 8px;">
+                <input type="number" id="customVarVal" placeholder="Value" step="0.1">
+            </div>
         </div>
         <div class="modal-buttons">
             <button class="btn-secondary" onclick="closeEditModal()">Cancel</button>
@@ -746,8 +783,9 @@ permalink: /workflow-optimizer/
             nodeEl.style.top = node.y + 'px';
             
             const metaHtml = [];
-            if (node.time > 0) metaHtml.push(`<span>⏱ ${node.time}m</span>`);
-            if (node.cost > 0) metaHtml.push(`<span>💰 $${node.cost}</span>`);
+            if (node.time > 0) metaHtml.push(`<span>${node.time}m</span>`);
+            if (node.cost > 0) metaHtml.push(`<span>$${node.cost}</span>`);
+            if (node.customVar) metaHtml.push(`<span>${node.customVar.name}: ${node.customVar.value}</span>`);
             
             nodeEl.innerHTML = `
                 <div class="node-content">
@@ -776,6 +814,18 @@ permalink: /workflow-optimizer/
             <div class="connection-handle left" data-pos="left"></div>
             <div class="connection-handle right" data-pos="right"></div>
         `;
+    }
+
+    function toggleCostInput() {
+        const checkbox = document.getElementById('enableCost');
+        const input = document.getElementById('editCost');
+        input.style.display = checkbox.checked ? 'block' : 'none';
+    }
+
+    function toggleCustomVarInput() {
+        const checkbox = document.getElementById('enableCustomVar');
+        const inputs = document.getElementById('customVarInputs');
+        inputs.style.display = checkbox.checked ? 'block' : 'none';
     }
 
     function handleConnect(nodeId) {
@@ -808,22 +858,41 @@ permalink: /workflow-optimizer/
             
             if (!fromNode || !toNode) return;
             
-            const fromCenter = {
-                x: fromNode.x + 65,
-                y: fromNode.y + 40
-            };
-            const toCenter = {
-                x: toNode.x + 65,
-                y: toNode.y + 40
-            };
+            // Calculate edge connection points instead of centers
+            const fromBox = { x: fromNode.x, y: fromNode.y, w: 130, h: 80 };
+            const toBox = { x: toNode.x, y: toNode.y, w: 130, h: 80 };
+            
+            const fromCenter = { x: fromBox.x + fromBox.w / 2, y: fromBox.y + fromBox.h / 2 };
+            const toCenter = { x: toBox.x + toBox.w / 2, y: toBox.y + toBox.h / 2 };
+            
+            // Determine which edges to connect
+            let fromPoint, toPoint;
+            
+            if (toCenter.y > fromCenter.y + 40) {
+                // Connect bottom of from to top of to
+                fromPoint = { x: fromCenter.x, y: fromBox.y + fromBox.h };
+                toPoint = { x: toCenter.x, y: toBox.y };
+            } else if (toCenter.y < fromCenter.y - 40) {
+                // Connect top of from to bottom of to
+                fromPoint = { x: fromCenter.x, y: fromBox.y };
+                toPoint = { x: toCenter.x, y: toBox.y + toBox.h };
+            } else if (toCenter.x > fromCenter.x) {
+                // Connect right of from to left of to
+                fromPoint = { x: fromBox.x + fromBox.w, y: fromCenter.y };
+                toPoint = { x: toBox.x, y: toCenter.y };
+            } else {
+                // Connect left of from to right of to
+                fromPoint = { x: fromBox.x, y: fromCenter.y };
+                toPoint = { x: toBox.x + toBox.w, y: toCenter.y };
+            }
             
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             
-            const dx = toCenter.x - fromCenter.x;
-            const dy = toCenter.y - fromCenter.y;
+            const dx = toPoint.x - fromPoint.x;
+            const dy = toPoint.y - fromPoint.y;
             const curve = Math.abs(dx) * 0.5;
             
-            const d = `M ${fromCenter.x} ${fromCenter.y} C ${fromCenter.x + curve} ${fromCenter.y}, ${toCenter.x - curve} ${toCenter.y}, ${toCenter.x} ${toCenter.y}`;
+            const d = `M ${fromPoint.x} ${fromPoint.y} C ${fromPoint.x + curve} ${fromPoint.y}, ${toPoint.x - curve} ${toPoint.y}, ${toPoint.x} ${toPoint.y}`;
             
             path.setAttribute('d', d);
             path.setAttribute('class', 'connection-line');
@@ -899,7 +968,20 @@ permalink: /workflow-optimizer/
         currentEditNodeId = nodeId;
         document.getElementById('editLabel').value = node.label;
         document.getElementById('editTime').value = node.time || 0;
+        
+        // Handle cost
+        const hasCost = node.cost && node.cost > 0;
+        document.getElementById('enableCost').checked = hasCost;
         document.getElementById('editCost').value = node.cost || 0;
+        document.getElementById('editCost').style.display = hasCost ? 'block' : 'none';
+        
+        // Handle custom variable
+        const hasCustomVar = node.customVar &&node.customVar.name;
+        document.getElementById('enableCustomVar').checked = hasCustomVar;
+        document.getElementById('customVarName').value = hasCustomVar ? node.customVar.name : '';
+        document.getElementById('customVarVal').value = hasCustomVar ? node.customVar.value : '';
+        document.getElementById('customVarInputs').style.display = hasCustomVar ? 'block' : 'none';
+        
         document.getElementById('editModal').style.display = 'flex';
     }
 
@@ -917,7 +999,26 @@ permalink: /workflow-optimizer/
         saveState();
         node.label = document.getElementById('editLabel').value || node.label;
         node.time = parseInt(document.getElementById('editTime').value) || 0;
-        node.cost = parseInt(document.getElementById('editCost').value) || 0;
+        
+        // Save cost if enabled
+        if (document.getElementById('enableCost').checked) {
+            node.cost = parseInt(document.getElementById('editCost').value) || 0;
+        } else {
+            node.cost = 0;
+        }
+        
+        // Save custom variable if enabled
+        if (document.getElementById('enableCustomVar').checked) {
+            const varName = document.getElementById('customVarName').value.trim();
+            const varValue = parseFloat(document.getElementById('customVarVal').value) || 0;
+            if (varName) {
+                node.customVar = { name: varName, value: varValue };
+            } else {
+                delete node.customVar;
+            }
+        } else {
+            delete node.customVar;
+        }
         
         closeEditModal();
         renderNodes();
@@ -986,7 +1087,26 @@ permalink: /workflow-optimizer/
         document.getElementById('totalTime').textContent = totalTime + ' min';
         
         const totalCost = nodes.reduce((sum, node) => sum + (node.cost || 0), 0);
-        document.getElementById('totalCost').textContent = '$' + totalCost;
+        const costStat = document.getElementById('costStat');
+        if (totalCost > 0) {
+            document.getElementById('totalCost').textContent = '$' + totalCost;
+            costStat.style.display = 'flex';
+        } else {
+            costStat.style.display = 'none';
+        }
+        
+        // Handle custom variable
+        const customVarStat = document.getElementById('customVarStat');
+        const nodesWithCustomVar = nodes.filter(n => n.customVar && n.customVar.name);
+        if (nodesWithCustomVar.length > 0) {
+            const firstVar = nodesWithCustomVar[0].customVar;
+            const customTotal = nodes.reduce((sum, n) => sum + ((n.customVar && n.customVar.name === firstVar.name) ? n.customVar.value : 0), 0);
+            document.getElementById('customVarLabel').textContent = firstVar.name + ':';
+            document.getElementById('customVarValue').textContent = customTotal.toFixed(1);
+            customVarStat.style.display = 'flex';
+        } else {
+            customVarStat.style.display = 'none';
+        }
         
         const decisionCount = nodes.filter(n => n.type === 'decision').length;
         document.getElementById('decisionCount').textContent = decisionCount;
@@ -1005,43 +1125,42 @@ permalink: /workflow-optimizer/
         connectionIdCounter = 0;
         
         const templates = {
-            clinic: [
-                { type: 'start', x: 50, y: 50, label: 'Patient Arrival', time: 0, cost: 0 },
-                { type: 'process', x: 50, y: 130, label: 'Check-in', time: 5, cost: 20 },
-                { type: 'process', x: 50, y: 210, label: 'Vitals', time: 10, cost: 30 },
-                { type: 'process', x: 50, y: 290, label: 'Provider Visit', time: 20, cost: 200 },
-                { type: 'decision', x: 50, y: 370, label: 'Tests Needed?', time: 0, cost: 0 },
-                { type: 'process', x: 200, y: 370, label: 'Order Tests', time: 5, cost: 100 },
-                { type: 'process', x: 50, y: 450, label: 'Check-out', time: 5, cost: 20 },
-                { type: 'end', x: 50, y: 530, label: 'Complete', time: 0, cost: 0 }
+            simple: [
+                { type: 'start', x: 80, y: 50, label: 'Begin', time: 0, cost: 0 },
+                { type: 'process', x: 80, y: 140, label: 'Step 1', time: 10, cost: 0 },
+                { type: 'process', x: 80, y: 240, label: 'Step 2', time: 15, cost: 0 },
+                { type: 'process', x: 80, y: 340, label: 'Step 3', time: 12, cost: 0 },
+                { type: 'end', x: 80, y: 440, label: 'Complete', time: 0, cost: 0 }
             ],
-            emergency: [
-                { type: 'start', x: 50, y: 50, label: 'Patient Arrival', time: 0, cost: 0 },
-                { type: 'process', x: 50, y: 130, label: 'Triage', time: 5, cost: 50 },
-                { type: 'decision', x: 50, y: 210, label: 'Severity?', time: 0, cost: 0 },
-                { type: 'process', x: 200, y: 150, label: 'Resuscitation', time: 30, cost: 1000 },
-                { type: 'process', x: 50, y: 290, label: 'Initial Assessment', time: 15, cost: 200 },
-                { type: 'parallel', x: 50, y: 370, label: 'Tests + Imaging', time: 45, cost: 500 },
-                { type: 'process', x: 50, y: 450, label: 'Treatment', time: 30, cost: 300 },
-                { type: 'decision', x: 50, y: 530, label: 'Admit?', time: 0, cost: 0 },
-                { type: 'end', x: 50, y: 610, label: 'Discharge', time: 0, cost: 0 }
+            branching: [
+                { type: 'start', x: 200, y: 50, label: 'Start', time: 0, cost: 0 },
+                { type: 'process', x: 200, y: 140, label: 'Initial Step', time: 10, cost: 0 },
+                { type: 'decision', x: 200, y: 240, label: 'Check Condition?', time: 0, cost: 0 },
+                { type: 'process', x: 80, y: 350, label: 'Path A', time: 15, cost: 0 },
+                { type: 'process', x: 320, y: 350, label: 'Path B', time: 20, cost: 0 },
+                { type: 'end', x: 200, y: 460, label: 'End', time: 0, cost: 0 }
             ],
-            or: [
-                { type: 'start', x: 50, y: 50, label: 'Pre-op', time: 0, cost: 0 },
-                { type: 'process', x: 50, y: 130, label: 'Anesthesia', time: 20, cost: 500 },
-                { type: 'process', x: 50, y: 210, label: 'Positioning', time: 10, cost: 100 },
-                { type: 'process', x: 50, y: 290, label: 'Procedure', time: 90, cost: 3000 },
-                { type: 'process', x: 50, y: 370, label: 'Recovery', time: 60, cost: 400 },
-                { type: 'end', x: 50, y: 450, label: 'PACU', time: 0, cost: 0 }
+            parallel: [
+                { type: 'start', x: 250, y: 50, label: 'Start', time: 0, cost: 0 },
+                { type: 'process', x: 250, y: 140, label: 'Preparation', time: 10, cost: 0 },
+                { type: 'parallel', x: 250, y: 240, label: 'Split Tasks', time: 0, cost: 0 },
+                { type: 'process', x: 100, y: 340, label: 'Task A', time: 20, cost: 0 },
+                { type: 'process', x: 250, y: 340, label: 'Task B', time: 18, cost: 0 },
+                { type: 'process', x: 400, y: 340, label: 'Task C', time: 22, cost: 0 },
+                { type: 'process', x: 250, y: 450, label: 'Merge Results', time: 8, cost: 0 },
+                { type: 'end', x: 250, y: 550, label: 'Complete', time: 0, cost: 0 }
             ],
-            discharge: [
-                { type: 'start', x: 50, y: 50, label: 'Order Placed', time: 0, cost: 0 },
-                { type: 'decision', x: 50, y: 130, label: 'Transport Needed?', time: 0, cost: 0 },
-                { type: 'process', x: 200, y: 130, label: 'Arrange Transport', time: 30, cost: 200 },
-                { type: 'process', x: 50, y: 210, label: 'Medication Rec', time: 10, cost: 30 },
-                { type: 'process', x: 50, y: 290, label: 'Discharge Instructions', time: 15, cost: 50 },
-                { type: 'process', x: 50, y: 370, label: 'Follow-up Scheduled', time: 5, cost: 20 },
-                { type: 'end', x: 50, y: 450, label: 'Patient Leaves', time: 0, cost: 0 }
+            complex: [
+                { type: 'start', x: 220, y: 30, label: 'Initialize', time: 0, cost: 0 },
+                { type: 'process', x: 220, y: 120, label: 'Intake', time: 8, cost: 0 },
+                { type: 'decision', x: 220, y: 210, label: 'Type A?', time: 0, cost: 0 },
+                { type: 'process', x: 80, y: 300, label: 'Process A1', time: 15, cost: 0 },
+                { type: 'parallel', x: 360, y: 300, label: 'Process B', time: 12, cost: 0 },
+                { type: 'process', x: 280, y: 400, label: 'B-Sub1', time: 10, cost: 0 },
+                { type: 'process', x: 440, y: 400, label: 'B-Sub2', time: 12, cost: 0 },
+                { type: 'decision', x: 220, y: 500, label: 'Review OK?', time: 0, cost: 0 },
+                { type: 'process', x: 360, y: 500, label: 'Corrections', time: 8, cost: 0 },
+                { type: 'end', x: 220, y: 590, label: 'Finalize', time: 0, cost: 0 }
             ]
         };
         
@@ -1056,9 +1175,48 @@ permalink: /workflow-optimizer/
             nodes.push(node);
         });
         
-        // Auto-connect sequential nodes
-        for (let i = 0; i < nodes.length - 1; i++) {
-            // Skip if it's a decision branch that goes sideways
+        // Auto-connect based on template type
+        if (templateName === 'simple') {
+            // Linear connections
+            for (let i = 0; i < nodes.length - 1; i++) {
+                connections.push({ id: ++connectionIdCounter, from: nodes[i].id, to: nodes[i + 1].id });
+            }
+        } else if (templateName === 'branching') {
+            connections.push({ id: ++connectionIdCounter, from: nodes[0].id, to: nodes[1].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[1].id, to: nodes[2].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[2].id, to: nodes[3].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[2].id, to: nodes[4].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[3].id, to: nodes[5].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[4].id, to: nodes[5].id });
+        } else if (templateName === 'parallel') {
+            connections.push({ id: ++connectionIdCounter, from: nodes[0].id, to: nodes[1].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[1].id, to: nodes[2].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[2].id, to: nodes[3].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[2].id, to: nodes[4].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[2].id, to: nodes[5].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[3].id, to: nodes[6].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[4].id, to: nodes[6].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[5].id, to: nodes[6].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[6].id, to: nodes[7].id });
+        } else if (templateName === 'complex') {
+            connections.push({ id: ++connectionIdCounter, from: nodes[0].id, to: nodes[1].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[1].id, to: nodes[2].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[2].id, to: nodes[3].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[2].id, to: nodes[4].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[4].id, to: nodes[5].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[4].id, to: nodes[6].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[3].id, to: nodes[7].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[5].id, to: nodes[7].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[6].id, to: nodes[7].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[7].id, to: nodes[9].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[7].id, to: nodes[8].id });
+            connections.push({ id: ++connectionIdCounter, from: nodes[8].id, to: nodes[1].id }); // Loop back
+        }
+        
+        renderNodes();
+        renderConnections();
+        updateStats();
+    }
             if (nodes[i].type !== 'decision' || nodes[i + 1].x === nodes[i].x) {
                 connections.push({
                     id: ++connectionIdCounter,
