@@ -1,0 +1,29 @@
+{
+    "name": "ClockWork TimeBox",
+    "short_name": "TimeBox",
+    "description": "Visual time-tracking and workday planning tool with task management, analytics, and Pomodoro timer",
+    "start_url": "/clockwork-timebox/",
+    "scope": "/clockwork-timebox/",
+    "display": "standalone",
+    "orientation": "any",
+    "theme_color": "#065f46",
+    "background_color": "#d1fae5",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "productivity",
+        "utilities"
+    ]
+}

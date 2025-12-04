@@ -5,6 +5,24 @@ description: Access a free library of clinical dot phrases with formatting prese
 permalink: /dot-phrase-library/
 ---
 
+<!-- PWA Meta Tags -->
+<link rel="manifest" href="{{ '/dotphrase-manifest.json' | relative_url }}">
+<meta name="theme-color" content="#0088bb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dot Phrases">
+<link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('{{ "/dotphrase-sw.js" | relative_url }}')
+            .then(reg => console.log('[Dot Phrases PWA] Service Worker registered'))
+            .catch(err => console.log('[Dot Phrases PWA] SW registration failed:', err));
+    });
+}
+</script>
+
 <style>
   .search-filter-bar {
     background: white;
@@ -380,6 +398,23 @@ permalink: /dot-phrase-library/
       Copy formatted dot phrases directly into your EMR. Organized by clinical workflow.
     </p>
   </div>
+</div>
+
+<!-- PWA Install Banner -->
+<div id="pwaInstallBanner" style="display: none; background: linear-gradient(135deg, #0088bb 0%, #0077aa 100%); border-radius: 8px; padding: 15px; margin: 20px auto; max-width: 1100px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" style="width: 28px; height: 28px;"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+            <div>
+                <strong style="color: white;">Install Dot Phrases</strong>
+                <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 0.85em;">Add to your home screen for quick access</p>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button id="pwaInstallBtn" onclick="installPWA()" style="background: white; color: #0088bb; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer;">📲 Install</button>
+            <button onclick="dismissInstallBanner()" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); padding: 10px 15px; border-radius: 6px; cursor: pointer;">✕</button>
+        </div>
+    </div>
 </div>
 
 <!-- Three Core Principles - Cards -->
@@ -1568,3 +1603,38 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+// PWA Installation
+let deferredPrompt = null;
+function isRunningAsPWA() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!localStorage.getItem('pwaInstallDismissed') && !isRunningAsPWA()) {
+        document.getElementById('pwaInstallBanner').style.display = 'block';
+    }
+});
+function installPWA() {
+    if (!deferredPrompt) {
+        alert('To install: tap the Share button in your browser, then "Add to Home Screen"');
+        return;
+    }
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            document.getElementById('pwaInstallBanner').style.display = 'none';
+        }
+        deferredPrompt = null;
+    });
+}
+function dismissInstallBanner() {
+    document.getElementById('pwaInstallBanner').style.display = 'none';
+    localStorage.setItem('pwaInstallDismissed', 'true');
+}
+if (isRunningAsPWA()) {
+    const banner = document.getElementById('pwaInstallBanner');
+    if (banner) banner.style.display = 'none';
+}
+</script>
