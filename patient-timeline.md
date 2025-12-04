@@ -332,11 +332,14 @@ permalink: /patient-timeline/
         // Sort events by day
         const sortedEvents = [...events].sort((a, b) => a.day - b.day);
         
-        listEl.innerHTML = sortedEvents.map(event => `
+        listEl.innerHTML = sortedEvents.map((event, index) => `
             <div class="event-item ${event.category}">
-                <div>
-                    <strong>Day ${event.day}</strong><br>
-                    ${event.description}
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                    <div style="background: #333; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">${index + 1}</div>
+                    <div>
+                        <strong>Day ${event.day}</strong> - <span style="text-transform: capitalize; color: #666;">${event.category}</span><br>
+                        ${event.description}
+                    </div>
                 </div>
                 <button onclick="deleteEvent(${event.id})" title="Delete">×</button>
             </div>
@@ -373,10 +376,19 @@ permalink: /patient-timeline/
         }
 
         const width = parseInt(svg.style('width'));
-        const height = parseInt(svg.style('height'));
         const margin = { top: 40, right: 40, bottom: 60, left: 40 };
+        const graphHeight = 400; // Fixed height for graph part
+        
+        // Calculate table height
+        const tableRowHeight = 30;
+        const tableHeaderHeight = 40;
+        const tableHeight = tableHeaderHeight + (events.length * tableRowHeight);
+        const totalHeight = graphHeight + margin.top + margin.bottom + tableHeight + 40; // +40 for spacing
+        
+        svg.style('height', `${totalHeight}px`);
+
         const innerWidth = width - margin.left - margin.right;
-        const innerHeight = height - margin.top - margin.bottom;
+        const innerHeight = graphHeight;
 
         const g = svg.append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
@@ -432,28 +444,45 @@ permalink: /patient-timeline/
         // Draw events
         const tooltip = d3.select('#tooltip');
 
-        g.selectAll('.event-circle')
+        const circles = g.selectAll('.event-group')
             .data(sortedEvents)
             .enter()
-            .append('circle')
-            .attr('class', 'event-circle')
+            .append('g')
+            .attr('class', 'event-group');
+
+        circles.append('circle')
             .attr('cx', d => xScale(d.day))
             .attr('cy', d => yScale(d.category) + yScale.bandwidth() / 2)
-            .attr('r', 8)
+            .attr('r', 12)
             .attr('fill', d => categoryColors[d.category])
             .attr('stroke', 'white')
             .attr('stroke-width', 2)
-            .style('cursor', 'pointer')
-            .on('mouseover', function(event, d) {
-                d3.select(this)
+            .style('cursor', 'pointer');
+
+        // Add numbers
+        circles.append('text')
+            .attr('x', d => xScale(d.day))
+            .attr('y', d => yScale(d.category) + yScale.bandwidth() / 2)
+            .attr('dy', '0.35em')
+            .attr('text-anchor', 'middle')
+            .attr('fill', 'white')
+            .attr('font-size', '10px')
+            .attr('font-weight', 'bold')
+            .style('pointer-events', 'none')
+            .text((d, i) => i + 1);
+
+        // Tooltip interactions on the group
+        circles.on('mouseover', function(event, d) {
+                const i = sortedEvents.indexOf(d);
+                d3.select(this).select('circle')
                     .transition()
                     .duration(200)
-                    .attr('r', 12);
+                    .attr('r', 16);
 
                 tooltip
                     .style('opacity', 1)
                     .html(`
-                        <strong>${d.category.charAt(0).toUpperCase() + d.category.slice(1)}</strong><br>
+                        <strong>#${i + 1} ${d.category.charAt(0).toUpperCase() + d.category.slice(1)}</strong><br>
                         Day ${d.day}<br>
                         ${d.description}
                     `)
@@ -461,13 +490,75 @@ permalink: /patient-timeline/
                     .style('top', (event.pageY - 28) + 'px');
             })
             .on('mouseout', function() {
-                d3.select(this)
+                d3.select(this).select('circle')
                     .transition()
                     .duration(200)
-                    .attr('r', 8);
+                    .attr('r', 12);
 
                 tooltip.style('opacity', 0);
             });
+
+        // --- Draw Data Table ---
+        const tableTop = innerHeight + 60;
+        const tableGroup = svg.append('g')
+            .attr('transform', `translate(${margin.left}, ${margin.top + tableTop})`);
+
+        // Table Header
+        const cols = [
+            { name: '#', width: 40, x: 0 },
+            { name: 'Day', width: 60, x: 40 },
+            { name: 'Category', width: 100, x: 100 },
+            { name: 'Description', width: innerWidth - 200, x: 200 }
+        ];
+
+        // Header Background
+        tableGroup.append('rect')
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', innerWidth)
+            .attr('height', 30)
+            .attr('fill', '#f3f4f6');
+
+        // Header Text
+        cols.forEach(col => {
+            tableGroup.append('text')
+                .attr('x', col.x + 5)
+                .attr('y', 20)
+                .attr('font-weight', 'bold')
+                .attr('font-size', '12px')
+                .attr('fill', '#374151')
+                .text(col.name);
+        });
+
+        // Rows
+        sortedEvents.forEach((d, i) => {
+            const y = 30 + (i * 30);
+            const rowGroup = tableGroup.append('g').attr('transform', `translate(0, ${y})`);
+
+            // Row Background (zebra striping)
+            if (i % 2 === 1) {
+                rowGroup.append('rect')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('width', innerWidth)
+                    .attr('height', 30)
+                    .attr('fill', '#f9fafb');
+            }
+
+            // Row Border
+            rowGroup.append('line')
+                .attr('x1', 0)
+                .attr('x2', innerWidth)
+                .attr('y1', 30)
+                .attr('y2', 30)
+                .attr('stroke', '#e5e7eb');
+
+            // Cell Text
+            rowGroup.append('text').attr('x', cols[0].x + 5).attr('y', 20).attr('font-size', '12px').text(i + 1);
+            rowGroup.append('text').attr('x', cols[1].x + 5).attr('y', 20).attr('font-size', '12px').text(d.day);
+            rowGroup.append('text').attr('x', cols[2].x + 5).attr('y', 20).attr('font-size', '12px').text(d.category.charAt(0).toUpperCase() + d.category.slice(1));
+            rowGroup.append('text').attr('x', cols[3].x + 5).attr('y', 20).attr('font-size', '12px').text(d.description);
+        });
 
         // Add category labels
         categories.forEach(cat => {
