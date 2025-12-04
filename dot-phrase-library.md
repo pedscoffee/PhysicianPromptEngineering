@@ -829,6 +829,228 @@ const dotPhraseData = [
         ]
       }
     ]
+  },
+  {
+    name: "Medical Decision Making (MDM)",
+    level: 1,
+    subgroups: [
+      {
+        name: "Complexity Statements",
+        level: 2,
+        phrases: [
+          {
+            title: "Moderate Complexity",
+            shortcut: ".mdmmod",
+            tags: ["mdm", "complexity", "moderate"],
+            contentHtml: `<p>Patient presents with ***. MDM is moderate due to prescription drug management and ***. Data reviewed includes ***.</p>`
+          },
+          {
+            title: "High Complexity",
+            shortcut: ".mdmhigh",
+            tags: ["mdm", "complexity", "high"],
+            contentHtml: `<p>Patient presents with *** representing a severe exacerbation/threat to life/bodily function. MDM is high due to need for ***. Risk of morbidity is significant without intervention.</p>`
+          }
+        ]
+      },
+      {
+        name: "Differential Diagnosis",
+        level: 2,
+        phrases: [
+          {
+            title: "Differential Diagnosis",
+            shortcut: ".mdmddx",
+            tags: ["mdm", "ddx"],
+            contentHtml: `<p>Differential diagnosis considered: ***, ***, and ***. *** is most likely given ***. *** is less likely due to ***.</p>`
+          },
+          {
+            title: "Rule Out Statement",
+            shortcut: ".mdmruleout",
+            tags: ["mdm", "rule-out"],
+            contentHtml: `<p>Key objective today is to rule out emergent causes including *** and ***. History and exam [do/do not] suggest these etiologies.</p>`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Risk Management & Difficult Discussions",
+    level: 1,
+    subgroups: [
+      {
+        name: "Non-Compliance / Refusal",
+        level: 2,
+        phrases: [
+          {
+            title: "Refusal of Advice",
+            shortcut: ".riskrefusal",
+            tags: ["risk", "refusal", "legal"],
+            contentHtml: `<p>I have extensively discussed the risks of refusing *** with the patient, including but not limited to *** and ***, up to and including permanent disability or death. Patient verbalizes understanding of these risks but chooses to decline at this time. We will continue to offer this standard of care at future visits.</p>`
+          },
+          {
+            title: "Against Medical Advice (AMA)",
+            shortcut: ".riskama",
+            tags: ["risk", "ama", "discharge"],
+            contentHtml: `<p>Patient is choosing to leave/discharge Against Medical Advice (AMA). Capacity to make this decision was assessed and patient is alert, oriented, and understands the specific risks of leaving, including ***. Return precautions were given and patient was advised they are welcome to return at any time.</p>`
+          }
+        ]
+      },
+      {
+        name: "Controlled Substances",
+        level: 2,
+        phrases: [
+          {
+            title: "Controlled Substance Agreement",
+            shortcut: ".riskcs",
+            tags: ["risk", "controlled-substance", "pain"],
+            contentHtml: `<p>Reviewed Controlled Substance Agreement. PMP database checked and is consistent. Urine drug screen [ordered/reviewed]. Risks of sedation, dependence, and overdose discussed. Patient agrees to take medication exactly as prescribed.</p>`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Care Coordination & Team Communication",
+    level: 1,
+    subgroups: [
+      {
+        name: "Staff Instructions",
+        level: 2,
+        phrases: [
+          {
+            title: "Administer Meds",
+            shortcut: ".rnadmin",
+            tags: ["team", "nursing", "meds"],
+            contentHtml: `<p>Please administer *** [Dose] [Route] now. Monitor for *** for 15 minutes post-administration.</p>`
+          },
+          {
+            title: "Vaccine Order",
+            shortcut: ".rnvaccine",
+            tags: ["team", "nursing", "vaccine"],
+            contentHtml: `<p>Please administer ***. VIS sheet given to patient. Consent obtained. Screen for contraindications prior to administration.</p>`
+          }
+        ]
+      },
+      {
+        name: "Handoffs & Referrals",
+        level: 2,
+        phrases: [
+          {
+            title: "Referral Note",
+            shortcut: ".teamref",
+            tags: ["team", "referral"],
+            contentHtml: `<p>Referral placed to *** for ***. Pertinent records including *** attached. Specific clinical question: ***.</p>`
+          },
+          {
+            title: "Peer-to-Peer Note",
+            shortcut: ".teampeer",
+            tags: ["team", "peer-to-peer"],
+            contentHtml: `<p>Discussed case with Dr. *** (Specialty). They agree with current plan and recommend ***. Will follow up with their office in ***.</p>`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Telehealth & Technology",
+    level: 1,
+    subgroups: [
+      {
+        name: "Technical & Logistics",
+        level: 2,
+        phrases: [
+          {
+            title: "Tech Issues",
+            shortcut: ".teletech",
+            tags: ["telehealth", "tech-issues"],
+            contentHtml: `<p>Visit started via video but transitioned to audio-only due to technical difficulties. Patient verbally consented to continue via phone. Clinical decision making was not compromised by this transition.</p>`
+          },
+          {
+            title: "Location Verification",
+            shortcut: ".teleloc",
+            tags: ["telehealth", "location"],
+            contentHtml: `<p>Patient location verified as *** at start of visit. Patient confirms they are in a private location appropriate for discussing medical information.</p>`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Preventative & Chronic Care Support",
+    level: 1,
+    subgroups: [
+      {
+        name: "Screening & Counseling",
+        level: 2,
+        phrases: [
+          {
+            title: "Tobacco Counseling",
+            shortcut: ".prevtob",
+            tags: ["preventative", "tobacco", "counseling"],
+            contentHtml: `<p>Current smoker. Time spent counseling on cessation: [3-10] minutes. Discussed health risks and cessation aids (NRT, pharmacotherapy). Patient [ready/not ready] to quit at this time.</p>`
+          },
+          {
+            title: "Weight/Nutrition Counseling",
+            shortcut: ".prevwt",
+            tags: ["preventative", "nutrition", "counseling"],
+            contentHtml: `<p>Counseling provided regarding nutrition and physical activity. Discussed importance of ***. Patient goal: ***. Follow up on progress in ***.</p>`
+          },
+          {
+            title: "Fall Risk Screen",
+            shortcut: ".prevfall",
+            tags: ["preventative", "fall-risk", "screening"],
+            contentHtml: `<p>Fall risk assessment performed. Patient [denies/reports] falls in past year. Timed Up and Go test: [Normal/Abnormal]. Home safety checklist discussed.</p>`
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Expanded Inbox Management",
+    level: 1,
+    subgroups: [
+      {
+        name: "Communication",
+        level: 2,
+        phrases: [
+          {
+            title: "Left Voicemail",
+            shortcut: ".msgvm",
+            tags: ["inbox", "voicemail"],
+            contentHtml: `<p>Tried to reach patient via phone. Left voicemail requesting call back regarding ***. Please try again in *** if no response.</p>`
+          },
+          {
+            title: "Portal Reply - Generic",
+            shortcut: ".msgportal",
+            tags: ["inbox", "portal"],
+            contentHtml: `<p>This message is to acknowledge receipt of your inquiry. I have reviewed your chart and ***. Please schedule an appointment if you wish to discuss this in more detail.</p>`
+          },
+          {
+            title: "Letter Sent",
+            shortcut: ".msgletter",
+            tags: ["inbox", "letter"],
+            contentHtml: `<p>Letter regarding *** mailed to patient's address on file today. Copy scanned to chart.</p>`
+          }
+        ]
+      },
+      {
+        name: "Results (Nuanced)",
+        level: 2,
+        phrases: [
+          {
+            title: "Chronic Condition Stable",
+            shortcut: ".resstable",
+            tags: ["inbox", "results", "stable"],
+            contentHtml: `<p>Labs reviewed. Values are stable compared to previous. Current management plan remains appropriate. No changes needed. Notify patient.</p>`
+          },
+          {
+            title: "Results Improving",
+            shortcut: ".resimproving",
+            tags: ["inbox", "results", "improving"],
+            contentHtml: `<p>Labs reviewed. Values show improvement. Please encourage patient to keep up the good work with current plan. Follow up as scheduled.</p>`
+          }
+        ]
+      }
+    ]
   }
 ];
 
