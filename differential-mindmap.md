@@ -229,11 +229,12 @@ permalink: /differential-mindmap/
         Your task is to take a clinical scenario and generate a Mermaid.js 'mindmap' code block.
         
         Rules:
-        1. The root node should be the Chief Complaint (e.g., "RLQ Pain").
-        2. Branch out by Organ System or Category (e.g., GI, GYN, GU, Vascular).
-        3. Add specific diagnoses as leaves under each category.
-        4. Mark "Must Not Miss" or "Emergent" diagnoses with a specific icon or just bold text if possible, but keep it simple.
-        5. Output ONLY the mermaid code block.
+        1. Start with 'mindmap'
+        2. The root node should be the Chief Complaint (e.g., root((RLQ Pain))).
+        3. Use indentation to create branches.
+        4. Do NOT use special characters like brackets [] or braces {} inside node labels unless they are part of the text.
+        5. Do NOT use icons or complex styling syntax. Keep it strictly text-based indentation.
+        6. Output ONLY the mermaid code block.
 
         Example Output Format:
         \`\`\`mermaid
@@ -242,14 +243,11 @@ permalink: /differential-mindmap/
             GI
               Appendicitis
               Crohn's Flare
-              Mesenteric Adenitis
             GYN
               Ectopic Pregnancy
               Ovarian Torsion
-              PID
             GU
               Kidney Stone
-              UTI
         \`\`\`
         `;
 

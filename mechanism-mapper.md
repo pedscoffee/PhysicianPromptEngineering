@@ -227,15 +227,16 @@ Increased Preload and Afterload worsen Heart Failure (Vicious Cycle)."></textare
         statusBar.textContent = 'Mapping mechanism...';
 
         const systemPrompt = `You are an expert medical illustrator and physiologist.
-        Your task is to take a text description of a mechanism and convert it into a Mermaid.js 'stateDiagram-v2' or 'graph TD'.
+        Your task is to take a text description of a mechanism and convert it into a Mermaid.js 'graph TD' code block.
         
         Rules:
-        1. Identify key entities (e.g., "Heart Failure", "RAAS").
-        2. Identify relationships (e.g., "activates", "inhibits", "causes").
-        3. Create a flowchart showing the flow.
-        4. If there is a feedback loop, make sure the arrows connect back.
-        5. Use simple labels.
-        6. Output ONLY the mermaid code block.
+        1. Start with 'graph TD'
+        2. Use ONLY these arrow types: --> (solid), -.-> (dotted), ==> (thick).
+        3. DO NOT use any other arrow types like <|r|> or --o.
+        4. Use square brackets for nodes: A[Node Label]
+        5. If there is a feedback loop, make sure the arrows connect back.
+        6. Keep labels simple and concise.
+        7. Output ONLY the mermaid code block.
 
         Example Output Format:
         \`\`\`mermaid

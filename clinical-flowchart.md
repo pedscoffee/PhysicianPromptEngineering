@@ -301,10 +301,13 @@ Else if afebrile:
         2. A text-based ASCII/Unicode flowchart that is clean and copy-pasteable into a medical note.
 
         Rules for Mermaid:
-        - Use 'graph TD'
-        - Use clear, short node labels (e.g., "Fever > 38.5")
-        - Use square brackets for decisions/conditions (e.g., A{Condition?})
-        - Keep it simple.
+        - Start with 'graph TD'
+        - Use ONLY these arrow types: --> (solid), -.-> (dotted), ==> (thick).
+        - DO NOT use any other arrow types like <|r|> or --o.
+        - Use square brackets for nodes: A[Node Label]
+        - Use curly braces for decisions: B{Condition?}
+        - Keep labels short and concise.
+        - Do not use special characters inside node IDs (use A, B, C, etc).
 
         Rules for ASCII/Text:
         - Use standard characters (|, +, -, >) or simple unicode boxes.
@@ -315,7 +318,10 @@ Else if afebrile:
         Please output EXACTLY in this format:
         
         \`\`\`mermaid
-        [Mermaid code here]
+        graph TD
+        A[Start] --> B{Condition?}
+        B -->|Yes| C[Action 1]
+        B -->|No| D[Action 2]
         \`\`\`
 
         \`\`\`text
