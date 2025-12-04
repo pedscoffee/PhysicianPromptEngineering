@@ -236,7 +236,11 @@ description: A structured tool for medical trainees to set rotation goals and re
             <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Import</button>
             <input type="file" id="import-file" style="display: none;" onchange="importData(this)">
         </div>
-        <label style="cursor: pointer; user-select: none;">
+        <label style="cursor: pointer; user-select: none; margin-left: 1rem;">
+            <input type="checkbox" id="daily-mode-toggle" onchange="toggleDailyMode()"> 
+            <strong>Daily Mode</strong> (Quick Version)
+        </label>
+        <label style="cursor: pointer; user-select: none; margin-left: 1rem;">
             <input type="checkbox" id="attending-mode-toggle" onchange="toggleAttendingMode()"> 
             <strong>Attending Mode</strong> (Enable Feedback)
         </label>
@@ -254,12 +258,12 @@ description: A structured tool for medical trainees to set rotation goals and re
     <div class="wizard-step active" id="step-1">
         <div class="card">
             <h2>Step 1: Informed Self-Assessment</h2>
-            <div class="info-box">
+            <div class="info-box" id="step1-info">
                 <strong>Look Outward, Then Inward:</strong> 
                 Effective self-assessment isn't just guessing how good you are. It's integrating external feedback (previous evaluations, test scores) with your own reflection.
             </div>
 
-            <div class="form-group">
+            <div class="form-group full-mode-only">
                 <label class="form-label">Previous Feedback & Data</label>
                 <div class="form-hint">What have previous attendings/residents suggested you work on? What do your test scores say?</div>
                 <textarea id="reflect-external" class="form-input" rows="3" placeholder="e.g., Last rotation, I was told to work on more concise presentations..."></textarea>
@@ -270,15 +274,15 @@ description: A structured tool for medical trainees to set rotation goals and re
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group full-mode-only">
                 <label class="form-label">Current Strengths</label>
                 <div class="form-hint">What skills are you confident in?</div>
                 <textarea id="reflect-strengths" class="form-input" rows="3" placeholder="e.g., Building rapport with patients, history taking..."></textarea>
             </div>
 
             <div class="form-group">
-                <label class="form-label">Areas for Growth</label>
-                <div class="form-hint">What specific skills or knowledge gaps do you want to target this rotation?</div>
+                <label class="form-label" id="growth-label">Areas for Growth</label>
+                <div class="form-hint" id="growth-hint">What specific skills or knowledge gaps do you want to target this rotation?</div>
                 <textarea id="reflect-growth" class="form-input" rows="3" placeholder="e.g., Managing DKA, interpreting EKGs, efficiency in note writing..."></textarea>
             </div>
         </div>
@@ -307,7 +311,7 @@ description: A structured tool for medical trainees to set rotation goals and re
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group full-mode-only">
                 <label class="form-label">Goal 2 (Skill/Process)</label>
                 <input type="text" id="goal-2" class="form-input" placeholder="e.g., Submit all notes before leaving the hospital each day.">
                 
@@ -317,7 +321,7 @@ description: A structured tool for medical trainees to set rotation goals and re
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group full-mode-only">
                 <label class="form-label">Goal 3 (Personal/Professional)</label>
                 <input type="text" id="goal-3" class="form-input" placeholder="e.g., Ask for specific feedback on physical exam once per week.">
                 
@@ -361,7 +365,7 @@ description: A structured tool for medical trainees to set rotation goals and re
         </div>
         <div class="navigation-buttons">
             <button class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
-            <button class="btn btn-success" onclick="generateSummary()">Finish & Review →</button>
+            <button class="btn btn-primary" onclick="nextStep(4)">Next: Review →</button>
         </div>
     </div>
 
@@ -407,7 +411,7 @@ description: A structured tool for medical trainees to set rotation goals and re
                 <p>Review your goals and feedback below.</p>
             </div>
 
-            <div id="summary-content">
+            <div id="summary-content" style="text-align: left;">
                 <!-- Content injected via JS -->
             </div>
 
@@ -428,6 +432,7 @@ description: A structured tool for medical trainees to set rotation goals and re
     let currentStep = 1;
     const totalSteps = 5;
     let attendingMode = false;
+    let dailyMode = false;
 
     // Init
     window.addEventListener('DOMContentLoaded', () => {
@@ -458,6 +463,28 @@ description: A structured tool for medical trainees to set rotation goals and re
                 }
             }
         });
+    }
+
+    function toggleDailyMode() {
+        dailyMode = document.getElementById('daily-mode-toggle').checked;
+        const fullModeElements = document.querySelectorAll('.full-mode-only');
+        
+        fullModeElements.forEach(el => {
+            el.style.display = dailyMode ? 'none' : 'block';
+        });
+
+        // Update labels for Daily Mode
+        if (dailyMode) {
+            document.getElementById('growth-label').innerText = "Today's Focus";
+            document.getElementById('growth-hint').innerText = "What is the ONE thing you want to improve today?";
+            document.getElementById('step1-info').innerHTML = "<strong>Daily Goal Setting:</strong><br>Keep it simple. Focus on one specific thing for today.";
+            document.querySelector('label[for="goal-1"]').innerText = "Today's Goal";
+        } else {
+            document.getElementById('growth-label').innerText = "Areas for Growth";
+            document.getElementById('growth-hint').innerText = "What specific skills or knowledge gaps do you want to target this rotation?";
+            document.getElementById('step1-info').innerHTML = "<strong>Look Outward, Then Inward:</strong><br>Effective self-assessment isn't just guessing how good you are. It's integrating external feedback (previous evaluations, test scores) with your own reflection.";
+            document.querySelector('label[for="goal-1"]').innerText = "Goal 1 (Clinical/Knowledge)";
+        }
     }
 
     function nextStep(step) {
@@ -498,20 +525,20 @@ description: A structured tool for medical trainees to set rotation goals and re
         const html = `
             <div class="summary-section">
                 <h3>1. Reflection</h3>
-                <p><strong>Previous Feedback:</strong><br>${getVal('reflect-external')}</p>
+                ${!dailyMode ? `<p><strong>Previous Feedback:</strong><br>${getVal('reflect-external')}</p>
                 ${getFeedback('feedback-reflect')}
-                <p><strong>Strengths:</strong><br>${getVal('reflect-strengths')}</p>
-                <p><strong>Growth Areas:</strong><br>${getVal('reflect-growth')}</p>
+                <p><strong>Strengths:</strong><br>${getVal('reflect-strengths')}</p>` : ''}
+                <p><strong>${dailyMode ? "Today's Focus" : "Growth Areas"}:</strong><br>${getVal('reflect-growth')}</p>
             </div>
 
             <div class="summary-section">
                 <h3>2. Goals</h3>
-                <p><strong>Goal 1:</strong> ${getVal('goal-1')}</p>
+                <p><strong>${dailyMode ? "Today's Goal" : "Goal 1"}:</strong> ${getVal('goal-1')}</p>
                 ${getFeedback('feedback-goal-1')}
-                <p><strong>Goal 2:</strong> ${getVal('goal-2')}</p>
+                ${!dailyMode ? `<p><strong>Goal 2:</strong> ${getVal('goal-2')}</p>
                 ${getFeedback('feedback-goal-2')}
                 <p><strong>Goal 3:</strong> ${getVal('goal-3')}</p>
-                ${getFeedback('feedback-goal-3')}
+                ${getFeedback('feedback-goal-3')}` : ''}
             </div>
 
             <div class="summary-section" style="border-bottom: none;">
@@ -541,6 +568,7 @@ description: A structured tool for medical trainees to set rotation goals and re
             data[input.id] = input.value;
         });
         data['attendingMode'] = document.getElementById('attending-mode-toggle').checked;
+        data['dailyMode'] = document.getElementById('daily-mode-toggle').checked;
         localStorage.setItem('traineeGoalSetter', JSON.stringify(data));
     }
 
@@ -552,6 +580,9 @@ description: A structured tool for medical trainees to set rotation goals and re
                 if (key === 'attendingMode') {
                     document.getElementById('attending-mode-toggle').checked = data[key];
                     toggleAttendingMode();
+                } else if (key === 'dailyMode') {
+                    document.getElementById('daily-mode-toggle').checked = data[key];
+                    toggleDailyMode();
                 } else {
                     const el = document.getElementById(key);
                     if (el) el.value = data[key];
