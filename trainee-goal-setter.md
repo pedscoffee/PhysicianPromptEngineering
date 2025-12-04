@@ -231,6 +231,11 @@ description: A structured tool for medical trainees to set rotation goals and re
 
 <div class="wizard-container">
     <div class="toggle-container">
+        <div style="float: left;">
+            <button class="btn btn-secondary" onclick="clearData()" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Clear Data</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Import</button>
+            <input type="file" id="import-file" style="display: none;" onchange="importData(this)">
+        </div>
         <label style="cursor: pointer; user-select: none;">
             <input type="checkbox" id="attending-mode-toggle" onchange="toggleAttendingMode()"> 
             <strong>Attending Mode</strong> (Enable Feedback)
@@ -241,7 +246,8 @@ description: A structured tool for medical trainees to set rotation goals and re
         <div class="step active" id="ind-1">1<span class="step-label">Reflect</span></div>
         <div class="step" id="ind-2">2<span class="step-label">Goals</span></div>
         <div class="step" id="ind-3">3<span class="step-label">Plan</span></div>
-        <div class="step" id="ind-4">4<span class="step-label">Summary</span></div>
+        <div class="step" id="ind-4">4<span class="step-label">Review</span></div>
+        <div class="step" id="ind-5">5<span class="step-label">Summary</span></div>
     </div>
 
     <!-- Step 1: Reflection -->
@@ -359,11 +365,45 @@ description: A structured tool for medical trainees to set rotation goals and re
         </div>
     </div>
 
-    <!-- Step 4: Summary -->
+    <!-- Step 4: End of Rotation Review -->
     <div class="wizard-step" id="step-4">
         <div class="card">
+            <h2>Step 4: End of Rotation Review</h2>
+            <div class="info-box">
+                <strong>Reflection & Evaluation:</strong><br>
+                At the end of the rotation, reflect on your progress and receive final feedback.
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Learner Reflection</label>
+                <div class="form-hint">How did the rotation go? Did you achieve your goals?</div>
+                <textarea id="review-learner" class="form-input" rows="4" placeholder="e.g., I achieved my goal of managing heart failure patients, but still need work on..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Feedback for Rotation</label>
+                <div class="form-hint">What went well? What could be improved about the learning environment?</div>
+                <textarea id="review-rotation" class="form-input" rows="3" placeholder="e.g., The teaching rounds were excellent, but..."></textarea>
+            </div>
+
+            <div class="attending-feedback">
+                <label class="attending-label">End of Rotation Evaluation (Attending):</label>
+                <div class="form-hint">Summary of performance and feedback for the learner.</div>
+                <textarea id="review-attending" class="form-input" rows="5" placeholder="Attending evaluation comments..."></textarea>
+            </div>
+        </div>
+        <div class="navigation-buttons">
+            <button class="btn btn-secondary" onclick="prevStep(3)">← Back</button>
+            <button class="btn btn-success" onclick="generateSummary()">Finish & View Plan →</button>
+        </div>
+    </div>
+
+    <!-- Step 5: Summary -->
+    <div class="wizard-step" id="step-5">
+        <div class="card">
             <div style="text-align: center; margin-bottom: 2rem;">
-                <h2 style="color: #92400e;">Learning Contract</h2>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="color: #92400e;">Learning Plan</h2>
                 <p>Review your goals and feedback below.</p>
             </div>
 
@@ -377,7 +417,7 @@ description: A structured tool for medical trainees to set rotation goals and re
             </div>
         </div>
         <div class="navigation-buttons">
-            <button class="btn btn-secondary" onclick="prevStep(3)">← Edit Plan</button>
+            <button class="btn btn-secondary" onclick="prevStep(4)">← Edit Review</button>
             <button class="btn btn-primary" onclick="window.location.href='/'">Done →</button>
         </div>
     </div>
@@ -386,7 +426,7 @@ description: A structured tool for medical trainees to set rotation goals and re
 <script>
     // State Management
     let currentStep = 1;
-    const totalSteps = 4;
+    const totalSteps = 5;
     let attendingMode = false;
 
     // Init
@@ -480,10 +520,19 @@ description: A structured tool for medical trainees to set rotation goals and re
                 <p><strong>Support Needed:</strong><br>${getVal('plan-support')}</p>
                 ${getFeedback('feedback-support')}
             </div>
+                ${getFeedback('feedback-support')}
+            </div>
+
+            <div class="summary-section" style="border-bottom: none;">
+                <h3>4. End of Rotation Review</h3>
+                <p><strong>Learner Reflection:</strong><br>${getVal('review-learner')}</p>
+                <p><strong>Feedback for Rotation:</strong><br>${getVal('review-rotation')}</p>
+                ${getFeedback('review-attending')}
+            </div>
         `;
 
         document.getElementById('summary-content').innerHTML = html;
-        nextStep(4);
+        nextStep(5);
     }
 
     function saveProgress() {
@@ -520,7 +569,31 @@ description: A structured tool for medical trainees to set rotation goals and re
     function copyToClipboard() {
         const content = document.getElementById('summary-content').innerText;
         navigator.clipboard.writeText(content).then(() => {
-            alert('Learning contract copied to clipboard!');
+            alert('Learning Plan copied to clipboard!');
         });
+    }
+
+    function clearData() {
+        if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+            localStorage.removeItem('traineeGoalSetter');
+            location.reload();
+        }
+    }
+
+    function importData(input) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const data = JSON.parse(e.target.result);
+                localStorage.setItem('traineeGoalSetter', JSON.stringify(data));
+                location.reload();
+            } catch (err) {
+                alert('Error importing file. Please ensure it is a valid JSON file.');
+            }
+        };
+        reader.readAsText(file);
     }
 </script>
