@@ -261,6 +261,12 @@ redirect_from:
       </div>
       <div class="card">
         <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/qi-project-planner">QI Project Planner</a></h4>
+          <p>Plan your QI project with a step-by-step IHI wizard.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
           <h4 class="card-title"><a href="{{ site.baseurl }}/pto-planner">Annual PTO Planner</a></h4>
           <p>Visualize and plan your time off for the year.</p>
         </div>
