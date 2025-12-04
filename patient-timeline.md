@@ -185,6 +185,67 @@ permalink: /patient-timeline/
         transition: opacity 0.2s;
         z-index: 1000;
     }
+
+    /* AI UI Styles */
+    .model-status {
+        margin-bottom: 15px;
+        padding: 15px;
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+        border-radius: 6px;
+        color: #92400e;
+        font-size: 0.9em;
+    }
+
+    .mode-toggle {
+        display: flex;
+        gap: 8px;
+        background: #f3f4f6;
+        padding: 4px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .mode-btn {
+        background: transparent;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85em;
+        font-weight: 600;
+        color: #6b7280;
+        transition: all 0.2s;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .mode-btn:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .mode-btn.active {
+        background: white;
+        color: #2a7ae2;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .mode-panel {
+        animation: fadeIn 0.3s;
+    }
+
+    .status-bar {
+        margin-top: 15px;
+        padding: 10px;
+        background: #f0f9ff;
+        border-radius: 6px;
+        color: #0369a1;
+        font-size: 0.9em;
+        display: none;
+    }
 </style>
 
 <div class="hero" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 3rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
@@ -213,36 +274,69 @@ permalink: /patient-timeline/
         </div>
     </div>
 
+    <div class="model-status" id="modelStatus">
+        <strong>AI Model Status:</strong> Not Loaded. 
+        <button id="loadModelBtn" class="btn-secondary" style="width: auto; display: inline-block; padding: 4px 12px; margin-left: 10px; font-size: 0.85em;">Load AI Model (~1GB)</button>
+        <div id="progressContainer" style="margin-top: 10px; display: none;">
+            <div style="background: #e5e7eb; height: 6px; border-radius: 3px; overflow: hidden;">
+                <div id="progressBar" style="background: #2a7ae2; width: 0%; height: 100%; transition: width 0.3s;"></div>
+            </div>
+            <div id="progressText" style="font-size: 0.8em; margin-top: 4px; color: #666;">Initializing...</div>
+        </div>
+    </div>
+
     <div class="timeline-container">
         <!-- Input Panel -->
         <div class="input-panel">
-            <h3 style="margin-bottom: 15px; color: #333;">Add Events</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="margin: 0; color: #333;">Add Events</h3>
+            </div>
+
+            <div class="mode-toggle">
+                <button id="manualModeBtn" class="mode-btn active" onclick="switchMode('manual')">Manual Entry</button>
+                <button id="aiModeBtn" class="mode-btn" onclick="switchMode('ai')">AI Generation</button>
+            </div>
             
-            <form id="eventForm">
-                <div class="form-group">
-                    <label for="eventDay">Relative Day</label>
-                    <input type="number" id="eventDay" min="1" placeholder="e.g., 1 (Admission Day)" required>
-                </div>
+            <!-- Manual Mode -->
+            <div id="manualMode" class="mode-panel">
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="eventDay">Relative Day</label>
+                        <input type="number" id="eventDay" min="1" placeholder="e.g., 1 (Admission Day)" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="eventCategory">Category</label>
-                    <select id="eventCategory" required>
-                        <option value="symptom">Symptom</option>
-                        <option value="lab">Lab Result</option>
-                        <option value="intervention">Intervention</option>
-                        <option value="imaging">Imaging</option>
-                        <option value="diagnosis">Diagnosis</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
+                    <div class="form-group">
+                        <label for="eventCategory">Category</label>
+                        <select id="eventCategory" required>
+                            <option value="symptom">Symptom</option>
+                            <option value="lab">Lab Result</option>
+                            <option value="intervention">Intervention</option>
+                            <option value="imaging">Imaging</option>
+                            <option value="diagnosis">Diagnosis</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="eventDescription">Description</label>
-                    <textarea id="eventDescription" placeholder="e.g., Fever 103°F" required></textarea>
-                </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" placeholder="e.g., Fever 103°F" required></textarea>
+                    </div>
 
-                <button type="submit" class="btn-primary">Add Event</button>
-            </form>
+                    <button type="submit" class="btn-primary">Add Event</button>
+                </form>
+            </div>
+
+            <!-- AI Mode -->
+            <div id="aiMode" class="mode-panel" style="display: none;">
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                    Paste a History of Present Illness (HPI) or case summary below. The AI will extract events and days.
+                </p>
+                <textarea id="hpiInput" placeholder="e.g., 55M presented on Day 1 with chest pain. Troponin was elevated. He was started on Heparin..." style="min-height: 200px;"></textarea>
+                <button id="generateBtn" class="btn-primary" disabled>Generate Timeline</button>
+                <div id="statusBar" class="status-bar"></div>
+            </div>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e8e8e8;">
 
             <button type="button" class="btn-secondary" onclick="clearAllEvents()">Clear All Events</button>
             <button type="button" class="btn-secondary" onclick="exportTimeline()">Export SVG</button>
@@ -595,4 +689,150 @@ permalink: /patient-timeline/
 
     // Initialize empty timeline
     renderTimeline();
+
+    // Expose update function for AI module
+    window.updateTimelineFromAI = function(newEvents) {
+        // Append new events with unique IDs
+        const timestamp = Date.now();
+        const processedEvents = newEvents.map((e, i) => ({
+            id: timestamp + i,
+            day: parseInt(e.day) || 1,
+            category: e.category.toLowerCase(),
+            description: e.description
+        }));
+        
+        events = [...events, ...processedEvents];
+        updateEventList();
+        renderTimeline();
+        
+        // Switch back to manual mode to show results
+        switchMode('manual');
+    };
+
+    // Mode Switching
+    window.switchMode = function(mode) {
+        const aiMode = document.getElementById('aiMode');
+        const manualMode = document.getElementById('manualMode');
+        const aiModeBtn = document.getElementById('aiModeBtn');
+        const manualModeBtn = document.getElementById('manualModeBtn');
+        
+        if (mode === 'ai') {
+            aiMode.style.display = 'block';
+            manualMode.style.display = 'none';
+            aiModeBtn.classList.add('active');
+            manualModeBtn.classList.remove('active');
+        } else {
+            aiMode.style.display = 'none';
+            manualMode.style.display = 'block';
+            aiModeBtn.classList.remove('active');
+            manualModeBtn.classList.add('active');
+        }
+    }
+</script>
+
+<script type="module">
+    import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
+
+    let engine = null;
+    let isModelLoaded = false;
+
+    const loadModelBtn = document.getElementById('loadModelBtn');
+    const generateBtn = document.getElementById('generateBtn');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const statusBar = document.getElementById('statusBar');
+    const modelStatus = document.getElementById('modelStatus');
+
+    loadModelBtn.addEventListener('click', async () => {
+        loadModelBtn.disabled = true;
+        loadModelBtn.textContent = 'Loading...';
+        progressContainer.style.display = 'block';
+
+        try {
+            engine = await CreateMLCEngine(
+                "Phi-3.5-mini-instruct-q4f16_1-MLC",
+                {
+                    initProgressCallback: (progress) => {
+                        const percent = (progress.progress * 100).toFixed(1);
+                        progressBar.style.width = `${percent}%`;
+                        progressText.textContent = progress.text;
+                    }
+                }
+            );
+            
+            isModelLoaded = true;
+            generateBtn.disabled = false;
+            modelStatus.innerHTML = '<strong>AI Model Status:</strong> <span style="color: green;">Ready</span>';
+            modelStatus.style.borderColor = '#86efac';
+            modelStatus.style.background = '#f0fdf4';
+            modelStatus.style.color = '#166534';
+            
+        } catch (error) {
+            console.error(error);
+            progressText.textContent = "Error loading model: " + error.message;
+            progressText.style.color = 'red';
+            loadModelBtn.disabled = false;
+            loadModelBtn.textContent = 'Retry Load';
+        }
+    });
+
+    generateBtn.addEventListener('click', async () => {
+        const input = document.getElementById('hpiInput').value;
+        if (!input.trim()) return;
+
+        generateBtn.disabled = true;
+        generateBtn.textContent = 'Generating...';
+        statusBar.style.display = 'block';
+        statusBar.textContent = 'Analyzing clinical history...';
+
+        const systemPrompt = `You are a medical assistant. Extract timeline events from the history. 
+        Output strictly valid JSON array of objects.
+        Format: [{"day": 1, "category": "symptom", "description": "short description"}]
+        
+        Rules:
+        - "day" must be an integer. Day 1 is admission or start of story.
+        - "category" must be one of: symptom, lab, intervention, imaging, diagnosis, other.
+        - "description" should be concise (under 10 words).
+        - Do not include any markdown formatting or explanations, JUST the JSON array.
+        `;
+
+        try {
+            const response = await engine.chat.completions.create({
+                messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: input }
+                ],
+                temperature: 0.1,
+            });
+
+            const content = response.choices[0].message.content;
+            console.log("AI Response:", content);
+            
+            // clean content of potential markdown code blocks
+            const cleanContent = content.replace(/```json/g, '').replace(/```/g, '').trim();
+            
+            try {
+                const newEvents = JSON.parse(cleanContent);
+                if (Array.isArray(newEvents)) {
+                    window.updateTimelineFromAI(newEvents);
+                    statusBar.textContent = 'Timeline generated!';
+                    document.getElementById('hpiInput').value = ''; // Clear input
+                } else {
+                    throw new Error("Output is not an array");
+                }
+            } catch (e) {
+                console.error("JSON Parse Error:", e);
+                statusBar.textContent = 'Error parsing AI response. Please try again.';
+            }
+
+        } catch (error) {
+            console.error(error);
+            statusBar.textContent = 'Error: ' + error.message;
+        } finally {
+            generateBtn.disabled = false;
+            generateBtn.textContent = 'Generate Timeline';
+            setTimeout(() => statusBar.style.display = 'none', 3000);
+        }
+    });
 </script>
