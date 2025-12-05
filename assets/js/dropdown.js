@@ -1,36 +1,55 @@
-// Mobile dropdown toggle functionality
-// Add this to assets/js/dropdown.js
+document.addEventListener('DOMContentLoaded', function () {
+  const dropdownLinks = document.querySelectorAll('.dropdown > .page-link');
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Only apply mobile dropdown logic on smaller screens
-  if (window.innerWidth <= 599) {
-    const dropdowns = document.querySelectorAll('.dropdown > .page-link');
-    
-    dropdowns.forEach(function(dropdown) {
-      dropdown.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Toggle the active class on the parent dropdown
+  // Handle dropdown toggles on mobile
+  dropdownLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      // Only intercept on mobile
+      if (window.innerWidth <= 768) { // Increased breakpoint to match typical tablet/mobile split
         const parent = this.parentElement;
-        parent.classList.toggle('active');
-        
-        // Close other dropdowns
-        dropdowns.forEach(function(otherDropdown) {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.parentElement.classList.remove('active');
-          }
-        });
-      });
-    });
-  }
-});
+        const isActive = parent.classList.contains('active');
 
-// Re-check on window resize
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 599) {
-    // Remove active class from all dropdowns on desktop
-    document.querySelectorAll('.dropdown').forEach(function(dropdown) {
-      dropdown.classList.remove('active');
+        // If we are opening this one, close all others first
+        if (!isActive) {
+          document.querySelectorAll('.dropdown.active').forEach(function (activeDropdown) {
+            if (activeDropdown !== parent) {
+              activeDropdown.classList.remove('active');
+            }
+          });
+
+          e.preventDefault(); // Prevent navigation on first tap
+          parent.classList.add('active');
+        } else {
+          // If it's already active:
+          // 1. If it's a real link, let it navigate (don't prevent default)
+          // 2. If it's a placeholder (#), toggle it closed
+          if (this.getAttribute('href') === '#' || !this.getAttribute('href')) {
+            e.preventDefault();
+            parent.classList.remove('active');
+          }
+          // Otherwise, allow default navigation
+        }
+      }
     });
-  }
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth <= 768) {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown.active').forEach(function (dropdown) {
+          dropdown.classList.remove('active');
+        });
+      }
+    }
+  });
+
+  // Reset state on resize
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) {
+      document.querySelectorAll('.dropdown.active').forEach(function (dropdown) {
+        dropdown.classList.remove('active');
+      });
+    }
+  });
 });

@@ -5,206 +5,15 @@ description: Transform your clinical logic into visual and text-based flowcharts
 permalink: /clinical-flowchart/
 ---
 
-<style>
-    .flowchart-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        margin-top: 20px;
-        align-items: start;
-    }
 
-    @media (max-width: 1024px) {
-        .flowchart-container {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .input-panel, .output-panel {
-        background: white;
-        border-radius: 8px;
-        padding: 25px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        border: 1px solid #e8e8e8;
-    }
-
-    .output-panel {
-        min-height: 600px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    textarea {
-        width: 100%;
-        min-height: 300px;
-        padding: 15px;
-        border: 2px solid #e8e8e8;
-        border-radius: 6px;
-        font-family: 'Monaco', 'Courier New', monospace;
-        font-size: 0.95em;
-        resize: vertical;
-        margin-bottom: 15px;
-        transition: border-color 0.2s;
-    }
-
-    textarea:focus {
-        outline: none;
-        border-color: #2a7ae2;
-    }
-
-    .btn-primary {
-        background: #2a7ae2;
-        color: white;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 6px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s;
-        width: 100%;
-        font-size: 1rem;
-    }
-
-    .btn-primary:hover:not(:disabled) {
-        background: #1e5bb8;
-    }
-
-    .btn-primary:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-    }
-
-    .tabs {
-        display: flex;
-        border-bottom: 2px solid #e8e8e8;
-        margin-bottom: 20px;
-    }
-
-    .tab {
-        padding: 10px 20px;
-        cursor: pointer;
-        font-weight: 600;
-        color: #666;
-        border-bottom: 2px solid transparent;
-        margin-bottom: -2px;
-    }
-
-    .tab.active {
-        color: #2a7ae2;
-        border-bottom-color: #2a7ae2;
-    }
-
-    .tab-content {
-        display: none;
-        flex: 1;
-        overflow: auto;
-    }
-
-    .tab-content.active {
-        display: block;
-    }
-
-    #mermaid-output {
-        text-align: center;
-    }
-
-    #ascii-output {
-        background: #f5f5f5;
-        padding: 15px;
-        border-radius: 6px;
-        font-family: 'Monaco', 'Courier New', monospace;
-        white-space: pre;
-        overflow-x: auto;
-        font-size: 0.9em;
-        line-height: 1.4;
-    }
-
-    .status-bar {
-        margin-top: 15px;
-        padding: 10px;
-        background: #f0f9ff;
-        border-radius: 6px;
-        color: #0369a1;
-        font-size: 0.9em;
-        display: none;
-    }
-
-    .model-status {
-        margin-bottom: 15px;
-        padding: 15px;
-        background: #fffbeb;
-        border: 1px solid #fcd34d;
-        border-radius: 6px;
-        color: #92400e;
-        font-size: 0.9em;
-    }
-
-    .copy-btn {
-        margin-top: 10px;
-        background: white;
-        border: 1px solid #e8e8e8;
-        color: #333;
-        padding: 8px 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.9em;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .copy-btn:hover {
-        background: #f5f5f5;
-    }
-
-    .mode-toggle {
-        display: flex;
-        gap: 8px;
-        background: #f3f4f6;
-        padding: 4px;
-        border-radius: 8px;
-    }
-
-    .mode-btn {
-        background: transparent;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.85em;
-        font-weight: 600;
-        color: #6b7280;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .mode-btn:hover {
-        background: rgba(255, 255, 255, 0.5);
-    }
-
-    .mode-btn.active {
-        background: white;
-        color: #0369a1;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    .mode-panel {
-        animation: fadeIn 0.3s;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-</style>
 
 <!-- Mermaid JS -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
     mermaid.initialize({ startOnLoad: false, theme: 'default' });
 </script>
+
+<div class="clinical-flowchart-wrapper">
 
 <div class="hero" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); padding: 3rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
     <div class="container">
@@ -331,6 +140,7 @@ Else if afebrile:
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script type="module">
@@ -525,66 +335,7 @@ Else if afebrile:
     </div>
 </div>
 
-<style>
-    .modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.85);
-        z-index: 99999;
-        justify-content: center;
-        align-items: center;
-        backdrop-filter: blur(5px);
-    }
 
-    .modal-content {
-        background: white;
-        width: 95%;
-        height: 95%;
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-
-    .modal-header {
-        display: flex;
-        justify-content: flex-end;
-        gap: 15px;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #e5e7eb;
-    }
-
-    .modal-body {
-        flex: 1;
-        overflow: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #f9fafb;
-        border-radius: 8px;
-        padding: 20px;
-    }
-
-    .btn-secondary {
-        background: white;
-        border: 1px solid #d1d5db;
-        color: #374151;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-weight: 600;
-        cursor: pointer;
-    }
-    
-    .btn-secondary:hover {
-        background: #f3f4f6;
-    }
-</style>
 
 <script>
     function openFullscreen() {

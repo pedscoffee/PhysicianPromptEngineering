@@ -1,0 +1,104 @@
+.pto-planner-wrapper {
+
+    /* Custom Scrollbar for Horizontal Scrolling */
+    .overflow-x-auto::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .overflow-x-auto::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+    .overflow-x-auto::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+
+    /* Transitions */
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.3s ease;
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
+    }
+
+    .slide-enter-active,
+    .slide-leave-active {
+        transition: all 0.3s ease;
+    }
+
+    .slide-enter-from,
+    .slide-leave-to {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    /* Calendar Grid Lines */
+    .calendar-grid {
+        background-image: linear-gradient(to right, #f1f5f9 1px, transparent 1px),
+            linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+        background-size: 100% 100%;
+    }
+
+    /* Print Styles */
+    @media print {
+        .no-print {
+            display: none !important;
+        }
+
+        .print-only {
+            display: block !important;
+        }
+
+        body {
+            background: white;
+        }
+
+        .shadow-lg,
+        .shadow-md,
+        .shadow-sm {
+            box-shadow: none !important;
+        }
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+        padding: 4rem 3rem;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        text-align: center;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero h1 {
+        font-size: 2.75rem;
+        margin-bottom: 1rem;
+        color: #312e81;
+        /* Indigo 900 */
+        font-weight: 800;
+        letter-spacing: -0.025em;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        color: #4338ca;
+        /* Indigo 700 */
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+}

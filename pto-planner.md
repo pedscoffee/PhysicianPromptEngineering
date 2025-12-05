@@ -128,16 +128,118 @@ if ('serviceWorker' in navigator) {
       margin-right: auto;
       line-height: 1.8;
   }
+
+  /* Premium Banner */
+  .premium-banner {
+    background: #fff7ed;
+    border: 1px solid #fdba74;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .premium-banner strong {
+    color: #9a3412;
+  }
+  .premium-banner p {
+    margin: 0;
+    color: #c2410c;
+    font-size: 0.9em;
+  }
+  .premium-banner svg {
+    width: 24px;
+    height: 24px;
+    color: #f59e0b;
+  }
+
+  /* PWA Install Banner */
+  .pwa-install-banner {
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .pwa-install-banner .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pwa-install-banner .text-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pwa-install-banner svg {
+    width: 28px;
+    height: 28px;
+    stroke: white;
+  }
+  .pwa-install-banner strong {
+    color: white;
+  }
+  .pwa-install-banner p {
+    margin: 0;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.85em;
+  }
+  .pwa-install-banner .buttons {
+    display: flex;
+    gap: 10px;
+  }
+  .pwa-install-banner button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .pwa-install-banner #pwaInstallBtn {
+    background: white;
+    color: #0f766e;
+  }
+  .pwa-install-banner .dismiss-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 10px 15px;
+  }
+
+  /* Hero icon in H1 */
+  .hero h1 svg {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 12px;
+  }
 </style>
 
-<!-- Hero Section -->
-<div class="hero">
-    <div class="container">
-        <h1>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 40px; height: 40px; display: inline-block; vertical-align: text-bottom; margin-right: 12px;">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+<div id="app" class="pto-planner-wrapper" v-cloak>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container mx-auto">
+            <h1>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                </svg>
+                Annual PTO Planner
+            </h1>
+            <p class="hero-subtitle">
+                Plan your work schedule, vacation days, and CME time for the entire year with this interactive calendar tool.
+            </p>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-6 max-w-5xl">
+        <!-- Premium Banner -->
+        <div class="premium-banner">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
             </svg>
-            Annual PTO Planner
         </h1>
         <p class="hero-subtitle">
             Plan your work schedule, vacation days, and CME time for the entire year with this interactive calendar tool.
