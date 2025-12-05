@@ -34,7 +34,7 @@ permalink: /discussions/
     data-repo-id="R_kgDOQDTjig"
     data-category="Community Forum"
     data-category-id="DIC_kwDOQDTjis4CzZEt"
-    data-mapping="title"
+    data-mapping="pathname"
     data-strict="0"
     data-reactions-enabled="1"
     data-emit-metadata="0"
