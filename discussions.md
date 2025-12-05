@@ -27,27 +27,24 @@ permalink: /discussions/
           </p>
         </div>
       </div>
-
-      <!-- Giscus Embed -->
-      <div class="giscus"></div>
-     <script src="https://giscus.app/client.js"
-        data-repo="pedscoffee/PhysicianPromptEngineering"
-        data-repo-id="R_kgDOQDTjig"
-        data-category="Community Forum"
-        data-category-id="DIC_kwDOQDTjis4CzZEt"
-        data-mapping="specific"
-        data-term="106"
-        data-strict="0"
-        data-reactions-enabled="0"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-    </script>
-
+<!-- Giscus Embed -->
+<div class="giscus"></div>
+<script src="https://giscus.app/client.js"
+    data-repo="pedscoffee/PhysicianPromptEngineering"
+    data-repo-id="R_kgDOQDTjig"
+    data-category="Community Forum"
+    data-category-id="DIC_kwDOQDTjis4CzZEt"
+    data-mapping="title"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
     </div>
   </div>
 </section>
