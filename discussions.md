@@ -31,7 +31,7 @@ permalink: /discussions/
       <!-- Giscus Embed -->
       <div class="giscus"></div>
      <script src="https://giscus.app/client.js"
-        data-repo="pedscoffee/physicianpromptengineering"
+        data-repo="pedscoffee/PhysicianPromptEngineering"
         data-repo-id="R_kgDOQDTjig"
         data-category="Community Forum"
         data-category-id="DIC_kwDOQDTjis4CzZEt"
