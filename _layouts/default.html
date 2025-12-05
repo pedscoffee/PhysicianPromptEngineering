@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -73,6 +73,7 @@
                 <a href="{{ '/pwa-apps' | relative_url }}">📱 Mobile Apps</a>
                 <a href="{{ '/discussions' | relative_url }}">Community Forum</a>
                 <a href="{{ '/blog' | relative_url }}">Blog</a>
+                <a href="{{ '/podcast' | relative_url }}">Podcast</a>
                 <a href="{{ '/support#contribute' | relative_url }}">Contribute Prompts</a>
                 <a href="{{ '/support#support' | relative_url }}">Support This Project</a>
               </div>
