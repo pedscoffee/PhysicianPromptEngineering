@@ -30,21 +30,21 @@ permalink: /discussions/
 
       <!-- Giscus Embed -->
       <div class="giscus"></div>
-      <script src="https://giscus.app/client.js"
-        data-repo="pedscoffee/PhysicianPromptEngineering"
-        data-repo-id="[R_kgDOQDTjig]"
+     <script src="https://giscus.app/client.js"
+        data-repo="pedscoffee/physicianpromptengineering"
+        data-repo-id="R_kgDOQDTjig"
         data-category="Community Forum"
-        data-category-id="[DIC_kwDOQDTjis4CzZEt]"
-        data-mapping="specific"
-        data-term="106"
+        data-category-id="DIC_kwDOQDTjis4CzZEt"
+        data-mapping="pathname"
+        data-strict="0"
         data-reactions-enabled="1"
         data-emit-metadata="0"
-        data-input-position="top"
+        data-input-position="bottom"
         data-theme="preferred_color_scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
-      </script>
+    </script>
 
     </div>
   </div>
