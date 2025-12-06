@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Newsletter
-description: Subscribe to the Physician Prompt Engineering newsletter for weekly tips on clinical AI, prompt engineering, and workflow optimization.
+description: Subscribe to the Physician Prompt Engineering newsletter for quarterly tips on clinical AI, prompt engineering, and workflow optimization.
 permalink: /newsletter/
 ---
 
@@ -10,7 +10,7 @@ permalink: /newsletter/
   <div class="container">
     <h1 class="hero-title">Stay Ahead with Clinical AI</h1>
     <p class="hero-subtitle">
-      Get weekly insights on prompt engineering, AI scribe optimization, and clinical documentation strategies delivered to your inbox.
+      Get quarterly insights on prompt engineering, AI scribe optimization, and clinical documentation strategies delivered to your inbox.
     </p>
   </div>
 </div>
@@ -83,7 +83,7 @@ permalink: /newsletter/
         <div style="display: flex; gap: 1rem; align-items: flex-start;">
           <div style="background: var(--color-primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</div>
           <div>
-            <h3 style="margin-bottom: 0.25rem;">Weekly Prompt Spotlight</h3>
+            <h3 style="margin-bottom: 0.25rem;">Quarterly Prompt Spotlight</h3>
             <p class="text-secondary">A featured prompt with examples, tips, and best practices for clinical implementation.</p>
           </div>
         </div>
@@ -121,7 +121,7 @@ permalink: /newsletter/
   <div class="container text-center">
     <h2 class="mb-6">Join Physicians Optimizing Their Documentation</h2>
     <p class="text-lg text-secondary mb-8" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-      Subscribe to get our <strong>free Quick Start Guide</strong> with 4 ready-to-use prompts plus weekly tips on clinical AI.
+      Subscribe to get our <strong>free Quick Start Guide</strong> with 4 ready-to-use prompts Quarterly tips on clinical AI.
     </p>
     <div class="hero-cta">
       <a href="#newsletter-placeholder" class="btn btn-primary btn-lg">Get the Free Guide</a>

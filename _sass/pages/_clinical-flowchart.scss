@@ -218,12 +218,16 @@
     .modal-content {
         background: white;
         width: 95%;
+        max-width: 90vw;
         height: 95%;
+        max-height: 90vh;
         border-radius: 12px;
         display: flex;
         flex-direction: column;
         padding: 20px;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        box-sizing: border-box;
+        margin: auto;
     }
 
     .modal-header {

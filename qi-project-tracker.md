@@ -480,6 +480,7 @@ let chartInstances = [];
 
 // Initialize
 loadProjects();
+checkStorage();
 renderDashboard();
 
 // Local Storage Functions
@@ -488,8 +489,28 @@ function loadProjects() {
     projects = data ? JSON.parse(data) : [];
 }
 
+function checkStorage() {
+    try {
+        const testKey = '__storage_test__';
+        localStorage.setItem(testKey, testKey);
+        localStorage.removeItem(testKey);
+    } catch (e) {
+        const flash = document.getElementById('flashMessage');
+        if (flash) {
+            flash.style.display = 'block';
+            flash.style.backgroundColor = '#e74c3c';
+            flash.innerHTML = '⚠️ Warning: Browser storage is full or disabled. Your data will NOT be saved.';
+        }
+    }
+}
+
 function saveProjects() {
-    localStorage.setItem('qiProjects', JSON.stringify(projects));
+    try {
+        localStorage.setItem('qiProjects', JSON.stringify(projects));
+    } catch (e) {
+        console.error("Save failed", e);
+        alert("Failed to save project list! Your browser storage might be full. Please export your data and clear some space.");
+    }
 }
 
 function getProjectData(projectId) {
@@ -498,7 +519,12 @@ function getProjectData(projectId) {
 }
 
 function saveProjectData(projectId, entries) {
-    localStorage.setItem(`qiProjectData_${projectId}`, JSON.stringify(entries));
+    try {
+        localStorage.setItem(`qiProjectData_${projectId}`, JSON.stringify(entries));
+    } catch (e) {
+        console.error("Save data failed", e);
+        alert("Failed to save data! Your browser storage might be full. Please export your data immediately.");
+    }
 }
 
 // View Navigation
