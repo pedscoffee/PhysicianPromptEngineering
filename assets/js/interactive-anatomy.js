@@ -395,9 +395,15 @@ document.addEventListener('DOMContentLoaded', function () {
         // Sort Categories alphabetically (optional) or fixed order
         // For simplicity: Object.keys sort
         Object.keys(grouped).sort().forEach(category => {
+            // Determine if we should expand (search active or contains current item)
+            // Note: grouped[category] contains the items in this category
+            const hasActiveItem = grouped[category].some(item => currentItem && item.id === currentItem.id);
+            const shouldExpand = term || hasActiveItem;
+            const initialClass = shouldExpand ? '' : ' collapsed';
+
             // Create Category Header
             const header = document.createElement('div');
-            header.className = 'category-header';
+            header.className = `category-header${initialClass}`;
             header.innerHTML = `
                 <span>${category}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -407,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Create Content Container
             const content = document.createElement('div');
-            content.className = 'folder-content';
+            content.className = `folder-content${initialClass}`;
 
             // Toggle Logic
             header.addEventListener('click', () => {
