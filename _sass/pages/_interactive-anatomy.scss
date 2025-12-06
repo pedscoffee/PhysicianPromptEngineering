@@ -216,6 +216,26 @@
             margin: 0 auto 1.5rem;
         }
 
+        .anatomy-meta {
+            margin-bottom: 2rem;
+        }
+
+        .attribution-text {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-style: italic;
+
+            a {
+                color: $primary-color;
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
         .fav-btn {
             display: inline-flex;
             align-items: center;

@@ -6,14 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
             name: 'Brain',
             image: '/assets/images/anatomy/brain.png',
             description: 'The brain is the command center of the nervous system. It controls thoughts, memory, movement, and emotions.',
-            keywords: ['head', 'nervous system', 'mind', 'skull', 'neurology']
+            keywords: ['head', 'nervous system', 'mind', 'skull', 'neurology'],
+            attribution: 'OpenStax, Anatomy and Physiology',
+            sourceUrl: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system'
         },
         {
             id: 'heart',
-            name: 'Heart',
-            image: '/assets/images/anatomy/heart.png',
+            name: 'Position of the Heart in the Thorax',
+            image: '/assets/images/anatomy/Position_of_the_Heart_in_the_Thorax.png',
             description: 'The heart is a muscular organ that pumps blood through the blood vessels of the circulatory system.',
-            keywords: ['cardiovascular', 'chest', 'pump', 'blood', 'cardiology']
+            keywords: ['cardiovascular', 'chest', 'pump', 'blood', 'cardiology'],
+            attribution: 'OpenStax, Anatomy and Physiology 2e, CC BY 4.0',
+            sourceUrl: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy'
         },
         {
             id: 'lungs',
@@ -203,6 +207,19 @@ document.addEventListener('DOMContentLoaded', function () {
         partTitle.textContent = item.name;
         partDescription.textContent = item.description;
 
+        // Update Attribution
+        const attributionEl = document.getElementById('partAttribution');
+        if (item.attribution) {
+            attributionEl.style.display = 'block';
+            if (item.sourceUrl) {
+                attributionEl.innerHTML = `Source: <a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">${item.attribution}</a>`;
+            } else {
+                attributionEl.textContent = `Source: ${item.attribution}`;
+            }
+        } else {
+            attributionEl.style.display = 'none';
+        }
+
         // Update Main View
         // Fade out, swap source, fade in
         mainImage.style.opacity = 0;
@@ -229,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentItem = null;
         partTitle.textContent = 'Select a Region';
         partDescription.textContent = 'Choose an organ system from the list to view details.';
+        document.getElementById('partAttribution').style.display = 'none';
 
         mainImage.style.opacity = 0;
         setTimeout(() => {
