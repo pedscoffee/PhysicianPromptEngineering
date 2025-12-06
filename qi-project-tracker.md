@@ -891,7 +891,7 @@ function saveDataEntry() {
     let isValid = true;
     
     currentProject.variables.forEach(variable => {
-        const element = document.querySelector(`[data-var-id="${variable.id}"]`);
+        const element = document.getElementById('dataEntryForm').querySelector(`[data-var-id="${variable.id}"]`);
         let value;
         
         if (variable.type === 'multiselect') {
@@ -932,7 +932,7 @@ function saveDataEntry() {
 
 function clearDataForm() {
     currentProject.variables.forEach(variable => {
-        const element = document.querySelector(`[data-var-id="${variable.id}"]`);
+        const element = document.getElementById('dataEntryForm').querySelector(`[data-var-id="${variable.id}"]`);
         
         if (variable.type === 'multiselect') {
             element.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
@@ -956,7 +956,7 @@ function repeatLastEntry() {
     const lastEntry = entries[entries.length - 1];
     
     currentProject.variables.forEach(variable => {
-        const element = document.querySelector(`[data-var-id="${variable.id}"]`);
+        const element = document.getElementById('dataEntryForm').querySelector(`[data-var-id="${variable.id}"]`);
         const value = lastEntry.data[variable.id];
         
         if (variable.type === 'multiselect') {
