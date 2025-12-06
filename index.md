@@ -342,6 +342,12 @@ redirect_from:
           <p>A quick-reference visual tool for patient education. Show anatomical regions and explain concepts with a clean, approachable interface.</p>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/pediatric-airway">Pediatric Airway Visualizer</a></h4>
+          <p>Interactive simulation of asthma and bronchiolitis physiology. Visualize inflammation, constriction, and treatment effects.</p>
+        </div>
+      </div>
     </div>
 
   </div>
