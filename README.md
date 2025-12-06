@@ -38,7 +38,7 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 - **[ClockWork TimeBox](https://physicianpromptengineering.com/clockwork-timebox)** - Visual timer and task manager for clinical sessions
 - **[RVU Data Tracker](https://physicianpromptengineering.com/clinic-visit-tracker)** - Track clinic volume and RVU production
 - **[QI Project Tracker](https://physicianpromptengineering.com/qi-project-tracker)** - Manage Quality Improvement projects and milestones
-- **[QI Project Planner](https://physicianpromptengineering.com/qi-project-planner)** - Plan QI projects with step-by-step IHI wizard
+- **[QI Project Planner](https://physicianpromptengineering.com/qi-project-planner)** - Plan QI projects with step-by-step wizard
 - **[Trainee Goal Setter](https://physicianpromptengineering.com/trainee-goal-setter)** - Set rotation goals and get attending feedback
 - **[Annual PTO Planner](https://physicianpromptengineering.com/pto-planner)** - Visualize and plan time off for the year
 - **[CME & Budget Tracker](https://physicianpromptengineering.com/cme-tracker)** - Track Continuing Medical Education credits
