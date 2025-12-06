@@ -1,6 +1,99 @@
---- 
---- 
-@import "minima";
+--- --- @import "minima";
+
+/* Navigation Dropdown Styles */
+.site-nav {
+  .trigger {
+    display: flex;
+    align-items: center;
+    gap: 15px; // Space between items
+  }
+
+  .nav-dropdown {
+    position: relative;
+    display: inline-block;
+
+    .nav-dropbtn {
+      background-color: transparent;
+      color: #111; // Minima text color
+      padding: 5px 0;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit; // Match theme
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      border-radius: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 5px 0;
+
+      a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+
+        &:hover {
+          background-color: #f1f1f1;
+          text-decoration: none;
+        }
+      }
+    }
+
+    &:hover .nav-dropdown-content {
+      display: block;
+    }
+  }
+}
+
+// Mobile responsiveness for dropdowns
+@media screen and (max-width: 600px) {
+  .site-nav {
+    .trigger {
+      display: block; // Stack items
+    }
+
+    .nav-dropdown {
+      display: block;
+      width: 100%;
+
+      .nav-dropbtn {
+        width: 100%;
+        text-align: left;
+        padding: 10px 0;
+      }
+
+      .nav-dropdown-content {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background-color: #f0f0f0;
+        width: 100%;
+        display: none; // Keep hidden until hover/click - simpler for now just rely on hover or make them always visible?
+        // Let's make them always visible on mobile for simplicity or simple indent
+        display: block;
+        padding-left: 20px;
+      }
+
+      &:hover .nav-dropdown-content {
+        display: block;
+      }
+    }
+  }
+}
+
 @import "pages/prompt-manager";
 @import "pages/cpt-calculator";
 @import "pages/clinic-visit-tracker";
