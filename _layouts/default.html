@@ -8,7 +8,7 @@
   <header class="site-header" role="banner">
     <div class="container">
       <div class="header-wrapper">
-        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="site-title" rel="author" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
 
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -41,7 +41,7 @@
                 <a href="{{ '/prompt-generator' | relative_url }}">Quick Start A&P Builder</a>
 
                 <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>
-                <a href="{{ '/interactive-anatomy' | relative_url }}">Interactive Anatomy</a>
+                <a href="{{ '/git-master' | relative_url }}">Git Tutor</a>
               </div>
             </div>
 
@@ -58,7 +58,7 @@
                 <a href="{{ '/cme-tracker' | relative_url }}">CME & Budget Tracker</a>
                 <a href="{{ '/reflect' | relative_url }}">Reflect</a>
                 <a href="{{ '/cpt-calculator' | relative_url }}">E&M Calculator</a>
-                <a href="{{ '/git-master' | relative_url }}">Git Tutor</a>
+                <a href="{{ '/interactive-anatomy' | relative_url }}">Interactive Anatomy Tool</a>
                 <a href="{{ '/clinical-flowchart' | relative_url }}">Clinical Flowchart Generator</a>
                 <a href="{{ '/differential-mindmap' | relative_url }}">Differential Mind Map</a>
                 <a href="{{ '/mechanism-mapper' | relative_url }}">Mechanism Mapper</a>
@@ -129,7 +129,7 @@
 
       // Initialize on first focus
       if (searchInput) {
-        archddEventListener('focus', initializeSearch, { once: true });
+        chddstener('focus', initializeSearch, { once: true });
       }
     });
   </script>

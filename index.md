@@ -236,6 +236,12 @@ redirect_from:
           <p>A collection of smart phrases for common clinical scenarios.</p>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/git-master">Git Tutor</a></h4>
+          <p>Master version control for clinical tools and AI prompts.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Productivity Tools -->
