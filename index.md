@@ -330,6 +330,12 @@ redirect_from:
           <p>Map and optimize clinical workflows with drag-and-drop flowcharts. Identify bottlenecks and improve efficiency.</p>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="{{ site.baseurl }}/interactive-anatomy">Interactive Anatomy Tool</a></h4>
+          <p>A quick-reference visual tool for patient education. Show anatomical regions and explain concepts with a clean, approachable interface.</p>
+        </div>
+      </div>
     </div>
 
   </div>
