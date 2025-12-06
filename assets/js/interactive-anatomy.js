@@ -37,11 +37,67 @@ document.addEventListener('DOMContentLoaded', function () {
             keywords: ['back', 'vertebrae', 'bone', 'skeletal', 'orthopedics']
         },
         {
-            id: 'knee',
-            name: 'Knee',
-            image: '/assets/images/anatomy/skeleton_knee.png',
-            description: 'The knee is one of the largest and most complex joints in the body, connecting the thigh bone to the shin bone.',
-            keywords: ['joint', 'leg', 'bone', 'skeletal', 'orthopedics']
+            id: 'ear',
+            name: 'Ear',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder due to quota
+            description: 'The ear is responsible for hearing and balance. It consists of the outer, middle, and inner ear.',
+            keywords: ['hearing', 'otitis', 'eardrum', 'sound', 'balance', 'ent']
+        },
+        {
+            id: 'eye',
+            name: 'Eye',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The eye is the organ of vision. It detects light and converts it into electro-chemical impulses in neurons.',
+            keywords: ['vision', 'sight', 'conjunctivitis', 'retina', 'ophthalmology']
+        },
+        {
+            id: 'throat',
+            name: 'Throat & Tonsils',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The throat includes the pharynx and larynx. Tonsils are part of the immune system and help fight infection.',
+            keywords: ['pharynx', 'tonsillitis', 'strep', 'mouth', 'ent', 'sore throat']
+        },
+        {
+            id: 'sinuses',
+            name: 'Upper Respiratory',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The upper respiratory tract includes the nose, sinuses, and throat, responsible for filtering and warming air.',
+            keywords: ['sinusitis', 'cold', 'nose', 'congestion', 'ent']
+        },
+        {
+            id: 'skin',
+            name: 'Skin',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The skin is the body\'s largest organ, protecting against germs and regulating temperature.',
+            keywords: ['dermatology', 'rash', 'eczema', 'epidermis', 'hives']
+        },
+        {
+            id: 'kidneys',
+            name: 'Kidneys & Bladder',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The kidneys filter blood to produce urine, which is stored in the bladder.',
+            keywords: ['renal', 'uti', 'urine', 'nephrology', 'bladder']
+        },
+        {
+            id: 'liver',
+            name: 'Liver & Gallbladder',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The liver processes nutrients and filters blood. The gallbladder stores bile for digestion.',
+            keywords: ['digestive', 'abdominal pain', 'bile', 'gastroenterology']
+        },
+        {
+            id: 'appendix',
+            name: 'Appendix',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The appendix is a small tube attached to the large intestine. Appendicitis is a common emergency.',
+            keywords: ['appendicitis', 'stomach pain', 'abdomen', 'surgery']
+        },
+        {
+            id: 'hand_arm',
+            name: 'Arm & Hand',
+            image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
+            description: 'The upper limb consists of the arm, forearm, and hand, enabling complex manipulation and movement.',
+            keywords: ['fracture', 'bone', 'muscle', 'orthopedics', 'wrist']
         }
     ];
 
@@ -59,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const favCountSpan = document.getElementById('favCount');
     const resetViewBtn = document.getElementById('resetViewBtn');
-    const toggleLabelsBtn = document.getElementById('toggleLabelsBtn');
 
     let currentItem = null;
 
@@ -86,12 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Reset View
     resetViewBtn.addEventListener('click', resetView);
-
-    // Toggle Labels (Placeholder for future functionality)
-    toggleLabelsBtn.addEventListener('click', () => {
-        toggleLabelsBtn.classList.toggle('active');
-        // Logic to show/hide labels overlay would go here
-    });
 
     // Favorite Button
     favoriteBtn.addEventListener('click', () => {
