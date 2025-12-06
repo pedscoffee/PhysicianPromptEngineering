@@ -33,6 +33,18 @@
         @media (max-width: 768px) {
             grid-template-columns: 1fr;
         }
+
+        &.full-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            border-radius: 0;
+            margin: 0;
+            grid-template-columns: 350px 1fr; // Keep sidebar
+        }
     }
 }
 
@@ -93,6 +105,49 @@
     .region-list {
         flex: 1;
         overflow-y: auto;
+
+        .category-header {
+            padding: 0.75rem 0.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            border-bottom: 1px solid #e9ecef;
+            margin-top: 0.5rem;
+            background: #f1f3f5;
+            border-radius: 4px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:hover {
+                background: #e9ecef;
+            }
+
+            svg {
+                width: 16px;
+                height: 16px;
+                transition: transform 0.2s;
+            }
+
+            &.collapsed svg {
+                transform: rotate(-90deg);
+            }
+        }
+
+        .folder-content {
+            padding-left: 0.5rem;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+
+            &.collapsed {
+                display: none;
+            }
+        }
 
         .region-item {
             padding: 0.75rem;

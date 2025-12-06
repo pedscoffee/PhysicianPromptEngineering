@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
             description: 'The brain is the command center of the nervous system. It controls thoughts, memory, movement, and emotions.',
             keywords: ['head', 'nervous system', 'mind', 'skull', 'neurology'],
             attribution: 'OpenStax, Anatomy and Physiology',
-            sourceUrl: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system'
+            sourceUrl: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/13-2-the-central-nervous-system',
+            category: 'Nervous System'
         },
         {
             id: 'heart',
@@ -17,92 +18,105 @@ document.addEventListener('DOMContentLoaded', function () {
             description: 'The heart is a muscular organ that pumps blood through the blood vessels of the circulatory system.',
             keywords: ['cardiovascular', 'chest', 'pump', 'blood', 'cardiology'],
             attribution: 'OpenStax, Anatomy and Physiology 2e, CC BY 4.0',
-            sourceUrl: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy'
+            sourceUrl: 'https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy',
+            category: 'Cardiovascular'
         },
         {
             id: 'lungs',
             name: 'Lungs',
             image: '/assets/images/anatomy/lungs.png',
             description: 'The lungs are the primary organs of the respiratory system, allowing us to breathe in oxygen and exhale carbon dioxide.',
-            keywords: ['respiratory', 'breath', 'chest', 'air', 'pulmonology']
+            keywords: ['respiratory', 'breath', 'chest', 'air', 'pulmonology'],
+            category: 'Respiratory'
         },
         {
             id: 'digestive',
             name: 'Digestive System',
             image: '/assets/images/anatomy/digestive_system.png',
             description: 'The digestive system breaks down food into nutrients, which the body uses for energy, growth, and cell repair.',
-            keywords: ['stomach', 'intestine', 'gut', 'gastroenterology', 'food']
+            keywords: ['stomach', 'intestine', 'gut', 'gastroenterology', 'food'],
+            category: 'Digestive System'
         },
         {
             id: 'spine',
             name: 'Spine',
             image: '/assets/images/anatomy/spine.png',
             description: 'The spine (backbone) provides the main support for your body, allowing you to stand upright, bend, and twist.',
-            keywords: ['back', 'vertebrae', 'bone', 'skeletal', 'orthopedics']
+            keywords: ['back', 'vertebrae', 'bone', 'skeletal', 'orthopedics'],
+            category: 'Skeletal & Muscular'
         },
         {
             id: 'ear',
             name: 'Ear',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder due to quota
             description: 'The ear is responsible for hearing and balance. It consists of the outer, middle, and inner ear.',
-            keywords: ['hearing', 'otitis', 'eardrum', 'sound', 'balance', 'ent']
+            keywords: ['hearing', 'otitis', 'eardrum', 'sound', 'balance', 'ent'],
+            category: 'Sensory & ENT'
         },
         {
             id: 'eye',
             name: 'Eye',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The eye is the organ of vision. It detects light and converts it into electro-chemical impulses in neurons.',
-            keywords: ['vision', 'sight', 'conjunctivitis', 'retina', 'ophthalmology']
+            keywords: ['vision', 'sight', 'conjunctivitis', 'retina', 'ophthalmology'],
+            category: 'Sensory & ENT'
         },
         {
             id: 'throat',
             name: 'Throat & Tonsils',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The throat includes the pharynx and larynx. Tonsils are part of the immune system and help fight infection.',
-            keywords: ['pharynx', 'tonsillitis', 'strep', 'mouth', 'ent', 'sore throat']
+            keywords: ['pharynx', 'tonsillitis', 'strep', 'mouth', 'ent', 'sore throat'],
+            category: 'Sensory & ENT'
         },
         {
             id: 'sinuses',
             name: 'Upper Respiratory',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The upper respiratory tract includes the nose, sinuses, and throat, responsible for filtering and warming air.',
-            keywords: ['sinusitis', 'cold', 'nose', 'congestion', 'ent']
+            keywords: ['sinusitis', 'cold', 'nose', 'congestion', 'ent'],
+            category: 'Respiratory'
         },
         {
             id: 'skin',
             name: 'Skin',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The skin is the body\'s largest organ, protecting against germs and regulating temperature.',
-            keywords: ['dermatology', 'rash', 'eczema', 'epidermis', 'hives']
+            keywords: ['dermatology', 'rash', 'eczema', 'epidermis', 'hives'],
+            category: 'Integumentary'
         },
         {
             id: 'kidneys',
             name: 'Kidneys & Bladder',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The kidneys filter blood to produce urine, which is stored in the bladder.',
-            keywords: ['renal', 'uti', 'urine', 'nephrology', 'bladder']
+            keywords: ['renal', 'uti', 'urine', 'nephrology', 'bladder'],
+            category: 'Urinary & Excretory'
         },
         {
             id: 'liver',
             name: 'Liver & Gallbladder',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The liver processes nutrients and filters blood. The gallbladder stores bile for digestion.',
-            keywords: ['digestive', 'abdominal pain', 'bile', 'gastroenterology']
+            keywords: ['digestive', 'abdominal pain', 'bile', 'gastroenterology'],
+            category: 'Digestive System'
         },
         {
             id: 'appendix',
             name: 'Appendix',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The appendix is a small tube attached to the large intestine. Appendicitis is a common emergency.',
-            keywords: ['appendicitis', 'stomach pain', 'abdomen', 'surgery']
+            keywords: ['appendicitis', 'stomach pain', 'abdomen', 'surgery'],
+            category: 'Digestive System'
         },
         {
             id: 'hand_arm',
             name: 'Arm & Hand',
             image: '/assets/images/anatomy/human_body_silhouette.png', // Placeholder
             description: 'The upper limb consists of the arm, forearm, and hand, enabling complex manipulation and movement.',
-            keywords: ['fracture', 'bone', 'muscle', 'orthopedics', 'wrist']
-        }
+            keywords: ['fracture', 'bone', 'muscle', 'orthopedics', 'wrist'],
+            category: 'Skeletal & Muscular'
+        },
     ];
 
     // --- State ---
@@ -146,6 +160,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Reset View
     resetViewBtn.addEventListener('click', resetView);
 
+    // Full Screen
+    const fullScreenBtn = document.getElementById('fullScreenBtn');
+    const workspace = document.querySelector('.anatomy-workspace');
+
+    fullScreenBtn.addEventListener('click', () => {
+        workspace.classList.toggle('full-screen');
+        // Update button text/icon could go here, but toggle is enough for MVP
+    });
+
     // Favorite Button
     favoriteBtn.addEventListener('click', () => {
         if (!currentItem) return;
@@ -177,26 +200,65 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        filtered.forEach(item => {
-            const el = document.createElement('div');
-            el.className = 'region-item';
-            if (currentItem && currentItem.id === item.id) {
-                el.classList.add('active');
-            }
+        // Group by Category
+        const grouped = filtered.reduce((acc, item) => {
+            const cat = item.category || 'Other';
+            if (!acc[cat]) acc[cat] = [];
+            acc[cat].push(item);
+            return acc;
+        }, {});
 
-            const isFav = favorites.includes(item.id);
-
-            el.innerHTML = `
-                <span>${item.name}</span>
-                <span class="fav-icon ${isFav ? 'visible' : ''}">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" style="width:16px;height:16px;">
-                      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006Z" clip-rule="evenodd" />
-                    </svg>
-                </span>
+        // Sort Categories alphabetically (optional) or fixed order
+        // For simplicity: Object.keys sort
+        Object.keys(grouped).sort().forEach(category => {
+            // Create Category Header
+            const header = document.createElement('div');
+            header.className = 'category-header';
+            header.innerHTML = `
+                <span>${category}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
             `;
 
-            el.addEventListener('click', () => selectItem(item));
-            regionList.appendChild(el);
+            // Create Content Container
+            const content = document.createElement('div');
+            content.className = 'folder-content';
+
+            // Toggle Logic
+            header.addEventListener('click', () => {
+                header.classList.toggle('collapsed');
+                content.classList.toggle('collapsed');
+            });
+
+            // If searching or favorites, maybe expand all? 
+            // Default: Expanded
+
+            // Render Items in Category
+            grouped[category].forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'region-item';
+                if (currentItem && currentItem.id === item.id) {
+                    el.classList.add('active');
+                }
+
+                const isFav = favorites.includes(item.id);
+
+                el.innerHTML = `
+                    <span>${item.name}</span>
+                    <span class="fav-icon ${isFav ? 'visible' : ''}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" style="width:16px;height:16px;">
+                          <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006Z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                `;
+
+                el.addEventListener('click', () => selectItem(item));
+                content.appendChild(el);
+            });
+
+            regionList.appendChild(header);
+            regionList.appendChild(content);
         });
     }
 
