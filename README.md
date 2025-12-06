@@ -6,78 +6,104 @@
 ![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
 ![Community Contributions](./images/thank-you-banner.jpg)
 
-> Open-source clinical documentation prompts that transform AI scribe output into physician-ready notes in seconds.
+> Physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
 
 ## Overview
 
-**Physician Prompt Engineering** provides production-ready prompts that convert raw AI transcripts into perfectly formatted clinical notes matching your exact documentation style—no manual editing required.
+**Physician Prompt Engineering** is an open-source initiative providing production-ready prompts, interactive learning tools, and productivity applications for clinical AI documentation.
 
-### The Problem
-AI scribes capture conversations but produce generic, verbose notes requiring extensive editing.
+### The Problem We Solve
+
+AI scribes capture conversations but produce generic, verbose notes requiring extensive editing. 
 
 ### Our Solution
-Precision-engineered prompts that transform raw AI output into concise, personalized documentation using your EMR's built-in AI features.
 
-## Key Features
+Precision-engineered prompts that transform raw AI output into concise, personalized documentation matching your exact preferences—using your EMR's built-in AI features.
 
-- **Practical**: Prompts built and verified by real world testing
-- **Specialty-Agnostic**: Core framework adaptable to any medical specialty
+## What We Offer
 
-## Quick Start
-
-### Prerequisites
-- EMR with integrated AI text generation (e.g., Epic's "Generate Text with AI")
-- Institutional approval for tools
-- HIPAA-compliant AI scribe service (optional but recommended)
-
-### Getting Started
-
-1. **Browse Available Prompts**
-   ```
-   Visit: https://physicianpromptengineering.com/prompt-library
-   ```
-
-2. **Select Your Use Case**
-   - Assessment & Plan formatting
-   - Medical Decision Making & billing
-   - After-Visit Summaries
-   - Custom specialty prompts
-
-3. **Copy & Customize**
-   - Replace example content with your own documentation samples
-   - Test with 5-10 routine encounters
-   - Refine based on results
-
-4. **Scale Up**
-   - Expand to complex cases
-   - Share improvements with the community
-
-## Documentation
-
-### Core Resources
-
-- **[Website](https://physicianpromptengineering.com/)** - Main portal with all tools and resources
+### Clinical Documentation Prompts
+- **[Prompt Library](https://physicianpromptengineering.com/prompt-library)** - Production-ready prompts for A&P formatting, billing analysis, AVS generation, and more
 - **[Best Practices Guide](https://physicianpromptengineering.com/best-practices)** - Evidence-based prompt engineering principles
-- **[Prompt Library](https://physicianpromptengineering.com/prompt-library)** - Tested, production-ready prompts
-- **[Interactive Course](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)** - Hands-on learning with real scenarios
+- **[Prompt Manager](https://physicianpromptengineering.com/prompt-manager)** - Save and organize your favorite prompts
+- **[Prompt Remix](https://physicianpromptengineering.com/prompt-remix)** - Customize library prompts with your own examples
+- **[AI Prompt Assistant](https://physicianpromptengineering.com/prompt-assistant)** - Get AI help to write or improve prompts
+- **[Quick Start A&P Builder](https://physicianpromptengineering.com/prompt-generator)** - Rapidly build structured Assessment & Plan prompts
+- **[Dot Phrase Library](https://physicianpromptengineering.com/dot-phrase-library)** - Smart phrases for common clinical scenarios
+
+### Interactive Learning
+- **[Clinical Prompt Engineering Course](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)** - Hands-on learning with 4 modules, 12 exercises, ~30 minutes. Write prompts, get instant AI feedback, master concepts through practice.
+
+### Productivity & Tracking Tools
+- **[ClockWork TimeBox](https://physicianpromptengineering.com/clockwork-timebox)** - Visual timer and task manager for clinical sessions
+- **[RVU Data Tracker](https://physicianpromptengineering.com/clinic-visit-tracker)** - Track clinic volume and RVU production
+- **[QI Project Tracker](https://physicianpromptengineering.com/qi-project-tracker)** - Manage Quality Improvement projects and milestones
+- **[QI Project Planner](https://physicianpromptengineering.com/qi-project-planner)** - Plan QI projects with step-by-step IHI wizard
+- **[Trainee Goal Setter](https://physicianpromptengineering.com/trainee-goal-setter)** - Set rotation goals and get attending feedback
+- **[Annual PTO Planner](https://physicianpromptengineering.com/pto-planner)** - Visualize and plan time off for the year
+- **[CME & Budget Tracker](https://physicianpromptengineering.com/cme-tracker)** - Track Continuing Medical Education credits
+- **[Reflect](https://physicianpromptengineering.com/reflect)** - Daily clinical reflection and journaling
+- **[E&M Calculator](https://physicianpromptengineering.com/cpt-calculator)** - Calculate E&M codes based on medical decision making
+
+### Visualization Tools
+- **[Clinical Flowchart Generator](https://physicianpromptengineering.com/clinical-flowchart)** - Transform clinical logic into visual flowcharts using AI or manual editing
+- **[Differential Mind Map](https://physicianpromptengineering.com/differential-mindmap)** - Generate organized mind maps for differential diagnoses
+- **[Pathophysiology Mechanism Mapper](https://physicianpromptengineering.com/mechanism-mapper)** - Create visual diagrams of disease mechanisms
+- **[Patient Timeline Visualizer](https://physicianpromptengineering.com/patient-timeline)** - Create interactive timelines for case presentations
+- **[Clinical Workflow Optimizer](https://physicianpromptengineering.com/workflow-optimizer)** - Map and optimize clinical workflows with drag-and-drop flowcharts
+
+### Mobile Apps (PWA)
+Install our tools as mobile apps for quick access on your phone or tablet. Works offline and launches in fullscreen like a native app. **[Learn more about PWA apps](https://physicianpromptengineering.com/pwa-apps/)**
+
+Available as mobile apps:
+- RVU Data Tracker
+- ClockWork TimeBox
+- E&M Calculator
+- CME Tracker
+- Annual PTO Planner
+- Dot Phrase Library
+
+### Community Resources
 - **[Blog](https://physicianpromptengineering.com/blog)** - Latest insights and case studies
+- **[Newsletter](https://physicianpromptengineering.com/newsletter)** - Stay updated with new prompts and tools
+- **[Podcast](https://physicianpromptengineering.com/podcast)** - Coming soon
+- **[GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)** - Ask questions and share insights
 
-### Tools
+## Three Essential Clinical Prompts
 
-- **[A&P Prompt Generator](https://physicianpromptengineering.com/prompt-generator)** - Create customized Assessment & Plan prompts
-- **[Prompt Manager](https://physicianpromptengineering.com/prompt-manager)** - Organize and manage your prompt library locally
-- **[E&M Calculator](https://physicianpromptengineering.com/cpt-calculator)** - CPT code complexity analysis
-- **[Dot Phrase Library](https://physicianpromptengineering.com/dot-phrase-library)** - Reusable EMR text snippets
+Our most impactful prompts for immediate use:
 
-### Key Principles
+1. **Assessment & Plan Formatting** - Converts verbose paragraphs into concise, problem-oriented documentation
+2. **Medical Decision Making & Billing** - Analyzes clinical complexity and suggests appropriate CPT codes
+3. **After-Visit Summaries** - Generates patient-friendly instructions and follow-up plans
+
+[Access all prompts in our library →](https://physicianpromptengineering.com/prompt-library)
+
+## Core Principles
 
 Our approach is grounded in three principles:
 
-1. **Few-Shot Examples > Instructions**: 3-5 examples of your desired output teach AI better than lengthy explanations
-2. **Brevity = Quality**: Concise notes scan faster, reduce cognitive load, and minimize review time
-3. **Modular Design**: Specialized prompts for specific tasks outperform multi-purpose solutions
+1. **Examples Drive Quality** - 3-5 examples of your desired output teach AI better than lengthy instructions
+2. **Conciseness Improves Efficiency** - Brief, scannable notes reduce review time and minimize editing
+3. **Modular Design Ensures Reliability** - Dedicated prompts for specific tasks outperform multi-purpose solutions
 
 [Learn more in our Best Practices Guide →](https://physicianpromptengineering.com/best-practices)
+
+## Getting Started
+
+### Prerequisites
+- EMR with integrated AI text generation (e.g., Epic's "Generate Text with AI")
+- Institutional approval for AI documentation tools
+- HIPAA-compliant AI scribe service (optional but recommended)
+
+### Implementation Steps
+
+1. **Copy relevant prompts** from our library
+2. **Customize examples** to match your specialty
+3. **Test with routine encounters** first
+4. **Scale to complex cases** as confidence builds
+
+[Start with our interactive course →](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)
 
 ## Contributing
 
@@ -103,7 +129,7 @@ Use our [submission form](https://physicianpromptengineering.com/support#contrib
 
 See [CONTRIBUTE.md](CONTRIBUTING.md) for detailed guidelines.
 
-## ⚠️ Important Disclaimers
+## Important Disclaimers
 
 ### Clinical Responsibility
 - All AI-generated content requires physician review before finalizing
@@ -119,13 +145,6 @@ See [CONTRIBUTE.md](CONTRIBUTING.md) for detailed guidelines.
 This project provides educational tools only. It does not constitute medical, legal, or billing advice.
 See full [Disclaimer](https://physicianpromptengineering.com/disclaimer)
 
-## Project Status
-
-### Current Focus
-- [ ] Expanding specialty-specific prompt library
-
-[Share your story →](https://physicianpromptengineering.com/support#contribute)
-
 ## Citation
 
 If you use this project in your research or practice, please cite:
@@ -139,10 +158,6 @@ If you use this project in your research or practice, please cite:
   doi = {10.5281/zenodo.17449352}
 }
 ```
-
-### 🤖 Interactive Learning
-
-[Try Our Interactive Course →](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)
 
 ## Support & Contact
 
@@ -158,7 +173,7 @@ Special thanks to the free online medical education community that inspired this
 ---
 
 <p align="center">
-  <strong>⭐ If this project saves you time, please star it and share with colleagues!</strong>
+  <strong>If this project saves you time, please star it and share with colleagues!</strong>
 </p>
 
 <p align="center">
