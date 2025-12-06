@@ -43,7 +43,21 @@
             z-index: 9999;
             border-radius: 0;
             margin: 0;
-            grid-template-columns: 350px 1fr; // Keep sidebar
+            grid-template-columns: 1fr; // Hide sidebar grid space
+
+            .anatomy-sidebar {
+                display: none; // Hide sidebar content
+            }
+
+            .anatomy-viewer {
+                .display-stage img {
+                    max-height: 85vh; // Let image grow
+                }
+
+                .info-panel {
+                    display: none; // Hide info panel to focus on image
+                }
+            }
         }
     }
 }
@@ -105,6 +119,8 @@
     .region-list {
         flex: 1;
         overflow-y: auto;
+        /* prevent sidebar from stretching too tall, forcing scroll */
+        max-height: 60vh;
 
         .category-header {
             padding: 0.75rem 0.5rem;
@@ -244,6 +260,11 @@
             max-height: 500px;
             object-fit: contain;
             transition: opacity 0.3s ease;
+
+            // In full screen, scale up
+            &.full-screen {
+                max-height: 80vh;
+            }
         }
 
         .base-layer {
