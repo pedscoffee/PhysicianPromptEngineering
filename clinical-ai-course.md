@@ -148,7 +148,3 @@ Begin with Module 1 to learn the fundamentals of AI-assisted clinical documentat
 - WebGPU support for AI model (most modern browsers)
 - ~2GB free RAM for optimal performance
 - Internet connection for initial model download (then works offline)
-
-## Questions or Issues?
-
-This course is part of the Physician Prompt Engineering open-source project. If you encounter any issues or have suggestions, please let us know!
