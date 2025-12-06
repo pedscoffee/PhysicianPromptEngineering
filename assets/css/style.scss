@@ -1,16 +1,4 @@
---- 
---- 
-
-@import "minima";
-@import "pages/prompt-manager";
-@import "pages/cpt-calculator";
-@import "pages/clinic-visit-tracker";
-@import "pages/interactive-anatomy";
-@import "pages/clinical-flowchart";
-@import "pages/patient-timeline";
-@import "pages/prompt-generator";
-@import "pages/pto-planner";
-@import "pages/workflow-optimizer";
+--- --- @import "minima";
 
 /* Navigation Dropdown Styles */
 .site-nav {
@@ -105,6 +93,16 @@
     }
   }
 }
+
+@import "pages/prompt-manager";
+@import "pages/cpt-calculator";
+@import "pages/clinic-visit-tracker";
+@import "pages/interactive-anatomy";
+@import "pages/clinical-flowchart";
+@import "pages/patient-timeline";
+@import "pages/prompt-generator";
+@import "pages/pto-planner";
+@import "pages/workflow-optimizer";
 
 /* ============================================================================
    PHYSICIAN PROMPT ENGINEERING - DESIGN SYSTEM
