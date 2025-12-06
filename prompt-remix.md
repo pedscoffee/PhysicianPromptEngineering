@@ -839,7 +839,7 @@ permalink: /prompt-remix/
 <!-- Workbench Section -->
 <div id="workbench-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e5e7eb;">
   <div class="container">
-    <h2 style="text-align: center; margin-bottom: 30px; color: #1e5bb8;">🧪 Clinical AI Workbench</h2>
+    <h2 style="text-align: center; margin-bottom: 30px; color: #1e5bb8;"> Clinical AI Workbench</h2>
     
     <!-- Educational Context -->
     <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 20px; border-radius: 6px; margin-bottom: 24px;">
@@ -853,9 +853,9 @@ permalink: /prompt-remix/
         The goal of this workbench is to teach the <strong>process</strong> of building a case library and iteratively testing your prompts.
       </p>
       <ul style="margin: 0; padding-left: 20px; color: #475569; line-height: 1.6;">
-        <li style="margin-bottom: 8px;"><strong>Model Differences:</strong> This tool runs a small AI model directly in your browser for privacy. It is less powerful than the large models you likely use at work (like GPT-4 or Claude 3.5).</li>
+        <li style="margin-bottom: 8px;"><strong>Model Differences:</strong> This tool runs a small AI model directly in your browser for privacy. It is less powerful than the large models you likely use at work (like Claude or Gemini).</li>
         <li style="margin-bottom: 8px;"><strong>Performance:</strong> Some complex prompts from the library may not work perfectly here. That's expected! If a prompt works well on this small model, it will likely work <em>even better</em> on larger models.</li>
-        <li><strong>Best Practice:</strong> Use this tool to refine the <em>structure</em> and <em>logic</em> of your prompt. Once the logic holds up here, you can be confident deploying it to your production environment.</li>
+        <li><strong>Best Practice:</strong> Use this tool to refine the <em>structure</em> and <em>logic</em> of your prompt. Once the logic holds up here, you can be confident testing it in your actual work environment and continuing to fine tune from there.</li>
       </ul>
     </div>
 
