@@ -189,5 +189,5 @@ permalink: /support/
     <p style="margin-bottom: 20px; color: #475569;">
         Get weekly tips on clinical AI, prompt engineering, and workflow optimization.
     </p>
-    <a href="{{ site.baseurl }}/blog#newsletter" class="btn-primary" style="background: #f97316;">Subscribe to Newsletter</a>
+    <a href="{{ site.baseurl }}/newsletter" class="btn-primary" style="background: #f97316;">Subscribe to Newsletter</a>
 </div>
