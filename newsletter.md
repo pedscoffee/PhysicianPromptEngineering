@@ -56,7 +56,10 @@ permalink: /newsletter/
       <!-- Newsletter Form -->
       <div class="card" style="border: 2px solid var(--color-primary);">
         <div class="card-body" style="padding: 2rem;">
-          <h2 class="text-center mb-6">Subscribe Now</h2>
+          <h2 class="text-center mb-4">Subscribe Now</h2>
+          <p class="text-center text-secondary mb-6">
+            Get our <strong>free Quick Start Guide</strong> with 4 ready-to-use clinical prompts when you subscribe.
+          </p>
           <div class="embed-container">
             {% include newsletter.html %}
           </div>
@@ -118,11 +121,11 @@ permalink: /newsletter/
   <div class="container text-center">
     <h2 class="mb-6">Join Physicians Optimizing Their Documentation</h2>
     <p class="text-lg text-secondary mb-8" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-      Start saving time on clinical documentation today. Subscribe and get our quick-start guide to prompt engineering.
+      Subscribe to get our <strong>free Quick Start Guide</strong> with 4 ready-to-use prompts plus weekly tips on clinical AI.
     </p>
     <div class="hero-cta">
-      <a href="#newsletter-placeholder" class="btn btn-primary btn-lg">Subscribe Now</a>
-      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Read Best Practices First</a>
+      <a href="#newsletter-placeholder" class="btn btn-primary btn-lg">Get the Free Guide</a>
+      <a href="{{ site.baseurl }}/quick-start-guide" class="btn btn-outline btn-lg">Preview the Guide</a>
     </div>
   </div>
 </section>
