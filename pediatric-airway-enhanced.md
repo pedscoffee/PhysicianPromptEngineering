@@ -5,6 +5,21 @@ permalink: /pediatric-airway/
 ---
 
 <div class="anatomy-tool-container" style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+    
+    <!-- Beta Warning -->
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 25px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
+        <strong style="font-size: 1.1rem;">🚧 BETA VERSION - IN DEVELOPMENT 🚧</strong>
+        <p style="margin: 8px 0 0 0; font-size: 0.95rem; opacity: 0.95;">This tool is currently under development. Features and accuracy are being refined. Please report any issues or suggestions.</p>
+    </div>
+
+    <!-- Medical Disclaimer -->
+    <div style="background: #fff3cd; border-left: 5px solid #ffc107; color: #856404; padding: 20px 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <h3 style="margin: 0 0 10px 0; color: #856404; font-size: 1.1rem;">⚕️ Educational Purposes Only - Not Medical Advice</h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+            This interactive visualizer is designed for <strong>educational purposes only</strong> and is not intended to replace professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have learned from this tool. If you think your child may have a medical emergency, call your doctor or 911 immediately.
+        </p>
+    </div>
+
     <div class="anatomy-header" style="text-align: center; margin-bottom: 30px;">
         <h1 style="color: #2c3e50; font-size: 2.5rem; margin-bottom: 10px;">Pediatric Airway Visualizer</h1>
         <p style="color: #666; font-size: 1.1rem;">Interactive demonstration of Asthma, Bronchiolitis, and Croup physiology.</p>
@@ -384,11 +399,18 @@ permalink: /pediatric-airway/
         const baseRadius = 180;
         const muscleThickness = 20 + (muscleConstriction * 0.3);
         const muscleRadius = baseRadius - (muscleConstriction * 0.5);
-        const inflammationThickness = wallInflammation * 0.4;
-        const inflammationRadius = muscleRadius - muscleThickness - inflammationThickness;
+        
+        // Inflammation layer - always show a thin base layer
+        const baseInflammationThickness = 8;
+        const additionalInflammation = wallInflammation * 0.5;
+        const totalInflammationThickness = baseInflammationThickness + additionalInflammation;
+        const inflammationRadius = muscleRadius - muscleThickness - (totalInflammationThickness / 2);
+        
+        // Calculate lumen radius
+        const lumenRadius = Math.max(25, inflammationRadius - (totalInflammationThickness / 2));
         
         let svg = `
-            <svg viewBox="0 0 400 400" width="100%" height="100%" style="max-width: 450px;">
+            <svg viewBox="0 0 500 400" width="100%" height="100%" style="max-width: 500px;">
                 <!-- Outer muscle layer -->
                 <circle cx="200" cy="200" r="${muscleRadius}" 
                     fill="none" 
@@ -396,46 +418,109 @@ permalink: /pediatric-airway/
                     stroke-width="${muscleThickness}" 
                     opacity="${0.3 + muscleConstriction * 0.005}" />
                 
-                <!-- Inflammation layer -->
-                ${wallInflammation > 0 ? `
-                    <circle cx="200" cy="200" r="${inflammationRadius}" 
-                        fill="none" 
-                        stroke="#ffadad" 
-                        stroke-width="${inflammationThickness}" 
-                        opacity="0.7" />
-                ` : ''}
+                <!-- Submucosa/Inflammation layer (always visible) -->
+                <circle cx="200" cy="200" r="${inflammationRadius}" 
+                    fill="none" 
+                    stroke="#ffcccb" 
+                    stroke-width="${totalInflammationThickness}" 
+                    opacity="${0.4 + wallInflammation * 0.004}" />
                 
                 <!-- Open lumen -->
-                <circle cx="200" cy="200" r="${Math.max(20, inflammationRadius - inflammationThickness)}" 
+                <circle cx="200" cy="200" r="${lumenRadius}" 
                     fill="#e8f4f8" 
                     stroke="#7fb3d5" 
                     stroke-width="2" />
         `;
 
-        // Add mucus blobs
+        // Add mucus blobs - improved distribution
         if (mucusProduction > 0) {
-            const lumenRadius = Math.max(20, inflammationRadius - inflammationThickness);
-            const numBlobs = Math.floor(mucusProduction / 15);
+            const numBlobs = Math.max(4, Math.floor(mucusProduction / 10));
+            const maxBlobSize = Math.min(lumenRadius * 0.4, 20 + mucusProduction * 0.15);
             
+            // Create a more natural distribution
             for (let i = 0; i < numBlobs; i++) {
-                const angle = (i / numBlobs) * Math.PI * 2;
-                const distance = lumenRadius * 0.5;
+                const angle = (i / numBlobs) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+                const distanceVariation = 0.3 + Math.random() * 0.4;
+                const distance = lumenRadius * distanceVariation;
                 const x = 200 + Math.cos(angle) * distance;
                 const y = 200 + Math.sin(angle) * distance;
-                const size = 8 + Math.random() * 10;
+                const sizeVariation = 0.5 + Math.random() * 0.5;
+                const size = maxBlobSize * sizeVariation;
                 
                 svg += `
                     <ellipse cx="${x}" cy="${y}" 
                         rx="${size}" 
-                        ry="${size * 0.8}" 
-                        fill="#a8d5a8" 
-                        opacity="0.8" />
+                        ry="${size * (0.7 + Math.random() * 0.3)}" 
+                        fill="#9bc995" 
+                        opacity="${0.7 + Math.random() * 0.2}"
+                        transform="rotate(${Math.random() * 360} ${x} ${y})" />
                 `;
+            }
+            
+            // Add some smaller mucus particles for realism
+            if (mucusProduction > 40) {
+                const smallBlobs = Math.floor(mucusProduction / 20);
+                for (let i = 0; i < smallBlobs; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = lumenRadius * (Math.random() * 0.6);
+                    const x = 200 + Math.cos(angle) * distance;
+                    const y = 200 + Math.sin(angle) * distance;
+                    const size = 4 + Math.random() * 6;
+                    
+                    svg += `
+                        <circle cx="${x}" cy="${y}" 
+                            r="${size}" 
+                            fill="#a8d5a8" 
+                            opacity="0.6" />
+                    `;
+                }
             }
         }
 
+        // Add labels with leader lines
         svg += `
-                <!-- Labels -->
+                <!-- Label: Smooth Muscle -->
+                <line x1="${200 + muscleRadius + 15}" y1="100" x2="${200 + muscleRadius + 50}" y2="70" 
+                    stroke="#666" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                <text x="${200 + muscleRadius + 55}" y="75" fill="#666" font-size="13" font-weight="600">
+                    Smooth Muscle
+                </text>
+                
+                <!-- Label: Airway Wall (Mucosa) -->
+                <line x1="${200 + inflammationRadius}" y1="150" x2="${200 + muscleRadius + 50}" y2="130" 
+                    stroke="#666" stroke-width="1.5" />
+                <text x="${200 + muscleRadius + 55}" y="135" fill="#666" font-size="13" font-weight="600">
+                    Airway Wall
+                </text>
+                <text x="${200 + muscleRadius + 55}" y="150" fill="#999" font-size="11">
+                    (Mucosa/Submucosa)
+                </text>
+                
+                <!-- Label: Open Lumen -->
+                <text x="200" y="205" text-anchor="middle" fill="#0066aa" font-size="14" font-weight="600">
+                    ${lumenRadius > 40 ? 'Open Lumen' : ''}
+                </text>
+                <text x="200" y="220" text-anchor="middle" fill="#0066aa" font-size="11">
+                    ${lumenRadius > 40 ? '(Airway passage)' : ''}
+                </text>
+                
+                <!-- Label: Mucus (if present) -->
+                ${mucusProduction > 30 ? `
+                    <line x1="140" y1="240" x2="80" y2="280" 
+                        stroke="#666" stroke-width="1.5" />
+                    <text x="75" y="285" fill="#666" font-size="13" font-weight="600" text-anchor="end">
+                        Mucus Plugs
+                    </text>
+                ` : ''}
+
+                <!-- Arrow marker definition -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#666" />
+                    </marker>
+                </defs>
+
+                <!-- Title -->
                 <text x="200" y="30" text-anchor="middle" fill="#666" font-size="16" font-weight="600">
                     ${currentDisease === 'asthma' ? 'Bronchiole (Lower Airway)' : 'Small Airway'}
                 </text>
@@ -454,9 +539,9 @@ permalink: /pediatric-airway/
         const narrowedWidth = baseWidth - (narrowing / 100) * (baseWidth - minWidth);
         
         let svg = `
-            <svg viewBox="0 0 400 450" width="100%" height="100%" style="max-width: 450px;">
+            <svg viewBox="0 0 500 470" width="100%" height="100%" style="max-width: 500px;">
                 <!-- Upper trachea (normal) -->
-                <rect x="${(400 - baseWidth) / 2}" y="50" 
+                <rect x="${(400 - baseWidth) / 2}" y="60" 
                     width="${baseWidth}" 
                     height="80" 
                     fill="#fde8e8" 
@@ -464,33 +549,33 @@ permalink: /pediatric-airway/
                     stroke-width="3" />
                 
                 <!-- Vocal cords indicator -->
-                <line x1="140" y1="130" x2="260" y2="130" 
+                <line x1="140" y1="140" x2="260" y2="140" 
                     stroke="#8b4513" 
                     stroke-width="4" 
                     stroke-linecap="round" />
-                <text x="270" y="135" fill="#666" font-size="12">Vocal cords</text>
+                <text x="270" y="145" fill="#8b4513" font-size="13" font-weight="600">← Vocal cords</text>
                 
                 <!-- Subglottic area (narrowed) -->
-                <path d="M ${(400 - baseWidth) / 2} 130 
-                         L ${(400 - narrowedWidth) / 2} 180
-                         L ${(400 - narrowedWidth) / 2} 280
-                         L ${(400 - baseWidth) / 2} 330
-                         L ${(400 + baseWidth) / 2} 330
-                         L ${(400 + narrowedWidth) / 2} 280
-                         L ${(400 + narrowedWidth) / 2} 180
-                         L ${(400 + baseWidth) / 2} 130 Z"
+                <path d="M ${(400 - baseWidth) / 2} 140 
+                         L ${(400 - narrowedWidth) / 2} 190
+                         L ${(400 - narrowedWidth) / 2} 290
+                         L ${(400 - baseWidth) / 2} 340
+                         L ${(400 + baseWidth) / 2} 340
+                         L ${(400 + narrowedWidth) / 2} 290
+                         L ${(400 + narrowedWidth) / 2} 190
+                         L ${(400 + baseWidth) / 2} 140 Z"
                     fill="${wallInflammation > 30 ? '#ffcccc' : '#fde8e8'}"
                     stroke="#e74c3c" 
                     stroke-width="3" />
                 
                 <!-- Swelling visualization -->
                 ${subglotticSwelling > 0 ? `
-                    <ellipse cx="${(400 - narrowedWidth) / 2 - 10}" cy="230" 
+                    <ellipse cx="${(400 - narrowedWidth) / 2 - 10}" cy="240" 
                         rx="${15 + subglotticSwelling * 0.2}" 
                         ry="${40 + subglotticSwelling * 0.3}" 
                         fill="#ff9999" 
                         opacity="0.6" />
-                    <ellipse cx="${(400 + narrowedWidth) / 2 + 10}" cy="230" 
+                    <ellipse cx="${(400 + narrowedWidth) / 2 + 10}" cy="240" 
                         rx="${15 + subglotticSwelling * 0.2}" 
                         ry="${40 + subglotticSwelling * 0.3}" 
                         fill="#ff9999" 
@@ -498,7 +583,7 @@ permalink: /pediatric-airway/
                 ` : ''}
                 
                 <!-- Lower trachea (normal) -->
-                <rect x="${(400 - baseWidth) / 2}" y="330" 
+                <rect x="${(400 - baseWidth) / 2}" y="340" 
                     width="${baseWidth}" 
                     height="80" 
                     fill="#fde8e8" 
@@ -507,21 +592,66 @@ permalink: /pediatric-airway/
                 
                 <!-- Mucus if present -->
                 ${mucusProduction > 20 ? `
-                    <ellipse cx="200" cy="250" 
+                    <ellipse cx="200" cy="260" 
                         rx="${10 + mucusProduction * 0.15}" 
                         ry="15" 
-                        fill="#a8d5a8" 
+                        fill="#9bc995" 
                         opacity="0.7" />
                 ` : ''}
                 
                 <!-- Labels -->
-                <text x="200" y="25" text-anchor="middle" fill="#666" font-size="16" font-weight="600">
+                <text x="200" y="35" text-anchor="middle" fill="#666" font-size="16" font-weight="600">
                     Upper Airway (Larynx/Trachea)
                 </text>
-                <text x="280" y="235" fill="#c0392b" font-size="12" font-weight="600">
-                    ${subglotticSwelling > 0 ? '← Subglottic swelling' : ''}
+                
+                <!-- Larynx label -->
+                <text x="100" y="110" fill="#666" font-size="13" font-weight="600" text-anchor="end">
+                    Larynx →
                 </text>
-                <text x="200" y="440" text-anchor="middle" fill="#999" font-size="13">Side view</text>
+                
+                <!-- Subglottic region label -->
+                ${subglotticSwelling > 20 ? `
+                    <line x1="${(400 + narrowedWidth) / 2 + 30 + subglotticSwelling * 0.2}" y1="240" 
+                          x2="${300 + subglotticSwelling * 0.3}" y2="240" 
+                          stroke="#c0392b" stroke-width="1.5" />
+                    <text x="${305 + subglotticSwelling * 0.3}" y="235" fill="#c0392b" font-size="13" font-weight="600">
+                        Subglottic
+                    </text>
+                    <text x="${305 + subglotticSwelling * 0.3}" y="250" fill="#c0392b" font-size="13" font-weight="600">
+                        swelling →
+                    </text>
+                ` : `
+                    <text x="70" y="245" fill="#999" font-size="12" text-anchor="end">
+                        Subglottic
+                    </text>
+                    <text x="70" y="260" fill="#999" font-size="12" text-anchor="end">
+                        region →
+                    </text>
+                `}
+                
+                <!-- Trachea label -->
+                <text x="100" y="390" fill="#666" font-size="13" font-weight="600" text-anchor="end">
+                    Trachea →
+                </text>
+                
+                <!-- Airway lumen label -->
+                ${narrowedWidth > 35 ? `
+                    <text x="200" y="245" text-anchor="middle" fill="#0066aa" font-size="12" font-weight="600">
+                        Airway
+                    </text>
+                    <text x="200" y="260" text-anchor="middle" fill="#0066aa" font-size="12" font-weight="600">
+                        Lumen
+                    </text>
+                ` : ''}
+                
+                <!-- Mucus label if present -->
+                ${mucusProduction > 40 ? `
+                    <text x="140" y="280" fill="#666" font-size="11" text-anchor="end">
+                        Mucus →
+                    </text>
+                ` : ''}
+                
+                <text x="200" y="460" text-anchor="middle" fill="#999" font-size="13">Side view</text>
             </svg>
         `;
 
