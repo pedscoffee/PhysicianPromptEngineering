@@ -1390,3 +1390,5 @@ function showFlashMessage(message) {
     setTimeout(() => flash.classList.remove('show'), 3000);
 }
 </script>
+
+{%- include software-2-banner.html -%}

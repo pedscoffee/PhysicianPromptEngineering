@@ -998,3 +998,5 @@ if (isRunningAsPWA()) {
     if (banner) banner.style.display = 'none';
 }
 </script>
+
+{%- include software-2-banner.html -%}

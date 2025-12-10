@@ -570,3 +570,5 @@ Increased Preload and Afterload worsen Heart Failure (Vicious Cycle)."></textare
         });
     }
 </script>
+
+{%- include software-2-banner.html -%}

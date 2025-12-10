@@ -448,3 +448,5 @@ Else if afebrile:
         });
     }
 </script>
+
+{%- include software-2-banner.html -%}

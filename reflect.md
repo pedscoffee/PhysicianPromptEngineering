@@ -734,3 +734,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.app = new MetacognitionApp();
 });
 </script>
+
+{%- include software-2-banner.html -%}

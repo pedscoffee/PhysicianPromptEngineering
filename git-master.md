@@ -1467,3 +1467,5 @@ What would you like to know about Git? I can explain what you're seeing in the v
         return div.innerHTML;
     }
 </script>
+
+{%- include software-2-banner.html -%}

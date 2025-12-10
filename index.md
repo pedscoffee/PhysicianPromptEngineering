@@ -197,10 +197,10 @@ redirect_from:
   </div>
 </section>
 
-<!-- Comprehensive Tools Section -->
+<!-- Explore Tools Section -->
 <section class="section">
   <div class="container">
-    <h2 class="text-center mb-8">Explore Our Tools</h2>
+    <h2 class="text-center mb-8">Explore Our Resources</h2>
     
     <!-- Documentation Tools -->
     <h3 class="mb-4 text-primary">Documentation & Prompts</h3>
@@ -236,117 +236,26 @@ redirect_from:
           <p>A collection of smart phrases for common clinical scenarios.</p>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/git-master">Git Tutor</a></h4>
-          <p>Master version control for clinical tools and AI prompts.</p>
-        </div>
-      </div>
     </div>
 
-    <!-- Productivity Tools -->
-    <h3 class="mb-4 text-secondary">Productivity & Tracking</h3>
-    <div class="grid grid-cols-1 grid-cols-3 mb-8">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/clockwork-timebox">ClockWork TimeBox</a></h4>
-          <p>Visual timer and task manager for clinical sessions.</p>
+    <!-- Software 2.0 Call-to-Action -->
+    <div class="card" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border: 2px solid #0ea5e9;">
+      <div class="card-body" style="text-align: center; padding: var(--space-8);">
+        <h3 style="color: #0369a1; margin-bottom: var(--space-4); font-size: var(--font-size-3xl);">Software 2.0: Build Your Own Tools</h3>
+        <p class="text-lg" style="color: #075985; max-width: 800px; margin: 0 auto var(--space-6);">
+          Discover how modern AI coding assistants make it possible for <strong>anyone</strong> to create custom productivity tools. Explore our collection of 17 personal projects and learn how to build your own—no programming background required.
+        </p>
+        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+          <a href="{{ site.baseurl }}/software-2.0" class="btn btn-lg shadow-lg" style="background: #0284c7; color: white; font-weight: 700; border: none;">
+            Explore Software 2.0 Suite →
+          </a>
+          <a href="{{ site.baseurl }}/software-2.0#getting-started" class="btn btn-outline btn-lg" style="border-color: #0284c7; color: #0284c7;">
+            Learn to Build Your Own
+          </a>
         </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/clinic-visit-tracker">RVU Data Tracker</a></h4>
-          <p>Track your clinic volume and RVU production.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/qi-project-tracker">QI Project Tracker</a></h4>
-          <p>Manage Quality Improvement projects and milestones.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/qi-project-planner">QI Project Planner</a></h4>
-          <p>Plan your QI project with a step-by-step IHI wizard.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/trainee-goal-setter">Trainee Goal Setter</a></h4>
-          <p>Set rotation goals and get attending feedback.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/pto-planner">Annual PTO Planner</a></h4>
-          <p>Visualize and plan your time off for the year.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/cme-tracker">CME & Budget Tracker</a></h4>
-          <p>Keep track of your Continuing Medical Education credits.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/reflect">Reflect</a></h4>
-          <p>A simple tool for daily clinical reflection and journaling.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/cpt-calculator">E&M Calculator</a></h4>
-          <p>Calculate E&M codes based on medical decision making.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Visualization Tools -->
-    <h3 class="mb-4 text-accent">Visualization Tools</h3>
-    <div class="grid grid-cols-1 grid-cols-3 mb-8">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/clinical-flowchart">Clinical Flowchart Generator</a></h4>
-          <p>Transform clinical logic into visual flowcharts using AI or manual editing. Perfect for treatment algorithms and decision trees.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/differential-mindmap">Differential Mind Map</a></h4>
-          <p>Generate organized mind maps for differential diagnoses. Visualize diagnostic thinking by system or category.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/mechanism-mapper">Pathophysiology Mechanism Mapper</a></h4>
-          <p>Create visual diagrams of disease mechanisms and pathophysiology pathways for educational purposes.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/patient-timeline">Patient Timeline Visualizer</a></h4>
-          <p>Create interactive patient timelines for case presentations. Visualize the temporal progression of symptoms, labs, and interventions.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/workflow-optimizer">Clinical Workflow Optimizer</a></h4>
-          <p>Map and optimize clinical workflows with drag-and-drop flowcharts. Identify bottlenecks and improve efficiency.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/interactive-anatomy">Interactive Anatomy Tool</a></h4>
-          <p>A quick-reference visual tool for patient education. Show anatomical regions and explain concepts with a clean, approachable interface.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/pediatric-airway">Pediatric Airway Visualizer</a></h4>
-          <p>Interactive simulation of asthma and bronchiolitis physiology. Visualize inflammation, constriction, and treatment effects.</p>
-        </div>
+        <p class="text-sm mt-4" style="color: #0c4a6e; opacity: 0.8;">
+          17 tools including productivity trackers, visualizations, and development resources
+        </p>
       </div>
     </div>
 

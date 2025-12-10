@@ -845,3 +845,5 @@ permalink: /pediatric-airway/
         transform: translateY(0);
     }
 </style>
+
+{%- include software-2-banner.html -%}

@@ -101,7 +101,52 @@ permalink: /about/
   </div>
 </section>
 
-<!-- Get Involved Section -->
+<!-- Software 2.0 Philosophy Section -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 class="text-center mb-8">Embracing Software 2.0</h2>
+      
+      <div class="card mb-6">
+        <div class="card-body">
+          <p class="text-lg">
+            Beyond our clinical documentation prompts, we're exploring how modern AI coding assistants are revolutionizing who can build software. What once required years of training in computer science can now be accomplished by anyone who can clearly describe what they need.
+          </p>
+        </div>
+      </div>
+
+      <div class="two-col-grid">
+        <div>
+          <h3>Personal Projects as Examples</h3>
+          <p>
+            Our <a href="{{ site.baseurl }}/software-2.0">Software 2.0 Productivity Suite</a> demonstrates this principle in action. These aren't polished commercial products—they're personal projects created to solve specific workflow challenges. They serve as:
+          </p>
+          <ul>
+            <li>Proof that anyone can build custom tools</li>
+            <li>Templates you can adapt for your needs</li>
+            <li>Inspiration for solving your unique problems</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3>Currently a Solo Effort</h3>
+          <p>
+            This project started as one physician exploring what's possible with AI assistance. There's no team, no organization, no formal structure—just experimentation and sharing what works.
+          </p>
+          <p>
+            <strong>But collaboration can change that.</strong> If you've built tools, have ideas, or want to contribute—you're genuinely welcome. This is an invitation to build something useful together.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="{{ site.baseurl }}/software-2.0" class="btn btn-primary btn-lg">Explore Software 2.0 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Get Involved Section -->
 <section class="section bg-secondary">
   <div class="container">
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">

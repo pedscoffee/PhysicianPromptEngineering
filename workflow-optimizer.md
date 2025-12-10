@@ -1121,3 +1121,5 @@ permalink: /workflow-optimizer/
     renderNodes();
     renderConnections();
 </script>
+
+{%- include software-2-banner.html -%}

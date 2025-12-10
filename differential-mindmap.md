@@ -578,3 +578,5 @@ permalink: /differential-mindmap/
         });
     }
 </script>
+
+{%- include software-2-banner.html -%}

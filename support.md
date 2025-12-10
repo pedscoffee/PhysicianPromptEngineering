@@ -114,18 +114,18 @@ permalink: /support/
 </style>
 
 <div class="support-hero">
-    <h1>Support the Community</h1>
+    <h1>Support & Contribute</h1>
     <p>
-        Physician Prompt Engineering is a community-driven project. All resources are free at this time thanks to your generous support. You can help by contributing your expertise or supporting development.
+        This project is currently a solo effort—one physician exploring what's possible with AI documentation and Software 2.0 tools. All resources remain free and open-source thanks to your support. Whether you contribute expertise, share tools, or support development, you're genuinely helping build something useful for the medical community.
     </p>
 </div>
 
 <div id="contribute"></div>
 
 <div class="section-header">
-    <h2>Contribute Your Expertise</h2>
+    <h2>Be an Initial Contributor</h2>
     <p>
-        Every specialty faces unique documentation challenges. By sharing your refined prompts, you help colleagues save hours of trial and error while advancing the entire field of clinical AI documentation.
+        Right now, this is a solo project—which means <strong>your contribution would genuinely make a difference</strong>. Whether you're sharing a refined prompt, a custom tool you've built, or ideas for improvement, you'd be helping establish a collaborative foundation. Every specialty faces unique documentation challenges, and your insights could benefit colleagues across the field.
     </p>
 </div>
 

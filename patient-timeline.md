@@ -603,3 +603,5 @@ permalink: /patient-timeline/
         }
     });
 </script>
+
+{%- include software-2-banner.html -%}

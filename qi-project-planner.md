@@ -592,3 +592,5 @@ description: A step-by-step guide to planning your Quality Improvement project u
         });
     }
 </script>
+
+{%- include software-2-banner.html -%}
