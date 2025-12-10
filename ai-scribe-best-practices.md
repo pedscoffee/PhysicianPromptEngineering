@@ -9,7 +9,7 @@ permalink: /ai-scribe-best-practices/
   <div class="container">
     <h1 class="hero-title">AI Scribe Best Practices</h1>
     <p class="hero-subtitle">
-      Get the most out of your AI medical scribe with practical strategies for consent, the "end-of-visit summary," and Physician Prompt Engineering.
+      Practical guidance for maximizing the effectiveness of AI medical scribes, including consent, setup, review workflows, and advanced AI editing techniques.
     </p>
   </div>
 </div>
@@ -20,7 +20,7 @@ permalink: /ai-scribe-best-practices/
       <div class="card">
         <div class="card-body">
           <p class="text-lg">
-            AI medical scribes offer a new way forward—replacing the burden of "pajama time" with a workflow that is faster, better, and requires less energy. By offloading the "secretary part of your brain," you can stop holding details in your working memory and focus entirely on the patient.
+            AI medical scribes offer a new way forward—replacing the burden of "pajama time" with a workflow that is faster, better, and requires less energy. By offloading the "secretary" part of your brain, you can stop holding details in your working memory and focus entirely on the patient.
           </p>
         </div>
       </div>
@@ -54,6 +54,11 @@ permalink: /ai-scribe-best-practices/
           <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
             <p><strong>The "In the Chart" Script:</strong></p>
             <p style="font-style: italic;">"Would it be okay with you if I record our conversation to go in the chart? It helps me not have to type as much while we talk."</p>
+          </div>
+
+          <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
+          <p><strong>"Just Ask" Script:</strong></p>
+          <p style="font-style: italic;">"Is it okay with you if I use an AI scribe for our visit today?"</p>
           </div>
         </div>
       </div>
