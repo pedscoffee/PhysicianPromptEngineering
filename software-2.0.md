@@ -357,11 +357,12 @@ description: Discover how modern AI coding assistants make it possible for anyon
         </div>
         
         <div>
-          <h4>2. Learn Basic Git (Optional but Recommended)</h4>
+          <h4>2. Learn Basic Git (Optional but Highly Recommended)</h4>
           <ul>
             <li>Version control helps track changes</li>
             <li>Easy to undo mistakes</li>
             <li>Essential for collaboration</li>
+            <li>Lets you take risks and experiment fearlessly, makes the whole process a lot more fun and less tedious</li>
             <li>Check out our <a href="{{ site.baseurl }}/git-master">Git Tutor</a> to get started</li>
           </ul>
         </div>
