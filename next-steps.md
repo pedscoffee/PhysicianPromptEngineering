@@ -312,7 +312,7 @@ permalink: /next-steps/
             <ul style="margin: 0; padding-left: var(--space-5);">
               <li style="margin-bottom: var(--space-2);"><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git Book</a> - Free comprehensive guide (chapters 1-3 are essential)</li>
               <li style="margin-bottom: var(--space-2);"><a href="https://learngitbranching.js.org" target="_blank" rel="noopener">Learn Git Branching</a> - Interactive visual tutorial</li>
-              <li style="margin-bottom: var(--space-2);"><a href="https://www.youtube.com/githubguides" target="_blank" rel="noopener">GitHub YouTube Channel</a> - Official video tutorials</li>
+              <li style="margin-bottom: var(--space-2);"><a href="https://youtube.com/playlist?list=PL0lo9MOBetEFcp4SCWinBdpml9B2U25-f&si=yDn_o_NkkDlPKsK9" target="_blank" rel="noopener">GitHub YouTube Channel</a> - Official video tutorials</li>
             </ul>
           </div>
         </div>
@@ -324,6 +324,7 @@ permalink: /next-steps/
             <h3>Recommended Learning Path</h3>
             <ol style="text-align: left; max-width: 600px; margin: var(--space-4) auto 0;">
               <li>Complete this tutorial with GitHub Desktop</li>
+              <li>Jump in!  See one, do one, teach one!</li>
               <li>Watch the GitHub Desktop introduction video</li>
               <li>Read chapters 1-3 of Pro Git for deeper understanding</li>
               <li>Try the Learn Git Branching interactive tutorial</li>
