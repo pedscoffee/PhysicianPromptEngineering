@@ -77,7 +77,7 @@ permalink: /ai-scribe-best-practices/
             <li><strong>Recap for the family</strong> - "Okay, just to recap: We talked about the pneumonia, we're starting antibiotics, and we'll follow up in 2 days."</li>
             <li><strong>Recap for the scribe</strong> - If the room was chaotic (e.g., screaming toddler), step out and quickly dictate a 20-second summary almost like if you were signing out the patient.</li>
             <li><strong>Why it works</strong> - This clear, authoritative summary at the very end overrides confusing parts of the conversation, often fixing "misheard" details automatically and you'll find the scribe is able to do a much better job.</li>
-            <li><strong>Practice makes perfect</strong> - Most of the time this isn't necessary, but with more reps you'll come to see situations (like a crying toddler) in advance where a quick recap will help.  Every other part of your workflow you have practiced thousands of times; give this section some practice and time as you find your groove.</li>
+            <li><strong>Practice makes perfect</strong> - Most of the time this isn't necessary, but with more reps you'll come to see situations (like a crying toddler) in advance where a quick recap will help.  With practice you'll find your groove.</li>
           </ul>
         </div>
       </div>
@@ -88,7 +88,7 @@ permalink: /ai-scribe-best-practices/
         </div>
         <div class="card-body">
           <p>
-            When trying out these new tools, <strong>you don't have to try to change everything at once.</strong>  Every other part of your job you have practiced thousands of times; give this some practice and time as you find what works for you.  Don't judge it by your first few attempts, and recognize what you want may be different than your colleagues.  Part of the beauty of this new set up is it is infinitely customizable to your exact preferences if you're willing to take the time to get there.
+            When trying out these new tools, <strong>you don't have to try to change everything at once.</strong>  Every other part of your job you have practiced thousands of times; give this some practice and time as you find what works for you.  Don't judge it by your first few attempts, and recognize what you want may be different than your colleagues.  Part of the beauty of this new set up is it is infinitely customizable to your exact preferences if you're willing to take the time.  It won't happen overnight but small iterative changes can get you there.
           </p>
           
           <h4>The Staged Approach</h4>
