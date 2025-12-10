@@ -69,7 +69,7 @@ permalink: /ai-scribe-best-practices/
         </div>
         <div class="card-body">
           <p>
-            Large Language Models (LLMs) have a natural <strong>"recency bias"</strong>—they pay more attention to the beginning and the end of a transcript. You can leverage this to fix errors and ensure a perfect note without manual typing.
+            Large Language Models (LLMs) have a natural <strong>"recency bias"</strong>—they pay more attention to the beginning and the end of a transcript. You can leverage this to get a much more organized note.  Many tools recommend starting with introducing who is in the room and the chief complaint for the same reason.
           </p>
           
           <h4>How to do it</h4>
