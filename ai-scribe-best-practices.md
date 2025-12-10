@@ -22,7 +22,7 @@ permalink: /ai-scribe-best-practices/
       <div class="card">
         <div class="card-body">
           <p class="text-lg">
-            AI medical scribes (like DAX, Abridge, Nuance Dragon Ambient, and others) can dramatically reduce documentation burden—but only when used correctly. This guide covers essential best practices for current AI scribe tools and introduces advanced techniques for further optimization.
+            AI medical scribes (like DAX, Abridge, and others) can dramatically reduce documentation burden—but only when used correctly. This guide covers essential best practices for current AI scribe tools and introduces advanced techniques for further optimization.
           </p>
         </div>
       </div>
@@ -86,14 +86,6 @@ permalink: /ai-scribe-best-practices/
             <li><strong>Pause for interruptions</strong> - Use pause feature if available when leaving room</li>
             <li><strong>Be mindful of privacy</strong> - Don't record in hallways or shared spaces</li>
           </ul>
-          
-          <h4>Technical Checks</h4>
-          <ul>
-            <li><strong>Charge daily</strong> - Keep device charged; AI scribes drain battery</li>
-            <li><strong>Update regularly</strong> - Install app updates promptly</li>
-            <li><strong>Test audio</strong> - Do a test recording if you haven't used it in a while</li>
-            <li><strong>Have backup plan</strong> - Know what to do if technology fails mid-day</li>
-          </ul>
         </div>
       </div>
       
@@ -103,15 +95,12 @@ permalink: /ai-scribe-best-practices/
         </div>
         <div class="card-body">
           <p>
-            Each AI scribe platform has specific instructions for optimal performance. <strong>Actually read them.</strong> Common guidance includes:
+            Each AI scribe platform has specific instructions for optimal performance. <strong>Actually read them their instructions - they want you to be successful!</strong> Common guidance includes:
           </p>
           
           <h4>Communication Style</h4>
           <ul>
-            <li><strong>State the obvious</strong> - "The patient reports..." rather than assuming AI infers context</li>
-            <li><strong>Use structured presentation</strong> - Some systems work better with organized verbal flow (HPI, then exam, then assessment)</li>
-            <li><strong>Dictate key findings explicitly</strong> - "Normal cardiac exam" vs. hoping AI infers from silence</li>
-            <li><strong>Signal plan clearly</strong> - "The plan is..." helps AI separate assessment from plan</li>
+            <li><strong>Have your normal visit</strong> - these tools expect you to just be talking to real patients like normal.  No need to change your style</li>
           </ul>
           
           <h4>Platform-Specific Features</h4>
