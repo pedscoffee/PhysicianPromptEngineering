@@ -350,7 +350,7 @@ description: Discover how modern AI coding assistants make it possible for anyon
         <div>
           <h4>1. Choose Your AI Assistant</h4>
           <ul>
-            <li><strong>Things are rapidly changing for the better</strong> - these are two great options but I'd briefly browse reddit or ask a LLM what the current best tools are right now</li>
+            <li><strong>Things are rapidly changing for the better</strong> - these are two great options but I'd briefly browse Reddit or ask a LLM what the current best tools are right now if you're reading this past Winter 2026.</li>
             <li><strong>Claude</strong> - Seems to be currently winning</li>
             <li><strong>Google Antigravity</strong> - Full-featured AI coding environment and all you need is your google account</li>
           </ul>
