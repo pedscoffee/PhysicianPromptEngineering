@@ -350,10 +350,9 @@ description: Discover how modern AI coding assistants make it possible for anyon
         <div>
           <h4>1. Choose Your AI Assistant</h4>
           <ul>
-            <li><strong>Claude with Computer Use API</strong> - Great for generating complete applications</li>
-            <li><strong>GitHub Copilot</strong> - IDE integration for coding assistance</li>
-            <li><strong>Cursor</strong> - AI-first code editor</li>
-            <li><strong>Google Antigravity</strong> - Full-featured AI coding environment</li>
+            <li><strong>Things are rapidly changing for the better</strong> - these are two great options but I'd briefly browse reddit or ask a LLM what the current best tools are right now</li>
+            <li><strong>Claude</strong> - Seems to be currently winning</li>
+            <li><strong>Google Antigravity</strong> - Full-featured AI coding environment and all you need is your google account</li>
           </ul>
         </div>
         
@@ -424,7 +423,7 @@ description: Discover how modern AI coding assistants make it possible for anyon
       <h2 class="text-center mb-8">A Solo Project (For Now) — Join Me!</h2>
       
       <p class="text-lg text-center text-secondary mb-6">
-        This is currently a solo project by a practicing physician exploring the intersection of clinical medicine and modern AI development. There's no team, no formal organization, and no social proof—just one person building tools to solve real problems.
+        This is currently a solo project by a practicing physician exploring the intersection of clinical medicine and modern AI development.  The goal is to start a community where we can all benefit from each other's work.
       </p>
       
       <div class="card">
