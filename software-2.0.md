@@ -227,7 +227,7 @@ description: Discover how modern AI coding assistants make it possible for anyon
         <a href="{{ site.baseurl }}/reflect" class="tool-card-link">
           <div class="tool-card">
             <h4>Reflect</h4>
-            <p>Simple tool for daily clinical reflection and journaling. Track insights and growth over time.</p>
+            <p>Interactive tool to help you expand a differential diagnosis; great for teaching.</p>
           </div>
         </a>
         
