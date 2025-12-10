@@ -8,10 +8,16 @@ permalink: /about/
 <!-- Hero Section -->
 <div class="hero">
   <div class="container">
-    <h1 class="hero-title">About Physician Prompt Engineering</h1>
-    <p class="hero-subtitle">
-      An open-source initiative to reduce documentation burden and combat physician burnout through practical AI tools.
-    </p>
+      <h1 style="font-size: 3rem; margin-bottom: 1.5rem;">About Physician Prompt Engineering</h1>
+      <p style="font-size: 1.25rem; color: var(--color-text-secondary); max-width: 800px; margin: 0 auto;">
+        We empower phys physicians to reclaim time for patient care by providing practical, physician-tested AI documentation tools and
+        prompt engineering resources that reduce administrative burden while maintaining the highest standards of clinical excellence.
+      </p>
+      <p style="font-size: 1.1rem; color: var(--color-text-secondary); max-width: 800px; margin: 1.5rem auto 0;">
+        <strong>We focus exclusively on AI clinical documentation</strong> because we believe documentation burnout is the #1 driver of physician burnout.
+        AI has real potential to help, but most physicians don't know how to use it effectively. Simple prompt engineering principles
+        can transform AI output quality—and physicians teaching physicians creates better, safer tools.
+      </p>
   </div>
 </div>
 

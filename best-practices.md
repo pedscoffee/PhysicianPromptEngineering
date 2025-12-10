@@ -1119,3 +1119,73 @@ symptomatic relief."</code></pre>
     </div>
   </div>
 </section>
+
+<!-- Next Steps Section -->
+<section class="section bg-secondary">
+  <div class="container">
+    <h2 class="text-center mb-8">Ready to Put These Principles into Practice?</h2>
+    
+    <div class="grid grid-cols-1 grid-cols-3">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon card-icon-primary">🎓</div>
+          <h3 class="card-title">Practice with the Course</h3>
+        </div>
+        <div class="card-body">
+          <p>Apply these principles through hands-on exercises with real clinical scenarios and instant AI feedback.</p>
+          <ul style="margin-top: var(--space-3);">
+            <li>Interactive modules</li>
+            <li>Real-time feedback</li>
+            <li>Clinical case examples</li>
+            <li>Progressive difficulty</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-primary">Start Interactive Course →</a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon card-icon-secondary">📚</div>
+          <h3 class="card-title">Use Proven Prompts</h3>
+        </div>
+        <div class="card-body">
+          <p>Browse our library of physician-tested prompts built on these exact principles. Copy, test, and customize.</p>
+          <ul style="margin-top: var(--space-3);">
+            <li>Production-ready prompts</li>
+            <li>Organized by specialty</li>
+            <li>Copy with one click</li>
+            <li>Tested in real workflows</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="{{ site.baseurl }}/prompt-library" class="btn btn-secondary">Explore Prompt Library →</a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon card-icon-accent">✨</div>
+          <h3 class="card-title">Create Your Own</h3>
+        </div>
+        <div class="card-body">
+          <p>Use our AI-powered assistant to build custom prompts for your unique workflow, applying the principles you just learned.</p>
+          <ul style="margin-top: var(--space-3);">
+            <li>AI-guided creation</li>
+            <li>Customization tools</li>
+            <li>Template library</li>
+            <li>Save and organize</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="{{ site.baseurl }}/prompt-assistant" class="btn btn-accent">Try Prompt Assistant →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <p class="text-lg">Not sure where to start? Check out our <a href="{{ site.baseurl }}/get-started">Getting Started guide</a> for personalized pathways based on your experience level.</p>
+    </div>
+  </div>
+</section>
