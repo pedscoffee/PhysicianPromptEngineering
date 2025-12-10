@@ -1,0 +1,51 @@
+title: Clinical Toolkit
+description: Open-source productivity and visualization tools designed by physicians, for physicians.
+baseurl: "" # Leave empty for root deployment or set to /ClinicalToolkit for testing
+url: "https://[USERNAME].github.io" # Update with your GitHub username
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Collections
+collections:
+  tools:
+    output: false
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Google Analytics (optional - update with your ID)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# SEO
+lang: en_US
+twitter:
+  username: # Update if applicable
+  card: summary
+
+# Site settings
+logo: /assets/images/logo.png
+author: Clinical Toolkit Project
+email: # Optional contact email
+
+# Navigation
+header_pages:
+  - index.md
+  - about.md

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en" }}">
+
+{%- include head.html -%}
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-wrapper">
+        <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+
+        {%- assign default_paths = site.pages | map: "path" -%}
+        {%- assign page_paths = site.header_pages | default: default_paths -%}
+        {%- if page_paths -%}
+        <nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewBox="0 0 18 15" width="18px" height="15px">
+                <path
+                  d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z" />
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+
+            <!-- Documentation & Prompts Dropdown -->
+            <div class="dropdown">
+              <span class="page-link">Documentation & Prompts</span>
+              <div class="dropdown-content">
+                <a href="{{ '/prompt-library' | relative_url }}"><strong>Prompt Library</strong></a>
+                <a href="{{ '/best-practices' | relative_url }}"><strong>Best Practices</strong></a>
+                <a href="{{ '/courses/clinical-prompt-engineering/' | relative_url }}"><strong>Interactive
+                    Course</strong></a>
+                <hr style="margin: 5px 0; border: 0; border-top: 1px solid #eee;">
+                <a href="{{ '/prompt-manager' | relative_url }}">Prompt Manager</a>
+                <a href="{{ '/prompt-remix' | relative_url }}">Prompt Remix</a>
+                <a href="{{ '/prompt-assistant' | relative_url }}">AI Prompt Assistant</a>
+                <a href="{{ '/prompt-generator' | relative_url }}">Quick Start A&P Builder</a>
+                <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>
+                <a href="{{ '/git-master' | relative_url }}">Git Tutor</a>
+              </div>
+            </div>
+
+            <!-- Community Dropdown -->
+            <div class="dropdown">
+              <span class="page-link">Community</span>
+              <div class="dropdown-content">
+                <a href="{{ '/discussions' | relative_url }}">Community Forum</a>
+                <a href="{{ '/blog' | relative_url }}">Blog</a>
+                <a href="{{ '/podcast' | relative_url }}">Podcast</a>
+                <a href="{{ '/support#contribute' | relative_url }}">Contribute Prompts</a>
+                <a href="{{ '/support#support' | relative_url }}">Support This Project</a>
+              </div>
+            </div>
+
+            <!-- About -->
+            <a class="page-link" href="{{ '/about' | relative_url }}">About</a>
+
+            <!-- Search -->
+            <div class="search-container">
+              <input type="text" id="search-input" placeholder="Search...">
+              <ul id="results-container"></ul>
+            </div>
+
+          </div>
+        </nav>
+        {%- endif -%}
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content" aria-label="Content">
+    {{ content }}
+  </main>
+
+  {%- include cta-banner.html -%}
+  {%- include footer.html -%}
+
+  {%- include cookie-consent.html -%}
+
+  <script src="{{ '/assets/js/simple-jekyll-search.min.js' | relative_url }}" defer></script>
+  <script>
+    // Lazy load search - only initialize when user focuses on search input
+    window.addEventListener('DOMContentLoaded', function () {
+      var searchInput = document.getElementById('search-input');
+      var searchInitialized = false;
+
+      function initializeSearch() {
+        if (searchInitialized) return;
+        searchInitialized = true;
+
+        SimpleJekyllSearch({
+          searchInput: searchInput,
+          resultsContainer: document.getElementById('results-container'),
+          json: '{{ "/search.json" | relative_url }}',
+          searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+          noResultsText: 'No results found',
+          limit: 10,
+          fuzzy: false
+        });
+      }
+
+      // Initialize on first focus
+      if (searchInput) {
+        chddstener('focus', initializeSearch, { once: true });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
