@@ -1,28 +1,26 @@
 ---
 layout: default
 title: AI Scribe Best Practices
-description: Practical guidance for maximizing the effectiveness of AI medical scribes, including consent, setup, review workflows, and advanced AI editing techniques.
+description: Practical guidance for maximizing the effectiveness of AI medical scribes, including consent, the "summary" technique, and Physician Prompt Engineering.
 permalink: /ai-scribe-best-practices/
 ---
 
-<!-- Hero Section -->
 <div class="hero">
   <div class="container">
     <h1 class="hero-title">AI Scribe Best Practices</h1>
     <p class="hero-subtitle">
-      Get the most out of your AI medical scribe with practical strategies for consent, setup, review, and advanced AI-powered editing workflows.
+      Get the most out of your AI medical scribe with practical strategies for consent, the "end-of-visit summary," and Physician Prompt Engineering.
     </p>
   </div>
 </div>
 
-<!-- Introduction -->
 <section class="section">
   <div class="container">
     <div class="content-centered-wide">
       <div class="card">
         <div class="card-body">
           <p class="text-lg">
-            AI medical scribes (like DAX, Abridge, and others) can dramatically reduce documentation burden—but only when used correctly. This guide covers essential best practices for current AI scribe tools and introduces advanced techniques for further optimization.
+            AI medical scribes offer a new way forward—replacing the burden of "pajama time" with a workflow that is faster, better, and requires less energy. By offloading the "secretary part of your brain," you can stop holding details in your working memory and focus entirely on the patient.
           </p>
         </div>
       </div>
@@ -30,7 +28,6 @@ permalink: /ai-scribe-best-practices/
   </div>
 </section>
 
-<!-- Core Best Practices -->
 <section class="section bg-secondary">
   <div class="container">
     <div class="content-centered-wide">
@@ -41,174 +38,134 @@ permalink: /ai-scribe-best-practices/
           <h3 class="card-title">1. Verbal Consent & Patient Communication</h3>
         </div>
         <div class="card-body">
-          <h4>Why It Matters</h4>
+          <h4>The "Win-Win" Approach</h4>
           <p>
-            Patients have a right to know their conversation is being recorded and processed by AI. Transparency builds trust and protects you legally.
+            Obtaining consent might feel awkward the first few times, but most patients react positively. They often "light up" when they realize you will be looking at them instead of typing.
           </p>
           
           <h4>Best Practices</h4>
           <ul>
-            <li><strong>Get verbal consent at the start of every visit</strong> - Even for established patients</li>
-            <li><strong>Use clear, simple language</strong> - "I'm using an AI assistant to help with my notes. It will listen to our conversation. Is that okay with you?"</li>
-            <li><strong>Offer alternatives</strong> - "If you prefer, I can turn it off and take notes the traditional way"</li>
-            <li><strong>Document consent</strong> - Many scribes have a button to mark consent; if not, note it in your documentation</li>
-            <li><strong>Respect refusals</strong> - Don't pressure patients who decline</li>
+            <li><strong>Keep it simple</strong> - You don't need a complex legal script.</li>
+            <li><strong>Focus on the benefit</strong> - Frame it as a way to improve <em>their</em> visit by freeing you from the computer.</li>
+            <li><strong>Practice makes perfect</strong> - Give yourself more than one shot; it becomes natural quickly.</li>
           </ul>
           
-          <h4>Sample Consent Scripts</h4>
+          <h4>Recommended Script</h4>
           <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
-            <p><strong>Brief version:</strong></p>
-            <p style="font-style: italic;">"I use an AI assistant to help with documentation. It records our conversation so I can focus on you instead of my computer. Any concerns with that?"</p>
-            
-            <p class="mt-4"><strong>Extended version:</strong></p>
-            <p style="font-style: italic;">"I want to let you know I'm using an AI medical scribe today. It listens to our conversation and helps create my note, which I always review and edit before it becomes part of your medical record. This helps me spend more time looking at you instead of typing. The recording is processed securely and then deleted. Are you comfortable with that?"</p>
+            <p><strong>The "In the Chart" Script:</strong></p>
+            <p style="font-style: italic;">"Would it be okay with you if I record our conversation to go in the chart? It helps me not have to type as much while we talk."</p>
           </div>
         </div>
       </div>
       
       <div class="card mb-6">
         <div class="card-header">
-          <h3 class="card-title">2. Optimal Recording Setup</h3>
+          <h3 class="card-title">2. The "End-of-Visit Summary" (Crucial)</h3>
         </div>
         <div class="card-body">
-          <h4>Device Placement</h4>
-          <ul>
-            <li><strong>Keep microphone accessible</strong> - On desk, in pocket, or worn on lanyard</li>
-            <li><strong>Avoid obstructions</strong> - Don't bury phone under papers or in closed drawer</li>
-            <li><strong>Position strategically</strong> - Closer to patient if they speak softly</li>
-            <li><strong>Test positioning</strong> - Check quality on first few notes to find optimal placement</li>
-          </ul>
+          <p>
+            Large Language Models (LLMs) have a natural <strong>"recency bias"</strong>—they pay more attention to the beginning and the end of a transcript. You can leverage this to fix errors and ensure a perfect note without manual typing.
+          </p>
           
-          <h4>Environmental Considerations</h4>
+          <h4>How to do it</h4>
           <ul>
-            <li><strong>Minimize background noise</strong> - Close doors when possible</li>
-            <li><strong>Speak clearly</strong> - Enunciate medical terms</li>
-            <li><strong>Pause for interruptions</strong> - Use pause feature if available when leaving room</li>
-            <li><strong>Be mindful of privacy</strong> - Don't record in hallways or shared spaces</li>
+            <li><strong>Recap for the family</strong> - "Okay, just to recap: We talked about the pneumonia, we're starting antibiotics, and we'll follow up in 2 days."</li>
+            <li><strong>Recap for the scribe</strong> - If the room was chaotic (e.g., screaming toddler), step out and quickly dictate a 20-second summary almost like if you were signing out the patient.</li>
+            <li><strong>Why it works</strong> - This clear, authoritative summary at the very end overrides confusing parts of the conversation, often fixing "misheard" details automatically and you'll find the scribe is able to do a much better job</li>
+            <li><strong>Practice makes perfect</strong> - Most of the time this isn't necessary, but with more reps you'll come to see situations (like a crying toddler) in advance where a quick recap will help.  Every other part of your workflow you have practiced thousands of times; give this section some practice and time as you find your groove.</li>
           </ul>
         </div>
       </div>
       
       <div class="card mb-6">
         <div class="card-header">
-          <h3 class="card-title">3. Follow Your Scribe Company's Guidelines</h3>
+          <h3 class="card-title">3. Managing Orders & Exams</h3>
         </div>
         <div class="card-body">
           <p>
-            Each AI scribe platform has specific instructions for optimal performance. <strong>Actually read them their instructions - they want you to be successful!</strong> Common guidance includes:
+            When adopting this new workflow, <strong>you don't have to try to change everything at once.</strong>
           </p>
           
-          <h4>Communication Style</h4>
+          <h4>The Staged Approach</h4>
           <ul>
-            <li><strong>Have your normal visit</strong> - these tools expect you to just be talking to real patients like normal.  No need to change your style</li>
-          </ul>
-          
-          <h4>Platform-Specific Features</h4>
-          <ul>
-            <li><strong>Learn voice commands</strong> - Many scribes respond to specific phrases</li>
-            <li><strong>Use templates if available</strong> - Some platforms let you customize output structure</li>
-            <li><strong>Tag important items</strong> - Some systems let you flag billing codes or critical findings</li>
-            <li><strong>Utilize custom vocabularies</strong> - Add specialty-specific terms your scribe struggles with</li>
+            <li><strong>Stage 1 (Getting Started):</strong> Continue entering orders and physical exam findings manually (the "old way"). This builds confidence and keeps the workflow manageable. Use your scribe tool's default templates and settings for now.</li>
+            <li><strong>Stage 2 (Advanced):</strong> Once comfortable, start verbalizing your exam findings ("Pertinent positives/negatives") while in the room so the scribe picks them up. Practice recognizing when a short recap at the end would be helpful.</li>
+            <li><strong>Stage 3 (Optimized):</strong> Use custom LLM Editor prompts to automatically transform the note to match your exact voice for quick and confident review.</li>
           </ul>
         </div>
       </div>
       
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">4. Critical Review Process</h3>
+          <h3 class="card-title">4. The "Reviewer" Mindset</h3>
         </div>
         <div class="card-body">
           <div class="notice-box notice-warning mb-4">
-            <p><strong>⚠️ You are legally responsible for the note, not the AI.</strong></p>
-            <p>Every word in the medical record is your attestation. Review carefully.</p>
+            <p><strong>⚠️ Shift your mental model: You are no longer the Writer; you are the Editor.</strong></p>
           </div>
           
-          <h4>What to Check</h4>
-          <ul>
-            <li><strong>Factual accuracy</strong> - Verify all clinical data (vitals, medications, allergies, exam findings)</li>
-            <li><strong>Attribution errors</strong> - Ensure patient statements aren't attributed to you and vice versa</li>
-            <li><strong>Omissions</strong> - Check that important findings weren't missed</li>
-            <li><strong>Hallucinations</strong> - Watch for AI adding information that wasn't discussed</li>
-            <li><strong>Contradictions</strong> - Look for internal inconsistencies</li>
-            <li><strong>Billing accuracy</strong> - Verify suggested codes match actual encounter</li>
-            <li><strong>Medical decision making</strong> - Ensure complexity is accurately represented</li>
-          </ul>
+          <p>
+            Your goal is for the note to be 95% correct automatically. When reviewing, look for these specific issues:
+          </p>
           
-          <h4>Common AI Scribe Errors</h4>
+          <h4>What to Watch For</h4>
           <div class="two-col-grid mt-4">
             <div>
-              <h5>Technical Errors</h5>
-              <ul>
-                <li>Mishearing medical terms</li>
-                <li>Incorrect medication names or doses</li>
-                <li>Swapping "right" and "left"</li>
-                <li>Confusing negatives ("no chest pain" → "chest pain")</li>
-              </ul>
+              <h5>Authority Bias</h5>
+              <p>Sometimes the AI cannot distinguish the "voice of authority." If a patient says, <em>"I got pneumonia because I was in the rain,"</em> the AI might document that as your medical assessment. Watch for patient theories appearing as clinical facts.</p>
             </div>
             <div>
-              <h5>Contextual Errors</h5>
-              <ul>
-                <li>Including casual conversation in clinical note</li>
-                <li>Misinterpreting teaching points as patient history</li>
-                <li>Over-documenting normal findings</li>
-                <li>Missing nuance or clinical reasoning</li>
-              </ul>
+              <h5>Chaotic Audio</h5>
+              <p>If a child was screaming or multiple people spoke at once, double-check the accuracy. (Using the "End-of-Visit Summary" technique usually prevents these errors).</p>
             </div>
+
+            <div>
+            <h5>Specific numbers</h5>
+            <p>For the scribe to get an exact number (like "147/92") the audio at that exact moment has to be perfect which is a difficult ask.  Including specific numbers in your recap will help but watch out for these.  Consider referencing other parts of the chart instead of quoting exact numbers.</p>
+            </div>
+
+            <div>
+            <h5>Overall Accuracy</h5>
+            <p>At the end of the day it is your name going on the note.  Make sure you read and agree with every word.  The LLM Editor prompts make this much easier once the output is briefer and in your voice.</p>
+            </div>
+
+
           </div>
-          
-          <h4>Efficient Review Workflow</h4>
-          <ol>
-            <li><strong>Scan for major issues first</strong> - Start with medications, allergies, exam findings</li>
-            <li><strong>Read through assessment</strong> - Verify clinical reasoning makes sense</li>
-            <li><strong>Check plan completeness</strong> - Ensure all discussed items are included</li>
-            <li><strong>Verify billing</strong> - Confirm level of service and diagnosis codes</li>
-            <li><strong>Final read-through</strong> - Does it tell the clinical story accurately?</li>
-          </ol>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Advanced Optimization -->
 <section class="section">
   <div class="container">
     <div class="content-centered-wide">
-      <h2 class="text-center mb-8">Advanced Optimization: The Two-Step Approach</h2>
+      <h2 class="text-center mb-8">Physician Prompt Engineering</h2>
       
       <div class="card mb-6">
         <div class="card-body">
-          <h3>Beyond Basic AI Scribes</h3>
+          <h3>The Subway Analogy</h3>
           <p class="text-lg">
-            Current AI scribes get you ~80% of the way there, but they often produce notes that are:
-          </p>
-          <ul>
-            <li>Too verbose or too sparse</li>
-            <li>Inconsistent in style or formatting</li>
-            <li>Missing your personal documentation preferences</li>
-            <li>Not optimized for your specific EHR workflow</li>
-          </ul>
-          <p class="text-lg">
-            <strong>The solution: Use a second AI step to refine the output.</strong>
+            Think of this workflow like the NYC Subway. It's a complex system, but to use it, you just need to know which train to get on. <strong>Your "train" is your Prompt.</strong> You don't need to understand the underlying code; you just need to know which prompt gets you to your destination (your perfect note).
           </p>
         </div>
       </div>
       
       <div class="card mb-6">
         <div class="card-header">
-          <h3 class="card-title">Two-Step Workflow</h3>
+          <h3 class="card-title">The Workflow</h3>
         </div>
         <div class="card-body">
           <div class="grid grid-cols-1 grid-cols-2" style="gap: var(--space-6);">
             <div>
-              <h4 style="color: var(--color-primary);">Step 1: AI Scribe</h4>
-              <p>Your AI scribe (DAX, Abridge, etc.) creates the initial draft from the patient encounter.</p>
-              <p><strong>Result:</strong> Raw clinical documentation capturing the conversation.</p>
+              <h4 style="color: var(--color-primary);">Step 1: The Scribe</h4>
+              <p>Use a tool (like DAX, Abridge, or even free tools like Doximity) to capture the raw conversation transcript.</p>
+              <p><strong>Result:</strong> A raw record of everything said.</p>
             </div>
             <div>
-              <h4 style="color: var(--color-secondary);">Step 2: AI Editor</h4>
-              <p>Feed the draft to a general-purpose LLM (ChatGPT, Claude, Gemini) with a custom prompt that refines it to your exact specifications.</p>
-              <p><strong>Result:</strong> Polished note matching your style, preferences, and workflow.</p>
+              <h4 style="color: var(--color-secondary);">Step 2: The Prompt</h4>
+              <p>Run that raw transcript through a secure LLM with a custom prompt designed for your specialty and style.</p>
+              <p><strong>Result:</strong> A note that looks exactly like <em>you</em> wrote it.</p>
             </div>
           </div>
         </div>
@@ -216,83 +173,45 @@ permalink: /ai-scribe-best-practices/
       
       <div class="card mb-6">
         <div class="card-header">
-          <h3 class="card-title">What Second-Step AI Editing Can Do</h3>
+          <h3 class="card-title">What You Can Automate</h3>
         </div>
         <div class="card-body">
           <div class="two-col-grid">
             <div>
-              <h4>Content Refinement</h4>
+              <h4>Clinical Documentation</h4>
               <ul>
-                <li>Remove unnecessary verbosity</li>
-                <li>Enhance clinical reasoning</li>
-                <li>Standardize formatting</li>
-                <li>Add missing context</li>
-                <li>Improve readability</li>
+                <li><strong>HPI:</strong> Condense verbose stories into medical history.</li>
+                <li><strong>Assessment:</strong> Force the AI to include your thought process (rule-outs, reasoning).</li>
+                <li><strong>Plan:</strong> Format into clear, bulleted instructions.</li>
               </ul>
             </div>
             <div>
-              <h4>Customization</h4>
+              <h4>Patient Instructions (AVS)</h4>
               <ul>
-                <li>Match your documentation style</li>
-                <li>Apply specialty-specific templates</li>
-                <li>Optimize for billing accuracy</li>
-                <li>Integrate institutional preferences</li>
-                <li>Maintain consistency across notes</li>
+                <li><strong>Adding a Personalized Touch:</strong> Create personalized notes for the patient.</li>
+                <li><strong>Example:</strong> "It was great seeing you! We're here for you. Here is your to-do list."</li>
+                <li><strong>Benefit:</strong> Adds a level of personal care that was impossible with the old manual workflow.</li>
               </ul>
             </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="card mb-6">
-        <div class="card-header">
-          <h3 class="card-title">Example Use Cases</h3>
-        </div>
-        <div class="card-body">
-          <h4>Use Case 1: Tightening Verbose Notes</h4>
-          <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-3) 0;">
-            <p><strong>Prompt:</strong> "Condense this HPI to essential information only. Remove redundant phrasing. Maintain medical accuracy."</p>
-          </div>
-          
-          <h4 class="mt-6">Use Case 2: Standardizing Format</h4>
-          <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-3) 0;">
-            <p><strong>Prompt:</strong> "Reformat this physical exam to use bullet points. Group by system. Use standard abbreviations (e.g., HEENT, CV, Resp, Abd, Ext, Neuro)."</p>
-          </div>
-          
-          <h4 class="mt-6">Use Case 3: Enhancing Assessment</h4>
-          <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-3) 0;">
-            <p><strong>Prompt:</strong> "Strengthen the medical decision making section. Explicitly state what was considered, what was ruled out, and why this diagnosis is most likely. Cite relevant positives and pertinent negatives."</p>
-          </div>
-          
-          <h4 class="mt-6">Use Case 4: Billing Optimization</h4>
-          <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin: var(--space-3) 0;">
-            <p><strong>Prompt:</strong> "Review this note for appropriate E&M level. Ensure MDM complexity is clearly documented with number of diagnoses, data reviewed, and risk level explicitly stated."</p>
           </div>
         </div>
       </div>
       
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Getting Started with AI Editing</h3>
+          <h3 class="card-title">Getting Started</h3>
         </div>
         <div class="card-body">
           <p class="mb-4">
-            Our <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a> includes specialized prompts for refining AI scribe output. These prompts are:
+            We are building a community to share "subway trains" (prompts) so you don't have to build them from scratch.
           </p>
-          <ul>
-            <li>Tested in real clinical workflows</li>
-            <li>Designed for different specialties and note types</li>
-            <li>Optimized for major AI platforms (ChatGPT, Claude, Gemini)</li>
-            <li>Customizable to your specific needs</li>
-            <li>Regularly updated based on community feedback</li>
-          </ul>
           
           <div class="text-center mt-6">
             <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Explore the Prompt Library →</a>
           </div>
           
           <div class="notice-box notice-info mt-6">
-            <p><strong>💡 Pro Tip:</strong> Create a custom prompt that captures your personal documentation style, then save it in the <a href="{{ site.baseurl }}/prompt-manager">Prompt Manager</a> for quick access during your workflow.</p>
+            <p><strong>Tip:</strong> If your prompt isn't perfect, don't give up. Iterating from "okay" to "good" to "great" is what makes the technology disappear so you can focus on the patient.</p>
           </div>
         </div>
       </div>
@@ -300,61 +219,6 @@ permalink: /ai-scribe-best-practices/
   </div>
 </section>
 
-<!-- Implementation Tips -->
-<section class="section bg-secondary">
-  <div class="container">
-    <div class="content-centered-wide">
-      <h2 class="text-center mb-8">Implementing the Two-Step Workflow</h2>
-      
-      <div class="card mb-6">
-        <div class="card-header">
-          <h3 class="card-title">Workflow Integration</h3>
-        </div>
-        <div class="card-body">
-          <h4>Option 1: Copy-Paste Method (Simplest)</h4>
-          <ol>
-            <li>Generate note with your AI scribe</li>
-            <li>Copy the raw note</li>
-            <li>Paste into ChatGPT/Claude/Gemini with your editing prompt</li>
-            <li>Review AI-edited version</li>
-            <li>Copy final version into EHR</li>
-          </ol>
-          <p class="mt-4"><strong>Time investment:</strong> Add ~30-60 seconds per note</p>
-          
-          <h4 class="mt-6">Option 2: API Integration (Advanced)</h4>
-          <p>
-            For high-volume users, consider automating the second step by integrating AI editing directly into your workflow using APIs. This requires technical setup but can be done with tools covered in our <a href="{{ site.baseurl }}/software-2.0">Software 2.0 section</a>.
-          </p>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Privacy & Compliance Considerations</h3>
-        </div>
-        <div class="card-body">
-          <div class="notice-box notice-warning mb-4">
-            <p><strong>⚠️ Check with your institution before implementing any AI workflow.</strong></p>
-          </div>
-          
-          <ul>
-            <li><strong>De-identify when possible</strong> - Remove patient names, MRN, dates of birth before sending to external AI</li>
-            <li><strong>Use HIPAA-compliant platforms</strong> - Some AI providers offer BAA agreements</li>
-            <li><strong>Understand data handling</strong> - Know where your data goes and how it's used for training</li>
-            <li><strong>Follow institutional policies</strong> - Many hospitals have specific AI use policies</li>
-            <li><strong>Document your process</strong> - Be able to explain your workflow if audited</li>
-          </ul>
-          
-          <p class="mt-4">
-            <strong>Alternative for maximum security:</strong> Run local AI models on your own device. See our <a href="{{ site.baseurl }}/prompt-assistant">AI Prompt Assistant</a> for an example of browser-based, fully private AI.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Summary & Next Steps -->
 <section class="section">
   <div class="container">
     <div class="content-centered-wide">
@@ -362,24 +226,26 @@ permalink: /ai-scribe-best-practices/
       
       <div class="card">
         <div class="card-body">
-          <h3>Remember the Fundamentals</h3>
+          <h3>Unload Your "Secretary Brain"</h3>
+          <p class="mb-6">
+            The ultimate goal isn't just efficiency; it's presence. By trusting the tool to hold the more mundane details, you can bring your full critical thinking and empathy to the person in front of you.
+          </p>
+
           <div class="grid grid-cols-1 grid-cols-2" style="gap: var(--space-4); margin: var(--space-4) 0;">
             <div>
-              <h4>Essential Practices</h4>
+              <h4>Quick Wins</h4>
               <ul style="margin: 0;">
-                <li>✅ Get verbal consent</li>
-                <li>✅ Optimize recording setup</li>
-                <li>✅ Follow company guidelines</li>
-                <li>✅ Review every note carefully</li>
+                <li>Use the "In the Chart" consent script</li>
+                <li>Summarize at the end of complex visits</li>
+                <li>Keep orders/exams manual at first</li>
               </ul>
             </div>
             <div>
-              <h4>Advanced Optimization</h4>
+              <h4>Long Term</h4>
               <ul style="margin: 0;">
-                <li>🚀 Use two-step AI editing</li>
-                <li>🚀 Customize with prompts</li>
-                <li>🚀 Iterate and refine</li>
-                <li>🚀 Share what works</li>
+                <li>Refine your prompts so your output is just how you like it</li>
+                <li>Consider automating other parts of the chart such as custom Patient Instructions</li>
+                <li>Share your prompts with the community</li>
               </ul>
             </div>
           </div>
@@ -388,7 +254,6 @@ permalink: /ai-scribe-best-practices/
           <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-6);">
             <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Browse Prompt Library</a>
             <a href="{{ site.baseurl }}/prompt-manager" class="btn btn-outline btn-lg">Save Your Prompts</a>
-            <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">General Best Practices</a>
           </div>
         </div>
       </div>
