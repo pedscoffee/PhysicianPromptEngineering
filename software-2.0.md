@@ -299,10 +299,24 @@ description: Discover how modern AI coding assistants make it possible for anyon
     <div class="tool-category">
       <h3 class="mb-4 text-secondary">Development Resources</h3>
       <div class="tool-grid">
+        <a href="{{ site.baseurl }}/first-steps" class="tool-card-link">
+          <div class="tool-card">
+            <h4>First Steps: Build Your First App</h4>
+            <p>Complete beginner tutorial: create a simple to-do app using Google Gemini. No programming experience required.</p>
+          </div>
+        </a>
+        
+        <a href="{{ site.baseurl }}/next-steps" class="tool-card-link">
+          <div class="tool-card">
+            <h4>Next Steps: Version Control</h4>
+            <p>Learn why Git is essential and how to use GitHub Desktop to experiment fearlessly with your code.</p>
+          </div>
+        </a>
+        
         <a href="{{ site.baseurl }}/git-master" class="tool-card-link">
           <div class="tool-card">
             <h4>Git Tutor</h4>
-            <p>Learn version control for your clinical tools and AI prompts. Essential for tracking changes and collaboration.</p>
+            <p>Comprehensive interactive lessons on Git concepts and workflows for clinical tool development.</p>
           </div>
         </a>
       </div>
