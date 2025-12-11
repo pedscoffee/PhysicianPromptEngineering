@@ -112,6 +112,29 @@ redirect_from:
   </div>
 </section>
 
+<!-- AI Scribe Best Practices Section -->
+<section class="section bg-secondary">
+  <div class="container">
+    <div class="content-centered">
+      <h2 class="mb-6">New to AI Scribes?</h2>
+      <p class="text-lg text-secondary mb-6">
+        If you're already using an AI scribe like Dragon Ambient eXperience or Nuance DAX, start here. Learn essential best practices for getting accurate documentation, avoiding common errors, and building confidence with AI-generated notes.
+      </p>
+      <div class="card" style="max-width: 700px; margin: 0 auto;">
+        <div class="card-body" style="text-align: center; padding: var(--space-6);">
+          <h3 class="mb-4">AI Scribe Best Practices</h3>
+          <p class="mb-6">
+            Master the fundamentals: verbal consent, end-of-visit summaries, the staged learning approach, and the "reviewer mindset" that ensures clinical accuracy.
+          </p>
+          <a href="{{ site.baseurl }}/ai-scribe-best-practices" class="btn btn-primary btn-lg">
+            Read AI Scribe Best Practices →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Core Principles - Card Grid -->
 <section class="section bg-secondary">
   <div class="container">
