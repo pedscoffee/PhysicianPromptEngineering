@@ -97,8 +97,8 @@ permalink: /newsletter/
         <div style="display: flex; gap: 1rem; align-items: flex-start;">
           <div style="background: var(--color-primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</div>
           <div>
-            <h3 style="margin-bottom: 0.25rem;">Software 2.0</h3>
-            <p class="text-secondary">Updates on our clinical productivity suite.</p>
+            <h3 style="margin-bottom: 0.25rem;">Community Highlights</h3>
+            <p class="text-secondary">Featured contributions from physicians who share their workflow improvements and prompt innovations.</p>
           </div>
         </div>
         
