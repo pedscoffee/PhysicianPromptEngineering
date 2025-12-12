@@ -8,7 +8,6 @@ theme: minima
 
 # Header navigation
 # header_pages:
-  #- blog.md
   #- prompt-library.md
   #- best-practices.md
   #- prompt-generator.md

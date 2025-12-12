@@ -64,10 +64,9 @@ Available as mobile apps:
 - Dot Phrase Library
 
 ### Community Resources
-- **[Blog](https://physicianpromptengineering.com/blog)** - Latest insights and case studies
+- **[Software 2.0](https://physicianpromptengineering.com/software-2.0)** - A suite of productivity tools
+- **[Support](https://physicianpromptengineering.com/support)** - Documentation and contribution guide
 - **[Newsletter](https://physicianpromptengineering.com/newsletter)** - Stay updated with new prompts and tools
-- **[Podcast](https://physicianpromptengineering.com/podcast)** - Coming soon
-- **[GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)** - Ask questions and share insights
 
 ## Three Essential Clinical Prompts
 

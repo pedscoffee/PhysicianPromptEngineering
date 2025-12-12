@@ -286,12 +286,6 @@ description: Discover how modern AI coding assistants make it possible for anyon
           </div>
         </a>
         
-        <a href="{{ site.baseurl }}/pediatric-airway" class="tool-card-link">
-          <div class="tool-card">
-            <h4>Pediatric Airway Visualizer</h4>
-            <p>Interactive simulation of asthma and bronchiolitis physiology with treatment effect visualization.</p>
-          </div>
-        </a>
       </div>
     </div>
     
