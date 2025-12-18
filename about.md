@@ -151,10 +151,6 @@ permalink: /about/
   <div class="container">
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
       <h2 class="mb-8">Get Involved</h2>
-      <p class="text-lg mb-8">
-        This project succeeds because of physician contributions. Whether you have 5 minutes or 5 hours, there's a way to help.
-      </p>
-
       <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; text-align: left;">
         <div class="card">
           <div class="card-header">
