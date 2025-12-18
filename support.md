@@ -187,7 +187,7 @@ permalink: /support/
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">
     <h3>Join the Community</h3>
     <p style="margin-bottom: 20px; color: #475569;">
-        Get weekly tips on clinical AI, prompt engineering, and workflow optimization.
+        Get quarterly tips on clinical AI, prompt engineering, and workflow optimization.
     </p>
     <a href="{{ site.baseurl }}/newsletter" class="btn-primary" style="background: #f97316;">Subscribe to Newsletter</a>
 </div>
