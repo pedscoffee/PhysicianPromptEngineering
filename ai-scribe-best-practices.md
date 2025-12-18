@@ -62,7 +62,7 @@ permalink: /ai-scribe-best-practices/
           </div>
 
            <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
-          <p><strong>Triage</strong></p>
+          <p><strong>"Triage"</strong></p>
           <p style="font-style: italic;">"Dr. Smith uses an AI scribe for recording visits so that they don't have to type as much while you talk. Is that okay with you?"</p>
           </div>
         </div>

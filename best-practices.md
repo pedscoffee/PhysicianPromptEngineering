@@ -129,7 +129,7 @@ description: Learn how to write effective medical prompts. Our definitive guide 
                 </tr>
                 <tr>
                   <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Distribution</strong></td>
-                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Changing the distribution of example types can immprove performance (e.g., simple vs complex, common vs rare, etc.)</td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Changing the distribution of example types can improve performance (e.g., simple vs complex, common vs rare, etc.)</td>
                 </tr>
                 <tr>
                   <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Quality</strong></td>
@@ -169,7 +169,7 @@ description: Learn how to write effective medical prompts. Our definitive guide 
           <ul>
             <li>Use bullet points over paragraphs</li>
             <li>Recognize that LLMs are naturally verbose</li>
-            <li>Include instructions to be concise or give a target of a certain number of words in a given section/li>
+            <li>Include instructions to be concise or give a target of a certain number of words in a given section</li>
             <li>Focus on clinically relevant details only</li>
           </ul>
         </div>
