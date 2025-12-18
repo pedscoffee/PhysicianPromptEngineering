@@ -50,15 +50,20 @@ permalink: /ai-scribe-best-practices/
             <li><strong>Practice makes perfect</strong> - Give yourself more than one shot; it becomes natural quickly.</li>
           </ul>
           
-          <h4>Recommended Script</h4>
+          <h4>Possible Scripts</h4>
           <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
-            <p><strong>The "In the Chart" Script:</strong></p>
+            <p><strong>"In the Chart"</strong></p>
             <p style="font-style: italic;">"Would it be okay with you if I record our conversation to go in the chart? It helps me not have to type as much while we talk."</p>
           </div>
 
           <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
-          <p><strong>"Just Ask" Script:</strong></p>
+          <p><strong>"Just Ask"</strong></p>
           <p style="font-style: italic;">"Is it okay with you if I use an AI scribe for our visit today?"</p>
+          </div>
+
+           <div style="background: var(--color-bg-tertiary); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
+          <p><strong>Triage</strong></p>
+          <p style="font-style: italic;">"Dr. Smith uses an AI scribe for recording visits so that they don't have to type as much while you talk. Is that okay with you?"</p>
           </div>
         </div>
       </div>

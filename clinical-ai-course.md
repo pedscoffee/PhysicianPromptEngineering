@@ -76,7 +76,7 @@ This course teaches you how to effectively use AI for clinical documentation. Th
     <p class="module-number">Module 3</p>
     <h3 class="module-title">The Art of Refinement</h3>
     <p class="module-description">
-      <strong>NEW!</strong> Learn to be a "Human in the Loop". Practice fixing bad notes, shortening verbose outputs, and correcting hallucinations.
+      Learn to be a "Human in the Loop". Practice fixing bad notes, shortening verbose outputs, and correcting hallucinations.
     </p>
     <div class="module-meta">
       <span>⏱ 60 minutes</span>
@@ -131,6 +131,18 @@ Refine your prompts based on feedback and practice until you achieve mastery.
 ## Course Progress
 
 Your progress is automatically saved in your browser. You can return anytime and pick up where you left off.
+
+## Learning Objectives
+
+By the end of this course, you will be able to:
+- Write prompts for AI to generate clinical documentation
+- Use feedback to improve your prompts
+- Use best practices to ensure high quality output
+- Use modular prompt architecture to handle complex cases
+
+## Inherent Limitations and Ultimate Aim
+
+The goal of this course is to make using large language models more accessible.  As you start to work through the exercises you may find yourself wanting to jump ahead and start working on actual prompts in your EMR or with one of the more powerful state of the art models.  Go for it!  The LLM on this website is inherently limited since it is a small model which is what enables us to offer it to you locally on your own machine and for free.  Once you get more comfortable go ahead and try it out with a more powerful model-it will be even better!
 
 ## Ready to Start?
 

@@ -129,7 +129,7 @@ description: Learn how to write effective medical prompts. Our definitive guide 
                 </tr>
                 <tr>
                   <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Distribution</strong></td>
-                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Match your actual case mix (e.g., 60% routine, 40% complex)</td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Changing the distribution of example types can immprove performance (e.g., simple vs complex, common vs rare, etc.)</td>
                 </tr>
                 <tr>
                   <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Quality</strong></td>
@@ -137,7 +137,7 @@ description: Learn how to write effective medical prompts. Our definitive guide 
                 </tr>
                 <tr>
                   <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Format</strong></td>
-                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Consistent structure: Input → Output</td>
+                  <td style="padding: var(--space-3); border: 1px solid var(--color-border);">Consider changing the format of the examples to improve performance (Q: A:, Input: Output:, etc.)</td>
                 </tr>
                 <tr>
                   <td style="padding: var(--space-3); border: 1px solid var(--color-border);"><strong>Diversity</strong></td>
@@ -165,11 +165,11 @@ description: Learn how to write effective medical prompts. Our definitive guide 
             <li>More natural, physician-like language</li>
           </ul>
 
-          <h4 class="mt-6 mb-4">Implementation:</h4>
+          <h4 class="mt-6 mb-4">Recommendations:</h4>
           <ul>
             <li>Use bullet points over paragraphs</li>
-            <li>Employ medical abbreviations appropriately</li>
-            <li>Eliminate redundant phrases</li>
+            <li>Recognize that LLMs are naturally verbose</li>
+            <li>Include instructions to be concise or give a target of a certain number of words in a given section/li>
             <li>Focus on clinically relevant details only</li>
           </ul>
         </div>
@@ -181,7 +181,7 @@ description: Learn how to write effective medical prompts. Our definitive guide 
           <h3 class="card-title">Principle 3: Modular Prompt Architecture</h3>
         </div>
         <div class="card-body">
-          <p>Complex multi-function prompts fail because they multiply complexity exponentially. Instead, chain specialized prompts:</p>
+          <p>Multi-function prompts multiply complexity exponentially. Instead, consider chaining specialized prompts:</p>
 
           <h4 class="mt-6 mb-4">Workflow Example:</h4>
           <ol>
@@ -1084,7 +1084,7 @@ symptomatic relief."</code></pre>
         <div class="card-body">
           <ol style="line-height: var(--line-height-relaxed);">
             <li><strong>Select one workflow</strong> (e.g., Assessment & Plan only)</li>
-            <li><strong>Gather 5 examples</strong> from your recent notes</li>
+            <li><strong>Create 5 examples</strong> based on common encounters</li>
             <li><strong>Create initial prompt</strong> using our template</li>
             <li><strong>Test on 10 encounters</strong> before scaling</li>
             <li><strong>Iterate based</strong> on specific failures</li>
