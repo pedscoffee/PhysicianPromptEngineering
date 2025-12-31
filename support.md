@@ -130,14 +130,6 @@ permalink: /support/
     </p>
 </div>
 
-<div class="card-grid" style="display: flex; justify-content: center;">
-    <div class="info-card" style="max-width: 600px; width: 100%;">
-        <h3>Submission Form</h3>
-        <p>Use our form below to submit your prompt, dot phrase, or feedback directly. We'll review and add it to the library.</p>
-        <a href="#submit-form" class="btn-primary" style="margin-top: 15px;">Jump to Form</a>
-    </div>
-</div>
-
 <div class="info-card" style="max-width: 800px; margin: 0 auto 40px;">
     <h3>Submission Guidelines</h3>
     <ul style="margin-top: 15px; padding-left: 20px; color: #475569;">
