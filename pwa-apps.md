@@ -275,27 +275,18 @@ permalink: /pwa-apps/
     <div class="benefits-grid">
         <div class="benefit-card">
             <h4>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.28 9.322a4.877 4.877 0 0 1 0-7.06" /> <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25a4.877 4.877 0 0 1 4.717 5.312M12 2.25a4.877 4.877 0 0 0-4.717 5.312M12 2.25V2.25m-4.717 5.312a4.877 4.877 0 0 1 7.064 0" /> <path stroke-linecap="round" stroke-linejoin="round" d="M1.5 15.75l10.5-11.25L12 10.5h8.25L9.75 22.5 12 13.5H3.75z" />
-                </svg>
                 Works Offline
             </h4>
             <p>Core features work even without an internet connection.</p>
         </div>
         <div class="benefit-card">
             <h4>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.25V6.75a2.25 2.25 0 0 1 2.25-2.25h1.5M15.75 4.5h1.5A2.25 2.25 0 0 1 19.5 6.75v1.5m0 9.75v1.5a2.25 2.25 0 0 1-2.25 2.25h-1.5M4.5 15.75H3m0 0v-1.5a2.25 2.25 0 0 1 2.25-2.25h1.5M4.5 9.75H3m0 0v-1.5a2.25 2.25 0 0 1 2.25-2.25h1.5M15.75 19.5H21m0 0v-1.5a2.25 2.25 0 0 1-2.25-2.25h-1.5m-6-15h1.5m-6 0h1.5m-6 0h1.5" />
-                </svg>
                 Fullscreen Mode
             </h4>
             <p>No browser toolbar—the tool takes up your entire screen.</p>
         </div>
         <div class="benefit-card">
             <h4>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M10.5 18H5.25A2.25 2.25 0 0 1 3 15.75V8.25A2.25 2.25 0 0 1 5.25 6H18.75a2.25 2.25 0 0 1 2.25 2.25v7.5A2.25 2.25 0 0 1 18.75 18H13.5m-3-12H5.25A2.25 2.25 0 0 0 3 8.25v7.5A2.25 2.25 0 0 0 5.25 18H13.5" />
-                </svg>
                 Your Data Persists
             </h4>
             <p>All data is saved locally on your device between sessions.</p>
