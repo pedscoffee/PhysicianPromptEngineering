@@ -113,45 +113,39 @@ permalink: /support/
     }
 </style>
 
+
 <div class="support-hero">
-    <h1>Support & Contribute</h1>
+    <h1>Contribute to the Project</h1>
     <p>
-        This project is currently a solo effort—one physician exploring what's possible with AI documentation and Software 2.0 tools. All resources remain free and open-source thanks to your support. Whether you contribute expertise, share tools, or support development, you're genuinely helping build something useful for the medical community.
+        This is an open-source initiative built for the medical community. All resources remain free and open-source. We welcome contributions—whether you share a refined prompt, a dot phrase, or feedback on how to improve these tools.
     </p>
 </div>
 
 <div id="contribute"></div>
 
 <div class="section-header">
-    <h2>Be an Initial Contributor</h2>
+    <h2>Submit a Contribution</h2>
     <p>
-        Right now, this is a solo project—which means <strong>your contribution would genuinely make a difference</strong>. Whether you're sharing a refined prompt, a custom tool you've built, or ideas for improvement, you'd be helping establish a collaborative foundation. Every specialty faces unique documentation challenges, and your insights could benefit colleagues across the field.
+        Your contribution helps build a better resource for everyone. Every specialty faces unique documentation challenges, and your insights could benefit colleagues across the field.
     </p>
 </div>
 
-<div class="card-grid">
-    <div class="info-card">
-        <h3>Option 1: Quick Submission</h3>
-        <p>Use our form below to submit your prompt directly. We'll review and add it to the library.</p>
+<div class="card-grid" style="display: flex; justify-content: center;">
+    <div class="info-card" style="max-width: 600px; width: 100%;">
+        <h3>Submission Form</h3>
+        <p>Use our form below to submit your prompt, dot phrase, or feedback directly. We'll review and add it to the library.</p>
         <a href="#submit-form" class="btn-primary" style="margin-top: 15px;">Jump to Form</a>
-    </div>
-
-    <div class="info-card">
-        <h3>Option 2: GitHub Contribution</h3>
-        <p>Visit our GitHub repository to join discussions or submit a pull request with your prompt file.</p>
-        <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn-outline" target="_blank" style="margin-top: 15px;">Visit GitHub</a>
     </div>
 </div>
 
 <div class="info-card" style="max-width: 800px; margin: 0 auto 40px;">
-    <h3>Submission Requirements</h3>
+    <h3>Submission Guidelines</h3>
     <ul style="margin-top: 15px; padding-left: 20px; color: #475569;">
         <li><strong>Specialty/Setting:</strong> (e.g., Pediatrics - Outpatient, Emergency Medicine)</li>
-        <li><strong>Prompt Title:</strong> Clear, descriptive name</li>
-        <li><strong>Use Case:</strong> What problem does this solve?</li>
-        <li><strong>Testing Notes:</strong> How long have you used it? Approximate number of encounters?</li>
-        <li><strong>The Complete Prompt:</strong> Copy-paste ready, under 5,000 characters</li>
-        <li><strong>Quality Guidelines:</strong> Include synthetic examples, test on min 10 encounters, remove institution-specific info.</li>
+        <li><strong>Title:</strong> Clear, descriptive name for your prompt or tool</li>
+        <li><strong>Description:</strong> Briefly explain the use case and how it helps.</li>
+        <li><strong>Content:</strong> Copy-paste the complete prompt or text.</li>
+        <li><strong>Privacy:</strong> Please ensure no patient info (PHI) is included.</li>
     </ul>
 </div>
 
@@ -160,28 +154,6 @@ permalink: /support/
     <div style="background: #f8fafc; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScicxuLRUnXqv43QbRZ2zcYWuX47B_HOhJM3ir7dV11IE4Gpw/viewform?embedded=true" width="100%" height="863" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">Loading...</iframe>
     </div>
-</div>
-
-<div id="support"></div>
-
-<div class="section-header">
-    <h2>Support This Project</h2>
-    <p>
-        We believe in an honor system "Pay What You Can" model. If you find value in these tools and they save you time in your clinical practice, consider supporting the project.
-    </p>
-</div>
-
-<div class="value-model">
-    <h3>Value for Value</h3>
-    <p style="max-width: 700px; margin: 0 auto 30px; color: #475569;">
-        Your support keeps these tools ad-free, private, and open-source. It funds the development of new features like the local AI Prompt Assistant and ensures we can continue building for the medical community. Choose a contribution level that matches your current season of life.
-    </p>
-
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-    <stripe-buy-button
-        buy-button-id="buy_btn_1SNVZe7Uvbzj9s15pCFsmFpr"
-        publishable-key="pk_live_51SNUyr7Uvbzj9s15RUuLxFZ59ZIV0Mlh9sZSz01SpTxbvAgHyUmPDYSKWxLfi352CPXoaG2ztf1FE349LaMp18Wj00Saf0EVjo">
-    </stripe-buy-button>
 </div>
 
 <div style="text-align: center; margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 12px;">

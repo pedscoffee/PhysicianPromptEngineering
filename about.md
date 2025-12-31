@@ -117,24 +117,24 @@ permalink: /about/
 
       <div class="two-col-grid">
         <div>
-          <h3>Personal Projects as Examples</h3>
+          <h3>Example Projects</h3>
           <p>
-            Our <a href="{{ site.baseurl }}/software-2.0">Software 2.0 Productivity Suite</a> demonstrates this principle in action. These aren't polished commercial products—they're personal projects created to solve specific workflow challenges. They serve as:
+            Our <a href="{{ site.baseurl }}/software-2.0">Software 2.0 Productivity Suite</a> demonstrates this principle in action. These projects serve as:
           </p>
           <ul>
-            <li>Proof that anyone can build custom tools</li>
+            <li>Proof that physicians can build custom tools</li>
             <li>Templates you can adapt for your needs</li>
             <li>Inspiration for solving your unique problems</li>
           </ul>
         </div>
         
         <div>
-          <h3>Currently a Solo Effort</h3>
+          <h3>Open for Collaboration</h3>
           <p>
-            This project started as one physician exploring what's possible with AI assistance. There's no team, no organization, no formal structure—just experimentation and sharing what works.
+            This project is an exploration of what's possible with AI assistance. We believe in open sharing and transparency.
           </p>
           <p>
-            <strong>But collaboration can change that.</strong> If you've built tools, have ideas, or want to contribute—you're genuinely welcome. This is an invitation to build something useful together.
+            <strong>Collaboration is key.</strong> If you've built tools, have ideas, or want to contribute—you're genuinely welcome. This is an invitation to build something useful together.
           </p>
         </div>
       </div>
