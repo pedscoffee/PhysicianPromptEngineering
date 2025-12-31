@@ -276,15 +276,6 @@ permalink: /pwa-apps/
         <div class="benefit-card">
             <h4>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 22.5 12 13.5H3.75z" />
-                </svg>
-                Instant Access
-            </h4>
-            <p>Launch directly from your home screen—no need to open a browser first.</p>
-        </div>
-        <div class="benefit-card">
-            <h4>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8.28 9.322a4.877 4.877 0 0 1 0-7.06" /> <path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25a4.877 4.877 0 0 1 4.717 5.312M12 2.25a4.877 4.877 0 0 0-4.717 5.312M12 2.25V2.25m-4.717 5.312a4.877 4.877 0 0 1 7.064 0" /> <path stroke-linecap="round" stroke-linejoin="round" d="M1.5 15.75l10.5-11.25L12 10.5h8.25L9.75 22.5 12 13.5H3.75z" />
                 </svg>
                 Works Offline
