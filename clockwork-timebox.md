@@ -67,8 +67,8 @@ if ('serviceWorker' in navigator) {
             <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
         </svg>
         <div>
-            <strong style="color: #9a3412;">Premium Feature</strong>
-            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">This tool is free thanks to the support of our community. Please consider supporting the project if you find it useful.</p>
+            <strong style="color: #9a3412;">Make this Your Own</strong>
+            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">We hope you find this tool useful. Consider making it your own by taking the code from GitHub and using a coding LLM to personalize it to your exact needs! Please share your work with us on the contributions page or on GitHub - we would love to see what you can build!</p>
         </div>
     </div>
 
