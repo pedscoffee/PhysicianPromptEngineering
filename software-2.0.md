@@ -87,10 +87,10 @@ description: Discover how modern AI coding assistants make it possible for anyon
   <div class="container">
     <h1 class="hero-title">Software 2.0: Productivity Suite</h1>
     <p class="hero-subtitle">
-      The future of software development isn't just for software engineers anymore. With modern AI coding assistants like Claude, Gemini, and others, anyone can create custom applications tailored to their specific needs—no computer science degree required.
+      The future of software development isn't just for software engineers anymore. With modern AI coding assistants, anyone can create custom applications tailored to their specific needs.
     </p>
     <div class="hero-cta">
-      <button onclick="startWizard()" class="btn btn-primary btn-lg">Take the Interactive Tour</button>
+      <a href="{{ '/support' | relative_url }}" class="btn btn-primary btn-lg">Contribute Your Own</a>
       <a href="#tools-index" class="btn btn-outline btn-lg">Browse All Tools</a>
     </div>
   </div>
@@ -99,30 +99,14 @@ description: Discover how modern AI coding assistants make it possible for anyon
 <!-- What is Software 2.0 -->
 <section class="section bg-secondary">
   <div class="container">
-    <div class="content-centered-wide">
-      <h2 class="text-center mb-8">What is Software 2.0?</h2>
-      
-      <div class="two-col-grid">
-        <div>
-          <h3>A Paradigm Shift</h3>
-          <p>
-            Traditional programming (Software 1.0) required years of training to write code line by line. Software 2.0 represents a fundamental shift: you describe what you want in natural language, and AI assistants help you build it.
-          </p>
-          <p>
-            This isn't about replacing programmers—it's about democratizing the ability to create custom tools that solve <em>your</em> specific problems.
-          </p>
-        </div>
-        
-        <div>
-          <h3>Why It Matters for Physicians</h3>
-          <p>
-            As a physician, you understand your workflow better than any software developer. You know which tasks are repetitive, which tracking tools you need, and which visualizations would help your learning.
-          </p>
-          <p>
-            With Software 2.0, you can build those tools yourself—or adapt existing ones to fit your exact needs.
-          </p>
-        </div>
-      </div>
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <h2 class="section-title">What is this?</h2>
+      <p class="lead">
+        This is a collection of tools built to solve specific clinical and administrative problems. They were created using AI, and because they are open source, you can take them, modify them, and make them your own.
+      </p>
+      <p>
+        We encourage you to explore the source code, use AI to create your own versions, and share your creations back with the community.
+      </p>
     </div>
   </div>
 </section>
