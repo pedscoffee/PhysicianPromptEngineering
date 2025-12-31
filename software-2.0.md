@@ -269,13 +269,6 @@ description: Discover how modern AI coding assistants make it possible for anyon
             <p>Quick-reference visual tool for patient education with clean, approachable anatomical diagrams.</p>
           </div>
         </a>
-        
-        <a href="{{ site.baseurl }}/pediatric-airway" class="tool-card-link">
-          <div class="tool-card">
-            <h4>Pediatric Airway Visualizer</h4>
-            <p>Interactive simulation of asthma and bronchiolitis physiology with treatment effect visualization.</p>
-          </div>
-        </a>
       </div>
     </div>
     
@@ -431,7 +424,7 @@ description: Discover how modern AI coding assistants make it possible for anyon
           
           <div class="text-center mt-6">
             <a href="{{ site.baseurl }}/support#contribute" class="btn btn-primary btn-lg">Learn How to Contribute</a>
-            <a href="{{ site.baseurl }}/discussions" class="btn btn-outline btn-lg">Join the Discussion</a>
+            <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/discussions" class="btn btn-outline btn-lg" target="_blank">Join the Discussion</a>
           </div>
         </div>
       </div>
