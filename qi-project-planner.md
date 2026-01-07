@@ -292,7 +292,7 @@ description: A step-by-step guide to planning your Quality Improvement project u
             </div>
 
             <div class="example-box">
-                <strong>Example Aim:</strong> "Reduce waiting time to see a physician for patients ages 65+ who identify as Black, Indigenous, or people of color from 45 minutes to less than 15 minutes by July 2024."
+                <strong>Example Aim:</strong> "Reduce waiting time to see a physician for patients ages 65+ from 45 minutes to less than 15 minutes by July 2024."
             </div>
 
             <div id="aim-preview" class="generated-aim" style="display: none;"></div>
