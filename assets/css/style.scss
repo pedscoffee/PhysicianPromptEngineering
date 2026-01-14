@@ -510,7 +510,7 @@ li {
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
-  white-space: nowrap;
+  white-space: normal; /* Allow wrapping for long button text on small screens */
   position: relative;
   will-change: transform;
 }
@@ -576,6 +576,14 @@ li {
 .btn-sm {
   padding: var(--space-2) var(--space-4);
   font-size: var(--font-size-sm);
+}
+
+/* Tablet and down adjustments for buttons */
+@media screen and (max-width: 768px) {
+  .btn-lg {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-base);
+  }
 }
 
 /* ----------------------------------------------------------------------------
