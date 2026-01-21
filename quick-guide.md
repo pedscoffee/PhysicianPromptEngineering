@@ -27,34 +27,7 @@ permalink: /quick-guide/
 
       <div class="card mb-8">
         <div class="card-body">
-          <div class="grid grid-cols-1 grid-cols-3" style="text-align: center; align-items: center; gap: 20px;">
-            
-            <div style="padding: 1rem;">
-              <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎤</div>
-              <h3 style="font-size: 1.1rem; font-weight: bold; margin-bottom: 0.25rem;">1. AI Scribe</h3>
-              <p class="text-sm text-secondary">Captures the transcript of your visit.</p>
-            </div>
-
-            <div style="font-size: 2rem; color: var(--color-text-secondary); display: flex; justify-content: center;">➜</div>
-
-            <div style="padding: 1rem; background: var(--color-bg-secondary); border-radius: var(--radius-md); border: 2px solid var(--color-primary);">
-              <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✨</div>
-              <h3 style="font-size: 1.1rem; font-weight: bold; margin-bottom: 0.25rem;">2. LLM Editor</h3>
-              <p class="text-sm text-secondary">You paste the transcript + <strong>Your Custom Prompt</strong>.</p>
-            </div>
-
-            <div style="font-size: 2rem; color: var(--color-text-secondary); display: flex; justify-content: center;">➜</div>
-
-            <div style="padding: 1rem;">
-              <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📄</div>
-              <h3 style="font-size: 1.1rem; font-weight: bold; margin-bottom: 0.25rem;">3. Perfect Note</h3>
-              <p class="text-sm text-secondary">Formatted exactly how you like it.</p>
-            </div>
-
-          </div>
-          <!-- Mobile fallback for grid if needed, but grid-cols-3 usually handles it with media queries in this simplified grid setup found in index.md. 
-               However, index.md often uses grid-cols-1 grid-cols-3 which implies responsive behavior. 
-               I'll adjust the arrows for mobile if the layout stacks, but for this quick implementation, I'll assume standard behavior. -->
+          {% include workflow-diagram.html %}
         </div>
       </div>
 
@@ -76,9 +49,38 @@ Reformat the assessment and plan into a structured, problem-oriented format. The
 
 ## Output Structure for Each Problem/Diagnosis
 
-**[Problem/Diagnosis Name]**
-- [A very brief bullet point summarizing a key finding, action, or follow-up plan]
-- [Each point should be a separate bullet, written as a short clinical shorthand phrase]
+**Problem/Diagnosis Name**
+- Action items or plans
+
+Each point should be a separate line
+
+## Conditional Boilerplate Text
+
+[⚠️ USER ACTION REQUIRED: Add your conditional boilerplate text here. This text should be italicized.]
+
+If trigger discussed:
+*"Boilerplate goes here"*
+
+---
+
+## Formatting Rules
+
+1. Include only the diagnosis/problem name. Do not include assessment details.
+2. Format plan as bullet list.
+3. Bold all problem/diagnosis names using **Problem Name** format.
+4. Use - for all bullets with 0-space indentation.
+5. Write all bullet points in extremely brief, professional shorthand phrases.
+6. Keep bullets concise (ideally under 10 words per bullet).
+7. Use standard medical abbreviations (RTC, PRN, BID, etc.).
+8. Never fabricate or infer information not present in the source text.
+9. Insert a blank line between problems when multiple diagnoses exist.
+10. No references.
+
+---
+
+## Few-Shot Examples
+
+[⚠️ USER ACTION REQUIRED: Add 2-3 synthesized A&P examples here (do not use real patient data). These are essential for teaching the AI your exact style and format.]
 </pre>
         </div>
       </div>
@@ -120,8 +122,14 @@ Reformat the assessment and plan into a structured, problem-oriented format. The
 
       </div>
 
-      <div class="text-center mt-12">
-        <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Browse the Full Library</a>
+      <div class="card bg-secondary mt-12">
+        <div class="card-body text-center">
+          <h2 class="mb-4">Ready to Build Your Own?</h2>
+          <p class="text-lg mb-6">
+            The "Quick Start A&P Builder" is a tool that writes this code for you. You just check boxes for your preferences (like "Bold Diagnosis", "Italics Boilerplate", etc) and it generates the custom prompt automatically.
+          </p>
+          <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-primary btn-lg">Launch A&P Builder</a>
+        </div>
       </div>
 
     </div>
