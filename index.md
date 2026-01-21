@@ -20,6 +20,7 @@ redirect_from:
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
       <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Read Best Practices</a>
+      <a href="{{ site.baseurl }}/quick-guide" class="btn btn-primary btn-lg">Busy? 2-Minute Quick Start</a>
     </div>
   </div>
 </div>
