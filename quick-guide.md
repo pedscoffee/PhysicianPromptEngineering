@@ -51,10 +51,10 @@ Each point should be a separate line
 
 ## Conditional Boilerplate Text
 
-[⚠️ USER ACTION REQUIRED: Add your conditional boilerplate text here. This text should be italicized.]
+[⚠️ Add your best dot phrases here.]
 
 If trigger discussed:
-*"Boilerplate goes here"*
+*"Dot phrase goes here"*
 
 ---
 
@@ -75,7 +75,7 @@ If trigger discussed:
 
 ## Few-Shot Examples
 
-[⚠️ USER ACTION REQUIRED: Add 2-3 synthesized A&P examples here (do not use real patient data). These are essential for teaching the AI your exact style and format.]
+[⚠️ Add 3-5 examples of what would be an ideal A&P.  Do not use real patient data. These greatly help the output match your voice and preferences.]
 </pre>
 
       <!-- Customization -->
