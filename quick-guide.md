@@ -22,7 +22,7 @@ permalink: /quick-guide/
       <!-- Core Concept -->
       <h2 class="mb-4">1. The Core Idea</h2>
       <p class="text-lg mb-6">
-        Most AI scribes give you a generic "good enough" note. Our workflow adds one simple step to <strong>make it yours</strong> every time.
+        Most AI scribes give you a generic "good enough" note. Our workflow adds one simple step to <strong>make it yours.</strong>
       </p>
 
       <div class="card mb-8">
@@ -119,7 +119,9 @@ If trigger discussed:
             <p class="text-sm">Keep to single tasks to improve performance.  Combine prompts only once they are working well.</p>
           </div>
         </div>
-
+        <p class="mb-6">
+        Last, add your most common dot phrases to the prompt to add your voice and automate things even further.
+      </p>
       </div>
 
       <div class="card bg-secondary mt-12">
