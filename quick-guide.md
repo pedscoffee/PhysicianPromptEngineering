@@ -32,9 +32,9 @@ permalink: /quick-guide/
       </div>
 
       <!-- The Prompt -->
-      <h2 class="mb-4">2. The "Specialty Agnostic" Prompt</h2>
+      <h2 class="mb-4">2. The "Editor" Prompt</h2>
       <p class="mb-4">
-        This is a universal Assessment & Plan prompt that works for almost any specialty. It turns a messy transcript into a clean, problem-oriented list.
+        This prompt is a starting point to take your AI scribe tool's output and transform it into your exact documentation style.
       </p>
 
       <div class="card mb-8">
@@ -88,35 +88,35 @@ If trigger discussed:
       <!-- Customization -->
       <h2 class="mb-4">3. Make It Yours</h2>
       <p class="mb-6">
-        To make this prompt sound like <em>you</em>, just follow these three core principles:
+        To make your own custom prompts, just follow these three core principles:
       </p>
 
       <div class="grid grid-cols-1 grid-cols-3" style="gap: 20px;">
         
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title text-primary">1. Examples > Instructions</h3>
+            <h3 class="card-title text-primary">Examples > Rules</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">Don't explain <em>how</em> to write the note. Just paste 3-5 examples of notes you've already written. The AI will mimic your style perfectly.</p>
+            <p class="text-sm">Including examples of what you want to see is far more effective than spelling it out.</p>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title text-primary">2. Brevity = Quality</h3>
+            <h3 class="card-title text-primary">Brevity = Quality</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">Ask for bullet points and short phrases. Long paragraphs hide hallucinations and are harder to review.</p>
+            <p class="text-sm">Briefer prompts improve performance.</p>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title text-primary">3. One Prompt, One Purpose</h3>
+            <h3 class="card-title text-primary">One Prompt, One Purpose</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">Don't try to do the whole chart in one go. Have one prompt for HPI, one for A/P. It's more reliable.</p>
+            <p class="text-sm">Keep to single tasks to improve performance.  Combine prompts only once they are working well.</p>
           </div>
         </div>
 
