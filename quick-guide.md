@@ -88,7 +88,7 @@ If trigger discussed:
       <!-- Customization -->
       <h2 class="mb-4">3. Make It Yours</h2>
       <p class="mb-6">
-        To make your own custom prompts, just follow these three core principles:
+        Last, add your most common dot phrases to the prompt to add your voice and automate even further.  If you'd like to make your own custom prompts, just follow these three core principles:
       </p>
 
       <div class="grid grid-cols-1 grid-cols-3" style="gap: 20px;">
