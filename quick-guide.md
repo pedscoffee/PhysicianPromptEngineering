@@ -37,12 +37,7 @@ permalink: /quick-guide/
         This prompt is a starting point to take your AI scribe tool's output and transform it into your exact documentation style.
       </p>
 
-      <div class="card mb-8">
-        <div class="card-header bg-secondary">
-          <h3 class="card-title" style="font-family: monospace;">Universal A/P Prompt</h3>
-        </div>
-        <div class="card-body" style="background: var(--color-bg-tertiary); padding: 0;">
-<pre style="padding: 1.5rem; overflow-x: auto; margin: 0; white-space: pre-wrap;" id="prompt-code">
+<pre style="padding: 1.5rem; overflow-x: auto; margin: 0; white-space: pre-wrap; background: var(--color-bg-tertiary); border-radius: var(--radius-md);" id="prompt-code">
 Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 
 ---
@@ -82,8 +77,6 @@ If trigger discussed:
 
 [⚠️ USER ACTION REQUIRED: Add 2-3 synthesized A&P examples here (do not use real patient data). These are essential for teaching the AI your exact style and format.]
 </pre>
-        </div>
-      </div>
 
       <!-- Customization -->
       <h2 class="mb-4">3. Make It Yours</h2>
