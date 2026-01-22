@@ -87,36 +87,33 @@ If trigger discussed:
 
       <!-- Customization -->
       <h2 class="mb-4">3. Make It Yours</h2>
-      <p class="mb-6">
-        Last, add your most common dot phrases to the prompt to add your voice and automate even further.  If you'd like to make your own custom prompts, just follow these three core principles:
-      </p>
 
       <div class="grid grid-cols-1 grid-cols-3" style="gap: 20px;">
         
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title text-primary">Examples > Rules</h3>
+            <h3 class="card-title text-primary">1. Add Your Best Dot Phrases</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">Including examples of what you want to see is far more effective than spelling it out.</p>
+            <p class="text-sm">You already worked hard to figure out exactly what you like to say, let's make it automatic.</p>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title text-primary">Brevity = Quality</h3>
+            <h3 class="card-title text-primary">2. Add Examples</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">Briefer prompts improve performance.</p>
+            <p class="text-sm">Give it a pattern to follow to make it look just right.</p>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title text-primary">One Prompt, One Purpose</h3>
+            <h3 class="card-title text-primary">3. Brainstorm</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">Keep to single tasks to improve performance.  Combine prompts only once they are working well.</p>
+            <p class="text-sm">What would be truly ideal for your practice?  Previously our habits were limited by our speed, but no longer.  What would make the note most useful?</p>
           </div>
         </div>
 
