@@ -37,6 +37,13 @@ permalink: /quick-guide/
         This prompt is a starting point to take your AI scribe tool's output and transform it with a large language model into your exact documentation style.
       </p>
 
+<div style="position: relative; margin-bottom: 2rem;">
+  <button onclick="copyQuickPrompt(this)" style="position: absolute; top: 1rem; right: 1rem; padding: 0.5rem 1rem; background: white; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: 0.9em; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-sm); z-index: 10; color: var(--color-text-primary); transition: all 0.2s;">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+    </svg>
+    Copy
+  </button>
 <pre style="padding: 1.5rem; overflow-x: auto; margin: 0; white-space: pre-wrap; background: var(--color-bg-tertiary); border-radius: var(--radius-md);" id="prompt-code">
 Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 
@@ -77,6 +84,25 @@ If trigger discussed:
 
 [⚠️ Add 3-5 examples of what would be an ideal A&P.  Do not use real patient data. These greatly help the output match your voice and preferences.]
 </pre>
+</div>
+
+<script>
+function copyQuickPrompt(btn) {
+  const code = document.getElementById('prompt-code').innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<span>✓ Copied!</span>';
+    btn.style.color = 'var(--color-primary)';
+    btn.style.borderColor = 'var(--color-primary)';
+    
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
+  });
+}
+</script>
 
       <!-- Customization -->
       <h2 class="mb-4">3. Make It Yours</h2>
