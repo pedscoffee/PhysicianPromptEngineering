@@ -34,7 +34,7 @@ permalink: /quick-guide/
       <!-- The Prompt -->
       <h2 class="mb-4">2. The "Editor" Prompt</h2>
       <p class="mb-4">
-        This prompt is a starting point to take your AI scribe tool's output and transform it into your exact documentation style.
+        This prompt is a starting point to take your AI scribe tool's output and transform it with a large language model into your exact documentation style.
       </p>
 
 <pre style="padding: 1.5rem; overflow-x: auto; margin: 0; white-space: pre-wrap; background: var(--color-bg-tertiary); border-radius: var(--radius-md);" id="prompt-code">
