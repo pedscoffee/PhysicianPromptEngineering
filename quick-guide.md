@@ -10,7 +10,7 @@ permalink: /quick-guide/
   <div class="container">
     <h1 class="hero-title">The 2 Minute Guide</h1>
     <p class="hero-subtitle">
-      We know you're busy. This is a game changer.
+      Get more time back.
     </p>
   </div>
 </div>
