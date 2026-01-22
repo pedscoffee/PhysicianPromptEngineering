@@ -85,7 +85,7 @@ If trigger discussed:
         
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title text-primary">Add Dot Phrases</h3>
+            <h3 class="card-title text-primary">Add Your Dot Phrases</h3>
           </div>
           <div class="card-body">
             <p class="text-sm">You already worked hard to figure out exactly what you like to say, let's make it automatic.</p>
@@ -106,7 +106,7 @@ If trigger discussed:
             <h3 class="card-title text-primary">Brainstorm</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">What would be truly ideal for your practice?  Previously our habits were limited by our speed, but no longer.  What would make the note most useful?</p>
+            <p class="text-sm">What would be truly ideal for your practice?  Previously our habits were limited by our speed, but this is no longer the case.  What would make the note most useful?</p>
           </div>
         </div>
 
