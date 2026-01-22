@@ -22,7 +22,7 @@ permalink: /quick-guide/
       <!-- Core Concept -->
       <h2 class="mb-4">1. The Core Idea</h2>
       <p class="text-lg mb-6">
-        Most AI scribes give you a generic "good enough" note. Our workflow adds one simple step to <strong>make it yours</strong> every time.
+        Most AI scribes give you a generic "good enough" note. Our workflow adds one simple step to <strong>make it yours.</strong>
       </p>
 
       <div class="card mb-8">
