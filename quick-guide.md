@@ -10,7 +10,7 @@ permalink: /quick-guide/
   <div class="container">
     <h1 class="hero-title">The 2 Minute Guide</h1>
     <p class="hero-subtitle">
-      Understand the core concepts of AI-assisted documentation in under two minutes.
+      We know you're busy. This is a game changer.
     </p>
   </div>
 </div>
