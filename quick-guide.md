@@ -22,7 +22,7 @@ permalink: /quick-guide/
       <!-- Core Concept -->
       <h2 class="mb-4">1. The Core Idea</h2>
       <p class="text-lg mb-6">
-        Most AI scribes give you a generic "good enough" note. Our workflow adds one simple step to give you a <strong>perfect</strong> note every time.
+        Most AI scribes give you a generic "good enough" note. Our workflow adds one simple step to <strong>make it yours</strong> every time.
       </p>
 
       <div class="card mb-8">
@@ -126,7 +126,7 @@ If trigger discussed:
         <div class="card-body text-center">
           <h2 class="mb-4">Ready to Build Your Own?</h2>
           <p class="text-lg mb-6">
-            The "Quick Start A&P Builder" is a tool that writes this code for you. You just check boxes for your preferences (like "Bold Diagnosis", "Italics Boilerplate", etc) and it generates the custom prompt automatically.
+            The "Quick Start A&P Builder" writes the prompt for you.  Just click on your preferences and add your most common dot phrases and you'll have a great customized prompt to get you started.
           </p>
           <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-primary btn-lg">Launch A&P Builder</a>
         </div>
