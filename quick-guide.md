@@ -10,7 +10,7 @@ permalink: /quick-guide/
   <div class="container">
     <h1 class="hero-title">The 2 Minute Guide</h1>
     <p class="hero-subtitle">
-      Get more time back.
+      Get your time back by making it yours.
     </p>
   </div>
 </div>
@@ -82,7 +82,7 @@ If trigger discussed:
 
 ## Few-Shot Examples
 
-[⚠️ Add 3-5 examples of what would be an ideal A&P.  Do not use real patient data. These greatly help the output match your voice and preferences.]
+[⚠️ Add 3-5 examples of what would be an ideal A&P.  Do not use real patient data. These greatly help the output match your voice and preferences. See library for fully worked examples.]
 </pre>
 </div>
 
@@ -114,7 +114,7 @@ function copyQuickPrompt(btn) {
             <h3 class="card-title text-primary">Add Your Dot Phrases</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">You already worked hard to figure out exactly what you like to say, let's make it automatic.</p>
+            <p class="text-sm">You already worked hard to figure out exactly what you like to say, and now we can make it automatic.</p>
           </div>
         </div>
 
@@ -123,7 +123,7 @@ function copyQuickPrompt(btn) {
             <h3 class="card-title text-primary">Add Examples</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">Give it a pattern to follow to make it look just right.</p>
+            <p class="text-sm">Give it a pattern to follow to make it look just right. Start with three and adjust as needed.</p>
           </div>
         </div>
 
@@ -132,7 +132,7 @@ function copyQuickPrompt(btn) {
             <h3 class="card-title text-primary">Brainstorm</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">What would be truly ideal for your practice?  Previously our habits were limited by our speed, but this is no longer the case.  What would make the note most useful?</p>
+            <p class="text-sm">What do you really want to see?  Previously our note writing habits were forced to be focused on what could be done quickly, but this is no longer the case.  What would make the note most useful to you?  If you can describe it, you can build it.</p>
           </div>
         </div>
 
