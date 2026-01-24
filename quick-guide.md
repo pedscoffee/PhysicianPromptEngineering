@@ -132,7 +132,7 @@ function copyQuickPrompt(btn) {
             <h3 class="card-title text-primary">Brainstorm</h3>
           </div>
           <div class="card-body">
-            <p class="text-sm">What do you really want to see?  Previously our note writing habits were forced to be focused on what could be done quickly, but this is no longer the case.  What would make the note most useful to you?  If you can describe it, then you can build it.</p>
+            <p class="text-sm">What do you really want to see?  Previously our note writing habits were forced to be focused on what could be done quickly, but this is no longer the case.  What would make the note most useful to you?  If you can describe it, you can build it.</p>
           </div>
         </div>
 
