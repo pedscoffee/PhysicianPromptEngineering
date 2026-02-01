@@ -90,7 +90,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
           {% assign sorted_prompts = site.prompts | sort: "order" %}
           {% for prompt in sorted_prompts %}
           <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2); break-inside: avoid;">
-            <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.order }}. {{ prompt.title }}</a>
+            <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
           </li>
           {% endfor %}
         </ul>
