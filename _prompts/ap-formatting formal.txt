@@ -4,7 +4,7 @@ description: "Transforms AI scribe paragraphs into more formal notes with Assess
 specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 4874
 order: 2
-model: "Epic Generate"
+model: "Epic's Text Assistant"
 ---
 Reformat the assessment and plan into a structured, problem-oriented format with clear visual hierarchy.
 

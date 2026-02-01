@@ -4,7 +4,7 @@ description: "Analyzes diagnosis and creates suggestions for possible orders, pr
 specialty: "All"
 char_count: 3376
 order: 14
-model: "Epic Generate"
+model: "Epic's Text Assistant"
 ---
 Based on the diagnoses in this note, generate a comprehensive checklist of commonly indicated orders, referrals, prescriptions, and follow-up items that may have been overlooked.
 

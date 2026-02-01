@@ -4,7 +4,7 @@ description: "Generates personalized sign-offs + actionable family to-do lists. 
 specialty: "Pediatrics (Easy to change)"
 char_count: 4715
 order: 3
-model: "Epic Generate"
+model: "Epic's Text Assistant"
 ---
 
 Sign-Off & Family To-Do Generator

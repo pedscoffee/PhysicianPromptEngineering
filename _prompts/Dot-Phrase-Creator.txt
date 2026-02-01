@@ -4,6 +4,6 @@ description: "Creates potential candidate dot phrases from the note that you can
 specialty: "All"
 char_count: 394
 order: 13
-model: "Epic Generate"
+model: "Epic's Text Assistant"
 ---
 From the note, extract counseling, anticipatory guidance, and care instructions. Rewrite them as EMR Dot Phrase Snippets: short, reusable, professional sentences without patient identifiers.
