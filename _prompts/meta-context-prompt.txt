@@ -5,6 +5,7 @@ description: >
 specialty: "Any"
 char_count: 2943
 order: 7
+model: "Epic Generate"
 ---
 
 GUIDE: CREATING HIGH-PERFORMANCE CLINICAL FORMATTING PROMPTS

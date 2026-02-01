@@ -4,6 +4,7 @@ description: "Only input you need for this prompt is the name of the diagnosis o
 specialty: "All"
 char_count: 4321
 order: 11
+model: "Epic Generate"
 ---
 Convert this clinical note into a concise study guide designed to prepare a student to be quizzed on topics related to this case.
 

@@ -4,6 +4,7 @@ description: "Use your LLM to help make your own prompts using our own prompts a
 specialty: "Any"
 char_count: 4894
 order: 5
+model: "Epic Generate"
 ---
 # Custom A/P Formatting Prompt Generator
 

@@ -46,6 +46,18 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
       width: 100%;
     }
   }
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+  }
+  .filter-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
 </style>
 
 <!-- Hero Section -->
@@ -63,11 +75,21 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
       <h2 class="text-center mb-6">Browse Prompts</h2>
+      
+      <div class="filter-buttons">
+        <button class="btn btn-primary btn-sm filter-btn active" onclick="filterPrompts('all', this)">All Models</button>
+        {% assign models = site.prompts | map: "model" | uniq %}
+        {% for model in models %}
+          {% if model %}
+          <button class="btn btn-secondary btn-sm filter-btn" onclick="filterPrompts('{{ model }}', this)">{{ model }}</button>
+          {% endif %}
+        {% endfor %}
+      </div>
       <div style="background: var(--color-bg-primary); padding: var(--space-5); border-radius: var(--radius-lg);">
         <ul style="columns: 2; column-gap: var(--space-6); list-style: none; padding: 0; margin: 0;">
           {% assign sorted_prompts = site.prompts | sort: "order" %}
           {% for prompt in sorted_prompts %}
-          <li style="margin-bottom: var(--space-2); break-inside: avoid;">
+          <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2); break-inside: avoid;">
             <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.order }}. {{ prompt.title }}</a>
           </li>
           {% endfor %}
@@ -99,13 +121,16 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
 
       {% assign sorted_prompts = site.prompts | sort: "order" %}
       {% for prompt in sorted_prompts %}
-      <div class="card mb-8" id="{{ prompt.title | slugify }}">
+      <div class="card mb-8 prompt-card" data-model="{{ prompt.model }}" id="{{ prompt.title | slugify }}">
         <div class="card-header">
           <h2 class="card-title">{{ prompt.title }}</h2>
           <p class="card-subtitle">{{ prompt.description }}</p>
         </div>
         <div class="card-body">
           <div class="prompt-meta">
+            <div class="prompt-meta-item">
+              <strong>Model:</strong> {{ prompt.model }}
+            </div>
             <div class="prompt-meta-item">
               <strong>Specialty:</strong> {{ prompt.specialty }}
             </div>
@@ -234,5 +259,37 @@ function downloadPrompt(button) {
   setTimeout(function() {
     button.innerText = originalText;
   }, 2000);
+}
+
+function filterPrompts(model, btn) {
+  // Update buttons
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.remove('active');
+    b.classList.remove('btn-primary');
+    b.classList.add('btn-secondary');
+  });
+  btn.classList.add('active');
+  btn.classList.add('btn-primary');
+  btn.classList.remove('btn-secondary');
+
+  // Filter Nav Items
+  const navItems = document.querySelectorAll('.prompt-nav-item');
+  navItems.forEach(item => {
+    if (model === 'all' || item.dataset.model === model) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  // Filter Cards
+  const cards = document.querySelectorAll('.prompt-card');
+  cards.forEach(card => {
+    if (model === 'all' || card.dataset.model === model) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
 }
 </script>

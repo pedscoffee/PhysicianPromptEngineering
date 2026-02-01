@@ -4,6 +4,7 @@ description: "Use your LLM to help make your own prompts using our own prompts a
 specialty: "Any"
 char_count: 2808
 order: 6
+model: "Epic Generate"
 ---
 # A/P Prompt Refiner
 

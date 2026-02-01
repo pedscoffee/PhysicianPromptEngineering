@@ -4,6 +4,7 @@ description: "Transforms clinical notes into de-identified teaching cases with l
 specialty: "All"
 char_count: 4207
 order: 10
+model: "Epic Generate"
 ---
 Convert this clinical note into a structured teaching case. Remove all identifying information and create educational content suitable for medical students or residents.
 
