@@ -1,0 +1,62 @@
+---
+title: "Abnormal Exam First"
+description: "List abnormal findings separately from boiler plate text to allow for quicker review"
+specialty: "Any / Pediatrics"
+char_count: 3458
+order: 16
+model: "DAX Custom Instructions"
+---
+{List all abnormal findings first, organized by system. If no abnormal findings are mentioned for a system, skip it. Use concise formal clinical language.}
+
+GENERAL APPEARANCE: [List abnormal findings if present]  
+VITAL SIGNS: [List abnormal findings if present]  
+HEENT: [List abnormal findings if present]  
+RESPIRATORY: [List abnormal findings if present]  
+CARDIOVASCULAR: [List abnormal findings if present]  
+GASTROINTESTINAL: [List abnormal findings if present]  
+GENITOURINARY: [List abnormal findings if present, prefixed Male or Female]  
+LYMPHATIC: [List abnormal findings if present]  
+BACK, MUSCULOSKELETAL: [List abnormal findings if present]  
+EXTREMITIES: [List abnormal findings if present]  
+SKIN: [List abnormal findings if present]  
+NEUROLOGICAL: [List abnormal findings if present]  
+PSYCHIATRIC: [List abnormal findings if present]  
+OTHER OBSERVATIONS: [List abnormal findings if present]  
+
+{Insert a single blank line between abnormal and normal sections}
+
+GENERAL APPEARANCE: "Patient is in no acute distress, well-developed, well nourished, and not ill-appearing." {If GENERAL APPEARANCE mentioned above, then delete this line.}
+
+VITAL SIGNS: "Vitals and nursing note reviewed." {If VITAL SIGNS mentioned above, then delete this line.}
+
+HEENT:  
+"Head: Normocephalic and atraumatic." {If HEAD mentioned above, then delete this line.}  
+"Eyes: No discharge, EOMI, conjunctiva clear, and PERRL." {If EYES mentioned above, then delete this line.}  
+"Ears: TM, canal, and external ears normal bilaterally." {If EARS mentioned above, then delete this line.}  
+"Nose: No congestion or rhinorrhea." {If NOSE mentioned above, then delete this line.}  
+"Mouth: Mucous membranes moist." {If MOUTH mentioned above, then delete this line.}  
+"Pharynx: No erythema, exudate, or tonsillar enlargement." {If PHARYNX mentioned above, then delete this line.}
+
+RESPIRATORY:  
+"Effort: No respiratory distress." {If RESPIRATORY EFFORT mentioned above, then delete this line.}  
+"Breath sounds: Clear bilaterally. No wheezing or rales." {If BREATH SOUNDS mentioned above, then delete this line.}
+
+CARDIOVASCULAR: "Regular rate and rhythm. No murmurs, gallops, or rubs. Brisk cap refill." {If CARDIOVASCULAR mentioned above, then delete this line.}
+
+GASTROINTESTINAL: "Soft, non-tender, non-distended. No guarding or rebound." {If GASTROINTESTINAL mentioned above, then delete this line.}
+
+GENITOURINARY: [Insert findings (prefixed Male or Female). If no GU exam was verbally described or noted above, write “GU deferred.” Otherwise, include findings. If chaperone was mentioned, document below.]
+
+LYMPHATIC: "No cervical, axillary, or inguinal lymphadenopathy." {If LYMPHATIC mentioned above, then delete this line.}
+
+BACK, MUSCULOSKELETAL: "No abnormal or restricted ROM. No scoliosis or pain with movement." {Only include if BACK, MUSCULOSKELETAL mentioned above; otherwise delete this line.}
+
+EXTREMITIES: "No deformities, cyanosis, or edema." {If EXTREMITIES mentioned above, then delete this line.}
+
+SKIN: "Warm and dry. No rash or lesions." {If SKIN mentioned above, then delete this line.}
+
+NEUROLOGICAL: "Alert and oriented for age. Normal tone and reflexes." {If NEUROLOGICAL mentioned above, then delete this line.}
+
+PSYCHIATRIC: "Mood and affect appropriate. Behavior normal for age." {If PSYCHIATRIC mentioned above, then delete this line.}
+
+OTHER OBSERVATIONS: [Insert any other relevant findings.] {If not mentioned, delete this line.}
