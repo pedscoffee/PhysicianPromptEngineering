@@ -1,9 +1,11 @@
 ---
-title: "Other Models & Contributions"
+title: "Other Models"
 description: "Information on using and contributing prompts for other LLM platforms and scribe tools."
 specialty: "All"
 char_count: 537
 order: 100
 model: "Other"
 ---
-Are you using a different large language model from those listed here?  Please consider contributing your favorite prompt so others can benefit!  Depending on the specific model your prompt may look different than those already here although the principles will remain the same.  As these tools continue to improve we anticipate that the models will likely become even more intertwined with the scribe product; if you're using a tool within your scribe tool just submit it with the name of the tool (ex: Doximity, DAX custom instructions, Dragon Copilot, Abridge, Heidi, Freed, etc). Thank you!
+Are you using a different large language model from those listed here?  Please consider contributing your favorite prompt so others can benefit!  
+
+Depending on the specific model your prompt may look different than those already here.  As these tools continue to improve we anticipate that the models will likely become even more intertwined and accessible from within the scribe products; if you're using a LLM within your scribe tool just submit it with the name of the tool (ex: Doximity, Dragon Copilot, Abridge, Heidi, Freed, etc). Thank you!
