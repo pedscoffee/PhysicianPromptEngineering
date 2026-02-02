@@ -4,7 +4,7 @@ description: "Transforms text into concise handoff for sign out.  Ideal input wo
 specialty: "All"
 char_count: 3405
 order: 15
-model: "Epic's Text Assistant"
+model: "Epic Text Assistant"
 ---
 Create a concise sign-out for covering providers focusing on patients who may require attention during your absence.
 

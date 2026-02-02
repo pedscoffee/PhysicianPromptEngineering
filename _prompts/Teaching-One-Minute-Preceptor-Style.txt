@@ -4,7 +4,7 @@ description: "Use framework loosely based on the One Minute Preceptor (Neher et 
 specialty: "Any"
 char_count: 4894
 order: 9
-model: "Epic's Text Assistant"
+model: "Epic Text Assistant"
 ---
 One-Minute Preceptor Teaching Feedback Prompt
 Purpose
