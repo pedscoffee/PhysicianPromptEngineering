@@ -1,0 +1,10 @@
+---
+title: "Orders to Place"
+description: "Generates a consolidated checklist of all clinician orders grouped by category for rapid task management."
+specialty: "All"
+char_count: 265
+order: 17
+model: "DAX Custom Instructions"
+---
+ORDERS TO PLACE:  
+[List a concise checklist of all labs, imaging, medications, referrals, or screenings mentioned above. Include each order even if already described under the problem list. Group by type (Labs, Imaging, Meds, Referrals, Other). This section is for provider task management and may repeat content from above.]
