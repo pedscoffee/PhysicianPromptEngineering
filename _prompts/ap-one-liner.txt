@@ -1,6 +1,6 @@
 ---
-title: "Editor's Favorite"
-description: "'Pithy A&P' prompt with one liner assessment line to start and follow up statement to close. This is the editor's current favorite.  See prompts for examples of how to include your favorite dot phrases."
+title: "Editor's Current Favorite A/P"
+description: "This is the 'Pithy A/P' prompt with one liner assessment line to start and follow up statement to close. This is the editor's current favorite, and provides a good starting point for further customization if desired."
 specialty: "All"
 char_count: 4081
 order: 0
