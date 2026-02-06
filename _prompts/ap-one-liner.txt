@@ -1,5 +1,5 @@
 ---
-title: "A/P Formatting 'Pithy' with One-Liner Assessment and Follow Up"
+title: "Editor's Favorite: 'Pithy A/P' with One-Liner Assessment and Follow Up"
 description: "Pithy A&P with one liner assessment line to close and follow up statement to close. This is the editor's current favorite and likely the most generalizable."
 specialty: "Pediatrics (adaptable)"
 char_count: 4081
