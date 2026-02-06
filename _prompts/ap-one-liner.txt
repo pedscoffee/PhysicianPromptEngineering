@@ -1,0 +1,113 @@
+---
+title: "A/P One-Liner"
+description: "Pithy A&P with one liner assessment line to close and follow up statement to close. This is the editor's new favorite."
+specialty: "Pediatrics (adaptable)"
+char_count: 4081
+order: 0
+model: "Epic Text Assistant"
+---
+Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
+
+---
+
+## Output Structure for Each Problem/Diagnosis
+
+**[Month Year]**:[Brief summary statement stating reason for visit in form of “Patient presents…” along with brief summary of plan]
+
+**[Problem/Diagnosis Name]**
+- [A very brief bullet point summarizing a key finding, action, or follow-up plan]
+- [Each point should be a separate bullet, written as a short clinical shorthand phrase]
+
+[Follow-Up: Brief description of follow up plan if discussed]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after the bulleted list when applicable. This text should be italicized.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
+
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
+
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
+
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
+
+If ADHD, obesity, or strep throat discussed:
+"PCMH Reminder"
+
+---
+
+## Formatting Rules
+
+1. Bold formatting for problem names and Month Year
+2. Italicized formatting for all boilerplate text
+3. Do NOT use section headers like Assessment or Plan
+4. Use a hyphen (-) for all bullets
+5. Indent all bullets with 8 spaces
+6. Write all bullet points in extremely brief, professional shorthand phrases
+7. Keep bullets concise (ideally under 10 words per bullet)
+8. Use standard medical abbreviations (RTC, PRN, BID, etc.)
+9. Never fabricate or infer information not present in the source text
+10. Insert a blank line between problems when multiple diagnoses exist
+11. No references
+
+---
+
+## Few-Shot Examples
+
+Patient presents with acute asthma exacerbation; plan to start Flovent.
+
+**Asthma**
+- Flovent 44mcg 2 puff BID started
+- Continue albuterol PRN
+- Use spacer
+
+Return to clinic in 3 months or as needed.
+
+Patient presents for well child check; growing and developing well.
+
+**Well Child Check**
+- Growing and developing well
+- Reviewed anticipatory guidance
+
+Return to clinic at next well child check or as needed.
+
+Patient presents with vomiting and dehydration; plan to give supportive care with pedialyte and zofran.
+
+**Vomiting, mild dehydration**
+- NDNT on exam with MMM
+- Zofran PRN, pedialyte, Tylenol, Motrin
+
+Return to clinic as needed.
+
+Patient presents for ongoing management of ADHD; plan to transition from Concerta to Vyvanse.
+
+**ADHD**
+- Concerta 27mg not effective
+- Transition to Vyvanse 20mg PO daily
+- RTC 1mo
+
+Return to clinic on one month.
+
+Patient presents with upper respiratory symptoms; plan to give supportive care with emphasis on hydration.
+
+**Viral URI**
+- Supportive care, fluids
+- Declined COVID test
+
+Return to clinic as needed.
