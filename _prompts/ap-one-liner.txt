@@ -1,7 +1,7 @@
 ---
 title: "Editor's Favorite"
-description: "'Pithy A&P' prompt with one liner assessment line to start and follow up statement to close. This is the editor's current favorite and likely the most generalizable."
-specialty: "Pediatrics (adaptable)"
+description: "'Pithy A&P' prompt with one liner assessment line to start and follow up statement to close. This is the editor's current favorite.  See prompts for examples of how to include your favorite dot phrases."
+specialty: "All"
 char_count: 4081
 order: 0
 model: "Epic Text Assistant"
@@ -26,29 +26,17 @@ Reformat the assessment and plan into a structured, problem-oriented format. The
 
 [Insert after the bulleted list when applicable. This text should be italicized.]
 
+If trigger discussed:
+"Your dot phrase here.  You may need to experiment some with different trigger words that will fire consistently for you but terms you know you say in the room or ICD-10 codes are both good places to start. Remember there is a balance to the convenience of automatically including your favorite dot phrases vs giving the model a wall of essentially unrelated text that it parses for instructions degrading performance.  Start with your top 3-5 and then include more if desired after testing."
+
 If well child check or health maintenance discussed:
-"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. All questions addressed."
 
 If any illness discussed:
 "Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
 
 If any injury discussed:
 "Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
-
-If ear infection discussed:
-"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
-
-If strep test discussed:
-"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
-
-If dehydration, vomiting, diarrhea, or decreased urination discussed:
-"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
-
-If trouble breathing discussed:
-"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
-
-If ADHD, obesity, or strep throat discussed:
-"PCMH Reminder"
 
 ---
 
