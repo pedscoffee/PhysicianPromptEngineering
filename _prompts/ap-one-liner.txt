@@ -1,6 +1,6 @@
 ---
 title: "A/P One-Liner"
-description: "Pithy A&P with one liner assessment line to close and follow up statement to close. This is the editor's new favorite."
+description: "Pithy A&P with one liner assessment line to close and follow up statement to close. This is the editor's current favorite and likely the most generalizable."
 specialty: "Pediatrics (adaptable)"
 char_count: 4081
 order: 0
