@@ -57,34 +57,6 @@ redirect_from:
   </div>
 </section>
 
-<!-- NEW: AI Scribe Studio Feature -->
-<section class="section">
-  <div class="container">
-    <div class="card" style="background: linear-gradient(135deg, #065f46 0%, #047857 100%); color: white; border: none; max-width: 900px; margin: 0 auto;">
-      <div class="card-body" style="text-align: center; padding: var(--space-8);">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: var(--space-4);">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 40px; height: 40px;">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
-          </svg>
-          <h3 style="color: white; margin: 0; font-size: var(--font-size-2xl);">NEW: AI Scribe Studio</h3>
-          <span style="font-size: 0.75em; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 4px;">BETA</span>
-        </div>
-        <p style="font-size: var(--font-size-lg); max-width: 700px; margin: 0 auto var(--space-6); opacity: 0.95;">
-          <strong>Record, transcribe, and transform</strong>—all in one tool. No external services needed. Runs 100% in your browser with Whisper transcription and customizable AI editor prompts.
-        </p>
-        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-          <a href="{{ site.baseurl }}/ai-scribe-studio" class="btn btn-lg" style="background: white; color: #065f46; font-weight: 700; border: none;">
-            Try AI Scribe Studio →
-          </a>
-        </div>
-        <p class="mt-4 text-sm" style="opacity: 0.8;">
-          Educational prototype • No data leaves your device • Fully customizable prompts
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Three Essential Prompts - Card Grid -->
 <section class="section">
   <div class="container">
