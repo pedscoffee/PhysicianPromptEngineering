@@ -348,6 +348,25 @@ permalink: /pwa-apps/
 <h2 class="section-title">Available Apps</h2>
 
 <div class="apps-grid">
+    <!-- AI Scribe Studio - Featured -->
+    <div class="app-card" style="border: 2px solid #065f46; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+        <div class="app-header">
+            <div class="app-icon" style="background: #065f46; color: white;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 28px; height: 28px;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="app-name">AI Scribe Studio</h3>
+                <span style="font-size: 0.75em; background: #065f46; color: white; padding: 2px 8px; border-radius: 4px;">NEW</span>
+            </div>
+        </div>
+        <p class="app-desc">Record patient encounters and generate personalized clinical notes with AI. Fully private—all processing happens in your browser.</p>
+        <div class="app-actions">
+            <a href="{{ '/ai-scribe-studio/' | relative_url }}" class="btn-install">Open & Install</a>
+        </div>
+    </div>
+    
     <!-- RVU Tracker -->
     <div class="app-card">
         <div class="app-header">
