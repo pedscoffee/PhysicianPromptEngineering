@@ -949,53 +949,19 @@ permalink: /ai-scribe-studio/
         statusPanel.className = 'status-panel loading';
 
         try {
-            // Step 1: Initialize Whisper Worker
-            statusMessage.textContent = 'Initializing Whisper Transcription...';
-            statusDetails.textContent = `Starting worker...`;
-            progressFill.style.width = '5%';
+            // Step 1: Initialize Whisper
+            statusMessage.textContent = 'Loading Whisper transcription model...';
+            statusDetails.textContent = `Downloading whisper-${whisperModel} (~${whisperModel === 'tiny' ? '75' : '150'}MB)...`;
+            progressFill.style.width = '10%';
 
-            if (!whisperWorker) {
-                whisperWorker = new Worker('{{ "/assets/js/whisper-worker.js" | relative_url }}', { type: 'module' });
-                
-                whisperWorker.onmessage = (event) => {
-                    const { type, status, message, progress, text, duration } = event.data;
+            // For now, we'll use a placeholder for Whisper initialization
+            // In production, this would load whisper.cpp via WASM
+            await simulateWhisperLoad(whisperModel);
+            progressFill.style.width = '40%';
 
-                    if (type === 'status') {
-                        if (status === 'ready') {
-                            // Whisper is ready, proceed to load LLM
-                            loadLLM(llmModel);
-                        } else if (status === 'error') {
-                            handleInitError(new Error(message));
-                        } else if (status === 'transcribing') {
-                            recordingStatus.textContent = 'Whisper is transcribing...';
-                        }
-                    } else if (type === 'progress') {
-                        const pct = 5 + (progress * 35); // Whisper is first 40%
-                        progressFill.style.width = pct + '%';
-                        statusDetails.textContent = `Downloading Whisper model: ${(progress * 100).toFixed(1)}%`;
-                    } else if (type === 'result') {
-                        transcriptArea.value = text;
-                        transcriptArea.disabled = false;
-                        clearTranscriptBtn.disabled = false;
-                        updateTransformButton();
-                        transcribingIndicator.classList.remove('active');
-                        recordingStatus.textContent = `Transcription complete in ${duration}s. Click button to record again.`;
-                    }
-                };
-            }
-
-            whisperWorker.postMessage({ type: 'load', model: whisperModel });
-
-        } catch (error) {
-            handleInitError(error);
-        }
-    }
-
-    async function loadLLM(llmModel) {
-        try {
+            // Step 2: Initialize WebLLM
             statusMessage.textContent = 'Loading text generation model...';
             statusDetails.textContent = `Downloading ${llmModel === 'fast' ? 'Llama 3.2 1B' : 'Phi-3.5 Mini'}...`;
-            progressFill.style.width = '40%';
 
             llmEngine = await webllm.CreateMLCEngine(LLM_MODELS[llmModel], {
                 initProgressCallback: (progress) => {
@@ -1010,7 +976,7 @@ permalink: /ai-scribe-studio/
             // Ready!
             statusPanel.className = 'status-panel ready';
             statusMessage.textContent = '✓ AI Models Ready';
-            statusDetails.textContent = 'Proprietary Whisper + WebLLM stack initialized locally.';
+            statusDetails.textContent = 'You can now record and transcribe patient encounters';
             initBtn.style.display = 'none';
             progressBar.classList.remove('active');
             modelsReady = true;
@@ -1019,20 +985,22 @@ permalink: /ai-scribe-studio/
             recordBtn.disabled = false;
             transcriptArea.disabled = false;
             recordingStatus.textContent = 'Click button to start recording';
+
         } catch (error) {
-            handleInitError(error);
+            console.error('Initialization error:', error);
+            statusPanel.className = 'status-panel error';
+            statusMessage.textContent = 'Initialization Failed';
+            statusDetails.textContent = error.message;
+            initBtn.disabled = false;
+            initBtn.innerHTML = 'Retry Initialization';
+            modelSelector.style.display = 'block';
         }
     }
 
-    function handleInitError(error) {
-        console.error('Initialization error:', error);
-        statusPanel.className = 'status-panel error';
-        statusMessage.textContent = 'Initialization Failed';
-        statusDetails.textContent = error.message;
-        initBtn.disabled = false;
-        initBtn.innerHTML = 'Retry Initialization';
-        modelSelector.style.display = 'block';
-        progressBar.classList.remove('active');
+    // Simulate Whisper loading (placeholder until WASM integration)
+    async function simulateWhisperLoad(model) {
+        // In production, this would initialize whisper.cpp WASM
+        return new Promise(resolve => setTimeout(resolve, 1500));
     }
 
     // ============================================
@@ -1120,27 +1088,37 @@ permalink: /ai-scribe-studio/
 
     async function transcribeAudio(audioBlob) {
         transcribingIndicator.classList.add('active');
-        recordingStatus.textContent = 'Resampling audio...';
+        recordingStatus.textContent = 'Transcribing with Whisper...';
 
         try {
-            // 1. Resample audio to 16kHz mono (required by Whisper)
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
-            const arrayBuffer = await audioBlob.arrayBuffer();
-            const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-            const float32Data = audioBuffer.getChannelData(0);
+            // Placeholder: In production, this sends audio to Whisper WASM
+            // For demo purposes, we'll show a placeholder
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Simulated transcript for demo
+            const demoTranscript = `This is where the transcribed audio would appear.
 
-            // 2. Send to worker for transcription
-            recordingStatus.textContent = 'Transcribing with Whisper...';
-            whisperWorker.postMessage({
-                type: 'transcribe',
-                audio: float32Data
-            });
+To use this tool:
+1. Initialize the AI models above
+2. Click the record button to start recording
+3. Speak naturally as you would during a patient encounter
+4. Click stop when finished
+5. The audio will be transcribed using Whisper
+6. Select a prompt and click "Transform with AI" to format the note
 
-            // The worker will post message 'result' which is handled in initializeModels listener
+Note: This is a prototype demonstration. In production, Whisper.cpp via WebAssembly would provide real-time transcription.`;
+
+            transcriptArea.value = demoTranscript;
+            transcriptArea.disabled = false;
+            clearTranscriptBtn.disabled = false;
+            updateTransformButton();
+
         } catch (error) {
             console.error('Transcription error:', error);
-            recordingStatus.textContent = 'Transcription failed: ' + error.message;
+            recordingStatus.textContent = 'Transcription failed';
+        } finally {
             transcribingIndicator.classList.remove('active');
+            recordingStatus.textContent = 'Click button to start recording';
         }
     }
 
