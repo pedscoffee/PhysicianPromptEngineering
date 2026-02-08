@@ -728,7 +728,7 @@ permalink: /ai-scribe-studio/
             </div>
         </div>
 
-        <button id="init-btn" class="btn btn-success btn-lg" onclick="initializeModels()" style="margin-top: 20px;">
+        <button id="init-btn" class="btn btn-success btn-lg" style="margin-top: 20px;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
             </svg>
@@ -752,7 +752,7 @@ permalink: /ai-scribe-studio/
                 </div>
                 <div class="panel-body">
                     <div class="recording-controls">
-                        <button class="record-button" id="record-btn" onclick="toggleRecording()" disabled>
+                        <button class="record-button" id="record-btn" disabled>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" style="width: 40px; height: 40px;" id="record-icon">
                                 <circle cx="12" cy="12" r="8"/>
                             </svg>
@@ -783,13 +783,13 @@ permalink: /ai-scribe-studio/
                 <div class="panel-body">
                     <textarea class="transcript-area" id="transcript-area" placeholder="Transcript will appear here after recording..." disabled></textarea>
                     <div class="transcript-actions">
-                        <button class="btn btn-secondary btn-sm" onclick="clearTranscript()" disabled id="clear-transcript-btn">
+                        <button class="btn btn-secondary btn-sm" disabled id="clear-transcript-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                             </svg>
                             Clear
                         </button>
-                        <button class="btn btn-secondary btn-sm" onclick="pasteFromClipboard()" id="paste-btn">
+                        <button class="btn btn-secondary btn-sm" id="paste-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
                             </svg>
@@ -816,7 +816,7 @@ permalink: /ai-scribe-studio/
                 </div>
                 <div class="panel-body">
                     <div class="prompt-selector">
-                        <select class="prompt-select" id="prompt-select" onchange="loadSelectedPrompt()">
+                        <select class="prompt-select" id="prompt-select">
                             <option value="">-- Select a prompt from library --</option>
                             {% assign sorted_prompts = site.prompts | sort: "order" %}
                             {% for prompt in sorted_prompts %}
@@ -832,7 +832,7 @@ permalink: /ai-scribe-studio/
 
             <!-- Transform Button -->
             <div class="transform-section">
-                <button class="transform-button" id="transform-btn" onclick="transformNote()" disabled>
+                <button class="transform-button" id="transform-btn" disabled>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
                     </svg>
@@ -855,19 +855,19 @@ permalink: /ai-scribe-studio/
                         <div class="output-placeholder">Your formatted clinical note will appear here after transformation...</div>
                     </div>
                     <div class="output-actions">
-                        <button class="btn btn-primary btn-sm" onclick="copyOutput()" id="copy-output-btn" disabled>
+                        <button class="btn btn-primary btn-sm" id="copy-output-btn" disabled>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
                             </svg>
                             Copy to Clipboard
                         </button>
-                        <button class="btn btn-secondary btn-sm" onclick="downloadOutput()" id="download-output-btn" disabled>
+                        <button class="btn btn-secondary btn-sm" id="download-output-btn" disabled>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                             </svg>
                             Download
                         </button>
-                        <button class="btn btn-secondary btn-sm" onclick="clearOutput()" id="clear-output-btn" disabled>
+                        <button class="btn btn-secondary btn-sm" id="clear-output-btn" disabled>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                             </svg>
@@ -889,7 +889,7 @@ permalink: /ai-scribe-studio/
     // AI SCRIBE STUDIO - MAIN APPLICATION
     // ============================================
 
-    import * as webllm from "https://esm.run/@anthropic-ai/mlc-llm-nightly";
+    import * as webllm from "https://esm.run/@mlc-ai/web-llm";
 
     // State
     let whisperWorker = null;
@@ -938,7 +938,7 @@ permalink: /ai-scribe-studio/
     // INITIALIZATION
     // ============================================
 
-    window.initializeModels = async function() {
+    async function initializeModels() {
         const whisperModel = document.querySelector('input[name="whisper-model"]:checked').value;
         const llmModel = document.querySelector('input[name="llm-model"]:checked').value;
 
@@ -995,7 +995,7 @@ permalink: /ai-scribe-studio/
             initBtn.innerHTML = 'Retry Initialization';
             modelSelector.style.display = 'block';
         }
-    };
+    }
 
     // Simulate Whisper loading (placeholder until WASM integration)
     async function simulateWhisperLoad(model) {
@@ -1007,13 +1007,13 @@ permalink: /ai-scribe-studio/
     // RECORDING
     // ============================================
 
-    window.toggleRecording = async function() {
+    async function toggleRecording() {
         if (!isRecording) {
             await startRecording();
         } else {
             await stopRecording();
         }
-    };
+    }
 
     async function startRecording() {
         try {
@@ -1126,7 +1126,7 @@ Note: This is a prototype demonstration. In production, Whisper.cpp via WebAssem
     // PROMPT MANAGEMENT
     // ============================================
 
-    window.loadSelectedPrompt = function() {
+    function loadSelectedPrompt() {
         const select = promptSelect;
         const option = select.options[select.selectedIndex];
         
@@ -1139,7 +1139,7 @@ Note: This is a prototype demonstration. In production, Whisper.cpp via WebAssem
         
         updateCharCounter();
         updateTransformButton();
-    };
+    }
 
     function decodeHTMLEntities(text) {
         const textarea = document.createElement('textarea');
@@ -1174,7 +1174,7 @@ Note: This is a prototype demonstration. In production, Whisper.cpp via WebAssem
     // TRANSFORMATION
     // ============================================
 
-    window.transformNote = async function() {
+    async function transformNote() {
         if (!llmEngine) {
             alert('Please initialize AI models first');
             return;
@@ -1235,22 +1235,22 @@ ${transcript}`;
             transformBtn.querySelector('.spinner')?.remove();
             transformBtn.querySelector('svg').style.display = '';
         }
-    };
+    }
 
     // ============================================
     // OUTPUT ACTIONS
     // ============================================
 
-    window.copyOutput = function() {
+    function copyOutput() {
         const text = outputArea.innerText;
         navigator.clipboard.writeText(text).then(() => {
             const originalText = copyOutputBtn.innerHTML;
             copyOutputBtn.innerHTML = '✓ Copied!';
             setTimeout(() => { copyOutputBtn.innerHTML = originalText; }, 2000);
         });
-    };
+    }
 
-    window.downloadOutput = function() {
+    function downloadOutput() {
         const text = outputArea.innerText;
         const blob = new Blob([text], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
@@ -1259,22 +1259,22 @@ ${transcript}`;
         a.download = `clinical-note-${new Date().toISOString().slice(0,10)}.txt`;
         a.click();
         URL.revokeObjectURL(url);
-    };
+    }
 
-    window.clearOutput = function() {
+    function clearOutput() {
         outputArea.innerHTML = '<div class="output-placeholder">Your formatted clinical note will appear here after transformation...</div>';
         copyOutputBtn.disabled = true;
         downloadOutputBtn.disabled = true;
         clearOutputBtn.disabled = true;
-    };
+    }
 
-    window.clearTranscript = function() {
+    function clearTranscript() {
         transcriptArea.value = '';
         clearTranscriptBtn.disabled = true;
         updateTransformButton();
-    };
+    }
 
-    window.pasteFromClipboard = async function() {
+    async function pasteFromClipboard() {
         try {
             const text = await navigator.clipboard.readText();
             transcriptArea.value = text;
@@ -1284,7 +1284,7 @@ ${transcript}`;
         } catch (error) {
             console.error('Paste error:', error);
         }
-    };
+    }
 
     // ============================================
     // SERVICE WORKER REGISTRATION
@@ -1296,6 +1296,23 @@ ${transcript}`;
             .catch(err => console.log('Scribe SW registration failed:', err));
     }
 
+    // ============================================
+    // EVENT LISTENER BINDINGS
+    // ============================================
+    
+    // Bind all event listeners (needed for ES modules)
+    initBtn.addEventListener('click', initializeModels);
+    recordBtn.addEventListener('click', toggleRecording);
+    clearTranscriptBtn.addEventListener('click', clearTranscript);
+    document.getElementById('paste-btn').addEventListener('click', pasteFromClipboard);
+    promptSelect.addEventListener('change', loadSelectedPrompt);
+    transformBtn.addEventListener('click', transformNote);
+    copyOutputBtn.addEventListener('click', copyOutput);
+    downloadOutputBtn.addEventListener('click', downloadOutput);
+    clearOutputBtn.addEventListener('click', clearOutput);
+
     // Initialize character counter
     updateCharCounter();
+    
+    console.log('AI Scribe Studio initialized');
 </script>
