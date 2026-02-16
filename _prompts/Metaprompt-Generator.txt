@@ -3,7 +3,7 @@ title: "Meta-Prompt - Assessment and Plan Reformatting Prompt Generator"
 description: "Use your LLM to help make your own prompts using our own prompts as a starting point. Requires input in form of 1. Few shot examples 2. Specific formatting rules 3. Any specific boilerplate text you would like to be automatically inserted.  Input these in the form of 1. Few shot examples 2. Specific Rules 3. Boilerplate. 2 and 3 are optional. Consider running this prompt on your few shot examples alone and then after analyzing the output incorporate any rules or boilerplate it may have missed. This is here more as an example of how you can use LLMs to help improve prompts for LLMs. The prompt generator page provides a more interactive way to go about getting started if this seems too complex, but using the LLM may allow for more nuanced customization than is possible with our webtool."
 specialty: "Any"
 char_count: 4894
-order: 5
+order: 7
 model: "Epic Text Assistant"
 ---
 # Custom A/P Formatting Prompt Generator

@@ -3,7 +3,7 @@ title: "Teaching - Case Presentation, Learning Objectives, Discussion Questions,
 description: "Transforms clinical notes into de-identified teaching cases with learning objectives, discussion questions, and teaching points. Do not trust the prompt to fully de-identify patient information.  Ensure HIPAA and fully regulatory compliance through appropriate channels as appropriate.  For these reasons do not recommend exporting outputs from outside the chart.  I recommend using this prompt to tee up in the moment chalk talks and then deleting. This may be my favorite of the entire library so far."
 specialty: "All"
 char_count: 4207
-order: 10
+order: 12
 model: "Epic Text Assistant"
 ---
 Convert this clinical note into a structured teaching case. Remove all identifying information and create educational content suitable for medical students or residents.

@@ -3,7 +3,7 @@ title: "Concise Sign Out"
 description: "Transforms text into concise handoff for sign out.  Ideal input would be to use tool like Dragon or Doximity (make sure IT approved) to record transcript of yourself running the list and then run this prompt over it.  This prompt is meant more to showcase a framework one could use to customize a similar prompt for your specialty and service.  Each specialty cares about different details being in the forefront, and you can take this prompt and swap out the details for the things you care about.  Remember that the few shot examples are what do most of the heavy lifting.  Taking the time to make the examples exactly what you're hoping to see is what will make this feel like magic."
 specialty: "All"
 char_count: 3405
-order: 15
+order: 17
 model: "Epic Text Assistant"
 ---
 Create a concise sign-out for covering providers focusing on patients who may require attention during your absence.

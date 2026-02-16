@@ -3,7 +3,7 @@ title: "Follow Up"
 description: "Captures follow-up timeframes or instructions for the final section of a clinical note."
 specialty: "All"
 char_count: 104
-order: 18
+order: 20
 model: "DAX Custom Instructions"
 ---
 Follow-up: [State follow-up timeframe or instructions] {If none specified, then delete this row and its header}

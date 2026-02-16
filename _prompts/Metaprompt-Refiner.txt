@@ -3,7 +3,7 @@ title: "Meta-Prompt - A/P Refiner - Help identify how to improve your prompt"
 description: "Use your LLM to help make your own prompts using our own prompts as a starting point. Requires input in form of 1. Your current prompt 2. Few shot examples of ideal desired output 3. Current output from current prompt. Output will provide suggestions on how to improve prompt to match your desired preferences and create new prompt for you to test. This is here more as an example of how you can use LLMs to help improve prompts for LLMs."
 specialty: "Any"
 char_count: 2808
-order: 6
+order: 8
 model: "Epic Text Assistant"
 ---
 # A/P Prompt Refiner

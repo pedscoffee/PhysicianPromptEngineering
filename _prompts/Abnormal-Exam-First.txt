@@ -3,7 +3,7 @@ title: "Abnormal Exam First"
 description: "List abnormal findings separately from boiler plate text to allow for quicker review"
 specialty: "Any / Pediatrics"
 char_count: 3458
-order: 16
+order: 18
 model: "DAX Custom Instructions"
 ---
 {List all abnormal findings first, organized by system. If no abnormal findings are mentioned for a system, skip it. Use concise formal clinical language.}
