@@ -1,0 +1,129 @@
+<div id="recent-updates-bubble" class="recent-updates-bubble" style="display: none;" data-update-id="2025-02-15-update">
+    <div class="bubble-header">
+        <span class="bubble-title">✨ What's New</span>
+        <button id="close-bubble" class="close-btn" aria-label="Close recent updates">&times;</button>
+    </div>
+    <div class="bubble-content">
+        <p><strong>New Prompt Added:</strong></p>
+        <p><a href="/PhysicianPromptEngineering/prompt-library#ap-formatting">AP One-Liner "Editor's Favorite"</a></p>
+        <p style="margin-top: 8px; font-size: 0.9em;">Check out our latest concise formatting option in the library!</p>
+    </div>
+</div>
+
+<style>
+    .recent-updates-bubble {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        max-width: calc(100vw - 40px);
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        border: 1px solid #e2e8f0;
+        font-family: system-ui, -apple-system, sans-serif;
+        z-index: 9999;
+        overflow: hidden;
+        animation: slideIn 0.5s ease-out forwards;
+    }
+
+    .bubble-header {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        color: white;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .bubble-title {
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+
+    .close-btn:hover {
+        opacity: 1;
+    }
+
+    .bubble-content {
+        padding: 16px;
+        font-size: 0.9rem;
+        color: #334155;
+        line-height: 1.5;
+    }
+
+    .bubble-content p {
+        margin: 0 0 4px 0;
+    }
+
+    .bubble-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    .bubble-content a {
+        color: #0284c7;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .bubble-content a:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px) translateX(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+    }
+
+    /* Dark mode support if applicable, relying on CSS variables if they exist, 
+     but providing fallback */
+    @media (prefers-color-scheme: dark) {
+        /* Add .dark class support if the site uses it, otherwise media query */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const bubble = document.getElementById('recent-updates-bubble');
+        const closeBtn = document.getElementById('close-bubble');
+
+        if (!bubble || !closeBtn) return;
+
+        // Get the unique ID for this update
+        const updateId = bubble.getAttribute('data-update-id');
+        const storageKey = 'recent_update_dismissed_' + updateId;
+
+        // Check if valid to show
+        const isDismissed = localStorage.getItem(storageKey);
+
+        if (!isDismissed) {
+            // Show the bubble
+            bubble.style.display = 'block';
+        }
+
+        // Handle close
+        closeBtn.addEventListener('click', function () {
+            bubble.style.display = 'none';
+            localStorage.setItem(storageKey, 'true');
+        });
+    });
+</script>

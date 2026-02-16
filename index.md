@@ -357,3 +357,5 @@ redirect_from:
     </p>
   </div>
 </section>
+
+{% include recent-updates-bubble.html %}
