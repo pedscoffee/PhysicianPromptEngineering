@@ -98,7 +98,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
               <div class="category-nav-section" style="margin-bottom: var(--space-6);">
                 <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-top: 0; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                  {% assign sorted_items = group.items | sort: "order" %}
+                  {% assign sorted_items = group.items | sort: "title" %}
                   {% for prompt in sorted_items %}
                   <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
                     <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
@@ -119,7 +119,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
               <div class="category-nav-section" style="margin-bottom: var(--space-6);">
                 <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-top: 0; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                  {% assign sorted_items = group.items | sort: "order" %}
+                  {% assign sorted_items = group.items | sort: "title" %}
                   {% for prompt in sorted_items %}
                   <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
                     <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
@@ -164,7 +164,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
       {% if group %}
       <div class="category-card-section mb-12">
         <h2 class="mb-6 pb-2 border-b border-gray-200" style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--color-text-primary);">{{ group.name }}</h2>
-        {% assign sorted_items = group.items | sort: "order" %}
+        {% assign sorted_items = group.items | sort: "title" %}
         {% for prompt in sorted_items %}
         <div class="card mb-8 prompt-card" data-model="{{ prompt.model }}" id="{{ prompt.title | slugify }}">
           <div class="card-header">
