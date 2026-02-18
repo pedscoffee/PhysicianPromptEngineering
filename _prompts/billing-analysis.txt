@@ -5,6 +5,7 @@ specialty: "Pediatrics (adaptable but may need some work)"
 char_count: 4951
 order: 6
 model: "Epic Text Assistant"
+category: "Administrative"
 ---
 Analyze this note and determine the appropriate CPT E/M billing code using 2021 E/M guidelines for an ESTABLISHED patient.
 MDM Component Assessment

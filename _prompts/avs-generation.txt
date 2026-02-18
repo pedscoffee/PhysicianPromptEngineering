@@ -5,6 +5,7 @@ specialty: "Pediatrics (Easy to change)"
 char_count: 4715
 order: 5
 model: "Epic Text Assistant"
+category: "Documentation"
 ---
 
 Sign-Off & Family To-Do Generator

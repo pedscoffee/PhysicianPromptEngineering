@@ -1,4 +1,3 @@
-
 ---
 title: "Pithy A/P DAX without the One-Liner"
 description: "Pithy A/P prompt without the one-liner assessment. Problem-oriented, concise bullets with follow-up statement."
@@ -6,6 +5,7 @@ specialty: "Any / Pediatrics"
 char_count: 6821
 order: 25
 model: "DAX Custom Instructions"
+category: "Documentation"
 ---
 Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 

@@ -5,6 +5,7 @@ specialty: "Any"
 char_count: 2808
 order: 8
 model: "Epic Text Assistant"
+category: "Prompt Tools"
 ---
 # A/P Prompt Refiner
 

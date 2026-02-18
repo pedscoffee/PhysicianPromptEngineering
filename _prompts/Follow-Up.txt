@@ -5,5 +5,6 @@ specialty: "All"
 char_count: 104
 order: 20
 model: "DAX Custom Instructions"
+category: "Documentation"
 ---
 Follow-up: [State follow-up timeframe or instructions] {If none specified, then delete this row and its header}

@@ -5,6 +5,7 @@ specialty: "All"
 char_count: 3376
 order: 16
 model: "Epic Text Assistant"
+category: "Orders"
 ---
 Based on the diagnoses in this note, generate a comprehensive checklist of commonly indicated orders, referrals, prescriptions, and follow-up items that may have been overlooked.
 

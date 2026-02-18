@@ -5,6 +5,7 @@ specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 3277
 order: 1
 model: "Epic Text Assistant"
+category: "Documentation"
 ---
 Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 

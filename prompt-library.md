@@ -86,14 +86,22 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
         {% endfor %}
       </div>
       <div style="background: var(--color-bg-primary); padding: var(--space-5); border-radius: var(--radius-lg);">
-        <ul style="columns: 2; column-gap: var(--space-6); list-style: none; padding: 0; margin: 0;">
-          {% assign sorted_prompts = site.prompts | sort: "order" %}
-          {% for prompt in sorted_prompts %}
-          <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2); break-inside: avoid;">
-            <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
-          </li>
+        <div style="columns: 2; column-gap: var(--space-6);">
+          {% assign prompt_groups = site.prompts | group_by: "category" | sort: "name" %}
+          {% for group in prompt_groups %}
+          <div class="category-nav-section" style="break-inside: avoid; margin-bottom: var(--space-6);">
+            <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              {% assign sorted_items = group.items | sort: "order" %}
+              {% for prompt in sorted_items %}
+              <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
+                <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
           {% endfor %}
-        </ul>
+        </div>
       </div>
       <div class="text-center mt-6">
         <p class="text-secondary">
@@ -119,35 +127,41 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
 
-      {% assign sorted_prompts = site.prompts | sort: "order" %}
-      {% for prompt in sorted_prompts %}
-      <div class="card mb-8 prompt-card" data-model="{{ prompt.model }}" id="{{ prompt.title | slugify }}">
-        <div class="card-header">
-          <h2 class="card-title">{{ prompt.title }}</h2>
-          <p class="card-subtitle">{{ prompt.description }}</p>
-        </div>
-        <div class="card-body">
-          <div class="prompt-meta">
-            <div class="prompt-meta-item">
-              <strong>Model:</strong> {{ prompt.model }}
-            </div>
-            <div class="prompt-meta-item">
-              <strong>Specialty:</strong> {{ prompt.specialty }}
-            </div>
-            <div class="prompt-meta-item">
-              <strong>Character Count:</strong> {{ prompt.char_count }} / 5,000
-            </div>
+      {% assign prompt_groups = site.prompts | group_by: "category" | sort: "name" %}
+      {% for group in prompt_groups %}
+      <div class="category-card-section mb-12">
+        <h2 class="mb-6 pb-2 border-b border-gray-200" style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--color-text-primary);">{{ group.name }}</h2>
+        {% assign sorted_items = group.items | sort: "order" %}
+        {% for prompt in sorted_items %}
+        <div class="card mb-8 prompt-card" data-model="{{ prompt.model }}" id="{{ prompt.title | slugify }}">
+          <div class="card-header">
+            <h2 class="card-title">{{ prompt.title }}</h2>
+            <p class="card-subtitle">{{ prompt.description }}</p>
           </div>
+          <div class="card-body">
+            <div class="prompt-meta">
+              <div class="prompt-meta-item">
+                <strong>Model:</strong> {{ prompt.model }}
+              </div>
+              <div class="prompt-meta-item">
+                <strong>Specialty:</strong> {{ prompt.specialty }}
+              </div>
+              <div class="prompt-meta-item">
+                <strong>Character Count:</strong> {{ prompt.char_count }} / 5,000
+              </div>
+            </div>
 
-          <div class="prompt-actions">
-            <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
-            <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
-          </div>
+            <div class="prompt-actions">
+              <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
+              <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
+            </div>
 
-          <div class="prompt-code-wrapper">
-            <pre><code>{{ prompt.content | escape }}</code></pre>
+            <div class="prompt-code-wrapper">
+              <pre><code>{{ prompt.content | escape }}</code></pre>
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
       {% endfor %}
 
@@ -282,6 +296,12 @@ function filterPrompts(model, btn) {
     }
   });
 
+  // Filter Nav Categories
+  document.querySelectorAll('.category-nav-section').forEach(section => {
+    const hasVisible = Array.from(section.querySelectorAll('.prompt-nav-item')).some(item => item.style.display !== 'none');
+    section.style.display = hasVisible ? '' : 'none';
+  });
+
   // Filter Cards
   const cards = document.querySelectorAll('.prompt-card');
   cards.forEach(card => {
@@ -290,6 +310,12 @@ function filterPrompts(model, btn) {
     } else {
       card.style.display = 'none';
     }
+  });
+
+  // Filter Card Categories
+  document.querySelectorAll('.category-card-section').forEach(section => {
+    const hasVisible = Array.from(section.querySelectorAll('.prompt-card')).some(card => card.style.display !== 'none');
+    section.style.display = hasVisible ? '' : 'none';
   });
 }
 </script>

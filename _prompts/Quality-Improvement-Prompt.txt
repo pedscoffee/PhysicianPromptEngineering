@@ -5,6 +5,7 @@ specialty: "Pediatrics - Quality Improvement - Antibiotic Stewardship"
 char_count: 901
 order: 14
 model: "Epic Text Assistant"
+category: "Administrative"
 ---
 If antibiotics are prescribed, analyze the prescription and output the name, dose, route, and duration followed by a non-judgemental question respectfully asking the clinican if this is the best choice in light of a detail from the patient's history:
  

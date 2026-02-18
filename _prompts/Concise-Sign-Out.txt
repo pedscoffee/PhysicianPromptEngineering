@@ -5,6 +5,7 @@ specialty: "All"
 char_count: 3405
 order: 17
 model: "Epic Text Assistant"
+category: "Administrative"
 ---
 Create a concise sign-out for covering providers focusing on patients who may require attention during your absence.
 

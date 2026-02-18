@@ -5,6 +5,7 @@ specialty: "Any / Pediatrics"
 char_count: 7783
 order: 2
 model: "DAX Custom Instructions"
+category: "Documentation"
 ---
 Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning.
 

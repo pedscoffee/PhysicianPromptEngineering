@@ -5,6 +5,7 @@ specialty: "Any / Pediatrics"
 char_count: 8367
 order: 3
 model: "DAX Custom Instructions"
+category: "Documentation"
 ---
 Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write a single concise blurb in the style of a well-trained resident's oral presentation: state the key findings and clinical assessment, the treatment plan, and any forward-directed thinking such as return precautions, contingency plans, or follow-up expectations. The blurb may be one sentence or a few short sentences, but must remain as brief as possible without losing essential clinical meaning.
 
