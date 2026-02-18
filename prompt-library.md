@@ -86,21 +86,50 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
         {% endfor %}
       </div>
       <div style="background: var(--color-bg-primary); padding: var(--space-5); border-radius: var(--radius-lg);">
-        <div style="columns: 2; column-gap: var(--space-6);">
-          {% assign prompt_groups = site.prompts | group_by: "category" | sort: "name" %}
-          {% for group in prompt_groups %}
-          <div class="category-nav-section" style="break-inside: avoid; margin-bottom: var(--space-6);">
-            <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-              {% assign sorted_items = group.items | sort: "order" %}
-              {% for prompt in sorted_items %}
-              <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
-                <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
-              </li>
-              {% endfor %}
-            </ul>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--space-8);">
+          {% assign all_groups = site.prompts | group_by: "category" %}
+          
+          <!-- Left Column -->
+          <div style="flex: 1; min-width: 300px;">
+            {% assign left_cats = "Documentation,Administrative,Orders" | split: "," %}
+            {% for cat_name in left_cats %}
+              {% assign group = all_groups | where: "name", cat_name | first %}
+              {% if group %}
+              <div class="category-nav-section" style="margin-bottom: var(--space-6);">
+                <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-top: 0; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  {% assign sorted_items = group.items | sort: "order" %}
+                  {% for prompt in sorted_items %}
+                  <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
+                    <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            {% endfor %}
           </div>
-          {% endfor %}
+
+          <!-- Right Column -->
+          <div style="flex: 1; min-width: 300px;">
+            {% assign right_cats = "Teaching,Prompt Tools,Other" | split: "," %}
+            {% for cat_name in right_cats %}
+              {% assign group = all_groups | where: "name", cat_name | first %}
+              {% if group %}
+              <div class="category-nav-section" style="margin-bottom: var(--space-6);">
+                <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-top: 0; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  {% assign sorted_items = group.items | sort: "order" %}
+                  {% for prompt in sorted_items %}
+                  <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
+                    <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div class="text-center mt-6">
@@ -127,8 +156,12 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
 
-      {% assign prompt_groups = site.prompts | group_by: "category" | sort: "name" %}
-      {% for group in prompt_groups %}
+      {% assign all_groups = site.prompts | group_by: "category" %}
+      {% assign ordered_cats = "Documentation,Teaching,Administrative,Prompt Tools,Orders,Other" | split: "," %}
+      
+      {% for cat_name in ordered_cats %}
+      {% assign group = all_groups | where: "name", cat_name | first %}
+      {% if group %}
       <div class="category-card-section mb-12">
         <h2 class="mb-6 pb-2 border-b border-gray-200" style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--color-text-primary);">{{ group.name }}</h2>
         {% assign sorted_items = group.items | sort: "order" %}
@@ -163,6 +196,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
         </div>
         {% endfor %}
       </div>
+      {% endif %}
       {% endfor %}
 
       <!-- Sample prompt for demonstration if collection is empty -->
