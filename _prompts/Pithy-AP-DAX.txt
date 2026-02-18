@@ -1,5 +1,5 @@
 ---
-title: "Pithy AP DAX with one liner and follow up"
+title: "Pithy AP DAX"
 description: "This is the 'Pithy A/P' prompt with one liner assessment line to start and follow up statement to close. This is the editor's current favorite optimized for DAX, and provides a good starting point for further customization if desired."
 specialty: "Any / Pediatrics"
 char_count: 7783
