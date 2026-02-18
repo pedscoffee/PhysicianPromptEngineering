@@ -1,5 +1,5 @@
 ---
-title: "Pithy Generalized A&P DAX"
+title: "A&P Pithy DAX Generalized"
 description: "This version is generalized to be a starting place for any specialty.  See other prompt for filled in version from Pediatrics for a worked example.  Note that the one liner and follow-up statement could be easily modified or removed depending on your preference, but just make sure to update few shot examples to match.  It is expedient to give your prompt to a state of the art LLM and ask it to compare your prompt's instructions to your few shot examples and give feedback on any inconsistencies."
 specialty: "All"
 char_count: 

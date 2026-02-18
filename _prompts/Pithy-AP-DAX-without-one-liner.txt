@@ -1,5 +1,5 @@
 ---
-title: "Pithy A/P DAX without the One-Liner"
+title: "A&P Pithy DAX"
 description: "Pithy A/P prompt without the one-liner assessment. Problem-oriented, concise bullets with follow-up statement."
 specialty: "Any / Pediatrics"
 char_count: 6821
