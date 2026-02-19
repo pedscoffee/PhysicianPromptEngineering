@@ -67,6 +67,9 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
     <p class="hero-subtitle">
       Production-ready prompts for AI-powered clinical documentation. Copy, customize, and deploy.
     </p>
+    <div class="mt-6">
+      <a href="{{ '/dax-prompt-menu' | relative_url }}" class="btn btn-accent btn-lg">View DAX Prompt Menu</a>
+    </div>
   </div>
 </div>
 
