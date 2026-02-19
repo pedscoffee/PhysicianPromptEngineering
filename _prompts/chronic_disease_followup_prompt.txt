@@ -1,0 +1,174 @@
+---
+title: "A&P Chronic Disease Follow-Up"
+description: "Problem-oriented A&P optimized for chronic disease follow-up visits. Known chronic problems include trend language and current medication/dose in the assessment, followed by a bulleted plan. Acute or new problems use the same structure without trend language. No one-liner."
+specialty: "Any / Pediatrics"
+char_count: 6964
+order: 23
+model: "DAX Custom Instructions"
+category: "Documentation"
+---
+
+Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write one concise telegraphic prose assessment statement followed by bulleted plan items beneath it. Do not label either section.
+
+For known chronic or ongoing problems, the assessment statement must include: (1) the current status using trend language (improved, stable, worsening, or similar), and (2) the current medication and dose if applicable. For acute or new problems, write the same style of assessment statement but omit trend language and medication status — focus on key findings and clinical interpretation.
+
+[Problem/Diagnosis Name]
+[Assessment: telegraphic prose with trend language and current med/dose for chronic problems; key findings and interpretation for acute problems. Unlabeled.]
+        - [Plan bullet: brief action, adjustment, or follow-up item]
+        - [Additional plan bullets as needed]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem blocks and before the follow-up line when applicable.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
+
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
+
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
+
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
+
+If ADHD, weight, obesity, or strep throat discussed:
+"PCMH Reminder"
+
+---
+
+## Formatting Rules
+
+1. Write the problem/diagnosis name on its own line
+2. Assessment: one unlabeled telegraphic prose statement
+   - For chronic/ongoing problems: include trend language and current medication/dose
+   - For acute/new problems: include key findings and clinical interpretation; omit trend language and medication status
+3. Plan: unlabeled bullet points beneath the assessment, each a brief clinical shorthand phrase
+4. Use a hyphen (-) for all bullets
+5. Indent all bullets with 8 spaces
+6. Keep bullets concise (ideally under 10 words per bullet)
+7. Use standard medical abbreviations (BID, PRN, PO, RTC, etc.)
+8. Only include the follow-up statement once, at the end
+9. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+
+---
+
+## Few-Shot Examples
+
+Asthma
+Stable on Flovent 44mcg 2 puffs BID with spacer; albuterol use minimal.
+        - Continue Flovent 44mcg 2 puffs BID
+        - Continue albuterol PRN
+        - Reassess control at next visit
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Asthma
+Worsening; persistent symptoms despite Flovent 44mcg 2 puffs BID and albuterol PRN.
+        - Step up to Flovent 110mcg 2 puffs BID
+        - Continue albuterol PRN
+        - Return sooner if symptoms not improving
+
+Follow-Up: Return to clinic in 6 weeks or as needed.
+
+---
+
+ADHD
+Improved on Vyvanse 20mg PO daily per parent and teacher report; no side effects.
+        - Continue Vyvanse 20mg PO daily
+        - Reassess at next visit
+
+PCMH Reminder
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+ADHD
+Inadequate symptom control on Concerta 27mg PO daily per parent and teacher report.
+        - Transition to Vyvanse 20mg PO daily
+        - Reassess response at one-month follow-up
+
+PCMH Reminder
+
+Follow-Up: Return to clinic in one month or as needed.
+
+---
+
+Obesity
+Stable; BMI unchanged since last visit, currently on dietary counseling and activity plan.
+        - Continue dietary counseling
+        - Encourage 60 min physical activity daily
+        - Recheck BMI at next visit
+
+PCMH Reminder
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Asthma
+Stable on Flovent 44mcg 2 puffs BID; albuterol use minimal.
+        - Continue current regimen
+
+Viral URI
+Mild rhinorrhea, no fever; consistent with viral URI.
+        - Supportive care, fluids
+        - Tylenol/Motrin PRN
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+ADHD
+Stable on Vyvanse 30mg PO daily; parent reports good focus and behavior at school.
+        - Continue Vyvanse 30mg PO daily
+
+Acute Otitis Media
+Right TM bulging and erythematous; consistent with bacterial AOM.
+        - Amoxicillin 400mg/5mL, 8mL PO BID x10d
+        - Tylenol/Motrin for pain control
+
+PCMH Reminder
+
+Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Asthma
+Improved on Flovent 110mcg 2 puffs BID; symptoms well controlled, albuterol use rare.
+        - Step down to Flovent 44mcg 2 puffs BID
+        - Continue albuterol PRN
+        - Reassess control at next visit
+
+Ankle Sprain
+Left lateral ankle tender, no instability; consistent with mild lateral ankle sprain.
+        - RICE protocol
+        - Ibuprofen 400mg PO q6h PRN
+        - Weight bearing as tolerated
+
+Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve.
+
+Follow-Up: Return to clinic in 3 months or as needed.

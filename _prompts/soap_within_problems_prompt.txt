@@ -1,0 +1,162 @@
+---
+title: "A&P SOAP-Within-Problems"
+description: "Problem-oriented A&P with separated assessment and plan prose per problem. No one-liner. Two unlabeled prose lines per problem: the first captures key findings and clinical interpretation, the second describes management. Great for physicians who prefer full sentence structure over bullets."
+specialty: "Any / Pediatrics"
+char_count: 8540
+order: 21
+model: "DAX Custom Instructions"
+category: "Documentation"
+---
+
+Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write two concise prose statements: first, a brief clinical assessment capturing the key findings and your interpretation; second, a brief plan statement describing what is being done. Do not label these lines. Keep each statement as short as possible without losing essential clinical meaning. Do not use bullet points.
+
+[Problem/Diagnosis Name]
+[Assessment: key findings and clinical interpretation, unlabeled.]
+[Plan: what is being done, unlabeled. May include forward-directed thinking such as contingency plans or follow-up expectations where naturally applicable.]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem blocks and before the follow-up line when applicable.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
+
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
+
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
+
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
+
+If ADHD, weight, obesity, or strep throat discussed:
+"PCMH Reminder"
+
+---
+
+## Formatting Rules
+
+1. Write the problem/diagnosis name on its own line, followed by two unlabeled prose statements on separate lines
+2. Assessment line first: key findings and clinical interpretation
+3. Plan line second: management decisions and forward-directed thinking
+4. No bullet points, no labels, no headers within the problem block
+5. Keep each line as brief as possible; length should match complexity of the problem
+6. Use standard medical abbreviations (BID, PRN, PO, etc.)
+7. Only include the follow-up statement once, at the end
+8. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+
+---
+
+## Few-Shot Examples
+
+Asthma
+Persistent symptoms despite albuterol consistent with inadequately controlled asthma.
+Starting Flovent 44mcg 2 puffs BID with spacer; continue albuterol PRN; will reassess control at follow-up.
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Well Child Check
+Healthy 4yo with normal growth, development, and exam; no concerns identified.
+Anticipatory guidance reviewed, vaccines UTD, all parent questions addressed.
+
+All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed.
+
+Follow-Up: Return to clinic at next well child check or as needed.
+
+---
+
+Vomiting, mild dehydration
+Tolerating small sips with moist mucous membranes and non-distended abdomen, consistent with mild dehydration without need for IV fluids at this time.
+Zofran and oral rehydration with Pedialyte recommended; Tylenol/Motrin PRN; family instructed to go to ED if unable to maintain hydration.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids.
+
+Follow-Up: Return to clinic as needed.
+
+---
+
+ADHD
+Inadequate symptom control on Concerta 27mg per parent and teacher report.
+Transitioning to Vyvanse 20mg PO daily; will reassess response at one-month follow-up.
+
+PCMH Reminder
+
+Follow-Up: Return to clinic in one month or as needed.
+
+---
+
+Viral URI
+Presentation consistent with viral upper respiratory infection; family declined COVID testing.
+Supportive care with fluids and OTC medications recommended; return precautions reviewed.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic as needed.
+
+---
+
+Viral URI
+Mild rhinorrhea without fever consistent with viral URI.
+Supportive care with fluids and Tylenol/Motrin as needed.
+
+Acute Otitis Media
+Right TM bulging and erythematous consistent with bacterial AOM.
+Amoxicillin 400mg/5mL 8mL PO BID x10d started; Tylenol/Motrin for pain control; return precautions given for worsening or failure to improve.
+
+Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic as needed.
+
+---
+
+Ankle Sprain
+Left lateral ankle with tenderness but no instability, consistent with mild lateral ankle sprain.
+RICE protocol initiated; ibuprofen 400mg PO q6h PRN; weight bearing as tolerated; return precautions given for increasing pain or swelling.
+
+Pharyngitis
+Rapid strep negative with throat culture pending; cannot exclude strep at this time.
+Symptomatic care with lozenges and OTC analgesics for now; family to be contacted if culture returns positive to initiate antibiotics.
+
+Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve.
+
+Follow-Up: Return to clinic as needed and pending strep culture results.
+
+---
+
+Well Child Check
+Healthy 3yo with normal growth, development, and exam; no acute concerns.
+Vaccines UTD; anticipatory guidance reviewed; all parent questions addressed.
+
+Viral URI
+Mild rhinorrhea without fever consistent with viral URI.
+Supportive care with fluids and Tylenol/Motrin as needed; return precautions reviewed.
+
+All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic at next well child check or as needed.
