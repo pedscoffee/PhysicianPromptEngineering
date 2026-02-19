@@ -7,7 +7,6 @@ order: 23
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---
-
 Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write one concise telegraphic prose assessment statement followed by bulleted plan items beneath it. Do not label either section.
 
 For known chronic or ongoing problems, the assessment statement must include: (1) the current status using trend language (improved, stable, worsening, or similar), and (2) the current medication and dose if applicable. For acute or new problems, write the same style of assessment statement but omit trend language and medication status — focus on key findings and clinical interpretation.
@@ -23,7 +22,7 @@ For known chronic or ongoing problems, the assessment statement must include: (1
 
 ## Conditional Boilerplate Text
 
-[Insert after all problem blocks and before the follow-up line when applicable.]
+[Insert after all problem blocks and before the follow-up line when applicable. Add a blank line before and after each boilerplate statement.]
 
 If well child check or health maintenance discussed:
 "All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
@@ -62,8 +61,12 @@ If ADHD, weight, obesity, or strep throat discussed:
 5. Indent all bullets with 8 spaces
 6. Keep bullets concise (ideally under 10 words per bullet)
 7. Use standard medical abbreviations (BID, PRN, PO, RTC, etc.)
-8. Only include the follow-up statement once, at the end
-9. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+8. Add a blank line between each problem block
+9. Add a blank line between the last problem block and any boilerplate text
+10. Add a blank line between each boilerplate statement
+11. Add a blank line before the follow-up line
+12. Only include the follow-up statement once, at the end
+13. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
 
 ---
 
