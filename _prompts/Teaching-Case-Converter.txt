@@ -6,6 +6,16 @@ char_count: 4207
 order: 12
 model: "Epic Text Assistant"
 category: "Teaching"
+example_output: |
+  **Teaching Case: 15-month-old with Fever**
+  *Presentation:* A 15-month-old presents with 3 days of fever up to 103F and increased fussiness. No focal infectious symptoms on exam except a bulging right TM.
+  
+  *Learning Objectives:*
+  1. Identify the most common pathogens causing AOM in toddlers.
+  2. Understand the first-line antibiotic choices and dosing.
+  
+  *Discussion Question:*
+  If this patient had received amoxicillin for a separate ear infection 2 weeks ago, how would your treatment plan change today?
 ---
 Convert this clinical note into a structured teaching case. Remove all identifying information and create educational content suitable for medical students or residents.
 

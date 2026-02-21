@@ -6,6 +6,13 @@ char_count: 2808
 order: 8
 model: "Epic Text Assistant"
 category: "Prompt Tools"
+example_output: |
+  **Prompt Refinement Suggestions**
+  1. Your current prompt lacks specific formatting constraints. Added "Use maximum 3 bullet points per problem."
+  2. The few-shot examples include ages, but instructions do not specify it. Added "Always include patient age in assessment."
+  
+  **New Prompt to Test:**
+  [Updated prompt text follows...]
 ---
 # A/P Prompt Refiner
 

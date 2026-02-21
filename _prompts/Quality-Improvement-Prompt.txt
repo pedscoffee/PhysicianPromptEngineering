@@ -6,6 +6,10 @@ char_count: 901
 order: 14
 model: "Epic Text Assistant"
 category: "Administrative"
+example_output: |
+  **Antibiotic Stewardship Reflection**
+  You prescribed Azithromycin for a 4yo with 3 days of rhinorrhea and low-grade fever. 
+  *Reflection Question:* Given that the presentation aligns closely with a viral upper respiratory infection, what specific clinical findings prompted the decision to initiate macrolide therapy at this stage?
 ---
 If antibiotics are prescribed, analyze the prescription and output the name, dose, route, and duration followed by a non-judgemental question respectfully asking the clinican if this is the best choice in light of a detail from the patient's history:
  

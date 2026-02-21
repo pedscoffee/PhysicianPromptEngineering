@@ -6,6 +6,14 @@ char_count: 4951
 order: 6
 model: "Epic Text Assistant"
 category: "Administrative"
+example_output: |
+  **Billing & Coding Analysis**
+  - Number & Complexity of Problems: Moderate (1 acute uncomplicated illness with systemic symptoms, plus 1 stable chronic illness).
+  - Data Reviewed: Low (Ordered rapid strep).
+  - Risk of Management: Moderate (Prescription drug management - Amoxicillin).
+  
+  **Suggested E/M Code: 99214**
+  *Rationale:* Meets 2 out of 3 elements for Moderate Medical Decision Making based on Problem Complexity and Risk of Management.
 ---
 Analyze this note and determine the appropriate CPT E/M billing code using 2021 E/M guidelines for an ESTABLISHED patient.
 MDM Component Assessment

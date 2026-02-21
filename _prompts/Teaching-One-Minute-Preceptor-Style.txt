@@ -6,6 +6,11 @@ char_count: 4894
 order: 11
 model: "Epic Text Assistant"
 category: "Teaching"
+example_output: |
+  **One-Minute Preceptor: Asthma Exacerbation**
+  1. *Get a Commitment:* What do you think is the severity of this patient’s exacerbation?
+  2. *Probe for Supporting Evidence:* What specific physical exam findings led you to that conclusion?
+  3. *Teach General Rules:* Remember, accessory muscle use and inability to speak in full sentences always indicate at least a severe exacerbation.
 ---
 One-Minute Preceptor Teaching Feedback Prompt
 Purpose

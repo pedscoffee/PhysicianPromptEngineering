@@ -6,6 +6,13 @@ char_count: 3376
 order: 16
 model: "Epic Text Assistant"
 category: "Orders"
+example_output: |
+  **Suggested Orders & Tasks for: Acute Otitis Media**
+  *Prescriptions:*
+  - [ ] Amoxicillin (first line) OR Augmentin (if amox in last 30d)
+  - [ ] Ibuprofen / Acetaminophen (for pain)
+  *Referrals/Follow-up:*
+  - [ ] Audiology (Consider if this is >3rd infection in 6 months)
 ---
 Based on the diagnoses in this note, generate a comprehensive checklist of commonly indicated orders, referrals, prescriptions, and follow-up items that may have been overlooked.
 

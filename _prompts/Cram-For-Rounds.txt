@@ -6,6 +6,18 @@ char_count: 4321
 order: 13
 model: "Epic Text Assistant"
 category: "Teaching"
+example_output: |
+  **Cram Sheet: Kawasaki Disease**
+  *Classic Presentation (CRASH and Burn):*
+  - **C**onjunctivitis (non-exudative)
+  - **R**ash (polymorphous)
+  - **A**denopathy (cervical, typically unilateral)
+  - **S**trawberry tongue / mucosal changes
+  - **H**ands/feet (erythema, edema, later peeling)
+  - **Burn**: Fever for >= 5 days
+  
+  *Key complication:* Coronary artery aneurysms.
+  *Treatment:* IVIG and High-dose Aspirin.
 ---
 Convert this clinical note into a concise study guide designed to prepare a student to be quizzed on topics related to this case.
 

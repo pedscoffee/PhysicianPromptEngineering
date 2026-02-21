@@ -6,6 +6,12 @@ char_count: 394
 order: 10
 model: "Epic Text Assistant"
 category: "Teaching"
+example_output: |
+  **Clinical Pearl:**
+  In pediatric patients with a limp, transient synovitis is the most common cause, but septic arthritis must always be formally ruled out.
+  
+  **Follow-Up Question:**
+  What are the four Kocher criteria, and how many of them need to be present to highly suspect septic arthritis over transient synovitis?
 ---
 From this case, extract one brief 'Clinical Pearl' for teaching (<=20 words). Focus on a practical pitfall, tip, or insight-not patient-specific.
 Using that clinical pearl, then take it one step farther and ask the clinician a socratic style follow up question to cause them to think more deeply about this particular patient. Write each on a separate line below bolded header "Clinical Pearl:"

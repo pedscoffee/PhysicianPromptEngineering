@@ -6,6 +6,11 @@ char_count: 3405
 order: 17
 model: "Epic Text Assistant"
 category: "Administrative"
+example_output: |
+  **Room 4: 8yo M - Asthma Exacerbation**
+  - **Overnight:** Required albuterol q3h, weaned to q4h this morning. No O2 requirement.
+  - **Plan:** Cont Q4h albuterol, finish day 2 of prednisone. 
+  - **To-Do:** If stable on Q4h until 4PM, okay to discharge home.
 ---
 Create a concise sign-out for covering providers focusing on patients who may require attention during your absence.
 

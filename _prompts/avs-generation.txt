@@ -6,6 +6,13 @@ char_count: 4715
 order: 5
 model: "Epic Text Assistant"
 category: "Documentation"
+example_output: |
+  **To-Do List for Home:**
+  1. Give Amoxicillin (antibiotic) twice a day for 10 days. Make sure to finish the whole bottle even if they feel better!
+  2. Use Tylenol or Motrin for pain or fever.
+  3. Call us or return to clinic if fever lasts more than 3 more days, or if they are making less than 3 good wet diapers a day.
+  
+  Hope your little one feels better soon!
 ---
 
 Sign-Off & Family To-Do Generator

@@ -6,5 +6,9 @@ char_count: 394
 order: 15
 model: "Epic Text Assistant"
 category: "Prompt Tools"
+example_output: |
+  **Potential Dot Phrases Identified:**
+  1. .OMAtreatment - "Amoxicillin 400mg/5mL, 8mL PO BID x10 days for Acute Otitis Media"
+  2. .WheezingPlan - "Albuterol 2 puffs every 4 hours PRN with spacer for mild wheezing"
 ---
 From the note, extract counseling, anticipatory guidance, and care instructions. Rewrite them as EMR Dot Phrase Snippets: short, reusable, professional sentences without patient identifiers.

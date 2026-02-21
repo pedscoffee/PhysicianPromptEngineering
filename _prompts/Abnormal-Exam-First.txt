@@ -6,6 +6,14 @@ char_count: 3458
 order: 18
 model: "DAX Custom Instructions"
 category: "Documentation"
+example_output: |
+  **Abnormal Exam Findings:**
+  - HEENT: Right TM is bulging and intensely erythematous.
+  - Lungs: Mild expiratory wheezing in bilateral bases.
+  
+  **Normal Exam Findings:**
+  General: Well-appearing, no acute distress... 
+  [standard templated normal exam follows]
 ---
 {List all abnormal findings first, organized by system. If no abnormal findings are mentioned for a system, skip it. Use concise formal clinical language.}
 

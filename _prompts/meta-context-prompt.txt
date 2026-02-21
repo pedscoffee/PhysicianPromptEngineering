@@ -7,6 +7,8 @@ char_count: 2943
 order: 9
 model: "Epic Text Assistant"
 category: "Prompt Tools"
+example_output: |
+  This is a context file and does not produce direct output. It is meant to be uploaded to an LLM to provide background context on how to build great clinical prompts.
 ---
 
 GUIDE: CREATING HIGH-PERFORMANCE CLINICAL FORMATTING PROMPTS

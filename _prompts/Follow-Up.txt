@@ -6,5 +6,8 @@ char_count: 104
 order: 20
 model: "DAX Custom Instructions"
 category: "Documentation"
+example_output: |
+  **Follow-Up:**
+  Return to clinic in 3-4 weeks for re-evaluation, or sooner if symptoms worsen or fail to improve.
 ---
 Follow-up: [State follow-up timeframe or instructions] {If none specified, then delete this row and its header}
