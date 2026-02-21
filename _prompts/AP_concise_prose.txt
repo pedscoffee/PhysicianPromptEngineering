@@ -1,9 +1,9 @@
 ---
-title: "A&P Concise Prose"
-description: "Problem-oriented A&P with concise prose: Assessment and plan both get just once sentence each and there is a closing follow-up statement with return precautions when appropriate."
+title: "DAX 06: Concise Prose (Two-Sentence Rule)"
+description: "Highly constrained prose format. Limits each problem to exactly one sentence explaining the assessment rationale, and exactly one sentence listing the management plan. No bullets allowed."
 specialty: "Any / Pediatrics"
 char_count: 7912
-order: 26
+order: 106
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

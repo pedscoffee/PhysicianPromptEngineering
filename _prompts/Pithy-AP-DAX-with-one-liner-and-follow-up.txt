@@ -1,9 +1,9 @@
 ---
-title: "A&P Pithy DAX with One Liner"
-description: "This is the 'Pithy A/P' prompt with one liner assessment line to start and follow up statement to close. This is the editor's current favorite optimized for DAX, and provides a good starting point for further customization if desired."
+title: "DAX 01: Pithy Bullets (With One-Liner)"
+description: "Ultra-concise bulleted Assessment & Plan. Starts with a global one-liner assessment, then lists problems with brief action-oriented bullets. Includes a standalone follow-up statement at the end. Best for rapid scanning and billing clarity."
 specialty: "Any / Pediatrics"
 char_count: 7783
-order: 2
+order: 101
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

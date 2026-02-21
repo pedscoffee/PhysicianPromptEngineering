@@ -1,9 +1,9 @@
 ---
-title: "A&P Short Blurb for DAX"
-description: "Problem-oriented A/P using a resident-style one-liner blurb per diagnosis: concise assessment, plan, and forward-directed thinking in prose rather than bullets."
+title: "DAX 07: Resident-Style Short Blurb (Prose)"
+description: "Presents each problem as a single, well-crafted resident-style blurb that weaves together assessment, plan, and contingency reasoning into professional flowing prose."
 specialty: "Any / Pediatrics"
 char_count: 8367
-order: 3
+order: 107
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

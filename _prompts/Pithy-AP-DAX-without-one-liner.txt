@@ -1,9 +1,9 @@
 ---
-title: "A&P DAX Concise Bullets with Follow-Up Statement"
-description: "Problem-oriented, concise bullets with follow-up statement."
+title: "DAX 02: Pithy Bullets (List Only)"
+description: "Ultra-concise problem-oriented format focusing strictly on problems and bulleted plans. Omits the global one-liner for even faster reading, but keeps the bulleted brevity for ease of use."
 specialty: "Any / Pediatrics"
 char_count: 6821
-order: 1
+order: 102
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

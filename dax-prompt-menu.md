@@ -249,11 +249,11 @@ Follow-Up: RTC PRN</div>
           <div class="prompt-actions">
             <button class="btn btn-primary btn-sm" onclick="copyPrompt('pithy-one-liner')">Copy Prompt</button>
             <button class="btn btn-secondary btn-sm" onclick="downloadPrompt('pithy-one-liner')">Download</button>
-            <a href="{{ '/prompt-library#a-p-pithy-dax-with-one-liner' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
+            <a href="{{ '/prompt-library#dax-01-pithy-bullets-with-one-liner' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
           </div>
           
           <div class="hidden-prompt-content">
-            {% assign prompt = site.prompts | where: "title", "A&P Pithy DAX with One Liner" | first %}
+            {% assign prompt = site.prompts | where: "title", "DAX 01: Pithy Bullets (With One-Liner)" | first %}
             {{ prompt.content }}
           </div>
         </div>
@@ -294,11 +294,11 @@ Follow-Up: RTC PRN</div>
           <div class="prompt-actions">
             <button class="btn btn-primary btn-sm" onclick="copyPrompt('pithy-standard')">Copy Prompt</button>
             <button class="btn btn-secondary btn-sm" onclick="downloadPrompt('pithy-standard')">Download</button>
-            <a href="{{ '/prompt-library#a-p-pithy-dax' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
+            <a href="{{ '/prompt-library#dax-02-pithy-bullets-list-only' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
           </div>
           
           <div class="hidden-prompt-content">
-            {% assign prompt = site.prompts | where: "title", "A&P Pithy DAX" | first %}
+            {% assign prompt = site.prompts | where: "title", "DAX 02: Pithy Bullets (List Only)" | first %}
             {{ prompt.content }}
           </div>
         </div>
@@ -336,11 +336,11 @@ Follow-Up: Return to clinic as needed.</div>
           <div class="prompt-actions">
             <button class="btn btn-primary btn-sm" onclick="copyPrompt('short-blurb')">Copy Prompt</button>
             <button class="btn btn-secondary btn-sm" onclick="downloadPrompt('short-blurb')">Download</button>
-            <a href="{{ '/prompt-library#a-p-short-blurb-for-dax' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
+            <a href="{{ '/prompt-library#dax-07-resident-style-short-blurb-prose' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
           </div>
           
           <div class="hidden-prompt-content">
-            {% assign prompt = site.prompts | where: "title", "A&P Short Blurb for DAX" | first %}
+            {% assign prompt = site.prompts | where: "title", "DAX 07: Resident-Style Short Blurb (Prose)" | first %}
             {{ prompt.content }}
           </div>
         </div>
@@ -380,11 +380,11 @@ Follow-Up: Return to clinic as needed.</div>
           <div class="prompt-actions">
             <button class="btn btn-primary btn-sm" onclick="copyPrompt('soap-within')">Copy Prompt</button>
             <button class="btn btn-secondary btn-sm" onclick="downloadPrompt('soap-within')">Download</button>
-            <a href="{{ '/prompt-library#a-p-soap-within-problems' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
+            <a href="{{ '/prompt-library#dax-05-soap-within-problems-full-prose' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
           </div>
           
           <div class="hidden-prompt-content">
-            {% assign prompt = site.prompts | where: "title", "A&P SOAP-Within-Problems" | first %}
+            {% assign prompt = site.prompts | where: "title", "DAX 05: SOAP-Within-Problems (Full Prose)" | first %}
             {{ prompt.content }}
           </div>
         </div>
@@ -427,11 +427,11 @@ Follow-Up: Return to clinic as needed.</div>
           <div class="prompt-actions">
             <button class="btn btn-primary btn-sm" onclick="copyPrompt('soap-hybrid')">Copy Prompt</button>
             <button class="btn btn-secondary btn-sm" onclick="downloadPrompt('soap-hybrid')">Download</button>
-            <a href="{{ '/prompt-library#a-p-hybrid-assessment-prose-plan-bullets' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
+            <a href="{{ '/prompt-library#dax-03-soap-hybrid-prose-assessment-bulleted-plan' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
           </div>
           
           <div class="hidden-prompt-content">
-            {% assign prompt = site.prompts | where: "title", "A&P Hybrid Assessment-Prose + Plan-Bullets" | first %}
+            {% assign prompt = site.prompts | where: "title", "DAX 03: SOAP Hybrid (Prose Assessment + Bulleted Plan)" | first %}
             {{ prompt.content }}
           </div>
         </div>
@@ -467,11 +467,11 @@ Follow-Up: Return to clinic in 3-6 months or as needed.</div>
           <div class="prompt-actions">
             <button class="btn btn-primary btn-sm" onclick="copyPrompt('chronic-follow')">Copy Prompt</button>
             <button class="btn btn-secondary btn-sm" onclick="downloadPrompt('chronic-follow')">Download</button>
-            <a href="{{ '/prompt-library#a-p-chronic-disease-follow-up' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
+            <a href="{{ '/prompt-library#dax-04-chronic-disease-follow-up-hybrid' | relative_url }}" class="btn btn-outline btn-sm">Library</a>
           </div>
           
           <div class="hidden-prompt-content">
-            {% assign prompt = site.prompts | where: "title", "A&P Chronic Disease Follow-Up" | first %}
+            {% assign prompt = site.prompts | where: "title", "DAX 04: Chronic Disease Follow-Up (Hybrid)" | first %}
             {{ prompt.content }}
           </div>
         </div>
