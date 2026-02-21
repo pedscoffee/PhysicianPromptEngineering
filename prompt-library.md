@@ -366,7 +366,7 @@ function toggleExample(button) {
     let sampleText = "";
     
     // Extract few-shot example section
-    const match = fullText.match(/## Few[- ]Shot[^\n]*\n/i);
+    const match = fullText.match(/## Few.*?Shot[^\n]*\n/i);
     if (match) {
       const parts = fullText.split(match[0]);
       if (parts.length > 1) {

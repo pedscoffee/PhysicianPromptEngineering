@@ -56,7 +56,7 @@ If ADHD, weight, obesity, or strep throat discussed:
 
 ---
 
-## Few‑Shot Examples
+## Few-Shot Examples
 
 Asthma
 Mild persistent asthma with current flare and daily albuterol use. Start Flovent 44 mcg 2 puffs BID with spacer and continue albuterol PRN; no testing or referrals today.
