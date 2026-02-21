@@ -187,10 +187,14 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
             <div class="prompt-actions">
               <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
               <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
-              {% if prompt.content contains '## Few' %}
+              {% if prompt.example_output or prompt.content contains '## Few' %}
               <button class="btn btn-outline btn-sm" onclick="toggleExample(this)">Show Sample Output</button>
               {% endif %}
             </div>
+
+            {% if prompt.example_output %}
+            <div class="hidden-example-data" style="display: none;">{{ prompt.example_output | escape }}</div>
+            {% endif %}
 
             <div class="prompt-code-wrapper">
               <pre><code>{{ prompt.content | escape }}</code></pre>
@@ -365,20 +369,26 @@ function toggleExample(button) {
     const fullText = codeBlock.innerText;
     let sampleText = "";
     
-    // Extract few-shot example section
-    const match = fullText.match(/## Few.*?Shot[^\n]*\n/i);
-    if (match) {
-      const parts = fullText.split(match[0]);
-      if (parts.length > 1) {
-        // Extract up to next --- or end
-        let exampleSection = parts[1].split('---')[0].trim();
-        const lines = exampleSection.split('\n');
-        let startIndex = 0;
-        // Skip conversational filler
-        while (startIndex < lines.length && (lines[startIndex].trim() === '' || lines[startIndex].includes('Remember') || lines[startIndex].includes('own for best effect'))) {
-          startIndex++;
+    // Check if there's explicit example data in the frontmatter
+    const hiddenData = card.querySelector('.hidden-example-data');
+    if (hiddenData) {
+      sampleText = hiddenData.innerText;
+    } else {
+      // Extract few-shot example section from text
+      const match = fullText.match(/## Few.*?Shot[^\n]*\n/i);
+      if (match) {
+        const parts = fullText.split(match[0]);
+        if (parts.length > 1) {
+          // Extract up to next --- or end
+          let exampleSection = parts[1].split('---')[0].trim();
+          const lines = exampleSection.split('\n');
+          let startIndex = 0;
+          // Skip conversational filler
+          while (startIndex < lines.length && (lines[startIndex].trim() === '' || lines[startIndex].includes('Remember') || lines[startIndex].includes('own for best effect'))) {
+            startIndex++;
+          }
+          sampleText = lines.slice(startIndex).join('\n').trim();
         }
-        sampleText = lines.slice(startIndex).join('\n').trim();
       }
     }
     
