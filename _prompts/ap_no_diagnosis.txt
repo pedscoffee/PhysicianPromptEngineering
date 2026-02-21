@@ -1,9 +1,9 @@
 ---
-title: "DAX 08: EHR-Ready Layout (No Problem Headers)"
-description: "Formats the A&P into prose assessments and bulleted plans, but intentionally omits the problem name header. Perfect for EHRs (like Epic) where the diagnosis is automatically populated by the system."
+title: "A&P Assessment + Plan (No Diagnosis Headers)"
+description: "Problem-oriented A&P with a short assessment statement and bulleted plan, but without diagnosis headers. Designed for EHRs where the diagnosis is already recorded in a separate field."
 specialty: "Any / Pediatrics"
 char_count: 7417
-order: 108
+order: 24
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

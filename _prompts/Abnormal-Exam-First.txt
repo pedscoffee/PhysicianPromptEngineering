@@ -1,9 +1,9 @@
 ---
-title: "DAX Section 2: Abnormal Exam Findings Prominent"
-description: "Reorganizes the physical exam section to list all abnormal findings prominently at the top, separate from boilerplate templated text, allowing for rapid clinical review."
+title: "Abnormal Exam First"
+description: "List abnormal findings separately from boiler plate text to allow for quicker review"
 specialty: "Any / Pediatrics"
 char_count: 3458
-order: 112
+order: 18
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

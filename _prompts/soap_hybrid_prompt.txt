@@ -1,9 +1,9 @@
 ---
-title: "DAX 03: SOAP Hybrid (Prose Assessment + Bulleted Plan)"
-description: "Combines the best of both worlds: a concise prose assessment statement to capture clinical reasoning, followed immediately by bulleted action items for the management plan. Clearly separates thinking from doing."
+title: "A&P Hybrid Assessment-Prose + Plan-Bullets"
+description: "Problem-oriented A&P with a concise telegraphic prose assessment followed by bulleted plan per problem. No one-liner. Cleanly separates clinical thinking (prose) from management actions (bullets)."
 specialty: "Any / Pediatrics"
 char_count: 8149
-order: 103
+order: 22
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

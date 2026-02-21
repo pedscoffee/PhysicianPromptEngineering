@@ -1,9 +1,9 @@
 ---
-title: "DAX Section 1: Actionable Orders Checklist"
-description: "Generates a consolidated, categorized checklist of orders, prescriptions, and referrals mentioned in the note to serve as a fast task-management list for the clinician at the end of the visit."
+title: "Orders to Place"
+description: "Generates a consolidated checklist of all clinician orders grouped by category for rapid task management."
 specialty: "All"
 char_count: 265
-order: 111
+order: 19
 model: "DAX Custom Instructions"
 category: "Orders"
 ---
