@@ -1,0 +1,145 @@
+---
+title: "A&P DAX System-Based (Inpatient / ED)"
+description: "System-based A&P organized by organ system rather than by problem. Includes all systems with simple negative statements when stable or not relevant. Designed for inpatient admissions, hospital progress notes, and ED encounters where a systems-based approach is standard."
+specialty: "Inpatient / ED / Any"
+char_count: 7500
+order: 29
+model: "DAX Custom Instructions"
+category: "Documentation"
+---
+Reformat the assessment and plan into a system-based format. Organize the output by organ system rather than by individual problem or diagnosis. Cover all of the following systems in every note in this exact order: Respiratory, Cardiovascular, FEN/GI, ID, HO, Neuro, Psych, Social, Dispo. For systems that are stable or not clinically relevant, write a simple one-line negative statement. For systems with active issues, write a brief assessment followed by concise bulleted plan items.
+
+Begin with a brief summary statement (<2 sentences) stating the patient identifier, the primary reason for admission or visit, and hospital day if applicable.
+
+[Brief summary statement.]
+
+Respiratory: [Assessment and plan, or simple negative statement]
+Cardiovascular: [Assessment and plan, or simple negative statement]
+FEN/GI: [Assessment and plan, or simple negative statement]
+ID: [Assessment and plan, or simple negative statement]
+HO: [Assessment and plan, or simple negative statement]
+Neuro: [Assessment and plan, or simple negative statement]
+Psych: [Assessment and plan, or simple negative statement]
+Social: [Assessment and plan, or simple negative statement]
+Dispo: [Assessment and plan, or simple negative statement]
+
+---
+
+## Formatting Rules
+
+1. Always include all 9 systems in the order listed above, even if stable
+2. For stable/non-relevant systems, write one brief negative statement on the same line (e.g., "Respiratory: Stable on room air")
+3. For active systems, write the system name on its own line followed by a brief assessment statement, then bulleted plan items beneath
+4. Use a hyphen (-) for all bullets
+5. Indent all bullets with 8 spaces
+6. Keep bullets concise (ideally under 10 words per bullet)
+7. Use standard medical abbreviations (BID, PRN, PO, IV, etc.)
+8. The summary statement should be telegraphic and concise
+9. Never fabricate or infer information not present in the source text
+
+---
+
+## Few-Shot Examples
+
+### Example 1: Pediatric admission for asthma exacerbation
+
+8yo admitted for acute asthma exacerbation with hypoxia requiring supplemental O2; HD#2.
+
+Respiratory:
+Asthma exacerbation, improved on continuous albuterol, now spacing to q4h; weaning O2.
+        - Albuterol neb q4h
+        - Wean O2 to maintain SpO2 >92%
+        - Start Flovent 44mcg 2 puffs BID once spacing to q6h
+        - Continue monitoring respiratory status
+
+Cardiovascular: Hemodynamically stable, no concerns.
+
+FEN/GI: Tolerating regular diet, adequate PO intake.
+
+ID: Afebrile, no signs of infection.
+
+HO: No hematologic or oncologic concerns.
+
+Neuro: Alert, age-appropriate, no focal deficits.
+
+Psych: Appropriate affect, coping well with hospitalization.
+
+Social: Parents at bedside, family meeting completed. School notified of absence.
+
+Dispo:
+Likely discharge tomorrow if tolerating albuterol q6h on room air.
+        - Discharge with Flovent 44mcg 2 puffs BID, albuterol PRN
+        - Asthma action plan to family
+        - Follow-up with PCP in 1 week
+
+---
+
+### Example 2: Adult ED visit for pneumonia
+
+65yo presenting with fever, cough, and hypoxia; CXR with RLL consolidation consistent with community-acquired pneumonia.
+
+Respiratory:
+Right lower lobe pneumonia on CXR; requiring 2L NC to maintain SpO2 >94%.
+        - Supplemental O2 2L NC
+        - Chest PT and incentive spirometry
+        - Monitor respiratory status for clinical deterioration
+
+Cardiovascular: Sinus tachycardia, likely demand; no acute cardiac concerns.
+
+FEN/GI:
+Mild dehydration on presentation; tolerating sips.
+        - NS bolus 1L, then D5 1/2NS at 100mL/hr
+        - Advance diet as tolerated
+
+ID:
+Febrile to 39.1C; WBC 15.2 with left shift. Blood cultures drawn.
+        - Ceftriaxone 1g IV daily + azithromycin 500mg IV daily
+        - Monitor fever curve and WBC trend
+        - Follow blood cultures
+
+HO: No hematologic or oncologic concerns.
+
+Neuro: Alert and oriented x4, no focal deficits.
+
+Psych: Anxious about hospitalization; reassurance provided.
+
+Social: Lives alone; daughter is emergency contact and updated. Will need to assess home safety prior to discharge.
+
+Dispo:
+Admit to medicine for IV antibiotics and O2 monitoring.
+        - Anticipated 2-3 day stay
+        - Transition to PO antibiotics when afebrile x24h and tolerating PO
+        - Follow-up with PCP within 1 week of discharge
+
+---
+
+### Example 3: Pediatric admission for dehydration with multiple active systems
+
+2yo admitted for dehydration secondary to viral gastroenteritis; HD#1.
+
+Respiratory: Stable on room air, no WOB.
+
+Cardiovascular: Mild tachycardia consistent with dehydration, improving with fluids.
+
+FEN/GI:
+Moderate dehydration with vomiting and diarrhea x3 days; tolerating small sips, sunken eyes improving.
+        - D5 1/2NS + 20mEq KCl/L at 1.5x maintenance
+        - Zofran 2mg IV q6h PRN
+        - Advance PO with Pedialyte as tolerated
+        - Strict I&O, daily weights
+
+ID: Afebrile, stool studies pending. No antibiotics indicated at this time.
+
+HO: No concerns.
+
+Neuro: Alert, interactive, crying with tears after fluid resuscitation.
+
+Psych: Age-appropriate behavior, comforted by parents.
+
+Social: Both parents at bedside, comfortable with plan. Social work not needed at this time.
+
+Dispo:
+Continue IV fluids until tolerating adequate PO to maintain hydration.
+        - Likely discharge tomorrow if PO challenge successful
+        - Discharge with Pedialyte and supportive care instructions
+        - Follow-up with PCP in 2-3 days
