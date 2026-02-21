@@ -1,9 +1,9 @@
 ---
-title: "A&P Chronic Disease Follow-Up"
+title: "A&P DAX Concise Assessment Statement and Bulleted Plan with Follow-Up Statement"
 description: "Problem-oriented A&P optimized for chronic disease follow-up visits. Known chronic problems include trend language and current medication/dose in the assessment, followed by a bulleted plan. Acute or new problems use the same structure without trend language. No one-liner."
 specialty: "Any / Pediatrics"
 char_count: 6964
-order: 23
+order: 2
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---

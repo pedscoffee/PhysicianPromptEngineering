@@ -1,9 +1,9 @@
 ---
-title: "A&P Pithy DAX"
-description: "Pithy A/P prompt without the one-liner assessment. Problem-oriented, concise bullets with follow-up statement."
+title: "A&P DAX Concise Bullets with Follow-Up Statement"
+description: "Problem-oriented, concise bullets with follow-up statement."
 specialty: "Any / Pediatrics"
 char_count: 6821
-order: 25
+order: 1
 model: "DAX Custom Instructions"
 category: "Documentation"
 ---
