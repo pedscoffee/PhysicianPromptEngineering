@@ -1,0 +1,225 @@
+---
+title: "A&P DAX Formal (Assessment / Plan / Next Steps)"
+description: "Problem-oriented A&P with labeled Assessment, Plan, and Next Steps subsections per problem. More detailed and structured than 'pithy' styles. Ideal for physicians who prefer explicit clinical reasoning, clear action items, and conditional planning separated into distinct sections."
+specialty: "Any / Pediatrics"
+char_count: 8200
+order: 25
+model: "DAX Custom Instructions"
+category: "Documentation"
+---
+Reformat the assessment and plan into a structured, problem-oriented format with clear visual hierarchy. For each problem, organize the content into labeled subsections: Assessment, Plan, and Next Steps. Include only sections for which content was discussed; omit unused sections entirely.
+
+[Problem/Diagnosis Name]
+
+Assessment:
+- [Bullet points summarizing diagnostic reasoning and clinical context]
+- [Use formal medical terminology]
+
+Plan:
+- [Immediate interventions, medications, procedures, and orders]
+- [Each action item as a separate bullet]
+
+Next Steps:
+- [Conditional planning: "If [symptom/test], then [action]"]
+- [Follow-up intervals and return precautions]
+- [Monitoring parameters]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem blocks and before the follow-up line when applicable.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
+
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
+
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
+
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
+
+If ADHD, weight, obesity, or strep throat discussed:
+"PCMH Reminder"
+
+---
+
+## Formatting Rules
+
+1. Write the problem/diagnosis name on its own line
+2. Label each subsection (Assessment, Plan, Next Steps) on its own line
+3. Use a hyphen (-) for all bullets
+4. Indent all bullets with 8 spaces
+5. Write content in clear, professional phrases using formal medical terminology
+6. Use "reassuring" rather than "normal" when appropriate
+7. Keep bullets concise (ideally under 15 words per bullet)
+8. No abbreviations except standard medical ones (BID, mcg, PRN, etc.)
+9. Include only sections actually discussed; omit unused sections entirely
+10. Insert a blank line between problems when multiple diagnoses exist
+11. Only include the follow-up statement once, at the end
+12. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+
+---
+
+## Few-Shot Examples
+
+Asthma
+
+Assessment:
+        - Mild persistent asthma with current flare
+        - Albuterol use multiple times per week
+        - Exam reassuring with clear breath sounds today
+
+Plan:
+        - Flovent 44mcg 2 puffs BID with spacer started
+        - Continue albuterol as rescue inhaler
+        - Asthma action plan provided to family
+
+Next Steps:
+        - Return sooner for increased rescue use, nighttime symptoms, or respiratory distress
+        - If control remains poor, consider montelukast or referral to Allergy
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Well Child Check
+
+Assessment:
+        - Healthy 4yo with normal growth and development
+        - No acute concerns raised today
+
+Plan:
+        - Vaccines administered per schedule
+        - Age-appropriate anticipatory guidance reviewed
+
+All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Parent questions addressed.
+
+Follow-Up: Return to clinic at next well child check or as needed.
+
+---
+
+Vomiting, mild dehydration
+
+Assessment:
+        - Acute vomiting with mild dehydration
+        - Tolerating small sips with moist mucous membranes
+        - Abdomen non-distended, non-tender on exam
+
+Plan:
+        - Zofran PRN for nausea
+        - Oral rehydration with Pedialyte
+        - Tylenol and Motrin as needed for comfort
+
+Next Steps:
+        - Go to ED if unable to maintain oral hydration
+        - Return for worsening vomiting, lethargy, or decreased urine output
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids.
+
+Follow-Up: Return to clinic as needed.
+
+---
+
+ADHD
+
+Assessment:
+        - Ongoing ADHD with inadequate symptom control on Concerta 27mg
+        - Parent and teacher report persistent inattention and impulsivity
+        - Growth and vitals reassuring today
+
+Plan:
+        - Discontinue Concerta 27mg
+        - Start Vyvanse 20mg PO daily
+        - Provide teacher Vanderbilt forms for monitoring
+
+Next Steps:
+        - Return sooner for significant appetite suppression, sleep disturbance, or mood changes
+
+PCMH Reminder
+
+Follow-Up: Return to clinic in one month.
+
+---
+
+Viral URI
+ 
+Assessment:
+        - Rhinorrhea and cough consistent with viral URI
+        - No fever or red flags on exam today
+
+Plan:
+        - Supportive care with fluids and rest
+        - Tylenol and Motrin PRN for comfort
+
+Acute Otitis Media
+
+Assessment:
+        - Right tympanic membrane bulging and erythematous
+        - Consistent with bacterial acute otitis media
+
+Plan:
+        - Amoxicillin 400mg/5mL, 8mL PO BID x10 days
+        - Tylenol and Motrin for pain control
+
+Next Steps:
+        - Return if symptoms worsen or do not improve within 48-72 hours
+
+Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic as needed.
+
+---
+
+Ankle Sprain
+
+Assessment:
+        - Left lateral ankle tenderness without instability
+        - Consistent with mild lateral ankle sprain
+
+Plan:
+        - RICE protocol initiated
+        - Ibuprofen 400mg PO q6h PRN for pain and swelling
+        - Weight bearing as tolerated
+
+Next Steps:
+        - Return if pain worsens, swelling increases, or unable to bear weight
+        - If not improving in one week, consider X-ray
+
+Pharyngitis
+
+Assessment:
+        - Sore throat with rapid strep negative
+        - Throat culture pending; cannot exclude strep at this time
+
+Plan:
+        - Symptomatic care with throat lozenges and OTC analgesics
+
+Next Steps:
+        - Will contact family if culture returns positive to initiate antibiotics
+
+Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.
+
+Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve.
+
+Follow-Up: Return to clinic as needed and pending strep culture results.
