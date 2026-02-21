@@ -67,9 +67,6 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
     <p class="hero-subtitle">
       Production-ready prompts for AI-powered clinical documentation. Copy, customize, and deploy.
     </p>
-    <div class="mt-6">
-      <a href="{{ '/dax-prompt-menu' | relative_url }}" class="btn btn-accent btn-lg">View DAX Prompt Menu</a>
-    </div>
   </div>
 </div>
 
@@ -190,6 +187,9 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
             <div class="prompt-actions">
               <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
               <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
+              {% if prompt.content contains '## Few' %}
+              <button class="btn btn-outline btn-sm" onclick="toggleExample(this)">Show Sample Output</button>
+              {% endif %}
             </div>
 
             <div class="prompt-code-wrapper">
@@ -354,5 +354,68 @@ function filterPrompts(model, btn) {
     const hasVisible = Array.from(section.querySelectorAll('.prompt-card')).some(card => card.style.display !== 'none');
     section.style.display = hasVisible ? '' : 'none';
   });
+}
+
+function toggleExample(button) {
+  const card = button.closest('.card');
+  const codeBlock = card.querySelector('.prompt-code-wrapper code');
+  let exampleContent = card.querySelector('.example-content');
+  
+  if (!exampleContent) {
+    const fullText = codeBlock.innerText;
+    let sampleText = "";
+    
+    // Extract few-shot example section
+    const match = fullText.match(/## Few[- ]Shot[^\n]*\n/i);
+    if (match) {
+      const parts = fullText.split(match[0]);
+      if (parts.length > 1) {
+        // Extract up to next --- or end
+        let exampleSection = parts[1].split('---')[0].trim();
+        const lines = exampleSection.split('\n');
+        let startIndex = 0;
+        // Skip conversational filler
+        while (startIndex < lines.length && (lines[startIndex].trim() === '' || lines[startIndex].includes('Remember') || lines[startIndex].includes('own for best effect'))) {
+          startIndex++;
+        }
+        sampleText = lines.slice(startIndex).join('\n').trim();
+      }
+    }
+    
+    if (!sampleText) {
+      sampleText = "No sample output available for this prompt.";
+    }
+    
+    // Create the example element
+    exampleContent = document.createElement('div');
+    exampleContent.className = 'example-content mt-4 mb-4';
+    exampleContent.style.background = 'var(--color-bg-tertiary)';
+    exampleContent.style.padding = 'var(--space-4)';
+    exampleContent.style.borderRadius = 'var(--radius-md)';
+    exampleContent.style.border = '1px solid var(--color-border)';
+    exampleContent.style.borderLeft = '4px solid var(--color-primary-light)';
+    exampleContent.style.fontFamily = 'var(--font-family-mono)';
+    exampleContent.style.fontSize = '14px';
+    exampleContent.style.lineHeight = '1.6';
+    exampleContent.style.whiteSpace = 'pre-wrap';
+    exampleContent.style.display = 'none';
+    exampleContent.innerText = sampleText;
+    
+    // Insert before prompt-code-wrapper
+    const codeWrapper = card.querySelector('.prompt-code-wrapper');
+    card.querySelector('.card-body').insertBefore(exampleContent, codeWrapper);
+  }
+  
+  if (exampleContent.style.display === 'none') {
+    exampleContent.style.display = 'block';
+    button.innerText = 'Hide Sample Output';
+    button.classList.remove('btn-outline');
+    button.classList.add('btn-secondary');
+  } else {
+    exampleContent.style.display = 'none';
+    button.innerText = 'Show Sample Output';
+    button.classList.add('btn-outline');
+    button.classList.remove('btn-secondary');
+  }
 }
 </script>
