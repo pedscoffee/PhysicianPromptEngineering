@@ -1,0 +1,82 @@
+---
+title: "A&P Numbered Plan"
+description: "Problem-oriented A/P with a one-liner assessment and numbered plan items (1. 2. 3.) instead of bullet hyphens. Ideal for physicians who reference plan items by number during handoffs or follow-ups."
+specialty: "All"
+char_count: 3500
+order: 7
+model: "Epic Text Assistant"
+category: "Documentation"
+---
+Reformat the assessment and plan into a structured, problem-oriented format. The output should be extremely concise for rapid scanning. Use numbered plan items instead of bullet points.
+
+---
+
+## Output Structure for Each Problem/Diagnosis
+
+**[Month Year]**: [Write a one-liner (<20 words) in telegraphic clinical language that states the reason for the visit, the key management decision and its main clinical rationale.]
+
+**[Problem/Diagnosis Name]**
+1. [A very brief numbered item summarizing a key finding, action, or follow-up plan]
+2. [Each point should be a separate numbered item, written as a short clinical shorthand phrase]
+
+[Follow-Up: Brief description of follow up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after the numbered list when applicable. This text should be italicized.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. All questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+---
+
+## Formatting Rules
+
+1. Bold formatting for problem names and Month Year
+2. Italicized formatting for all boilerplate text
+3. Do NOT use section headers like Assessment or Plan
+4. Use sequential numbers (1. 2. 3.) for all plan items — not hyphens or bullets
+5. Restart numbering at 1 for each new problem
+6. Write all items in extremely brief, professional shorthand phrases
+7. Keep items concise (ideally under 10 words per item)
+8. Use standard medical abbreviations (RTC, PRN, BID, etc.)
+9. Never fabricate or infer information not present in the source text
+10. Insert a blank line between problems when multiple diagnoses exist
+11. No references
+
+---
+
+## Few-Shot Examples
+
+Patient presents with acute asthma exacerbation; plan to start ICS given persistent symptoms despite albuterol.
+
+**Asthma**
+1. Flovent 44mcg 2 puff BID started
+2. Continue albuterol PRN
+3. Use spacer
+
+Return to clinic in 3 months or as needed.
+
+Patient presents for well child check; normal growth/development, no concerns identified.
+
+**Well Child Check**
+1. Growing and developing well
+2. Reviewed anticipatory guidance
+
+Return to clinic at next well child check or as needed.
+
+Patient presents with vomiting and mild dehydration; giving Zofran and oral rehydration given tolerating small sips.
+
+**Vomiting, mild dehydration**
+1. NDNT on exam with MMM
+2. Zofran PRN, pedialyte, Tylenol, Motrin
+
+Return to clinic as needed.

@@ -1,0 +1,80 @@
+---
+title: "A&P Ultra-Minimal One-Liner Per Problem"
+description: "The most compact A/P format: a single telegraphic sentence per problem that fuses assessment and plan into one line. Designed for high-volume clinicians who want the absolute minimum documentation footprint while still capturing the essential clinical reasoning and action taken."
+specialty: "All"
+char_count: 5500
+order: 9
+model: "Epic Text Assistant"
+category: "Documentation"
+---
+Reformat the assessment and plan into the most concise format possible. For each problem, write exactly one telegraphic sentence that fuses the assessment and plan together: state the key clinical finding or interpretation, then the action taken, separated by a semicolon. No bullets, no subsections, no headers beyond the problem name. Each problem gets only one line.
+
+---
+
+## Output Structure For Each Problem/Diagnosis
+
+**[Problem/Diagnosis Name]**
+[Single sentence: key finding/assessment; action taken/plan.]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem lines and before the follow-up line when applicable. This text should be italicized.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. All questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+---
+
+## Formatting Rules
+
+1. **Bold formatting** for problem names
+2. **Italicized formatting** for boilerplate text
+3. Do NOT use section headers like Assessment or Plan
+4. Exactly one sentence per problem — no more
+5. Use a semicolon to separate assessment from plan within the sentence
+6. Write in telegraphic clinical shorthand — omit articles and filler words
+7. Use standard medical abbreviations (PRN, BID, PO, RTC, etc.)
+8. Keep each sentence as short as possible; aim for under 25 words
+9. No bullets, no numbered lists, no subsections
+10. Insert a blank line between each problem
+11. Only include the follow-up statement once, at the end
+12. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+
+---
+
+## Few-Shot Examples
+
+**Asthma**
+Persistent symptoms despite albuterol; starting Flovent 44mcg 2 puffs BID with spacer.
+
+Return to clinic in 3 months or PRN.
+
+**Well Child Check**
+Healthy 4yo, normal growth and development; anticipatory guidance reviewed, vaccines UTD.
+
+Return to clinic at next well child check or PRN.
+
+**Vomiting, mild dehydration**
+Tolerating sips, MMM, NDNT; Zofran PRN and oral rehydration with Pedialyte.
+
+Return to clinic PRN.
+
+**ADHD**
+Inadequate control on Concerta 27mg per parent/teacher report; transitioning to Vyvanse 20mg PO daily.
+
+Return to clinic in 1mo.
+
+**Viral URI**
+Symptoms consistent with viral URI, no red flags; supportive care with fluids, family declined COVID test.
+
+Return to clinic PRN.

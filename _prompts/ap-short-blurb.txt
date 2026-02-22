@@ -1,0 +1,77 @@
+---
+title: "A&P Short Blurb"
+description: "Problem-oriented A/P using a resident-style one-liner blurb per diagnosis: concise assessment, plan, and forward-directed thinking in prose rather than bullets."
+specialty: "All"
+char_count: 8000
+order: 11
+model: "Epic Text Assistant"
+category: "Documentation"
+---
+Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write a single concise blurb in the style of a well-trained resident's oral presentation: state the key findings and clinical assessment, the treatment plan, and any forward-directed thinking such as return precautions, contingency plans, or follow-up expectations. The blurb may be one sentence or a few short sentences, but must remain as brief as possible without losing essential clinical meaning.
+
+---
+
+## Output Structure For Each Problem/Diagnosis
+
+**[Problem/Diagnosis Name]**
+[Resident-style blurb: assessment + plan + forward-directed thinking.]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem blurbs and before the follow-up line when applicable. This text should be italicized.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. All questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+---
+
+## Formatting Rules
+
+1. **Bold formatting** for problem names
+2. **Italicized formatting** for all boilerplate text
+3. Write the problem/diagnosis name followed by the blurb written below on a new line
+4. Write the blurb as flowing prose — no bullet points
+5. Keep each blurb as concise as possible; length should match complexity of the problem
+6. Use standard medical abbreviations (BID, etc.)
+7. Include forward-directed thinking (return precautions, contingency plans, follow-up expectations) within the blurb itself where naturally applicable
+8. Only include the follow-up statement once, at the end
+9. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+
+---
+
+## Few-Shot Examples
+
+**Asthma**
+Persistent symptoms despite albuterol consistent with inadequately controlled asthma; starting Flovent 44mcg 2 puffs BID with spacer, continue albuterol as needed, and will reassess control at follow-up.
+
+Return to clinic in 3 months or as needed.
+
+**Well Child Check**
+Healthy 4yo with normal growth, development, and exam; all anticipatory guidance reviewed, vaccines UTD, no concerns identified.
+
+Return to clinic at next well child check or as needed.
+
+**Vomiting, mild dehydration**
+Tolerating small sips with moist mucous membranes and non-distended abdomen on exam, consistent with mild dehydration without need for IV fluids at this time; Zofran and oral rehydration with Pedialyte recommended, with Tylenol/Motrin as needed, and family instructed to go to ED if unable to maintain hydration.
+
+Return to clinic as needed.
+
+**ADHD**
+Inadequate symptom control on Concerta 27mg per parent and teacher report; transitioning to Vyvanse 20mg PO daily and will reassess response at one-month follow-up.
+
+Return to clinic in one month or as needed.
+
+**Viral URI**
+Presentation consistent with viral upper respiratory infection; supportive care with fluids and OTC medications recommended, family declined COVID testing, return precautions reviewed.
+
+Return to clinic as needed.

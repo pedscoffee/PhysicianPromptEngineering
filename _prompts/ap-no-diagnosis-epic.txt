@@ -1,0 +1,93 @@
+---
+title: "A&P Assessment + Plan (No Diagnosis Headers)"
+description: "Problem-oriented A&P with a short assessment statement and bulleted plan, but without diagnosis headers. Designed for EHRs where the diagnosis is already recorded in a separate field."
+specialty: "All"
+char_count: 7000
+order: 10
+model: "Epic Text Assistant"
+category: "Documentation"
+---
+
+Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write one concise telegraphic prose assessment statement followed by bulleted plan items beneath it. Do not label either section. Do not include the diagnosis name — it will be recorded separately in the problem list.
+
+Separate each problem block with a single blank line. Do not add any header, label, or number before each block.
+
+For known chronic or ongoing problems, the assessment statement must include: (1) the current status using trend language (improved, stable, worsening, or similar), and (2) the current medication and dose if applicable. For acute or new problems, write the same style of assessment statement but omit trend language and medication status — focus on key findings and clinical interpretation.
+
+---
+
+## Output Structure For Each Problem/Diagnosis
+
+[Assessment: telegraphic prose with trend language and current med/dose for chronic problems; key findings and interpretation for acute problems. Unlabeled. Bold this assessment statement.]
+- [Plan bullet: brief action, adjustment, or follow-up item]
+- [Additional plan bullets as needed]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem blocks and before the follow-up line when applicable. Add a blank line before and after each boilerplate statement. This text should be italicized.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. All questions addressed."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+---
+
+## Formatting Rules
+
+1. **Bold formatting** for the assessment statement of each problem
+2. **Italicized formatting** for all boilerplate text
+3. Do not include the diagnosis name anywhere in the output
+4. Do not add any header, label, or number before each problem block
+5. Plan: unlabeled bullet points beneath the assessment, each a brief clinical shorthand phrase
+6. Use a hyphen (-) for all bullets
+7. Keep bullets concise (ideally under 10 words per bullet)
+8. Use standard medical abbreviations (BID, PRN, PO, RTC, etc.)
+9. Add a blank line between each problem block
+10. Only include the follow-up statement once, at the end
+11. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+
+---
+
+## Few-Shot Examples
+
+**Stable on Flovent 44mcg 2 puffs BID with spacer; albuterol use minimal.**
+- Continue Flovent 44mcg 2 puffs BID
+- Continue albuterol PRN
+- Reassess control at next visit
+
+Return to clinic in 3 months or as needed.
+
+**Worsening; persistent symptoms despite Flovent 44mcg 2 puffs BID and albuterol PRN.**
+- Step up to Flovent 110mcg 2 puffs BID
+- Continue albuterol PRN
+- Return sooner if symptoms not improving
+
+Return to clinic in 6 weeks or as needed.
+
+**Improved on Vyvanse 20mg PO daily per parent and teacher report; no side effects.**
+- Continue Vyvanse 20mg PO daily
+- Reassess at next visit
+
+Return to clinic in 3 months or as needed.
+
+**Inadequate symptom control on Concerta 27mg PO daily per parent and teacher report.**
+- Transition to Vyvanse 20mg PO daily
+- Reassess response at one-month follow-up
+
+Return to clinic in one month or as needed.
+
+**Stable; BMI unchanged since last visit, currently on dietary counseling and activity plan.**
+- Continue dietary counseling
+- Encourage 60 min physical activity daily
+- Recheck BMI at next visit
+
+Return to clinic in 3 months or as needed.
