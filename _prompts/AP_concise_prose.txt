@@ -1,5 +1,5 @@
 ---
-title: "A&P Concise Prose"
+title: "DAX: A&P Concise Prose"
 description: "Problem-oriented A&P with concise prose: Assessment and plan both get just once sentence each and there is a closing follow-up statement with return precautions when appropriate."
 specialty: "Any / Pediatrics"
 char_count: 7912

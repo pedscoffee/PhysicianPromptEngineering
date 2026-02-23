@@ -1,5 +1,5 @@
 ---
-title: "A&P Ultra-Minimal One-Liner Per Problem"
+title: "ETA: A&P Ultra-Minimal One-Liner Per Problem"
 description: "The most compact A/P format: a single telegraphic sentence per problem that fuses assessment and plan into one line. Designed for high-volume clinicians who want the absolute minimum documentation footprint while still capturing the essential clinical reasoning and action taken."
 specialty: "All"
 char_count: 5500

@@ -1,5 +1,5 @@
 ---
-title: "A/P Formatting ('Pithy')"
+title: "ETA: A/P Formatting ('Pithy')"
 description: "Transforms AI scribe paragraphs into scannable, problem-oriented notes. Very generalizable."
 specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 3277

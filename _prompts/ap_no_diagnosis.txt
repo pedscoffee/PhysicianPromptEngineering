@@ -1,5 +1,5 @@
 ---
-title: "A&P Assessment + Plan (No Diagnosis Headers)"
+title: "DAX: A&P Assessment + Plan (No Diagnosis Headers)"
 description: "Problem-oriented A&P with a short assessment statement and bulleted plan, but without diagnosis headers. Designed for EHRs where the diagnosis is already recorded in a separate field."
 specialty: "Any / Pediatrics"
 char_count: 7417

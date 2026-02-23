@@ -1,5 +1,5 @@
 ---
-title: "A&P Hybrid Assessment-Prose + Plan-Bullets"
+title: "DAX: A&P Hybrid Assessment-Prose + Plan-Bullets"
 description: "Problem-oriented A&P with a concise telegraphic prose assessment followed by bulleted plan per problem. No one-liner. Cleanly separates clinical thinking (prose) from management actions (bullets)."
 specialty: "Any / Pediatrics"
 char_count: 8149

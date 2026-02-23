@@ -1,5 +1,5 @@
 ---
-title: "A&P DAX Formal (Assessment / Plan / Next Steps)"
+title: "DAX: A&P Formal (Assessment / Plan / Next Steps)"
 description: "Problem-oriented A&P with labeled Assessment, Plan, and Next Steps subsections per problem. More detailed and structured than 'pithy' styles. Ideal for physicians who prefer explicit clinical reasoning, clear action items, and conditional planning separated into distinct sections."
 specialty: "Any / Pediatrics"
 char_count: 8200

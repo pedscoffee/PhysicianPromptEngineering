@@ -1,5 +1,5 @@
 ---
-title: "A&P Short Blurb"
+title: "ETA: A&P Short Blurb"
 description: "Problem-oriented A/P using a resident-style one-liner blurb per diagnosis: concise assessment, plan, and forward-directed thinking in prose rather than bullets."
 specialty: "All"
 char_count: 8000

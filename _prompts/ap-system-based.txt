@@ -1,5 +1,5 @@
 ---
-title: "A&P System-Based (Inpatient / ED)"
+title: "ETA: A&P System-Based (Inpatient / ED)"
 description: "System-based A&P organized by organ system rather than by problem. Includes all systems with simple negative statements when stable or not relevant. Designed for inpatient admissions, hospital progress notes, and ED encounters where a systems-based approach is standard."
 specialty: "Inpatient / ED / Any"
 char_count: 5500

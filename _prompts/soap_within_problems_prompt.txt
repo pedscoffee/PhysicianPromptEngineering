@@ -1,5 +1,5 @@
 ---
-title: "A&P SOAP-Within-Problems"
+title: "DAX: A&P SOAP-Within-Problems"
 description: "Problem-oriented A&P with separated assessment and plan prose per problem. No one-liner. Two unlabeled prose lines per problem: the first captures key findings and clinical interpretation, the second describes management. Great for physicians who prefer full sentence structure over bullets."
 specialty: "Any / Pediatrics"
 char_count: 8540

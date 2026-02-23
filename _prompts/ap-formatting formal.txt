@@ -1,5 +1,5 @@
 ---
-title: "A/P Formatting ('Formal')"
+title: "ETA: A/P Formatting ('Formal')"
 description: "Transforms AI scribe paragraphs into more formal notes with Assessment, Plan, and Next Steps subsections. Very generalizable, could easily make your own subsections."
 specialty: "Pediatrics (adaptable to all specialties)"
 char_count: 4874

@@ -1,5 +1,5 @@
 ---
-title: "A&P DAX Assessment-Only (Orders & Dx in Chart)"
+title: "DAX: A&P Assessment-Only (Orders & Dx in Chart)"
 description: "Writes only a concise clinical assessment line per problem — no plan bullets, no diagnosis headers. Designed for workflows where the physician has already entered diagnosis codes and placed orders (medications, labs, referrals) in the chart, which will display automatically beneath the assessment. Keeps the note tight while ensuring clinical reasoning is documented."
 specialty: "Any / Pediatrics"
 char_count: 6800

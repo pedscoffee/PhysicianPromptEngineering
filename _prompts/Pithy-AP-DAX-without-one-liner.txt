@@ -1,5 +1,5 @@
 ---
-title: "A&P DAX Concise Bullets with Follow-Up Statement"
+title: "DAX: A&P Concise Bullets with Follow-Up Statement"
 description: "Problem-oriented, concise bullets with follow-up statement."
 specialty: "Any / Pediatrics"
 char_count: 6821

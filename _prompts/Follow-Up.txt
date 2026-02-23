@@ -1,5 +1,5 @@
 ---
-title: "Follow Up"
+title: "DAX: Follow Up"
 description: "Captures follow-up timeframes or instructions for the final section of a clinical note."
 specialty: "All"
 char_count: 104

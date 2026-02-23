@@ -1,5 +1,5 @@
 ---
-title: "A&P Numbered Plan"
+title: "ETA: A&P Numbered Plan"
 description: "Problem-oriented A/P with a one-liner assessment and numbered plan items (1. 2. 3.) instead of bullet hyphens. Ideal for physicians who reference plan items by number during handoffs or follow-ups."
 specialty: "All"
 char_count: 3500
