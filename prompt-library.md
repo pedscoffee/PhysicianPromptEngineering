@@ -64,9 +64,13 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
 <div class="hero">
   <div class="container">
     <h1 class="hero-title">Clinical Documentation Prompt Library</h1>
-    <p class="hero-subtitle">
+    <p class="hero-subtitle" style="margin-bottom: var(--space-6);">
       Production-ready prompts for AI-powered clinical documentation. Copy, customize, and deploy.
     </p>
+    <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
+      <a href="{{ site.baseurl }}/prompt-style-guide/" class="btn btn-primary btn-lg">Compare A&P Styles</a>
+      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: white;">A&P Builder</a>
+    </div>
   </div>
 </div>
 
@@ -98,6 +102,16 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
               <div class="category-nav-section" style="margin-bottom: var(--space-6);">
                 <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-top: 0; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
                 <ul style="list-style: none; padding: 0; margin: 0;">
+                  {% if cat_name == 'Documentation' %}
+                  <li style="margin-bottom: var(--space-3); padding-bottom: var(--space-2); border-bottom: 1px dashed var(--color-border);">
+                    <a href="{{ site.baseurl }}/prompt-style-guide/" style="display: flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 600; font-size: var(--font-size-sm); text-decoration: none;">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 1rem; height: 1rem;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746-3.746 0 0 1-3.296-1.043 3.745-3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746-3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                      </svg>
+                      Compare All Styles side-by-side →
+                    </a>
+                  </li>
+                  {% endif %}
                   {% assign sorted_items = group.items | sort: "title" %}
                   {% for prompt in sorted_items %}
                   <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
