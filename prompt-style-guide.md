@@ -182,7 +182,7 @@ permalink: /prompt-style-guide/
   <div class="container">
     <h1 class="hero-title">Prompt Style Guide</h1>
     <p class="hero-subtitle">
-      Choose how your AI scribe documents each encounter. Compare DAX and ETA outputs side by side to find your perfect fit.
+      Choose how your AI scribe documents each encounter. Compare model outputs side by side to find your perfect fit.
     </p>
   </div>
 </div>
@@ -267,9 +267,10 @@ permalink: /prompt-style-guide/
           <ol style="margin: 0; padding-left: var(--space-5); line-height: 1.8;">
             <li><strong>Browse the examples below</strong> — each card shows the same patient scenario formatted in a different style</li>
             <li><strong>Pick the one closest to how you like to write</strong> — there's no wrong answer</li>
-            <li><strong>Choose your tool</strong> — pick the **DAX** or **ETA** version depending on which AI scribe tool you are using</li>
-            <li><strong>Find it in the <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a></strong> — click the buttons below to copy the full prompt and paste it into your Custom Instructions</li>
-            <li><strong>Customize</strong> — swap in your own dot phrases, adjust the few-shot examples to your specialty, and iterate</li>
+            <li><strong>Choose your tool</strong> — pick the model version depending on which AI scribe tool you are using</li>
+            <li><strong>Find it in the <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a></strong> — click the buttons below to copy the full prompt and paste it into your LLM or tool's custom instructions</li>
+            <li><strong>Customize</strong> — swap in your own dot phrases, adjust the few-shot examples to your specialty, and iterate from there</li>
+            <li><strong>Contribute</strong> — consider sharing your prompts back with the community!  The more prompts we have the easier it is for the next person.</li>
           </ol>
         </div>
       </div>
