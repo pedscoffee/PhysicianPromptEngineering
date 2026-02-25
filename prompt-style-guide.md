@@ -270,7 +270,7 @@ permalink: /prompt-style-guide/
             <li><strong>Choose your tool</strong> — pick the model version depending on which AI scribe tool you are using</li>
             <li><strong>Find it in the <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a></strong> — click the buttons below to copy the full prompt and paste it into your LLM or tool's custom instructions</li>
             <li><strong>Customize</strong> — swap in your own dot phrases, adjust the few-shot examples to your specialty, and iterate from there</li>
-            <li><strong>Contribute</strong> — consider sharing your prompts back with the community!  The more prompts we have the easier it is for the next person.</li>
+            <li><strong>Contribute</strong> — consider sharing your prompts back with the community! As these tools continue to evolve we can all benefit from learning from each other</li>
           </ol>
         </div>
       </div>
