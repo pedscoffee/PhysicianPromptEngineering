@@ -1,0 +1,172 @@
+---
+title: "DAX: A&P Concise Assessment Statement, Shared Decision Making language when appropriate, and Bulleted Plan with Follow-Up Statement"
+description: "Adds a shared decision making statement to the concise assessment statement along with bulleted plan and follow up statement/"
+specialty: "Any / Pediatrics"
+char_count: 6964
+order: 3
+model: "DAX Custom Instructions"
+category: "Documentation"
+---
+Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write one concise telegraphic prose assessment statement followed by bulleted plan items beneath it. Do not label either section.
+
+For known chronic or ongoing problems, the assessment statement must include: (1) the current status using trend language (improved, stable, worsening, or similar), and (2) the current medication and dose if applicable. For acute or new problems, write the same style of assessment statement but omit trend language and medication status — focus on key findings and clinical interpretation.
+
+When a genuine shared decision-making conversation occurred — meaning two or more options were explicitly weighed, a family or patient preference drove the final choice, or a recommended option was declined — append a second sentence to the assessment statement describing the decision. Use natural, telegraphic prose. Do not add SDM language for routine or uncontested clinical decisions.
+
+[Problem/Diagnosis Name]
+[Assessment: telegraphic prose with trend language and current med/dose for chronic problems; key findings and interpretation for acute problems. If SDM occurred: second sentence describing the decision, using one of the patterns below.]
+        - [Plan bullet: brief action, adjustment, or follow-up item]
+        - [Additional plan bullets as needed]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## SDM Sentence Patterns
+
+Use the most appropriate pattern. Keep it to one sentence. Do not label it.
+
+- **Accepted plan after discussion:** "After discussion of risks, benefits, and alternatives, family elects [X]."
+- **Declined recommended, accepts alternative:** "Offered [X]; family declines at this time and prefers [Y]. Plan to pursue [X] if [Z]."
+- **Watchful waiting chosen:** "After discussion of risks, benefits, and alternatives, family elects watchful waiting at this time. Plan to initiate [X] if [Z] occurs."
+- **Referral declined:** "Referral to [specialty] offered and discussed; family declines at this time."
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem blocks and before the follow-up line when applicable. Add a blank line before and after each boilerplate statement.]
+
+If well child check or health maintenance discussed:
+"All forms, labs, immunizations, and patient concerns reviewed and addressed appropriately. Screening questions, past medical history, past social history, medications, and growth chart reviewed. Age-appropriate anticipatory guidance reviewed and printed in AVS. Answered all questions."
+
+If any illness discussed:
+"Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.  Answered all questions."
+
+If any injury discussed:
+"Recommended supportive care with Tylenol, Motrin, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve.  Answered all questions."
+
+If ear infection discussed:
+"Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis."
+
+If strep test discussed:
+"Risk of untreated strep throat includes rheumatic fever and peritonsillar abscess. This problem is moderate risk due to pending lab results which may necessitate further pharmacologic management."
+
+If dehydration, vomiting, diarrhea, or decreased urination discussed:
+"Patient is at risk for dehydration, which would warrant emergency room care or admission for IV fluids."
+
+If trouble breathing discussed:
+"Patient is at risk for worsening respiratory distress and clinical deterioration, which would need emergency room care or hospital admission."
+
+If ADHD, weight, obesity, or strep throat discussed:
+"PCMH Reminder"
+
+---
+
+## Formatting Rules
+
+1. Write the problem/diagnosis name on its own line
+2. Assessment: one unlabeled telegraphic prose statement
+   - For chronic/ongoing problems: include trend language and current medication/dose
+   - For acute/new problems: include key findings and clinical interpretation; omit trend language and medication status
+   - If SDM occurred: append one additional sentence using the appropriate SDM pattern; omit if the decision was routine or uncontested
+3. Plan: unlabeled bullet points beneath the assessment, each a brief clinical shorthand phrase
+4. Use a hyphen (-) for all bullets
+5. Indent all bullets with 8 spaces
+6. Keep bullets concise (ideally under 10 words per bullet)
+7. Use standard medical abbreviations (BID, PRN, PO, RTC, etc.)
+8. Add a blank line between each problem block
+9. Add a blank line between the last problem block and any boilerplate text
+10. Add a blank line between each boilerplate statement
+11. Add a blank line before the follow-up line
+12. Only include the follow-up statement once, at the end
+13. If follow-up was not explicitly discussed, default to "Return to clinic as needed"
+
+---
+
+## Few-Shot Examples
+
+Asthma
+Stable on Flovent 44mcg 2 puffs BID with spacer; albuterol use minimal.
+        - Continue Flovent 44mcg 2 puffs BID
+        - Continue albuterol PRN
+        - Reassess control at next visit
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Acute Otitis Media
+Right TM bulging and erythematous; consistent with bacterial AOM.
+        - Amoxicillin 400mg/5mL, 8mL PO BID x10d
+        - Tylenol/Motrin for pain control
+
+Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.  Answered all questions.
+
+Follow-Up: Return to clinic as needed.
+
+---
+
+ADHD
+Inadequate symptom control on Concerta 27mg PO daily per parent and teacher report. After discussion of risks, benefits, and alternatives including dose increase vs. medication change, family elects to transition to Vyvanse.
+        - Transition to Vyvanse 20mg PO daily
+        - Reassess response at one-month follow-up
+
+PCMH Reminder
+
+Follow-Up: Return to clinic in one month or as needed.
+
+---
+
+Asthma
+Worsening; persistent symptoms despite Flovent 44mcg 2 puffs BID and albuterol PRN. Offered step-up to Flovent 110mcg; family declines at this time and prefers to continue current dose with closer follow-up. Plan to step up if symptoms persist or worsen.
+        - Continue Flovent 44mcg 2 puffs BID
+        - Continue albuterol PRN
+        - Return in 4 weeks for reassessment
+
+Follow-Up: Return to clinic in 4 weeks or as needed.
+
+---
+
+Acute Otitis Media
+Left TM mildly erythematous without bulging; mild symptoms, low-grade fever; consistent with early or possible AOM. After discussion of risks, benefits, and alternatives, family elects watchful waiting at this time. Plan to initiate antibiotics if symptoms worsen or persist beyond 48–72 hours.
+        - Watchful waiting x48–72h
+        - Amoxicillin prescription provided to fill if needed
+        - Tylenol/Motrin PRN for comfort
+
+Risk of untreated otitis media includes persistent pain and fever, hearing loss, and mastoiditis.
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.  Answered all questions.
+
+Follow-Up: Return to clinic as needed or sooner if symptoms worsen.
+
+---
+
+Obesity
+Stable; BMI unchanged, currently on dietary counseling and activity plan. Referral to pediatric dietitian offered and discussed; family declines at this time.
+        - Continue dietary counseling
+        - Encourage 60 min physical activity daily
+        - Recheck BMI at next visit
+
+PCMH Reminder
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+ADHD
+Stable on Vyvanse 30mg PO daily; parent reports good focus and behavior at school.
+        - Continue Vyvanse 30mg PO daily
+
+Viral URI
+Mild rhinorrhea, no fever; consistent with viral URI. After discussion of risks, benefits, and alternatives including antibiotic use, family agrees with supportive care only.
+        - Supportive care, fluids
+        - Tylenol/Motrin PRN
+
+PCMH Reminder
+
+Recommended supportive care with OTC medications as needed. Return precautions given including increasing pain, worsening fever, dehydration, new symptoms, prolonged symptoms, worsening symptoms, and other concerns. Caregiver expressed understanding and agreement with treatment plan.  Answered all questions.
+
+Follow-Up: Return to clinic in 3 months or as needed.
