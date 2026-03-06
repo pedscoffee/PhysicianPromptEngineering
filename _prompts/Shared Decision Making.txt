@@ -1,5 +1,5 @@
 ---
-title: "DAX: A&P Shared Decision Making Add In Statement
+title: "DAX: A&P Shared Decision Making Add In Statement"
 description: "Adds a shared decision making statement to the concise assessment statement along with bulleted plan and follow up statement"
 specialty: "Any / Pediatrics"
 char_count: 8171
