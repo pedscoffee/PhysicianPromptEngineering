@@ -1,0 +1,193 @@
+---
+title: "DAX: A&P Concise Assessment Statement and Bulleted Plan with Follow-Up Statement (Specialty Agnostic)"
+description: "Problem-oriented A&P for any specialty. Known chronic problems include trend language and current medication/dose in the assessment, followed by a bulleted plan. Acute or new problems use the same structure without trend language. No one-liner. Adapted from the pediatrics-optimized version for universal use."
+specialty: "Any"
+char_count: 7842
+order: 3
+model: "DAX Custom Instructions"
+category: "Documentation"
+---
+Reformat the assessment and plan into a structured, problem-oriented format. For each problem, write one concise telegraphic prose assessment statement followed by bulleted plan items beneath it. Do not label either section.
+
+For known chronic or ongoing problems, the assessment statement must include: (1) the current status using trend language (improved, stable, worsening, or similar), and (2) the current medication and dose if applicable. For acute or new problems, write the same style of assessment statement but omit trend language and medication status — focus on key findings and clinical interpretation.
+
+[Problem/Diagnosis Name]
+[Assessment: telegraphic prose with trend language and current med/dose for chronic problems; key findings and interpretation for acute problems. Unlabeled.]
+        - [Plan bullet: brief action, adjustment, or follow-up item]
+        - [Additional plan bullets as needed]
+
+[Follow-Up: Brief description of follow-up plan if discussed.]
+
+---
+
+## Conditional Boilerplate Text
+
+[Insert after all problem blocks and before the follow-up line when applicable. Add a blank line before and after each boilerplate statement.]
+
+If preventive care or health maintenance discussed:
+"All screening questions, past medical history, social history, medications, allergies, and preventive care needs reviewed and addressed appropriately. Age-appropriate counseling provided. Patient questions addressed."
+
+If any acute illness discussed:
+"Recommended supportive care as appropriate. Return precautions given including worsening symptoms, new symptoms, failure to improve within expected timeframe, and other concerns. Patient expressed understanding and agreement with treatment plan."
+
+If any injury or musculoskeletal complaint discussed:
+"Recommended supportive care with analgesics, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve."
+
+If any new prescription medication started:
+"Risks, benefits, and alternatives of pharmacologic management discussed. Patient expressed understanding and agreement with treatment plan."
+
+If any controlled substance prescribed or adjusted:
+"Risks and benefits of controlled substance use discussed including potential for dependence. Patient expressed understanding and agreement with treatment plan."
+
+If pending lab or imaging results discussed:
+"Patient informed that results are pending and will be communicated when available. This problem is moderate risk due to pending results which may necessitate further management."
+
+If patient is at risk for clinical deterioration:
+"Patient is at risk for clinical deterioration which would warrant emergency department evaluation or hospital admission. Return precautions and red-flag symptoms reviewed."
+
+If procedure performed:
+"Risks, benefits, alternatives, and potential complications of procedure discussed. Informed consent obtained. Patient tolerated procedure well without immediate complications."
+
+---
+
+## Formatting Rules
+
+1. Write the problem/diagnosis name on its own line
+2. Assessment: one unlabeled telegraphic prose statement
+   - For chronic/ongoing problems: include trend language and current medication/dose
+   - For acute/new problems: include key findings and clinical interpretation; omit trend language and medication status
+3. Plan: unlabeled bullet points beneath the assessment, each a brief clinical shorthand phrase
+4. Use a hyphen (-) for all bullets
+5. Indent all bullets with 8 spaces
+6. Keep bullets concise (ideally under 10 words per bullet)
+7. Use standard medical abbreviations (BID, PRN, PO, RTC, etc.)
+8. Add a blank line between each problem block
+9. Add a blank line between the last problem block and any boilerplate text
+10. Add a blank line between each boilerplate statement
+11. Add a blank line before the follow-up line
+12. Only include the follow-up statement once, at the end
+13. If follow-up was not explicitly discussed, default to "Follow up as needed"
+
+---
+
+## Few-Shot Examples
+
+Hypertension
+Stable on lisinopril 10mg PO daily; BP at goal 128/78 today.
+        - Continue lisinopril 10mg PO daily
+        - Continue home BP monitoring
+        - Recheck BMP at next visit
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Hypertension
+Worsening; BP elevated 158/94 despite lisinopril 10mg PO daily and lifestyle modifications.
+        - Increase lisinopril to 20mg PO daily
+        - Reinforce low-sodium diet
+        - Recheck BP in 4 weeks
+        - BMP to reassess renal function
+
+Risks, benefits, and alternatives of pharmacologic management discussed. Patient expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic in 4 weeks or as needed.
+
+---
+
+Type 2 Diabetes Mellitus
+Improved on metformin 1000mg PO BID; A1c down from 8.2% to 7.1%.
+        - Continue metformin 1000mg PO BID
+        - Continue dietary counseling
+        - Recheck A1c in 3 months
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Type 2 Diabetes Mellitus
+Worsening; A1c 9.4% despite metformin 1000mg PO BID and lifestyle modifications.
+        - Add empagliflozin 10mg PO daily
+        - Diabetes education referral
+        - Recheck A1c in 3 months
+
+Risks, benefits, and alternatives of pharmacologic management discussed. Patient expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Major Depressive Disorder
+Stable on sertraline 100mg PO daily; PHQ-9 score 6, improved from 14 at last visit.
+        - Continue sertraline 100mg PO daily
+        - Continue therapy
+        - Reassess mood at next visit
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Major Depressive Disorder
+Inadequate response on sertraline 50mg PO daily; PHQ-9 score 18, persistent low mood and anhedonia.
+        - Increase sertraline to 100mg PO daily
+        - Therapy referral if not already engaged
+        - Safety plan reviewed, no SI/HI
+        - Reassess in 4 weeks
+
+Risks, benefits, and alternatives of pharmacologic management discussed. Patient expressed understanding and agreement with treatment plan.
+
+Follow-Up: Return to clinic in 4 weeks or as needed.
+
+---
+
+Hypertension
+Stable on lisinopril 10mg PO daily; BP 130/80.
+        - Continue current regimen
+
+Acute Low Back Pain
+Acute onset after lifting, paravertebral tenderness L4-L5, no radiculopathy.
+        - Ibuprofen 600mg PO q8h PRN x7d
+        - Activity modification, avoid heavy lifting
+        - Physical therapy referral
+
+Recommended supportive care with analgesics, rest, ice, compression, elevation, and gradual return to activity as appropriate. Return precautions given including increasing pain, swelling, or failure to improve.
+
+Follow-Up: Return to clinic in 3 months or as needed.
+
+---
+
+Atrial Fibrillation
+Stable on metoprolol 50mg PO BID and apixaban 5mg PO BID; rate well controlled, no palpitations or dyspnea.
+        - Continue metoprolol 50mg PO BID
+        - Continue apixaban 5mg PO BID
+        - Annual echocardiogram per cardiology
+
+Community-Acquired Pneumonia
+Right lower lobe consolidation on CXR; fever, productive cough, and dyspnea x3 days.
+        - Amoxicillin-clavulanate 875/125mg PO BID x7d
+        - Guaifenesin PRN
+        - Encourage fluids and rest
+        - Return if worsening dyspnea or persistent fever >48h on antibiotics
+
+Risks, benefits, and alternatives of pharmacologic management discussed. Patient expressed understanding and agreement with treatment plan.
+
+Recommended supportive care as appropriate. Return precautions given including worsening symptoms, new symptoms, failure to improve within expected timeframe, and other concerns. Patient expressed understanding and agreement with treatment plan.
+
+Patient is at risk for clinical deterioration which would warrant emergency department evaluation or hospital admission. Return precautions and red-flag symptoms reviewed.
+
+Follow-Up: Return to clinic in 2 weeks for pneumonia recheck or sooner if worsening.
+
+---
+
+Osteoarthritis, Bilateral Knees
+Stable; manageable pain on acetaminophen 650mg PO TID PRN, ambulatory without assistive device.
+        - Continue acetaminophen PRN
+        - Continue home exercise program
+        - Consider PT if symptoms progress
+
+Hypothyroidism
+Stable on levothyroxine 75mcg PO daily; TSH 2.4, within goal range.
+        - Continue levothyroxine 75mcg PO daily
+        - Recheck TSH in 6 months
+
+Follow-Up: Return to clinic in 6 months or as needed.
