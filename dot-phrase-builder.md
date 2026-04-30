@@ -36,16 +36,12 @@ permalink: /dot-phrase-builder/
   }
 
   .dot-builder-shell {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
-    gap: var(--space-5);
     margin: var(--space-6) auto;
-    max-width: 1180px;
+    max-width: 980px;
     padding: 0 var(--space-4);
   }
 
-  .dot-builder-panel,
-  .dot-builder-sidebar {
+  .dot-builder-panel {
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -185,52 +181,6 @@ permalink: /dot-phrase-builder/
     background: var(--color-bg-tertiary);
   }
 
-  .dot-builder-sidebar {
-    align-self: start;
-    display: grid;
-    gap: var(--space-4);
-    padding: var(--space-4);
-  }
-
-  .dot-builder-sidebar h2,
-  .dot-builder-sidebar h3 {
-    color: var(--color-primary-dark);
-    margin: 0;
-  }
-
-  .dot-builder-chip-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  .dot-builder-chip {
-    background: var(--color-primary-light);
-    border: 1px solid transparent;
-    border-radius: var(--radius-full);
-    color: var(--color-primary-dark);
-    cursor: pointer;
-    font-size: var(--font-size-sm);
-    padding: 0.45rem 0.75rem;
-  }
-
-  .dot-builder-chip:hover {
-    border-color: var(--color-primary);
-  }
-
-  .dot-builder-output {
-    background: var(--color-bg-tertiary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-relaxed);
-    min-height: 220px;
-    overflow: auto;
-    padding: var(--space-3);
-  }
-
-  .dot-builder-output h2,
-  .dot-builder-output h3,
   .dot-builder-message h2,
   .dot-builder-message h3 {
     color: var(--color-primary-dark);
@@ -238,19 +188,15 @@ permalink: /dot-phrase-builder/
     margin: 0 0 var(--space-2);
   }
 
-  .dot-builder-output p,
   .dot-builder-message p {
     margin: 0 0 var(--space-3);
   }
 
-  .dot-builder-output ul,
-  .dot-builder-output ol,
   .dot-builder-message ul,
   .dot-builder-message ol {
     margin: 0 0 var(--space-3) var(--space-5);
   }
 
-  .dot-builder-output code,
   .dot-builder-message code {
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
@@ -261,42 +207,19 @@ permalink: /dot-phrase-builder/
     padding: 0.1rem 0.25rem;
   }
 
-  .dot-builder-output strong,
   .dot-builder-message strong {
     color: var(--color-text-primary);
   }
 
-  .dot-builder-note {
-    border-left: 4px solid var(--color-secondary);
-    color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
-    line-height: var(--line-height-relaxed);
-    padding-left: var(--space-3);
-  }
-
   @media (prefers-color-scheme: dark) {
     .dot-builder-hero h1,
-    .dot-builder-sidebar h2,
-    .dot-builder-sidebar h3 {
+    .dot-builder-message h2,
+    .dot-builder-message h3 {
       color: var(--color-text-primary);
     }
 
     .dot-builder-message.error {
       color: var(--color-text-primary);
-    }
-  }
-
-  @media (max-width: 920px) {
-    .dot-builder-shell {
-      grid-template-columns: 1fr;
-    }
-
-    .dot-builder-sidebar {
-      order: -1;
-    }
-
-    .dot-builder-chat {
-      height: 520px;
     }
   }
 
@@ -361,32 +284,6 @@ permalink: /dot-phrase-builder/
         </div>
       </form>
     </main>
-
-    <aside class="dot-builder-sidebar" aria-label="Dot phrase workspace">
-      <section>
-        <h2>Draft Library</h2>
-        <p class="dot-builder-note">Generated phrases stay in this browser session until copied. Avoid patient identifiers or protected health information.</p>
-      </section>
-
-      <section>
-        <h3>Common Starts</h3>
-        <div class="dot-builder-chip-group">
-          <button class="dot-builder-chip" type="button" data-example="Create dot phrases for diabetes follow-up counseling, medication adherence, home glucose logs, and return precautions.">Diabetes follow-up</button>
-          <button class="dot-builder-chip" type="button" data-example="Create dot phrases for pediatric fever advice, dosing reminders, hydration, red flags, and when to seek urgent care.">Pediatric fever</button>
-          <button class="dot-builder-chip" type="button" data-example="Create dot phrases for medication refills when labs or follow-up visits are overdue.">Refill bottlenecks</button>
-          <button class="dot-builder-chip" type="button" data-example="Create dot phrases for abnormal imaging results, next steps, reassurance, and follow-up planning.">Abnormal results</button>
-        </div>
-      </section>
-
-      <section>
-        <h3>Latest Output</h3>
-        <div class="dot-builder-output" id="dotBuilderOutput">No dot phrases generated yet.</div>
-        <div class="dot-builder-actions" style="margin-top: var(--space-3);">
-          <button class="dot-builder-button secondary" id="dotBuilderCopy" type="button">Copy</button>
-          <button class="dot-builder-button secondary" id="dotBuilderDownload" type="button">Download</button>
-        </div>
-      </section>
-    </aside>
   </div>
 </div>
 

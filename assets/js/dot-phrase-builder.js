@@ -63,10 +63,6 @@ const els = {
   reset: document.getElementById("dotBuilderReset"),
   model: document.getElementById("dotBuilderModel"),
   status: document.getElementById("dotBuilderStatus"),
-  output: document.getElementById("dotBuilderOutput"),
-  copy: document.getElementById("dotBuilderCopy"),
-  download: document.getElementById("dotBuilderDownload"),
-  chips: document.querySelectorAll(".dot-builder-chip[data-example]"),
 };
 
 function setStatus(text) {
@@ -177,32 +173,7 @@ function resetConversation() {
   state.messages = [{ role: "system", content: SYSTEM_PROMPT }];
   state.latestOutput = "";
   els.chat.innerHTML = "";
-  els.output.textContent = "No dot phrases generated yet.";
   appendMessage("assistant", INITIAL_MESSAGE);
-}
-
-function extractReusableOutput(text) {
-  const outputMarkers = [
-    "## Three Dot Phrase Options",
-    "## Dot Phrase Options",
-    "## Dot Phrase Set",
-    "### Option 1",
-    "Option 1:",
-  ];
-
-  const markerIndex = outputMarkers
-    .map((marker) => text.indexOf(marker))
-    .filter((index) => index >= 0)
-    .sort((a, b) => a - b)[0];
-
-  return markerIndex >= 0 ? text.slice(markerIndex).trim() : text.trim();
-}
-
-function updateLatestOutput(text) {
-  state.latestOutput = extractReusableOutput(text);
-  els.output.innerHTML = state.latestOutput
-    ? renderMarkdown(state.latestOutput)
-    : "No dot phrases generated yet.";
 }
 
 async function loadModel() {
@@ -304,10 +275,6 @@ async function sendMessage(content) {
     const finalReply = reply.trim();
     state.messages.push({ role: "assistant", content: finalReply });
 
-    if (isDotPhraseOutput(finalReply)) {
-      updateLatestOutput(finalReply);
-    }
-
     setStatus(`Model ready: ${state.modelId}`);
   } catch (error) {
     console.error(error);
@@ -321,37 +288,6 @@ async function sendMessage(content) {
   }
 }
 
-function isDotPhraseOutput(text) {
-  const hasOptionStructure = /(?:^|\n)#{0,3}\s*Option\s+1\b/i.test(text)
-    && /(?:^|\n)#{0,3}\s*Option\s+2\b/i.test(text)
-    && /(?:^|\n)#{0,3}\s*Option\s+3\b/i.test(text);
-  const hasShortcut = /(?:^|\s)`?\.[a-z][a-z0-9_-]+`?/i.test(text);
-  const isQuestionSet = /Quick Clarifying Questions/i.test(text);
-
-  return !isQuestionSet && (hasOptionStructure || hasShortcut);
-}
-
-async function copyLatestOutput() {
-  if (!state.latestOutput) return;
-  await navigator.clipboard.writeText(state.latestOutput);
-  setStatus("Copied latest dot phrase set.");
-}
-
-function downloadLatestOutput() {
-  if (!state.latestOutput) return;
-
-  const blob = new Blob([state.latestOutput], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "dot-phrase-set.txt";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-  setStatus("Downloaded latest dot phrase set.");
-}
-
 els.load.addEventListener("click", loadModel);
 
 els.form.addEventListener("submit", (event) => {
@@ -363,16 +299,6 @@ els.reset.addEventListener("click", () => {
   resetConversation();
   setStatus(state.engine ? `Model ready: ${state.modelId}` : "Ready to load the model.");
   els.input.focus();
-});
-
-els.copy.addEventListener("click", copyLatestOutput);
-els.download.addEventListener("click", downloadLatestOutput);
-
-els.chips.forEach((chip) => {
-  chip.addEventListener("click", () => {
-    els.input.value = chip.dataset.example;
-    els.input.focus();
-  });
 });
 
 resetConversation();
