@@ -182,7 +182,19 @@ function resetConversation() {
 }
 
 function extractReusableOutput(text) {
-  const markerIndex = text.indexOf("## Three Dot Phrase Options");
+  const outputMarkers = [
+    "## Three Dot Phrase Options",
+    "## Dot Phrase Options",
+    "## Dot Phrase Set",
+    "### Option 1",
+    "Option 1:",
+  ];
+
+  const markerIndex = outputMarkers
+    .map((marker) => text.indexOf(marker))
+    .filter((index) => index >= 0)
+    .sort((a, b) => a - b)[0];
+
   return markerIndex >= 0 ? text.slice(markerIndex).trim() : text.trim();
 }
 
@@ -292,7 +304,7 @@ async function sendMessage(content) {
     const finalReply = reply.trim();
     state.messages.push({ role: "assistant", content: finalReply });
 
-    if (finalReply.includes("## Three Dot Phrase Options")) {
+    if (isDotPhraseOutput(finalReply)) {
       updateLatestOutput(finalReply);
     }
 
@@ -307,6 +319,16 @@ async function sendMessage(content) {
     setBusy(false);
     els.input.focus();
   }
+}
+
+function isDotPhraseOutput(text) {
+  const hasOptionStructure = /(?:^|\n)#{0,3}\s*Option\s+1\b/i.test(text)
+    && /(?:^|\n)#{0,3}\s*Option\s+2\b/i.test(text)
+    && /(?:^|\n)#{0,3}\s*Option\s+3\b/i.test(text);
+  const hasShortcut = /(?:^|\s)`?\.[a-z][a-z0-9_-]+`?/i.test(text);
+  const isQuestionSet = /Quick Clarifying Questions/i.test(text);
+
+  return !isQuestionSet && (hasOptionStructure || hasShortcut);
 }
 
 async function copyLatestOutput() {
