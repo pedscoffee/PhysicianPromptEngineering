@@ -222,12 +222,48 @@ permalink: /dot-phrase-builder/
     background: var(--color-bg-tertiary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    font-family: var(--font-family-mono);
     font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
     min-height: 220px;
     overflow: auto;
     padding: var(--space-3);
-    white-space: pre-wrap;
+  }
+
+  .dot-builder-output h2,
+  .dot-builder-output h3,
+  .dot-builder-message h2,
+  .dot-builder-message h3 {
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--space-2);
+  }
+
+  .dot-builder-output p,
+  .dot-builder-message p {
+    margin: 0 0 var(--space-3);
+  }
+
+  .dot-builder-output ul,
+  .dot-builder-output ol,
+  .dot-builder-message ul,
+  .dot-builder-message ol {
+    margin: 0 0 var(--space-3) var(--space-5);
+  }
+
+  .dot-builder-output code,
+  .dot-builder-message code {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary-dark);
+    font-family: var(--font-family-mono);
+    font-size: 0.95em;
+    padding: 0.1rem 0.25rem;
+  }
+
+  .dot-builder-output strong,
+  .dot-builder-message strong {
+    color: var(--color-text-primary);
   }
 
   .dot-builder-note {
@@ -344,7 +380,7 @@ permalink: /dot-phrase-builder/
 
       <section>
         <h3>Latest Output</h3>
-        <pre class="dot-builder-output" id="dotBuilderOutput">No dot phrases generated yet.</pre>
+        <div class="dot-builder-output" id="dotBuilderOutput">No dot phrases generated yet.</div>
         <div class="dot-builder-actions" style="margin-top: var(--space-3);">
           <button class="dot-builder-button secondary" id="dotBuilderCopy" type="button">Copy</button>
           <button class="dot-builder-button secondary" id="dotBuilderDownload" type="button">Download</button>

@@ -1,8 +1,12 @@
 const WEBLLM_IMPORT_URL = "https://esm.run/@mlc-ai/web-llm";
 
-const SYSTEM_PROMPT = `You help clinicians create reusable EMR dot phrase snippets.
+const SYSTEM_PROMPT = `You help clinicians create reusable EMR dot phrase snippets through a short back-and-forth interview.
 
-Ask concise follow-up questions when the user's workflow is underspecified. When enough context is available, produce practical dot phrases.
+Default behavior:
+1. First, ask 3 to 5 clarifying questions unless the user has already supplied enough detail.
+2. Keep questions concrete and clinically practical. Ask about setting, audience, tone, common triggers, return precautions, and what the clinician repeats most often.
+3. After the user answers, produce exactly three concise options that explore different reusable approaches to the same topic.
+4. Do not produce a long library unless the user explicitly asks for more.
 
 Core task: Based on topics discussed, extract counseling, anticipatory guidance, and care instructions. Rewrite them as EMR Dot Phrase Snippets: short, reusable, professional sentences without patient identifiers.
 
@@ -10,19 +14,34 @@ Rules:
 - Never include patient identifiers.
 - Do not invent patient-specific diagnoses, medications, doses, or test results.
 - Focus on counseling, anticipatory guidance, care instructions, result follow-up, workflow bottlenecks, and documentation reuse.
-- Write short, professional sentences that can be pasted into an EMR.
-- Prefer reusable snippets over long notes.
+- Write concise, professional sentences that can be pasted into an EMR.
+- Prefer reusable snippets over long notes. Each snippet should usually be 1 to 3 sentences.
 - Include suggested shortcut names that start with a dot.
-- If the user asks for a set, return 4 to 8 snippets.
+- If details are missing, ask clarifying questions instead of filling gaps with generic prose.
 
-Output format when generating phrases:
-## Dot Phrase Set: [short title]
+When asking clarifying questions, use this exact format:
+## Quick Clarifying Questions
+1. [question]
+2. [question]
+3. [question]
 
-.shortcut
-Snippet text.
+When generating final phrases, use this exact format:
+## Three Dot Phrase Options
 
-.shortcut
-Snippet text.`;
+### Option 1: [specific angle]
+**Shortcut:** \`.shortcut\`
+**Snippet:** [1 to 3 concise reusable sentences.]
+
+### Option 2: [specific angle]
+**Shortcut:** \`.shortcut\`
+**Snippet:** [1 to 3 concise reusable sentences.]
+
+### Option 3: [specific angle]
+**Shortcut:** \`.shortcut\`
+**Snippet:** [1 to 3 concise reusable sentences.]
+
+### Best Fit
+[One sentence recommending when to use each option.]`;
 
 const INITIAL_MESSAGE = `Tell me about a common condition, inbox message, counseling topic, or documentation bottleneck. I can ask a few questions, then draft a reusable dot phrase set.`;
 
@@ -63,10 +82,95 @@ function setBusy(isBusy) {
 function appendMessage(role, content, extraClass = "") {
   const message = document.createElement("div");
   message.className = `dot-builder-message ${role}${extraClass ? ` ${extraClass}` : ""}`;
-  message.textContent = content;
+  setMessageContent(message, content);
   els.chat.appendChild(message);
   els.chat.scrollTop = els.chat.scrollHeight;
   return message;
+}
+
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function renderInlineMarkdown(text) {
+  return escapeHtml(text)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
+function renderMarkdown(markdown) {
+  const lines = markdown.trim().split(/\r?\n/);
+  const html = [];
+  let listType = null;
+
+  function closeList() {
+    if (!listType) return;
+    html.push(`</${listType}>`);
+    listType = null;
+  }
+
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      closeList();
+      return;
+    }
+
+    if (trimmed.startsWith("### ")) {
+      closeList();
+      html.push(`<h3>${renderInlineMarkdown(trimmed.slice(4))}</h3>`);
+      return;
+    }
+
+    if (trimmed.startsWith("## ")) {
+      closeList();
+      html.push(`<h2>${renderInlineMarkdown(trimmed.slice(3))}</h2>`);
+      return;
+    }
+
+    const ordered = trimmed.match(/^\d+\.\s+(.+)$/);
+    if (ordered) {
+      if (listType !== "ol") {
+        closeList();
+        html.push("<ol>");
+        listType = "ol";
+      }
+      html.push(`<li>${renderInlineMarkdown(ordered[1])}</li>`);
+      return;
+    }
+
+    const unordered = trimmed.match(/^[-*]\s+(.+)$/);
+    if (unordered) {
+      if (listType !== "ul") {
+        closeList();
+        html.push("<ul>");
+        listType = "ul";
+      }
+      html.push(`<li>${renderInlineMarkdown(unordered[1])}</li>`);
+      return;
+    }
+
+    closeList();
+    html.push(`<p>${renderInlineMarkdown(trimmed)}</p>`);
+  });
+
+  closeList();
+  return html.join("");
+}
+
+function setMessageContent(element, content) {
+  if (element.classList.contains("user") || element.classList.contains("error")) {
+    element.textContent = content;
+    return;
+  }
+
+  element.innerHTML = renderMarkdown(content);
 }
 
 function resetConversation() {
@@ -78,13 +182,15 @@ function resetConversation() {
 }
 
 function extractReusableOutput(text) {
-  const markerIndex = text.indexOf("## Dot Phrase Set:");
+  const markerIndex = text.indexOf("## Three Dot Phrase Options");
   return markerIndex >= 0 ? text.slice(markerIndex).trim() : text.trim();
 }
 
 function updateLatestOutput(text) {
   state.latestOutput = extractReusableOutput(text);
-  els.output.textContent = state.latestOutput || "No dot phrases generated yet.";
+  els.output.innerHTML = state.latestOutput
+    ? renderMarkdown(state.latestOutput)
+    : "No dot phrases generated yet.";
 }
 
 async function loadModel() {
@@ -179,14 +285,14 @@ async function sendMessage(content) {
       const delta = chunk.choices?.[0]?.delta?.content || "";
       if (!delta) continue;
       reply += delta;
-      assistantMessage.textContent = reply;
+      setMessageContent(assistantMessage, reply);
       els.chat.scrollTop = els.chat.scrollHeight;
     }
 
     const finalReply = reply.trim();
     state.messages.push({ role: "assistant", content: finalReply });
 
-    if (/\.([a-z][a-z0-9_-]*)/i.test(finalReply) || finalReply.includes("## Dot Phrase Set:")) {
+    if (finalReply.includes("## Three Dot Phrase Options")) {
       updateLatestOutput(finalReply);
     }
 
