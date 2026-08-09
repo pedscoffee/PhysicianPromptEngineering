@@ -115,6 +115,7 @@ function copyQuickPrompt(btn) {
           </div>
           <div class="card-body">
             <p class="text-sm">You already worked hard to figure out exactly what you like to say, and now we can make it automatic.</p>
+            <p class="text-sm">If your collection is growing, see Repertoire's guide to <a href="https://www.noterepertoire.com/blog/design-reusable-clinical-template">designing a reusable clinical template</a> that remains easy to review.</p>
           </div>
         </div>
 

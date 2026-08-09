@@ -459,6 +459,23 @@ if ('serviceWorker' in navigator) {
   </div>
 </section>
 
+<!-- Repertoire Next Step -->
+<section class="section">
+  <div class="container">
+    <div class="card" style="max-width: 900px; margin: 0 auto;">
+      <div class="card-body" style="text-align: center; padding: var(--space-6);">
+        <h2 class="mb-4">Ready to Grow Beyond a Static Phrase List?</h2>
+        <p class="text-lg text-secondary mb-4">
+          <a href="https://www.noterepertoire.com/">Repertoire</a> helps clinicians organize, adapt, and assemble reusable clinical note templates in an editable browser workspace.
+        </p>
+        <p class="text-sm text-secondary" style="margin-bottom: 0;">
+          Repertoire is designed for reusable, patient-independent language. Do not enter PHI or patient-specific information.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Newsletter -->
 <section class="section">
   <div class="container">

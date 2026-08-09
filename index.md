@@ -260,6 +260,13 @@ redirect_from:
           <p>A collection of smart phrases for common clinical scenarios.</p>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><a href="https://www.noterepertoire.com/">Repertoire: Clinical Template Workspace</a></h4>
+          <p>Organize, assemble, and maintain reusable clinical note templates in an editable browser workspace. A separate project from the creator of Physician Prompt Engineering.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Software 2.0 Call-to-Action -->

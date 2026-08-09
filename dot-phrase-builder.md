@@ -48,6 +48,26 @@ permalink: /dot-phrase-builder/
     box-shadow: var(--shadow-sm);
   }
 
+  .dot-builder-next-step {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-5);
+    padding: var(--space-5);
+  }
+
+  .dot-builder-next-step h2 {
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-xl);
+    margin: 0 0 var(--space-2);
+  }
+
+  .dot-builder-next-step p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
   .dot-builder-toolbar {
     align-items: center;
     border-bottom: 1px solid var(--color-border);
@@ -284,6 +304,13 @@ permalink: /dot-phrase-builder/
         </div>
       </form>
     </main>
+
+    <aside class="dot-builder-next-step" aria-labelledby="dotBuilderNextStepTitle">
+      <h2 id="dotBuilderNextStepTitle">Keep the Phrases You Create</h2>
+      <p>
+        Created phrases worth keeping? <a href="https://www.noterepertoire.com/">Organize and reuse your clinical templates with Repertoire</a>, a browser workspace for maintaining patient-independent clinical language.
+      </p>
+    </aside>
   </div>
 </div>
 
