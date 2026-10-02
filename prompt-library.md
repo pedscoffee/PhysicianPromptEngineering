@@ -194,7 +194,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
                 <strong>Specialty:</strong> {{ prompt.specialty }}
               </div>
               <div class="prompt-meta-item">
-                <strong>Character Count:</strong> {{ prompt.char_count }} / 5,000
+                <strong>Character Count:</strong> {{ prompt.content | size }} characters
               </div>
             </div>
 

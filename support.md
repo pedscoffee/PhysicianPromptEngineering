@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Contribute
-description: "Support the project with a Value for Value model or contribute your own custom AI prompts to our shared clinical prompt library."
+description: "Contribute custom AI prompts, dot phrases, and feedback to the shared clinical prompt library."
 permalink: /support/
 ---
 

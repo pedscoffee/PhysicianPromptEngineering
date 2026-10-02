@@ -15,7 +15,7 @@ redirect_from:
   <div class="container">
     <h1 class="hero-title">Get Your Notes Done</h1>
     <p class="hero-subtitle">
-     Physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
+     Clinical AI prompts that help adapt AI scribe output to your documentation style. Review every generated note before use.
     </p>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
@@ -51,7 +51,7 @@ redirect_from:
     <div class="content-centered-wide">
       {% include workflow-diagram.html %}
       <p class="text-center mt-8 text-lg">
-        Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve fully automated, preference-matched documentation.
+        Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve more consistent, preference-matched documentation.
       </p>
     </div>
   </div>
@@ -73,7 +73,7 @@ redirect_from:
           <p>Converts verbose paragraphs into concise, problem-oriented documentation that matches your exact clinical style.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library#ap-formatting" class="btn btn-sm btn-primary">View Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-sm btn-primary">View Prompt</a>
         </div>
       </div>
 
@@ -101,7 +101,7 @@ redirect_from:
           <p>Generates patient-friendly instructions and follow-up plans that improve comprehension and compliance.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library#avs-generation" class="btn btn-sm btn-accent">View Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-after-visit-summary-avs-generation" class="btn btn-sm btn-accent">View Prompt</a>
         </div>
       </div>
 
@@ -184,7 +184,7 @@ redirect_from:
     <div style="text-align: center; max-width: 900px; margin: 0 auto;">
       <h2 style="color: var(--color-success-text); font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">Learn Prompt Engineering Through Practice</h2>
       <p style="font-size: var(--font-size-xl); color: var(--color-success-text); margin-bottom: var(--space-8);">
-        Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, get instant feedback from AI, and build skills through hands-on practice.
+        Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, review AI output, and build skills through hands-on practice.
       </p>
 
       <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 3rem; text-align: left;">
@@ -195,7 +195,7 @@ redirect_from:
             </svg>
           </div>
           <h3 style="color: var(--color-success-text); font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
-          <p style="color: var(--color-success-text); font-size: 0.95rem;">4 modules, 12 exercises, ~30 minutes. Write prompts, see outputs, iterate until you master each concept.</p>
+          <p style="color: var(--color-success-text); font-size: 0.95rem;">4 modules, 12 exercises, ~4 hours. Write prompts, see outputs, iterate until you master each concept.</p>
         </div>
 
         <div style="background: var(--color-glass); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">

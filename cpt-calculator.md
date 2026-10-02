@@ -16,7 +16,7 @@ description: Calculate appropriate CPT E/M billing codes with well visit support
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ "/em-calc-sw.js" | relative_url }}')
+        navigator.serviceWorker.register('{{ "/em-calc-sw.js" | relative_url }}', { scope: '{{ "/cpt-calculator/" | relative_url }}' })
             .then(reg => console.log('[E&M Calc PWA] Service Worker registered'))
             .catch(err => console.log('[E&M Calc PWA] SW registration failed:', err));
     });

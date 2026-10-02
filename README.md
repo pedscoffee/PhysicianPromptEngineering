@@ -3,14 +3,13 @@
 [![Website](https://img.shields.io/badge/Website-physicianpromptengineering.com-blue?logo=github)](https://physicianpromptengineering.com/)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.17449352-green)](https://doi.org/10.5281/zenodo.17449352)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](support.md)
-![Maintained](https://img.shields.io/badge/Maintained-Yes-success)
 ![Community Contributions](./images/thank-you-banner.jpg)
 
-> Physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
+> Clinical AI prompts that help adapt AI scribe output to your documentation style. Review every generated note before use.
 
 ## Overview
 
-**Physician Prompt Engineering** is an open-source initiative providing production-ready prompts, interactive learning tools, and productivity applications for clinical AI documentation.
+**Physician Prompt Engineering** is an open-source initiative providing clinical documentation prompts, interactive learning tools, and productivity applications for clinical AI documentation.
 
 ### The Problem We Solve
 
@@ -23,7 +22,7 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 ## What We Offer
 
 ### Clinical Documentation Prompts
-- **[Prompt Library](https://physicianpromptengineering.com/prompt-library)** - Production-ready prompts for A&P formatting, billing analysis, AVS generation, and more
+- **[Prompt Library](https://physicianpromptengineering.com/prompt-library)** - Clinical documentation prompts for A&P formatting, billing analysis, AVS generation, and more
 - **[Best Practices Guide](https://physicianpromptengineering.com/best-practices)** - Evidence-based prompt engineering principles
 - **[Prompt Manager](https://physicianpromptengineering.com/prompt-manager)** - Save and organize your favorite prompts
 - **[Prompt Remix](https://physicianpromptengineering.com/prompt-remix)** - Customize library prompts with your own examples
@@ -32,7 +31,7 @@ Precision-engineered prompts that transform raw AI output into concise, personal
 - **[Dot Phrase Library](https://physicianpromptengineering.com/dot-phrase-library)** - Smart phrases for common clinical scenarios
 
 ### Interactive Learning
-- **[Clinical Prompt Engineering Course](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)** - Hands-on learning with 4 modules, 12 exercises, ~30 minutes. Write prompts, get instant AI feedback, master concepts through practice.
+- **[Clinical Prompt Engineering Course](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)** - Hands-on learning with 4 modules, 12 exercises, ~4 hours. Write prompts, review AI output, and compare it with example solutions.
 
 ### Productivity & Tracking Tools
 - **[ClockWork TimeBox](https://physicianpromptengineering.com/clockwork-timebox)** - Visual timer and task manager for clinical sessions
@@ -64,9 +63,7 @@ Available as mobile apps:
 - Dot Phrase Library
 
 ### Community Resources
-- **[Blog](https://physicianpromptengineering.com/blog)** - Latest insights and case studies
 - **[Newsletter](https://physicianpromptengineering.com/newsletter)** - Stay updated with new prompts and tools
-- **[Podcast](https://physicianpromptengineering.com/podcast)** - Coming soon
 - **[GitHub Discussions](https://github.com/pedscoffee/PhysicianPromptEngineering/discussions)** - Ask questions and share insights
 
 ## Three Essential Clinical Prompts
@@ -105,6 +102,25 @@ Our approach is grounded in three principles:
 
 [Start with our interactive course →](https://physicianpromptengineering.com/courses/clinical-prompt-engineering/)
 
+## Local Development
+
+Use Ruby 3.3 or newer, Bundler, Node.js 18 or newer, and Python 3. The Gemfile uses Jekyll 3.x to match GitHub Pages.
+
+```sh
+bundle install
+bundle exec jekyll serve
+```
+
+Open `http://localhost:4000`. To verify a production build:
+
+```sh
+JEKYLL_ENV=production bundle exec jekyll build
+python3 scripts/check_site.py _site
+node --test tests/*.test.js
+```
+
+Generated output in `_site/` is ignored. Repository notes and unfinished newborn-course modules are excluded from the public build; their source remains available for future work.
+
 ## Contributing
 
 We welcome contributions from the medical community! This project thrives on shared knowledge.
@@ -127,7 +143,7 @@ Use our [submission form](https://physicianpromptengineering.com/support#contrib
 - International/multilingual adaptations
 - Testing feedback and refinements
 
-See [CONTRIBUTE.md](CONTRIBUTING.md) for detailed guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## Important Disclaimers
 

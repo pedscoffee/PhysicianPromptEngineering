@@ -17,7 +17,7 @@ description: Track clinic encounters with automated billing codes, wRVU calculat
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ "/rvu-sw.js" | relative_url }}')
+        navigator.serviceWorker.register('{{ "/rvu-sw.js" | relative_url }}', { scope: '{{ "/clinic-visit-tracker/" | relative_url }}' })
             .then(reg => console.log('[RVU PWA] Service Worker registered'))
             .catch(err => console.log('[RVU PWA] Service Worker registration failed:', err));
     });

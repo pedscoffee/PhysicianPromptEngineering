@@ -181,6 +181,12 @@ permalink: /patient-timeline/
         this.reset();
     });
 
+    function escapeEventText(value) {
+        const span = document.createElement('span');
+        span.textContent = value;
+        return span.innerHTML;
+    }
+
     function updateEventList() {
         const listEl = document.getElementById('eventList');
         
@@ -198,7 +204,7 @@ permalink: /patient-timeline/
                     <div style="background: #333; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">${index + 1}</div>
                     <div>
                         <strong>Day ${event.day}</strong> - <span style="text-transform: capitalize; color: var(--color-text-secondary);">${event.category}</span><br>
-                        ${event.description}
+                        ${escapeEventText(event.description)}
                     </div>
                 </div>
                 <button onclick="deleteEvent(${event.id})" title="Delete">×</button>

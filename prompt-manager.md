@@ -160,14 +160,12 @@ permalink: /prompt-manager/
     // CORE FUNCTIONS
     // =====================================================
     function loadSnippets() {
-        const stored = localStorage.getItem('ppe_snippets');
-        if (stored) {
-            try {
-                snippets = JSON.parse(stored);
-            } catch (e) {
-                console.error('Failed to parse snippets', e);
-                snippets = [];
-            }
+        try {
+            snippets = window.PromptStorage.load();
+        } catch (error) {
+            console.error('Failed to load prompts', error);
+            alert('Saved prompts could not be read. Existing storage has been preserved.');
+            return;
         }
         filteredSnippets = [...snippets];
         populateTagFilter();
@@ -175,8 +173,15 @@ permalink: /prompt-manager/
     }
 
     function saveSnippets() {
-        localStorage.setItem('ppe_snippets', JSON.stringify(snippets));
-        updateStats();
+        try {
+            window.PromptStorage.save(snippets);
+            updateStats();
+            return true;
+        } catch (error) {
+            console.error('Failed to save prompts', error);
+            alert('Could not save prompts. Existing storage has been preserved. Reload before making further changes.');
+            return false;
+        }
     }
 
     function renderSnippets() {
@@ -322,7 +327,7 @@ permalink: /prompt-manager/
             snippets.unshift(newSnippet);
         }
 
-        saveSnippets();
+        if (!saveSnippets()) return;
         closeModal();
         
         // Refresh filter
@@ -341,7 +346,7 @@ permalink: /prompt-manager/
     window.deleteSnippet = function(id) {
         if (confirm('Are you sure you want to delete this prompt?')) {
             snippets = snippets.filter(s => s.id !== id);
-            saveSnippets();
+            if (!saveSnippets()) return;
             
             const currentSearch = document.getElementById('search-input').value;
             const currentTag = document.getElementById('tag-filter').value;
@@ -401,10 +406,17 @@ permalink: /prompt-manager/
                     // Let's just append and let user manage duplicates for now
                     
                     // Simple validation
-                    const validSnippets = newSnippets.filter(s => s.title && s.content);
+                    const validSnippets = newSnippets
+                        .filter(s => s && typeof s.title === 'string' && typeof s.content === 'string')
+                        .map(s => ({
+                            ...s, id: crypto.randomUUID(),
+                            tags: Array.isArray(s.tags) ? s.tags.filter(t => typeof t === 'string') : [],
+                            createdAt: s.createdAt || s.created || new Date().toISOString(),
+                            updatedAt: s.updatedAt || s.createdAt || s.created || new Date().toISOString()
+                        }));
                     
                     snippets = [...validSnippets, ...snippets];
-                    saveSnippets();
+                    if (!saveSnippets()) return;
                     
                     // Apply current filters
                     const currentSearch = document.getElementById('search-input').value;
@@ -413,7 +425,7 @@ permalink: /prompt-manager/
                     updateStats();
                     populateTagFilter();
 
-                    alert(`Successfully imported ${newSnippets.length} prompt(s)`);
+                    alert(`Successfully imported ${validSnippets.length} prompt(s)`);
                 } catch (error) {
                     alert('Error importing file: ' + error.message);
                     console.error(error);
@@ -437,7 +449,7 @@ permalink: /prompt-manager/
 
         snippets = [];
         filteredSnippets = [];
-        saveSnippets();
+        if (!saveSnippets()) return;
         renderSnippets();
         updateStats();
         populateTagFilter();

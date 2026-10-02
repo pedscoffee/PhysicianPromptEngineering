@@ -16,7 +16,7 @@ permalink: /dot-phrase-library/
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ "/dotphrase-sw.js" | relative_url }}')
+        navigator.serviceWorker.register('{{ "/dotphrase-sw.js" | relative_url }}', { scope: '{{ "/dot-phrase-library/" | relative_url }}' })
             .then(reg => console.log('[Dot Phrases PWA] Service Worker registered'))
             .catch(err => console.log('[Dot Phrases PWA] SW registration failed:', err));
     });

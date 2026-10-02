@@ -56,12 +56,7 @@
       setCookie(CONSENT_COOKIE, 'accepted', CONSENT_DURATION);
       hideBanner();
 
-      // Initialize Google Analytics if not already loaded
-      if (typeof gtag === 'function') {
-        gtag('consent', 'update', {
-          'analytics_storage': 'granted'
-        });
-      }
+      if (typeof window.enableAnalytics === 'function') window.enableAnalytics();
     };
 
     window.declineCookies = function() {
@@ -83,7 +78,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const consent = getCookie(CONSENT_COOKIE);
 
-      if (!consent) {
+      if (consent !== 'accepted' && consent !== 'declined' && typeof window.enableAnalytics === 'function') {
         // No consent recorded, show banner
         showBanner();
       } else if (consent === 'declined') {

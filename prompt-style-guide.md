@@ -609,7 +609,7 @@ Persistent symptoms despite current controller therapy consistent with inadequat
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-assessment-only-orders-and-dx-in-chart" class="btn btn-primary btn-sm">DAX Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-assessment-only-orders-dx-in-chart" class="btn btn-primary btn-sm">DAX Prompt</a>
           <a href="{{ site.baseurl }}/prompt-library#eta-a-p-assessment-plan-no-diagnosis-headers" class="btn btn-outline btn-sm">ETA Prompt</a>
         </div>
       </div>
