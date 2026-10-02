@@ -6,7 +6,7 @@
     }
 
     .overflow-x-auto::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: var(--color-bg-tertiary);
         border-radius: 4px;
     }
 
@@ -43,8 +43,8 @@
 
     /* Calendar Grid Lines */
     .calendar-grid {
-        background-image: linear-gradient(to right, #f1f5f9 1px, transparent 1px),
-            linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+        background-image: linear-gradient(to right, var(--color-bg-tertiary) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-bg-tertiary) 1px, transparent 1px);
         background-size: 100% 100%;
     }
 
@@ -74,7 +74,7 @@
     }
 
     .hero {
-        background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+        background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent-light) 100%);
         padding: 4rem 3rem;
         border-radius: 12px;
         margin-bottom: 40px;
@@ -85,7 +85,7 @@
     .hero h1 {
         font-size: 2.75rem;
         margin-bottom: 1rem;
-        color: #312e81;
+        color: var(--color-accent-dark);
         /* Indigo 900 */
         font-weight: 800;
         letter-spacing: -0.025em;
@@ -93,7 +93,7 @@
 
     .hero p {
         font-size: 1.25rem;
-        color: #4338ca;
+        color: var(--color-accent);
         /* Indigo 700 */
         margin-bottom: 2rem;
         max-width: 600px;

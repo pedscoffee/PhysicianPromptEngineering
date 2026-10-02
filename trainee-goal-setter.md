@@ -517,10 +517,15 @@ description: A structured tool for medical trainees to set rotation goals and re
     }
 
     function generateSummary() {
-        const getVal = (id) => document.getElementById(id).value || '-';
+        const escapeText = value => {
+            const element = document.createElement('span');
+            element.textContent = value;
+            return element.innerHTML;
+        };
+        const getVal = (id) => escapeText(document.getElementById(id).value || '-');
         const getFeedback = (id) => {
             const val = document.getElementById(id).value;
-            return val ? `<div style="background:#f0fdf4; padding:0.5rem; border-left:3px solid #27ae60; margin-top:0.5rem; font-style:italic;"><strong>Attending:</strong> ${val}</div>` : '';
+            return val ? `<div style="background:#f0fdf4; padding:0.5rem; border-left:3px solid #27ae60; margin-top:0.5rem; font-style:italic;"><strong>Attending:</strong> ${escapeText(val)}</div>` : '';
         };
 
         const html = `
@@ -546,8 +551,6 @@ description: A structured tool for medical trainees to set rotation goals and re
                 <h3>3. Action Plan</h3>
                 <p><strong>Resources:</strong><br>${getVal('plan-resources')}</p>
                 <p><strong>Support Needed:</strong><br>${getVal('plan-support')}</p>
-                ${getFeedback('feedback-support')}
-            </div>
                 ${getFeedback('feedback-support')}
             </div>
 

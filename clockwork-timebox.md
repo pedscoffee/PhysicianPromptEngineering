@@ -16,7 +16,7 @@ description: Visual time-tracking and workday planning tool with task management
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ "/timebox-sw.js" | relative_url }}')
+        navigator.serviceWorker.register('{{ "/timebox-sw.js" | relative_url }}', { scope: '{{ "/clockwork-timebox/" | relative_url }}' })
             .then(reg => console.log('[TimeBox PWA] Service Worker registered'))
             .catch(err => console.log('[TimeBox PWA] SW registration failed:', err));
     });

@@ -16,7 +16,7 @@ permalink: /cme-tracker/
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ "/cme-sw.js" | relative_url }}')
+        navigator.serviceWorker.register('{{ "/cme-sw.js" | relative_url }}', { scope: '{{ "/cme-tracker/" | relative_url }}' })
             .then(reg => console.log('[CME Tracker PWA] Service Worker registered'))
             .catch(err => console.log('[CME Tracker PWA] SW registration failed:', err));
     });

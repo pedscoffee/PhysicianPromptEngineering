@@ -25,10 +25,10 @@
         right: 20px;
         width: 300px;
         max-width: calc(100vw - 40px);
-        background-color: #ffffff;
+        background-color: var(--color-bg-primary);
         border-radius: 12px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--color-border);
         font-family: system-ui, -apple-system, sans-serif;
         z-index: 9999;
         overflow: hidden;
@@ -36,7 +36,7 @@
     }
 
     .bubble-header {
-        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        background: var(--gradient-primary);
         color: white;
         padding: 12px 16px;
         display: flex;
@@ -71,7 +71,7 @@
     .bubble-content {
         padding: 16px;
         font-size: 0.9rem;
-        color: #334155;
+        color: var(--color-text-primary);
         line-height: 1.5;
     }
 
@@ -84,7 +84,7 @@
     }
 
     .bubble-content a {
-        color: #0284c7;
+        color: var(--color-primary);
         text-decoration: none;
         font-weight: 500;
     }
@@ -105,11 +105,6 @@
         }
     }
 
-    /* Dark mode support if applicable, relying on CSS variables if they exist, 
-     but providing fallback */
-    @media (prefers-color-scheme: dark) {
-        /* Add .dark class support if the site uses it, otherwise media query */
-    }
 </style>
 
 <script>

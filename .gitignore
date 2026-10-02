@@ -1,7 +1,15 @@
-supporter_tier_strategy.md
+# Local/generated files
 .DS_Store
 .ds_store
-.DS_Store
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
+# Private working notes and unused assets
+supporter_tier_strategy.md
 IHI research.md
 anatomy_image_prompts.md
 ADDING_ANATOMY_IMAGES.md

@@ -19,7 +19,7 @@ permalink: /privacy-policy/
     <div style="max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
 
       <p style="margin-bottom: 20px;"><strong>Effective Date:</strong> November 19, 2025</p>
-      <p style="margin-bottom: 30px;"><strong>Last Updated:</strong> November 19, 2025</p>
+      <p style="margin-bottom: 30px;"><strong>Last Updated:</strong> October 2, 2026</p>
 
       <h2 style="color: #2a7ae2; margin-bottom: 20px;">Introduction</h2>
       <p>Physician Prompt Engineering ("we," "our," or "us") operates the website physicianpromptengineering.com. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
@@ -27,7 +27,7 @@ permalink: /privacy-policy/
       <h3 style="margin-top: 25px; margin-bottom: 10px;">1. Information We Collect</h3>
 
       <h4 style="margin-top: 20px; margin-bottom: 10px;">1.1 Information Collected Automatically</h4>
-      <p>When you visit our website, we automatically collect certain information about your device and usage patterns through Google Analytics, including:</p>
+      <p>If you accept analytics cookies, Google Analytics collects information about your device and usage patterns, including:</p>
       <ul>
         <li>Browser type and version</li>
         <li>Operating system</li>
@@ -67,7 +67,7 @@ permalink: /privacy-policy/
       <p>We use cookies and similar tracking technologies to collect information about your browsing activities. Specifically:</p>
 
       <h4 style="margin-top: 20px; margin-bottom: 10px;">Google Analytics</h4>
-      <p>We use Google Analytics to collect anonymous usage statistics. Google Analytics uses cookies to track:</p>
+      <p>Google Analytics loads only after you select Accept All in the cookie banner or return with a saved acceptance. Selecting Decline prevents it from loading. When enabled, Google Analytics uses cookies to track:</p>
       <ul>
         <li>Number of visitors and sessions</li>
         <li>Pages viewed and user interactions</li>

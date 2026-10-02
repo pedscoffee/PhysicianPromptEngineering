@@ -15,7 +15,7 @@ redirect_from:
   <div class="container">
     <h1 class="hero-title">Get Your Notes Done</h1>
     <p class="hero-subtitle">
-     Physician-tested AI prompts that convert AI scribe output into your exact documentation style—no manual editing required.
+     Clinical AI prompts that help adapt AI scribe output to your documentation style. Review every generated note before use.
     </p>
     <div class="hero-cta">
       <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
@@ -51,7 +51,7 @@ redirect_from:
     <div class="content-centered-wide">
       {% include workflow-diagram.html %}
       <p class="text-center mt-8 text-lg">
-        Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve fully automated, preference-matched documentation.
+        Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve more consistent, preference-matched documentation.
       </p>
     </div>
   </div>
@@ -73,7 +73,7 @@ redirect_from:
           <p>Converts verbose paragraphs into concise, problem-oriented documentation that matches your exact clinical style.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library#ap-formatting" class="btn btn-sm btn-primary">View Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-sm btn-primary">View Prompt</a>
         </div>
       </div>
 
@@ -101,7 +101,7 @@ redirect_from:
           <p>Generates patient-friendly instructions and follow-up plans that improve comprehension and compliance.</p>
         </div>
         <div class="card-footer">
-          <a href="{{ site.baseurl }}/prompt-library#avs-generation" class="btn btn-sm btn-accent">View Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-after-visit-summary-avs-generation" class="btn btn-sm btn-accent">View Prompt</a>
         </div>
       </div>
 
@@ -179,41 +179,41 @@ redirect_from:
 
 <!-- Interactive Course Feature -->
 <!-- Interactive Course Feature -->
-<section class="section" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
+<section class="section" style="background: var(--gradient-success);">
   <div class="container">
     <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-      <h2 style="color: #065f46; font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">Learn Prompt Engineering Through Practice</h2>
-      <p style="font-size: var(--font-size-xl); color: #047857; margin-bottom: var(--space-8);">
-        Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, get instant feedback from AI, and build skills through hands-on practice.
+      <h2 style="color: var(--color-success-text); font-size: var(--font-size-4xl); margin-bottom: var(--space-4);">Learn Prompt Engineering Through Practice</h2>
+      <p style="font-size: var(--font-size-xl); color: var(--color-success-text); margin-bottom: var(--space-8);">
+        Master AI-assisted clinical documentation with our <strong>interactive course</strong>. Write real prompts, review AI output, and build skills through hands-on practice.
       </p>
 
       <div class="grid grid-cols-1 grid-cols-2" style="gap: 2rem; margin-bottom: 3rem; text-align: left;">
-        <div style="background: rgba(255, 255, 255, 0.6); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+        <div style="background: var(--color-glass); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
           <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #059669;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: var(--color-success);">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
             </svg>
           </div>
-          <h3 style="color: #065f46; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
-          <p style="color: #064e3b; font-size: 0.95rem;">4 modules, 12 exercises, ~30 minutes. Write prompts, see outputs, iterate until you master each concept.</p>
+          <h3 style="color: var(--color-success-text); font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
+          <p style="color: var(--color-success-text); font-size: 0.95rem;">4 modules, 12 exercises, ~4 hours. Write prompts, see outputs, iterate until you master each concept.</p>
         </div>
 
-        <div style="background: rgba(255, 255, 255, 0.6); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+        <div style="background: var(--color-glass); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
           <div style="margin-bottom: 0.5rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: #059669;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 32px; height: 32px; color: var(--color-success);">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
             </svg>
           </div>
-          <h3 style="color: #065f46; font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Clinical Cases</h3>
-          <p style="color: #064e3b; font-size: 0.95rem;">Practice with de-identified patient scenarios across multiple specialties. Learn safety, quality, and best practices.</p>
+          <h3 style="color: var(--color-success-text); font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Clinical Cases</h3>
+          <p style="color: var(--color-success-text); font-size: 0.95rem;">Practice with de-identified patient scenarios across multiple specialties. Learn safety, quality, and best practices.</p>
         </div>
       </div>
 
       <div class="text-center">
-        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-lg shadow-lg" style="background: #059669; color: white; font-weight: 700; border: none;">
+        <a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/" class="btn btn-lg shadow-lg" style="background: var(--color-success-solid); color: white; font-weight: 700; border: none;">
           Start Free Interactive Course →
         </a>
-        <p class="mt-4 text-sm" style="color: #065f46; opacity: 0.9;">
+        <p class="mt-4 text-sm" style="color: var(--color-success-text); opacity: 0.9;">
           No sign up required • Complete at your own pace • Immediately practical
         </p>
       </div>
@@ -270,21 +270,21 @@ redirect_from:
     </div>
 
     <!-- Software 2.0 Call-to-Action -->
-    <div class="card" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border: 2px solid #0ea5e9;">
+    <div class="card" style="background: var(--gradient-info); border: 2px solid var(--color-primary);">
       <div class="card-body" style="text-align: center; padding: var(--space-8);">
-        <h3 style="color: #0369a1; margin-bottom: var(--space-4); font-size: var(--font-size-3xl);">Software 2.0: Build Your Own Tools</h3>
-        <p class="text-lg" style="color: #075985; max-width: 800px; margin: 0 auto var(--space-6);">
+        <h3 style="color: var(--color-primary-dark); margin-bottom: var(--space-4); font-size: var(--font-size-3xl);">Software 2.0: Build Your Own Tools</h3>
+        <p class="text-lg" style="color: var(--color-primary-dark); max-width: 800px; margin: 0 auto var(--space-6);">
           Discover how modern AI coding assistants make it possible for <strong>anyone</strong> to create custom productivity tools. Explore our collection of 17 personal projects and learn how to build your own—no programming background required.
         </p>
         <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-          <a href="{{ site.baseurl }}/software-2.0" class="btn btn-lg shadow-lg" style="background: #0284c7; color: white; font-weight: 700; border: none;">
+          <a href="{{ site.baseurl }}/software-2.0" class="btn btn-lg shadow-lg" style="background: var(--color-secondary-solid); color: white; font-weight: 700; border: none;">
             Explore Software 2.0 Suite →
           </a>
-          <a href="{{ site.baseurl }}/software-2.0#getting-started" class="btn btn-outline btn-lg" style="border-color: #0284c7; color: #0284c7;">
+          <a href="{{ site.baseurl }}/software-2.0#getting-started" class="btn btn-outline btn-lg" >
             Learn to Build Your Own
           </a>
         </div>
-        <p class="text-sm mt-4" style="color: #0c4a6e; opacity: 0.8;">
+        <p class="text-sm mt-4" style="color: var(--color-primary-dark); opacity: 0.8;">
           17 tools including productivity trackers, visualizations, and development resources
         </p>
       </div>

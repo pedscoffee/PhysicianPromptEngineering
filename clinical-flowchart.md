@@ -15,26 +15,26 @@ permalink: /clinical-flowchart/
 
 <div class="clinical-flowchart-wrapper">
 
-<div class="hero" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); padding: 3rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
+<div class="hero" style="background: var(--gradient-info); padding: 3rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
     <div class="container">
-        <h1 class="hero-title" style="color: #0369a1; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+        <h1 class="hero-title" style="color: var(--color-primary-dark); font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
             Clinical Flowchart Generator
         </h1>
-        <p class="hero-subtitle" style="color: #0284c7; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+        <p class="hero-subtitle" style="color: var(--color-primary); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
             Turn your conditional treatment plans into visual diagrams for clarity and text-based flowcharts for your notes.
         </p>
     </div>
 </div>
 
 <div class="container">
-    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px 20px; margin-bottom: 20px; border-radius: 6px;">
+    <div style="background: var(--color-warning-light); border-left: 4px solid #f59e0b; padding: 16px 20px; margin-bottom: 20px; border-radius: 6px;">
         <div style="display: flex; align-items: start; gap: 12px;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f59e0b" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
             </svg>
             <div>
-                <strong style="color: #92400e; display: block; margin-bottom: 4px;">Educational Use Only</strong>
-                <p style="color: #78350f; margin: 0; font-size: 0.9em;">
+                <strong style="color: var(--color-warning-text); display: block; margin-bottom: 4px;">Educational Use Only</strong>
+                <p style="color: var(--color-warning-text); margin: 0; font-size: 0.9em;">
                     This tool is for educational and training purposes only. <strong>Do not input any patient health information (PHI)</strong> or other sensitive data. All processing occurs locally in your browser, but you are responsible for ensuring compliance with HIPAA and other privacy regulations.
                 </p>
             </div>
@@ -48,7 +48,7 @@ permalink: /clinical-flowchart/
             <div style="background: #e5e7eb; height: 6px; border-radius: 3px; overflow: hidden;">
                 <div id="progressBar" style="background: #0284c7; width: 0%; height: 100%; transition: width 0.3s;"></div>
             </div>
-            <div id="progressText" style="font-size: 0.8em; margin-top: 4px; color: #666;">Initializing...</div>
+            <div id="progressText" style="font-size: 0.8em; margin-top: 4px; color: var(--color-text-secondary);">Initializing...</div>
         </div>
     </div>
 
@@ -56,7 +56,7 @@ permalink: /clinical-flowchart/
         <!-- Input Panel -->
         <div class="input-panel">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h3 style="margin: 0; color: #333;">Input</h3>
+                <h3 style="margin: 0; color: var(--color-text-primary);">Input</h3>
                 <div class="mode-toggle">
                     <button id="aiModeBtn" class="mode-btn active" onclick="switchMode('ai')">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 16px; height: 16px;">
@@ -75,7 +75,7 @@ permalink: /clinical-flowchart/
             
             <!-- AI Mode -->
             <div id="aiMode" class="mode-panel">
-                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                <p style="font-size: 0.9em; color: var(--color-text-secondary); margin-bottom: 15px;">
                     Describe your plan in natural language. Use "if/then" logic.
                 </p>
                 <textarea id="inputLogic" placeholder="Example:
@@ -92,8 +92,8 @@ Else if afebrile:
             
             <!-- Manual Mode -->
             <div id="manualMode" class="mode-panel" style="display: none;">
-                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
-                    Edit Mermaid code directly. <a href="https://mermaid.js.org/syntax/flowchart.html" target="_blank" style="color: #2a7ae2;">View syntax guide →</a>
+                <p style="font-size: 0.9em; color: var(--color-text-secondary); margin-bottom: 15px;">
+                    Edit Mermaid code directly. <a href="https://mermaid.js.org/syntax/flowchart.html" target="_blank" style="color: var(--color-primary);">View syntax guide →</a>
                 </p>
                 <textarea id="mermaidCode" placeholder="graph TD
   A[Start] --> B{Fever > 38.5?}
@@ -115,7 +115,7 @@ Else if afebrile:
 
             <div id="visualTab" class="tab-content active">
                 <div id="mermaid-output">
-                    <div style="color: #999; margin-top: 100px; font-style: italic;">
+                    <div style="color: var(--color-text-tertiary); margin-top: 100px; font-style: italic;">
                         Visual flowchart will appear here...
                     </div>
                 </div>
@@ -443,7 +443,7 @@ Else if afebrile:
             outputDiv.innerHTML = `<div style="color:red; padding: 20px;">
                 <strong>Mermaid Syntax Error:</strong><br>
                 ${error.message}<br><br>
-                <a href="https://mermaid.js.org/syntax/flowchart.html" target="_blank" style="color: #2a7ae2;">View syntax guide →</a>
+                <a href="https://mermaid.js.org/syntax/flowchart.html" target="_blank" style="color: var(--color-primary);">View syntax guide →</a>
             </div>`;
         });
     }

@@ -8,15 +8,15 @@ permalink: /prompt-generator/
 
 <div class="prompt-generator-wrapper">
 <div class="container">
-        <div class="hero" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 4rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
+        <div class="hero" style="background: var(--gradient-success); padding: 4rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
             <div class="container">
-                <h1 class="hero-title" style="color: #065f46; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+                <h1 class="hero-title" style="color: var(--color-success-text); font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 48px; height: 48px; display: inline-block; vertical-align: middle; margin-right: 10px;">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                     </svg>
                     Quick Start A&P Builder
                 </h1>
-                <p class="hero-subtitle" style="color: #047857; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Create customized prompts for formatting clinical assessment and plan documentation. This tool is for educational purposes only. Do not include real patient data or sensitive information while using this tool.</p>
+                <p class="hero-subtitle" style="color: var(--color-success-text); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Create customized prompts for formatting clinical assessment and plan documentation. This tool is for educational purposes only. Do not include real patient data or sensitive information while using this tool.</p>
             </div>
         </div>
 
@@ -341,13 +341,13 @@ permalink: /prompt-generator/
 
         <!-- NEXT STEPS SECTION -->
 <div class="header" style="margin-top: 40px;">
-            <h2 style="color: #2a7ae2; font-size: 1.5em; margin-bottom: 20px;">Next Steps: Customizing Your Prompt</h2>
+            <h2 style="color: var(--color-primary); font-size: 1.5em; margin-bottom: 20px;">Next Steps: Customizing Your Prompt</h2>
             *<a href="{{ site.baseurl }}/disclaimer">See Disclaimer.</a>
             
             <div style="margin-bottom: 20px;">
-                <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">1. Add Conditional Boilerplate Text</h3>
+                <h3 style="color: var(--color-text-primary); font-size: 1.1em; margin-bottom: 10px;">1. Add Conditional Boilerplate Text</h3>
                 <p>In the generated prompt, find the "Conditional Boilerplate Text" section. Replace the placeholder with your actual conditional text that the LLM Editor should insert. Examples might include:</p>
-                <ul style="margin-left: 20px; margin-top: 10px; color: #666;">
+                <ul style="margin-left: 20px; margin-top: 10px; color: var(--color-text-secondary);">
                     <li>Common counseling points for specific conditions</li>
                     <li>Standard follow-up instructions for certain diagnoses</li>
                     <li>Return precaution templates you use frequently</li>
@@ -355,19 +355,19 @@ permalink: /prompt-generator/
             </div>
 
 <div style="margin-bottom: 20px;">
-                <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">2. Add Few-Shot Examples</h3>
+                <h3 style="color: var(--color-text-primary); font-size: 1.1em; margin-bottom: 10px;">2. Add Few-Shot Examples</h3>
                 <p>Find the "Few-Shot Examples" section in the generated prompt. Add 2-3 <strong>synthesized A&P examples</strong> (do not use real patient data) that match your desired output format. These examples are crucial—they teach the LLM Editor your exact style, tone, clinical reasoning pattern, and formatting preferences far better than any rule can.</p>
-                <p style="margin-top: 10px; color: #666;"><strong>Tip:</strong> Choose examples from different clinical scenarios to show the LLM the diversity of your style.</p>
+                <p style="margin-top: 10px; color: var(--color-text-secondary);"><strong>Tip:</strong> Choose examples from different clinical scenarios to show the LLM the diversity of your style.</p>
             </div>
 
  <div style="margin-bottom: 20px;">
-                <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">3. Test and Refine</h3>
+                <h3 style="color: var(--color-text-primary); font-size: 1.1em; margin-bottom: 10px;">3. Test and Refine</h3>
                 <p>Once you've added your boilerplate and examples, test your prompt with your LLM. Make adjustments to the formatting rules or custom rules as needed until the output matches your expectations.</p>
             </div>
 
-<div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
-    <h3 style="color: #2a7ae2; font-size: 1.1em; margin-bottom: 10px; text-align: center;">Share Your Prompt</h3>
-    <p style="text-align: center;">Refined a prompt that consistently delivers quality output? Consider sharing it on the <a href="{{ site.baseurl }}/support#contribute" style="color: #2a7ae2; font-weight: 600;">contributions page</a>. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.</p>
+<div style="background: var(--color-primary-light); padding: 15px; border-left: 4px solid #2a7ae2; border-radius: 4px; margin-top: 20px;">
+    <h3 style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px; text-align: center;">Share Your Prompt</h3>
+    <p style="text-align: center;">Refined a prompt that consistently delivers quality output? Consider sharing it on the <a href="{{ site.baseurl }}/support#contribute" style="color: var(--color-primary); font-weight: 600;">contributions page</a>. Your tested solution could save colleagues hours of iteration and help build a stronger resource for the entire clinical community.</p>
 </div>
 </div>
 

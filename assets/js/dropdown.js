@@ -1,55 +1,40 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const dropdownLinks = document.querySelectorAll('.dropdown > .page-link');
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdowns = [...document.querySelectorAll('.dropdown')];
+  const mobile = () => window.matchMedia('(max-width: 599px)').matches;
 
-  // Handle dropdown toggles on mobile
-  dropdownLinks.forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      // Only intercept on mobile
-      if (window.innerWidth <= 768) { // Increased breakpoint to match typical tablet/mobile split
-        const parent = this.parentElement;
-        const isActive = parent.classList.contains('active');
+  function setOpen(dropdown, open) {
+    dropdown.classList.toggle('active', open);
+    dropdown.classList.toggle('closed', !open);
+    dropdown.querySelector('.page-link').setAttribute('aria-expanded', String(open));
+  }
 
-        // If we are opening this one, close all others first
-        if (!isActive) {
-          document.querySelectorAll('.dropdown.active').forEach(function (activeDropdown) {
-            if (activeDropdown !== parent) {
-              activeDropdown.classList.remove('active');
-            }
-          });
-
-          e.preventDefault(); // Prevent navigation on first tap
-          parent.classList.add('active');
-        } else {
-          // If it's already active:
-          // 1. If it's a real link, let it navigate (don't prevent default)
-          // 2. If it's a placeholder (#), toggle it closed
-          if (this.getAttribute('href') === '#' || !this.getAttribute('href')) {
-            e.preventDefault();
-            parent.classList.remove('active');
-          }
-          // Otherwise, allow default navigation
-        }
+  dropdowns.forEach(dropdown => {
+    const button = dropdown.querySelector('.page-link');
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      dropdowns.forEach(other => setOpen(other, other === dropdown && open));
+    });
+    dropdown.addEventListener('mouseenter', () => {
+      if (!mobile()) setOpen(dropdown, true);
+    });
+    dropdown.addEventListener('mouseleave', () => {
+      if (!mobile() && !dropdown.contains(document.activeElement)) setOpen(dropdown, false);
+    });
+    dropdown.addEventListener('focusin', event => {
+      if (event.target !== button) setOpen(dropdown, true);
+    });
+    dropdown.addEventListener('focusout', event => {
+      if (!dropdown.contains(event.relatedTarget)) setOpen(dropdown, false);
+    });
+    dropdown.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        button.focus();
+        setOpen(dropdown, false);
       }
     });
   });
-
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', function (e) {
-    if (window.innerWidth <= 768) {
-      if (!e.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown.active').forEach(function (dropdown) {
-          dropdown.classList.remove('active');
-        });
-      }
-    }
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.dropdown')) dropdowns.forEach(dropdown => setOpen(dropdown, false));
   });
-
-  // Reset state on resize
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) {
-      document.querySelectorAll('.dropdown.active').forEach(function (dropdown) {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
+  window.addEventListener('resize', () => dropdowns.forEach(dropdown => setOpen(dropdown, false)));
 });

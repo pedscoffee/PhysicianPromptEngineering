@@ -2,7 +2,7 @@
 
     /* Hero Section */
     .hero {
-        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        background: var(--gradient-success);
         padding: 60px 30px;
         border-radius: 12px;
         margin-bottom: 40px;
@@ -12,12 +12,12 @@
     .hero h1 {
         font-size: 2.5em;
         margin-bottom: 15px;
-        color: #065f46;
+        color: var(--color-success-text);
     }
 
     .hero-subtitle {
         font-size: 1.2em;
-        color: #047857;
+        color: var(--color-success-text);
         margin-bottom: 20px;
         max-width: 800px;
         margin-left: auto;
@@ -44,8 +44,8 @@
 
     /* Timer Section */
     .timer-section {
-        background: white;
-        border: 2px solid #e1e8ed;
+        background: var(--color-bg-primary);
+        border: 2px solid var(--color-border);
         border-radius: 12px;
         padding: 1.5rem;
         margin-bottom: 2rem;
@@ -54,7 +54,7 @@
     .timer-display {
         font-size: 4rem;
         font-weight: bold;
-        color: #2c3e50;
+        color: var(--color-text-primary);
         text-align: center;
         margin: 2rem 0;
         font-family: 'Courier New', monospace;
@@ -79,49 +79,49 @@
     }
 
     .btn-primary {
-        background: #0088bb;
+        background: var(--color-secondary-solid);
         color: white;
     }
 
     .btn-primary:hover {
-        background: #006b94;
+        background: var(--color-secondary-solid-hover);
         transform: translateY(-2px);
     }
 
     .btn-secondary {
-        background: #95a5a6;
+        background: var(--color-neutral-solid);
         color: white;
     }
 
     .btn-secondary:hover {
-        background: #7f8c8d;
+        background: var(--color-neutral-solid-hover);
     }
 
     .btn-success {
-        background: #27ae60;
+        background: var(--color-success-solid);
         color: white;
     }
 
     .btn-success:hover {
-        background: #229954;
+        background: var(--color-success-solid-hover);
     }
 
     .btn-danger {
-        background: #e74c3c;
+        background: var(--color-error-solid);
         color: white;
     }
 
     .btn-danger:hover {
-        background: #c0392b;
+        background: var(--color-error-solid-hover);
     }
 
     .btn-warning {
-        background: #f39c12;
+        background: var(--color-warning-solid);
         color: white;
     }
 
     .btn-warning:hover {
-        background: #e67e22;
+        background: var(--color-warning-solid-hover);
     }
 
     /* Billing Codes */
@@ -131,7 +131,7 @@
 
     .billing-category-title {
         font-weight: 600;
-        color: #2c3e50;
+        color: var(--color-text-primary);
         margin-bottom: 0.75rem;
         font-size: 0.95rem;
     }
@@ -143,8 +143,8 @@
     }
 
     .billing-btn {
-        background: white;
-        border: 2px solid #e1e8ed;
+        background: var(--color-bg-primary);
+        border: 2px solid var(--color-border);
         border-radius: 8px;
         padding: 0.75rem;
         cursor: pointer;
@@ -159,7 +159,7 @@
     }
 
     .billing-btn.selected {
-        background: #0088bb;
+        background: var(--color-secondary-solid);
         border-color: #0088bb;
         color: white;
     }
@@ -172,7 +172,7 @@
 
     .billing-btn-desc {
         font-size: 0.75rem;
-        color: #7f8c8d;
+        color: var(--color-text-secondary);
     }
 
     .billing-btn.selected .billing-btn-desc {
@@ -183,7 +183,7 @@
         font-size: 0.7rem;
         margin-top: 0.25rem;
         font-weight: 600;
-        color: #27ae60;
+        color: var(--color-success);
     }
 
     .billing-btn.selected .billing-btn-wrvu {
@@ -205,13 +205,13 @@
     }
 
     .visit-type-indicator.well {
-        background: #d5f4e6;
-        color: #27ae60;
+        background: var(--color-success-light);
+        color: var(--color-success);
     }
 
     .visit-type-indicator.sick {
-        background: #fadbd8;
-        color: #e74c3c;
+        background: var(--color-error-light);
+        color: var(--color-error);
     }
 
     /* Form Elements */
@@ -223,13 +223,13 @@
         display: block;
         font-weight: 600;
         margin-bottom: 0.5rem;
-        color: #2c3e50;
+        color: var(--color-text-primary);
     }
 
     textarea {
         width: 100%;
         padding: 0.75rem;
-        border: 2px solid #e1e8ed;
+        border: 2px solid var(--color-border);
         border-radius: 8px;
         font-family: inherit;
         font-size: 1rem;
@@ -250,8 +250,8 @@
     }
 
     .stat-card {
-        background: white;
-        border: 2px solid #e1e8ed;
+        background: var(--color-bg-primary);
+        border: 2px solid var(--color-border);
         border-radius: 8px;
         padding: 1.5rem;
         text-align: center;
@@ -259,7 +259,7 @@
 
     .stat-label {
         font-size: 0.85rem;
-        color: #7f8c8d;
+        color: var(--color-text-secondary);
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 0.5rem;
@@ -268,7 +268,7 @@
     .stat-value {
         font-size: 2rem;
         font-weight: 700;
-        color: #2c3e50;
+        color: var(--color-text-primary);
     }
 
     /* Visits List */
@@ -277,8 +277,8 @@
     }
 
     .visit-item {
-        background: white;
-        border: 2px solid #e1e8ed;
+        background: var(--color-bg-primary);
+        border: 2px solid var(--color-border);
         border-radius: 8px;
         padding: 1rem;
         margin-bottom: 1rem;
@@ -293,7 +293,7 @@
 
     .visit-time {
         font-weight: 600;
-        color: #2c3e50;
+        color: var(--color-text-primary);
     }
 
     .visit-type-badge {
@@ -304,17 +304,17 @@
     }
 
     .visit-type-badge.well {
-        background: #d5f4e6;
-        color: #27ae60;
+        background: var(--color-success-light);
+        color: var(--color-success);
     }
 
     .visit-type-badge.sick {
-        background: #fadbd8;
-        color: #e74c3c;
+        background: var(--color-error-light);
+        color: var(--color-error);
     }
 
     .visit-details {
-        color: #7f8c8d;
+        color: var(--color-text-secondary);
         font-size: 0.9rem;
     }
 
@@ -327,7 +327,7 @@
         display: flex;
         gap: 0.5rem;
         margin-bottom: 1rem;
-        border-bottom: 2px solid #e1e8ed;
+        border-bottom: 2px solid var(--color-border);
     }
 
     .tab-btn {
@@ -337,13 +337,13 @@
         border-bottom: 3px solid transparent;
         cursor: pointer;
         font-weight: 600;
-        color: #7f8c8d;
+        color: var(--color-text-secondary);
         transition: all 0.3s;
     }
 
     .tab-btn.active {
-        color: #0088bb;
-        border-bottom-color: #0088bb;
+        color: var(--color-secondary);
+        border-bottom-color: var(--color-secondary);
     }
 
     .tab-content {

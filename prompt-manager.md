@@ -18,13 +18,13 @@ permalink: /prompt-manager/
 
 <div class="container">
     <!-- Premium Banner -->
-    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
+    <div style="background: var(--color-warning-light); border: 1px solid var(--color-warning-light); padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: var(--color-warning);">
             <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
         </svg>
         <div>
-            <strong style="color: #9a3412;">Make this Your Own</strong>
-            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">We hope you find this tool useful. Consider making it your own by taking the code from GitHub and using a coding LLM to personalize it to your exact needs! Please share your work with us on the contributions page or on GitHub - we would love to see what you can build!</p>
+            <strong style="color: var(--color-warning-text);">Make this Your Own</strong>
+            <p style="margin: 0; color: var(--color-warning-text); font-size: 0.9em;">We hope you find this tool useful. Consider making it your own by taking the code from GitHub and using a coding LLM to personalize it to your exact needs! Please share your work with us on the contributions page or on GitHub - we would love to see what you can build!</p>
         </div>
     </div>
 
@@ -160,14 +160,12 @@ permalink: /prompt-manager/
     // CORE FUNCTIONS
     // =====================================================
     function loadSnippets() {
-        const stored = localStorage.getItem('ppe_snippets');
-        if (stored) {
-            try {
-                snippets = JSON.parse(stored);
-            } catch (e) {
-                console.error('Failed to parse snippets', e);
-                snippets = [];
-            }
+        try {
+            snippets = window.PromptStorage.load();
+        } catch (error) {
+            console.error('Failed to load prompts', error);
+            alert('Saved prompts could not be read. Existing storage has been preserved.');
+            return;
         }
         filteredSnippets = [...snippets];
         populateTagFilter();
@@ -175,8 +173,15 @@ permalink: /prompt-manager/
     }
 
     function saveSnippets() {
-        localStorage.setItem('ppe_snippets', JSON.stringify(snippets));
-        updateStats();
+        try {
+            window.PromptStorage.save(snippets);
+            updateStats();
+            return true;
+        } catch (error) {
+            console.error('Failed to save prompts', error);
+            alert('Could not save prompts. Existing storage has been preserved. Reload before making further changes.');
+            return false;
+        }
     }
 
     function renderSnippets() {
@@ -322,7 +327,7 @@ permalink: /prompt-manager/
             snippets.unshift(newSnippet);
         }
 
-        saveSnippets();
+        if (!saveSnippets()) return;
         closeModal();
         
         // Refresh filter
@@ -341,7 +346,7 @@ permalink: /prompt-manager/
     window.deleteSnippet = function(id) {
         if (confirm('Are you sure you want to delete this prompt?')) {
             snippets = snippets.filter(s => s.id !== id);
-            saveSnippets();
+            if (!saveSnippets()) return;
             
             const currentSearch = document.getElementById('search-input').value;
             const currentTag = document.getElementById('tag-filter').value;
@@ -401,10 +406,17 @@ permalink: /prompt-manager/
                     // Let's just append and let user manage duplicates for now
                     
                     // Simple validation
-                    const validSnippets = newSnippets.filter(s => s.title && s.content);
+                    const validSnippets = newSnippets
+                        .filter(s => s && typeof s.title === 'string' && typeof s.content === 'string')
+                        .map(s => ({
+                            ...s, id: crypto.randomUUID(),
+                            tags: Array.isArray(s.tags) ? s.tags.filter(t => typeof t === 'string') : [],
+                            createdAt: s.createdAt || s.created || new Date().toISOString(),
+                            updatedAt: s.updatedAt || s.createdAt || s.created || new Date().toISOString()
+                        }));
                     
                     snippets = [...validSnippets, ...snippets];
-                    saveSnippets();
+                    if (!saveSnippets()) return;
                     
                     // Apply current filters
                     const currentSearch = document.getElementById('search-input').value;
@@ -413,7 +425,7 @@ permalink: /prompt-manager/
                     updateStats();
                     populateTagFilter();
 
-                    alert(`Successfully imported ${newSnippets.length} prompt(s)`);
+                    alert(`Successfully imported ${validSnippets.length} prompt(s)`);
                 } catch (error) {
                     alert('Error importing file: ' + error.message);
                     console.error(error);
@@ -437,7 +449,7 @@ permalink: /prompt-manager/
 
         snippets = [];
         filteredSnippets = [];
-        saveSnippets();
+        if (!saveSnippets()) return;
         renderSnippets();
         updateStats();
         populateTagFilter();
@@ -474,8 +486,8 @@ permalink: /prompt-manager/
     {% include newsletter.html %}
 </div>
 
-<div style="background: #f0fdf4; padding: 20px; border-left: 4px solid #059669; border-radius: 6px; margin-top: 30px; text-align: center;">
-    <h3 style="color: #065f46; font-size: 1.2em; margin-bottom: 12px;">
+<div style="background: var(--color-success-light); padding: 20px; border-left: 4px solid #059669; border-radius: 6px; margin-top: 30px; text-align: center;">
+    <h3 style="color: var(--color-success-text); font-size: 1.2em; margin-bottom: 12px;">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>Pro Tips
     </h3>
     <p style="margin-bottom: 15px;">Use meaningful titles and tags to organize your prompts. Export your collection regularly as a backup. Consider versioning your prompts by including dates in titles (e.g., "A&P Format v2 - 2025-01-15").</p>

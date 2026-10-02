@@ -2,13 +2,13 @@
 layout: course
 title: "Clinical Prompt Engineering for Physicians"
 permalink: /courses/clinical-prompt-engineering/
-description: "Master the art of AI-assisted clinical documentation through hands-on practice and LLM-powered feedback"
+description: "Practice AI-assisted clinical documentation with browser-based exercises and example solutions"
 ---
 
 <div class="hero">
   <div class="container">
     <h1 class="hero-title">Clinical Prompt Engineering for Physicians</h1>
-    <p class="hero-subtitle">Learn to leverage AI for better clinical documentation through interactive exercises with real-time feedback</p>
+    <p class="hero-subtitle">Practice AI-assisted clinical documentation through interactive exercises and example solutions</p>
   
     <div class="course-stats">
       <div class="course-stat">
@@ -20,7 +20,7 @@ description: "Master the art of AI-assisted clinical documentation through hands
         <span class="course-stat-label">Exercises</span>
       </div>
       <div class="course-stat">
-        <span class="course-stat-value">~30 minutes</span>
+        <span class="course-stat-value">~4 hours</span>
         <span class="course-stat-label">Total Time</span>
       </div>
     </div>
@@ -33,7 +33,7 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 
 ### What Makes This Course Unique
 
-- **Hands-On Practice**: Write real prompts, see real outputs, get real feedback
+- **Hands-On Practice**: Write prompts and review AI-generated outputs
 - **Self-Paced Learning**: Compare your work with expert examples
 - **Clinical Focus**: All exercises use realistic medical scenarios
 - **Local**: Everything runs in your browser
@@ -110,7 +110,7 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 Each module starts with instructional content explaining key principles of prompt engineering for clinical use.
 
 ### 2. See the Example
-You'll be given a realistic clinical scenario (de-identified patient transcript).
+You'll be given a synthetic clinical scenario (hypothetical patient transcript).
 
 ### 3. Write Your Prompt
 Practice writing prompts in an interactive editor with helpful hints.
@@ -119,11 +119,7 @@ Practice writing prompts in an interactive editor with helpful hints.
 See the AI-generated output from your prompt in real-time.
 
 ### 5. Get Feedback
-Our LLM evaluation system analyzes your work and provides:
-- Strengths of your approach
-- Specific improvements to make
-- Scores based on clinical documentation best practices
-- Actionable examples
+Compare the generated output with the example solution and the exercise rubric. Review completeness, formatting, and fidelity to the supplied scenario. Progress records completed runs; it does not represent a graded clinical assessment.
 
 ### 6. Iterate & Master
 Refine your prompts based on feedback and practice until you achieve mastery.

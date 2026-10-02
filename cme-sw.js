@@ -1,5 +1,5 @@
 // CME & Budget Tracker Service Worker
-const CACHE_NAME = 'cme-tracker-v1';
+const CACHE_NAME = 'cme-tracker-v2';
 const CACHE_URLS = [
     '/cme-tracker/',
     '/assets/css/style.css',
@@ -28,23 +28,24 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    if (!event.request.url.startsWith(self.location.origin)) return;
+    if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
 
-    event.respondWith(
-        fetch(event.request)
-            .then((response) => {
-                const responseClone = response.clone();
-                if (event.request.method === 'GET' && response.status === 200) {
-                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
-                }
-                return response;
-            })
-            .catch(() => {
-                return caches.match(event.request).then((cachedResponse) => {
-                    if (cachedResponse) return cachedResponse;
-                    if (event.request.mode === 'navigate') return caches.match('/cme-tracker/');
-                    return new Response('Offline', { status: 503 });
-                });
-            })
-    );
+    event.respondWith((async () => {
+        const cache = await caches.open(CACHE_NAME);
+        try {
+            const response = await fetch(event.request);
+            if (response.status === 200) {
+                event.waitUntil(cache.put(event.request, response.clone()).catch(() => {}));
+            }
+            return response;
+        } catch (error) {
+            const cachedResponse = await cache.match(event.request);
+            if (cachedResponse) return cachedResponse;
+            if (event.request.mode === 'navigate') {
+                const app = await cache.match(CACHE_URLS[0]);
+                if (app) return app;
+            }
+            return new Response('Offline', { status: 503 });
+        }
+    })());
 });

@@ -1,8 +1,19 @@
-<!-- Google Analytics -->
-<script defer src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<!-- Load analytics only after an explicit, persisted opt-in. -->
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', '{{ site.google_analytics }}');
+  function gtag() { window.dataLayer.push(arguments); }
+  window.enableAnalytics = function () {
+    window['ga-disable-{{ site.google_analytics }}'] = false;
+    if (window.ppeAnalyticsLoaded) return;
+    window.ppeAnalyticsLoaded = true;
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}';
+    document.head.appendChild(script);
+  };
+  if (document.cookie.split(';').some(cookie => cookie.trim() === 'ppe_cookie_consent=accepted')) {
+    window.enableAnalytics();
+  }
 </script>

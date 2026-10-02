@@ -17,11 +17,11 @@
     }
 
     .sidebar-panel {
-        background: white;
+        background: var(--color-bg-primary);
         border-radius: 8px;
         padding: 18px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border: 1px solid #e8e8e8;
+        border: 1px solid var(--color-border);
         position: sticky;
         top: 20px;
         max-height: calc(100vh - 40px);
@@ -29,11 +29,11 @@
     }
 
     .workflow-panel {
-        background: white;
+        background: var(--color-bg-primary);
         border-radius: 8px;
         padding: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border: 1px solid #e8e8e8;
+        border: 1px solid var(--color-border);
     }
 
     .toolbar {
@@ -45,9 +45,9 @@
 
     .tool-button {
         padding: 8px 14px;
-        border: 1px solid #e8e8e8;
+        border: 1px solid var(--color-border);
         border-radius: 6px;
-        background: white;
+        background: var(--color-bg-primary);
         cursor: pointer;
         font-size: 0.85em;
         font-weight: 600;
@@ -58,23 +58,23 @@
     }
 
     .tool-button:hover {
-        background: #f9fafb;
-        border-color: #3b82f6;
+        background: var(--color-bg-secondary);
+        border-color: var(--color-primary);
     }
 
     .tool-button.active {
-        background: #3b82f6;
+        background: var(--color-primary-solid);
         color: white;
-        border-color: #3b82f6;
+        border-color: var(--color-primary);
     }
 
     .section-title {
         font-size: 0.95rem;
         font-weight: 700;
-        color: #333;
+        color: var(--color-text-primary);
         margin: 15px 0 10px 0;
         padding-bottom: 8px;
-        border-bottom: 2px solid #e8e8e8;
+        border-bottom: 2px solid var(--color-border);
     }
 
     .section-title:first-child {
@@ -87,7 +87,7 @@
         margin-bottom: 8px;
         border: 2px solid;
         border-radius: 6px;
-        background: white;
+        background: var(--color-bg-primary);
         cursor: pointer;
         font-weight: 600;
         font-size: 0.85em;
@@ -103,37 +103,37 @@
     }
 
     .node-button.start {
-        border-color: #10b981;
-        color: #10b981;
+        border-color: var(--color-success);
+        color: var(--color-success);
     }
 
     .node-button.process {
-        border-color: #3b82f6;
-        color: #3b82f6;
+        border-color: var(--color-primary);
+        color: var(--color-primary);
     }
 
     .node-button.decision {
         border-color: #f59e0b;
-        color: #f59e0b;
+        color: var(--color-warning);
     }
 
     .node-button.end {
         border-color: #ef4444;
-        color: #ef4444;
+        color: var(--color-error);
     }
 
     .node-button.parallel {
-        border-color: #8b5cf6;
-        color: #8b5cf6;
+        border-color: var(--color-accent);
+        color: var(--color-accent);
     }
 
     .template-button {
         width: 100%;
         padding: 10px 12px;
         margin-bottom: 8px;
-        border: 1px solid #e8e8e8;
+        border: 1px solid var(--color-border);
         border-radius: 6px;
-        background: white;
+        background: var(--color-bg-primary);
         cursor: pointer;
         font-size: 0.85em;
         transition: all 0.2s;
@@ -141,14 +141,14 @@
     }
 
     .template-button:hover {
-        background: #f0f9ff;
-        border-color: #3b82f6;
+        background: var(--color-primary-light);
+        border-color: var(--color-primary);
     }
 
     .stats-panel {
         margin-top: 15px;
         padding: 12px;
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        background: var(--gradient-info);
         border-radius: 6px;
         font-size: 0.85em;
     }
@@ -168,7 +168,7 @@
     }
 
     .btn-primary {
-        background: #2a7ae2;
+        background: var(--color-primary-solid);
         color: white;
         border: none;
         padding: 9px 16px;
@@ -182,13 +182,13 @@
     }
 
     .btn-primary:hover {
-        background: #1e5bb8;
+        background: var(--color-primary-solid-hover);
     }
 
     .btn-secondary {
-        background: white;
-        border: 1px solid #e8e8e8;
-        color: #333;
+        background: var(--color-bg-primary);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
         padding: 9px 16px;
         border-radius: 6px;
         font-weight: 600;
@@ -200,14 +200,14 @@
     }
 
     .btn-secondary:hover {
-        background: #f5f5f5;
-        border-color: #3b82f6;
+        background: var(--color-bg-tertiary);
+        border-color: var(--color-primary);
     }
 
     #workflow-canvas {
         width: 100%;
         height: 800px;
-        border: 2px solid #e8e8e8;
+        border: 2px solid var(--color-border);
         border-radius: 8px;
         position: relative;
         background:
@@ -238,7 +238,7 @@
         position: absolute;
         padding: 14px 18px;
         border-radius: 8px;
-        background: white;
+        background: var(--color-bg-primary);
         border: 3px solid;
         min-width: 130px;
         cursor: move;
@@ -258,24 +258,24 @@
     }
 
     .workflow-node.start {
-        border-color: #10b981;
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border-color: var(--color-success);
+        background: var(--gradient-success);
         border-radius: 20px;
     }
 
     .workflow-node.process {
-        border-color: #3b82f6;
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        border-color: var(--color-primary);
+        background: var(--gradient-info);
     }
 
     .workflow-node.decision {
         border-color: #f59e0b;
-        background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+        background: var(--gradient-warning);
     }
 
     .workflow-node.end {
         border-color: #ef4444;
-        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        background: var(--gradient-error);
         border-radius: 50%;
         width: 130px;
         height: 130px;
@@ -286,8 +286,8 @@
     }
 
     .workflow-node.parallel {
-        border-color: #8b5cf6;
-        background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+        border-color: var(--color-accent);
+        background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent-light) 100%);
         border-left-width: 6px;
         border-right-width: 6px;
     }
@@ -295,12 +295,12 @@
     .node-label {
         font-weight: 700;
         margin-bottom: 4px;
-        color: #1f2937;
+        color: var(--color-text-primary);
     }
 
     .node-meta {
         font-size: 0.8em;
-        color: #6b7280;
+        color: var(--color-text-secondary);
         display: flex;
         gap: 8px;
         flex-wrap: wrap;
@@ -316,8 +316,8 @@
     .duplicate-node {
         position: absolute;
         top: -10px;
-        background: white;
-        color: #ef4444;
+        background: var(--color-bg-primary);
+        color: var(--color-error);
         border: 2px solid #ef4444;
         border-radius: 50%;
         width: 24px;
@@ -336,8 +336,8 @@
 
     .duplicate-node {
         right: 20px;
-        color: #3b82f6;
-        border-color: #3b82f6;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
     }
 
     .workflow-node:hover .delete-node,
@@ -349,7 +349,7 @@
         position: absolute;
         width: 12px;
         height: 12px;
-        background: #3b82f6;
+        background: var(--color-primary-solid);
         border: 2px solid white;
         border-radius: 50%;
         cursor: crosshair;
@@ -382,7 +382,7 @@
 
     .connection-handle:hover {
         transform: scale(1.3) translate(-50%, -50%);
-        background: #1e40af;
+        background: var(--color-primary-solid-hover);
     }
 
     svg.connections {
@@ -428,7 +428,7 @@
     }
 
     .modal-content {
-        background: white;
+        background: var(--color-bg-primary);
         padding: 25px;
         border-radius: 12px;
         max-width: 400px;
@@ -438,7 +438,7 @@
 
     .modal-content h3 {
         margin-top: 0;
-        color: #1f2937;
+        color: var(--color-text-primary);
     }
 
     .form-group {
@@ -449,7 +449,7 @@
         display: block;
         font-weight: 600;
         margin-bottom: 6px;
-        color: #374151;
+        color: var(--color-text-primary);
         font-size: 0.9em;
     }
 
@@ -457,7 +457,7 @@
     .form-group textarea {
         width: 100%;
         padding: 10px;
-        border: 2px solid #e8e8e8;
+        border: 2px solid var(--color-border);
         border-radius: 6px;
         font-size: 0.9em;
         font-family: inherit;
@@ -466,7 +466,7 @@
     .form-group input:focus,
     .form-group textarea:focus {
         outline: none;
-        border-color: #3b82f6;
+        border-color: var(--color-primary);
     }
 
     .modal-buttons {
@@ -476,7 +476,7 @@
     }
 
     .instructions {
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        background: var(--gradient-info);
         padding: 12px;
         border-radius: 6px;
         margin-bottom: 15px;

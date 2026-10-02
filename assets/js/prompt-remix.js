@@ -472,21 +472,22 @@
         // Load existing snippets
         let snippets = [];
         try {
-            const stored = localStorage.getItem('aiPromptSnippets');
-            snippets = stored ? JSON.parse(stored) : [];
+            snippets = window.PromptStorage.load();
         } catch (e) {
             console.error('Error loading snippets:', e);
-            snippets = [];
+            showToast('Could not read saved prompts. Export or repair them in Prompt Manager first.', 'error');
+            return;
         }
 
         // Create new snippet
         const newSnippet = {
-            id: Date.now(),
+            id: crypto.randomUUID(),
             title: title,
             content: content,
             tags: tags.length > 0 ? tags : ['customized'],
             basePrompt: currentPromptSlug || null,
-            created: new Date().toISOString(),
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
             charCount: content.length
         };
 
@@ -495,7 +496,7 @@
 
         // Save
         try {
-            localStorage.setItem('aiPromptSnippets', JSON.stringify(snippets));
+            window.PromptStorage.save(snippets);
             closeSaveModal();
             showToast('Saved to Prompt Manager!', 'success');
         } catch (e) {

@@ -16,7 +16,7 @@ description: Plan your work schedule, PTO, and CME for the entire year.
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ "/pto-sw.js" | relative_url }}')
+        navigator.serviceWorker.register('{{ "/pto-sw.js" | relative_url }}', { scope: '{{ "/pto-planner/" | relative_url }}' })
             .then(reg => console.log('[PTO Planner PWA] Service Worker registered'))
             .catch(err => console.log('[PTO Planner PWA] SW registration failed:', err));
     });
@@ -218,7 +218,7 @@ if ('serviceWorker' in navigator) {
   }
 </style>
 
-<div id="app" class="pto-planner-wrapper" v-cloak>
+<div class="pto-planner-wrapper">
     <!-- Hero Section -->
     <div class="hero">
         <div class="container mx-auto">
@@ -233,19 +233,6 @@ if ('serviceWorker' in navigator) {
             </p>
         </div>
     </div>
-
-    <div class="container mx-auto px-6 max-w-5xl">
-        <!-- Premium Banner -->
-        <div class="premium-banner">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-            </svg>
-        </h1>
-        <p class="hero-subtitle">
-            Plan your work schedule, vacation days, and CME time for the entire year with this interactive calendar tool.
-        </p>
-    </div>
-</div>
 
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
     <!-- Premium Banner -->
@@ -278,6 +265,7 @@ if ('serviceWorker' in navigator) {
 
 <div id="app" class="min-h-screen bg-slate-50 font-sans text-slate-800 pb-20">
   <!-- App will be rendered here -->
+</div>
 </div>
 </div>
 

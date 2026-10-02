@@ -1,7 +1,7 @@
 // RVU Tracker Service Worker
 // Provides offline caching for the RVU Data Tracker PWA
 
-const CACHE_NAME = 'rvu-tracker-v1';
+const CACHE_NAME = 'rvu-tracker-v2';
 const CACHE_URLS = [
   '/clinic-visit-tracker/',
   '/assets/css/style.css',
@@ -36,40 +36,24 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - network first, fallback to cache
 self.addEventListener('fetch', (event) => {
-  // Only handle same-origin requests
-  if (!event.request.url.startsWith(self.location.origin)) {
-    return;
-  }
+    if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
 
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Clone the response before caching
-        const responseClone = response.clone();
-        
-        // Cache successful GET requests
-        if (event.request.method === 'GET' && response.status === 200) {
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
-          });
+    event.respondWith((async () => {
+        const cache = await caches.open(CACHE_NAME);
+        try {
+            const response = await fetch(event.request);
+            if (response.status === 200) {
+                event.waitUntil(cache.put(event.request, response.clone()).catch(() => {}));
+            }
+            return response;
+        } catch (error) {
+            const cachedResponse = await cache.match(event.request);
+            if (cachedResponse) return cachedResponse;
+            if (event.request.mode === 'navigate') {
+                const app = await cache.match(CACHE_URLS[0]);
+                if (app) return app;
+            }
+            return new Response('Offline', { status: 503 });
         }
-        
-        return response;
-      })
-      .catch(() => {
-        // Network failed, try cache
-        return caches.match(event.request).then((cachedResponse) => {
-          if (cachedResponse) {
-            return cachedResponse;
-          }
-          
-          // Return a basic offline page for navigation requests
-          if (event.request.mode === 'navigate') {
-            return caches.match('/clinic-visit-tracker/');
-          }
-          
-          return new Response('Offline', { status: 503 });
-        });
-      })
-  );
+    })());
 });

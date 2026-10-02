@@ -805,13 +805,13 @@ permalink: /prompt-assistant/
     </div>
 
     <div class="tab-navigation" id="tab-navigation" style="display: none;">
-        <button class="tab-button active" onclick="switchTab('generate')" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+        <button class="tab-button active" onclick="switchTab('generate', this)" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
             </svg>
             Generate from Scratch
         </button>
-        <button class="tab-button" onclick="switchTab('refine')" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+        <button class="tab-button" onclick="switchTab('refine', this)" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
             </svg>
@@ -1278,12 +1278,12 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
     // =====================================================
     // TAB SWITCHING
     // =====================================================
-    window.switchTab = function(tab) {
+    window.switchTab = function(tab, button) {
         currentTab = tab;
 
         // Update tab buttons
         document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        button.classList.add('active');
 
         // Update tab content
         document.getElementById('tab-generate').classList.remove('active');
@@ -1595,4 +1595,70 @@ Analyze the user's inputs and provide gap analysis, specific fixes, and a refine
         charCounter.innerHTML = message;
     }
 
-    // =
+
+    // Output actions for both assistant tabs.
+    async function copyOutput(content, button) {
+        if (!content) return;
+        try {
+            await navigator.clipboard.writeText(content);
+            const label = button.innerHTML;
+            button.textContent = 'Copied!';
+            setTimeout(() => { button.innerHTML = label; }, 2000);
+        } catch (error) {
+            alert('Could not copy. Select the output and copy it manually.');
+        }
+    }
+    window.copyPrompt = button => copyOutput(currentOutput, button);
+    window.copyPromptRefine = button => copyOutput(currentOutputRefine, button);
+
+    function saveOutput(content) {
+        if (!content) return;
+        const title = window.prompt('Name this prompt:', 'My Clinical Prompt');
+        if (!title || !title.trim()) return;
+        try {
+            const snippets = window.PromptStorage.load();
+            const timestamp = new Date().toISOString();
+            snippets.unshift({
+                id: crypto.randomUUID(), title: title.trim(), content,
+                tags: ['assistant'], createdAt: timestamp, updatedAt: timestamp
+            });
+            window.PromptStorage.save(snippets);
+            alert('Saved to Prompt Manager.');
+        } catch (error) {
+            alert('Could not save. Download the prompt to keep a copy.');
+        }
+    }
+    window.saveToPromptManager = () => saveOutput(currentOutput);
+    window.saveToPromptManagerRefine = () => saveOutput(currentOutputRefine);
+
+    function downloadOutput(content) {
+        if (!content) return;
+        const url = URL.createObjectURL(new Blob([content], { type: 'text/plain;charset=utf-8' }));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'clinical-prompt.txt';
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+    window.downloadPrompt = () => downloadOutput(currentOutput);
+    window.downloadPromptRefine = () => downloadOutput(currentOutputRefine);
+
+    function resetChat(tab) {
+        if (tab === 'generate') {
+            conversationHistoryGenerate = [];
+            currentOutput = '';
+        } else {
+            conversationHistoryRefine = [];
+            currentOutputRefine = '';
+        }
+        const suffix = tab === 'generate' ? '' : '-refine';
+        document.getElementById('output-content' + suffix).textContent = '';
+        document.getElementById('output-content' + suffix).style.display = 'none';
+        document.getElementById('output-empty' + suffix).style.display = 'block';
+        document.getElementById('output-actions' + suffix).style.display = 'none';
+        document.getElementById('char-counter' + suffix).style.display = 'none';
+        addWelcomeMessage(tab);
+    }
+    window.clearChat = () => resetChat('generate');
+    window.clearChatRefine = () => resetChat('refine');
+</script>

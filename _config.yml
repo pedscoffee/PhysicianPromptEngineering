@@ -6,15 +6,6 @@ url: https://physicianpromptengineering.com
 # Set the theme
 theme: minima
 
-# Header navigation
-# header_pages:
-  #- blog.md
-  #- prompt-library.md
-  #- best-practices.md
-  #- prompt-generator.md
-  #- snippet-manager.md
-  #- contributions.md
-
 # Minima-specific settings
 minima:
   skin: classic
@@ -22,6 +13,8 @@ minima:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-redirect-from
   
 # --- New Prompt Collection ---
 # This tells Jekyll to look for a folder named "_prompts"
@@ -41,3 +34,35 @@ collections:
     permalink: /courses/:course/:name/
 
 google_analytics: G-VNYGW8RWMY
+
+# Repository notes, experiments, and unfinished courses are not public assets.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - WEBSITE_AUDIT.md
+  - docs
+  - scripts
+  - tests
+  - vendor
+  - ClinicalToolkit
+  - untitled folder
+  - Medical Trainee Development.md
+  - IHI research.md
+  - supporter_tier_strategy.md
+  - ADDING_ANATOMY_IMAGES.md
+  - anatomy_image_prompts.md
+  - PageSpeed Insights Desktop.pdf
+  - PageSpeed Insights Mobile.pdf
+  - extract_pdf_text.py
+  - test_regex.js
+  - _course_modules/newborn-module-1-general-assessment.md
+  - _course_modules/newborn-module-2-heent.md
+  - _course_modules/newborn-module-3-cardiac-respiratory.md
+  - _course_modules/newborn-module-4-abdomen-msk.md
+  - _course_modules/newborn-module-5-skin-neuro.md
+  - assets/js/newborn-exam-exercise.js
+  - promptideas.md
+  - dotphraseideas.md
+  - visualization-ideas.md

@@ -15,11 +15,11 @@
 
     .input-panel,
     .output-panel {
-        background: white;
+        background: var(--color-bg-primary);
         border-radius: 8px;
         padding: 25px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border: 1px solid #e8e8e8;
+        border: 1px solid var(--color-border);
     }
 
     .output-panel {
@@ -32,7 +32,7 @@
         width: 100%;
         min-height: 300px;
         padding: 15px;
-        border: 2px solid #e8e8e8;
+        border: 2px solid var(--color-border);
         border-radius: 6px;
         font-family: 'Monaco', 'Courier New', monospace;
         font-size: 0.95em;
@@ -47,7 +47,7 @@
     }
 
     .btn-primary {
-        background: #2a7ae2;
+        background: var(--color-primary-solid);
         color: white;
         border: none;
         padding: 12px 24px;
@@ -60,7 +60,7 @@
     }
 
     .btn-primary:hover:not(:disabled) {
-        background: #1e5bb8;
+        background: var(--color-primary-solid-hover);
     }
 
     .btn-primary:disabled {
@@ -70,7 +70,7 @@
 
     .tabs {
         display: flex;
-        border-bottom: 2px solid #e8e8e8;
+        border-bottom: 2px solid var(--color-border);
         margin-bottom: 20px;
     }
 
@@ -78,14 +78,14 @@
         padding: 10px 20px;
         cursor: pointer;
         font-weight: 600;
-        color: #666;
+        color: var(--color-text-secondary);
         border-bottom: 2px solid transparent;
         margin-bottom: -2px;
     }
 
     .tab.active {
-        color: #2a7ae2;
-        border-bottom-color: #2a7ae2;
+        color: var(--color-primary);
+        border-bottom-color: var(--color-primary);
     }
 
     .tab-content {
@@ -103,7 +103,7 @@
     }
 
     #ascii-output {
-        background: #f5f5f5;
+        background: var(--color-bg-tertiary);
         padding: 15px;
         border-radius: 6px;
         font-family: 'Monaco', 'Courier New', monospace;
@@ -116,9 +116,9 @@
     .status-bar {
         margin-top: 15px;
         padding: 10px;
-        background: #f0f9ff;
+        background: var(--color-primary-light);
         border-radius: 6px;
-        color: #0369a1;
+        color: var(--color-primary-dark);
         font-size: 0.9em;
         display: none;
     }
@@ -126,18 +126,18 @@
     .model-status {
         margin-bottom: 15px;
         padding: 15px;
-        background: #fffbeb;
+        background: var(--color-warning-light);
         border: 1px solid #fcd34d;
         border-radius: 6px;
-        color: #92400e;
+        color: var(--color-warning-text);
         font-size: 0.9em;
     }
 
     .copy-btn {
         margin-top: 10px;
-        background: white;
-        border: 1px solid #e8e8e8;
-        color: #333;
+        background: var(--color-bg-primary);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
         padding: 8px 16px;
         border-radius: 4px;
         cursor: pointer;
@@ -148,13 +148,13 @@
     }
 
     .copy-btn:hover {
-        background: #f5f5f5;
+        background: var(--color-bg-tertiary);
     }
 
     .mode-toggle {
         display: flex;
         gap: 8px;
-        background: #f3f4f6;
+        background: var(--color-bg-tertiary);
         padding: 4px;
         border-radius: 8px;
     }
@@ -167,7 +167,7 @@
         cursor: pointer;
         font-size: 0.85em;
         font-weight: 600;
-        color: #6b7280;
+        color: var(--color-text-secondary);
         transition: all 0.2s;
         display: flex;
         align-items: center;
@@ -179,8 +179,8 @@
     }
 
     .mode-btn.active {
-        background: white;
-        color: #0369a1;
+        background: var(--color-bg-primary);
+        color: var(--color-primary-dark);
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
@@ -216,7 +216,7 @@
     }
 
     .modal-content {
-        background: white;
+        background: var(--color-bg-primary);
         width: 95%;
         max-width: 90vw;
         height: 95%;
@@ -236,7 +236,7 @@
         gap: 15px;
         margin-bottom: 20px;
         padding-bottom: 15px;
-        border-bottom: 1px solid #e5e7eb;
+        border-bottom: 1px solid var(--color-border);
     }
 
     .modal-body {
@@ -245,15 +245,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #f9fafb;
+        background: var(--color-bg-secondary);
         border-radius: 8px;
         padding: 20px;
     }
 
     .btn-secondary {
-        background: white;
+        background: var(--color-bg-primary);
         border: 1px solid #d1d5db;
-        color: #374151;
+        color: var(--color-text-primary);
         padding: 8px 16px;
         border-radius: 6px;
         font-weight: 600;
@@ -261,6 +261,6 @@
     }
 
     .btn-secondary:hover {
-        background: #f3f4f6;
+        background: var(--color-bg-tertiary);
     }
 }
