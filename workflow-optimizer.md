@@ -8,26 +8,26 @@ permalink: /workflow-optimizer/
 
 <div class="workflow-optimizer-wrapper">
 
-<div class="hero" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 3rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
+<div class="hero" style="background: var(--gradient-info); padding: 3rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
     <div class="container">
-        <h1 class="hero-title" style="color: #1e3a8a; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+        <h1 class="hero-title" style="color: var(--color-primary-dark); font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
             Clinical Workflow Optimizer
         </h1>
-        <p class="hero-subtitle" style="color: #1e40af; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+        <p class="hero-subtitle" style="color: var(--color-primary-dark); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
             Visualize, analyze, and optimize clinical workflows. Identify bottlenecks, reduce waste, and improve patient care efficiency.
         </p>
     </div>
 </div>
 
 <div class="container">
-    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px 20px; margin-bottom: 20px; border-radius: 6px;">
+    <div style="background: var(--color-warning-light); border-left: 4px solid #f59e0b; padding: 16px 20px; margin-bottom: 20px; border-radius: 6px;">
         <div style="display: flex; align-items: start; gap: 12px;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f59e0b" style="width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
             </svg>
             <div>
-                <strong style="color: #92400e; display: block; margin-bottom: 4px;">Educational Use Only</strong>
-                <p style="color: #78350f; margin: 0; font-size: 0.9em;">
+                <strong style="color: var(--color-warning-text); display: block; margin-bottom: 4px;">Educational Use Only</strong>
+                <p style="color: var(--color-warning-text); margin: 0; font-size: 0.9em;">
                     This tool is for educational and quality improvement purposes. <strong>Do not input any patient health information (PHI)</strong> or other sensitive data. Use de-identified scenarios for workflow analysis.
                 </p>
             </div>
@@ -66,7 +66,7 @@ permalink: /workflow-optimizer/
             Align V
         </button>
         
-        <div style="border-left: 1px solid #e8e8e8; height: 32px; margin: 0 4px;"></div>
+        <div style="border-left: 1px solid var(--color-border); height: 32px; margin: 0 4px;"></div>
         
         <button class="tool-button" onclick="zoomCanvas(0.9)" title="Zoom Out">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ permalink: /workflow-optimizer/
             </svg>
             Zoom Out
         </button>
-        <span id="zoomLevel" style="font-size: 0.85em; color: #6b7280; min-width: 45px; text-align: center;">100%</span>
+        <span id="zoomLevel" style="font-size: 0.85em; color: var(--color-text-secondary); min-width: 45px; text-align: center;">100%</span>
         <button class="tool-button" onclick="zoomCanvas(1.1)" title="Zoom In">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" stroke-width="2"/>
@@ -155,7 +155,7 @@ permalink: /workflow-optimizer/
             </button>
 
             <div class="stats-panel">
-                <h4 style="margin: 0 0 10px 0; color: #1e40af; font-size: 0.95em;">Workflow Metrics</h4>
+                <h4 style="margin: 0 0 10px 0; color: var(--color-primary-dark); font-size: 0.95em;">Workflow Metrics</h4>
                 <div class="stat-item">
                     <span>Total Steps:</span>
                     <strong id="totalSteps">0</strong>
@@ -212,9 +212,9 @@ permalink: /workflow-optimizer/
 
         <!-- Canvas -->
         <div class="workflow-panel">
-            <h3 style="margin-bottom: 15px; color: #333; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin-bottom: 15px; color: var(--color-text-primary); display: flex; justify-content: space-between; align-items: center;">
                 <span>Workflow Canvas</span>
-                <span style="font-size: 0.75em; font-weight: normal; color: #6b7280;" id="modeIndicator">Select Mode</span>
+                <span style="font-size: 0.75em; font-weight: normal; color: var(--color-text-secondary);" id="modeIndicator">Select Mode</span>
             </h3>
             <div id="workflow-canvas" class="drag-mode">
                 <svg class="connections" id="connections-svg">
@@ -912,10 +912,10 @@ permalink: /workflow-optimizer/
         workflows.forEach((wf, index) => {
             const date = new Date(wf.created).toLocaleDateString();
             html += `
-                <div style="border: 1px solid #e8e8e8; padding: 12px; margin-bottom: 10px; border-radius: 6px; cursor: pointer; hover: background: #f9fafb;" 
+                <div style="border: 1px solid var(--color-border); padding: 12px; margin-bottom: 10px; border-radius: 6px; cursor: pointer; hover: background: var(--color-bg-secondary);"
                      onclick="loadWorkflowById(${wf.id})">
                     <strong>${wf.name}</strong><br>
-                    <small style="color: #6b7280;">${wf.nodeCount} steps, ${wf.connectionCount} connections • ${date}</small>
+                    <small style="color: var(--color-text-secondary);">${wf.nodeCount} steps, ${wf.connectionCount} connections • ${date}</small>
                     <button onclick="event.stopPropagation(); deleteWorkflow(${wf.id})" 
                             style="float: right; background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;">
                         Delete
@@ -934,7 +934,7 @@ permalink: /workflow-optimizer/
         modal.id = 'workflowSelectModal';
         modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;';
         modal.innerHTML = `
-            <div style="background: white; padding: 25px; border-radius: 12px; max-width: 600px; width: 100%;">
+            <div style="background: var(--color-bg-primary); padding: 25px; border-radius: 12px; max-width: 600px; width: 100%;">
                 ${html}
                 <button onclick="document.getElementById('workflowSelectModal').remove()" 
                         style="margin-top: 15px; padding: 10px 20px; background: #6b7280; color: white; border: none; border-radius: 6px; cursor: pointer; width: 100%;">

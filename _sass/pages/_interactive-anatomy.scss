@@ -11,12 +11,12 @@
         margin-bottom: 2rem;
 
         h1 {
-            color: #2c3e50;
+            color: var(--color-text-primary);
             margin-bottom: 0.5rem;
         }
 
         p {
-            color: #7f8c8d;
+            color: var(--color-text-secondary);
         }
     }
 
@@ -24,7 +24,7 @@
         display: grid;
         grid-template-columns: 300px 1fr;
         gap: 2rem;
-        background: #fff;
+        background: var(--color-bg-primary);
         border-radius: 12px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         overflow: hidden;
@@ -64,8 +64,8 @@
 
 // Sidebar
 .anatomy-sidebar {
-    background: #f8f9fa;
-    border-right: 1px solid #e9ecef;
+    background: var(--color-bg-secondary);
+    border-right: 1px solid var(--color-border);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -76,7 +76,7 @@
         input {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid #ced4da;
+            border: 1px solid var(--color-border);
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.2s;
@@ -101,17 +101,17 @@
             background: none;
             cursor: pointer;
             font-weight: 600;
-            color: #7f8c8d;
+            color: var(--color-text-secondary);
             border-bottom: 2px solid transparent;
             transition: all 0.2s;
 
             &.active {
-                color: #2c3e50;
-                border-bottom-color: #3498db;
+                color: var(--color-text-primary);
+                border-bottom-color: var(--color-primary);
             }
 
             &:hover {
-                color: #34495e;
+                color: var(--color-text-primary);
             }
         }
     }
@@ -125,15 +125,15 @@
         .category-header {
             padding: 0.75rem 0.5rem;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--color-text-primary);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
             user-select: none;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid var(--color-border);
             margin-top: 0.5rem;
-            background: #f1f3f5;
+            background: var(--color-bg-tertiary);
             border-radius: 4px;
 
             &:first-child {
@@ -141,7 +141,7 @@
             }
 
             &:hover {
-                background: #e9ecef;
+                background: var(--color-bg-tertiary);
             }
 
             svg {
@@ -176,12 +176,12 @@
             margin-bottom: 0.25rem;
 
             &:hover {
-                background: #e9ecef;
+                background: var(--color-bg-tertiary);
             }
 
             &.active {
-                background: #e3f2fd;
-                color: #1976d2;
+                background: var(--color-primary-light);
+                color: var(--color-primary);
                 font-weight: 500;
             }
 
@@ -204,7 +204,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #ffffff;
+    background: var(--color-bg-primary);
 
     .viewer-controls {
         position: absolute;
@@ -219,12 +219,12 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: #fff;
-            border: 1px solid #dfe6e9;
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
-            color: #636e72;
+            color: var(--color-text-secondary);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             transition: all 0.2s;
 
@@ -234,14 +234,14 @@
             }
 
             &:hover {
-                background: #f8f9fa;
+                background: var(--color-bg-secondary);
                 transform: translateY(-1px);
             }
 
             &.active {
-                background: #e3f2fd;
-                color: #1976d2;
-                border-color: #bbdefb;
+                background: var(--color-primary-light);
+                color: var(--color-primary);
+                border-color: var(--color-primary-light);
             }
         }
     }
@@ -276,17 +276,17 @@
         width: 100%;
         margin-top: 2rem;
         padding-top: 2rem;
-        border-top: 1px solid #f1f2f6;
+        border-top: 1px solid var(--color-bg-tertiary);
         text-align: center;
 
         h2 {
             font-size: 1.5rem;
-            color: #2d3436;
+            color: var(--color-text-primary);
             margin-bottom: 0.5rem;
         }
 
         p {
-            color: #636e72;
+            color: var(--color-text-secondary);
             line-height: 1.6;
             max-width: 600px;
             margin: 0 auto 1.5rem;
@@ -298,12 +298,12 @@
 
         .attribution-text {
             font-size: 0.75rem;
-            color: #666;
+            color: var(--color-text-secondary);
             margin-top: 0.5rem;
             font-style: italic;
 
             a {
-                color: #3498db;
+                color: var(--color-primary);
                 text-decoration: underline;
 
                 &:hover {
@@ -317,12 +317,12 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
-            background: #fff;
-            border: 2px solid #dfe6e9;
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border);
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            color: #b2bec3;
+            color: var(--color-text-tertiary);
             transition: all 0.2s;
 
             svg {
@@ -332,13 +332,13 @@
 
             &:not(:disabled):hover {
                 border-color: #f1c40f;
-                color: #f39c12;
+                color: var(--color-warning);
             }
 
             &.active {
-                background: #fff9c4;
+                background: var(--color-warning-light);
                 border-color: #f1c40f;
-                color: #f39c12;
+                color: var(--color-warning);
 
                 svg {
                     fill: #f1c40f;

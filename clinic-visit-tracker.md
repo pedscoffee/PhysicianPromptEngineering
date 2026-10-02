@@ -39,13 +39,13 @@ if ('serviceWorker' in navigator) {
 
 <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
     <!-- Premium Banner -->
-    <div style="background: #fff7ed; border: 1px solid #fdba74; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: #f59e0b;">
+    <div style="background: var(--color-warning-light); border: 1px solid var(--color-warning-light); padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px; color: var(--color-warning);">
             <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
         </svg>
         <div>
-            <strong style="color: #9a3412;">Make this Your Own</strong>
-            <p style="margin: 0; color: #c2410c; font-size: 0.9em;">We hope you find this tool useful. Consider making it your own by taking the code from GitHub and using a coding LLM to personalize it to your exact needs! Please share your work with us on the contributions page or on GitHub - we would love to see what you can build!</p>
+            <strong style="color: var(--color-warning-text);">Make this Your Own</strong>
+            <p style="margin: 0; color: var(--color-warning-text); font-size: 0.9em;">We hope you find this tool useful. Consider making it your own by taking the code from GitHub and using a coding LLM to personalize it to your exact needs! Please share your work with us on the contributions page or on GitHub - we would love to see what you can build!</p>
         </div>
     </div>
 
@@ -62,7 +62,7 @@ if ('serviceWorker' in navigator) {
             </div>
         </div>
         <div style="display: flex; gap: 10px;">
-            <button id="pwaInstallBtn" onclick="installPWA()" style="background: white; color: #065f46; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+            <button id="pwaInstallBtn" onclick="installPWA()" style="background: var(--color-bg-primary); color: var(--color-success-text); border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
                 📲 Install App
             </button>
             <button onclick="dismissInstallBanner()" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); padding: 10px 15px; border-radius: 6px; cursor: pointer;">
@@ -73,8 +73,8 @@ if ('serviceWorker' in navigator) {
 </div>
 
 <!-- Data Warning Notice -->
-<div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">
-    <p style="margin: 0; color: #856404;">
+<div style="background: var(--color-warning-light); border: 2px solid #ffc107; border-radius: 8px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">
+    <p style="margin: 0; color: var(--color-warning-text);">
         <strong>⚠️ Important:</strong> Your visit data is stored in your browser's local storage.
         <strong>Export your data regularly</strong> to avoid losing it if you clear your browser cache or use a different device.
     </p>
@@ -116,8 +116,8 @@ if ('serviceWorker' in navigator) {
             </div>
 
             <!-- Time-Based Billing Automation -->
-            <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
-                <p style="color: #2c3e50; font-weight: 600; margin-bottom: 0.75rem;">⏱️ Time-Based Billing</p>
+            <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: var(--color-bg-secondary); border-radius: 8px;">
+                <p style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.75rem;">⏱️ Time-Based Billing</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <button class="btn btn-warning" onclick="applyTimeBasedBilling('established')" id="timeBasedEstBtn" style="display: none;">
                         Established Patient (Time-Based)
@@ -146,8 +146,8 @@ if ('serviceWorker' in navigator) {
             </div>
 
             <!-- Save Button (for manual entry without timer) -->
-            <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e1e8ed;">
-                <p style="color: #7f8c8d; margin-bottom: 1rem; font-size: 0.9rem;">
+            <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid var(--color-border);">
+                <p style="color: var(--color-text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
                     <strong>Manual Entry:</strong> Select billing codes and click save below (no timer needed)
                 </p>
                 <button class="btn btn-success" onclick="saveManualVisit()">💾 Save Visit (No Timer)</button>
@@ -161,7 +161,7 @@ if ('serviceWorker' in navigator) {
             <h2 style="margin-top: 0;">Daily Summary</h2>
 
             <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                <input type="date" id="summaryDate" style="padding: 0.5rem 1rem; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 1rem;">
+                <input type="date" id="summaryDate" style="padding: 0.5rem 1rem; border: 2px solid var(--color-border); border-radius: 8px; font-size: 1rem;">
                 <button class="btn btn-primary" onclick="loadDailySummary()">Load Date</button>
                 <button class="btn btn-warning" onclick="exportToCSV()" style="margin-left: auto;">📥 Export All Data (CSV)</button>
             </div>
@@ -195,18 +195,18 @@ if ('serviceWorker' in navigator) {
     <div class="tab-content" id="learningTab">
         <div class="timer-section">
             <h2 style="margin-top: 0;">Learning Log</h2>
-            <p style="color: #7f8c8d; margin-bottom: 1.5rem;">Track interesting cases, teaching points, and clinical pearls from your practice.</p>
+            <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Track interesting cases, teaching points, and clinical pearls from your practice.</p>
 
             <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                <input type="date" id="learningDate" style="padding: 0.5rem 1rem; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 1rem;">
+                <input type="date" id="learningDate" style="padding: 0.5rem 1rem; border: 2px solid var(--color-border); border-radius: 8px; font-size: 1rem;">
                 <button class="btn btn-primary" onclick="loadLearningLog()">Load Date</button>
                 <button class="btn btn-secondary" onclick="loadAllLearning()">Show All</button>
                 <button class="btn btn-warning" onclick="exportLearningToText()" style="margin-left: auto;">📥 Export Learning Log</button>
             </div>
 
             <!-- Learning Items List -->
-            <div id="learningList" style="background: white; border: 2px solid #e1e8ed; border-radius: 8px; padding: 1.5rem; min-height: 200px;">
-                <p style="text-align: center; color: #7f8c8d;">Select a date or click "Show All" to view your learning log entries.</p>
+            <div id="learningList" style="background: var(--color-bg-primary); border: 2px solid var(--color-border); border-radius: 8px; padding: 1.5rem; min-height: 200px;">
+                <p style="text-align: center; color: var(--color-text-secondary);">Select a date or click "Show All" to view your learning log entries.</p>
             </div>
         </div>
     </div>
@@ -651,7 +651,7 @@ function loadDailySummary() {
     visitsList.innerHTML = '';
 
     if (visits.length === 0) {
-        visitsList.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">No visits recorded for this date.</p>';
+        visitsList.innerHTML = '<p style="text-align: center; color: var(--color-text-secondary); padding: 2rem;">No visits recorded for this date.</p>';
         return;
     }
 
@@ -757,11 +757,11 @@ function displayLearningEntries(entries, title) {
     const container = document.getElementById('learningList');
     
     if (entries.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">No learning log entries found.</p>';
+        container.innerHTML = '<p style="text-align: center; color: var(--color-text-secondary); padding: 2rem;">No learning log entries found.</p>';
         return;
     }
     
-    let html = `<h3 style="margin-top: 0; color: #2c3e50;">${title}</h3>`;
+    let html = `<h3 style="margin-top: 0; color: var(--color-text-primary);">${title}</h3>`;
     html += '<ul style="list-style: none; padding: 0;">';
     
     entries.forEach((entry, index) => {
@@ -769,12 +769,12 @@ function displayLearningEntries(entries, title) {
         const time = new Date(entry.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         
         html += `
-            <li style="background: #f8f9fa; border-left: 4px solid #0088bb; padding: 1rem; margin-bottom: 1rem; border-radius: 4px;">
+            <li style="background: var(--color-bg-secondary); border-left: 4px solid #0088bb; padding: 1rem; margin-bottom: 1rem; border-radius: 4px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                    <strong style="color: #2c3e50;">${date}</strong>
-                    <span style="color: #7f8c8d; font-size: 0.9rem;">${time}</span>
+                    <strong style="color: var(--color-text-primary);">${date}</strong>
+                    <span style="color: var(--color-text-secondary); font-size: 0.9rem;">${time}</span>
                 </div>
-                <p style="margin: 0; color: #34495e;">${entry.text}</p>
+                <p style="margin: 0; color: var(--color-text-primary);">${entry.text}</p>
             </li>
         `;
     });

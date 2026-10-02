@@ -26,10 +26,10 @@ if ('serviceWorker' in navigator) {
 <div class="cpt-calculator-wrapper">
 
 <div class="calculator-container">
-    <div class="hero" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); padding: 4rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
+    <div class="hero" style="background: var(--gradient-success); padding: 4rem 0; text-align: center; margin-bottom: 2rem; border-radius: 1rem;">
         <div class="container">
-            <h1 class="hero-title" style="color: #065f46; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">CPT E/M Code Calculator</h1>
-            <p class="hero-subtitle" style="color: #047857; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">For Educational & Personal Use Only | Based on AMA Guidelines | <a href="{{ site.baseurl }}/disclaimer" style="color: #065f46; text-decoration: underline;">Review our disclaimer</a></p>
+            <h1 class="hero-title" style="color: var(--color-success-text); font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">CPT E/M Code Calculator</h1>
+            <p class="hero-subtitle" style="color: var(--color-success-text); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">For Educational & Personal Use Only | Based on AMA Guidelines | <a href="{{ site.baseurl }}/disclaimer" style="color: var(--color-success-text); text-decoration: underline;">Review our disclaimer</a></p>
         </div>
     </div>
 
@@ -44,7 +44,7 @@ if ('serviceWorker' in navigator) {
             </div>
         </div>
         <div style="display: flex; gap: 10px;">
-            <button id="pwaInstallBtn" onclick="installPWA()" style="background: white; color: #065f46; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer;">📲 Install</button>
+            <button id="pwaInstallBtn" onclick="installPWA()" style="background: var(--color-bg-primary); color: var(--color-success-text); border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer;">📲 Install</button>
             <button onclick="dismissInstallBanner()" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.5); padding: 10px 15px; border-radius: 6px; cursor: pointer;">✕</button>
         </div>
     </div>

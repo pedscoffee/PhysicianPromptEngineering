@@ -54,7 +54,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
     flex-wrap: wrap;
   }
   .filter-btn.active {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-solid);
     color: white;
     border-color: var(--color-primary);
   }
@@ -69,7 +69,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
     </p>
     <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
       <a href="{{ site.baseurl }}/prompt-style-guide/" class="btn btn-primary btn-lg">Compare A&P Styles</a>
-      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: white;">A&P Builder</a>
+      <a href="{{ site.baseurl }}/prompt-generator" class="btn btn-outline btn-lg" style="border-color: var(--color-primary); color: var(--color-primary);">A&P Builder</a>
     </div>
   </div>
 </div>
