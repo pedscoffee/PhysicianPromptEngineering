@@ -85,6 +85,13 @@ description: A structured tool for medical trainees to set rotation goals and re
         color: white;
     }
 
+    /* Keep the last label inside narrow screens */
+    .step:last-child .step-label {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+
     .step-label {
         position: absolute;
         top: 100%;

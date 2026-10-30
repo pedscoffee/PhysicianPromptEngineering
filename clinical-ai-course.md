@@ -30,7 +30,7 @@ description: "Practice AI-assisted clinical documentation with browser-based exe
 <div class="frontier-box">
   <span class="frontier-box-label">Recommended</span>
   <h2>Run the exercises in your own AI assistant</h2>
-  <p>Each exercise now has a <strong>Copy for your AI assistant</strong> button. It copies your prompt together with the exercise's sample transcript, so you can paste it into any current AI assistant and compare the result with the example solution. The original in-browser model is still there if you'd rather use it, but it is much smaller and its output will be noticeably weaker.</p>
+  <p>Each exercise now has a green <strong>Copy for AI Assistant</strong> button. It copies your prompt together with the exercise's sample transcript, so you can paste it into any current AI assistant and compare the result with the example solution. The original in-browser model is still there if you'd rather use it, but it is much smaller and its output will be noticeably weaker.</p>
   <p class="frontier-box-note">All exercise transcripts are hypothetical. Don't paste real patient information into a tool your institution hasn't approved.</p>
 </div>
 

@@ -11,9 +11,6 @@ redirect_from:
 <div class="hero">
   <div class="container">
     <h1 class="hero-title">Legacy Side Projects</h1>
-    <p class="hero-subtitle">
-      Small tools I built for myself while learning web development with AI coding assistants. They're kept here as-is and aren't actively maintained.
-    </p>
   </div>
 </div>
 
@@ -37,7 +34,6 @@ redirect_from:
         <div class="card"><div class="card-body"><h3 class="card-title"><a href="{{ '/trainee-goal-setter' | relative_url }}">Trainee Goal Setter</a></h3><p>Set rotation goals and collect attending feedback.</p></div></div>
         <div class="card"><div class="card-body"><h3 class="card-title"><a href="{{ '/pto-planner' | relative_url }}">Annual PTO Planner</a></h3><p>Lay out time off across the year.</p></div></div>
         <div class="card"><div class="card-body"><h3 class="card-title"><a href="{{ '/cme-tracker' | relative_url }}">CME &amp; Budget Tracker</a></h3><p>Track CME credits and spending.</p></div></div>
-        <div class="card"><div class="card-body"><h3 class="card-title"><a href="{{ '/reflect' | relative_url }}">Reflect</a></h3><p>Frameworks and cognitive-bias prompts for diagnostic reflection.</p></div></div>
         <div class="card"><div class="card-body"><h3 class="card-title"><a href="{{ '/pwa-apps' | relative_url }}">Mobile Apps</a></h3><p>How to install several of these tools on your phone.</p></div></div>
       </div>
 

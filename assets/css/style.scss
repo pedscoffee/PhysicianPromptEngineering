@@ -2630,8 +2630,9 @@ button:disabled,
     margin-top: var(--space-2);
   }
 }
-/* Navigation buttons inherit the same appearance as adjacent links. */
-.site-nav button.page-link {
+/* Top-level nav links and dropdown buttons share one appearance. */
+.site-nav button.page-link,
+.site-nav a.page-link {
   font: inherit;
   font-size: var(--font-size-sm);
   color: var(--color-text-primary);
@@ -2719,13 +2720,36 @@ button:disabled,
   font-size: var(--font-size-sm);
 }
 
+/* Course exercise row: "Copy for AI Assistant" is the primary action and the
+   in-browser "Run Prompt" becomes an outline button like Hint and Example. */
 .btn-copy-for-assistant {
-  background: var(--color-success-solid);
+  background: var(--color-primary-solid);
   color: white;
-  margin-top: var(--space-4);
+  border: 1px solid var(--color-primary-solid);
 }
 .btn-copy-for-assistant:hover {
-  background: var(--color-success-solid-hover);
+  background: var(--color-primary-solid-hover);
+}
+.course-exercise .btn-run-exercise {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+.course-exercise .btn-run-exercise:hover:not(:disabled) {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  box-shadow: none;
+  transform: none;
+}
+.btn-copy-for-assistant,
+.course-exercise .btn-run-exercise,
+.course-exercise .btn-hint,
+.course-exercise .btn-view-example {
+  margin-top: var(--space-4);
+  margin-right: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  vertical-align: middle;
 }
 
 .legacy-group-heading {
@@ -2783,4 +2807,54 @@ button:disabled,
 .frontier-box .btn {
   width: auto;
   display: inline-block;
+}
+@media (max-width: 640px) {
+  .btn-copy-for-assistant,
+  .course-exercise .btn-run-exercise,
+  .course-exercise .btn-hint,
+  .course-exercise .btn-view-example {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-top: var(--space-2);
+  }
+}
+
+/* Mobile menu: every item left-aligned, with one row height for links and dropdown buttons. */
+@media screen and (max-width: 599px) {
+  .site-nav .trigger {
+    text-align: left;
+  }
+  .site-nav button.page-link,
+  .site-nav a.page-link {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    padding: var(--space-3) var(--space-4);
+    line-height: 1.5;
+    text-align: left;
+  }
+  .site-nav .dropdown-content a {
+    text-align: left;
+    line-height: 1.5;
+    padding: var(--space-2) var(--space-4);
+  }
+}
+@media (max-width: 640px) {
+  .frontier-box {
+    padding: var(--space-4);
+  }
+  .frontier-box pre {
+    padding: var(--space-3);
+  }
+}
+
+/* Keep in-page anchor targets (e.g. library prompts) clear of the sticky header. */
+html {
+  scroll-padding-top: 104px;
+}
+
+/* Clinical flowchart's fullscreen view shouldn't pick up the course modal's mobile margin. */
+#fullscreenModal .modal-content {
+  margin: auto;
 }
