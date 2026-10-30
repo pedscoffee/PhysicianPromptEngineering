@@ -49,7 +49,7 @@ Respiratory:
 Asthma exacerbation, improved on continuous albuterol, now spacing to q4h; weaning O2.
         - Albuterol neb q4h
         - Wean O2 to maintain SpO2 >92%
-        - Start Flovent 44mcg 2 puffs BID once spacing to q6h
+        - Start fluticasone 44mcg 2 puffs BID once spacing to q6h
         - Continue monitoring respiratory status
 
 Cardiovascular: Hemodynamically stable, no concerns.
@@ -68,7 +68,7 @@ Social: Parents at bedside, family meeting completed. School notified of absence
 
 Dispo:
 Likely discharge tomorrow if tolerating albuterol q6h on room air.
-        - Discharge with Flovent 44mcg 2 puffs BID, albuterol PRN
+        - Discharge with fluticasone 44mcg 2 puffs BID, albuterol PRN
         - Asthma action plan to family
         - Follow-up with PCP in 1 week
 

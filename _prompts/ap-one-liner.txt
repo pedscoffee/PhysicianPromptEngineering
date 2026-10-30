@@ -59,10 +59,10 @@ If any injury discussed:
 
 ## Few-Shot Examples
 
-Patient presents with acute asthma exacerbation; plan to start Flovent.
+Patient presents with acute asthma exacerbation; plan to start fluticasone.
 
 **Asthma**
-- Flovent 44mcg 2 puff BID started
+- Fluticasone 44mcg 2 puff BID started
 - Continue albuterol PRN
 - Use spacer
 

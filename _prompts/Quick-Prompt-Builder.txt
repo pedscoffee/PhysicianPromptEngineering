@@ -1,6 +1,6 @@
 ---
 title: "Quick Prompt Builder"
-description: "Recommended starting point. Paste this into any current AI assistant and it will interview you for 3-5 examples of your ideal A&P, then write a personalized editor prompt you can paste into your EMR or scribe. A shorter, modern version of the Meta-Prompt Generator below."
+description: "Recommended starting point. Paste this into any current AI assistant and it will interview you for 3-5 examples of your ideal A&P, then write a personalized editor prompt you can paste into your EMR or scribe."
 specialty: "Any"
 model: "Any AI Assistant"
 category: "Prompt Tools"

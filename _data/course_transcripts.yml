@@ -139,7 +139,7 @@ pediatric_asthma_exacerbation:
   transcript: |
     Chief Complaint: Cough and wheezing
 
-    HPI: 8-year-old male with history of asthma presents with worsening cough and wheezing for 2 days. Mother reports patient had URI symptoms 4 days ago. Now having nocturnal cough, wheezing with activity, using albuterol every 3-4 hours with minimal relief. No fever. Mild decrease in appetite. No chest pain. Breathing seems harder. Last asthma exacerbation 6 months ago. Usually well-controlled on daily Flovent.
+    HPI: 8-year-old male with history of asthma presents with worsening cough and wheezing for 2 days. Mother reports patient had URI symptoms 4 days ago. Now having nocturnal cough, wheezing with activity, using albuterol every 3-4 hours with minimal relief. No fever. Mild decrease in appetite. No chest pain. Breathing seems harder. Last asthma exacerbation 6 months ago. Usually well-controlled on daily fluticasone.
 
     PMH: Asthma (diagnosed age 5), seasonal allergies
     Medications: Fluticasone 44mcg 2 puffs BID, Albuterol PRN
@@ -163,7 +163,7 @@ pediatric_asthma_exacerbation:
     Plan:
     1. Prednisolone 30mg (1mg/kg) daily x 5 days
     2. Increase albuterol to q4h around the clock for 48 hours, then PRN
-    3. Continue Flovent 44mcg 2 puffs BID with spacer
+    3. Continue fluticasone 44mcg 2 puffs BID with spacer
     4. Add Zyrtec 10mg daily for allergies
     5. Asthma action plan reviewed with mother
     6. Return precautions: worsening breathing, not responding to albuterol, retractions, lethargy

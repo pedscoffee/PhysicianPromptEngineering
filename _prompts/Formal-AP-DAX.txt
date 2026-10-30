@@ -85,7 +85,7 @@ Assessment:
         - Exam reassuring with clear breath sounds today
 
 Plan:
-        - Flovent 44mcg 2 puffs BID with spacer started
+        - Fluticasone 44mcg 2 puffs BID with spacer started
         - Continue albuterol as rescue inhaler
         - Asthma action plan provided to family
 

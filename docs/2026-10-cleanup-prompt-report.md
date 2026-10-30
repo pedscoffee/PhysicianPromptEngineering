@@ -645,3 +645,11 @@ The page went from 41 prompts to 27.
 | Meta-Prompt Generator / Refiner | **Retire later** | Superseded by the Quick Prompt Builder and Refiner. |
 | Meta-Prompt Context | **Keep** | Reference document for uploading; update its description, which still names specific chat products. |
 | Other Models (placeholder) | **Remove or move** | It's a contribution note, not a prompt, and it creates an "Other" platform with one card. That text fits better on the Contribute page. |
+
+## Update: prompt fixes (October 30, 2026)
+
+- **Billing Analysis:** Data definitions rewritten to match the 2021 E/M table (Category 1 items, independent historian, independent interpretation, external discussion). "Undiagnosed new problem" now says "with uncertain prognosis." The culture and historian shortcuts were replaced with three rules: count a historian when a caregiver gave the history, count prescription risk only when a prescription or specific plan to prescribe is documented, and don't count ordering and reviewing the same test twice. Examples now follow the 2-of-3 rule: Viral URI is 99213, and the strep and UTI data levels were corrected (the UTI plan now includes starting cephalexin). The duplicate "Multiple Minor Issues" example was dropped. Body is 4,872 characters. Judgment call left as written: strep with fever and body aches is coded as an acute illness with systemic symptoms.
+- **Quality Improvement:** amoxicillin now reads "90 mg/kg/day PO divided BID," and azithromycin uses weight-based pediatric dosing (10 mg/kg day 1, then 5 mg/kg days 2-5).
+- **Cram for Rounds:** description and sample output now match what the prompt does (turns a note or short case into a study guide). The empiric-antibiotics answer, two asthma answers, and a typo were fixed.
+- **Retired:** Meta-Prompt Generator, Meta-Prompt Refiner, and the Other Models placeholder. The Any AI Assistant platform now holds the Quick Prompt Builder, Quick Prompt Refiner, and Meta-Prompt Context, whose description no longer names specific chat products.
+- **Flovent → fluticasone** in all library prompts and course transcripts.

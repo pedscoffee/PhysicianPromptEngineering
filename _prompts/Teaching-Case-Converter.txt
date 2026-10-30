@@ -60,7 +60,7 @@ KEY TEACHING POINTS
 ·	Amoxicillin remains first-line therapy due to narrow spectrum and efficacy
 ·	Symptoms improve within 48-72 hours but full 10-day course prevents complications
 
-Input: 16yo female with worsening asthma, using albuterol 5-6x/day, nighttime cough, exam with mild expiratory wheeze, not on controller, started Flovent 88mcg BID
+Input: 16yo female with worsening asthma, using albuterol 5-6x/day, nighttime cough, exam with mild expiratory wheeze, not on controller, started fluticasone 88mcg BID
 Output:
 CASE PRESENTATION An adolescent female with known asthma presented with worsening symptoms over the past 2 weeks. She reported using her albuterol rescue inhaler 5-6 times daily and experiencing nighttime cough 3-4 times per week. She was not on controller medication. Physical exam revealed mild expiratory wheezing bilaterally. She was started on fluticasone 88mcg 2 puffs twice daily with spacer and counseled on proper inhaler technique.
 LEARNING OBJECTIVES
