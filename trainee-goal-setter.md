@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Trainee Goal Setter
 permalink: /trainee-goal-setter/
@@ -699,5 +700,3 @@ description: A structured tool for medical trainees to set rotation goals and re
         reader.readAsText(file);
     }
 </script>
-
-{%- include software-2-banner.html -%}

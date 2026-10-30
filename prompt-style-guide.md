@@ -268,7 +268,7 @@ permalink: /prompt-style-guide/
             <li><strong>Browse the examples below</strong> — each card shows the same patient scenario formatted in a different style</li>
             <li><strong>Pick the one closest to how you like to write</strong> — there's no wrong answer</li>
             <li><strong>Choose your tool</strong> — pick the model version depending on which AI scribe tool you are using</li>
-            <li><strong>Find it in the <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a></strong> — click the buttons below to copy the full prompt and paste it into your LLM or tool's custom instructions</li>
+            <li><strong>Find it in the <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a></strong> — click the buttons below to copy the full prompt and paste it into your LLM or tool's custom instructions. Styles marked <em>(archived)</em> were retired from the library to keep it short; their buttons open the original prompt on GitHub.</li>
             <li><strong>Customize</strong> — swap in your own dot phrases, adjust the few-shot examples to your specialty, and iterate from there</li>
             <li><strong>Contribute</strong> — consider sharing your prompts back with the community! As these tools continue to evolve we can all benefit from learning from each other</li>
           </ol>
@@ -308,8 +308,8 @@ Persistent symptoms despite albuterol; starting Flovent 44mcg 2 puffs BID with s
 Follow-Up: RTC 3mo or PRN.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-ultra-minimal-one-liner-per-problem" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-ultra-minimal-one-liner-per-problem" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Ultra-Minimal-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-ultra-minimal.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
         </div>
       </div>
 
@@ -337,7 +337,7 @@ Asthma
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-concise-bullets-with-follow-up-statement" class="btn btn-primary btn-sm">DAX Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Pithy-AP-DAX-without-one-liner.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
           <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
         </div>
       </div>
@@ -368,7 +368,7 @@ Asthma
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-pithy-with-one-liner" class="btn btn-primary btn-sm">DAX Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Pithy-AP-DAX-with-one-liner-and-follow-up.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
           <a href="{{ site.baseurl }}/prompt-library#eta-editor-s-current-favorite-a-p" class="btn btn-outline btn-sm">ETA Prompt</a>
         </div>
       </div>
@@ -401,8 +401,8 @@ Asthma
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-numbered-plan-with-one-liner" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-numbered-plan" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Numbered-Plan-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-numbered-plan.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
         </div>
       </div>
 
@@ -427,8 +427,8 @@ Persistent symptoms despite albuterol consistent with inadequately controlled as
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-short-blurb" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-short-blurb" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/AP%20Short%20Blurb%20DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-short-blurb.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
         </div>
       </div>
 
@@ -453,7 +453,7 @@ Mild persistent asthma with current flare and daily albuterol use. Start Flovent
 Follow up in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-concise-prose" class="btn btn-primary btn-sm">DAX Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/AP_concise_prose.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
           <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
         </div>
       </div>
@@ -483,7 +483,7 @@ Persistent symptoms despite albuterol consistent with inadequately controlled as
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-hybrid-assessment-prose-plan-bullets" class="btn btn-primary btn-sm">DAX Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/soap_hybrid_prompt.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
           <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
         </div>
       </div>
@@ -609,8 +609,8 @@ Persistent symptoms despite current controller therapy consistent with inadequat
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-assessment-only-orders-dx-in-chart" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-assessment-plan-no-diagnosis-headers" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Assessment-Only-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-no-diagnosis-epic.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
         </div>
       </div>
 
@@ -638,8 +638,8 @@ Persistent symptoms despite albuterol consistent with inadequately controlled as
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-assessment-plan-no-diagnosis-headers" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-assessment-plan-no-diagnosis-headers" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap_no_diagnosis.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-no-diagnosis-epic.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
         </div>
       </div>
 
@@ -718,7 +718,7 @@ A ready-to-customize prompt with:
 Start here if none of the other styles are quite right.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-pithy-generalized" class="btn btn-primary btn-sm">DAX Prompt</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Pithy-Generalized-A%26P-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
           <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
         </div>
       </div>

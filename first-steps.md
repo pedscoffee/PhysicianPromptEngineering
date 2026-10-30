@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: default
 title: First Steps - Build Your First App with AI
 description: A beginner-friendly guide to creating your first application using Google Gemini AI, with no programming experience required.
@@ -251,7 +252,7 @@ Please provide the complete HTML file with embedded CSS and JavaScript.
           </p>
           <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
             <a href="{{ site.baseurl }}/next-steps" class="btn btn-primary btn-lg">Learn Git for Better Development →</a>
-            <a href="{{ site.baseurl }}/software-2.0" class="btn btn-outline btn-lg">Explore More Tools</a>
+            <a href="{{ site.baseurl }}/legacy/" class="btn btn-outline btn-lg">Legacy Side Projects</a>
           </div>
         </div>
       </div>

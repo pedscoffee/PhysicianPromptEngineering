@@ -43,6 +43,7 @@ class CourseExercise {
   bindEvents() {
     if (this.runButton) {
       this.runButton.addEventListener('click', () => this.runExercise());
+      this.addCopyForAssistantButton();
     }
 
     const retryButton = this.container.querySelector('.btn-retry');
@@ -76,6 +77,33 @@ class CourseExercise {
         }
       });
     }
+  }
+
+  // Recommended path: run the exercise in the learner's own AI assistant
+  // instead of the in-browser model.
+  addCopyForAssistantButton() {
+    const copyButton = document.createElement('button');
+    copyButton.type = 'button';
+    copyButton.className = 'btn-copy-for-assistant';
+    copyButton.textContent = 'Copy for your AI assistant (recommended)';
+    copyButton.style.marginRight = '8px';
+    copyButton.addEventListener('click', () => {
+      const studentPrompt = this.promptInput ? this.promptInput.value.trim() : '';
+      if (!studentPrompt) {
+        this.showError('Please write a prompt before copying the exercise.');
+        return;
+      }
+      const inputLabel = this.config.input_label || "Patient Encounter Transcript";
+      const fullPrompt = `${studentPrompt}\n\n${inputLabel}:\n${this.config.transcript}`;
+      navigator.clipboard.writeText(fullPrompt).then(() => {
+        copyButton.textContent = 'Copied! Paste it into your AI assistant';
+        setTimeout(() => { copyButton.textContent = 'Copy for your AI assistant (recommended)'; }, 2500);
+      }, () => {
+        this.showError('Could not copy to the clipboard. Select and copy your prompt manually.');
+      });
+    });
+    this.runButton.parentNode.insertBefore(copyButton, this.runButton);
+    this.runButton.textContent = 'Run Prompt (in-browser model)';
   }
 
   async initializeLLM() {
@@ -187,7 +215,7 @@ class CourseExercise {
       this.updateStatus('Error', 'error');
     } finally {
       this.runButton.disabled = false;
-      this.runButton.textContent = 'Run Prompt';
+      this.runButton.textContent = 'Run Prompt (in-browser model)';
     }
   }
 

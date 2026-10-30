@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: default
 title: Interactive Anatomy Tool
 permalink: /interactive-anatomy/
@@ -68,5 +69,3 @@ permalink: /interactive-anatomy/
 </div>
 
 <script src="/assets/js/interactive-anatomy.js"></script>
-
-{%- include software-2-banner.html -%}

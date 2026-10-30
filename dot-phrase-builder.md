@@ -231,17 +231,6 @@ permalink: /dot-phrase-builder/
     color: var(--color-text-primary);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .dot-builder-hero h1,
-    .dot-builder-message h2,
-    .dot-builder-message h3 {
-      color: var(--color-text-primary);
-    }
-
-    .dot-builder-message.error {
-      color: var(--color-text-primary);
-    }
-  }
 
   @media (max-width: 640px) {
     .dot-builder-hero {
@@ -277,6 +266,18 @@ permalink: /dot-phrase-builder/
     </div>
   </section>
 
+<div class="container">
+{% capture fp_prompt %}
+Help me write reusable EMR dot phrases (smart phrases).
+Ask me 2-3 quick questions about the topic, setting, and audience, then give three short options (1-3 sentences each), each with a suggested .shortcut name.
+No patient identifiers, and don't invent doses or patient-specific details: put *** where I should fill something in.
+{% endcapture %}{% capture fp_intro %}
+<ol>
+  <li>Copy the prompt and paste it into your AI assistant, then describe the condition, counseling topic, or message you repeat.</li>
+  <li>Save the option you like as a SmartPhrase in your EMR, or keep it in the <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>.</li>
+</ol>
+{% endcapture %}{% include frontier-prompt.html intro=fp_intro prompt=fp_prompt legacy_label="The original in-browser builder is still below if you'd rather use it." %}
+</div>
   <div class="dot-builder-shell" id="dotPhraseBuilder">
     <main class="dot-builder-panel" aria-label="Dot phrase builder chat">
       <div class="dot-builder-toolbar">

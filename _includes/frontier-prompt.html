@@ -1,0 +1,53 @@
+{%- comment -%}
+  "Use your own AI assistant" box shown above an older in-browser AI tool.
+  Parameters:
+    heading       optional, defaults to "Recommended: use your own AI assistant"
+    intro         HTML shown above the prompt (usually a short <ol> of steps)
+    prompt        the prompt text to copy
+    prompt_title  optional label above the prompt
+    prompt2, prompt2_title   optional second prompt
+    extra         optional HTML shown after the prompt(s), e.g. a paste box
+    legacy_label  optional text naming the older tool below
+{%- endcomment -%}
+<section class="frontier-box" aria-label="Recommended prompt for your own AI assistant">
+  <span class="frontier-box-label">Recommended</span>
+  <h2>{{ include.heading | default: "Recommended: use your own AI assistant" }}</h2>
+  {{ include.intro }}
+
+  {%- if include.prompt_title %}<p class="frontier-box-prompt-title">{{ include.prompt_title | escape }}</p>{% endif %}
+  <pre><code>{{ include.prompt | strip | escape }}</code></pre>
+  <button type="button" class="btn btn-primary btn-sm" data-frontier-copy>Copy prompt</button>
+
+  {%- if include.prompt2 %}
+  <p class="frontier-box-prompt-title">{{ include.prompt2_title | escape }}</p>
+  <pre><code>{{ include.prompt2 | strip | escape }}</code></pre>
+  <button type="button" class="btn btn-primary btn-sm" data-frontier-copy>Copy prompt</button>
+  {%- endif %}
+
+  {{ include.extra }}
+
+  <p class="frontier-box-note">
+    Only use AI tools your institution has approved, and don't paste identifiable patient information into anything that isn't.
+    {{ include.legacy_label | default: "The original in-browser tool is still below if you'd rather use it." }}
+  </p>
+</section>
+
+<script>
+  (function () {
+    if (window.frontierCopyBound) return;
+    window.frontierCopyBound = true;
+    document.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-frontier-copy]');
+      if (!button) return;
+      var code = button.previousElementSibling && button.previousElementSibling.querySelector('code');
+      if (!code) return;
+      navigator.clipboard.writeText(code.innerText).then(function () {
+        var original = button.textContent;
+        button.textContent = 'Copied!';
+        setTimeout(function () { button.textContent = original; }, 2000);
+      }, function () {
+        button.textContent = 'Copy failed - select the text above';
+      });
+    });
+  })();
+</script>

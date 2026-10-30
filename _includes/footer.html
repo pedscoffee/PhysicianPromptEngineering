@@ -1,216 +1,56 @@
 <footer class="site-footer">
   <div class="container">
-    <div
-      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-8); margin-bottom: var(--space-8);">
+    <div class="footer-grid">
 
-      <!-- Prompting Column -->
       <div>
-        <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-4);">Prompting</h3>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/prompt-library"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Prompt Library</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/quick-guide"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">2-Minute Quick Start</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/best-practices"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Prompting Best Practices</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/prompt-manager"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Prompt Manager</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/prompt-remix"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Prompt Remix</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/prompt-assistant"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">AI Prompt Assistant</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/prompt-generator"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Quick Start A&P Builder</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/ai-scribe-best-practices"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">AI Scribe Best Practices</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/prompt-style-guide/"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Prompt Style Guide</a></li>
-
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/dot-phrase-library"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Dot Phrase Library</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/dot-phrase-builder"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Dot Phrase Builder</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/courses/clinical-prompt-engineering/"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Interactive Course</a></li>
-
+        <h3 class="footer-heading">Prompting</h3>
+        <ul class="footer-links">
+          <li><a href="{{ '/prompt-library' | relative_url }}">Prompt Library</a></li>
+          <li><a href="{{ '/quick-guide' | relative_url }}">2-Minute Quick Start</a></li>
+          <li><a href="{{ '/ai-scribe-best-practices' | relative_url }}">AI Scribe Best Practices</a></li>
+          <li><a href="{{ '/best-practices' | relative_url }}">Prompting Best Practices</a></li>
+          <li><a href="{{ '/courses/clinical-prompt-engineering/' | relative_url }}">Interactive Course</a></li>
         </ul>
       </div>
 
-      <!-- Productivity Column -->
       <div>
-        <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-4);">Productivity</h3>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/software-2.0"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Software 2.0</a>
-          </li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/git-master"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Git Tutor</a></li>
-
-          <!-- Planning -->
-          <li
-            style="margin-top: var(--space-3); margin-bottom: var(--space-2); font-size: 0.85em; font-weight: bold; color: var(--color-text-tertiary); text-transform: uppercase;">
-            Planning</li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/clockwork-timebox"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">ClockWork TimeBox</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/clinic-visit-tracker"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">RVU Data Tracker</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/qi-project-tracker"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">QI Project Tracker</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/qi-project-planner"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">QI Project Planner</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/trainee-goal-setter"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Trainee Goal Setter</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/pto-planner"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Annual PTO Planner</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/cme-tracker"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">CME & Budget Tracker</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/cpt-calculator"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">E&M Calculator</a></li>
-
-          <!-- Visualization -->
-          <li
-            style="margin-top: var(--space-3); margin-bottom: var(--space-2); font-size: 0.85em; font-weight: bold; color: var(--color-text-tertiary); text-transform: uppercase;">
-            Visualization</li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/clinical-flowchart"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Clinical Flowchart</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/differential-mindmap"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Differential Mind Map</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/mechanism-mapper"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Mechanism Mapper</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/patient-timeline"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Patient Timeline</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/workflow-optimizer"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Workflow Optimizer</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/interactive-anatomy"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Interactive Anatomy</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/reflect" class="text-sm text-secondary"
-              style="transition: color var(--transition-fast);" onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Reflect</a></li>
-
-          <!-- Mobile -->
-          <li
-            style="margin-top: var(--space-3); margin-bottom: var(--space-2); font-size: 0.85em; font-weight: bold; color: var(--color-text-tertiary); text-transform: uppercase;">
-            Mobile</li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/pwa-apps"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Mobile Apps</a></li>
-
+        <h3 class="footer-heading">More</h3>
+        <ul class="footer-links">
+          <li><a href="{{ '/notes/' | relative_url }}">Notes</a></li>
+          <li><a href="https://www.noterepertoire.com/">Repertoire: Note Templates</a></li>
+          <li><a href="{{ '/legacy/' | relative_url }}">Legacy Side Projects</a></li>
+          <li><a href="{{ '/support' | relative_url }}">Contribute</a></li>
+          <li><a href="{{ '/about' | relative_url }}">About</a></li>
         </ul>
       </div>
 
-      <!-- Community & About Column -->
       <div>
-        <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-4);">Community</h3>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/" class="text-sm text-secondary"
-              style="transition: color var(--transition-fast);" onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Home</a></li>
-
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/support" class="text-sm text-secondary"
-              style="transition: color var(--transition-fast);" onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Contribute</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/about" class="text-sm text-secondary"
-              style="transition: color var(--transition-fast);" onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">About</a></li>
-          <li style="margin-bottom: var(--space-2);"><a href="{{ site.baseurl }}/newsletter"
-              class="text-sm text-secondary" style="transition: color var(--transition-fast);"
-              onmouseover="this.style.color='var(--color-primary)'"
-              onmouseout="this.style.color='var(--color-text-secondary)'">Newsletter</a></li>
-        </ul>
-
-        <div style="margin-top: var(--space-4); display: flex; gap: var(--space-3);">
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" target="_blank" rel="noopener"
-            style="color: var(--color-text-secondary); transition: color var(--transition-fast);"
-            onmouseover="this.style.color='var(--color-primary)'"
-            onmouseout="this.style.color='var(--color-text-secondary)'" title="GitHub">
+        <h3 class="footer-heading">Occasional Updates</h3>
+        <p class="text-sm text-secondary">New prompts and write-ups, sent only when there's something worth sharing.</p>
+        <p><a href="{{ '/newsletter' | relative_url }}" class="btn btn-primary btn-sm">Subscribe</a></p>
+        <div class="footer-social">
+          <a href="{{ '/newsletter' | relative_url }}" aria-label="Newsletter">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
             </svg>
           </a>
-          <a href="https://x.com/pedscoffee" target="_blank" rel="noopener"
-            style="color: var(--color-text-secondary); transition: color var(--transition-fast);"
-            onmouseover="this.style.color='var(--color-primary)'"
-            onmouseout="this.style.color='var(--color-text-secondary)'" title="X (Twitter)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-          <a href="https://www.youtube.com/@PedsCoffee" target="_blank" rel="noopener"
-            style="color: var(--color-text-secondary); transition: color var(--transition-fast);"
-            onmouseover="this.style.color='var(--color-primary)'"
-            onmouseout="this.style.color='var(--color-text-secondary)'" title="YouTube">
+          <a href="https://www.youtube.com/@PedsCoffee" target="_blank" rel="noopener" aria-label="YouTube">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
             </svg>
           </a>
-          <a href="{{ site.baseurl }}/newsletter"
-            style="color: var(--color-text-secondary); transition: color var(--transition-fast);"
-            onmouseover="this.style.color='var(--color-primary)'"
-            onmouseout="this.style.color='var(--color-text-secondary)'" title="Newsletter">
+          <a href="https://x.com/pedscoffee" target="_blank" rel="noopener" aria-label="X">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
               <path
-                d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
             </svg>
           </a>
         </div>
@@ -218,25 +58,11 @@
 
     </div>
 
-    <!-- Bottom Bar -->
-    <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-6); text-align: center;">
-      <p class="text-sm text-secondary" style="margin-bottom: var(--space-2);">
-        &copy; {{ 'now' | date: "%Y" }} {{ site.title }} |
-        <a href="{{ site.baseurl }}/privacy-policy" class="text-secondary"
-          style="text-decoration: underline; transition: color var(--transition-fast);"
-          onmouseover="this.style.color='var(--color-primary)'"
-          onmouseout="this.style.color='var(--color-text-secondary)'">Privacy Policy</a> |
-        <a href="{{ site.baseurl }}/disclaimer" class="text-secondary"
-          style="text-decoration: underline; transition: color var(--transition-fast);"
-          onmouseover="this.style.color='var(--color-primary)'"
-          onmouseout="this.style.color='var(--color-text-secondary)'">Disclaimer</a> |
-        <a href="{{ site.baseurl }}/support" class="text-secondary"
-          style="text-decoration: underline; transition: color var(--transition-fast);"
-          onmouseover="this.style.color='var(--color-primary)'"
-          onmouseout="this.style.color='var(--color-text-secondary)'">Contribute</a>
-      </p>
+    <div class="footer-bottom">
       <p class="text-sm text-secondary">
-        Built with Jekyll. Hosted on GitHub Pages.
+        &copy; {{ 'now' | date: "%Y" }} {{ site.title }} |
+        <a href="{{ '/privacy-policy' | relative_url }}">Privacy Policy</a> |
+        <a href="{{ '/disclaimer' | relative_url }}">Disclaimer</a>
       </p>
     </div>
   </div>

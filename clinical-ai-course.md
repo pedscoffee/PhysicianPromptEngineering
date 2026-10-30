@@ -27,6 +27,13 @@ description: "Practice AI-assisted clinical documentation with browser-based exe
   </div>
 </div>
 
+<div class="frontier-box">
+  <span class="frontier-box-label">Recommended</span>
+  <h2>Run the exercises in your own AI assistant</h2>
+  <p>Each exercise now has a <strong>Copy for your AI assistant</strong> button. It copies your prompt together with the exercise's sample transcript, so you can paste it into any current AI assistant and compare the result with the example solution. The original in-browser model is still there if you'd rather use it, but it is much smaller and its output will be noticeably weaker.</p>
+  <p class="frontier-box-note">All exercise transcripts are hypothetical. Don't paste real patient information into a tool your institution hasn't approved.</p>
+</div>
+
 ## Your Learning Journey
 
 This course teaches you how to effectively use AI for clinical documentation. Through hands-on exercises with hypothetical patient scenarios, you'll practice writing prompts and refine your skills using self-evaluation and example solutions.
@@ -36,7 +43,7 @@ This course teaches you how to effectively use AI for clinical documentation. Th
 - **Hands-On Practice**: Write prompts and review AI-generated outputs
 - **Self-Paced Learning**: Compare your work with expert examples
 - **Clinical Focus**: All exercises use realistic medical scenarios
-- **Local**: Everything runs in your browser
+- **Bring Your Own AI**: Copy any exercise into the AI assistant you already use, or try the optional in-browser model
 - **Iterative Learning**: Practice until you master each concept
 - **Modular Design**: Progress at your own pace
 
@@ -153,6 +160,7 @@ Begin with Module 1 to learn the fundamentals of AI-assisted clinical documentat
 ## Technical Requirements
 
 - Modern web browser (Chrome, Firefox, Safari, Edge)
-- WebGPU support for AI model (most modern browsers)
+- Recommended: access to an AI assistant you can paste prompts into
+- Optional in-browser model only: WebGPU support (most modern browsers)
 - ~2GB free RAM for optimal performance
 - Internet connection for initial model download (then works offline)

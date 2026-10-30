@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-description: Learn about Physician Prompt Engineering - an open-source project dedicated to improving clinical documentation through AI-powered prompts.
+description: About Physician Prompt Engineering, a small physician-run project sharing free prompts for AI scribes and clinical documentation.
 permalink: /about/
 ---
 
@@ -10,7 +10,7 @@ permalink: /about/
   <div class="container">
     <h1 class="hero-title">About Physician Prompt Engineering</h1>
     <p class="hero-subtitle">
-      An open-source initiative to reduce documentation burden and combat physician burnout through practical AI tools.
+      A small, physician-run project sharing practical prompts to reduce documentation burden.
     </p>
   </div>
 </div>
@@ -94,53 +94,31 @@ permalink: /about/
 
         <div style="border-left: 4px solid var(--color-primary); padding-left: 1.5rem;">
           <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">Collaboration Over Competition</h3>
-          <p>Better clinical documentation benefits everyone. We encourage sharing, forking, and improving upon our work.</p>
+          <p>Better clinical documentation benefits everyone. Sharing what works helps everyone, so please pass along anything you find useful.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Software 2.0 Philosophy Section -->
+<!-- Side Projects Section -->
 <section class="section bg-secondary">
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
-      <h2 class="text-center mb-8">Embracing Software 2.0</h2>
-      
-      <div class="card mb-6">
-        <div class="card-body">
-          <p class="text-lg">
-            Beyond our clinical documentation prompts, we're exploring how modern AI coding assistants are revolutionizing who can build software. What once required years of training in computer science can now be accomplished by anyone who can clearly describe what they need.
-          </p>
-        </div>
-      </div>
-
+      <h2 class="text-center mb-8">Side Projects</h2>
       <div class="two-col-grid">
         <div>
-          <h3>Example Projects</h3>
+          <h3>Legacy Side Projects</h3>
           <p>
-            Our <a href="{{ site.baseurl }}/software-2.0">Software 2.0 Productivity Suite</a> demonstrates this principle in action. These projects serve as:
+            This site started partly as a place to learn web development with AI coding assistants. The productivity, visualization, and in-browser AI tools from that period are collected on the <a href="{{ site.baseurl }}/legacy/">Legacy Side Projects</a> page. They're kept as-is and aren't actively maintained.
           </p>
-          <ul>
-            <li>Proof that physicians can build custom tools</li>
-            <li>Templates you can adapt for your needs</li>
-            <li>Inspiration for solving your unique problems</li>
-          </ul>
         </div>
-        
         <div>
-          <h3>Open for Collaboration</h3>
+          <h3>Repertoire</h3>
           <p>
-            This project is an exploration of what's possible with AI assistance. We believe in open sharing and transparency.
-          </p>
-          <p>
-            <strong>Collaboration is key.</strong> If you've built tools, have ideas, or want to contribute—you're genuinely welcome. This is an invitation to build something useful together.
+            <a href="https://www.noterepertoire.com/">Repertoire</a> is a separate, actively maintained project from the same creator: a browser workspace for organizing, assembling, and maintaining reusable clinical note templates.
           </p>
         </div>
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="{{ site.baseurl }}/software-2.0" class="btn btn-primary btn-lg">Explore Software 2.0 →</a>
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Clinical Workflow Optimizer
 description: Visualize and optimize your clinical workflows with interactive drag-and-drop flowcharts.
@@ -1121,5 +1122,3 @@ permalink: /workflow-optimizer/
     renderNodes();
     renderConnections();
 </script>
-
-{%- include software-2-banner.html -%}

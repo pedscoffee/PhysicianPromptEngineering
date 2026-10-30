@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: CPT E/M Code Calculator
 permalink: /cpt-calculator/
@@ -1172,5 +1173,3 @@ if (isRunningAsPWA()) {
     if (banner) banner.style.display = 'none';
 }
 </script>
-
-{%- include software-2-banner.html -%}

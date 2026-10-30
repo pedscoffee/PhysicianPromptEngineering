@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: ClockWork-TimeBox
 permalink: /clockwork-timebox/
@@ -3045,5 +3046,3 @@ if (isRunningAsPWA()) {
     document.getElementById('pwaInstallBanner').style.display = 'none';
 }
 </script>
-
-{%- include software-2-banner.html -%}

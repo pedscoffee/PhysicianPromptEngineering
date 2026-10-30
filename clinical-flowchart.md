@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Clinical Flowchart Generator
 description: Transform your clinical logic into visual and text-based flowcharts for better decision making and documentation.
@@ -41,6 +42,20 @@ permalink: /clinical-flowchart/
         </div>
     </div>
 
+{% capture fp_prompt %}
+Turn the clinical logic below into a flowchart. Return two code blocks:
+1. Mermaid code starting with "graph TD": short labels, [square brackets] for steps, {curly braces} for decisions, only --> arrows.
+2. A plain-text version that reads cleanly in a monospaced note.
+Don't add steps I didn't describe.
+
+Clinical logic:
+{% endcapture %}{% capture fp_intro %}
+<ol>
+  <li>Copy the prompt and paste it into your AI assistant, then add your plan or decision logic after it.</li>
+  <li>Paste the Mermaid code it returns into <strong>Manual Mode</strong> below and click <strong>Render Flowchart</strong>.</li>
+  <li>Use the plain-text version directly in your note.</li>
+</ol>
+{% endcapture %}{% include frontier-prompt.html intro=fp_intro prompt=fp_prompt %}
     <div class="model-status" id="modelStatus">
         <strong>AI Model Status:</strong> Not Loaded. 
         <button id="loadModelBtn" class="copy-btn" style="margin-left: 10px; border-color: #fcd34d;">Load AI Model (~1GB)</button>
@@ -448,5 +463,3 @@ Else if afebrile:
         });
     }
 </script>
-
-{%- include software-2-banner.html -%}

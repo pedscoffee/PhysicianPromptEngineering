@@ -1,0 +1,11 @@
+---
+title: "Quick Prompt Refiner"
+description: "Recommended for tuning a prompt you already use. Paste this into any current AI assistant along with your prompt, examples of what you want, and examples of what you're getting. A shorter, modern version of the Meta-Prompt Refiner below."
+specialty: "Any"
+model: "Any AI Assistant"
+category: "Prompt Tools"
+---
+Help me improve a clinical documentation prompt.
+I'll paste my current prompt, 2-3 examples of the output I want, and 2-3 examples of what it actually produces.
+Name the biggest differences and why they happen, then give me a revised prompt.
+Fix the examples before adding rules, keep what already works, stay under 5,000 characters, and list what you changed in a few bullets.

@@ -397,6 +397,9 @@ if ('serviceWorker' in navigator) {
     <p class="hero-subtitle">
       Copy formatted dot phrases directly into your EMR. Organized by clinical workflow.
     </p>
+    <p class="text-sm" style="margin-top: var(--space-4);">
+      Want your own? Try the <a href="{{ '/dot-phrase-builder' | relative_url }}">Dot Phrase Builder</a>.
+    </p>
   </div>
 </div>
 
@@ -1473,7 +1476,7 @@ function downloadPhrase(groupName, index) {
 <body>
   <div class="header">
     <h1>Physician Prompt Engineering</h1>
-    <p class="tagline">Open-source clinical AI prompts for physicians</p>
+    <p class="tagline">Free clinical AI prompts for physicians</p>
     <a href="https://physicianpromptengineering.com" class="link no-print">physicianpromptengineering.com</a>
   </div>
   
@@ -1484,7 +1487,7 @@ function downloadPhrase(groupName, index) {
   </div>
   
   <div class="footer">
-    <p><strong>Physician Prompt Engineering</strong> | Open-source clinical AI prompts for physicians</p>
+    <p><strong>Physician Prompt Engineering</strong> | Free clinical AI prompts for physicians</p>
     <p class="no-print">Visit <a href="https://physicianpromptengineering.com">physicianpromptengineering.com</a> for more resources</p>
     <p><em>Always review content before using in patient care. See disclaimer at physicianpromptengineering.com</em></p>
   </div>
@@ -1537,7 +1540,7 @@ function exportGroup(groupName) {
 <body>
   <div class="site-header">
     <h1>Physician Prompt Engineering</h1>
-    <p class="tagline">Open-source clinical AI prompts for physicians</p>
+    <p class="tagline">Free clinical AI prompts for physicians</p>
     <a href="https://physicianpromptengineering.com" class="link no-print">physicianpromptengineering.com</a>
   </div>
   
@@ -1556,7 +1559,7 @@ function exportGroup(groupName) {
   
   <div class="footer">
     <p><strong>Physician Prompt Engineering</strong></p>
-    <p>Open-source clinical AI prompts for physicians</p>
+    <p>Free clinical AI prompts for physicians</p>
     <p class="no-print">Visit <a href="https://physicianpromptengineering.com" style="color: #2a7ae2; text-decoration: none; font-weight: 600;">physicianpromptengineering.com</a> for more resources</p>
     <p style="margin-top: 20px;"><em>Always review content before using in patient care. See disclaimer at physicianpromptengineering.com</em></p>
   </div>

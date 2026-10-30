@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Prompt Library
-description: Access a free library of production-ready clinical LLM prompts. Copy and paste prompts for A&P formatting, billing analysis, AVS generation, and more.
+description: A library of clinical AI prompts organized by platform (Epic Art Memories, Epic Text Assistant, DAX). Copy and adapt prompts for A&P formatting, billing analysis, AVS generation, and more.
 ---
 
 <style>
@@ -46,17 +46,39 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
       width: 100%;
     }
   }
-  .filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-2);
-    margin-bottom: var(--space-6);
-    flex-wrap: wrap;
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-4);
   }
-  .filter-btn.active {
-    background-color: var(--color-primary-solid);
-    color: white;
-    border-color: var(--color-primary);
+  .platform-nav {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4) var(--space-5);
+  }
+  .platform-nav h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-lg);
+  }
+  .platform-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-size-sm);
+  }
+  .platform-nav li {
+    margin-bottom: var(--space-1);
+  }
+  .platform-heading {
+    font-size: var(--font-size-3xl);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-primary);
+  }
+  .category-heading {
+    margin: var(--space-8) 0 var(--space-4);
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
   }
 </style>
 
@@ -65,7 +87,7 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   <div class="container">
     <h1 class="hero-title">Clinical Documentation Prompt Library</h1>
     <p class="hero-subtitle" style="margin-bottom: var(--space-6);">
-      Production-ready prompts for AI-powered clinical documentation. Copy, customize, and deploy.
+      Tested starting points for AI scribe and EMR prompts, organized by platform. Copy one, make it yours, and review every note it produces.
     </p>
     <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
       <a href="{{ site.baseurl }}/prompt-style-guide/" class="btn btn-primary btn-lg">Compare A&P Styles</a>
@@ -74,199 +96,159 @@ description: Access a free library of production-ready clinical LLM prompts. Cop
   </div>
 </div>
 
+{%- comment -%}
+  Platforms are the first level of organization; categories sit inside each platform.
+  To add a platform or category, add it to these lists. Prompts whose model or
+  category is missing from the lists are still shown under "Other".
+{%- endcomment -%}
+{%- assign platform_order = "Epic Art,Epic Text Assistant,DAX Custom Instructions,Any AI Assistant,Other" | split: "," -%}
+{%- assign category_order = "Memories,Documentation,Orders,Administrative,Teaching,Prompt Tools,Other" | split: "," -%}
+{%- assign known_models = platform_order | join: "|" | prepend: "|" | append: "|" -%}
+{%- assign known_categories = category_order | join: "|" | prepend: "|" | append: "|" -%}
+
 <!-- Quick Navigation -->
 <section class="section bg-secondary">
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
-      <h2 class="text-center mb-6">Browse Prompts</h2>
-      
-      <div class="filter-buttons">
-        <button class="btn btn-primary btn-sm filter-btn active" onclick="filterPrompts('all', this)">All Models</button>
-        {% assign models = site.prompts | map: "model" | uniq %}
-        {% for model in models %}
-          {% if model %}
-          <button class="btn btn-secondary btn-sm filter-btn" onclick="filterPrompts('{{ model }}', this)">{{ model }}</button>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div style="background: var(--color-bg-primary); padding: var(--space-5); border-radius: var(--radius-lg);">
-        <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--space-8);">
-          {% assign all_groups = site.prompts | group_by: "category" %}
-          
-          <!-- Left Column -->
-          <div style="flex: 1; min-width: 300px;">
-            {% assign left_cats = "Documentation,Administrative,Orders" | split: "," %}
-            {% for cat_name in left_cats %}
-              {% assign group = all_groups | where: "name", cat_name | first %}
-              {% if group %}
-              <div class="category-nav-section" style="margin-bottom: var(--space-6);">
-                <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-top: 0; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                  {% if cat_name == 'Documentation' %}
-                  <li style="margin-bottom: var(--space-3); padding-bottom: var(--space-2); border-bottom: 1px dashed var(--color-border);">
-                    <a href="{{ site.baseurl }}/prompt-style-guide/" style="display: flex; align-items: center; gap: var(--space-2); color: var(--color-primary); font-weight: 600; font-size: var(--font-size-sm); text-decoration: none;">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 1rem; height: 1rem;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746-3.746 0 0 1-3.296-1.043 3.745-3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746-3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                      </svg>
-                      Compare All Styles side-by-side →
-                    </a>
-                  </li>
-                  {% endif %}
-                  {% assign sorted_items = group.items | sort: "title" %}
-                  {% for prompt in sorted_items %}
-                  <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
-                    <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
-                  </li>
-                  {% endfor %}
-                </ul>
-              </div>
-              {% endif %}
-            {% endfor %}
-          </div>
+      <h2 class="text-center mb-6">Browse by Platform</h2>
 
-          <!-- Right Column -->
-          <div style="flex: 1; min-width: 300px;">
-            {% assign right_cats = "Teaching,Prompt Tools,Other" | split: "," %}
-            {% for cat_name in right_cats %}
-              {% assign group = all_groups | where: "name", cat_name | first %}
-              {% if group %}
-              <div class="category-nav-section" style="margin-bottom: var(--space-6);">
-                <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-top: 0; margin-bottom: var(--space-3); color: var(--color-text-primary);">{{ group.name }}</h3>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                  {% assign sorted_items = group.items | sort: "title" %}
-                  {% for prompt in sorted_items %}
-                  <li class="prompt-nav-item" data-model="{{ prompt.model }}" style="margin-bottom: var(--space-2);">
-                    <a href="#{{ prompt.title | slugify }}" class="text-primary">{{ prompt.title }}</a>
-                  </li>
-                  {% endfor %}
-                </ul>
-              </div>
-              {% endif %}
-            {% endfor %}
-          </div>
+      <div class="platform-grid">
+        {%- for platform in platform_order -%}
+        {%- assign platform_prompts = site.prompts | where: "model", platform -%}
+        {%- if platform == "Other" -%}
+          {%- assign platform_prompts = "" | split: "" -%}
+          {%- for prompt in site.prompts -%}
+            {%- capture model_key -%}|{{ prompt.model }}|{%- endcapture -%}
+            {%- if prompt.model == "Other" -%}{%- assign platform_prompts = platform_prompts | push: prompt -%}{%- else -%}{%- unless known_models contains model_key -%}{%- assign platform_prompts = platform_prompts | push: prompt -%}{%- endunless -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+        {%- if platform_prompts.size > 0 or platform == "Epic Art" -%}
+        <div class="platform-nav">
+          <h3><a href="#platform-{{ platform | slugify }}">{{ platform }}</a></h3>
+          {%- if platform_prompts.size == 0 -%}
+            <p class="text-sm text-secondary">Memories: coming soon</p>
+          {%- else -%}
+          <ul>
+            {%- assign sorted_items = platform_prompts | sort: "title" -%}
+            {%- for prompt in sorted_items -%}
+            <li><a href="#{{ prompt.title | slugify }}">{{ prompt.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+          {%- endif -%}
         </div>
+        {%- endif -%}
+        {%- endfor -%}
       </div>
+
       <div class="text-center mt-6">
         <p class="text-secondary">
-          Visit our <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="text-primary">GitHub repository</a> for the complete collection or <a href="{{ site.baseurl }}/support#contribute" class="text-primary">contribute your own</a>.  See <a href="{{ site.baseurl }}/disclaimer">Disclaimer.</a>
+          Have a prompt that works well? <a href="{{ site.baseurl }}/support#contribute" class="text-primary">Share it</a>. See the <a href="{{ site.baseurl }}/disclaimer">disclaimer</a>.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Newsletter -->
+<!-- Prompts -->
 <section class="section">
   <div class="container">
+    <div style="max-width: 900px; margin: 0 auto;">
 
-    <div class="embed-container">
-      {% include newsletter.html %}
+      {%- for platform in platform_order -%}
+      {%- assign platform_prompts = site.prompts | where: "model", platform -%}
+      {%- if platform == "Other" -%}
+        {%- assign platform_prompts = "" | split: "" -%}
+        {%- for prompt in site.prompts -%}
+          {%- capture model_key -%}|{{ prompt.model }}|{%- endcapture -%}
+          {%- if prompt.model == "Other" -%}{%- assign platform_prompts = platform_prompts | push: prompt -%}{%- else -%}{%- unless known_models contains model_key -%}{%- assign platform_prompts = platform_prompts | push: prompt -%}{%- endunless -%}{%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if platform_prompts.size > 0 or platform == "Epic Art" -%}
+      <div class="platform-section mb-12" id="platform-{{ platform | slugify }}">
+        <h2 class="platform-heading">{{ platform }}</h2>
+        {%- case platform -%}
+          {%- when "Epic Art" -%}
+          <p class="text-secondary">Memories are Epic's name for the standing instructions you give Art, its ambient AI scribe. Instead of reformatting a finished note, they shape the draft as Art writes it.</p>
+          {%- when "Epic Text Assistant" -%}
+          <p class="text-secondary">Prompts for Epic's in-chart AI text generation. Run them on a section of a note, such as the A&amp;P, after the scribe has drafted it.</p>
+          {%- when "DAX Custom Instructions" -%}
+          <p class="text-secondary">Custom instructions for DAX, applied when the scribe generates each section of the note.</p>
+          {%- when "Any AI Assistant" -%}
+          <p class="text-secondary">Prompts for building and refining your own prompts. Use them with any current AI assistant your institution has approved. Start with the two "Quick" versions.</p>
+          {%- when "Other" -%}
+          <p class="text-secondary">Other scribe tools and platforms.</p>
+        {%- endcase -%}
+
+        {%- if platform == "Epic Art" and platform_prompts.size == 0 -%}
+        <div class="card mb-8" id="memories">
+          <div class="card-header">
+            <h3 class="card-title">Memories: coming soon</h3>
+          </div>
+          <div class="card-body">
+            <p>I'm writing up my first experience with Art and how Memories differ from the editor prompts in this library. Example Memories will be added here.</p>
+            <p><a href="{{ '/notes/' | relative_url }}">Read the Chart with Art notes &rarr;</a></p>
+          </div>
+        </div>
+        {%- endif -%}
+
+        {%- for cat_name in category_order -%}
+          {%- assign cat_prompts = platform_prompts | where: "category", cat_name -%}
+          {%- if cat_name == "Other" -%}
+            {%- assign cat_prompts = "" | split: "" -%}
+            {%- for prompt in platform_prompts -%}
+              {%- capture cat_key -%}|{{ prompt.category }}|{%- endcapture -%}
+              {%- if prompt.category == "Other" -%}{%- assign cat_prompts = cat_prompts | push: prompt -%}{%- else -%}{%- unless known_categories contains cat_key -%}{%- assign cat_prompts = cat_prompts | push: prompt -%}{%- endunless -%}{%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          {%- if cat_prompts.size > 0 -%}
+          <h3 class="category-heading">{{ cat_name }}</h3>
+          {%- assign sorted_items = cat_prompts | sort: "title" -%}
+          {%- for prompt in sorted_items -%}
+          <div class="card mb-8 prompt-card" id="{{ prompt.title | slugify }}">
+            <div class="card-header">
+              <h4 class="card-title">{{ prompt.title }}</h4>
+              <p class="card-subtitle">{{ prompt.description }}</p>
+            </div>
+            <div class="card-body">
+              <div class="prompt-meta">
+                <div class="prompt-meta-item"><strong>Platform:</strong> {{ prompt.model }}</div>
+                <div class="prompt-meta-item"><strong>Specialty:</strong> {{ prompt.specialty }}</div>
+                <div class="prompt-meta-item"><strong>Length:</strong> {{ prompt.content | size }} characters</div>
+              </div>
+
+              <div class="prompt-actions">
+                <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
+                <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
+                {% if prompt.example_output or prompt.content contains '## Few' %}
+                <button class="btn btn-outline btn-sm" onclick="toggleExample(this)">Show Sample Output</button>
+                {% endif %}
+              </div>
+
+              {% if prompt.example_output %}
+              <div class="hidden-example-data" style="display: none;">{{ prompt.example_output | escape }}</div>
+              {% endif %}
+
+              <div class="prompt-code-wrapper">
+                <pre><code>{{ prompt.content | escape }}</code></pre>
+              </div>
+            </div>
+          </div>
+          {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+      {%- endfor -%}
+
     </div>
   </div>
 </section>
 
-<!-- Prompts -->
+<!-- Newsletter -->
 <section class="section bg-secondary">
   <div class="container">
-    <div style="max-width: 900px; margin: 0 auto;">
-
-      {% assign all_groups = site.prompts | group_by: "category" %}
-      {% assign ordered_cats = "Documentation,Teaching,Administrative,Prompt Tools,Orders,Other" | split: "," %}
-      
-      {% for cat_name in ordered_cats %}
-      {% assign group = all_groups | where: "name", cat_name | first %}
-      {% if group %}
-      <div class="category-card-section mb-12">
-        <h2 class="mb-6 pb-2 border-b border-gray-200" style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--color-text-primary);">{{ group.name }}</h2>
-        {% assign sorted_items = group.items | sort: "title" %}
-        {% for prompt in sorted_items %}
-        <div class="card mb-8 prompt-card" data-model="{{ prompt.model }}" id="{{ prompt.title | slugify }}">
-          <div class="card-header">
-            <h2 class="card-title">{{ prompt.title }}</h2>
-            <p class="card-subtitle">{{ prompt.description }}</p>
-          </div>
-          <div class="card-body">
-            <div class="prompt-meta">
-              <div class="prompt-meta-item">
-                <strong>Model:</strong> {{ prompt.model }}
-              </div>
-              <div class="prompt-meta-item">
-                <strong>Specialty:</strong> {{ prompt.specialty }}
-              </div>
-              <div class="prompt-meta-item">
-                <strong>Character Count:</strong> {{ prompt.content | size }} characters
-              </div>
-            </div>
-
-            <div class="prompt-actions">
-              <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
-              <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
-              {% if prompt.example_output or prompt.content contains '## Few' %}
-              <button class="btn btn-outline btn-sm" onclick="toggleExample(this)">Show Sample Output</button>
-              {% endif %}
-            </div>
-
-            {% if prompt.example_output %}
-            <div class="hidden-example-data" style="display: none;">{{ prompt.example_output | escape }}</div>
-            {% endif %}
-
-            <div class="prompt-code-wrapper">
-              <pre><code>{{ prompt.content | escape }}</code></pre>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-      {% endfor %}
-
-      <!-- Sample prompt for demonstration if collection is empty -->
-      {% if site.prompts.size == 0 %}
-      <div class="card" id="sample-prompt">
-        <div class="card-header">
-          <h2 class="card-title">Assessment & Plan Formatter (Sample)</h2>
-          <p class="card-subtitle">Transforms verbose AI scribe output into concise, problem-based documentation</p>
-        </div>
-        <div class="card-body">
-          <div class="prompt-meta">
-            <div class="prompt-meta-item">
-              <strong>Specialty:</strong> General Medicine
-            </div>
-            <div class="prompt-meta-item">
-              <strong>Character Count:</strong> 850 / 5,000
-            </div>
-          </div>
-
-          <div class="prompt-actions">
-            <button class="btn btn-primary btn-sm" onclick="copyToClipboard(this)">Copy Prompt</button>
-            <button class="btn btn-secondary btn-sm" onclick="downloadPrompt(this)">Download .txt</button>
-          </div>
-
-          <div class="prompt-code-wrapper">
-            <pre><code>Transform the following clinical note into a concise Assessment & Plan format.
-
-Requirements:
-- List each problem as a numbered item with bold heading
-- Include only essential clinical details
-- Use bullet points for plans
-- Maximum 2-3 sentences per problem
-- Preserve all medications and specific instructions
-
-Example format:
-1. **Hypertension** - Controlled on current regimen
-   • Continue lisinopril 10mg daily
-   • Recheck BP in 3 months
-
-2. **Type 2 Diabetes** - A1c 7.2%, at goal
-   • Continue metformin 1000mg BID
-   • Annual eye exam due
-
-[Insert your clinical note here]</code></pre>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-
+    <div class="embed-container">
+      {% include newsletter.html %}
     </div>
   </div>
 </section>
@@ -328,50 +310,6 @@ function downloadPrompt(button) {
   setTimeout(function() {
     button.innerText = originalText;
   }, 2000);
-}
-
-function filterPrompts(model, btn) {
-  // Update buttons
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.remove('active');
-    b.classList.remove('btn-primary');
-    b.classList.add('btn-secondary');
-  });
-  btn.classList.add('active');
-  btn.classList.add('btn-primary');
-  btn.classList.remove('btn-secondary');
-
-  // Filter Nav Items
-  const navItems = document.querySelectorAll('.prompt-nav-item');
-  navItems.forEach(item => {
-    if (model === 'all' || item.dataset.model === model) {
-      item.style.display = '';
-    } else {
-      item.style.display = 'none';
-    }
-  });
-
-  // Filter Nav Categories
-  document.querySelectorAll('.category-nav-section').forEach(section => {
-    const hasVisible = Array.from(section.querySelectorAll('.prompt-nav-item')).some(item => item.style.display !== 'none');
-    section.style.display = hasVisible ? '' : 'none';
-  });
-
-  // Filter Cards
-  const cards = document.querySelectorAll('.prompt-card');
-  cards.forEach(card => {
-    if (model === 'all' || card.dataset.model === model) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-
-  // Filter Card Categories
-  document.querySelectorAll('.category-card-section').forEach(section => {
-    const hasVisible = Array.from(section.querySelectorAll('.prompt-card')).some(card => card.style.display !== 'none');
-    section.style.display = hasVisible ? '' : 'none';
-  });
 }
 
 function toggleExample(button) {

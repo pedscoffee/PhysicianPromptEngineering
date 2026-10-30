@@ -638,6 +638,14 @@ description: Learn how to write effective medical prompts. Our definitive guide 
   <div class="container">
     <div class="prompt-tutor-container">
       
+{% capture fp_prompt %}
+Be my concise tutor for writing prompts for clinical documentation.
+Teach from three principles: examples beat instructions, brevity improves quality, and each prompt should do one job.
+Ask what I'm trying to build, then give specific, practical advice with short examples.
+Remind me that a clinician must review every AI-generated note.
+{% endcapture %}{% capture fp_intro %}
+<p>Have questions about the practices above? Paste this into your AI assistant to get a tutor that follows the same approach.</p>
+{% endcapture %}{% include frontier-prompt.html heading="Recommended: ask your own AI assistant" intro=fp_intro prompt=fp_prompt legacy_label="The original in-browser tutor is still below if you'd rather use it." %}
       <!-- Tutor Hero - Green Theme -->
       <div class="prompt-tutor-hero">
         <h2>

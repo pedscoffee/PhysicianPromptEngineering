@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: default
 title: Mobile Apps (PWA)
 description: Install our productivity tools as mobile apps for quick access on your phone or tablet

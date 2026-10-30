@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Annual PTO Planner
 permalink: /pto-planner/
@@ -986,5 +987,3 @@ if (isRunningAsPWA()) {
     if (banner) banner.style.display = 'none';
 }
 </script>
-
-{%- include software-2-banner.html -%}

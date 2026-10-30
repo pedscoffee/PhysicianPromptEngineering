@@ -6,9 +6,10 @@ layout: default
 <div class="bg-secondary">
   <div class="container" style="padding-top: var(--space-10); padding-bottom: var(--space-10);">
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <p class="text-sm text-secondary" style="margin-bottom: var(--space-2);"><a href="{{ '/notes/' | relative_url }}">Notes</a></p>
       <h1 class="hero-title" style="margin-bottom: var(--space-4);">{{ page.title }}</h1>
       <p class="text-secondary">
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
         {% if page.author %} by {{ page.author }}{% endif %}
       </p>
     </div>
@@ -26,75 +27,53 @@ layout: default
   </div>
 </article>
 
-</section>
-
-<!-- Comments Section -->
-<section class="section">
-  <div class="container">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h2 class="mb-6">Discussion</h2>
-      <div class="giscus"></div>
-      <script src="https://giscus.app/client.js" data-repo="pedscoffee/PhysicianPromptEngineering"
-        data-repo-id="[R_kgDOQDTjig]" data-category="Community Forum" data-category-id="[DIC_kwDOQDTjis4CzZEt]"
-        data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
-        data-input-position="top" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
-        </script>
-    </div>
-  </div>
-</section>
-
 <!-- Related Resources -->
 <section class="section bg-secondary">
   <div class="container">
     <div style="max-width: 900px; margin: 0 auto;">
-      <h2 class="text-center mb-8">Related Resources</h2>
+      <h2 class="text-center mb-8">Related</h2>
       <div class="grid grid-cols-1 grid-cols-3">
-
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Prompt Library</h3>
           </div>
           <div class="card-body">
-            <p>Explore our collection of physician-tested prompts for clinical documentation.</p>
+            <p>Prompts for Epic Art Memories, Epic Text Assistant, and DAX.</p>
           </div>
           <div class="card-footer">
             <a href="{{ site.baseurl }}/prompt-library" class="btn btn-sm btn-primary">View Library</a>
           </div>
         </div>
-
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Best Practices</h3>
+            <h3 class="card-title">AI Scribe Best Practices</h3>
           </div>
           <div class="card-body">
-            <p>Learn effective prompt engineering techniques for clinical use.</p>
+            <p>Consent, end-of-visit recaps, and reviewing AI-generated notes.</p>
           </div>
           <div class="card-footer">
-            <a href="{{ site.baseurl }}/best-practices" class="btn btn-sm btn-secondary">Read Guide</a>
+            <a href="{{ site.baseurl }}/ai-scribe-best-practices" class="btn btn-sm btn-secondary">Read Guide</a>
           </div>
         </div>
-
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">More Articles</h3>
+            <h3 class="card-title">More Notes</h3>
           </div>
           <div class="card-body">
-            <p>Read more insights on AI in clinical documentation.</p>
+            <p>Dated write-ups on AI scribes and prompting.</p>
           </div>
           <div class="card-footer">
-            <a href="{{ site.baseurl }}/blog" class="btn btn-sm btn-accent">View Blog</a>
+            <a href="{{ site.baseurl }}/notes/" class="btn btn-sm btn-accent">All Notes</a>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </section>
 
-<!-- Newsletter CTA -->
+<!-- Newsletter -->
 <section class="section">
   <div class="container">
-
     <div class="embed-container">
       {% include newsletter.html %}
     </div>

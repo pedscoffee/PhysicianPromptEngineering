@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Prompt Assistant
 description: Create custom AI editor prompts for your clinical workflow using AI-powered metaprompting. Generate or refine prompts to match your exact documentation style.
@@ -732,6 +733,23 @@ permalink: /prompt-assistant/
             AI runs locally in your browser
         </div>
     </div>
+</div>
+
+<div class="container">
+{% capture fp_builder %}
+Help me write a reusable prompt that reformats an AI scribe's Assessment & Plan into my personal style.
+Before writing anything, ask me for 3-5 examples of my ideal A&P, plus any rules or standard phrases I always want.
+Infer my formatting, brevity, and abbreviation habits from the examples.
+Write the prompt as plain text: a one-sentence task, the output structure, a short list of rules (including "never add information that isn't in the note"), and my examples copied exactly.
+Keep it under 5,000 characters.
+{% endcapture %}{% capture fp_refiner %}
+Help me improve a clinical documentation prompt.
+I'll paste my current prompt, 2-3 examples of the output I want, and 2-3 examples of what it actually produces.
+Name the biggest differences and why they happen, then give me a revised prompt.
+Fix the examples before adding rules, keep what already works, stay under 5,000 characters, and list what you changed in a few bullets.
+{% endcapture %}{% capture fp_intro %}
+<p>These two prompts do what the Generate and Refine tabs below do, and work much better in a current AI assistant. Paste one in and follow its questions.</p>
+{% endcapture %}{% include frontier-prompt.html intro=fp_intro prompt_title="Build a new A&P prompt" prompt=fp_builder prompt2_title="Refine a prompt you already use" prompt2=fp_refiner legacy_label="The original in-browser assistant is still below if you'd rather use it." %}
 </div>
 
 <div class="container">

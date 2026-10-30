@@ -190,59 +190,6 @@
   --gradient-pink: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-
-    --color-primary: #93c5fd;
-    --color-primary-dark: #bfdbfe;
-    --color-primary-light: #1c304b;
-    --color-secondary: #67e8f9;
-    --color-secondary-dark: #a5f3fc;
-    --color-secondary-light: #183b43;
-    --color-accent: #c4b5fd;
-    --color-accent-dark: #ddd6fe;
-    --color-accent-light: #322c4b;
-    --color-success: #6ee7b7;
-    --color-warning: #fcd34d;
-    --color-error: #fca5a5;
-
-    /* Distinct page, inset and raised surfaces without stark white panels. */
-    --color-text-primary: #e5edf6;
-    --color-text-secondary: #b0bfd1;
-    --color-text-tertiary: #94a3b8;
-    --color-bg-primary: #111b2b;
-    --color-bg-secondary: #0d1522;
-    --color-bg-tertiary: #1a283b;
-    --color-border: #3e5068;
-    --color-border-light: #29394e;
-
-    --color-success-light: #183b32;
-    --color-success-text: #a7f3d0;
-    --color-warning-light: #3c301d;
-    --color-warning-text: #fde68a;
-    --color-error-light: #40272e;
-    --color-error-text: #fecaca;
-    --color-glass: rgba(17, 27, 43, 0.7);
-    --color-header: rgba(17, 27, 43, 0.95);
-
-    /* Shadows provide depth on dark surfaces. */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
-
-    /* Low saturation backgrounds keep the emphasis on content. */
-    --gradient-hero: linear-gradient(135deg, #182b46 0%, #15343d 100%);
-    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #155e75 100%);
-    --gradient-success: linear-gradient(135deg, #163a31 0%, #132d2a 100%);
-    --gradient-info: linear-gradient(135deg, #1c304b 0%, #18283d 100%);
-    --gradient-warning: linear-gradient(135deg, #3c301d 0%, #30261d 100%);
-    --gradient-error: linear-gradient(135deg, #40272e 0%, #32222a 100%);
-    --gradient-pink: linear-gradient(135deg, #3b263b 0%, #30263b 100%);
-  }
-}
 
 /* High Contrast Mode Support */
 @media (prefers-contrast: more) {
@@ -943,104 +890,6 @@ li {
 
   .dropdown.active>.page-link::after {
     transform: rotate(180deg);
-  }
-}
-
-/* ----------------------------------------------------------------------------
-   DARK MODE OVERRIDES - Force header elements to respect dark mode
-   These rules override Minima theme's hardcoded colors
-   ---------------------------------------------------------------------------- */
-
-@media (prefers-color-scheme: dark) {
-
-  /* Force site header background to be dark */
-  .site-header {
-    background-color: var(--color-bg-primary) !important;
-    border-bottom-color: var(--color-border) !important;
-  }
-
-  /* Ensure backdrop blur uses dark background */
-  @supports (backdrop-filter: blur(8px)) {
-    .site-header {
-      background-color: var(--color-header) !important;
-    }
-  }
-
-  /* Force site title to be light in dark mode */
-  .site-title,
-  .site-header .site-title {
-    color: var(--color-text-primary) !important;
-  }
-
-  .site-title:hover,
-  .site-header .site-title:hover {
-    color: var(--color-primary) !important;
-  }
-
-  /* Force navigation links to be light in dark mode */
-  .site-nav .page-link,
-  .site-header .site-nav .page-link {
-    color: var(--color-text-primary) !important;
-  }
-
-  .site-nav .page-link:hover,
-  .site-header .site-nav .page-link:hover {
-    background-color: var(--color-primary-light) !important;
-    color: var(--color-primary) !important;
-  }
-
-  /* Ensure premium link stays orange in dark mode */
-  .premium-link,
-  .site-nav .premium-link {
-    color: var(--color-warning) !important;
-  }
-
-  .dropdown:hover>.premium-link {
-    color: var(--color-warning) !important;
-  }
-
-  /* Force dropdown content to use dark theme */
-  .dropdown-content {
-    background-color: var(--color-bg-primary) !important;
-    border-color: var(--color-border) !important;
-  }
-
-  .dropdown-content a {
-    color: var(--color-text-primary) !important;
-  }
-
-  .dropdown-content a:hover {
-    background-color: var(--color-primary-light) !important;
-    color: var(--color-primary) !important;
-  }
-
-  /* Minima sets a fixed white background on the mobile nav container. */
-  .site-nav {
-    background-color: var(--color-bg-primary);
-    border-color: var(--color-border);
-  }
-
-  /* Mobile navigation overrides */
-  .site-nav .trigger {
-    background-color: var(--color-bg-primary) !important;
-  }
-
-  /* Mobile menu icon (hamburger) */
-  .menu-icon>svg {
-    fill: var(--color-text-primary) !important;
-  }
-
-  /* Mobile dropdown backgrounds */
-  .dropdown>.page-link {
-    color: var(--color-text-primary) !important;
-  }
-
-  .dropdown>.page-link:hover {
-    background-color: var(--color-bg-tertiary) !important;
-  }
-
-  .dropdown-content {
-    background-color: var(--color-bg-secondary) !important;
   }
 }
 
@@ -1749,43 +1598,6 @@ table td {
   border-color: var(--color-border);
 }
 
-@media (prefers-color-scheme: dark) {
-  .highlight,
-  .highlighter-rouge .highlight {
-    background: var(--color-bg-tertiary);
-    color: var(--color-text-primary);
-  }
-
-  .highlight .c, .highlight .c1, .highlight .cm, .highlight .cp, .highlight .cs {
-    color: var(--color-text-secondary);
-  }
-
-  .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp,
-  .highlight .kr, .highlight .kt, .highlight .o, .highlight .ow,
-  .highlight .nb, .highlight .nc, .highlight .nf {
-    color: var(--color-primary);
-  }
-
-  .highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc,
-  .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sr,
-  .highlight .ss, .highlight .na, .highlight .nt {
-    color: var(--color-success);
-  }
-
-  .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo {
-    color: var(--color-accent);
-  }
-
-  .highlight .err, .highlight .gd {
-    color: var(--color-error-text);
-    background-color: var(--color-error-light);
-  }
-
-  .highlight .gi {
-    color: var(--color-success-text);
-    background-color: var(--color-success-light);
-  }
-}
 
 /* Horizontal Rule */
 hr {
@@ -2297,6 +2109,7 @@ button:disabled,
 
 /* Buttons */
 .btn-run-exercise,
+.btn-copy-for-assistant,
 .btn-retry,
 .btn-view-example,
 .btn-hint,
@@ -2831,3 +2644,143 @@ button:disabled,
   outline-offset: 2px;
 }
 .dropdown.closed .dropdown-content { display: none; }
+
+/* Legacy side project notice (pages with `legacy: true`) */
+.legacy-notice {
+  background: var(--color-warning-light);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-warning-text);
+  font-size: var(--font-size-sm);
+}
+.legacy-notice p {
+  margin: 0;
+  padding: var(--space-3) 0;
+}
+.legacy-notice a {
+  color: var(--color-warning-text);
+  text-decoration: underline;
+}
+
+/* "Use your own AI assistant" box shown above older in-browser AI tools */
+.frontier-box {
+  max-width: 900px;
+  margin: var(--space-6) auto var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+.frontier-box-label {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.frontier-box h2 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-xl);
+}
+.frontier-box ol {
+  margin: var(--space-3) 0 var(--space-4) var(--space-5);
+}
+.frontier-box pre {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: var(--font-size-sm);
+}
+.frontier-box-prompt-title {
+  margin: var(--space-4) 0 var(--space-2);
+  font-weight: 600;
+}
+.frontier-box-note {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+.frontier-box textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+.btn-copy-for-assistant {
+  background: var(--color-success-solid);
+  color: white;
+  margin-top: var(--space-4);
+}
+.btn-copy-for-assistant:hover {
+  background: var(--color-success-solid-hover);
+}
+
+.legacy-group-heading {
+  font-size: var(--font-size-2xl);
+  margin: var(--space-8) 0 var(--space-4);
+}
+
+.dropdown-divider {
+  margin: 5px 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Footer */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+.footer-heading {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+}
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-links li {
+  margin-bottom: var(--space-2);
+}
+.footer-links a,
+.footer-bottom a,
+.footer-social a {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover,
+.footer-bottom a:hover,
+.footer-social a:hover {
+  color: var(--color-primary);
+}
+.footer-social {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+.footer-bottom {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  text-align: center;
+}
+.frontier-box .btn {
+  width: auto;
+  display: inline-block;
+}
