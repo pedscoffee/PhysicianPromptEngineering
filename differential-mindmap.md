@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Differential Diagnosis Mind Map
 description: Visualize your differential diagnosis with an AI-generated mind map.
@@ -182,6 +183,18 @@ permalink: /differential-mindmap/
         </div>
     </div>
 
+{% capture fp_prompt %}
+Build a differential diagnosis mind map for the scenario below as Mermaid "mindmap" code.
+Put the chief complaint at the root as root((Complaint)), group diagnoses by organ system or category, and use one plain-text label per line with no brackets or formatting.
+Return only the code block.
+
+Scenario:
+{% endcapture %}{% capture fp_intro %}
+<ol>
+  <li>Copy the prompt and paste it into your AI assistant, then add a brief, de-identified scenario.</li>
+  <li>Paste the code it returns into <strong>Manual Mode</strong> below and click <strong>Render Mind Map</strong>.</li>
+</ol>
+{% endcapture %}{% include frontier-prompt.html intro=fp_intro prompt=fp_prompt %}
     <div class="model-status" id="modelStatus">
         <strong>AI Model Status:</strong> Not Loaded. 
         <button id="loadModelBtn" class="copy-btn" style="margin-left: 10px; border-color: #fcd34d;">Load AI Model (~1GB)</button>
@@ -578,5 +591,3 @@ permalink: /differential-mindmap/
         });
     }
 </script>
-
-{%- include software-2-banner.html -%}

@@ -4,7 +4,7 @@ Use the [contribution form](https://physicianpromptengineering.com/support/#cont
 
 ## Prompts and dot phrases
 
-Add prompts as `.txt` files in `_prompts/`, with YAML front matter containing `title`, `description`, `specialty`, `model`, `category`, and `order`. Follow an existing prompt for formatting. The library calculates the displayed character count from the prompt body; `char_count` is legacy metadata.
+Add prompts as `.txt` files in `_prompts/`, with YAML front matter containing `title`, `description`, `specialty`, `model`, `category`, and `order`. Follow an existing prompt for formatting. `model` is the platform (`Epic Art`, `Epic Text Assistant`, `DAX Custom Instructions`, `Any AI Assistant`, or `Other`) and `category` is the section within it (`Memories`, `Documentation`, `Orders`, `Administrative`, `Teaching`, `Prompt Tools`). To add a new platform or category, add it to the ordered lists at the top of the prompts section in `prompt-library.md`; until then it appears under Other. The library calculates the displayed character count from the prompt body; `char_count` is legacy metadata.
 
 Keep tool-specific variants when their instructions differ. Describe the intended platform, use cases, limitations, and any physician review needed. Add dot phrases in `_dotphrases/`, following the existing front matter and Markdown format.
 

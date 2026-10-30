@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: RVU Data Tracker
 permalink: /clinic-visit-tracker/
@@ -885,4 +886,3 @@ if (isRunningAsPWA()) {
     document.getElementById('pwaInstallBanner').style.display = 'none';
 }
 </script>
-{%- include software-2-banner.html -%}

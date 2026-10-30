@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Patient Timeline Visualizer
 description: Create interactive patient timelines for educational case presentations and teaching.
@@ -35,6 +36,37 @@ permalink: /patient-timeline/
         </div>
     </div>
 
+{% capture fp_prompt %}
+Extract a timeline from the history below. Return only a JSON array, like:
+[{"day": 1, "category": "symptom", "description": "Fever 103F"}]
+Day 1 is the first day of the story. Category is one of: symptom, lab, intervention, imaging, diagnosis, course, other. Keep each description under 10 words.
+
+History:
+{% endcapture %}{% capture fp_intro %}
+<ol>
+  <li>Copy the prompt and paste it into your AI assistant, then add a de-identified history.</li>
+  <li>Paste the JSON it returns into the box below and click <strong>Add to Timeline</strong>.</li>
+</ol>
+{% endcapture %}{% capture fp_extra %}
+<p class="frontier-box-prompt-title"><label for="frontierTimelineJson">Paste the JSON here</label></p>
+<textarea id="frontierTimelineJson" placeholder='[{"day": 1, "category": "symptom", "description": "Fever 103F"}]'></textarea>
+<p><button type="button" class="btn btn-secondary btn-sm" id="frontierTimelineAdd">Add to Timeline</button> <span id="frontierTimelineStatus" class="text-sm"></span></p>
+<script>
+  document.getElementById('frontierTimelineAdd').addEventListener('click', function () {
+    var status = document.getElementById('frontierTimelineStatus');
+    var raw = document.getElementById('frontierTimelineJson').value.replace(/```json/g, '').replace(/```/g, '').trim();
+    try {
+      var parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) throw new Error('not an array');
+      var valid = parsed.filter(function (e) { return e && e.category && e.description; });
+      window.updateTimelineFromAI(valid);
+      status.textContent = 'Added ' + valid.length + ' events.';
+    } catch (e) {
+      status.textContent = "That doesn't look like a JSON array. Check what you pasted and try again.";
+    }
+  });
+</script>
+{% endcapture %}{% include frontier-prompt.html intro=fp_intro prompt=fp_prompt extra=fp_extra %}
     <div class="model-status" id="modelStatus">
         <strong>AI Model Status:</strong> Not Loaded. 
         <button id="loadModelBtn" class="btn-secondary" style="width: auto; display: inline-block; padding: 4px 12px; margin-left: 10px; font-size: 0.85em;">Load AI Model (~1GB)</button>
@@ -609,5 +641,3 @@ permalink: /patient-timeline/
         }
     });
 </script>
-
-{%- include software-2-banner.html -%}

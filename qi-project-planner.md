@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: QI Project Planner
 permalink: /qi-project-planner/
@@ -592,5 +593,3 @@ description: A step-by-step guide to planning your Quality Improvement project u
         });
     }
 </script>
-
-{%- include software-2-banner.html -%}

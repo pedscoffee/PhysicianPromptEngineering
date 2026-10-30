@@ -117,7 +117,7 @@ permalink: /support/
 <div class="support-hero">
     <h1>Contribute to the Project</h1>
     <p>
-        This is an open-source initiative built for the medical community.  If you would like to share a refined prompt, a dot phrase, or general feedback then please do so.  All contributions are welcome.
+        This is a free resource built for the medical community.  If you would like to share a refined prompt, a dot phrase, or general feedback then please do so.  All contributions are welcome.
     </p>
 </div>
 

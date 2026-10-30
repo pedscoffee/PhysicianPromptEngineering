@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: "Reflect"
 description: "A mobile-first interactive tool for diagnostic reflection, featuring frameworks, cognitive biases, and metacognitive strategies."
@@ -734,5 +735,3 @@ document.addEventListener('DOMContentLoaded', () => {
     window.app = new MetacognitionApp();
 });
 </script>
-
-{%- include software-2-banner.html -%}

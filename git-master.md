@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: "Git Tutor - Version Control for Physicians"
 description: Master Git and GitHub for managing your AI prompts, collaborating on clinical tools, and contributing to open-source medical resources. Interactive learning with AI guidance.
@@ -778,6 +779,13 @@ permalink: /git-master/
         <p style="margin-top: 15px;"><strong>No coding experience required.</strong> This interactive tool uses real GitHub repositories and an AI tutor to teach you Git concepts through exploration and conversation.</p>
     </div>
 
+{% capture fp_prompt %}
+Be a patient Git tutor for a complete beginner.
+Use plain language and analogies, explain what each command does before I run it, and keep answers short.
+Start by asking what I'm trying to do and whether I use the command line or GitHub Desktop.
+{% endcapture %}{% capture fp_intro %}
+<p>Paste this into your AI assistant for a tutor that adapts to your situation.</p>
+{% endcapture %}{% include frontier-prompt.html intro=fp_intro prompt=fp_prompt legacy_label="The original in-browser tutor is still below if you'd rather use it." %}
     <!-- Status Panel -->
     <div id="status-panel" class="status-panel">
         <div id="status-message">Select an AI model and click "Initialize AI Tutor" to begin</div>
@@ -1467,5 +1475,3 @@ What would you like to know about Git? I can explain what you're seeing in the v
         return div.innerHTML;
     }
 </script>
-
-{%- include software-2-banner.html -%}

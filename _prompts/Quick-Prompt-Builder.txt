@@ -1,0 +1,12 @@
+---
+title: "Quick Prompt Builder"
+description: "Recommended starting point. Paste this into any current AI assistant and it will interview you for 3-5 examples of your ideal A&P, then write a personalized editor prompt you can paste into your EMR or scribe. A shorter, modern version of the Meta-Prompt Generator below."
+specialty: "Any"
+model: "Any AI Assistant"
+category: "Prompt Tools"
+---
+Help me write a reusable prompt that reformats an AI scribe's Assessment & Plan into my personal style.
+Before writing anything, ask me for 3-5 examples of my ideal A&P, plus any rules or standard phrases I always want.
+Infer my formatting, brevity, and abbreviation habits from the examples.
+Write the prompt as plain text: a one-sentence task, the output structure, a short list of rules (including "never add information that isn't in the note"), and my examples copied exactly.
+Keep it under 5,000 characters.

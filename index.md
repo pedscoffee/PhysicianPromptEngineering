@@ -1,7 +1,7 @@
 ---
 layout: default
 image: /images/workflow-diagram.png
-description: Open-source clinical LLM prompts for physicians. Automate medical documentation, improve AI scribe output, and reduce burnout. Get started with our free prompt library.
+description: Free clinical AI prompts for physicians, organized by platform (Epic Art Memories, Epic Text Assistant, DAX). Shape AI scribe output to your documentation style.
 redirect_from:
   - /cram-for-rounds/
   - /diagnosis-case-creator/
@@ -18,9 +18,8 @@ redirect_from:
      Clinical AI prompts that help adapt AI scribe output to your documentation style. Review every generated note before use.
     </p>
     <div class="hero-cta">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Explore Prompt Library</a>
-      <a href="{{ site.baseurl }}/best-practices" class="btn btn-outline btn-lg">Read Best Practices</a>
-      <a href="{{ site.baseurl }}/quick-guide" class="btn btn-primary btn-lg">Busy? 2-Minute Quick Start</a>
+      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-primary btn-lg">Explore Prompt Library</a>
+      <a href="{{ site.baseurl }}/quick-guide" class="btn btn-outline btn-lg">Busy? 2-Minute Quick Start</a>
     </div>
   </div>
 </div>
@@ -31,7 +30,7 @@ redirect_from:
     <div class="content-centered">
       <h2>The Problem We Solve</h2>
       <p class="text-lg text-secondary">
-        AI scribes capture conversations but produce generic, verbose notes that require extensive editing. Our solution: <strong class="text-primary">precision-engineered prompts</strong> that transform raw AI output into concise, personalized documentation matching your exact preferences.
+        AI scribes capture the conversation well, but their default notes are written to satisfy everyone, so they rarely sound like you. A few well-built prompts, either instructions given to the scribe itself or an editor prompt run on its draft, close most of that gap.
       </p>
     </div>
 
@@ -51,8 +50,25 @@ redirect_from:
     <div class="content-centered-wide">
       {% include workflow-diagram.html %}
       <p class="text-center mt-8 text-lg">
-        Use your EMR's built-in AI features (like Epic's "Generate Text with AI") with our specialized prompts to achieve more consistent, preference-matched documentation.
+        Use the prompt features already in your tools, such as Epic Art Memories, Epic's in-chart text generation, or DAX custom instructions, to get more consistent notes that match your preferences.
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- Chart with Art -->
+<section class="section">
+  <div class="container">
+    <div class="card" style="max-width: 800px; margin: 0 auto; border: 2px solid var(--color-primary);">
+      <div class="card-body" style="text-align: center; padding: var(--space-8);">
+        <p class="text-sm text-secondary" style="text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2);">Coming soon</p>
+        <h2 class="mb-4">Charting with Epic Art and Memories</h2>
+        <p class="text-lg text-secondary mb-6">A first-hand look at Epic's ambient scribe and its Memories, plus how they differ from the editor prompts in the library.</p>
+        <div class="hero-cta">
+          <a href="{{ site.baseurl }}/notes/" class="btn btn-primary">Read the Notes</a>
+          <a href="{{ site.baseurl }}/prompt-library#platform-epic-art" class="btn btn-outline">Memories in the Library</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -84,7 +100,7 @@ redirect_from:
           <h3 class="card-title">Medical Decision Making & Billing</h3>
         </div>
         <div class="card-body">
-          <p>Analyzes clinical complexity and suggests appropriate CPT codes with supporting documentation automatically.</p>
+          <p>Walks through MDM complexity and suggests an E&M level with its reasoning, for you to verify.</p>
         </div>
         <div class="card-footer">
           <a href="{{ site.baseurl }}/prompt-library#billing-analysis" class="btn btn-sm btn-secondary">View Prompt</a>
@@ -137,7 +153,7 @@ redirect_from:
 </section>
 
 <!-- Core Principles - Card Grid -->
-<section class="section bg-secondary">
+<section class="section">
   <div class="container">
     <h2 class="text-center mb-8">Core Documentation Principles</h2>
     <div class="grid grid-cols-1 grid-cols-3">
@@ -178,7 +194,6 @@ redirect_from:
 </section>
 
 <!-- Interactive Course Feature -->
-<!-- Interactive Course Feature -->
 <section class="section" style="background: var(--gradient-success);">
   <div class="container">
     <div style="text-align: center; max-width: 900px; margin: 0 auto;">
@@ -195,7 +210,7 @@ redirect_from:
             </svg>
           </div>
           <h3 style="color: var(--color-success-text); font-size: var(--font-size-lg); margin-bottom: 0.5rem;">Hands-On Exercises</h3>
-          <p style="color: var(--color-success-text); font-size: 0.95rem;">4 modules, 12 exercises, ~4 hours. Write prompts, see outputs, iterate until you master each concept.</p>
+          <p style="color: var(--color-success-text); font-size: 0.95rem;">4 modules, 12 exercises, ~4 hours. Write prompts, run them in your own AI assistant, and compare with example solutions.</p>
         </div>
 
         <div style="background: var(--color-glass); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
@@ -224,113 +239,56 @@ redirect_from:
 <!-- Explore Tools Section -->
 <section class="section">
   <div class="container">
-    <h2 class="text-center mb-8">Explore Our Resources</h2>
-    
-    <!-- Documentation Tools -->
-    <h3 class="mb-4 text-primary">Documentation & Prompts</h3>
+    <h2 class="text-center mb-8">Tools for Building Your Own Prompts</h2>
     <div class="grid grid-cols-1 grid-cols-3 mb-8">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-manager">Prompt Manager</a></h4>
-          <p>Save, organize, and quickly access your favorite prompts.</p>
+          <h3 class="card-title"><a href="{{ site.baseurl }}/prompt-generator">Quick Start A&P Builder</a></h3>
+          <p>Answer a few questions to assemble a structured Assessment &amp; Plan prompt.</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-remix">Prompt Remix</a></h4>
-          <p>Start from a proven prompt, make it yours. Customize any library prompt with your own examples and preferences.</p>
+          <h3 class="card-title"><a href="{{ site.baseurl }}/prompt-remix">Prompt Remix</a></h3>
+          <p>Start from a library prompt and swap in your own examples and preferences.</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-assistant">AI Prompt Assistant</a></h4>
-          <p>Get AI help to write or improve your custom prompts.</p>
+          <h3 class="card-title"><a href="{{ site.baseurl }}/prompt-manager">Prompt Manager</a></h3>
+          <p>Save and organize the prompts you use, right in your browser.</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/prompt-generator">Quick Start A&P Builder</a></h4>
-          <p>Rapidly build a structured Assessment & Plan prompt.</p>
+          <h3 class="card-title"><a href="{{ site.baseurl }}/dot-phrase-library">Dot Phrase Library</a></h3>
+          <p>Smart phrases for common clinical scenarios, plus a builder for your own.</p>
         </div>
       </div>
-
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><a href="{{ site.baseurl }}/dot-phrase-library">Dot Phrase Library</a></h4>
-          <p>A collection of smart phrases for common clinical scenarios.</p>
+          <h3 class="card-title"><a href="https://www.noterepertoire.com/">Repertoire: Note Templates</a></h3>
+          <p>Organize, assemble, and maintain reusable clinical note templates in an editable browser workspace. A separate project from the same creator.</p>
         </div>
       </div>
-
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><a href="https://www.noterepertoire.com/">Repertoire: Clinical Template Workspace</a></h4>
-          <p>Organize, assemble, and maintain reusable clinical note templates in an editable browser workspace. A separate project from the creator of Physician Prompt Engineering.</p>
+          <h3 class="card-title"><a href="{{ site.baseurl }}/prompt-style-guide/">A&amp;P Style Guide</a></h3>
+          <p>See the same visit written in different A&amp;P styles to pick the one closest to yours.</p>
         </div>
       </div>
     </div>
-
-    <!-- Software 2.0 Call-to-Action -->
-    <div class="card" style="background: var(--gradient-info); border: 2px solid var(--color-primary);">
-      <div class="card-body" style="text-align: center; padding: var(--space-8);">
-        <h3 style="color: var(--color-primary-dark); margin-bottom: var(--space-4); font-size: var(--font-size-3xl);">Software 2.0: Build Your Own Tools</h3>
-        <p class="text-lg" style="color: var(--color-primary-dark); max-width: 800px; margin: 0 auto var(--space-6);">
-          Discover how modern AI coding assistants make it possible for <strong>anyone</strong> to create custom productivity tools. Explore our collection of 17 personal projects and learn how to build your own—no programming background required.
-        </p>
-        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-          <a href="{{ site.baseurl }}/software-2.0" class="btn btn-lg shadow-lg" style="background: var(--color-secondary-solid); color: white; font-weight: 700; border: none;">
-            Explore Software 2.0 Suite →
-          </a>
-          <a href="{{ site.baseurl }}/software-2.0#getting-started" class="btn btn-outline btn-lg" >
-            Learn to Build Your Own
-          </a>
-        </div>
-        <p class="text-sm mt-4" style="color: var(--color-primary-dark); opacity: 0.8;">
-          17 tools including productivity trackers, visualizations, and development resources
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Getting Started Section -->
-<section class="section">
-  <div class="container">
-    <div class="content-centered-wide">
-      <h2 class="text-center mb-8">Getting Started</h2>
-
-      <div class="two-col-grid">
-
-        <div>
-          <h3>Building Blocks</h3>
-          <ul>
-            <li>EMR with integrated AI text generation (Epic, Cerner, or equivalent)</li>
-            <li>Institutional approval for AI documentation tools</li>
-            <li>HIPAA-compliant AI scribe service (optional but recommended)</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>Implementation Steps</h3>
-          <ol>
-            <li>Copy relevant prompts from our library</li>
-            <li>Customize examples to match your specialty</li>
-            <li>Test with routine encounters first</li>
-            <li>Scale to complex cases as confidence builds</li>
-          </ol>
-        </div>
-
-      </div>
-
-      <!-- Share Your Prompt CTA -->
-      {%- include share-prompt-cta.html -%}
-    </div>
+    <p class="text-center text-sm text-secondary">
+      Looking for the older productivity and visualization tools? They're on the <a href="{{ site.baseurl }}/legacy/">Legacy Side Projects</a> page.
+    </p>
   </div>
 </section>
 
 <!-- Newsletter Signup -->
-<section class="section">
+<section class="section bg-secondary">
   <div class="container">
+    <h2 class="text-center mb-4">Get Occasional Updates</h2>
+    <p class="text-center text-secondary mb-6">New prompts, Epic Art Memories, and write-ups, sent only when there's something worth sharing.</p>
     <div class="embed-container">
       {%- include newsletter.html -%}
     </div>
@@ -348,20 +306,6 @@ redirect_from:
         These prompts are tools for documentation efficiency, not substitutes for clinical judgment. Healthcare providers retain full responsibility for reviewing and approving all AI-generated content before finalizing patient records. Always verify accuracy, completeness, and compliance with institutional policies. <a href="{{ site.baseurl }}/disclaimer">Review our disclaimer</a>.
       </p>
     </div>
-  </div>
-</section>
-
-<!-- Footer CTA -->
-<section class="section">
-  <div class="container text-center">
-    <h2 class="mb-6">Ready to Transform Your Documentation?</h2>
-    <div class="hero-cta">
-      <a href="{{ site.baseurl }}/prompt-library" class="btn btn-outline btn-lg">Get Started with Free Prompts</a>
-      <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/" class="btn btn-outline btn-lg" target="_blank">Star us on GitHub</a>
-    </div>
-    <p class="text-sm text-secondary mt-6">
-      Open source under the MIT License. Free to use, modify, and share.
-    </p>
   </div>
 </section>
 

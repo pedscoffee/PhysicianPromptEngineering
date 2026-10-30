@@ -1,6 +1,6 @@
 title: Physician Prompt Engineering
 description: >-
-  Physician Prompt Engineering offers open-source clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems.
+  Physician Prompt Engineering offers free clinical AI prompts to help doctors accelerate and enhance medical documentation within EMR systems.
 url: https://physicianpromptengineering.com
 
 # Set the theme
@@ -33,6 +33,14 @@ collections:
     output: true
     permalink: /courses/:course/:name/
 
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      permalink: /notes/:year/:month/:title/
+
 google_analytics: G-VNYGW8RWMY
 
 # Repository notes, experiments, and unfinished courses are not public assets.
@@ -48,21 +56,13 @@ exclude:
   - vendor
   - ClinicalToolkit
   - untitled folder
-  - Medical Trainee Development.md
   - IHI research.md
   - supporter_tier_strategy.md
   - ADDING_ANATOMY_IMAGES.md
   - anatomy_image_prompts.md
-  - PageSpeed Insights Desktop.pdf
-  - PageSpeed Insights Mobile.pdf
-  - extract_pdf_text.py
-  - test_regex.js
   - _course_modules/newborn-module-1-general-assessment.md
   - _course_modules/newborn-module-2-heent.md
   - _course_modules/newborn-module-3-cardiac-respiratory.md
   - _course_modules/newborn-module-4-abdomen-msk.md
   - _course_modules/newborn-module-5-skin-neuro.md
   - assets/js/newborn-exam-exercise.js
-  - promptideas.md
-  - dotphraseideas.md
-  - visualization-ideas.md

@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: default
 title: Next Steps - Version Control with Git
 description: Learn why Git is essential for Software 2.0 development, with a beginner-friendly guide to GitHub Desktop and version control basics.
@@ -349,7 +350,7 @@ permalink: /next-steps/
             With AI for code generation and Git for version control, you have everything you need to build custom tools for your practice. Start small, experiment fearlessly, and iterate based on what works.
           </p>
           <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-            <a href="{{ site.baseurl }}/software-2.0" class="btn btn-primary btn-lg">Explore More Tools →</a>
+            <a href="{{ site.baseurl }}/legacy/" class="btn btn-primary btn-lg">Legacy Side Projects →</a>
             <a href="{{ site.baseurl }}/git-master" class="btn btn-outline btn-lg">Dive Into Git Tutor</a>
           </div>
         </div>

@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: Pathophysiology Mechanism Mapper
 description: Visualize complex disease mechanisms and drug actions with AI-generated diagrams.
@@ -179,6 +180,18 @@ permalink: /mechanism-mapper/
         </div>
     </div>
 
+{% capture fp_prompt %}
+Draw the mechanism I describe below as a Mermaid "graph TD" diagram.
+Use short node labels in [square brackets], label arrows with the cause-and-effect step (A -->|causes| B), and connect feedback loops back to their start.
+Stick to what I describe and return only the code block.
+
+Mechanism:
+{% endcapture %}{% capture fp_intro %}
+<ol>
+  <li>Copy the prompt and paste it into your AI assistant, then describe the mechanism.</li>
+  <li>Paste the code it returns into <strong>Manual Mode</strong> below and click <strong>Render Diagram</strong>.</li>
+</ol>
+{% endcapture %}{% include frontier-prompt.html intro=fp_intro prompt=fp_prompt %}
     <div class="model-status" id="modelStatus">
         <strong>AI Model Status:</strong> Not Loaded. 
         <button id="loadModelBtn" class="copy-btn" style="margin-left: 10px; border-color: #fcd34d;">Load AI Model (~1GB)</button>
@@ -570,5 +583,3 @@ Increased Preload and Afterload worsen Heart Failure (Vicious Cycle)."></textare
         });
     }
 </script>
-
-{%- include software-2-banner.html -%}

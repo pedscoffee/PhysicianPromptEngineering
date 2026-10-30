@@ -839,6 +839,18 @@ permalink: /prompt-remix/
 <!-- Workbench Section -->
 <div id="workbench-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #e5e7eb;">
   <div class="container">
+{% capture fp_prompt %}
+Apply the documentation prompt below to the sample note that follows it, and return only the result.
+Then, in 2-3 bullets, point out anything in my prompt that was ambiguous or that you had to guess at.
+
+PROMPT:
+[paste your remixed prompt]
+
+SAMPLE NOTE:
+[paste a de-identified sample note]
+{% endcapture %}{% capture fp_intro %}
+<p>The quickest way to test a remix: copy your prompt above, then paste it with a sample note into your AI assistant using this wrapper.</p>
+{% endcapture %}{% include frontier-prompt.html heading="Recommended: test your remix in your own AI assistant" intro=fp_intro prompt=fp_prompt legacy_label="The original in-browser workbench is still below if you'd rather use it." %}
     <h2 style="text-align: center; margin-bottom: 30px; color: #1e5bb8;"> Clinical AI Workbench</h2>
     
     <!-- Educational Context -->

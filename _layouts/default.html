@@ -26,78 +26,36 @@
 
           <div class="trigger">
 
-            <!-- Prompting Dropdown -->
+            <a class="page-link" href="{{ '/prompt-library' | relative_url }}">Prompt Library</a>
+
+            <!-- Learn Dropdown -->
             <div class="dropdown">
-              <button type="button" class="page-link" aria-expanded="false" aria-controls="prompting-menu">Prompting</button>
-              <div class="dropdown-content" id="prompting-menu">
-                <a href="{{ '/prompt-library' | relative_url }}"><strong>Prompt Library</strong></a>
-                <a href="{{ '/best-practices' | relative_url }}"><strong>Prompting Best Practices</strong></a>
-                <a href="{{ '/courses/clinical-prompt-engineering/' | relative_url }}"><strong>Interactive
-                    Course</strong></a>
-                <a href="{{ '/ai-scribe-best-practices' | relative_url }}"><strong>AI Scribe Best Practices</strong></a>
-                <hr style="margin: 5px 0; border: 0; border-top: 1px solid var(--color-border);">
-                <a href="{{ '/prompt-manager' | relative_url }}">Prompt Manager</a>
+              <button type="button" class="page-link" aria-expanded="false" aria-controls="learn-menu">Learn</button>
+              <div class="dropdown-content" id="learn-menu">
+                <a href="{{ '/quick-guide' | relative_url }}">2-Minute Quick Start</a>
+                <a href="{{ '/ai-scribe-best-practices' | relative_url }}">AI Scribe Best Practices</a>
+                <a href="{{ '/best-practices' | relative_url }}">Prompting Best Practices</a>
+                <a href="{{ '/prompt-style-guide/' | relative_url }}">A&amp;P Style Guide</a>
+                <a href="{{ '/courses/clinical-prompt-engineering/' | relative_url }}">Interactive Course</a>
+              </div>
+            </div>
+
+            <!-- Tools Dropdown -->
+            <div class="dropdown">
+              <button type="button" class="page-link" aria-expanded="false" aria-controls="tools-menu">Tools</button>
+              <div class="dropdown-content" id="tools-menu">
+                <a href="{{ '/prompt-generator' | relative_url }}">Quick Start A&amp;P Builder</a>
                 <a href="{{ '/prompt-remix' | relative_url }}">Prompt Remix</a>
-                <a href="{{ '/prompt-assistant' | relative_url }}">AI Prompt Assistant</a>
-                <a href="{{ '/prompt-generator' | relative_url }}">Quick Start A&P Builder</a>
+                <a href="{{ '/prompt-manager' | relative_url }}">Prompt Manager</a>
                 <a href="{{ '/dot-phrase-library' | relative_url }}">Dot Phrase Library</a>
                 <a href="{{ '/dot-phrase-builder' | relative_url }}">Dot Phrase Builder</a>
+                <hr class="dropdown-divider">
+                <a href="https://www.noterepertoire.com/">Repertoire: Note Templates &#8599;</a>
+                <a href="{{ '/legacy/' | relative_url }}">Legacy Side Projects</a>
               </div>
             </div>
 
-            <!-- Productivity Dropdown -->
-            <div class="dropdown">
-              <button type="button" class="page-link" aria-expanded="false" aria-controls="productivity-menu">Productivity</button>
-              <div class="dropdown-content" id="productivity-menu">
-                <a href="{{ '/software-2.0' | relative_url }}">Software 2.0</a>
-                <a href="{{ '/git-master' | relative_url }}">Git Tutor</a>
-
-                <hr style="margin: 5px 0; border: 0; border-top: 1px solid var(--color-border);">
-
-                <details>
-                  <summary
-                    style="padding: 5px 16px; font-size: 0.85em; color: var(--color-text-secondary); font-weight: bold; text-transform: uppercase; cursor: pointer;">
-                    Planning</summary>
-                  <a href="{{ '/clockwork-timebox' | relative_url }}">ClockWork TimeBox</a>
-                  <a href="{{ '/clinic-visit-tracker' | relative_url }}">RVU Data Tracker</a>
-                  <a href="{{ '/qi-project-tracker' | relative_url }}">QI Project Tracker</a>
-                  <a href="{{ '/qi-project-planner' | relative_url }}">QI Project Planner</a>
-                  <a href="{{ '/trainee-goal-setter' | relative_url }}">Trainee Goal Setter</a>
-                  <a href="{{ '/pto-planner' | relative_url }}">Annual PTO Planner</a>
-                  <a href="{{ '/cme-tracker' | relative_url }}">CME & Budget Tracker</a>
-                  <a href="{{ '/cpt-calculator' | relative_url }}">E&M Calculator</a>
-                </details>
-
-                <hr style="margin: 5px 0; border: 0; border-top: 1px solid var(--color-border);">
-
-                <details>
-                  <summary
-                    style="padding: 5px 16px; font-size: 0.85em; color: var(--color-text-secondary); font-weight: bold; text-transform: uppercase; cursor: pointer;">
-                    Visualization</summary>
-                  <a href="{{ '/clinical-flowchart' | relative_url }}">Clinical Flowchart</a>
-                  <a href="{{ '/differential-mindmap' | relative_url }}">Differential Mind Map</a>
-                  <a href="{{ '/mechanism-mapper' | relative_url }}">Mechanism Mapper</a>
-                  <a href="{{ '/patient-timeline' | relative_url }}">Patient Timeline</a>
-                  <a href="{{ '/workflow-optimizer' | relative_url }}">Workflow Optimizer</a>
-                  <a href="{{ '/interactive-anatomy' | relative_url }}">Interactive Anatomy</a>
-                  <a href="{{ '/reflect' | relative_url }}">Reflect</a>
-                </details>
-
-                <hr style="margin: 5px 0; border: 0; border-top: 1px solid var(--color-border);">
-
-                <details>
-                  <summary
-                    style="padding: 5px 16px; font-size: 0.85em; color: var(--color-text-secondary); font-weight: bold; text-transform: uppercase; cursor: pointer;">
-                    Mobile</summary>
-                  <a href="{{ '/pwa-apps' | relative_url }}">Mobile Apps</a>
-                </details>
-              </div>
-            </div>
-
-            <!-- Prompts & Support Links directly -->
-            <a class="page-link" href="{{ '/support' | relative_url }}">Contribute</a>
-
-            <!-- About -->
+            <a class="page-link" href="{{ '/notes/' | relative_url }}">Notes</a>
             <a class="page-link" href="{{ '/about' | relative_url }}">About</a>
 
             <!-- Search -->
@@ -114,10 +72,11 @@
   </header>
 
   <main class="page-content" aria-label="Content">
+    {%- if page.legacy -%}{%- include legacy-notice.html -%}{%- endif -%}
     {{ content }}
   </main>
 
-  {%- include cta-banner.html -%}
+  {%- unless page.url == '/newsletter/' -%}{%- include cta-banner.html -%}{%- endunless -%}
   {%- include footer.html -%}
 
   {%- include cookie-consent.html -%}

@@ -1,4 +1,5 @@
 ---
+legacy: true
 layout: page
 title: "CME & Budget Tracker"
 description: Track your Continuing Medical Education budget, expenses, and days off with this easy-to-use ledger.
@@ -953,5 +954,3 @@ if (isRunningAsPWA()) {
     if (banner) banner.style.display = 'none';
 }
 </script>
-
-{%- include software-2-banner.html -%}
