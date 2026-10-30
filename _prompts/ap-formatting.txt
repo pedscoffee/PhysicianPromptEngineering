@@ -68,7 +68,7 @@ If ADHD, obesity, or strep throat discussed:
 ## Few-Shot Examples
 
 **Asthma**
-- Flovent 44mcg 2 puff BID started
+- Fluticasone 44mcg 2 puff BID started
 - Continue albuterol PRN
 - Use spacer
 - RTC 3mo/PRN

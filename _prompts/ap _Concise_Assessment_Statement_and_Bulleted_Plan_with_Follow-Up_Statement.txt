@@ -73,8 +73,8 @@ If ADHD, weight, obesity, or strep throat discussed:
 ## Few-Shot Examples
 
 Asthma
-Stable on Flovent 44mcg 2 puffs BID with spacer; albuterol use minimal.
-        - Continue Flovent 44mcg 2 puffs BID
+Stable on fluticasone 44mcg 2 puffs BID with spacer; albuterol use minimal.
+        - Continue fluticasone 44mcg 2 puffs BID
         - Continue albuterol PRN
         - Reassess control at next visit
 
@@ -83,8 +83,8 @@ Follow-Up: Return to clinic in 3 months or as needed.
 ---
 
 Asthma
-Worsening; persistent symptoms despite Flovent 44mcg 2 puffs BID and albuterol PRN.
-        - Step up to Flovent 110mcg 2 puffs BID
+Worsening; persistent symptoms despite fluticasone 44mcg 2 puffs BID and albuterol PRN.
+        - Step up to fluticasone 110mcg 2 puffs BID
         - Continue albuterol PRN
         - Return sooner if symptoms not improving
 
@@ -127,7 +127,7 @@ Follow-Up: Return to clinic in 3 months or as needed.
 ---
 
 Asthma
-Stable on Flovent 44mcg 2 puffs BID; albuterol use minimal.
+Stable on fluticasone 44mcg 2 puffs BID; albuterol use minimal.
         - Continue current regimen
 
 Viral URI
@@ -161,8 +161,8 @@ Follow-Up: Return to clinic in 3 months or as needed.
 ---
 
 Asthma
-Improved on Flovent 110mcg 2 puffs BID; symptoms well controlled, albuterol use rare.
-        - Step down to Flovent 44mcg 2 puffs BID
+Improved on fluticasone 110mcg 2 puffs BID; symptoms well controlled, albuterol use rare.
+        - Step down to fluticasone 44mcg 2 puffs BID
         - Continue albuterol PRN
         - Reassess control at next visit
 

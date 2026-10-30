@@ -174,7 +174,7 @@ description: A library of clinical AI prompts organized by platform (Epic Art Me
           {%- when "DAX Custom Instructions" -%}
           <p class="text-secondary">Custom instructions for DAX, applied when the scribe generates each section of the note.</p>
           {%- when "Any AI Assistant" -%}
-          <p class="text-secondary">Prompts for building and refining your own prompts. Use them with any current AI assistant your institution has approved. Start with the two "Quick" versions.</p>
+          <p class="text-secondary">Prompts for building and refining your own prompts. Use them with any current AI assistant your institution has approved. Start with the Quick Prompt Builder, then use the Refiner to tune what it gives you.</p>
           {%- when "Other" -%}
           <p class="text-secondary">Other scribe tools and platforms.</p>
         {%- endcase -%}

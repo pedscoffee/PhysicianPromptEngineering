@@ -96,6 +96,10 @@ class CourseExercise {
       const inputLabel = this.config.input_label || "Patient Encounter Transcript";
       const fullPrompt = `${studentPrompt}\n\n${inputLabel}:\n${this.config.transcript}`;
       navigator.clipboard.writeText(fullPrompt).then(() => {
+        // Running the exercise elsewhere counts as an attempt, like the in-browser run.
+        this.currentAttempt++;
+        this.updateProgress();
+        this.saveProgress(10);
         copyButton.textContent = 'Copied!';
         setTimeout(() => { copyButton.textContent = 'Copy for AI Assistant'; }, 2000);
       }, () => {
@@ -444,40 +448,42 @@ class CourseProgress {
     };
   }
 
-  static getModuleProgress(moduleNumber) {
-    const progress = CourseProgress.loadProgress();
-    const moduleExercises = Object.keys(progress.exercises).filter(id =>
-      id.startsWith(`m${moduleNumber}`)
-    );
+  // Every exercise in the course (e.g. "m1e1"), taken from the course data so the
+  // totals don't depend on which exercises have been attempted. Falls back to the
+  // exercises saved in progress if the course data isn't on the page.
+  static allExerciseIds(progress) {
+    const ids = Object.keys(window.courseExercises || {})
+      .map(key => key.match(/^module(\d+)_exercise(\d+)$/))
+      .filter(Boolean)
+      .map(match => `m${match[1]}e${match[2]}`);
+    return ids.length ? ids : Object.keys(progress.exercises);
+  }
 
-    if (moduleExercises.length === 0) return { completed: 0, total: 0, percentage: 0 };
+  static summarize(progress, exerciseIds) {
+    if (exerciseIds.length === 0) return { completed: 0, total: 0, percentage: 0 };
 
-    const completed = moduleExercises.filter(id =>
-      progress.exercises[id].completed
+    const completed = exerciseIds.filter(id =>
+      progress.exercises[id] && progress.exercises[id].completed
     ).length;
 
     return {
       completed,
-      total: moduleExercises.length,
-      percentage: Math.round((completed / moduleExercises.length) * 100)
+      total: exerciseIds.length,
+      percentage: Math.round((completed / exerciseIds.length) * 100)
     };
+  }
+
+  static getModuleProgress(moduleNumber) {
+    const progress = CourseProgress.loadProgress();
+    const moduleExercises = CourseProgress.allExerciseIds(progress).filter(id =>
+      id.startsWith(`m${moduleNumber}e`)
+    );
+    return CourseProgress.summarize(progress, moduleExercises);
   }
 
   static getCourseProgress() {
     const progress = CourseProgress.loadProgress();
-    const allExercises = Object.keys(progress.exercises);
-
-    if (allExercises.length === 0) return { completed: 0, total: 0, percentage: 0 };
-
-    const completed = allExercises.filter(id =>
-      progress.exercises[id].completed
-    ).length;
-
-    return {
-      completed,
-      total: allExercises.length,
-      percentage: Math.round((completed / allExercises.length) * 100)
-    };
+    return CourseProgress.summarize(progress, CourseProgress.allExerciseIds(progress));
   }
 
   static updateProgressBar() {

@@ -82,10 +82,10 @@ Tests/Results:
 ·	Strep test: Results pending, we will call tomorrow
 Appointments:
 ·	Return to clinic if no improvement in 7 days
-Asthma exacerbation, Flovent and albuterol started, pulmonology referral, 3-month follow-up:
+Asthma exacerbation, fluticasone and albuterol started, pulmonology referral, 3-month follow-up:
 Your To-Do List:
 Prescriptions:
-·	Flovent with spacer
+·	Fluticasone with spacer
 ·	Albuterol inhaler as needed for wheezing/coughing
 Appointments:
 ·	Schedule Pulmonology appointment
