@@ -29,6 +29,7 @@ AI scribes capture the conversation well, but their default notes are written to
 ### Tools
 - **[Quick Start A&P Builder](https://physicianpromptengineering.com/prompt-generator)**, **[Prompt Remix](https://physicianpromptengineering.com/prompt-remix)**, **[Prompt Manager](https://physicianpromptengineering.com/prompt-manager)**
 - **[Dot Phrase Library](https://physicianpromptengineering.com/dot-phrase-library)** and **[Dot Phrase Builder](https://physicianpromptengineering.com/dot-phrase-builder)**
+- **[Reflect](https://physicianpromptengineering.com/reflect)**: frameworks and cognitive-bias prompts for diagnostic reflection
 - **[Repertoire](https://www.noterepertoire.com/)**: a separate project for organizing reusable note templates
 
 ### Legacy Side Projects

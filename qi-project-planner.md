@@ -85,6 +85,13 @@ description: A step-by-step guide to planning your Quality Improvement project u
         color: white;
     }
 
+    /* Keep the last label inside narrow screens */
+    .step:last-child .step-label {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+
     .step-label {
         position: absolute;
         top: 100%;

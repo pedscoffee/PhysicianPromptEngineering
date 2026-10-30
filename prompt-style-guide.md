@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Prompt Style Guide — Compare Formats
-description: Compare all available clinical prompt styles side by side. See example outputs for DAX and Epic Text Assistant (ETA) to choose the best format for your documentation.
+title: A&P Style Guide
+description: Compare Assessment & Plan styles side by side. Every example shows the same visit, so you can pick the format closest to how you write and find the matching prompt.
 permalink: /prompt-style-guide/
 ---
 
@@ -172,7 +172,7 @@ permalink: /prompt-style-guide/
       gap: var(--space-2);
     }
     .comparison-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
@@ -180,9 +180,9 @@ permalink: /prompt-style-guide/
 <!-- Hero Section -->
 <div class="hero">
   <div class="container">
-    <h1 class="hero-title">Prompt Style Guide</h1>
+    <h1 class="hero-title">A&amp;P Style Guide</h1>
     <p class="hero-subtitle">
-      Choose how your AI scribe documents each encounter. Compare model outputs side by side to find your perfect fit.
+      Choose how your AI scribe writes the Assessment &amp; Plan. Every example shows the same visit, so you can compare styles side by side.
     </p>
   </div>
 </div>
@@ -202,28 +202,6 @@ permalink: /prompt-style-guide/
           <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" /></svg></span>
           <span class="ci-label">One-Liner + Bullets</span>
         </a>
-        <a href="#numbered-plan" class="comparison-item">
-          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.242 5.992h12m-12 6.003H20.24m-12 5.999h12M4.117 7.495v-3.75H2.99m1.125 3.75H2.99m1.125 0H5.24m-1.92 2.577a1.125 1.125 0 1 1 1.591 1.59l-1.83 1.83h2.16M2.99 15.745h1.125a1.125 1.125 0 0 1 0 2.25H3.74m0-.002h.375a1.125 1.125 0 0 1 0 2.25H2.99" />
-</svg></span>
-          <span class="ci-label">Numbered Plan</span>
-        </a>
-        <a href="#ultra-minimal" class="comparison-item">
-          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg></span>
-          <span class="ci-label">Ultra-Minimal</span>
-        </a>
-        <a href="#prose-blurb" class="comparison-item">
-          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg></span>
-          <span class="ci-label">Prose Blurb</span>
-        </a>
-        <a href="#concise-prose" class="comparison-item">
-          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg></span>
-          <span class="ci-label">Concise Prose</span>
-        </a>
-        <a href="#hybrid" class="comparison-item">
-          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg></span>
-          <span class="ci-label">Hybrid</span>
-        </a>
         <a href="#soap-within" class="comparison-item">
           <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg></span>
           <span class="ci-label">SOAP-Within</span>
@@ -236,6 +214,35 @@ permalink: /prompt-style-guide/
           <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg></span>
           <span class="ci-label">Chronic</span>
         </a>
+        <a href="#system-based" class="comparison-item">
+          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 7.125c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM2.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75Z" /></svg></span>
+          <span class="ci-label">System-Based</span>
+        </a>
+      </div>
+      <p class="text-center text-secondary mt-6 mb-4" style="font-size: var(--font-size-sm);">Archived styles</p>
+      <div class="comparison-grid">
+        <a href="#ultra-minimal" class="comparison-item">
+          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg></span>
+          <span class="ci-label">Ultra-Minimal</span>
+        </a>
+        <a href="#prose-blurb" class="comparison-item">
+          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg></span>
+          <span class="ci-label">Prose Blurb</span>
+        </a>
+        <a href="#concise-prose" class="comparison-item">
+          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg></span>
+          <span class="ci-label">Concise Prose</span>
+        </a>
+        <a href="#numbered-plan" class="comparison-item">
+          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.242 5.992h12m-12 6.003H20.24m-12 5.999h12M4.117 7.495v-3.75H2.99m1.125 3.75H2.99m1.125 0H5.24m-1.92 2.577a1.125 1.125 0 1 1 1.591 1.59l-1.83 1.83h2.16M2.99 15.745h1.125a1.125 1.125 0 0 1 0 2.25H3.74m0-.002h.375a1.125 1.125 0 0 1 0 2.25H2.99" />
+</svg></span>
+          <span class="ci-label">Numbered Plan</span>
+        </a>
+        <a href="#hybrid" class="comparison-item">
+          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg></span>
+          <span class="ci-label">Hybrid</span>
+        </a>
         <a href="#assessment-only" class="comparison-item">
           <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg></span>
           <span class="ci-label">Assessment Only</span>
@@ -243,10 +250,6 @@ permalink: /prompt-style-guide/
         <a href="#no-diagnosis" class="comparison-item">
           <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581a2.14 2.14 0 0 0 3.027 0l4.318-4.318a2.14 2.14 0 0 0 0-3.027L11.159 3.659A2.25 2.25 0 0 0 9.568 3Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" /></svg></span>
           <span class="ci-label">No Dx Headers</span>
-        </a>
-        <a href="#system-based" class="comparison-item">
-          <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 7.125c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM2.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75Z" /></svg></span>
-          <span class="ci-label">System-Based</span>
         </a>
         <a href="#generalized" class="comparison-item">
           <span class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-.991 0-1.105-.895-2-2-2s-2 .895-2 2c0 .357.128.702.349.991.215.283.401.604.401.959v3.326a.75.75 0 0 1-.75.75H7.323c-.355 0-.676-.186-.959-.401-.29-.221-.634-.349-.991-.349-1.105 0-2 .895-2 2s.895 2 2 2c.357 0 .702-.128.991-.349.283-.215.604-.401.959-.401h3.326a.75.75 0 0 1 .75.75v3.326c0 .355-.186.676-.401.959-.221.29-.349.634-.349.991 0 1.105.895 2 2 2s2-.895 2-2c0-.357-.128-.702-.349-.991-.215-.283-.401-.604-.401-.959V15c0-.414.336-.75.75-.75h3.326c.355 0 .676.186.959.401.29.221.634.349.991.349 1.105 0 2-.895 2-2s-.895-2-2-2c-.357 0-.702.128-.991.349-.283.215-.604.401-.959.401H15a.75.75 0 0 1-.75-.75V6.087Z" /></svg></span>
@@ -268,7 +271,7 @@ permalink: /prompt-style-guide/
             <li><strong>Browse the examples below</strong> — each card shows the same patient scenario formatted in a different style</li>
             <li><strong>Pick the one closest to how you like to write</strong> — there's no wrong answer</li>
             <li><strong>Choose your tool</strong> — pick the model version depending on which AI scribe tool you are using</li>
-            <li><strong>Find it in the <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a></strong> — click the buttons below to copy the full prompt and paste it into your LLM or tool's custom instructions. Styles marked <em>(archived)</em> were retired from the library to keep it short; their buttons open the original prompt on GitHub.</li>
+            <li><strong>Find it in the <a href="{{ site.baseurl }}/prompt-library">Prompt Library</a></strong> — click the buttons on each card to copy the full prompt and paste it into your LLM or tool's custom instructions. Retired styles are grouped under <a href="#archived-styles">More Styles (Archived)</a>; their buttons open the original prompt on GitHub.</li>
             <li><strong>Customize</strong> — swap in your own dot phrases, adjust the few-shot examples to your specialty, and iterate from there</li>
             <li><strong>Contribute</strong> — consider sharing your prompts back with the community! As these tools continue to evolve we can all benefit from learning from each other</li>
           </ol>
@@ -284,34 +287,7 @@ permalink: /prompt-style-guide/
     <div style="max-width: 900px; margin: 0 auto;">
 
       <h2 class="mb-2">Outpatient Styles</h2>
-      <p class="text-secondary mb-8">These are organized from most concise to most detailed.</p>
-
-      <!-- Ultra-Minimal -->
-      <div class="style-card" id="ultra-minimal">
-        <div class="style-card-header">
-          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg></span>
-          <div class="style-card-header-text">
-            <h3>Ultra-Minimal One-Liner</h3>
-            <p>The most compact format possible. One telegraphic sentence per problem fuses assessment and plan with a semicolon. For high-volume clinicians who want the absolute minimum.</p>
-            <div class="style-badges">
-              <span class="style-badge badge-concise">Most Concise</span>
-              <span class="style-badge badge-prose">Prose</span>
-              <span class="style-badge badge-outpatient">Outpatient</span>
-            </div>
-          </div>
-        </div>
-        <div class="style-example">
-<span class="style-example-label">Example Output</span>
-Asthma
-Persistent symptoms despite albuterol; starting Flovent 44mcg 2 puffs BID with spacer.
-
-Follow-Up: RTC 3mo or PRN.</div>
-        <div class="style-card-footer">
-          <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Ultra-Minimal-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-ultra-minimal.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
-        </div>
-      </div>
+      <p class="text-secondary mb-8">These are organized from most concise to most detailed, and each has a prompt in the library.</p>
 
       <!-- Concise Bullets -->
       <div class="style-card" id="concise-bullets">
@@ -330,7 +306,7 @@ Follow-Up: RTC 3mo or PRN.</div>
         <div class="style-example">
 <span class="style-example-label">Example Output</span>
 Asthma
-        - Flovent 44mcg 2 puff BID started
+        - fluticasone 44mcg 2 puff BID started
         - Continue albuterol PRN
         - Use spacer
 
@@ -361,7 +337,7 @@ Follow-Up: Return to clinic in 3 months or as needed.</div>
 8yo with acute asthma exacerbation; starting ICS given persistent symptoms despite albuterol.
 
 Asthma
-        - Flovent 44mcg 2 puff BID started
+        - fluticasone 44mcg 2 puff BID started
         - Continue albuterol PRN
         - Use spacer
 
@@ -370,121 +346,6 @@ Follow-Up: Return to clinic in 3 months or as needed.</div>
           <span class="text-xs text-secondary mr-2">Use in:</span>
           <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Pithy-AP-DAX-with-one-liner-and-follow-up.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
           <a href="{{ site.baseurl }}/prompt-library#eta-editor-s-current-favorite-a-p" class="btn btn-outline btn-sm">ETA Prompt</a>
-        </div>
-      </div>
-
-      <!-- Numbered Plan -->
-      <div class="style-card" id="numbered-plan">
-        <div class="style-card-header">
-          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.242 5.992h12m-12 6.003H20.24m-12 5.999h12M4.117 7.495v-3.75H2.99m1.125 3.75H2.99m1.125 0H5.24m-1.92 2.577a1.125 1.125 0 1 1 1.591 1.59l-1.83 1.83h2.16M2.99 15.745h1.125a1.125 1.125 0 0 1 0 2.25H3.74m0-.002h.375a1.125 1.125 0 0 1 0 2.25H2.99" />
-</svg></span>
-          <div class="style-card-header-text">
-            <h3>Numbered Plan with One-Liner</h3>
-            <p>Same structure as the one-liner + bullets, but uses numbered items (1. 2. 3.) instead of hyphens. Great for physicians who reference plan items by number during handoffs.</p>
-            <div class="style-badges">
-              <span class="style-badge badge-concise">Concise</span>
-              <span class="style-badge badge-numbered">Numbered</span>
-              <span class="style-badge badge-outpatient">Outpatient</span>
-            </div>
-          </div>
-        </div>
-        <div class="style-example">
-<span class="style-example-label">Example Output</span>
-8yo with acute asthma exacerbation; starting ICS given persistent symptoms despite albuterol.
-
-Asthma
-        1. Flovent 44mcg 2 puff BID started
-        2. Continue albuterol PRN
-        3. Use spacer
-
-Follow-Up: Return to clinic in 3 months or as needed.</div>
-        <div class="style-card-footer">
-          <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Numbered-Plan-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-numbered-plan.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
-        </div>
-      </div>
-
-      <!-- Prose Blurb -->
-      <div class="style-card" id="prose-blurb">
-        <div class="style-card-header">
-          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg></span>
-          <div class="style-card-header-text">
-            <h3>Prose Blurb (Resident-Style)</h3>
-            <p>Each problem gets a single concise blurb in the style of a resident's oral presentation: flowing prose that covers assessment, plan, and forward-directed thinking in one paragraph. No bullets.</p>
-            <div class="style-badges">
-              <span class="style-badge badge-prose">Prose</span>
-              <span class="style-badge badge-outpatient">Outpatient</span>
-            </div>
-          </div>
-        </div>
-        <div class="style-example">
-<span class="style-example-label">Example Output</span>
-Asthma
-Persistent symptoms despite albuterol consistent with inadequately controlled asthma; starting Flovent 44mcg 2 puffs BID with spacer, continue albuterol as needed, and will reassess control at follow-up.
-
-Follow-Up: Return to clinic in 3 months or as needed.</div>
-        <div class="style-card-footer">
-          <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/AP%20Short%20Blurb%20DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-short-blurb.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
-        </div>
-      </div>
-
-      <!-- Concise Prose -->
-      <div class="style-card" id="concise-prose">
-        <div class="style-card-header">
-          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg></span>
-          <div class="style-card-header-text">
-            <h3>Concise Prose (Two Sentences)</h3>
-            <p>Exactly two sentences per problem: Sentence 1 = assessment rationale, Sentence 2 = plan (tests, treatments, referrals). Tight, grammatical, telegraphic prose. No bullets.</p>
-            <div class="style-badges">
-              <span class="style-badge badge-prose">Prose</span>
-              <span class="style-badge badge-outpatient">Outpatient</span>
-            </div>
-          </div>
-        </div>
-        <div class="style-example">
-<span class="style-example-label">Example Output</span>
-Asthma
-Mild persistent asthma with current flare and daily albuterol use. Start Flovent 44 mcg 2 puffs BID with spacer and continue albuterol PRN; no testing or referrals today.
-
-Follow up in 3 months or as needed.</div>
-        <div class="style-card-footer">
-          <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/AP_concise_prose.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
-        </div>
-      </div>
-
-      <!-- Hybrid -->
-      <div class="style-card" id="hybrid">
-        <div class="style-card-header">
-          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg></span>
-          <div class="style-card-header-text">
-            <h3>Hybrid: Prose Assessment + Bulleted Plan</h3>
-            <p>Cleanly separates clinical thinking from management actions. One prose sentence for the assessment, then bullet points for the plan beneath it.</p>
-            <div class="style-badges">
-              <span class="style-badge badge-hybrid">Hybrid</span>
-              <span class="style-badge badge-outpatient">Outpatient</span>
-            </div>
-          </div>
-        </div>
-        <div class="style-example">
-<span class="style-example-label">Example Output</span>
-Asthma
-Persistent symptoms despite albuterol consistent with inadequately controlled asthma.
-        - Flovent 44mcg 2 puffs BID started
-        - Continue albuterol PRN
-        - Use spacer
-        - Reassess control at follow-up
-
-Follow-Up: Return to clinic in 3 months or as needed.</div>
-        <div class="style-card-footer">
-          <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/soap_hybrid_prompt.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
         </div>
       </div>
 
@@ -505,13 +366,13 @@ Follow-Up: Return to clinic in 3 months or as needed.</div>
 <span class="style-example-label">Example Output</span>
 Asthma
 Persistent symptoms despite albuterol consistent with inadequately controlled asthma.
-Starting Flovent 44mcg 2 puffs BID with spacer; continue albuterol PRN; will reassess control at follow-up.
+Starting fluticasone 44mcg 2 puffs BID with spacer; continue albuterol PRN; will reassess control at follow-up.
 
 Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
           <a href="{{ site.baseurl }}/prompt-library#dax-a-p-soap-within-problems" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm" title="No ETA version of this style; the Pithy prompt is the closest starting point">Closest ETA Prompt</a>
         </div>
       </div>
 
@@ -539,7 +400,7 @@ Assessment:
         - Exam reassuring with clear breath sounds today
 
 Plan:
-        - Flovent 44mcg 2 puffs BID with spacer started
+        - fluticasone 44mcg 2 puffs BID with spacer started
         - Continue albuterol as rescue inhaler
         - Asthma action plan provided to family
 
@@ -575,8 +436,8 @@ Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-example">
 <span class="style-example-label">Example Output — Stable chronic problem</span>
 Asthma
-Stable on Flovent 44mcg 2 puffs BID with spacer; albuterol use minimal.
-        - Continue Flovent 44mcg 2 puffs BID
+Stable on fluticasone 44mcg 2 puffs BID with spacer; albuterol use minimal.
+        - Continue fluticasone 44mcg 2 puffs BID
         - Continue albuterol PRN
         - Reassess control at next visit
 
@@ -584,7 +445,201 @@ Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
           <a href="{{ site.baseurl }}/prompt-library#dax-a-p-concise-assessment-statement-and-bulleted-plan-with-follow-up-statement" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm" title="No ETA version of this style; the Pithy prompt is the closest starting point">Closest ETA Prompt</a>
+        </div>
+      </div>
+
+      <!-- System-Based -->
+      <div class="style-card" id="system-based">
+        <div class="style-card-header">
+          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 7.125c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM2.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75Z" /></svg></span>
+          <div class="style-card-header-text">
+            <h3>System-Based (Inpatient / ED)</h3>
+            <p>Organized by organ system instead of by problem: Respiratory, Cardiovascular, FEN/GI, ID, HO, Neuro, Psych, Social, Dispo. Stable systems get a one-line negative statement. For hospitalists and ED physicians.</p>
+            <div class="style-badges">
+              <span class="style-badge badge-inpatient">Inpatient / ED</span>
+              <span class="style-badge badge-detailed">Detailed</span>
+              <span class="style-badge badge-hybrid">Hybrid</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-example">
+<span class="style-example-label">Example Output</span>
+8yo admitted for acute asthma exacerbation with hypoxia requiring supplemental O2; HD#2.
+
+Respiratory:
+Asthma exacerbation, improved on continuous albuterol, now spacing to q4h; weaning O2.
+        - Albuterol neb q4h
+        - Wean O2 to maintain SpO2 >92%
+        - Start fluticasone 44mcg 2 puffs BID once spacing to q6h
+
+Cardiovascular: Hemodynamically stable, no concerns.
+
+FEN/GI: Tolerating regular diet, adequate PO intake.
+
+ID: Afebrile, no signs of infection.
+
+HO: No hematologic or oncologic concerns.
+
+Neuro: Alert, age-appropriate, no focal deficits.
+
+Psych: Appropriate affect, coping well with hospitalization.
+
+Social: Parents at bedside, family meeting completed.
+
+Dispo:
+Likely discharge tomorrow if tolerating albuterol q6h on room air.
+        - Discharge with fluticasone 44mcg 2 puffs BID, albuterol PRN
+        - Follow-up with PCP in 1 week</div>
+        <div class="style-card-footer">
+          <span class="text-xs text-secondary mr-2">Use in:</span>
+          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-system-based-inpatient-ed" class="btn btn-primary btn-sm">DAX Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-system-based-inpatient-ed" class="btn btn-outline btn-sm">ETA Prompt</a>
+        </div>
+      </div>
+
+      <h2 class="mb-2 mt-12" id="archived-styles">More Styles (Archived)</h2>
+      <p class="text-secondary mb-8">These styles were retired from the library to keep it short. The examples still show what each one looks like, and the buttons open the original prompts on GitHub. Most are a few edits away from one of the styles above.</p>
+
+      <!-- Ultra-Minimal -->
+      <div class="style-card" id="ultra-minimal">
+        <div class="style-card-header">
+          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg></span>
+          <div class="style-card-header-text">
+            <h3>Ultra-Minimal One-Liner</h3>
+            <p>The most compact format possible. One telegraphic sentence per problem fuses assessment and plan with a semicolon. For high-volume clinicians who want the absolute minimum.</p>
+            <div class="style-badges">
+              <span class="style-badge badge-concise">Most Concise</span>
+              <span class="style-badge badge-prose">Prose</span>
+              <span class="style-badge badge-outpatient">Outpatient</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-example">
+<span class="style-example-label">Example Output</span>
+Asthma
+Persistent symptoms despite albuterol; starting fluticasone 44mcg 2 puffs BID with spacer.
+
+Follow-Up: RTC 3mo or PRN.</div>
+        <div class="style-card-footer">
+          <span class="text-xs text-secondary mr-2">Use in:</span>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Ultra-Minimal-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-ultra-minimal.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
+        </div>
+      </div>
+
+      <!-- Prose Blurb -->
+      <div class="style-card" id="prose-blurb">
+        <div class="style-card-header">
+          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg></span>
+          <div class="style-card-header-text">
+            <h3>Prose Blurb (Resident-Style)</h3>
+            <p>Each problem gets a single concise blurb in the style of a resident's oral presentation: flowing prose that covers assessment, plan, and forward-directed thinking in one paragraph. No bullets.</p>
+            <div class="style-badges">
+              <span class="style-badge badge-prose">Prose</span>
+              <span class="style-badge badge-outpatient">Outpatient</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-example">
+<span class="style-example-label">Example Output</span>
+Asthma
+Persistent symptoms despite albuterol consistent with inadequately controlled asthma; starting fluticasone 44mcg 2 puffs BID with spacer, continue albuterol as needed, and will reassess control at follow-up.
+
+Follow-Up: Return to clinic in 3 months or as needed.</div>
+        <div class="style-card-footer">
+          <span class="text-xs text-secondary mr-2">Use in:</span>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/AP%20Short%20Blurb%20DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-short-blurb.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
+        </div>
+      </div>
+
+      <!-- Concise Prose -->
+      <div class="style-card" id="concise-prose">
+        <div class="style-card-header">
+          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg></span>
+          <div class="style-card-header-text">
+            <h3>Concise Prose (Two Sentences)</h3>
+            <p>Exactly two sentences per problem: Sentence 1 = assessment rationale, Sentence 2 = plan (tests, treatments, referrals). Tight, grammatical, telegraphic prose. No bullets.</p>
+            <div class="style-badges">
+              <span class="style-badge badge-prose">Prose</span>
+              <span class="style-badge badge-outpatient">Outpatient</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-example">
+<span class="style-example-label">Example Output</span>
+Asthma
+Mild persistent asthma with current flare and daily albuterol use. Start fluticasone 44 mcg 2 puffs BID with spacer and continue albuterol PRN; no testing or referrals today.
+
+Follow up in 3 months or as needed.</div>
+        <div class="style-card-footer">
+          <span class="text-xs text-secondary mr-2">Use in:</span>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/AP_concise_prose.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm" title="No ETA version of this style; the Pithy prompt is the closest starting point">Closest ETA Prompt</a>
+        </div>
+      </div>
+
+      <!-- Numbered Plan -->
+      <div class="style-card" id="numbered-plan">
+        <div class="style-card-header">
+          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.242 5.992h12m-12 6.003H20.24m-12 5.999h12M4.117 7.495v-3.75H2.99m1.125 3.75H2.99m1.125 0H5.24m-1.92 2.577a1.125 1.125 0 1 1 1.591 1.59l-1.83 1.83h2.16M2.99 15.745h1.125a1.125 1.125 0 0 1 0 2.25H3.74m0-.002h.375a1.125 1.125 0 0 1 0 2.25H2.99" />
+</svg></span>
+          <div class="style-card-header-text">
+            <h3>Numbered Plan with One-Liner</h3>
+            <p>Same structure as the one-liner + bullets, but uses numbered items (1. 2. 3.) instead of hyphens. Great for physicians who reference plan items by number during handoffs.</p>
+            <div class="style-badges">
+              <span class="style-badge badge-concise">Concise</span>
+              <span class="style-badge badge-numbered">Numbered</span>
+              <span class="style-badge badge-outpatient">Outpatient</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-example">
+<span class="style-example-label">Example Output</span>
+8yo with acute asthma exacerbation; starting ICS given persistent symptoms despite albuterol.
+
+Asthma
+        1. fluticasone 44mcg 2 puff BID started
+        2. Continue albuterol PRN
+        3. Use spacer
+
+Follow-Up: Return to clinic in 3 months or as needed.</div>
+        <div class="style-card-footer">
+          <span class="text-xs text-secondary mr-2">Use in:</span>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Numbered-Plan-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-numbered-plan.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
+        </div>
+      </div>
+
+      <!-- Hybrid -->
+      <div class="style-card" id="hybrid">
+        <div class="style-card-header">
+          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg></span>
+          <div class="style-card-header-text">
+            <h3>Hybrid: Prose Assessment + Bulleted Plan</h3>
+            <p>Cleanly separates clinical thinking from management actions. One prose sentence for the assessment, then bullet points for the plan beneath it.</p>
+            <div class="style-badges">
+              <span class="style-badge badge-hybrid">Hybrid</span>
+              <span class="style-badge badge-outpatient">Outpatient</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-example">
+<span class="style-example-label">Example Output</span>
+Asthma
+Persistent symptoms despite albuterol consistent with inadequately controlled asthma.
+        - fluticasone 44mcg 2 puffs BID started
+        - Continue albuterol PRN
+        - Use spacer
+        - Reassess control at follow-up
+
+Follow-Up: Return to clinic in 3 months or as needed.</div>
+        <div class="style-card-footer">
+          <span class="text-xs text-secondary mr-2">Use in:</span>
+          <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/soap_hybrid_prompt.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm" title="No ETA version of this style; the Pithy prompt is the closest starting point">Closest ETA Prompt</a>
         </div>
       </div>
 
@@ -631,7 +686,7 @@ Follow-Up: Return to clinic in 3 months or as needed.</div>
         <div class="style-example">
 <span class="style-example-label">Example Output — New acute problem</span>
 Persistent symptoms despite albuterol consistent with inadequately controlled asthma.
-        - Flovent 44mcg 2 puffs BID started
+        - fluticasone 44mcg 2 puffs BID started
         - Continue albuterol PRN
         - Reassess control at next visit
 
@@ -642,58 +697,6 @@ Follow-Up: Return to clinic in 3 months or as needed.</div>
           <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/ap-no-diagnosis-epic.txt" class="btn btn-outline btn-sm" target="_blank" rel="noopener">ETA Prompt (archived)</a>
         </div>
       </div>
-
-      <!-- System-Based -->
-      <div class="style-card" id="system-based">
-        <div class="style-card-header">
-          <span class="style-card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 7.125c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM2.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 14.625c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75Z" /></svg></span>
-          <div class="style-card-header-text">
-            <h3>System-Based (Inpatient / ED)</h3>
-            <p>Organized by organ system instead of by problem: Respiratory, Cardiovascular, FEN/GI, ID, HO, Neuro, Psych, Social, Dispo. Stable systems get a one-line negative statement. For hospitalists and ED physicians.</p>
-            <div class="style-badges">
-              <span class="style-badge badge-inpatient">Inpatient / ED</span>
-              <span class="style-badge badge-detailed">Detailed</span>
-              <span class="style-badge badge-hybrid">Hybrid</span>
-            </div>
-          </div>
-        </div>
-        <div class="style-example">
-<span class="style-example-label">Example Output</span>
-8yo admitted for acute asthma exacerbation with hypoxia requiring supplemental O2; HD#2.
-
-Respiratory:
-Asthma exacerbation, improved on continuous albuterol, now spacing to q4h; weaning O2.
-        - Albuterol neb q4h
-        - Wean O2 to maintain SpO2 >92%
-        - Start Flovent 44mcg 2 puffs BID once spacing to q6h
-
-Cardiovascular: Hemodynamically stable, no concerns.
-
-FEN/GI: Tolerating regular diet, adequate PO intake.
-
-ID: Afebrile, no signs of infection.
-
-HO: No hematologic or oncologic concerns.
-
-Neuro: Alert, age-appropriate, no focal deficits.
-
-Psych: Appropriate affect, coping well with hospitalization.
-
-Social: Parents at bedside, family meeting completed.
-
-Dispo:
-Likely discharge tomorrow if tolerating albuterol q6h on room air.
-        - Discharge with Flovent 44mcg 2 puffs BID, albuterol PRN
-        - Follow-up with PCP in 1 week</div>
-        <div class="style-card-footer">
-          <span class="text-xs text-secondary mr-2">Use in:</span>
-          <a href="{{ site.baseurl }}/prompt-library#dax-a-p-system-based-inpatient-ed" class="btn btn-primary btn-sm">DAX Prompt</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-system-based-inpatient-ed" class="btn btn-outline btn-sm">ETA Prompt</a>
-        </div>
-      </div>
-
-      <h2 class="mb-2 mt-12">Templates</h2>
-      <p class="text-secondary mb-8">Starting points for building your own custom style.</p>
 
       <!-- Generalized Template -->
       <div class="style-card" id="generalized">
@@ -715,11 +718,11 @@ A ready-to-customize prompt with:
 • Generic few-shot examples you swap for your specialty's cases
 • Guidance notes on customization best practices
 
-Start here if none of the other styles are quite right.</div>
+For a fresh start today, the Quick Prompt Builder in the library will interview you and write one from your own examples.</div>
         <div class="style-card-footer">
           <span class="text-xs text-secondary mr-2">Use in:</span>
           <a href="https://github.com/pedscoffee/PhysicianPromptEngineering/blob/106b24f/_prompts/Pithy-Generalized-A%26P-DAX.txt" class="btn btn-primary btn-sm" target="_blank" rel="noopener">DAX Prompt (archived)</a>
-          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm">ETA Prompt</a>
+          <a href="{{ site.baseurl }}/prompt-library#eta-a-p-formatting-pithy" class="btn btn-outline btn-sm" title="No ETA version of this style; the Pithy prompt is the closest starting point">Closest ETA Prompt</a>
         </div>
       </div>
 
@@ -744,7 +747,7 @@ Start here if none of the other styles are quite right.</div>
             <tbody>
               <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">Absolute minimum words</td>
-                <td style="padding: var(--space-3);"><a href="#ultra-minimal">Ultra-Minimal One-Liner</a></td>
+                <td style="padding: var(--space-3);"><a href="#ultra-minimal">Ultra-Minimal One-Liner</a> <span class="text-secondary">(archived)</span></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">Quick scannable bullets</td>
@@ -752,15 +755,15 @@ Start here if none of the other styles are quite right.</div>
               </tr>
               <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">To reference items by number in handoffs</td>
-                <td style="padding: var(--space-3);"><a href="#numbered-plan">Numbered Plan</a></td>
+                <td style="padding: var(--space-3);"><a href="#numbered-plan">Numbered Plan</a> <span class="text-secondary">(archived)</span></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">Flowing sentences, no bullets</td>
-                <td style="padding: var(--space-3);"><a href="#prose-blurb">Prose Blurb</a> or <a href="#concise-prose">Concise Prose</a></td>
+                <td style="padding: var(--space-3);"><a href="#prose-blurb">Prose Blurb</a> <span class="text-secondary">(archived)</span> or <a href="#concise-prose">Concise Prose</a> <span class="text-secondary">(archived)</span></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">Assessment and plan clearly separated</td>
-                <td style="padding: var(--space-3);"><a href="#soap-within">SOAP-Within</a> or <a href="#hybrid">Hybrid</a></td>
+                <td style="padding: var(--space-3);"><a href="#soap-within">SOAP-Within</a> or <a href="#hybrid">Hybrid</a> <span class="text-secondary">(archived)</span></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">Maximum structure and detail</td>
@@ -772,11 +775,15 @@ Start here if none of the other styles are quite right.</div>
               </tr>
               <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">Dx codes & orders already in chart</td>
-                <td style="padding: var(--space-3);"><a href="#assessment-only">Assessment Only</a> or <a href="#no-diagnosis">No Dx Headers</a></td>
+                <td style="padding: var(--space-3);"><a href="#assessment-only">Assessment Only</a> <span class="text-secondary">(archived)</span> or <a href="#no-diagnosis">No Dx Headers</a> <span class="text-secondary">(archived)</span></td>
               </tr>
-              <tr>
+              <tr style="border-bottom: 1px solid var(--color-border);">
                 <td style="padding: var(--space-3);">Inpatient / ED systems-based notes</td>
                 <td style="padding: var(--space-3);"><a href="#system-based">System-Based</a></td>
+              </tr>
+              <tr>
+                <td style="padding: var(--space-3);">None of these quite fit</td>
+                <td style="padding: var(--space-3);"><a href="{{ site.baseurl }}/prompt-library#quick-prompt-builder">Quick Prompt Builder</a> (builds one from your own examples)</td>
               </tr>
             </tbody>
           </table>

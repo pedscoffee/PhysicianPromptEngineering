@@ -83,6 +83,7 @@ if ('serviceWorker' in navigator) {
 
     .header-actions {
         display: flex;
+        flex-wrap: wrap;
         gap: 12px;
     }
 
